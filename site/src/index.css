@@ -78,3 +78,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+@font-face {
+  font-family: "Rodondo";
+  src: url("../public/font/Rodondo.otf") format("otf");
+}
+
+html, body {
+  font-family: 'Rodondo', monospace;
+}

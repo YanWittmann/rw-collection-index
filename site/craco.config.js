@@ -17,9 +17,6 @@ module.exports = {
                 '@shadcn': path.resolve(__dirname, 'src/@shadcn/'),
             };
 
-            if (isProduction) {
-            }
-
             return webpackConfig;
         },
     },
