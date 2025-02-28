@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-// CONFIGURATION - Update these paths as needed
-const DIALOGUE_DIR = path.join(__dirname, '../dialogue'); // Directory containing text files
+// CONFIGURATION
+const DIALOGUE_DIR = path.join(__dirname, '../dialogue');
 const OUTPUT_FILE = path.join(__dirname, 'src/generated/parsed-dialogues.json');
 
 function parseLine(line) {
@@ -17,48 +17,96 @@ function parseLine(line) {
     };
 }
 
-function parseTranscriberSection(sectionLines) {
-    if (sectionLines.length === 0) return null;
+function parseSectionHeader(headerLine) {
+    // Handle both old and new formats
+    if (headerLine.startsWith('=== ')) {
+        const legacyMatch = headerLine.match(/^=== (\w+)$/);
+        if (legacyMatch) {
+            return { namespace: 'transcription', value: legacyMatch[1] };
+        }
 
-    const transcriber = sectionLines[0].replace('=== ', '').trim();
-    const lines = sectionLines.slice(1).map(parseLine);
-
-    return {
-        transcriber,
-        lines
-    };
+        const namespacedMatch = headerLine.match(/^=== (\w+): (.+)$/);
+        if (namespacedMatch) {
+            return { namespace: namespacedMatch[1], value: namespacedMatch[2] };
+        }
+    }
+    return null;
 }
+
+const sectionHandlers = {
+    transcription: (sectionLines, value) => ({
+        transcriber: value,
+        lines: sectionLines.map(parseLine)
+    }),
+
+    hint: (sectionLines, value) => ({
+        name: value,
+        lines: sectionLines
+    })
+};
 
 function parseDialogueContent(content) {
     const lines = content.split('\n').map(l => l.trim()).filter(l => l);
 
-    // Extract color and type from first two lines
-    const color = lines[0].split(':')[1].trim();
-    const type = lines[1].split(':')[1].trim();
+    // Parse metadata
+    const metadata = {};
+    let sectionStartIndex = 0;
 
-    // Split into sections
-    const sections = [];
-    let currentSection = [];
+    while (sectionStartIndex < lines.length && !lines[sectionStartIndex].startsWith('===')) {
+        const line = lines[sectionStartIndex];
+        const colonIndex = line.indexOf(':');
+        if (colonIndex > -1) {
+            metadata[line.slice(0, colonIndex).trim()] = line.slice(colonIndex + 1).trim();
+        }
+        sectionStartIndex++;
+    }
 
-    for (const line of lines.slice(2)) {
+    // Parse sections
+    const result = {
+        transcribers: [],
+        hints: []
+    };
+
+    let currentHeader = null;
+    let currentSectionLines = [];
+
+    for (let i = sectionStartIndex; i < lines.length; i++) {
+        const line = lines[i];
+
         if (line.startsWith('===')) {
-            if (currentSection.length > 0) {
-                sections.push(currentSection);
-                currentSection = [];
+            if (currentHeader) {
+                const handler = sectionHandlers[currentHeader.namespace];
+                if (handler) {
+                    const sectionData = handler(currentSectionLines, currentHeader.value);
+                    if (currentHeader.namespace === 'transcription') {
+                        result.transcribers.push(sectionData);
+                    } else if (currentHeader.namespace === 'hint') {
+                        result.hints.push(sectionData);
+                    }
+                }
+            }
+
+            currentHeader = parseSectionHeader(line);
+            currentSectionLines = [];
+        } else if (currentHeader) {
+            currentSectionLines.push(line);
+        }
+    }
+
+    // Process remaining section
+    if (currentHeader && currentSectionLines.length > 0) {
+        const handler = sectionHandlers[currentHeader.namespace];
+        if (handler) {
+            const sectionData = handler(currentSectionLines, currentHeader.value);
+            if (currentHeader.namespace === 'transcription') {
+                result.transcribers.push(sectionData);
+            } else if (currentHeader.namespace === 'hint') {
+                result.hints.push(sectionData);
             }
         }
-        currentSection.push(line);
     }
 
-    if (currentSection.length > 0) {
-        sections.push(currentSection);
-    }
-
-    return {
-        color,
-        type,
-        transcribers: sections.map(parseTranscriberSection).filter(Boolean)
-    };
+    return { metadata, ...result };
 }
 
 function processDialogueFiles() {
@@ -77,6 +125,7 @@ function processDialogueFiles() {
             };
         });
 
+        fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
         fs.writeFileSync(OUTPUT_FILE, JSON.stringify(result, null, 2));
         console.log(`Successfully parsed ${files.length} files to ${OUTPUT_FILE}`);
     } catch (error) {

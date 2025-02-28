@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react"
 import { Pearl } from "./pearl"
 import { RwIconButton } from "./rw-icon-button";
+import sanitizeHtml from 'sanitize-html';
 
 import parsedData from "../generated/parsed-dialogues.json";
 
@@ -14,30 +15,40 @@ interface Dialogue {
     lines: DialogueLine[]
 }
 
+interface Hint {
+    name: string,
+    lines: string[]
+}
+
 interface PearlData {
-    id: number
-    color: string,
-    type: "pearl" | "broadcast"
-    transcribers: Dialogue[]
+    id: number | string
+    metadata: {
+        color: string
+        type: "pearl" | "broadcast"
+    }
+    transcribers: Dialogue[],
+    hints: Hint[]
 }
 
 const speakersColors: { [key: string]: string } = {
-    "CW": "#40e0d0",
-    "FP": "#98ff98",
-    "NSH": "#40e0d0",
-    "BSM": "#ffd700",
-    "LttM": "#ff69b4",
+    "FP": "#66d9bf",
+    "EP": "#66d9bf",
+    "BSM": "#e5d999",
+    "LttM": "#e5d999",
+    "CW": "#bfbfe5",
+    "NSH": "#bfffbf",
 }
 
-let GRID_DATA: PearlData[] = parsedData as any as PearlData[];
+let GRID_DATA: PearlData[] = parsedData as PearlData[];
 
-// add 10 more dummy pearls
 for (let i = 3; i <= 80; i++) {
     let randomColor = Math.floor(Math.random() * 16777215).toString(16);
     GRID_DATA.push({
         id: i,
-        color: `#${randomColor}`,
-        type: "pearl",
+        metadata: {
+            color: `#${randomColor}`,
+            type: "pearl",
+        },
         transcribers: [
             {
                 transcriber: "LttM",
@@ -47,8 +58,19 @@ for (let i = 3; i <= 80; i++) {
                     }
                 ]
             }
-        ]
+        ],
+        hints: []
     })
+}
+
+function renderDialogueLine(line: string) {
+    line = line.replace(/\\n/g, "<br>").replace(/\n/g, "<br>");
+    return sanitizeHtml(line, {
+        allowedTags: ['b', 'i', 'em', 'strong', 'a', 'p', 'br'],
+        allowedAttributes: {
+            'a': ['href']
+        }
+    });
 }
 
 export default function DialogueInterface() {
@@ -64,11 +86,10 @@ export default function DialogueInterface() {
         return transcriber.lines.map((line, i) => (
             <div key={i} className="text-center">
                 {line.speaker ? (
-                    <span style={{ color: speakersColors[line.speaker] }}>
-                        {line.speaker}: {line.text}
+                    <span style={{ color: speakersColors[line.speaker] }} dangerouslySetInnerHTML={{ __html: renderDialogueLine(line.speaker + ': ' + line.text) }}>
                     </span>
                 ) : (
-                    <span className="text-white">{line.text}</span>
+                    <span className="text-white" dangerouslySetInnerHTML={{ __html: renderDialogueLine(line.text) }}/>
                 )}
             </div>
         ))
@@ -115,7 +136,7 @@ export default function DialogueInterface() {
                                 }}
                                 selected={selectedPearl === index}
                             >
-                                <Pearl color={pearl.color} type={pearl.type}/>
+                                <Pearl color={pearl.metadata.color} type={pearl.metadata.type}/>
                             </RwIconButton>
                         ))}
                     </div>
