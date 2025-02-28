@@ -7,10 +7,12 @@ import { cn } from "@shadcn/lib/utils";
 interface RwIconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     selected?: boolean
     onClick?: () => void
+    onMouseEnter?: () => void
+    onMouseLeave?: () => void
     children?: React.ReactNode
 }
 
-export function RwIconButton({ selected = false, onClick, className, children }: RwIconButtonProps) {
+export function RwIconButton({ selected = false, onClick, onMouseEnter, onMouseLeave, className, children }: RwIconButtonProps) {
     return (
         <motion.button
             className={cn("relative aspect-square h-12 w-12 p-0", className)}
@@ -18,6 +20,8 @@ export function RwIconButton({ selected = false, onClick, className, children }:
             whileHover={selected ? "selected" : "hover"}
             animate={selected ? "selected" : "default"}
             onClick={onClick}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
         >
             {/* Background */}
             <motion.div
