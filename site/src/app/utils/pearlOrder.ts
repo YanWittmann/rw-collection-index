@@ -7,7 +7,7 @@ export interface PearlChapter {
 
 export const pearlOrder: PearlChapter[] = [
     {
-        name: "",
+        name: "Downpour",
         ids: [
             "SU_LIGHT_BLUE", "HI_LIGHT_GREEN"
         ]
@@ -26,6 +26,6 @@ export const orderPearls = (pearls: PearlData[]): { name: string, items: PearlDa
     }));
     const coveredIds = new Set(pearlOrder.flatMap(chapter => chapter.ids));
     const uncoveredPearls = pearls.filter(pearl => !coveredIds.has(pearl.id));
-    orderedPearls.push({ name: "Uncovered", items: uncoveredPearls });
+    orderedPearls.push({ name: "Other", items: uncoveredPearls });
     return orderedPearls;
 }

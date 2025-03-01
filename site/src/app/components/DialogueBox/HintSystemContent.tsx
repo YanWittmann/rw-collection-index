@@ -1,7 +1,7 @@
-import { PearlData } from "../../types/types";
+import { Hint, PearlData } from "../../types/types";
 import { RwIconButton } from "../other/RwIconButton";
-import { useState } from "react";
 import { regionNames } from "../../utils/speakers";
+import { generateMapLink } from "./DialogueBox";
 
 
 interface HintSystemContentProps {
@@ -19,31 +19,44 @@ export default function HintSystemContent({
                                               hintProgress,
                                               setHintProgress
                                           }: HintSystemContentProps) {
-    const availableHints = pearl.hints.length
-        + 1 // region name
-    ;
+    const effectiveHints: Hint[] = [
+        {
+            name: "Region",
+            lines: ["Found in " + (regionNames[pearl.metadata.region ?? ''] ?? 'Unknown') + " (" + pearl.metadata.region + ")"]
+        },
+        ...pearl.hints,
+        {
+            name: "Map link",
+            lines: [generateMapLink(pearl) ?? "No map link available"]
+        }
+    ]
+
+    const renderHintLine = (line: string) => {
+        if (line.startsWith("http")) {
+            return (
+                <a href={line} target="_blank" rel="noreferrer" className="text-blue-500 underline">
+                    {line}
+                </a>
+            );
+        } else {
+            return line;
+        }
+    }
 
     const renderHints = () => {
-        const effectiveIndex = Math.max(Math.min(hintProgress, availableHints), 0);
+        const effectiveIndex = Math.max(Math.min(hintProgress, effectiveHints.length), 0);
         if (effectiveIndex === 0) {
             return <div></div>;
         }
 
-        if (effectiveIndex === 1) {
-            return (
-                <div className="text-center">
-                    <div className="text-lg font-bold">
-                        Found in {regionNames[pearl.metadata.region ?? ''] ?? 'Unknown'} ({pearl.metadata.region})
-                    </div>
-                </div>
-            );
-        }
-
         return (
             <div className="text-center">
-                {pearl.hints[effectiveIndex - 2].lines.map((line, index) => (
-                    <div key={index} className="text-lg font-bold">
-                        {line}
+                <div className="text-lg font-bold mb-2">
+                    {effectiveHints[effectiveIndex - 1].name}
+                </div>
+                {effectiveHints[effectiveIndex - 1].lines.map((line, index) => (
+                    <div key={index} className="text-lg">
+                        {renderHintLine(line)}
                     </div>
                 ))}
             </div>
@@ -61,9 +74,10 @@ export default function HintSystemContent({
                         Unlock Transcription
                     </RwIconButton>
                     <RwIconButton square={false} onClick={() => {
+                        if (hintProgress === effectiveHints.length) return;
                         setHintProgress(hintProgress + 1);
                     }}>
-                        {hintProgress === availableHints ? "No more hints available" : "Next Hint"}
+                        {hintProgress === effectiveHints.length ? "No more hints available" : "Next Hint (" + effectiveHints[hintProgress].name + ")"}
                     </RwIconButton>
                 </div>
                 {renderHints()}

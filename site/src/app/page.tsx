@@ -8,6 +8,27 @@ import { useState } from "react";
 import { useUnlockState } from "./hooks/useUnlockState";
 
 let GRID_DATA: PearlData[] = parsedData as PearlData[];
+function randomColor() {
+    const r = Math.floor(Math.random() * 200 + 55);
+    const g = Math.floor(Math.random() * 200 + 55);
+    const b = Math.floor(Math.random() * 200 + 55);
+    return `rgb(${r},${g},${b})`;
+}
+for (let i = 0; i < 100; i++) {
+    GRID_DATA.push({
+        id: `DUMMY_${i}`,
+        metadata: {
+            name: "DUMMY" + i,
+            color: randomColor(),
+            type: ["pearl", "broadcast"][Math.floor(Math.random() * 2)] as "pearl" | "broadcast",
+            region: "UNKNOWN",
+            room: "UNKNOWN",
+            mapSlugcat: "UNKNOWN"
+        },
+        hints: [],
+        transcribers: []
+    });
+}
 
 export type UnlockMode = "all" | "unlock";
 
@@ -16,10 +37,6 @@ export default function DialogueInterface() {
     const [unlockMode, setUnlockMode] = useState<UnlockMode>("all");
     const { unlockVersion, refresh } = useUnlockState();
     const [hintProgress, setHintProgress] = useState<number>(0);
-
-    function triggerRender() {
-        refresh();
-    }
 
     return (
         <div className="min-h-screen w-full relative flex items-center justify-center p-4 md:p-8"
@@ -41,19 +58,18 @@ export default function DialogueInterface() {
                         setHintProgress(0);
                     }}
                     unlockMode={unlockMode}
-                    unlockVersion={unlockVersion}
                 />
 
                 <DialogueBox
-                    pearl={selectedPearl !== null ? GRID_DATA[selectedPearl] : null}
+                    pearl={selectedPearl !== null ? GRID_DATA.find(pearl => pearl.id === selectedPearl) ?? null : null}
                     selectedTranscriber={selectedTranscriber}
                     onSelectTranscriber={handleSelectTranscriber}
                     setUnlockMode={setUnlockMode}
                     unlockMode={unlockMode}
-                    triggerRender={triggerRender}
-                    unlockVersion={unlockVersion}
+                    triggerRender={refresh}
                     hintProgress={hintProgress}
                     setHintProgress={setHintProgress}
+                    onSelectPearl={handleSelectPearl}
                 />
             </div>
         </div>

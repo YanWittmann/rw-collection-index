@@ -11,18 +11,18 @@ import UnlockManager from "../../utils/unlockManager";
 import HintSystemContent from "./HintSystemContent";
 
 interface DialogueBoxProps {
-    pearl: PearlData | null,
-    selectedTranscriber: number,
-    onSelectTranscriber: (index: number) => void,
-    setUnlockMode: (mode: UnlockMode) => void,
-    unlockMode: UnlockMode,
-    triggerRender: () => void,
-    unlockVersion: number,
-    hintProgress: number,
+    pearl: PearlData | null
+    selectedTranscriber: number
+    onSelectTranscriber: (index: number) => void
+    setUnlockMode: (mode: UnlockMode) => void
+    unlockMode: UnlockMode
+    triggerRender: () => void
+    hintProgress: number
     setHintProgress: (value: (((prevState: number) => number) | number)) => void
+    onSelectPearl: (id: string | null) => void
 }
 
-function generateMapLink(pearl: PearlData) {
+export function generateMapLink(pearl: PearlData) {
     // https://rain-world-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
     const region = pearl.metadata.region;
     const room = pearl.metadata.room;
@@ -40,9 +40,9 @@ export function DialogueBox({
                                 setUnlockMode,
                                 unlockMode,
                                 triggerRender,
-                                unlockVersion,
                                 hintProgress,
-                                setHintProgress
+                                setHintProgress,
+                                onSelectPearl
                             }: DialogueBoxProps) {
     const [hoveredTranscriber, setHoveredTranscriber] = useState<number | null>(null)
     const [lastTranscriberName, setLastTranscriberName] = useState<string | null>(null)
@@ -63,17 +63,19 @@ export function DialogueBox({
     }, [pearl, selectedTranscriber, triggerRender]);
 
     const pearlActiveContent = useMemo(() => {
-        if (!pearl) {
+        if (!pearl || !pearl.transcribers[selectedTranscriber]) {
             return null;
         }
 
         const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, pearl.transcribers[selectedTranscriber].transcriber);
 
         return <>
-            {isUnlocked && <DialogueActionBar
+            <DialogueActionBar
+                isUnlocked={isUnlocked}
                 pearl={pearl}
                 mapLink={generateMapLink(pearl)}
-            />}
+                onSelectPearl={onSelectPearl}
+            />
             <TranscriberSelector
                 pearl={pearl}
                 unlockMode={unlockMode}
@@ -129,6 +131,12 @@ export function DialogueBox({
             >
                 {lastTranscriberName}
             </motion.div>
+            {pearl === null ? <div className="absolute bottom-[1rem] left-0 right-0 text-center text-white text-sm">
+                Code on <a href="" target="_blank" className="underline">GitHub</a> | Created by Yan Wittmann | <a
+                href="https://store.steampowered.com/app/312520/Rain_World" target="_blank" className="underline">Rain
+                World</a> is property of <a href="https://twitter.com/VideocultMedia" target="_blank"
+                                            className="underline">Videocult</a>
+            </div> : null}
         </div>
     )
 }

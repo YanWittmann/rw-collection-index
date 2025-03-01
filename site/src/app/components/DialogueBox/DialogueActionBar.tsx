@@ -5,31 +5,57 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadc
 import { regionNames } from "../../utils/speakers";
 
 interface DialogueActionBarProps {
-    mapLink: string | null;
-    pearl: PearlData;
+    mapLink: string | null,
+    pearl: PearlData,
+    isUnlocked: boolean,
+    onSelectPearl: (id: string | null) => void
 }
 
 export function DialogueActionBar({
-                                      mapLink, pearl
+                                      mapLink,
+                                      pearl,
+                                      isUnlocked,
+                                      onSelectPearl
                                   }: DialogueActionBarProps) {
+    let segments = [];
+
+    segments.push(
+        <Tooltip>
+            <TooltipTrigger>
+                <RwIconButton key={"close-dialogue-box"} onClick={() => onSelectPearl(null)}>
+                    <RwIcon type="close"/>
+                </RwIconButton>
+            </TooltipTrigger>
+            <TooltipContent>
+                Return to the main view
+            </TooltipContent>
+        </Tooltip>
+    );
+
+    if (isUnlocked && mapLink) {
+        segments.push(
+            <Tooltip>
+                <TooltipTrigger>
+                    <RwIconButton
+                        key={"open-rain-world-map"}
+                        onClick={() => window.open(mapLink, "_blank")}
+                    >
+                        <RwIcon type="pin"/>
+                    </RwIconButton>
+                </TooltipTrigger>
+                <TooltipContent>
+                    {regionNames[pearl.metadata.region ?? ''] ?? 'Unknown'} ({pearl.metadata.region})
+                    / {pearl.metadata.room}
+                </TooltipContent>
+            </Tooltip>
+        )
+    }
+
     return (
         <div className="absolute top-2 left-2 flex gap-2 p-2">
-            {mapLink &&
-                <TooltipProvider delayDuration={120}>
-                    <Tooltip>
-                        <TooltipTrigger>
-                            <RwIconButton
-                                key={"open-rain-world-map"}
-                                onClick={() => window.open(mapLink, "_blank")}
-                            >
-                                <RwIcon type="pin"/>
-                            </RwIconButton>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                            {regionNames[pearl.metadata.region ?? ''] ?? 'Unknown'} ({pearl.metadata.region}) / {pearl.metadata.room}
-                        </TooltipContent>
-                    </Tooltip>
-                </TooltipProvider>}
+            <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
+                {segments}
+            </TooltipProvider>
         </div>
     );
 }

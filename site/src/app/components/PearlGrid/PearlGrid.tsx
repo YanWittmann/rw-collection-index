@@ -1,71 +1,74 @@
-import { RwIcon } from "./RwIcon";
-import { RwIconButton } from "../other/RwIconButton";
 import { PearlData } from "../../types/types";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
-import { regionNames } from "../../utils/speakers";
 import { UnlockMode } from "../../page";
+import { RwTextInput } from "./RwTextInput";
+import { useMemo, useState } from "react";
+import PearlItem from "./PearlItem";
 import UnlockManager from "../../utils/unlockManager";
 
 interface PearlGridProps {
     pearls: PearlData[],
-    selectedPearl: number | null,
-    onSelectPearl: (index: number) => void,
+    selectedPearl: string | null,
+    onSelectPearl: (id: string) => void,
     order: (pearls: PearlData[]) => { name: string, items: PearlData[] }[],
     unlockMode: UnlockMode,
-    unlockVersion: number
 }
 
-export function PearlGrid({ pearls, selectedPearl, onSelectPearl, order, unlockMode, unlockVersion }: PearlGridProps) {
-    const orderedPearls = order(pearls);
+export function PearlGrid({ pearls, selectedPearl, onSelectPearl, order, unlockMode }: PearlGridProps) {
+    const [textFilter, setTextFilter] = useState<string | undefined>(undefined);
 
-    const renderPearl = (pearl: PearlData, pearlIndex: number) => {
-        const isUnlocked = unlockMode === 'all' || UnlockManager.isPearlUnlocked(pearl);
-        if (!isUnlocked) {
-            return <RwIconButton
-                key={'select-' + pearl.id + '-' + pearlIndex}
-                onClick={() => onSelectPearl(pearls.findIndex((p) => p.id === pearl.id))}
-                selected={selectedPearl === pearls.findIndex((p) => p.id === pearl.id)}
-            >
-                <RwIcon color={pearl.metadata.color} type={"questionmark"}/>
-            </RwIconButton>
+    const isPearlIncluded = (pearl: PearlData) => {
+        if (!textFilter) return true;
+        if (unlockMode === "unlock") {
+            if (!UnlockManager.isPearlUnlocked(pearl)) {
+                return false;
+            }
         }
-        return (
-            <TooltipProvider
-                key={'tooltip-provider-' + pearl.id + '-' + pearlIndex}
-                delayDuration={120}>
-                <Tooltip>
-                    <TooltipTrigger>
-                        <RwIconButton
-                            key={'select-' + pearl.id + '-' + pearlIndex}
-                            onClick={() => onSelectPearl(pearls.findIndex((p) => p.id === pearl.id))}
-                            selected={selectedPearl === pearls.findIndex((p) => p.id === pearl.id)}
-                        >
-                            <RwIcon color={pearl.metadata.color} type={pearl.metadata.type}/>
-                        </RwIconButton>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                        {pearl.metadata.name ?? 'Unknown'} / {regionNames[pearl.metadata.region ?? ''] ?? 'Unknown'} ({pearl.metadata.region ?? '??'})
-                    </TooltipContent>
-                </Tooltip>
-            </TooltipProvider>
-        )
-    }
+        if (pearl.metadata.name?.toLowerCase().includes(textFilter.toLowerCase())) return true;
+        if (pearl.metadata.region?.toLowerCase().includes(textFilter.toLowerCase())) return true;
+        if (pearl.transcribers.some(transcriber => transcriber.lines.some(line => line.text.toLowerCase().includes(textFilter.toLowerCase())))) return true;
+        return false;
+    };
+
+    const filteredPearls = useMemo(() => {
+        const orderedPearls = order(pearls);
+        const filteredPearls = orderedPearls.map(chapter => ({
+            name: chapter.name,
+            items: chapter.items.filter(isPearlIncluded)
+        }));
+        return filteredPearls;
+    }, [textFilter, pearls])
+
+    const renderPearl = (pearl: PearlData, pearlIndex: number) => (
+        <PearlItem
+            key={pearl.id + '-' + pearlIndex}
+            pearl={pearl}
+            pearlIndex={pearlIndex}
+            selectedPearl={selectedPearl}
+            onSelectPearl={onSelectPearl}
+            unlockMode={unlockMode}
+        />
+    );
 
     return (
-        <div className="no-scrollbar w-full md:w-auto max-h-[80vh] overflow-y-auto p-2 box-border">
-            {orderedPearls
-                .filter(chapter => chapter.items.length > 0)
-                .map((chapter, chapterIndex) => (
-                    <div key={chapterIndex} className="mb-4 last:mb-0">
-                        {chapter.name && <h3 className="text-white text-sm mb-2">{chapter.name}</h3>}
-                        <div className="grid grid-cols-5 gap-2 max-w-[600px] mx-auto">
-                            {chapter.items.map(
-                                (pearl, pearlIndex) =>
-                                    pearl.id && renderPearl(pearl, pearlIndex)
-                            )}
+        <>
+            <div className="no-scrollbar w-full md:w-auto max-h-[80vh] overflow-y-auto p-2 box-border">
+                <RwTextInput className="w-full mb-4"
+                             onTextInput={text => text === '' ? setTextFilter(undefined) : setTextFilter(text)}
+                             placeholder="Search..."/>
+                {filteredPearls
+                    .filter(chapter => chapter.items.length > 0)
+                    .map((chapter, chapterIndex) => (
+                        <div key={chapterIndex} className="mb-4 last:mb-0">
+                            {chapter.name && <h3 className="text-white text-sm mb-2">{chapter.name}</h3>}
+                            <div className="grid grid-cols-5 gap-2 max-w-[600px] mx-auto">
+                                {chapter.items.map(
+                                    (pearl, pearlIndex) =>
+                                        pearl.id && renderPearl(pearl, pearlIndex)
+                                )}
+                            </div>
                         </div>
-                    </div>
-                ))}
-        </div>
+                    ))}
+            </div>
+        </>
     )
 }

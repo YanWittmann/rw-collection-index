@@ -1,6 +1,7 @@
 import { RwIconButton } from "../other/RwIconButton";
 import { UnlockMode } from "../../page";
 import UnlockManager from "../../utils/unlockManager";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
 
 export interface WelcomeDialogueContentProps {
     toggleUnlockModeCallback: () => void,
@@ -31,9 +32,29 @@ export function WelcomeDialogueContent({
             <div className="relative flex flex-col items-center justify-center h-full space-y-3">
                 <div>{unlockMode === "all" ? "Haven't found all of them yet?" : "You're a real archeologist beast?"}</div>
                 <div className="flex flex-row space-x-3">
-                    <RwIconButton square={false} onClick={toggleUnlockModeCallback}>
-                        {unlockMode === "all" ? "Try Unlock Mode" : "View all pearls"}
-                    </RwIconButton>
+                    {
+                        unlockMode === "all" ?
+                            <TooltipProvider delayDuration={200}>
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <RwIconButton square={false} onClick={toggleUnlockModeCallback}>
+                                            Try Unlock Mode
+                                        </RwIconButton>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        <div className="text-center">
+                                            All contents will be hidden until you unlock them manually.<br/>
+                                            A progressive hint system will help you find them by yourself.
+                                        </div>
+                                    </TooltipContent>
+                                </Tooltip>
+                            </TooltipProvider>
+                            :
+                            <RwIconButton square={false} onClick={toggleUnlockModeCallback}>
+                                View all pearls
+                            </RwIconButton>
+
+                    }
                     <RwIconButton square={false} onClick={() => {
                         if (window.confirm("Are you sure you want to reset all unlocks?")) {
                             UnlockManager.reset();

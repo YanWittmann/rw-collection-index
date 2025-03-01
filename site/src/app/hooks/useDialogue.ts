@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 export function useDialogue() {
-    const [selectedPearl, setSelectedPearl] = useState<number | null>(null);
+    const [selectedPearl, setSelectedPearl] = useState<string | null>(null);
     const [selectedTranscriber, setSelectedTranscriber] = useState(0);
 
-    const handleSelectPearl = (index: number) => {
-        setSelectedPearl(index);
+    const handleSelectPearl = (id: string | null) => {
+        setSelectedPearl(id);
         setSelectedTranscriber(0);
     };
 
