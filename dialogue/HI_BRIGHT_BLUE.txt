@@ -5,11 +5,11 @@ region: HI
 room: B08
 mapSlugcat: white
 
-=== transcription: FP
-FP: Where did you hear this?
-NSH: I wish them super good luck in that endeavor. How is it going to happen?\nHave the overseers gnaw through bedrock until their entire can crashes down in the void sea?
-BSM: Please be respectful when speaking of the Void Sea. Grey Wind, where did you hear this?
-CW: I really shouldn't say. He's going to attempt some sort of breeding program. Thought you might want to know.
+=== transcription: FP-artificer
+This is a production log from a facility on the surface. It has been a very long time since I've cared about reading one, but the name... roughly translates as Side House. I remember the shipments of holy ash I used to receive from there.
+I don't know how I would gain access to holy ash in the present day, not that I have much use for it. Despite all the independent power of my machinery, the relationship I had with my creators was a mutually symbiotic one.
+I was built to provide for them, but there was also much I relied on them to provide to me.
+Their absence has made things harder. I suppose the only gifts I receive now are pearls and such from your kind.
 
 === transcription: LttM-post-collapse
 It's a production record of a mask factory, for what seems to be its last time in service. Have you seen a bone mask? Likely not, they are all gone with their owners.
@@ -17,8 +17,5 @@ In ancient times the masks were actually about showing spiritual persuasion - co
 Originally monks in a temple would make the masks using bone plaster, and when the production was automated it would generally remain on the same site. So that the old stones could... radiate the material with holiness, I suppose.
 This is from one such facility called Side House, which was here on Pebble's grounds. In the iterator projects many old industrial-religious sites like this were remodeled and incorporated. I think this one was made to provide pellets of holy ash to Pebbles, but knowing him he probably hasn't used much of it!
 
-=== hint: 1
-Some hint text
-
-=== hint: 2
-Some other hint text
+=== hint: Encouragement
+You basically can't miss it. It's right in the center of the Industrial Complex.

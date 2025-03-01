@@ -1,0 +1,27 @@
+color: #ffc9e9
+type: pearl
+name: Light Pink
+region: SU
+room: VR1
+mapSlugcat: white
+
+=== transcription: FP-artificer
+It's an asset management log. Used in recording the structural health for a large collection of surface facilities.
+Most of this information is already on my record, but the log on this pearl is slightly more up to date.
+Thank you, I suppose.
+
+=== transcription: LttM-post-collapse
+It's an asset management log containing the historic structural health of various pieces of framework over the span of many hundreds of cycles. I suppose neither of us would benefit from me reading all of these numbers aloud.
+What is notable is that none of the structures over the course of this logged history are marked as needing explicit repairs. That comes as no surprise, it was very much the intention!
+Most of the machinery, storage areas, and other structural housings need to remain water tight. This is due to the fluctuating ground water and regular bombardment of heavy water vapor from our breathing. No matter how well constructed the architecture may be, deterioration is an inevitability.
+To counter this, there is a second line of defense. Microbes are infused into the building materials, that lie dormant for an indefinite period of time. They are awakened in response to splintering and separations, initiating a healing cycle that gradually fills in the damage and restores waterproofing to the structure. The duration of this process depends on the extent of the damage, of course.
+Voyages down to the surface were quite dangerous, attempted only by the most unfortunate of souls. They were always intended to be brief trips, only for periodic inspection and logging. Designing the surface world to be largely self-sufficient was a very deliberate decision, allowing my creators to live carefree lives up in their cities in the clouds.
+
+=== hint: slugcats
+This pearl is much easier to obtain using Artificer or Spearmaster.
+
+=== hint: Rough Location
+Go back to where it all started, and then go further back.
+
+=== hint: Rough Location
+Go back to the start of the Survivor campaign and get up into the pipe you initially crawled out of.

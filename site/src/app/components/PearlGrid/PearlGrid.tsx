@@ -31,11 +31,10 @@ export function PearlGrid({ pearls, selectedPearl, onSelectPearl, order, unlockM
 
     const filteredPearls = useMemo(() => {
         const orderedPearls = order(pearls);
-        const filteredPearls = orderedPearls.map(chapter => ({
+        return orderedPearls.map(chapter => ({
             name: chapter.name,
             items: chapter.items.filter(isPearlIncluded)
         }));
-        return filteredPearls;
     }, [textFilter, pearls])
 
     const renderPearl = (pearl: PearlData, pearlIndex: number) => (
@@ -63,7 +62,7 @@ export function PearlGrid({ pearls, selectedPearl, onSelectPearl, order, unlockM
                             <div className="grid grid-cols-5 gap-2 max-w-[600px] mx-auto">
                                 {chapter.items.map(
                                     (pearl, pearlIndex) =>
-                                        pearl.id && renderPearl(pearl, pearlIndex)
+                                        pearl && pearl.id && renderPearl(pearl, pearlIndex)
                                 )}
                             </div>
                         </div>

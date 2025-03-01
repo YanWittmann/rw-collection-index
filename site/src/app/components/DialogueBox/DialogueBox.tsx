@@ -12,14 +12,14 @@ import HintSystemContent from "./HintSystemContent";
 
 interface DialogueBoxProps {
     pearl: PearlData | null
-    selectedTranscriber: number
-    onSelectTranscriber: (index: number) => void
+    selectedTranscriber: string | null
+    onSelectTranscriber: (name: string | null) => void
     setUnlockMode: (mode: UnlockMode) => void
     unlockMode: UnlockMode
     triggerRender: () => void
     hintProgress: number
     setHintProgress: (value: (((prevState: number) => number) | number)) => void
-    onSelectPearl: (id: string | null) => void
+    onSelectPearl: (pearl: PearlData | null) => void
 }
 
 export function generateMapLink(pearl: PearlData) {
@@ -44,30 +44,62 @@ export function DialogueBox({
                                 setHintProgress,
                                 onSelectPearl
                             }: DialogueBoxProps) {
-    const [hoveredTranscriber, setHoveredTranscriber] = useState<number | null>(null)
+    const [hoveredTranscriber, setHoveredTranscriber] = useState<string | null>(null)
     const [lastTranscriberName, setLastTranscriberName] = useState<string | null>(null)
 
+    const findTranscriberIndex = (transcriberName: string) => {
+        if (!pearl) {
+            return null;
+        }
+        return pearl.transcribers.findIndex(transcriber => transcriber.transcriber === transcriberName);
+    }
+
+    // set up the subtitle with the transcriber's name
     if (hoveredTranscriber !== null && pearl) {
-        const transcriberName = speakerNames[pearl.transcribers[hoveredTranscriber].transcriber];
-        if (transcriberName !== lastTranscriberName) {
-            setLastTranscriberName(transcriberName);
+        const transcriberIndex = findTranscriberIndex(hoveredTranscriber);
+        if (transcriberIndex !== null && transcriberIndex !== -1) {
+            let transcriberName = speakerNames[pearl.transcribers[transcriberIndex].transcriber];
+
+            // extract parentheses from end of the name
+            const parenthesisMatch = transcriberName.match(/(.*) \((.*)\)/);
+            let parenthesis = "";
+            if (parenthesisMatch) {
+                transcriberName = parenthesisMatch[1];
+                parenthesis = ` (${parenthesisMatch[2]})`;
+            }
+
+            // remove "s" from the end of the name
+            if (transcriberName[transcriberName.length - 1] === 's') {
+                transcriberName = transcriberName.replace(/s$/, "");
+            }
+
+            transcriberName += "'s Transcription" + parenthesis;
+
+            if (transcriberName !== lastTranscriberName) {
+                setLastTranscriberName(transcriberName);
+            }
         }
     }
 
     const unlockTranscription = useCallback(() => {
         if (pearl) {
             UnlockManager.unlockPearl(pearl);
-            UnlockManager.unlockTranscription(pearl, pearl.transcribers[selectedTranscriber].transcriber);
+            if (selectedTranscriber) UnlockManager.unlockTranscription(pearl, selectedTranscriber);
             triggerRender();
         }
     }, [pearl, selectedTranscriber, triggerRender]);
 
     const pearlActiveContent = useMemo(() => {
-        if (!pearl || !pearl.transcribers[selectedTranscriber]) {
+        if (!pearl) {
+            return null;
+        }
+        const selectedTranscriberIndex = findTranscriberIndex(selectedTranscriber ?? "");
+        if (selectedTranscriberIndex === null || selectedTranscriberIndex === -1) {
+            console.error("Unable to find transcriber index", selectedTranscriberIndex, selectedTranscriber, pearl)
             return null;
         }
 
-        const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, pearl.transcribers[selectedTranscriber].transcriber);
+        const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, pearl.transcribers[selectedTranscriberIndex].transcriber);
 
         return <>
             <DialogueActionBar
@@ -79,7 +111,7 @@ export function DialogueBox({
             <TranscriberSelector
                 pearl={pearl}
                 unlockMode={unlockMode}
-                selectedIndex={selectedTranscriber}
+                selectedName={selectedTranscriber}
                 onSelect={(transcriber) => {
                     onSelectTranscriber(transcriber);
                     setHintProgress(0);
@@ -88,7 +120,7 @@ export function DialogueBox({
             />
             <div className="overflow-y-auto max-h-[80vh] no-scrollbar">
                 {isUnlocked ? <DialogueContent
-                    lines={pearl.transcribers[selectedTranscriber].lines}
+                    lines={pearl.transcribers[selectedTranscriberIndex].lines}
                 /> : <HintSystemContent
                     pearl={pearl}
                     selectedTranscriber={selectedTranscriber}

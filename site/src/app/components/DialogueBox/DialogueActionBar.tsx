@@ -8,7 +8,7 @@ interface DialogueActionBarProps {
     mapLink: string | null,
     pearl: PearlData,
     isUnlocked: boolean,
-    onSelectPearl: (id: string | null) => void
+    onSelectPearl: (pearl: PearlData | null) => void
 }
 
 export function DialogueActionBar({
@@ -20,9 +20,9 @@ export function DialogueActionBar({
     let segments = [];
 
     segments.push(
-        <Tooltip>
+        <Tooltip key={"close-dialogue-box"}>
             <TooltipTrigger>
-                <RwIconButton key={"close-dialogue-box"} onClick={() => onSelectPearl(null)}>
+                <RwIconButton onClick={() => onSelectPearl(null)}>
                     <RwIcon type="close"/>
                 </RwIconButton>
             </TooltipTrigger>
@@ -34,10 +34,9 @@ export function DialogueActionBar({
 
     if (isUnlocked && mapLink) {
         segments.push(
-            <Tooltip>
+            <Tooltip key={"open-rain-world-map"}>
                 <TooltipTrigger>
                     <RwIconButton
-                        key={"open-rain-world-map"}
                         onClick={() => window.open(mapLink, "_blank")}
                     >
                         <RwIcon type="pin"/>

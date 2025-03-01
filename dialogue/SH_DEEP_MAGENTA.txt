@@ -1,0 +1,34 @@
+color: #841451
+type: pearl
+name: Deep Magenta
+region: SH
+room: A19
+mapSlugcat: white
+
+=== transcription: FP-artificer
+Ah, you found this in the memory crypts? I would advise against wandering into such secure areas. The memory crypts were considered sacred ground by my creators.
+The memories and wealth of entire family houses were laid to rest within, and their destruction or theft by surface creatures was considered abhorrent. As such, the crypts are guarded by extremely durable and aggressive purposed organisms. Not that I would stop you from finding me more pearls from there...
+It was customary to enshrine all material possessions and memories to the crypts on one's ascent. None of these qualia are present in my logs, and many of these may find some use in my research.
+Thank you.
+
+=== transcription: LttM-post-collapse
+Oh this one is interesting. You must have found it in the memory crypts? It has some plain text, I can read it out to you.
+"In this vessel is the living memories of Seventeen Axes, Fifteen Spoked Wheel, of the House of Braids, Count of 8 living blocks, Counselor of 16, Grand Master of the Twelfth Pillar of Community, High Commander of opinion group Winged Opinions, of pure Braid heritage, voted Local Champion in the speaking tournament of 1511.090, Mother, Father and Spouse, Spiritual Explorer and honorary member of the Congregation of Balanced Ambiguity. Artist, Warrior, and Fashion Legend.
+Seventeen Axes, Fifteen Spoked Wheel nobly decided to ascend in the beginning of 1514.008, after graciously donating all (ALL!) earthly possessions to the local Iterator project (Unparalleled Innocence), and left these memories to be cherished by the carnal plane.
+The assorted memories and qualia include:
+Watching dust suspended in a ray of sun (Old age). Eating a very tasty meal (Young child). Defeating an opponent in a debate contest, and being applauded by fellow team members (Late childhood/Early adulthood).
+..."
+...and the list goes on. I'm sorry, little creature, I won't read all of this - the list is six hundred and twenty items long.
+
+=== hint: Brightness
+It's pretty dark where the pearl is. You wouldn't have guessed that. Huh.
+
+=== hint: Rough Location
+To room its in appears to be a dead end.
+
+=== hint: Starting Location
+Coming from Shoreline, your first shelter will most likely be the one in the tall multi-screen room.
+Go down from there.
+
+=== hint: Rough Location
+From the tall room, go down two more rooms. It's on the right side.

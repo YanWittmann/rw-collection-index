@@ -1,0 +1,41 @@
+color: #20c68f
+type: pearl
+name: Viridian
+region: GW
+room: C09
+mapSlugcat: white
+
+=== transcription: FP-artificer
+This is one of my own pearls, or at least part of it.
+I have always been very protective of my research, and much of my early work was encrypted before storage. Though my younger self has done a very poor job. I can still read these memories very clearly, but with small gaps.
+It's an old methodology for global ascension. I'm sure I argued quite vigorously on its merits at the time, but now I can just see all of the holes in it. Created from a youthful and reticent mentality.
+It was not until I met Seven Red Suns, and learned about Sliver of Straw that I began to break out of my shell. Most of my old theories went out the window, and others evolved once I started talking in those anonymous groups.
+And then... I made a mistake, and I cannot forgive myself for it. I was desperate... angry...
+I wanted a way out. My way out! And that came at the cost of everything... I thought I could do it quicker... it was taking too long, I almost had it!
+I did not anticipate she would...
+And then, I hurt the one person who I thought understood what I was trying to do...
+Please leave with this. I don't want to think about it anymore. Not until I've recovered.
+. . .
+
+=== transcription: LttM-pre-collapse
+This one... is authored by Five Pebbles, when he was young. There has been an attempt to scramble the data, but it's sloppily done, and most is still somewhat legible.
+It's written in an internal language, or thoughts, so it is hard for me to translate for you. It's a methodology for global ascension of course - quite good, although the Peripherists or the Slab Mongers certainly wouldn't agree!
+"...considering the eight and the twenty sixth amendments to the Capricious Dogma, we are apparently supposed to take for granted that a meaning collector point inversion is the only way to approach what has later become referred to as 'noise milking' (or occasionally 'rock swatting'). I will argue my disagreement with this, not in regards to kind but in regards to..." Could it say... "volume"? Actually, are you getting anything out of this?
+Reading this takes me back to those simpler times of methodological theory making. Probing through the doldrums of subservient research used to be unfulfilling, but lately I've begun to feel a great longing to return to it. Unfortunately, I have more pressing issues at hand that I need to deal with first.
+
+=== transcription: LttM-post-collapse
+This one... is authored by Five Pebbles, when he was young. There has been an attempt to scramble the data, but it's sloppily done, and most is still somewhat legible.
+It's written in internal language, or thoughts, so it is hard for me to translate so you would understand. It's a methodology for global ascension of course - quite good, although the Peripherists or the Slab Mongers certainly wouldn't agree!
+"...considering the eight and the twenty sixth amendments to the Capricious Dogma, we are apparently supposed to take for granted that a meaning collector point inversion is the only way to approach what has later become referred to as 'noise milking' (or occasionally 'rock swatting'). I will argue my disagreement with this, not in regards to kind but in regards to..." Could it say... "volume"? Actually, are you getting anything out of this?
+I suppose you found this in his waste department? I would be wary of going there - on his first fit of corruption he dumped a lot of infected material there, and if it has survived it could easily eat a little creature like you. Not that it would be as dangerous as going into Pebbles himself...
+Also the pearls in the waste masses inevitably attract scavengers, which can be very dangerous when provoked.
+But, you seem to have made it out of there.
+
+=== hint: Enemies
+There are a bunch of DLLs/BLLs in the area (the tentacle enemies).
+
+=== hint: Rough Location
+In a tall, vertical room at the bottom left.
+
+=== hint: Rough Location
+All the way to the right of the Drainage System Gate.

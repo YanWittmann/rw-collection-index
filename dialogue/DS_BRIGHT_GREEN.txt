@@ -1,0 +1,28 @@
+color: #26be3c
+type: pearl
+name: Bright Green
+region: DS
+room: D01
+mapSlugcat: white
+
+=== transcription: FP-artificer
+This is an archival text, from before the Green hegemonic linguistic dynasty's second revelation.
+The text itself is an early tome of hymns and spiritual guidance. Forming an early understanding of the five natural urges that bind oneself to the cycle. As is to be expected from text of this era, it is washed in metaphor and symbolism.
+Although my kind was built for pragmatism, I have always had a fondness for my creator's history. The first iterators, during the golden age of the void fluid revolution, lived through the metamorphosis of scripture and verse into the first age of understanding...
+To be created in, or experience such an age is something I greatly envied!
+
+Thank you, citizen.
+
+=== transcription: LttM-post-collapse
+It's an old text. The verses are familiar to me, but I don't remember by whom they were written. The language is very old and intricate.
+The first verse starts by drawing a comparison between the world and a tangled rug. It says that the world is an unfortunate mess. Like a knot, the nature of its existence is the fact that the parts are locking each other, none able to spring free.
+Then as it goes on the world becomes a furry animal hide, I suppose... because now us living beings are like insects crawling in the fur. And then it's a fishing net, because the more we struggle and squirm, the more entangled we become.
+It says that only the limp body of the jellyfish cannot be captured in the net. So we should try to be like the jellyfish, because the jellyfish doesn't try.
+This was an eternal dilemma to them - they were burdened by great ambition, yet deeply convinced that striving in itself was an unforgivable vice. They tried very hard to be effortless. Perhaps that's what we were to them, someone to delegate that unrestrained effort to.
+I know I have tried very hard.
+
+=== hint: Rough Location
+At the bottom of the region.
+
+=== hint: Rough Location
+Just above a very long, water-filled pipe in a small pocket of air.

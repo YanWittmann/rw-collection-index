@@ -1,5 +1,5 @@
 export type RwIconType = "pearl" | "broadcast"
-    | "LttM-post-collapse" | "LttM-pre-collapse" | "LttM-saint" | "FP"
+    | "LttM-post-collapse" | "LttM-pre-collapse" | "LttM-saint" | "FP" | "FP-artificer"
     | "pin" | "questionmark" | "lock" | "close"
 
 interface RwIconProps {

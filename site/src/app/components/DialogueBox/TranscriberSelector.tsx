@@ -8,15 +8,15 @@ import { darken, transcribersColors } from "../../utils/speakers";
 interface TranscriberSelectorProps {
     pearl: PearlData
     unlockMode: UnlockMode
-    selectedIndex: number
-    onSelect: (index: number) => void
-    onHover: (index: number | null) => void
+    selectedName: string | null
+    onSelect: (name: string) => void
+    onHover: (name: string | null) => void
 }
 
 export function TranscriberSelector({
                                         pearl,
                                         unlockMode,
-                                        selectedIndex,
+                                        selectedName,
                                         onSelect,
                                         onHover
                                     }: TranscriberSelectorProps) {
@@ -27,8 +27,8 @@ export function TranscriberSelector({
         if (!isUnlocked) {
             return <RwIconButton
                 key={'select-' + pearl.id + '-' + index}
-                onClick={() => onSelect(index)}
-                selected={selectedIndex === index}
+                onClick={() => onSelect(transcriber.transcriber)}
+                selected={transcriber.transcriber === selectedName}
             >
                 <RwIcon type={"questionmark"} color={darken(transcribersColors[transcriber.transcriber], 20) ?? 'white'}/>
             </RwIconButton>
@@ -36,9 +36,9 @@ export function TranscriberSelector({
             return (
                 <RwIconButton
                     key={'select-' + pearl.id + '-' + index}
-                    onClick={() => onSelect(index)}
-                    selected={selectedIndex === index}
-                    onMouseEnter={() => onHover(index)}
+                    onClick={() => onSelect(transcriber.transcriber)}
+                    selected={transcriber.transcriber === selectedName}
+                    onMouseEnter={() => onHover(transcriber.transcriber)}
                     onMouseLeave={() => onHover(null)}
                 >
                     <RwIcon type={transcriber.transcriber as RwIconType}/>

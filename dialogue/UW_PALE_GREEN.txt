@@ -1,0 +1,34 @@
+color: #7da47d
+type: pearl
+name: Pale Green
+region: UW
+room: H01
+mapSlugcat: white
+
+=== transcription: FP-artificer
+This one has not been archived. It was likely transported by hand...
+It is a message of political discourse regarding concerns about the increasingly tense relationship between myself and the various Houses. This part is amusing.
+"I therefor ask you to Do Anything in your Might to stop the House(We both know which House) from Further Obstruction! They have less than forty members on the Council, but still Tilt the spiritual Discourse with Our Iterator in a direction that most obviously Displeases him, and is hardly High Held by anyone in the Community either! We can not Risk this!"
+It is no secret that my construction was a point of great controversy. Many council members worked vehemently to prevent me from ever coming into being. Their stance was so unfaltering that even after construction was complete, a number of Houses still denied transfer and remained behind in her city out of protest.
+This rift caused frequent feuds and tensions amongst the community. Those of the opposition would never yield to those who supported the so called "Apostate Superstructure Abomination". But to say I found their actions displeasing? Not quite.
+While certainly more violent and disruptive, they at least provided me interesting cognitive challenges to use my time on. As opposed to the endless rituals and pleasantries of the monks of my own Houses, which I found to be the most wearisome of all.
+None of this matters any more. The only displeasing presence I have now is you.
+Allow me to get back to my work.
+
+=== transcription: LttM-post-collapse
+This one has plain text. Let me cut the lengthy introductions...
+"...we will not consider the Current Situation acceptable. Although our community is Blessed with an ever shrinking Population, and we can Almost Glimpse that Glorious moment when the last of us has joined our most Admired peers, we must still (at All Times!) maintain Good Relations with our Iterator.
+The Moral Argument: Five Pebbles is our Creation, and we have Parental Obligations towards him. As an Iterator, he is also a Gift of Charity from Us to The World (unable to reach Enlightenment by itself - being composed mostly of Rock, Gas, dull witted Bugs and Microbes - and towards which We thus have Obligations).
+The Practical Argument: Despite You being family, I must Beg Forgiveness for the Blunt Vulgarity - but We are (for as long as we Remain) Dependent on Five Pebbles for Water, Nectar, Energy, Void Fluid and All other Vital Resources. By Now, living on the surface is Laughable. We are Across the River and have Kicked out the Boat.
+I therefor ask you to Do Anything in your Might to stop the House(We both know which House) from Further Obstruction! They have less than forty members on the Council, but still Tilt the spiritual Discourse with Our Iterator in a direction that most obviously Displeases him, and is hardly High Held by anyone in the Community either! We can not Risk this!"
+And then there are polite farewells. None of us really miss the times when their cities were populated. Imagine having skin parasites that also ask for advice and have opinions...
+I'm sorry, that was disrespectful. They were our parents after all.
+
+=== hint: Encouragement
+You've most likely already seen this Pearl after leaving Five Pebbles.
+
+=== hint: Rough Location
+On the top of the Can.
+
+=== hint: Rough Location
+Inside one of the trenches.

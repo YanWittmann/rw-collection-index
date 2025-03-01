@@ -9,6 +9,7 @@ export const speakersColors: { [key: string]: string } = {
 
 export const transcribersColors: { [key: string]: string } = {
     "FP": "#66d9bf",
+    "FP-artificer": "#66d9bf",
     "LttM-pre-collapse": "#FFEB04",
     "LttM-post-collapse": "#ffffff",
     "LttM-saint": "#4B7486",
@@ -16,6 +17,7 @@ export const transcribersColors: { [key: string]: string } = {
 
 export const speakerNames: { [key: string]: string } = {
     "FP": "Five Pebbles",
+    "FP-artificer": "Five Pebbles",
     "EP": "Erratic Pulse",
     "BSM": "Big Sis Moon",
     "LttM": "Looks to the Moon",

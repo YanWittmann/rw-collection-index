@@ -6,7 +6,7 @@ import { generateMapLink } from "./DialogueBox";
 
 interface HintSystemContentProps {
     pearl: PearlData,
-    selectedTranscriber: number,
+    selectedTranscriber: string | null,
     unlockTranscription: () => void,
     hintProgress: number,
     setHintProgress: (value: (((prevState: number) => number) | number)) => void

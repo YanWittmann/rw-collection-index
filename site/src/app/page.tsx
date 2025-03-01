@@ -4,11 +4,13 @@ import { useDialogue } from "./hooks/useDialogue";
 import { PearlGrid } from "./components/PearlGrid/PearlGrid";
 import { DialogueBox } from "./components/DialogueBox/DialogueBox";
 import { orderPearls } from "./utils/pearlOrder";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUnlockState } from "./hooks/useUnlockState";
+import { urlAccess } from "./utils/urlAccess";
 
 let GRID_DATA: PearlData[] = parsedData as PearlData[];
-function randomColor() {
+
+/*function randomColor() {
     const r = Math.floor(Math.random() * 200 + 55);
     const g = Math.floor(Math.random() * 200 + 55);
     const b = Math.floor(Math.random() * 200 + 55);
@@ -28,7 +30,7 @@ for (let i = 0; i < 100; i++) {
         hints: [],
         transcribers: []
     });
-}
+}*/
 
 export type UnlockMode = "all" | "unlock";
 
@@ -37,6 +39,11 @@ export default function DialogueInterface() {
     const [unlockMode, setUnlockMode] = useState<UnlockMode>("all");
     const { unlockVersion, refresh } = useUnlockState();
     const [hintProgress, setHintProgress] = useState<number>(0);
+
+    useEffect(() => {
+        urlAccess.getParam("pearl") && handleSelectPearl(GRID_DATA.find(pearl => pearl.id === urlAccess.getParam("pearl")!) ?? null);
+        urlAccess.getParam("transcriber") && handleSelectTranscriber(urlAccess.getParam("transcriber")!);
+    }, []);
 
     return (
         <div className="min-h-screen w-full relative flex items-center justify-center p-4 md:p-8"
@@ -54,7 +61,7 @@ export default function DialogueInterface() {
                     order={orderPearls}
                     selectedPearl={selectedPearl}
                     onSelectPearl={pearl => {
-                        handleSelectPearl(pearl);
+                        handleSelectPearl(GRID_DATA.find(pearlData => pearlData.id === pearl) ?? null);
                         setHintProgress(0);
                     }}
                     unlockMode={unlockMode}
