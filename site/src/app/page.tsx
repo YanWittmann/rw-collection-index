@@ -5,6 +5,7 @@ import { PearlGrid } from "./components/PearlGrid/PearlGrid";
 import { DialogueBox } from "./components/DialogueBox/DialogueBox";
 import { orderPearls } from "./utils/pearlOrder";
 import { useState } from "react";
+import { useUnlockState } from "./hooks/useUnlockState";
 
 let GRID_DATA: PearlData[] = parsedData as PearlData[];
 
@@ -13,6 +14,12 @@ export type UnlockMode = "all" | "unlock";
 export default function DialogueInterface() {
     const { selectedPearl, selectedTranscriber, handleSelectPearl, handleSelectTranscriber } = useDialogue();
     const [unlockMode, setUnlockMode] = useState<UnlockMode>("all");
+    const { unlockVersion, refresh } = useUnlockState();
+    const [hintProgress, setHintProgress] = useState<number>(0);
+
+    function triggerRender() {
+        refresh();
+    }
 
     return (
         <div className="min-h-screen w-full relative flex items-center justify-center p-4 md:p-8"
@@ -29,8 +36,12 @@ export default function DialogueInterface() {
                     pearls={GRID_DATA}
                     order={orderPearls}
                     selectedPearl={selectedPearl}
-                    onSelectPearl={handleSelectPearl}
+                    onSelectPearl={pearl => {
+                        handleSelectPearl(pearl);
+                        setHintProgress(0);
+                    }}
                     unlockMode={unlockMode}
+                    unlockVersion={unlockVersion}
                 />
 
                 <DialogueBox
@@ -39,6 +50,10 @@ export default function DialogueInterface() {
                     onSelectTranscriber={handleSelectTranscriber}
                     setUnlockMode={setUnlockMode}
                     unlockMode={unlockMode}
+                    triggerRender={triggerRender}
+                    unlockVersion={unlockVersion}
+                    hintProgress={hintProgress}
+                    setHintProgress={setHintProgress}
                 />
             </div>
         </div>

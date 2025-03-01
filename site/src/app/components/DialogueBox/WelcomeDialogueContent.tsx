@@ -1,12 +1,18 @@
 import { RwIconButton } from "../other/RwIconButton";
 import { UnlockMode } from "../../page";
+import UnlockManager from "../../utils/unlockManager";
 
 export interface WelcomeDialogueContentProps {
-    toggleUnlockModeCallback: () => void;
-    unlockMode: UnlockMode;
+    toggleUnlockModeCallback: () => void,
+    unlockMode: UnlockMode,
+    triggerRender: () => void
 }
 
-export function WelcomeDialogueContent({ toggleUnlockModeCallback, unlockMode }: WelcomeDialogueContentProps) {
+export function WelcomeDialogueContent({
+                                           toggleUnlockModeCallback,
+                                           unlockMode,
+                                           triggerRender
+                                       }: WelcomeDialogueContentProps) {
     return (
         <div className="relative text-center mt-20 pb-6">
             <div className="absolute inset-0 flex items-center justify-center">
@@ -24,9 +30,19 @@ export function WelcomeDialogueContent({ toggleUnlockModeCallback, unlockMode }:
             </div>
             <div className="relative flex flex-col items-center justify-center h-full space-y-3">
                 <div>{unlockMode === "all" ? "Haven't found all of them yet?" : "You're a real archeologist beast?"}</div>
-                <RwIconButton square={false} onClick={toggleUnlockModeCallback}>
-                    {unlockMode === "all" ? "Try Unlock Mode" : "View all pearls"}
-                </RwIconButton>
+                <div className="flex flex-row space-x-3">
+                    <RwIconButton square={false} onClick={toggleUnlockModeCallback}>
+                        {unlockMode === "all" ? "Try Unlock Mode" : "View all pearls"}
+                    </RwIconButton>
+                    <RwIconButton square={false} onClick={() => {
+                        if (window.confirm("Are you sure you want to reset all unlocks?")) {
+                            UnlockManager.reset();
+                            triggerRender();
+                        }
+                    }}>
+                        Reset Unlocks
+                    </RwIconButton>
+                </div>
             </div>
         </div>
     );

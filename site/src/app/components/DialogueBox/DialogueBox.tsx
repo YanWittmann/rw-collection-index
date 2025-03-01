@@ -7,13 +7,19 @@ import { motion } from "framer-motion"
 import { DialogueActionBar } from "./DialogueActionBar";
 import { WelcomeDialogueContent } from "./WelcomeDialogueContent";
 import { UnlockMode } from "../../page";
+import UnlockManager from "../../utils/unlockManager";
+import HintSystemContent from "./HintSystemContent";
 
 interface DialogueBoxProps {
-    pearl: PearlData | null;
-    selectedTranscriber: number;
-    onSelectTranscriber: (index: number) => void;
-    setUnlockMode: (mode: UnlockMode) => void;
-    unlockMode: UnlockMode;
+    pearl: PearlData | null,
+    selectedTranscriber: number,
+    onSelectTranscriber: (index: number) => void,
+    setUnlockMode: (mode: UnlockMode) => void,
+    unlockMode: UnlockMode,
+    triggerRender: () => void,
+    unlockVersion: number,
+    hintProgress: number,
+    setHintProgress: (value: (((prevState: number) => number) | number)) => void
 }
 
 function generateMapLink(pearl: PearlData) {
@@ -32,7 +38,11 @@ export function DialogueBox({
                                 selectedTranscriber,
                                 onSelectTranscriber,
                                 setUnlockMode,
-                                unlockMode
+                                unlockMode,
+                                triggerRender,
+                                unlockVersion,
+                                hintProgress,
+                                setHintProgress
                             }: DialogueBoxProps) {
     const [hoveredTranscriber, setHoveredTranscriber] = useState<number | null>(null)
     const [lastTranscriberName, setLastTranscriberName] = useState<string | null>(null)
@@ -44,28 +54,49 @@ export function DialogueBox({
         }
     }
 
+    const unlockTranscription = useCallback(() => {
+        if (pearl) {
+            UnlockManager.unlockPearl(pearl);
+            UnlockManager.unlockTranscription(pearl, pearl.transcribers[selectedTranscriber].transcriber);
+            triggerRender();
+        }
+    }, [pearl, selectedTranscriber, triggerRender]);
+
     const pearlActiveContent = useMemo(() => {
         if (!pearl) {
             return null;
         }
+
+        const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, pearl.transcribers[selectedTranscriber].transcriber);
+
         return <>
-            <DialogueActionBar
+            {isUnlocked && <DialogueActionBar
                 pearl={pearl}
                 mapLink={generateMapLink(pearl)}
-            />
+            />}
             <TranscriberSelector
-                transcribers={pearl.transcribers}
+                pearl={pearl}
+                unlockMode={unlockMode}
                 selectedIndex={selectedTranscriber}
-                onSelect={onSelectTranscriber}
+                onSelect={(transcriber) => {
+                    onSelectTranscriber(transcriber);
+                    setHintProgress(0);
+                }}
                 onHover={setHoveredTranscriber}
             />
             <div className="overflow-y-auto max-h-[80vh] no-scrollbar">
-                <DialogueContent
+                {isUnlocked ? <DialogueContent
                     lines={pearl.transcribers[selectedTranscriber].lines}
-                />
+                /> : <HintSystemContent
+                    pearl={pearl}
+                    selectedTranscriber={selectedTranscriber}
+                    unlockTranscription={unlockTranscription}
+                    hintProgress={hintProgress}
+                    setHintProgress={setHintProgress}
+                />}
             </div>
         </>
-    }, [pearl, selectedTranscriber, onSelectTranscriber]);
+    }, [pearl, selectedTranscriber, onSelectTranscriber, unlockMode, unlockTranscription, hintProgress, setHintProgress]);
 
     const toggleUnlockModeCallback = useCallback(() => {
         setUnlockMode(unlockMode === "all" ? "unlock" : "all");
@@ -74,11 +105,12 @@ export function DialogueBox({
     return (
         <div className="flex-1 relative">
             <div
-                className="bg-black border-2 border-white/80 rounded-xl pl-8 pr-8 text-white max-h-[80vh] min-h-[80vh] text-sm relative shadow-[0_0_10px_rgba(255,255,255,0.1)]">
+                className="bg-black border-2 border-white/80 rounded-xl pl-12 pr-12 lg:pl-24 lg:pr-24 text-white max-h-[80vh] min-h-[80vh] text-sm relative shadow-[0_0_10px_rgba(255,255,255,0.1)]">
                 {pearl ? pearlActiveContent :
                     <WelcomeDialogueContent
                         toggleUnlockModeCallback={toggleUnlockModeCallback}
                         unlockMode={unlockMode}
+                        triggerRender={triggerRender}
                     />}
             </div>
             <motion.div

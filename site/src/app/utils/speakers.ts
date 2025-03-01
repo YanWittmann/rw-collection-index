@@ -7,6 +7,13 @@ export const speakersColors: { [key: string]: string } = {
     "NSH": "#bfffbf",
 };
 
+export const transcribersColors: { [key: string]: string } = {
+    "FP": "#66d9bf",
+    "LttM-pre-collapse": "#FFEB04",
+    "LttM-post-collapse": "#ffffff",
+    "LttM-saint": "#4B7486",
+};
+
 export const speakerNames: { [key: string]: string } = {
     "FP": "Five Pebbles",
     "EP": "Erratic Pulse",
@@ -35,4 +42,8 @@ export const regionNames: { [key: string]: string } = {
     "VS": "Pipeyard",
     "OE": "Outer Expanse",
     "MS": "Submerged Superstructure",
+}
+
+export function darken(hex: string, amount: number) {
+    return '#' + hex.replace(/^#/, '').replace(/../g, color => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) - amount)).toString(16)).substr(-2));
 }
