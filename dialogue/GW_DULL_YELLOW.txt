@@ -1,0 +1,29 @@
+color: #d7e861
+type: pearl
+name: Dull Yellow
+region: GW
+room: TOWER07
+mapSlugcat: artificer
+
+=== transcription: FP-artificer
+This is a microbial log from the waste department.
+Your activation of the citizen ID drone was recorded there, so I imagine you are familiar with the area.
+There are pieces of myself down there, corrupted and rotting away. I do not advise you to look for what remains of them. The cysts are unlikely to be capable of surviving for too long outside of my structure. Quite unfortunately, my initial purge of corrupted chambers was insufficient, and the rot expanded into the static components of my structure. All I can do now is attempt to slow, or reverse the process.
+I have not had much luck in that endeavor so far...
+
+=== transcription: LttM-pre-collapse
+Ah, did you find this in the waste department? It is a log of microbial levels in a waste digestion tank.
+Most structures on the surface are made to last, often through multiple methods, material to microbial. This makes them resistant to even the heaviest rains we can produce. However, it makes recycling and disposal of damaged machinery quite difficult!
+It is often easier to render them down to their base materials, than to try and repair or disassemble them. Large digestion tanks are used to break the materials down chemically, and all of that is managed by tiny purposed organisms and microbes in the tank's mix that control the rate of decomposition.
+Unfortunately, the process itself produces some extremely volatile materials. Efforts were made to encourage the microbes to form better symbiotic bonds with the other tank managing organisms, but a reduction in explosive compounds was never achieved.
+Thankfully, the fluid in the tanks is designed to be very thick and heavy, and very few creatures can survive direct exposure. So it's unlikely that the disposal microbes will integrate into the surrounding ecosystem.
+
+=== hint: Slugcats
+This pearl can only be obtained as Artificer or Spearmaster.
+
+=== hint: Rough Location
+On the inside of a tall vertical building a couple of rooms to the right of the Industrial Complex gate.
+
+=== hint: Rough Location
+You do not usually need to visit this place, as there is no room-transition pipe to go into up there.
+There are a couple of Blue Berries up there.

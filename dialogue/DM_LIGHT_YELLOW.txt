@@ -1,0 +1,24 @@
+color: #f6ee53
+type: pearl
+name: Light Yellow
+region: DM
+room: LAB3
+mapSlugcat: spear
+# FIXME: DS-LAB3
+
+=== transcription: LttM-pre-collapse
+Oh! This is one of my pearls. Did you extract this from my Memory Conflux?
+While I value your curiosity, I would prefer that you don't move things around or steal items from this facility. I try to keep everything as organized as possible, so that I don't forget. I value my data and memories quite a lot, it would be a tragedy to lose them!
+As for the contents of this pearl... it's a large batch of my personal notes and research. I don't have the time to go over all of this with you, nor do I think you would gain much from it.
+Could you please just put this pearl back where you found it?
+
+=== transcription: LttM-post-collapse
+This feels quite familiar to me. Did you extract this from my Memory Conflux?
+It's a large batch of my personal notes and research. It details my seven-hundred-and-ninety-second karmic inversion loop simulation. That's where the breakdown of a karmic field's typical bimodal distribution of sensory perception begins...
+begins to...
+I can't... remember...
+...
+I'm sorry little creature. Could you please just... put this pearl back where you found it?
+
+=== hint: Rough Location
+

@@ -1,0 +1,16 @@
+color: #a6e3ae
+type: pearl
+name: Celadon
+
+=== transcription: LttM-post-collapse
+Oh! This is a very rare find, water dancer. This is a highly compressed schematic of an iterator superstructure!
+Where did you find this? I hope you didn't plan to give this to the scavengers! I doubt they would value it as much as I would!~
+Hmm... let's take a look!
+It seems this may have been a maintenance order, as one of the linear power rails is highlighted in the diagram, with a detailed path of approach outlined. The layout is unfamiliar to me.
+This is quite different from what I remember of my own structure. It looks as if it is using the newer lymphatic conduit water distribution system. Only the much later models had these.
+The only one near here would be Five Pebbles. I wonder how he is doing... It's been a very long time since we were last in contact.
+Thank you for showing this to me, little creature.
+
+=== hint: Rivulet
+You will need to find Moon as Rivulet and not lose the Pearl on your way.
+

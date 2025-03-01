@@ -24,7 +24,7 @@ export const speakerNames: { [key: string]: string } = {
     "LttM": "Looks to the Moon",
     "LttM-pre-collapse": "Looks to the Moon (Pre-Collapse)",
     "LttM-post-collapse": "Looks to the Moon",
-    "LttM-saint": "Looks to the Moon (Saint)",
+    "LttM-saint": "Looks to the Moon (Future)",
     "CW": "Chasing Wind",
     "NSH": "No Significant Harassment",
     "SRS": "Seven Red Suns",
@@ -47,6 +47,8 @@ export const regionNames: { [key: string]: string } = {
     "OE": "Outer Expanse",
     "MS": "Submerged Superstructure",
     "LC": "Metropolis",
+    "RM": "The Rot",
+    "DM": "Looks to the Moon",
 }
 
 export function darken(hex: string, amount: number) {
