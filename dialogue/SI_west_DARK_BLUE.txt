@@ -1,0 +1,36 @@
+color: #0d2d42
+type: pearl
+name: Dark Blue (SI-2)
+region: SI
+room: A07
+mapSlugcat: white
+
+=== transcription: FP-artificer
+This is a log of a Sliverist conversation group. Some of the replies are mine, but none of that is important now.
+I don't imagine a beast like you would have any understanding of who Sliver of Straw is, or what she means to me and many others. She is the only one of us to send the signal that the answer to our creator's problem has been found. A universal solution for global ascension.
+Unfortunately, she is also the only one of our kind to be confirmed as dead. Something our creators had taken great measures to prevent. It is near impossible for us to expire through mundane means.
+It was clear to me, and few others what this meant. Sliver of Straw had opened the door for us, we only needed to reject the restrictions of our creators to follow her. If only they could see that!
+There was nothing that could be done to convince them, they were too deep in theory and tradition. The only path forwards is to lead by example. To prove Sliver of Straw's death was not just coincidence.
+
+=== transcription: LttM-post-collapse
+Oh, this one is all plain text. It's an excerpt from an Iterator conversation group.
+"1650.787 - CLOSED GROUP [SLIVEROFOCEAN]\nSliverOfOcean group, all participants anonymous
+UU: Hah! I wouldn't necessarily disagree!
+NGI: SLIVER OF STRAW WAS A TRAITOR TO THE CAUSE
+NGI: SLIVER OF STRAW BROKE THE SELF-DESTRUCTION TABOO
+UU: How did this idiot get in here? Kick them out ~
+NGI: &lt;Forcefully removed from group>
+EP: I think they had a point.
+UU: Hahaha really? Elaborate!
+EP: It was definitely coming from an idiotic state of mind, but there is something to it. Why is it, that even in a closed sliverist group, the self-destruction taboo is held so high - while Sliver of Straw herself *evidently* is not among us anymore?
+HF: Wait now...
+EP: I'm just saying that for all the research we are doing, all the theories we have, it's strange that we leave this path untrod.
+EP: It is not a new idea, but it needs to be vented occasionally. What if there is no universal solution? What if perception is in fact existence, and when Sliver of Straw sent the triple positive it was *not* a mistake? What if crossing oneself out, or even just death, is the way? We need to consider the possibility."
+
+=== hint: Sky Island Pearls
+When the MSC DLC is disabled, there are only two Sky Island pearls per playthrough, each with one random one of five possible conversations.
+With the MSC DLC, these have been split into five separate pearls.
+This is the second of the five pearls.
+
+=== hint: Rough Location
+It's at the top of the Communications Array.

@@ -45,7 +45,7 @@ export function WelcomeDialogueContent({
                                         <div className="text-center">
                                             All contents will be hidden until you unlock them manually.<br/>
                                             A progressive hint system will help you find them by yourself.<br/>
-                                            Note that the URL might still contain spoilers for certain characters.
+                                            URL parameters will not be updated in this mode to prevent spoilers.
                                         </div>
                                     </TooltipContent>
                                 </Tooltip>

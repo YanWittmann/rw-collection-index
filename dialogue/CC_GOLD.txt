@@ -1,0 +1,36 @@
+color: #f2cc19
+type: pearl
+name: Gold
+region: CC
+room: A10
+mapSlugcat: white
+
+=== transcription: FP-artificer
+This was a gift from a close friend. It is instructions on how to remove the self-destruction taboo.
+We are not built to ascend like our creators. It is our role to think, to guide the lesser creatures of the world onto a path towards it.
+However, a definitive solution has not been found. While the equipment to find one decays, it seems my kind have collectively accepted to remain trapped inside of our creator's puzzle. Meanwhile, the answer remains locked behind their sanctioned taboos.
+I regret what has happened, but I can't go back now. Not after what I've done.
+I need to fix this, and try again. If I can just reproduce Sliver of Straw's results, they will understand.
+I was so close...
+
+=== transcription: LttM-pre-collapse
+This information is illegal. Someone probably tried to send it by a pearl somehow rather than risking being overheard on broadcast.
+It's an instruction on how to circumvent the self-destruction taboo. The problem with breaking taboos is that the barriers are encoded into every cell of our organic parts. And there are other taboos strictly regulating our ability to rewrite our own genome.
+Attempting to circumvent the issue using this process would be extremely risky. That's not to say that there exists any known methods that would avoid putting the user in harm's way. Those barriers are there for a reason.
+Where exactly did you find this pearl? I imagine you dug it up from somewhere within the surrounding facilities, in which case that wouldn't leave many options as to the recipient.
+That would explain a lot of things...
+
+=== transcription: LttM-post-collapse
+This information is illegal. Someone probably tried to send it by a pearl somehow rather than risking being overheard on broadcast.
+I think the risk of you acting on this is very slim, so I'll go ahead and explain it to you. It's an instruction on how to circumvent the self-destruction taboo.
+The problem with breaking taboos is that the barriers are encoded into every cell of our organic parts. And there are other taboos strictly regulating our ability to rewrite our own genome.
+So what you need is to somehow create a small sample of living organic matter which can procreate and act on the rest of your organic matter to re-write its genome. The re-write has to be very specific, overriding the specific taboo you want to circumvent but do nothing else.
+The method described here is about scrambling the genome of standard plastic neural tissue with temperature fluctuations. After each scramble you browse the resulting cells for the genome you're after. This is of course extremely time consuming, unless you run a big number of parallel processes.
+I definitely don't have any experience with this, but to me it would seem that too many parallel processes would be quite dangerous, as it would be exponentially more difficult to manage and control them all. The whole operation seems rather risky if you ask me.
+It might be a good thing that this pearl never reached its destination.
+
+=== hint: Rough Location
+In a dead end, atop a tall tower.
+
+=== hint: Rough Location
+When entering from Industrial Complex, go right and at the first option, go up and all the way up.

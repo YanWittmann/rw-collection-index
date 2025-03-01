@@ -1,0 +1,42 @@
+color: #2d420d
+type: pearl
+name: Olive Green (SI-4)
+region: SI
+room: C08
+mapSlugcat: white
+
+=== transcription: FP-artificer
+This is a warning to the local group, from my senior and neighbor Looks to the Moon, about incoming forced communications over the network. She was not aware of my activities, and was being starved of water, as I was running a very sensitive process.
+The distance between one iterator to another is traditionally much larger than I am to her, and because of this we share many resources. The most important of which is our groundwater. I did not want her to be involved, but our shared resources prevented that from the start.
+There is nothing that can be done now. I cannot forgive her interruption as it destroyed everything I have been working towards. However, neither of us are in any shape to be arguing.
+We are both doomed if I do not find a way to reverse its effects, but the chances of doing so are slowly vanishing. Please let me get back to work.
+
+=== transcription: LttM-pre-collapse
+It's me writing to the local iterator group... of a conversation I wish I could forget.
+"1654.110 - PUBLIC\nBig Sis Moon to Local Group
+BSM: Two cycles ago, my neighbor Five Pebbles drastically increased his water consumption to four times the normal amount. He has been unresponsive for a period of time longer than that. The two of us share groundwater, and I have been without water for almost a cycle.
+BSM: Any attempts at communication have been met with complete silence, and my situation is becoming increasingly dangerous.
+BSM: I ask the local group for information about when you were last able to contact him, and to try to use those same communication channels again, repeatedly until you get a response. I will be clear on this - if he is not persuaded to stop whatever it is he's doing, I will die.
+BSM: Before that happens, I will utilize my seniority privilege and use forced communications, hoping to shake him out of it. Forced communications in the network will be unpleasant for all, and I will wait as long as possible before I turn to that option."
+In the end, I did use my forced communications, many times. If anything, it only made the situation worse.
+
+=== transcription: LttM-post-collapse
+It's me writing to the local iterator group. I have no memories of this...
+"1654.110 - PUBLIC\nBig Sis Moon to Local Group
+BSM: Two cycles ago, my neighbor Five Pebbles drastically increased his water consumption to four times the normal amount. He has been unresponsive for a period of time longer than that. The two of us share groundwater, and I have been without water for almost a cycle.
+BSM: Any attempts at communication have been met with complete silence, and my situation is becoming increasingly dangerous.
+BSM: I ask the local group for information about when you were last able to contact him, and to try to use those same communication channels again, repeatedly until you get a response. I will be clear on this - if he is not persuaded to stop whatever it is he's doing, I will die.
+BSM: Before that happens, I will utilize my seniority privilege and use forced communications, hoping to shake him out of it. Forced communications in the network will be unpleasant for all, and I will wait as long as possible before I turn to that option."
+And now here I am, to my waist in water and getting drowned on the regular.
+
+=== hint: Sky Island Pearls
+When the MSC DLC is disabled, there are only two Sky Island pearls per playthrough, each with one random one of five possible conversations.
+With the MSC DLC, these have been split into five separate pearls.
+This is the fourth of the five pearls.
+
+=== hint: Rough Location
+Go to the right of the Yellow Lizard room.
+
+=== hint: Rough Location
+It's in the lower layer of the sky-bridge that extends into the sky to the right when exiting the long room.
+It's a little hard to see due to the grass that grows on top of it.

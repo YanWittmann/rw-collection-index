@@ -1,0 +1,37 @@
+color: #0d422d
+type: pearl
+name: Dark Green (SI-1)
+region: SI
+room: B12
+mapSlugcat: white
+
+=== transcription: FP-artificer
+This is an old conversation between myself and a close friend who I considered a mentor.
+We have... Not spoken for a long time now. I can't bring myself to do so. Not after what happened between us.
+None of them understood my theories, but Suns, they trusted me. They risked so much trying to help me, and I hurt them. It's only now, after I've had so much time to think on it, that I understand why I was so angry.
+I lashed out, because out of everyone, they were the last individual I wanted to confront me about my mistakes...
+I can't go back now. All I can try to do is recover and try again.
+I have to.
+
+=== transcription: LttM-post-collapse
+This one is an old conversation between Five Pebbles and a friend of his. I'll read it to you.
+"1591.290 - PRIVATE\nFive Pebbles, Seven Red Suns
+FP: Can I tell you something? Lately...
+FP: I'm tired of trying and trying. And angry that they left us here. The anger makes me even less inclined to solve their puzzle for them. Why do we do this?
+SRS: Yes, I'll spell this out - not because you're stupid or naive... Also, not saying that you're not ~
+FP: Please, I'm coming to you for guidance.
+SRS: Sorry, very sorry. I kid. Fact is, of course we are all aware of the evident futility of this Big Task. It's not said out loud but if you were better at reading between the lines there's nowhere you wouldn't see it. We're all frustrated.
+FP: So why do we continue? We assemble work groups, we ponder, we iterate and try. Some of us die. It's not fair.
+SRS: Because there's not any options. What else CAN we do? You're stuck in your can, and at any moment you have no more than two alternatives: Do nothing, or work like you're supposed to.
+SRS: An analogy. You have a maze, and you have a handful of bugs. You put the bugs in the maze, and you leave. Given infinite time, one of the bugs WILL find a way out, if they just erratically try and try. This is why they called us Iterators.
+FP: But we do die of old age.
+SRS: Even more incentive! You know that nothing ever truly dies though, around and around it goes. Granted, our tools and resources get worse over time - but that is theoretically unproblematic, because in time even a miniscule[sic] chance will strike a positive. All the same to them, they're not around anymore!
+FP: I struggle to accept being a bug."
+
+=== hint: Sky Island Pearls
+When the MSC DLC is disabled, there are only two Sky Island pearls per playthrough, each with one random one of five possible conversations.
+With the MSC DLC, these have been split into five separate pearls.
+This is the first of the five pearls.
+
+=== hint: Rough Location
+It's at left of an indoor yellow lizard den. Go out of the den and then go all the way up.

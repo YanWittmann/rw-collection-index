@@ -15,7 +15,11 @@ const syncParams = () => {
     });
 
     // update URL
-    window.history.replaceState(null, '', `?${currentParams}`);
+    if (currentParams.toString()) {
+        window.history.replaceState(null, '', `?${currentParams}`);
+    } else {
+        window.history.replaceState(null, '', window.location.pathname);
+    }
 
     // reset state
     pendingParams.clear();

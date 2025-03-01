@@ -5,6 +5,7 @@ export const speakersColors: { [key: string]: string } = {
     "LttM": "#e5d999",
     "CW": "#bfbfe5",
     "NSH": "#bfffbf",
+    "SRS": "#ffbfbf",
 };
 
 export const transcribersColors: { [key: string]: string } = {
@@ -26,6 +27,7 @@ export const speakerNames: { [key: string]: string } = {
     "LttM-saint": "Looks to the Moon (Saint)",
     "CW": "Chasing Wind",
     "NSH": "No Significant Harassment",
+    "SRS": "Seven Red Suns",
 }
 
 export const regionNames: { [key: string]: string } = {

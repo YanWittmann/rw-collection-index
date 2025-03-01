@@ -35,8 +35,8 @@ for (let i = 0; i < 100; i++) {
 export type UnlockMode = "all" | "unlock";
 
 export default function DialogueInterface() {
-    const { selectedPearl, selectedTranscriber, handleSelectPearl, handleSelectTranscriber } = useDialogue();
     const [unlockMode, setUnlockMode] = useState<UnlockMode>("all");
+    const { selectedPearl, selectedTranscriber, handleSelectPearl, handleSelectTranscriber } = useDialogue(unlockMode);
     const { unlockVersion, refresh } = useUnlockState();
     const [hintProgress, setHintProgress] = useState<number>(0);
 

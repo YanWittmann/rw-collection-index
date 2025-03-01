@@ -10,7 +10,7 @@ export const pearlOrder: PearlChapter[] = [
         name: "Vanilla / Downpour",
         ids: [
             "SU_LIGHT_BLUE", "HI_BRIGHT_BLUE", "DS_BRIGHT_GREEN", "SU_filt_LIGHT_PINK", "GW_VIRIDIAN", "SL_bridge_BRIGHT_PURPLE", "SL_chimney_BRIGHT_MAGENTA", "SL_moon_PALE_YELLOW",
-            "SH_DEEP_MAGENTA", "UW_PALE_GREEN",
+            "SH_DEEP_MAGENTA", "UW_PALE_GREEN", "CC_GOLD", "SI_top_DARK_GREEN", "SI_west_DARK_BLUE", "SI_chat3_DARK_PURPLE", "SI_chat4_OLIVE_GREEN", "SI_chat5_DARK_MAGENTA"
         ]
     }
 ]

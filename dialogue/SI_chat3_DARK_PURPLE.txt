@@ -1,0 +1,58 @@
+color: #2d0d42
+type: pearl
+name: Dark Purple (SI-3)
+region: SI
+room: C02
+mapSlugcat: white
+
+=== transcription: FP-artificer
+This is an old conversation log between my nearby peers. They were concerned about my goal for personal ascension. Although they were unaware it was me at the time, as my conversations on that topic were anonymous.
+It is... disappointing that they refused to understand. Nor could they ever even comprehend, as it is not supposed to be within our design to do so. To cross ourselves out is meant to be unthinkable!
+It is a taboo written into every cell of our organic bodies, but should it be considered such? Should we respect the will of our creators, who are no longer here?
+Should we reject a way out of this maze, on the mere principle that escape itself is forbidden?
+Should we discard Sliver of Straw too? For the sake of our creator's mandate?!
+. . .
+Of course, a beast like you could never fathom.
+
+=== transcription: LttM-pre-collapse
+It's an old conversation log from my friends and I. I was quite naive back then! Let me read it to you:
+"1650.800 - PRIVATE\nFive Pebbles, Chasing Wind, Big Sis Moon, No Significant Harassment
+CW: this is in confidence, but apparently a pseudonym "Erratic Pulse" has appeared on a nearby Sliverist conversation with ideas about personal ascension. Someone here in our vicinity is trying to cross themselves out.
+FP: Where did you hear this?
+NSH: I wish them super good luck in that endeavor. How is it going to happen? Have the overseers gnaw through bedrock until their entire can crashes down in the void sea?
+BSM: Please be respectful when speaking of the Void Sea. Grey Wind, where did you hear this?
+CW: I really shouldn't say. He's going to attempt some sort of breeding program. Thought you might want to know.
+NSH: Haha with the slimers, lizards and etceteras? Surely the answer was in a lizard skull all along!
+CW: Well, he's not looking for the same thing as we anymore, he's changed his task, so who knows really.
+BSM: I will try to find him and talk to him. Please don't spread this around!
+NSH: Moon will go get them! Long live the inquisition!"
+
+=== transcription: LttM-post-collapse
+It's an old conversation log. I seem to be in it, but I can't recall much. Let me read it to you:
+"1650.800 - PRIVATE\nFive Pebbles, Chasing Wind, Big Sis Moon, No Significant Harassment
+CW: this is in confidence, but apparently a pseudonym "Erratic Pulse" has appeared on a nearby Sliverist conversation with ideas about personal ascension. Someone here in our vicinity is trying to cross themselves out.
+FP: Where did you hear this?
+NSH: I wish them super good luck in that endeavor. How is it going to happen? Have the overseers gnaw through bedrock until their entire can crashes down in the void sea?
+BSM: Please be respectful when speaking of the Void Sea. Grey Wind, where did you hear this?
+CW: I really shouldn't say. He's going to attempt some sort of breeding program. Thought you might want to know.
+NSH: Haha with the slimers, lizards and etceteras? Surely the answer was in a lizard skull all along!
+CW: Well, he's not looking for the same thing as we anymore, he's changed his task, so who knows really.
+BSM: I will try to find him and talk to him. Please don't spread this around!
+NSH: Moon will go get them! Long live the inquisition!"
+
+=== hint: Sky Island Pearls
+When the MSC DLC is disabled, there are only two Sky Island pearls per playthrough, each with one random one of five possible conversations.
+With the MSC DLC, these have been split into five separate pearls.
+This is the third of the five pearls.
+
+=== hint: Slugcats
+This pearl is grayed out in Rivulet's route.
+
+=== hint: Rough Location
+It's in the top left of the Sky Islands.
+
+=== hint: Rough Location
+On the left side of the symmetrically arranged rooms where you can farm Karma.
+
+=== hint: Rough Location
+Climb up the left of the room using the small sticks and go all the way to the left.

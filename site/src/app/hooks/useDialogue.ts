@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { urlAccess } from "../utils/urlAccess";
 import { PearlData } from "../types/types";
+import { UnlockMode } from "../page";
 
-export function useDialogue() {
+export function useDialogue(unlockMode: UnlockMode) {
     const [selectedPearl, setSelectedPearl] = useState<string | null>(null);
     const [selectedTranscriber, setSelectedTranscriber] = useState<string | null>(null);
 
@@ -18,12 +19,12 @@ export function useDialogue() {
 
 
     useEffect(() => {
-        if (selectedPearl) {
+        if (unlockMode === "all" && selectedPearl) {
             urlAccess.setParam("pearl", selectedPearl);
         } else {
             urlAccess.clearParam("pearl");
         }
-        if (selectedTranscriber) {
+        if (unlockMode === "all" && selectedTranscriber) {
             urlAccess.setParam("transcriber", selectedTranscriber);
         } else {
             urlAccess.clearParam("transcriber");

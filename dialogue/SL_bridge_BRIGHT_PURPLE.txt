@@ -15,7 +15,7 @@ Many solutions were discussed, but ultimately my construction was the one settle
 
 === transcription: LttM-post-collapse
 It's about the local aquifer - it must be quite old, from when Five Pebbles was in the planning phase.
-Water is the most important resource for our basic function. Most of our processing is outsourced to microbe strata which need a flow of clean water or else slag builds up, our processes seize, and eventually we die. It is... very painful. They used to say that an iterator drinks a river, but neither of us two have seen a natural river so I suppose the analogy is lost on us, <little creature>!
+Water is the most important resource for our basic function. Most of our processing is outsourced to microbe strata which need a flow of clean water or else slag builds up, our processes seize, and eventually we die. It is... very painful. They used to say that an iterator drinks a river, but neither of us two have seen a natural river so I suppose the analogy is lost on us, little creature!
 Originally water supply was very important when placing iterators. Later there would be a great equalizer - the fact that we breathe out as much vapor as we inhale water led to there being water available everywhere, and the latest few generations could be placed almost completely freely.
 Building Pebbles so close to me was believed to be a risky choice, but the groundwater was finally deemed as sufficient. It was not a good decision, in hindsight.
 

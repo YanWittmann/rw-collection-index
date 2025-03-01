@@ -1,0 +1,39 @@
+color: #420d2d
+type: pearl
+name: Dark Magenta (SI-5)
+region: SI
+room: B10
+mapSlugcat: white
+
+=== transcription: FP-artificer
+I do not wish to speak of this. Everything I had been working towards was destroyed in that moment.
+I cannot forgive that.
+Please leave, and do not return with it again.
+
+=== transcription: LttM-post-collapse
+I remember this. It isn't pleasant reading. But if you must hear it, this is what it says:
+"1654.116 - PRIVATE [FORCED]\nBig Sis Moon, Five Pebbles
+BSM: Immediately lower your groundwater consumption to one fifth of the current intake.
+BSM: Stop whatever it is you are doing.
+BSM: Please stop!
+BSM: As your local group senior I order you you you you you you
+BSM: As your senior senior I plead
+BSM: stop
+Five Pebbles: You could not have chosen a worse moment to disturb me. You have ruined everything.
+BSM: please
+Five Pebbles: I almost had it. I will never forget this."
+
+=== hint: Sky Island Pearls
+When the MSC DLC is disabled, there are only two Sky Island pearls per playthrough, each with one random one of five possible conversations.
+With the MSC DLC, these have been split into five separate pearls.
+This is the fifth and last of the five pearls.
+
+=== hint: Rough Location
+Close to the central hub room with the many connecting pathways.
+
+=== hint: Rough Location
+Use the center lower pipe to go down.
+
+=== hint: Rough Location
+Use the pipes on the right side of the screen to get to the lower section of the room.
+The pearl is in the center of the pathway.
