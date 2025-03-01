@@ -1,0 +1,31 @@
+color: #3c9393
+type: pearl
+name: Teal
+region: SB
+room: J03
+mapSlugcat: white
+
+=== transcription: FP-artificer
+It's a blueprint for the Void Fluid filtration system beneath my facility.
+My neighbor to the east of here was connected to an older pipe network that predates my construction.
+Due to mechanical failures she was rerouted into sharing my installation. However, unlike our shared groundwater, nothing of note has come from this.
+
+=== transcription: LttM-post-collapse
+It's the blueprint for a Void Fluid filtration system. Do you know what Void Fluid is? I think you don't.
+If you leave a stone on the ground, and come back some time later, it's covered in dust. This happens everywhere, and over several lifetimes of creatures such as you, the ground slowly builds upwards.
+So why doesn't the ground collide with the sky? Because far down, under the very very old layers of the earth, the rock is being dissolved or removed. The entity which does this is known as the Void Sea.
+If you drill far enough into the earth you begin encountering a substance called Void Fluid. The deeper you go, the less rock and more Void Fluid. It's believed that there is a point where the rock completely gives way - below that would be the Void Sea.
+When that stone you placed on the ground has finally done its time in the sediments, it meets the Void Fluid and is dissolved, leaving the physical world.
+My creators, or rather my creators' ancestors, figured out a way to use Void Fluid. Because you can generate energy by creating a vacuum... never mind. Anyways, the Void Fluid drills were what started the big technological leap, but this is very long before I entered this world - so I can only tell you what I remember from priming.
+A Void Fluid filtration system is used because if you take Void Fluid from close to the bedrock horizon, it will contain traces of rock and dirt. They bring in dirty fluid and then filter it to increase its purity. The other way is to put a pipe deeper, which works well for some time, but the pipe dissolves. Or is broken by some... force - no one really knows, you don't go down there and come back up.
+I hope that satisfied your curiosity, little creature?
+
+=== hint: Subregion
+It's in the Filtration System
+
+=== hint: Rough Location
+There is a very long room made of large pipes on the right of the deep red Filtration System.
+
+=== hint: Rough Location
+The Pearl is more on the left side, in one of the top pipes.
+There are other white Pearls nearby. It's hard to miss once you're there.

@@ -1,0 +1,36 @@
+color: #ff3c3c
+type: pearl
+name: Bright Red
+region: LF
+room: D07
+mapSlugcat: white
+
+=== transcription: FP-artificer
+Oh, this is a small plate of spiritual guidance. From an age long before the Void Fluid revolution.
+The text is typical for its era, and details how to shed oneself of the fourth natural urge of life, gluttony.
+I cannot imagine you are familiar with the literature, but all living things have an understanding of the five natural urges. Even if that understanding is only a subconscious one.
+For example, you are bound by the first urge. Your mind is fixated. Striving towards a single goal. One from which you are unable to turn away from. Because of this, you are trapped, just the same as I am.
+While your chains are made of your own natural urges, mine are a duty to my creators. My kind are built unable to ascend, as our minds are not our own. Composed of microbial life, machinery, and electronics.
+Of course, that holds true only in theory... it is, arguable that a member of my kind has done so. That perhaps, it is not merely shedding one's natural urges, but to shed the perception of reality itself.
+In any case, thank you. I have a fondness for artifacts such as this. They remind me of better times.
+
+=== transcription: LttM-post-collapse
+It's a Small Plate, a little text of spiritual guidance. It's written by a monk called Four Cabinets, Eleven Hatchets. It's old, several ages before the Void Fluid revolution.
+Like most writing from this time it’s quite shrouded in analogies, but the subject is how to shed one of the five natural urges which tie a creature to life. Namely number four, gluttony.
+It is basically an instruction on how to starve yourself on herbal tea and gravel, but disguised as a poem.
+Now of course when Void Fluid was discovered these methods proved obsolete, as it was more easy just jumping in a vat of it to effortlessly leave this world behind.
+There were some horror stories though... That if your ego was big enough, not even the Void Fluid could entirely cross you out, and a faint echo of your pompousness would grandiosely haunt the premises forever.
+So even when the Void Fluid baths became cheaper, some would still starve and drink the bitter tea.
+
+=== hint: A note
+This is one of the hardest Pearls to get in terms of gameplay.
+
+=== hint: Items
+You will need two Spore Puffs for this.
+
+=== hint: Rough Location
+After visiting the Echo room, go further to the left.
+
+=== hint: Room
+You will have to cross two Worm Grass sections in separate rooms by using the Spore Puffs to mount Rain Deer.
+You will still not be at a shelter then, either backtrack quite a while to the right or use another Spore Puff to go to the left.

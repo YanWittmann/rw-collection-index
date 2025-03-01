@@ -19,17 +19,21 @@ export default function HintSystemContent({
                                               hintProgress,
                                               setHintProgress
                                           }: HintSystemContentProps) {
-    const effectiveHints: Hint[] = [
-        {
+    const effectiveHints: Hint[] = [];
+    if (pearl.metadata.region) {
+        effectiveHints.push({
             name: "Region",
             lines: ["Found in " + (regionNames[pearl.metadata.region ?? ''] ?? 'Unknown') + " (" + pearl.metadata.region + ")"]
-        },
-        ...pearl.hints,
-        {
+        });
+    }
+    effectiveHints.push(...pearl.hints);
+    const mapLink = generateMapLink(pearl);
+    if (mapLink) {
+        effectiveHints.push({
             name: "Map link",
-            lines: [generateMapLink(pearl) ?? "No map link available"]
-        }
-    ]
+            lines: [mapLink ?? "No map link available"]
+        });
+    }
 
     const renderHintLine = (line: string) => {
         if (line.startsWith("http")) {

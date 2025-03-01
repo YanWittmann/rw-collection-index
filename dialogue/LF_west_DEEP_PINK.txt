@@ -1,0 +1,36 @@
+color: #ff2667
+type: pearl
+name: Deep Pink
+region: LF
+room: D06
+mapSlugcat: white
+
+=== transcription: LttM-saint
+This pearl is written in plain text. How did you find this?
+"On regards of the (by spiritual splendor eternally graced) people of the Congregation of..."
+I am sorry little creature, I am too amazed about the clarity of this data, despite its age...
+At this point it's safe to say that this text has been burned into the pearl's structure permanently.
+What a bizarre thing to have lasted all this time. I wonder how much of my creators will be remembered.
+
+=== transcription: FP-artificer
+"On regards of the (by spiritual splendor eternally graced) people of the Congregation of Never Dwindling..."
+This is pointless. The data is a shipment confirmation to an automated farming plot.
+A waste of the crystal memory complex it was printed onto. I would refresh it for use as storage, but the message has been repeatedly burned into the pearl several thousand times. Likely to prevent reuse, or loss of data.
+
+=== transcription: LttM-post-collapse
+This one is just plain text. I will read it to you.
+"On regards of the (by spiritual splendor eternally graced) people of the Congregation of Never Dwindling Righteousness, we Wish to congratulate (o so thankfully) this Facility on its Loyal and Relished services, and to Offer our Hopes and Aspirations that the Fruitful and Mutually Satisfactory Cooperation may continue, for as long as the Stars stay fixed on their Celestial Spheres and/or the Cooperation continues to be Fruitful and Mutually Satisfactory."
+"It is with Honor I, Eight Suns-Countless Leaves, of the House of Six Wagons, Count of no living blocks, Counselor of 2, Duke of 1, Humble Secretary of the Congregation of Never Dwindling Righteousness, write this to You."
+"We hope that the Crops are healthy, and that the Productivity with which your Facility is Blessed, leads (as it often does) to further Prosperity. May Not as long as the Stars stay fixed on their Celestial Spheres Grey Hand, Impure Blood, Inheritable Corruption, Parasites, or malfunction settle in Your establishment."
+"Leaning on the Solid Foundation of our Long Running Fruitful and Mutually Satisfactory Cooperation, we will take the liberty of stating The Reason for this Message ~ we write to Warmly thank You for yet Another Timely and Appreciated delivery of your Product (Nectar) to our Community (Congregation of Never Dwindling Righteousness). Our humble Words can never Aspire to Describe our gratitude."
+"Sincerely..." And then the name and titles again.
+It's a confirmation to an automated farming plot that a shipment of beverages has arrived.
+
+=== hint: Rough Location
+A tall room with two separate drop shoots that contains Batflies. It cannot be reached from the bottom with most Characters.
+
+=== hint: Rough Location
+You must get there from the area above. There is a small pipe maze with a shelter.
+
+=== hint: Strategy
+You must make quite the long jump. You can do so by pouncing and quickly double-throwing two items.

@@ -46,6 +46,7 @@ export const regionNames: { [key: string]: string } = {
     "VS": "Pipeyard",
     "OE": "Outer Expanse",
     "MS": "Submerged Superstructure",
+    "LC": "Metropolis",
 }
 
 export function darken(hex: string, amount: number) {
