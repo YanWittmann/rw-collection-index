@@ -79,13 +79,16 @@
   }
 }
 
-@font-face {
-  font-family: "Rodondo";
-  src: url("../public/font/Rodondo.otf") format("otf");
+html:not(.rw-text-font):not(.rw-title-font) {
+    font-family: monospace;
 }
 
-html, body {
-  font-family: 'Rodondo', monospace;
+html.rw-text-font {
+    font-family: 'Segoe-UI-Semibold', 'Rodondo', monospace;
+}
+
+.rw-title-font {
+    font-family: 'Rodondo', 'Segoe-UI-Semibold', monospace;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

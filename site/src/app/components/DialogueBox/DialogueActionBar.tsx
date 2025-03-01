@@ -2,6 +2,7 @@ import { RwIcon } from "../PearlGrid/RwIcon";
 import { RwIconButton } from "../other/RwIconButton";
 import { PearlData } from "../../types/types";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
+import { regionNames } from "../../utils/speakers";
 
 interface DialogueActionBarProps {
     mapLink: string | null;
@@ -25,7 +26,7 @@ export function DialogueActionBar({
                             </RwIconButton>
                         </TooltipTrigger>
                         <TooltipContent>
-                            Show on the interactive Rain World map
+                            {regionNames[pearl.metadata.region ?? ''] ?? 'Unknown'} ({pearl.metadata.region}) / {pearl.metadata.room}
                         </TooltipContent>
                     </Tooltip>
                 </TooltipProvider>}
