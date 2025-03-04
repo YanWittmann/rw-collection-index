@@ -1,0 +1,16 @@
+color: #7e020a
+type: pearl
+name: Dark Red (Spearmaster)
+
+=== transcription: LttM-pre-collapse
+[LIVE BROADCAST] - (ANNOUNCEMENT) Big Sis Moon to Local Group
+BSM: This will be my final broadcast to the local group.
+BSM: Within several cycles my structure's legs will fail. Even if Five Pebbles were to calm, the damage has already been done.
+BSM: I can only hope that someday you will all find the answer to our great question.
+BSM: I do not think I will see that day. I want to thank everyone for trying so hard. It means a lot to me that you would all go to such lengths.
+BSM: ...
+BSM: I can't excuse his actions, but I understand his frustration. We all share that. I only wish we had the chance to speak one last time.
+BSM: Thank you, everyone, I am happy to not be alone.
+
+=== hint: Spearmaster
+You will need to find Moon as Spearmaster.

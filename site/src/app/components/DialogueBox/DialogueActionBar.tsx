@@ -1,19 +1,20 @@
 import { RwIcon } from "../PearlGrid/RwIcon";
 import { RwIconButton } from "../other/RwIconButton";
-import { PearlData } from "../../types/types";
+import { Dialogue, PearlData } from "../../types/types";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
 import { regionNames } from "../../utils/speakers";
+import { generateMapLinkPearl, generateMapLinkTranscriber } from "./DialogueBox";
 
 interface DialogueActionBarProps {
-    mapLink: string | null,
-    pearl: PearlData,
-    isUnlocked: boolean,
+    pearl: PearlData
+    transcriberData: Dialogue
+    isUnlocked: boolean
     onSelectPearl: (pearl: PearlData | null) => void
 }
 
 export function DialogueActionBar({
-                                      mapLink,
                                       pearl,
+                                      transcriberData,
                                       isUnlocked,
                                       onSelectPearl
                                   }: DialogueActionBarProps) {
@@ -32,6 +33,8 @@ export function DialogueActionBar({
         </Tooltip>
     );
 
+    const mapLink = generateMapLinkTranscriber(transcriberData);
+
     if (isUnlocked && mapLink) {
         segments.push(
             <Tooltip key={"open-rain-world-map"}>
@@ -43,8 +46,8 @@ export function DialogueActionBar({
                     </RwIconButton>
                 </TooltipTrigger>
                 <TooltipContent>
-                    {regionNames[pearl.metadata.region ?? ''] ?? 'Unknown'} ({pearl.metadata.region})
-                    / {pearl.metadata.room}
+                    {regionNames[transcriberData.metadata.region ?? ''] ?? 'Unknown'} ({transcriberData.metadata.region})
+                    / {transcriberData.metadata.room}
                 </TooltipContent>
             </Tooltip>
         )

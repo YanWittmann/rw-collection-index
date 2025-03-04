@@ -9,10 +9,19 @@ export const pearlOrder: PearlChapter[] = [
     {
         name: "Vanilla / Downpour",
         ids: [
-            "SU_LIGHT_BLUE", "HI_BRIGHT_BLUE", "DS_BRIGHT_GREEN", "SU_filt_LIGHT_PINK", "GW_VIRIDIAN", "SL_bridge_BRIGHT_PURPLE", "SL_chimney_BRIGHT_MAGENTA", "SL_moon_PALE_YELLOW",
-            "SH_DEEP_MAGENTA", "UW_PALE_GREEN", "CC_GOLD", "SI_top_DARK_GREEN", "SI_west_DARK_BLUE", "SI_chat3_DARK_PURPLE", "SI_chat4_OLIVE_GREEN", "SI_chat5_DARK_MAGENTA",
-            "LF_bottom_BRIGHT_RED", "LF_west_DEEP_PINK", "SB_ravine_DARK_MAGENTA", "SB_filtration_TEAL", "Red_stomach_AQUAMARINE", "OE_LIGHT_PURPLE", "LC_DEEP_GREEN",
-            "LC_second_BRONZE", "RM_MUSIC", "Rivulet_stomach_CELADON", "GW_DULL_YELLOW", "DM_LIGHT_YELLOW"
+            "SL_moon_PALE_YELLOW", "DS_BRIGHT_GREEN", "Red_stomach_AQUAMARINE", "empty_broadcast", "empty_broadcast",
+            "SL_bridge_BRIGHT_PURPLE", "SH_DEEP_MAGENTA", "DM_LIGHT_YELLOW", "empty_broadcast", "empty_broadcast",
+            "SL_chimney_BRIGHT_MAGENTA", "CC_GOLD", "Spearmasterpearl_DARK_RED", "empty_broadcast", "empty_broadcast",
+            "SI_top_DARK_GREEN", "VS_DEEP_PURPLE", "Rivulet_stomach_CELADON", "empty_broadcast", "empty_broadcast",
+            "SI_west_DARK_BLUE", "UW_PALE_GREEN", "empty_broadcast", "empty_broadcast", "empty_broadcast",
+            "SI_chat3_DARK_PURPLE", "LF_bottom_BRIGHT_RED", "empty_broadcast", "empty_broadcast", "empty_broadcast",
+            "SI_chat4_OLIVE_GREEN", "LF_west_DEEP_PINK", "empty_broadcast", "empty_broadcast", "empty_broadcast",
+            "SI_chat5_DARK_MAGENTA", "SB_filtration_TEAL", "empty_broadcast", "empty_broadcast", "empty_broadcast",
+            "SB_ravine_DARK_MAGENTA", "SU_filt_LIGHT_PINK", "empty_broadcast", "empty_broadcast", "empty_broadcast",
+            "SU_LIGHT_BLUE", "OE_LIGHT_PURPLE", "empty_broadcast", "empty_broadcast", "empty_broadcast",
+            "HI_BRIGHT_BLUE", "LC_DEEP_GREEN", "empty_broadcast", "empty_broadcast", "empty_broadcast",
+            "GW_VIRIDIAN", "LC_second_BRONZE", "empty_broadcast", "empty_broadcast", "empty_broadcast",
+            "GW_DULL_YELLOW", "RM_MUSIC", "empty_broadcast", "empty_broadcast", "empty_broadcast",
         ]
     }
 ]

@@ -1,6 +1,6 @@
 color: #a6e3ae
 type: pearl
-name: Celadon
+name: Celadon (Rivulet)
 
 === transcription: LttM-post-collapse
 Oh! This is a very rare find, water dancer. This is a highly compressed schematic of an iterator superstructure!
@@ -13,4 +13,3 @@ Thank you for showing this to me, little creature.
 
 === hint: Rivulet
 You will need to find Moon as Rivulet and not lose the Pearl on your way.
-

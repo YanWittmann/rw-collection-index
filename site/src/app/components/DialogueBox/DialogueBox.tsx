@@ -1,6 +1,6 @@
 import { TranscriberSelector } from "./TranscriberSelector";
 import { DialogueContent } from "./DialogueContent";
-import { PearlData } from "../../types/types";
+import { Dialogue, PearlData } from "../../types/types";
 import { speakerNames } from "../../utils/speakers";
 import { useCallback, useMemo, useState } from "react";
 import { motion } from "framer-motion"
@@ -22,11 +22,22 @@ interface DialogueBoxProps {
     onSelectPearl: (pearl: PearlData | null) => void
 }
 
-export function generateMapLink(pearl: PearlData) {
+export function generateMapLinkPearl(pearl: PearlData) {
     // https://rain-world-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
     const region = pearl.metadata.region;
     const room = pearl.metadata.room;
     const slugcat = pearl.metadata.mapSlugcat;
+    if (!region || !room || !slugcat) {
+        return null;
+    }
+    return `https://rain-world-map.github.io/map.html?slugcat=${slugcat}&region=${region}&room=${region}_${room}`;
+}
+
+export function generateMapLinkTranscriber(transcriberDialogue: Dialogue) {
+    // https://rain-world-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
+    const region = transcriberDialogue.metadata.region;
+    const room = transcriberDialogue.metadata.room;
+    const slugcat = transcriberDialogue.metadata.mapSlugcat;
     if (!region || !room || !slugcat) {
         return null;
     }
@@ -59,6 +70,10 @@ export function DialogueBox({
         const transcriberIndex = findTranscriberIndex(hoveredTranscriber);
         if (transcriberIndex !== null && transcriberIndex !== -1) {
             let transcriberName = speakerNames[pearl.transcribers[transcriberIndex].transcriber];
+            if (!transcriberName) {
+                console.error("Unable to find transcriber name", pearl.transcribers[transcriberIndex].transcriber);
+                transcriberName = "Unknown";
+            }
 
             // extract parentheses from end of the name
             const parenthesisMatch = transcriberName.match(/(.*) \((.*)\)/);
@@ -105,7 +120,7 @@ export function DialogueBox({
             <DialogueActionBar
                 isUnlocked={isUnlocked}
                 pearl={pearl}
-                mapLink={generateMapLink(pearl)}
+                transcriberData={pearl.transcribers[selectedTranscriberIndex]}
                 onSelectPearl={onSelectPearl}
             />
             <TranscriberSelector
@@ -119,10 +134,16 @@ export function DialogueBox({
                 onHover={setHoveredTranscriber}
             />
             <div className="overflow-y-auto max-h-[80vh] no-scrollbar">
-                {isUnlocked ? <DialogueContent
-                    lines={pearl.transcribers[selectedTranscriberIndex].lines}
-                /> : <HintSystemContent
+                {isUnlocked ? <>
+                    <div className="text-center text-white text-lg mb-14 pb-0 mt-7">
+                        {pearl.metadata.name}
+                    </div>
+                    <DialogueContent
+                        lines={pearl.transcribers[selectedTranscriberIndex].lines}
+                    />
+                </> : <HintSystemContent
                     pearl={pearl}
+                    transcriberData={pearl.transcribers[selectedTranscriberIndex]}
                     selectedTranscriber={selectedTranscriber}
                     unlockTranscription={unlockTranscription}
                     hintProgress={hintProgress}

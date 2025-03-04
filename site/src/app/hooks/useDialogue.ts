@@ -14,7 +14,7 @@ export function useDialogue(unlockMode: UnlockMode) {
             return;
         }
         setSelectedPearl(pearl.id);
-        setSelectedTranscriber(pearl.transcribers[0]?.transcriber ?? null);
+        setSelectedTranscriber(pearl.transcribers[pearl.transcribers.length - 1]?.transcriber ?? null);
     };
 
 

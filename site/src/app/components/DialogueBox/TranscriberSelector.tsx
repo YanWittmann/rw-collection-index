@@ -24,14 +24,25 @@ export function TranscriberSelector({
     const renderTranscriber = (transcriber: Dialogue, index: number) => {
         const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, transcriber.transcriber);
 
+        let color = '';
+        let overwriteIcon = undefined;
+        let overwriteColor = undefined;
+        if (selectedName?.includes("broadcast")) {
+            color = transcriber.metadata.color ?? transcribersColors[transcriber.transcriber];
+            overwriteColor = color;
+            overwriteIcon = "broadcast";
+        } else {
+            color = transcribersColors[transcriber.transcriber];
+        }
+
         if (!isUnlocked) {
             return <RwIconButton
                 key={'select-' + pearl.id + '-' + index}
                 onClick={() => onSelect(transcriber.transcriber)}
                 selected={transcriber.transcriber === selectedName}
             >
-                <RwIcon type={"questionmark"} color={darken(transcribersColors[transcriber.transcriber], 20) ?? 'white'}/>
-            </RwIconButton>
+                <RwIcon type={"questionmark"} color={darken(color, 20) ?? 'white'}/>
+            </RwIconButton>;
         } else {
             return (
                 <RwIconButton
@@ -41,9 +52,13 @@ export function TranscriberSelector({
                     onMouseEnter={() => onHover(transcriber.transcriber)}
                     onMouseLeave={() => onHover(null)}
                 >
-                    <RwIcon type={transcriber.transcriber as RwIconType}/>
+                    {overwriteColor ?
+                        <RwIcon type={(overwriteIcon ?? transcriber.transcriber) as RwIconType}
+                                color={overwriteColor}/> :
+                        <RwIcon type={(overwriteIcon ?? transcriber.transcriber) as RwIconType}/>
+                    }
                 </RwIconButton>
-            )
+            );
         }
     }
 

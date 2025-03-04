@@ -4,6 +4,7 @@ import { RwTextInput } from "./RwTextInput";
 import { useMemo, useState } from "react";
 import PearlItem from "./PearlItem";
 import UnlockManager from "../../utils/unlockManager";
+import { log } from "node:util";
 
 interface PearlGridProps {
     pearls: PearlData[],
@@ -23,9 +24,13 @@ export function PearlGrid({ pearls, selectedPearl, onSelectPearl, order, unlockM
                 return false;
             }
         }
+
+        const isValidRegionName = textFilter.length === 2 && textFilter.match(/^[A-Z]{2}$/);
+        if (isValidRegionName && pearl.metadata.region?.toLowerCase() === textFilter.toLowerCase()) return true;
+
         if (pearl.metadata.name?.toLowerCase().includes(textFilter.toLowerCase())) return true;
-        if (pearl.metadata.region?.toLowerCase().includes(textFilter.toLowerCase())) return true;
-        if (pearl.transcribers.some(transcriber => transcriber.lines.some(line => line.text.toLowerCase().includes(textFilter.toLowerCase())))) return true;
+        if (pearl.transcribers.some(transcriber => transcriber.lines.some(line => (line.speaker + ": " + line.text).toLowerCase().includes(textFilter.toLowerCase())))) return true;
+        if (pearl.transcribers.some(transcriber => transcriber.transcriber.toLowerCase() === textFilter.toLowerCase())) return true;
         return false;
     };
 

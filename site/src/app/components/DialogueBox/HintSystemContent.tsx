@@ -1,7 +1,7 @@
-import { Hint, PearlData } from "../../types/types";
+import { Dialogue, Hint, PearlData } from "../../types/types";
 import { RwIconButton } from "../other/RwIconButton";
 import { regionNames } from "../../utils/speakers";
-import { generateMapLink } from "./DialogueBox";
+import { generateMapLinkPearl, generateMapLinkTranscriber } from "./DialogueBox";
 
 
 interface HintSystemContentProps {
@@ -9,7 +9,8 @@ interface HintSystemContentProps {
     selectedTranscriber: string | null,
     unlockTranscription: () => void,
     hintProgress: number,
-    setHintProgress: (value: (((prevState: number) => number) | number)) => void
+    setHintProgress: (value: (((prevState: number) => number) | number)) => void,
+    transcriberData: Dialogue
 }
 
 export default function HintSystemContent({
@@ -17,17 +18,18 @@ export default function HintSystemContent({
                                               selectedTranscriber,
                                               unlockTranscription,
                                               hintProgress,
-                                              setHintProgress
+                                              setHintProgress,
+                                              transcriberData
                                           }: HintSystemContentProps) {
     const effectiveHints: Hint[] = [];
     if (pearl.metadata.region) {
         effectiveHints.push({
             name: "Region",
-            lines: ["Found in " + (regionNames[pearl.metadata.region ?? ''] ?? 'Unknown') + " (" + pearl.metadata.region + ")"]
+            lines: ["Found in " + (regionNames[transcriberData.metadata.region ?? ''] ?? 'Unknown') + " (" + transcriberData.metadata.region + ")"]
         });
     }
     effectiveHints.push(...pearl.hints);
-    const mapLink = generateMapLink(pearl);
+    const mapLink = generateMapLinkTranscriber(transcriberData);
     if (mapLink) {
         effectiveHints.push({
             name: "Map link",

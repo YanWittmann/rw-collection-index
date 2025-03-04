@@ -1,0 +1,23 @@
+color: #c30df5
+type: pearl
+name: Deep Purple
+region: VS
+room: C03
+mapSlugcat: white
+
+=== transcription: FP-artificer
+This information is very old. Old enough to not be on my records.
+There is nothing to be amazed about, however. It is only an automated maintenance and production log for one of the drills north of the farm arrays. Not that this information has a use now, as these drills have been offline for a very long time.
+Details from times past. These have since been superseded by underground filtration systems.
+
+=== transcription: LttM-post-collapse
+Oh. This is from the old drill site north of the farm array. It's quite ancient, as the mines predate my construction.
+The early ages of the Void Fluid revolution were an explosive period of innovation and industry. By creating a vacuum of empty space, and inducing a flux in the energy fields around the singular null point you've created, you can cause a fuel mass of base elements to decompose into energy. This process is called mass rarefaction.
+Of course, this undertaking required extremely pure samples to properly craft rarefaction cells. Older mines on the surface became abandoned once underground construction became much easier. Though, most nearby systems were connected anyway, regardless of age or depth. Void Fluid isn't exactly easy to purify, or even properly contain.
+The pearl itself is simply a maintenance and production log for one of the forty-seven operating drill silos.
+
+=== hint: Rough Location
+Pretty much in the center of the Region.
+
+=== hint: Rough Location
+In the Room right below one of the Shelters at the surface.
