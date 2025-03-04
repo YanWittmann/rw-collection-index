@@ -4,6 +4,7 @@ name: Dull Yellow
 region: GW
 room: TOWER07
 mapSlugcat: artificer
+info: This pearl can only be obtained as Artificer or Spearmaster.
 
 === transcription: FP-artificer
 This is a microbial log from the waste department.

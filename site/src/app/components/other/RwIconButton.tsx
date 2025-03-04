@@ -11,11 +11,13 @@ interface RwIconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
     onMouseLeave?: () => void
     children?: React.ReactNode
     square?: boolean
+    padding?: string
 }
 
 export function RwIconButton({
                                  selected = false,
                                  square = true,
+                                 padding = "p-3",
                                  onClick,
                                  onMouseEnter,
                                  onMouseLeave,
@@ -94,7 +96,7 @@ export function RwIconButton({
             {/* Content container */}
             <div className={cn(
                 "relative z-10 flex items-center justify-center",
-                square ? "w-full h-full p-3" : "px-4 py-3"
+                square ? ("w-full h-full " + padding) : "px-4 py-3"
             )}>
                 {children}
             </div>

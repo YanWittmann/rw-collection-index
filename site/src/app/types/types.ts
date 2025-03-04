@@ -9,6 +9,7 @@ export interface Dialogue {
     transcriber: string;
     metadata: {
         color: string;
+        info?: string;
         region?: string;
         room?: string;
         mapSlugcat?: string;
@@ -27,6 +28,7 @@ export interface PearlData {
         color: string;
         type: PearlType;
         name: string;
+        info?: string;
         region: string;
         room: string;
         mapSlugcat: string;

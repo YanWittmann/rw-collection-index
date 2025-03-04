@@ -4,7 +4,6 @@ import { RwTextInput } from "./RwTextInput";
 import { useMemo, useState } from "react";
 import PearlItem from "./PearlItem";
 import UnlockManager from "../../utils/unlockManager";
-import { log } from "node:util";
 
 interface PearlGridProps {
     pearls: PearlData[],

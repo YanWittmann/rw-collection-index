@@ -14,6 +14,7 @@ I can only hope the destruction of the bridges during her collapse has prevented
 These are my mistakes to endure, not hers.
 
 === transcription: LttM-post-collapse
+md-info: ${LC-PEARL-MOON}
 Oh, little creature. Where did you find this? It is quite old, around the time of Five Pebbles' construction.
 It's a large collection of architectural notes from his facility, during its initial construction. Most prominently the two transfer bridges between our facilities. These were two large spans that ran between our two closest sets of legs, that I can only presume were both lost in my collapse.
 I exist as an old model, and the concept of an iterator was still fairly new at the time of my construction. Knowledge of the technology, and more importantly its limits, had not quite reached maturity.

@@ -11,6 +11,7 @@ There is nothing too interesting here. Modular city cell blocks have been in pro
 Unless a junkyard dweller like you has an vested interest in septic system design, there is very little information here that either of us would enjoy reading.
 
 === transcription: LttM-post-collapse
+md-info: ${LC-PEARL-MOON}
 Where did you find this, little creature? It's a blueprint for a type of large immobile purposed organism. This one seems to be specifically for the cities built on top of one of our structures.
 Have you been to one before? I'm sure it would not be an easy task! Older models had more traditional constructions, but newer designs began to use mass-produced cellular buildings called living blocks. Each cell in those blocks has a different shell reflecting their purpose.
 Some of these units contain completely immobile organisms or machinery. Others are small dwellings for cleaners or messengers to rest. Other, much larger cells, serve as residences and storage.

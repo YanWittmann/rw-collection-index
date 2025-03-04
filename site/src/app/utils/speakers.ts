@@ -84,3 +84,39 @@ export const regionNames: { [key: string]: string } = {
 export function darken(hex: string, amount: number) {
     return '#' + hex.replace(/^#/, '').replace(/../g, color => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) - amount)).toString(16)).substr(-2));
 }
+
+const variableDefinitions: { [key: string]: any } = {
+    "speakersColors": speakersColors,
+    "transcribersColors": transcribersColors,
+    "SI-CHAT": "When the MSC DLC is disabled, there are only two Sky Island pearls per playthrough, each with one random one of five possible conversations.\nWith the MSC DLC, these have been split into five separate pearls. This is one of them.",
+    "LC-PEARL-MOON": "This Pearl cannot be brought to Moon as Artificer, as the Shoreline has been replaced by the Waterfront Facility.\\nThe only way to bring the Pearl to Moon is to be spawned into the Metropolis as Monk or Survivor in Expedition Mode and bringing the Pearl to Shoreline.",
+}
+
+/**
+ * Replaces registered variables from the {@link variableDefinitions} object in the given string.
+ * Format for variables is ${some.variable.name} where each part of the access is separated by a dot.
+ * @param str The string to resolve variables in.
+ * @returns The string with all variables resolved.
+ */
+export function resolveVariables(str: string): string {
+    return str.replace(/\${([^}]+)}/g, (_, variable) => {
+        const parts = variable.split(".");
+        let value = variableDefinitions[parts[0]];
+        if (value === undefined) {
+            console.error(`Variable ${variable} not found`);
+            return `\${${variable}}`;
+        }
+        for (let i = 1; i < parts.length; i++) {
+            value = value[parts[i]];
+            if (value === undefined) {
+                console.error(`Variable ${variable} not found`);
+                return `\${${variable}}`;
+            }
+        }
+        if (typeof value === "string") {
+            return value;
+        }
+        console.error(`Variable ${variable} is not a string`);
+        return `\${${variable}}`;
+    });
+}

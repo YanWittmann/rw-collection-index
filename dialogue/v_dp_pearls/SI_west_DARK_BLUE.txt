@@ -4,6 +4,7 @@ name: Dark Blue (SI-2)
 region: SI
 room: A07
 mapSlugcat: white
+info: ${SI-CHAT}
 
 === transcription: FP-artificer
 This is a log of a Sliverist conversation group. Some of the replies are mine, but none of that is important now.

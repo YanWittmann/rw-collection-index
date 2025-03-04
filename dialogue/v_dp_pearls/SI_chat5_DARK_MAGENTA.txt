@@ -4,6 +4,7 @@ name: Dark Magenta (SI-5)
 region: SI
 room: B10
 mapSlugcat: white
+info: ${SI-CHAT}
 
 === transcription: FP-artificer
 I do not wish to speak of this. Everything I had been working towards was destroyed in that moment.

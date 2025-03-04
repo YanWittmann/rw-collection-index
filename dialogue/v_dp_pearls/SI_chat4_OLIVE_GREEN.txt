@@ -4,6 +4,7 @@ name: Olive Green (SI-4)
 region: SI
 room: C08
 mapSlugcat: white
+info: ${SI-CHAT}
 
 === transcription: FP-artificer
 This is a warning to the local group, from my senior and neighbor Looks to the Moon, about incoming forced communications over the network. She was not aware of my activities, and was being starved of water, as I was running a very sensitive process.

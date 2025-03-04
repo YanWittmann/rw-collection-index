@@ -4,6 +4,7 @@ name: Dark Green (SI-1)
 region: SI
 room: B12
 mapSlugcat: white
+info: ${SI-CHAT}
 
 === transcription: FP-artificer
 This is an old conversation between myself and a close friend who I considered a mentor.

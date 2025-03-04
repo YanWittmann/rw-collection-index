@@ -4,6 +4,7 @@ name: Dark Purple (SI-3)
 region: SI
 room: C02
 mapSlugcat: white
+info: ${SI-CHAT}
 
 === transcription: FP-artificer
 This is an old conversation log between my nearby peers. They were concerned about my goal for personal ascension. Although they were unaware it was me at the time, as my conversations on that topic were anonymous.

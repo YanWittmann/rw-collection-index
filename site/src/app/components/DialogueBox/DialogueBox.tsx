@@ -1,7 +1,7 @@
 import { TranscriberSelector } from "./TranscriberSelector";
 import { DialogueContent } from "./DialogueContent";
 import { Dialogue, PearlData } from "../../types/types";
-import { speakerNames } from "../../utils/speakers";
+import { resolveVariables, speakerNames } from "../../utils/speakers";
 import { useCallback, useMemo, useState } from "react";
 import { motion } from "framer-motion"
 import { DialogueActionBar } from "./DialogueActionBar";
@@ -9,6 +9,9 @@ import { WelcomeDialogueContent } from "./WelcomeDialogueContent";
 import { UnlockMode } from "../../page";
 import UnlockManager from "../../utils/unlockManager";
 import HintSystemContent from "./HintSystemContent";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
+import { RwIcon } from "../PearlGrid/RwIcon";
+import { renderDialogueLine } from "../../utils/renderDialogueLine";
 
 interface DialogueBoxProps {
     pearl: PearlData | null
@@ -114,13 +117,37 @@ export function DialogueBox({
             return null;
         }
 
-        const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, pearl.transcribers[selectedTranscriberIndex].transcriber);
+        var dialogue = pearl.transcribers[selectedTranscriberIndex];
+        const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, dialogue.transcriber);
+
+        let titleElement = null;
+        if (dialogue.metadata.info) {
+            titleElement =
+                <div className="text-center text-white text-lg mb-14 pb-0 mt-7">
+                    <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
+                        <Tooltip key={"pearl-info"}>
+                            <TooltipTrigger>
+                                <span className={"flex items-center"}>
+                                    {pearl.metadata.name} (<span className={"w-3 h-3"}><RwIcon type="info"/></span>)
+                                </span>
+                            </TooltipTrigger>
+                            <TooltipContent className="text-center">
+                                <span dangerouslySetInnerHTML={{ __html: renderDialogueLine(resolveVariables(dialogue.metadata.info)) }}/>
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+                </div>
+        } else {
+            titleElement = <div className="text-center text-white text-lg mb-14 pb-0 mt-7">
+                {pearl.metadata.name}
+            </div>
+        }
 
         return <>
             <DialogueActionBar
                 isUnlocked={isUnlocked}
                 pearl={pearl}
-                transcriberData={pearl.transcribers[selectedTranscriberIndex]}
+                transcriberData={dialogue}
                 onSelectPearl={onSelectPearl}
             />
             <TranscriberSelector
@@ -135,15 +162,13 @@ export function DialogueBox({
             />
             <div className="overflow-y-auto max-h-[80vh] no-scrollbar">
                 {isUnlocked ? <>
-                    <div className="text-center text-white text-lg mb-14 pb-0 mt-7">
-                        {pearl.metadata.name}
-                    </div>
+                    {titleElement}
                     <DialogueContent
-                        lines={pearl.transcribers[selectedTranscriberIndex].lines}
+                        lines={dialogue.lines}
                     />
                 </> : <HintSystemContent
                     pearl={pearl}
-                    transcriberData={pearl.transcribers[selectedTranscriberIndex]}
+                    transcriberData={dialogue}
                     selectedTranscriber={selectedTranscriber}
                     unlockTranscription={unlockTranscription}
                     hintProgress={hintProgress}

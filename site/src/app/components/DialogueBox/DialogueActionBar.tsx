@@ -3,7 +3,7 @@ import { RwIconButton } from "../other/RwIconButton";
 import { Dialogue, PearlData } from "../../types/types";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
 import { regionNames } from "../../utils/speakers";
-import { generateMapLinkPearl, generateMapLinkTranscriber } from "./DialogueBox";
+import { generateMapLinkTranscriber } from "./DialogueBox";
 
 interface DialogueActionBarProps {
     pearl: PearlData
@@ -23,7 +23,7 @@ export function DialogueActionBar({
     segments.push(
         <Tooltip key={"close-dialogue-box"}>
             <TooltipTrigger>
-                <RwIconButton onClick={() => onSelectPearl(null)}>
+                <RwIconButton onClick={() => onSelectPearl(null)} padding="p-[.6rem]">
                     <RwIcon type="close"/>
                 </RwIconButton>
             </TooltipTrigger>

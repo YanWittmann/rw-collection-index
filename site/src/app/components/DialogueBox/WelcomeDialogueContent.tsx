@@ -56,14 +56,14 @@ export function WelcomeDialogueContent({
                             </RwIconButton>
 
                     }
-                    <RwIconButton square={false} onClick={() => {
+                    {unlockMode === "unlock" && <RwIconButton square={false} onClick={() => {
                         if (window.confirm("Are you sure you want to reset all unlocks?")) {
                             UnlockManager.reset();
                             triggerRender();
                         }
                     }}>
                         Reset Unlocks
-                    </RwIconButton>
+                    </RwIconButton>}
                 </div>
             </div>
         </div>
