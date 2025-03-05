@@ -1,9 +1,7 @@
 color: #9d76d4
 type: pearl
 name: Light Purple
-region: OE
-room: OE_SPIRE
-mapSlugcat: gourmand
+map: region=OE, room=OE_SPIRE, mapSlugcat=gourmand
 
 === transcription: LttM-post-collapse
 Did you find this beyond the retaining wall? I can't imagine another place you might.

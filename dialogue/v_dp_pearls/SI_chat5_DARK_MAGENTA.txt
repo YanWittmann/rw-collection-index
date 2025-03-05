@@ -1,9 +1,7 @@
 color: #420d2d
 type: pearl
 name: Dark Magenta (SI-5)
-region: SI
-room: B10
-mapSlugcat: white
+map: region=SI, room=B10, mapSlugcat=white
 info: ${SI-CHAT}
 
 === transcription: FP-artificer

@@ -5,14 +5,19 @@ export interface DialogueLine {
     text: string;
 }
 
+export interface MapInfo {
+    region: string;
+    room: string;
+    mapSlugcat: string;
+}
+
 export interface Dialogue {
     transcriber: string;
     metadata: {
         color: string;
         info?: string;
-        region?: string;
-        room?: string;
-        mapSlugcat?: string;
+        mapInfo?: string;
+        map?: MapInfo[];
     }
     lines: DialogueLine[];
 }
@@ -29,9 +34,8 @@ export interface PearlData {
         type: PearlType;
         name: string;
         info?: string;
-        region: string;
-        room: string;
-        mapSlugcat: string;
+        mapInfo?: string;
+        map?: MapInfo[];
     };
     transcribers: Dialogue[];
     hints: Hint[];

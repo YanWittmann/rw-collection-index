@@ -1,0 +1,16 @@
+color: #ffffff
+type: broadcast
+name: A Name (White 6)
+map: MAP-WHITE-BROADCASTS
+mapInfo: ${MAP-LP-PRE-PEB}
+info: ${LP-PRE-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment
+NSH: Tell me more about this messenger. Do they have a name?
+SRS: Well, their test number is 07. So I guess that would be their name.
+NSH: That name doesn't have much personality though, does it? Don't you think something else might be better?
+SRS: You're not wrong on that. More of a placeholder than anything.
+SRS: I'll think of some ideas for a name.
+NSH: You shouldn't do that until they return to you. Don't get too ahead of yourself.
+SRS: ... You're right. Perhaps just 'Messenger' is best... For now.

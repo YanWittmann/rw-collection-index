@@ -1,9 +1,7 @@
 color: #225bff
 type: pearl
 name: Bright Blue
-region: HI
-room: B08
-mapSlugcat: white
+map: region=HI, room=B08, mapSlugcat=white
 
 === transcription: FP-artificer
 This is a production log from a facility on the surface. It has been a very long time since I've cared about reading one, but the name... roughly translates as Side House. I remember the shipments of holy ash I used to receive from there.

@@ -1,9 +1,7 @@
 color: #ff3c3c
 type: pearl
 name: Bright Red
-region: LF
-room: D07
-mapSlugcat: white
+map: region=LF, room=D07, mapSlugcat=white
 
 === transcription: FP-artificer
 Oh, this is a small plate of spiritual guidance. From an age long before the Void Fluid revolution.

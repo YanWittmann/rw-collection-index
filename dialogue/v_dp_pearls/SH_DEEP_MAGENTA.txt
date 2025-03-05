@@ -1,9 +1,7 @@
 color: #841451
 type: pearl
 name: Deep Magenta
-region: SH
-room: A19
-mapSlugcat: white
+map: region=SH, room=A19, mapSlugcat=white
 
 === transcription: FP-artificer
 Ah, you found this in the memory crypts? I would advise against wandering into such secure areas. The memory crypts were considered sacred ground by my creators.

@@ -6,6 +6,37 @@ const DIALOGUE_DIR = path.join(__dirname, '../dialogue');
 const OUTPUT_FILE = path.join(__dirname, 'src/generated/parsed-dialogues.json');
 const MAX_SPEAKER_LENGTH = 12;
 
+const mapMetadataTemplates = {
+    "MAP-WHITE-BROADCASTS": [
+        { region: "SU", room: "A17", mapSlugcat: "spear" },
+        { region: "HI", room: "B02", mapSlugcat: "spear" },
+        { region: "DS", room: "A11", mapSlugcat: "spear" },
+        { region: "SH", room: "B03", mapSlugcat: "spear" },
+        { region: "VS", room: "A05", mapSlugcat: "spear" },
+        { region: "VS", room: "B10", mapSlugcat: "spear" },
+        { region: "UW", room: "J01", mapSlugcat: "spear" },
+        { region: "SS", room: "D08", mapSlugcat: "spear" },
+        { region: "LF", room: "D01", mapSlugcat: "spear" },
+        { region: "SB", room: "C07", mapSlugcat: "spear" },
+        { region: "LM", room: "EDGE02", mapSlugcat: "spear" },
+    ]
+}
+
+function parseMapEntries(value) {
+    if (mapMetadataTemplates[value]) {
+        return mapMetadataTemplates[value];
+    }
+
+    const entry = {};
+    value.split(',')
+        .map(part => part.trim())
+        .forEach(pair => {
+            const [key, value] = pair.split('=').map(s => s.trim());
+            if (key && value) entry[key] = value;
+        });
+    return [entry];
+}
+
 function parseLine(line) {
     const colonIndex = line.indexOf(':');
     if (colonIndex === -1 || colonIndex > MAX_SPEAKER_LENGTH) {
@@ -24,6 +55,7 @@ function parseLine(line) {
     return { text: line };
 }
 
+
 function parseSectionHeader(headerLine) {
     if (headerLine.startsWith('=== ')) {
         const legacyMatch = headerLine.match(/^=== (\w+)$/);
@@ -33,7 +65,10 @@ function parseSectionHeader(headerLine) {
 
         const namespacedMatch = headerLine.match(/^=== (\w+): (.+)$/);
         if (namespacedMatch) {
-            return { namespace: namespacedMatch[1], value: namespacedMatch[2] };
+            return {
+                namespace: namespacedMatch[1],
+                value: namespacedMatch[2]
+            };
         }
     }
     return null;
@@ -42,24 +77,33 @@ function parseSectionHeader(headerLine) {
 const sectionHandlers = {
     transcription: (sectionLines, value) => {
         // Extract metadata lines starting with md-
-        const metadata = {};
+        const metadata = { map: [] };
         const lines = [];
 
-        for (const line of sectionLines) {
+        sectionLines.forEach(line => {
             if (line.startsWith('md-')) {
                 const colonIndex = line.indexOf(':');
                 if (colonIndex > -1) {
-                    const key = line.slice(3, colonIndex).trim(); // Remove 'md-' prefix
-                    metadata[key] = line.slice(colonIndex + 1).trim();
+                    const key = line.slice(3, colonIndex).trim(); // remove 'md-' prefix
+                    const val = line.slice(colonIndex + 1).trim();
+
+                    if (key === 'map') {
+                        parseMapEntries(val).forEach(entry => metadata.map.push(entry));
+                    } else {
+                        metadata[key] = val;
+                    }
                 }
             } else {
                 lines.push(line);
             }
-        }
+        });
 
         return {
             transcriber: value,
-            metadata: metadata,
+            metadata: {
+                ...metadata,
+                map: metadata.map.length > 0 ? metadata.map : undefined
+            },
             lines: lines.map(parseLine)
         };
     },
@@ -73,18 +117,28 @@ const sectionHandlers = {
 function parseDialogueContent(content) {
     const lines = content.split('\n').map(l => l.trim()).filter(l => l);
 
-    // Parse metadata
-    const metadata = {};
+    // Parse global metadata
+    const metadata = { map: [] };
     let sectionStartIndex = 0;
 
     while (sectionStartIndex < lines.length && !lines[sectionStartIndex].startsWith('===')) {
         const line = lines[sectionStartIndex];
         const colonIndex = line.indexOf(':');
         if (colonIndex > -1) {
-            metadata[line.slice(0, colonIndex).trim()] = line.slice(colonIndex + 1).trim();
+            const key = line.slice(0, colonIndex).trim();
+            const value = line.slice(colonIndex + 1).trim();
+
+            if (key === 'map') {
+                parseMapEntries(value).forEach(entry => metadata.map.push(entry));
+            } else {
+                metadata[key] = value;
+            }
         }
         sectionStartIndex++;
     }
+
+    // Clean up empty arrays
+    if (metadata.map.length === 0) delete metadata.map;
 
     // Parse sections
     const result = {
@@ -110,6 +164,10 @@ function parseDialogueContent(content) {
                                 sectionData.metadata[key] = metadata[key];
                             }
                         }
+                        // check whether the transcriber has any map entries and if not, add those from the global metadata
+                        if (!sectionData.metadata.map || sectionData.metadata.map.length === 0) {
+                            sectionData.metadata.map = metadata.map;
+                        }
                         result.transcribers.push(sectionData);
                     } else if (currentHeader.namespace === 'hint') {
                         result.hints.push(sectionData);
@@ -130,6 +188,16 @@ function parseDialogueContent(content) {
         if (handler) {
             const sectionData = handler(currentSectionLines, currentHeader.value);
             if (currentHeader.namespace === 'transcription') {
+                // iterate over the metadata of the transcriber and add all properties of the global metadata to it that are not already set
+                for (const key in metadata) {
+                    if (metadata.hasOwnProperty(key) && !sectionData.metadata.hasOwnProperty(key)) {
+                        sectionData.metadata[key] = metadata[key];
+                    }
+                }
+                // check whether the transcriber has any map entries and if not, add those from the global metadata
+                if (!sectionData.metadata.map || sectionData.metadata.map.length === 0) {
+                    sectionData.metadata.map = metadata.map;
+                }
                 result.transcribers.push(sectionData);
             } else if (currentHeader.namespace === 'hint') {
                 result.hints.push(sectionData);
@@ -137,7 +205,13 @@ function parseDialogueContent(content) {
         }
     }
 
-    return { metadata, ...result };
+    return {
+        metadata: {
+            ...metadata,
+            map: metadata.map || undefined
+        },
+        ...result
+    };
 }
 
 const getAllFiles = (dir, fileList = []) => {

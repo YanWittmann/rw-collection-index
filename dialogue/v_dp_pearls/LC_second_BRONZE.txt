@@ -1,9 +1,7 @@
 color: #c26600
 type: pearl
 name: Bronze
-region: LC
-room: floorpipes
-mapSlugcat: artificer
+map: region=LC, room=floorpipes, mapSlugcat=artificer
 
 === transcription: FP-artificer
 This is a blueprint for a living block cell. It stores and processes organic waste.

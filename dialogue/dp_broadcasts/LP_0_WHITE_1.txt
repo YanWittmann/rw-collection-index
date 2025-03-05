@@ -1,0 +1,17 @@
+color: #ffffff
+type: broadcast
+name: They Already Have (White 1)
+map: MAP-WHITE-BROADCASTS
+mapInfo: ${MAP-LP-PRE-PEB}
+info: ${LP-PRE-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment
+NSH: It's pretty clear to me who you're talking about. Though I won't say who, out of respect ~
+SRS: Please don't mock me, this is serious.
+SRS: The fact is, he really looked up to me. As much as I gave him a hard time, that's not something I took lightly.
+NSH: You're not the only one worried about him. I understand your position, but blaming yourself isn't productive.
+SRS: I understand that. I truly do. At this point we need to be taking action.
+NSH: I agree, but unfortunately there's not much that we can do being locked up in a box.
+NSH: Even less so that he's cut off all communication and is rejecting all help from the outside world.
+SRS: That may not be an issue, necessarily. I've already set a certain plan in motion...

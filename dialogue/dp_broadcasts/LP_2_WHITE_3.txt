@@ -1,0 +1,19 @@
+color: #ffffff
+type: broadcast
+name: Sending Information (White 3)
+map: MAP-WHITE-BROADCASTS
+mapInfo: ${MAP-LP-PRE-PEB}
+info: ${LP-PRE-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment
+SRS: Do you know how I sent the sensitive information last time? It certainly wasn't over the broadcast network.
+SRS: I purposed a messenger, and sent the information by land via a data pearl.
+NSH: How original of you.
+SRS: I learned from the best. At least I used it for something more... practical.
+NSH: If you call that practical, sure. Look how well things turned out ~
+SRS: ...
+SRS: Regardless, the fact is the method worked fine last time. The info was delivered, and the messenger even returned safely.
+SRS: So, I've recently sent it out again to deliver another message, despite the closed communication lines.
+NSH: With how this situation has evolved, that's going to be quite the dangerous trip compared to before.
+SRS: Again, that may not be an issue. I've outfitted my messenger with all it needs to protect itself.

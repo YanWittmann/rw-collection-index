@@ -1,9 +1,7 @@
 color: #2d420d
 type: pearl
 name: Olive Green (SI-4)
-region: SI
-room: C08
-mapSlugcat: white
+map: region=SI, room=C08, mapSlugcat=white
 info: ${SI-CHAT}
 
 === transcription: FP-artificer

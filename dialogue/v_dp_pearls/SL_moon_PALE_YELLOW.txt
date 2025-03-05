@@ -1,9 +1,7 @@
 color: #e9f452
 type: pearl
 name: Pale Yellow
-region: SL
-room: I01
-mapSlugcat: white
+map: region=SL, room=I01, mapSlugcat=white
 
 === transcription: LttM-post-collapse
 Interesting... This one is written by me.

@@ -1,6 +1,6 @@
 import { TranscriberSelector } from "./TranscriberSelector";
 import { DialogueContent } from "./DialogueContent";
-import { Dialogue, PearlData } from "../../types/types";
+import { Dialogue, MapInfo, PearlData } from "../../types/types";
 import { resolveVariables, speakerNames } from "../../utils/speakers";
 import { useCallback, useMemo, useState } from "react";
 import { motion } from "framer-motion"
@@ -25,26 +25,28 @@ interface DialogueBoxProps {
     onSelectPearl: (pearl: PearlData | null) => void
 }
 
-export function generateMapLinkPearl(pearl: PearlData) {
-    // https://rain-world-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
-    const region = pearl.metadata.region;
-    const room = pearl.metadata.room;
-    const slugcat = pearl.metadata.mapSlugcat;
-    if (!region || !room || !slugcat) {
+export function generateMapLinkFromMapInfo(mapInfo: MapInfo | undefined) {
+    if (!mapInfo) {
         return null;
     }
-    return `https://rain-world-map.github.io/map.html?slugcat=${slugcat}&region=${region}&room=${region}_${room}`;
+    // https://rain-world-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
+    const { region, room, mapSlugcat } = mapInfo;
+    if (!region || !room || !mapSlugcat) {
+        return null;
+    }
+    return `https://rain-world-map.github.io/map.html?slugcat=${mapSlugcat}&region=${region}&room=${region}_${room}`;
 }
 
-export function generateMapLinkTranscriber(transcriberDialogue: Dialogue) {
-    // https://rain-world-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
-    const region = transcriberDialogue.metadata.region;
-    const room = transcriberDialogue.metadata.room;
-    const slugcat = transcriberDialogue.metadata.mapSlugcat;
-    if (!region || !room || !slugcat) {
-        return null;
+export function hasMapLocations(dialogue: Dialogue): boolean {
+    return !!(dialogue.metadata.map && dialogue.metadata.map.length > 0);
+}
+
+export function getMapLocations(dialogue: Dialogue): MapInfo[] {
+    if (dialogue.metadata.map && dialogue.metadata.map.length > 0) {
+        return dialogue.metadata.map;
     }
-    return `https://rain-world-map.github.io/map.html?slugcat=${slugcat}&region=${region}&room=${region}_${room}`;
+
+    return [];
 }
 
 export function DialogueBox({

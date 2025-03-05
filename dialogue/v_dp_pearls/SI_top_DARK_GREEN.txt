@@ -1,9 +1,7 @@
 color: #0d422d
 type: pearl
 name: Dark Green (SI-1)
-region: SI
-room: B12
-mapSlugcat: white
+map: region=SI, room=B12, mapSlugcat=white
 info: ${SI-CHAT}
 
 === transcription: FP-artificer

@@ -25,7 +25,7 @@ export function PearlGrid({ pearls, selectedPearl, onSelectPearl, order, unlockM
         }
 
         const isValidRegionName = textFilter.length === 2 && textFilter.match(/^[A-Z]{2}$/);
-        if (isValidRegionName && pearl.metadata.region?.toLowerCase() === textFilter.toLowerCase()) return true;
+        if (isValidRegionName && pearl.metadata.map?.find(m => m.region.toLowerCase() === textFilter.toLowerCase())) return true;
 
         if (pearl.metadata.name?.toLowerCase().includes(textFilter.toLowerCase())) return true;
         if (pearl.transcribers.some(transcriber => transcriber.lines.some(line => (line.speaker + ": " + line.text).toLowerCase().includes(textFilter.toLowerCase())))) return true;

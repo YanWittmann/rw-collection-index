@@ -1,9 +1,7 @@
 color: #267d2a
 type: pearl
 name: Deep Green
-region: LC
-room: ruin02
-mapSlugcat: artificer
+map: region=LC, room=ruin02, mapSlugcat=artificer
 
 === transcription: FP-artificer
 You took this from within the city? These are architectural notes from the original construction of my facility.

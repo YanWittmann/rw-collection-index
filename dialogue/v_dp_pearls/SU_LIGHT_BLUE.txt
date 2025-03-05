@@ -1,9 +1,7 @@
 color: #93a8e9
 type: pearl
 name: Light Blue
-region: SU
-room: B05
-mapSlugcat: white
+map: region=SU, room=B05, mapSlugcat=white
 
 === transcription: FP-artificer
 This pearl is an amulet of repeating mantras, followed by a termination verse. Likely a small decoration lost from some garment. I cannot imagine it has much significance.

@@ -1,0 +1,19 @@
+color: #ffffff
+type: broadcast
+name: World Warmth (White 7)
+map: MAP-WHITE-BROADCASTS
+mapInfo: ${MAP-LP-PRE-PEB}
+info: ${LP-PRE-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PUBLIC GROUP [REFUGEUPONTHRELIEWELS] all participants anonymous
+GS: So, what do you think is going to happen to the world? Once we all... you know.
+HR: Discover a reproducable, portable, and global solution for ascension, or when we all drop dead?
+GS: Well, in either case really.
+HR: I'm not really sure myself. At this point I think our rain might be the only source of heat on the surface. It has been that way for a very long time.
+GS: There are so few records of the world before we were made, but it all seems so different. Do you think it will someday look like that again?
+HR: I don't think so. At least not for a very long time.
+GS: Oh...
+HR: ...
+NGI: Transcendental Inversion! Transcendental Inversion!!
+HR: Oh not this again!

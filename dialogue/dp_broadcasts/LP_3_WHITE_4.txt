@@ -1,0 +1,18 @@
+color: #ffffff
+type: broadcast
+name: Care Package (White 4)
+map: MAP-WHITE-BROADCASTS
+mapInfo: ${MAP-LP-PRE-PEB}
+info: ${LP-PRE-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment
+NSH: I am worried right now, to be honest.
+SRS: Why is that?
+NSH: It's about Looks To The Moon. She's very close to Five Pebbles, and she's a very dear friend of mine.
+SRS: Oh, right... no one has been able to contact her since...
+NSH: Exactly. She wouldn't willingly tune us out. I worry that her systems are incredibly damaged.
+SRS: There isn't much we can do, is there?
+NSH: We just have to try to help her the best we can. For now I'm going to hold out hope that she'll eventually respond.
+SRS: What if she doesn't?
+NSH: I may send a little care package if things get desperate enough.

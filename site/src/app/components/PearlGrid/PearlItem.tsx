@@ -2,8 +2,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadc
 import { RwIcon } from "./RwIcon";
 import { RwIconButton } from "../other/RwIconButton";
 import UnlockManager from "../../utils/unlockManager";
-import { regionNames } from "../../utils/speakers";
-import { PearlData } from "../../types/types";
+import { MapInfo, PearlData } from "../../types/types";
 import { UnlockMode } from "../../page";
 import React, { useMemo } from "react";
 
@@ -22,14 +21,19 @@ const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, selectedPearl,
         // collect all metadata from the dialogue transcriptions
         let tooltip = pearl.metadata.name ?? 'Unknown';
         const metadatas = pearl.transcribers.map(transcriber => transcriber.metadata);
-        let knownRegions = new Set<string>();
-        for (const metadata of metadatas) {
-            if (metadata.region && metadata.room) {
-                const checkKey = metadata.region + '_' + metadata.room;
-                if (knownRegions.has(checkKey)) continue;
-                knownRegions.add(checkKey);
-                tooltip += ' / ' + regionNames[metadata.region] + ' (' + metadata.region + ')';
-            }
+        const mapInfos: MapInfo[] = metadatas.filter(metadata => metadata.map && metadata.map.length > 0).map(metadata => metadata.map as any as MapInfo).flat();
+
+        let regionCollector = new Set<string>();
+        for (const mapInfo of mapInfos) {
+            const checkKey = mapInfo.region + ' (' + mapInfo.room + ')';
+            if (regionCollector.has(checkKey)) continue;
+            regionCollector.add(checkKey);
+        }
+
+        if (regionCollector.size > 3) {
+            tooltip += ' / ' + mapInfos.length + ' locations';
+        } else {
+            regionCollector.forEach(region => tooltip += ' / ' + region);
         }
         return tooltip;
     }, [pearl]);

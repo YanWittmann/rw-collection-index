@@ -1,7 +1,7 @@
 import { Dialogue, Hint, PearlData } from "../../types/types";
 import { RwIconButton } from "../other/RwIconButton";
 import { regionNames } from "../../utils/speakers";
-import { generateMapLinkPearl, generateMapLinkTranscriber } from "./DialogueBox";
+import { generateMapLinkFromMapInfo } from "./DialogueBox";
 
 
 interface HintSystemContentProps {
@@ -22,19 +22,34 @@ export default function HintSystemContent({
                                               transcriberData
                                           }: HintSystemContentProps) {
     const effectiveHints: Hint[] = [];
-    if (pearl.metadata.region) {
+
+    if (pearl.metadata.type === "broadcast" && pearl.metadata.name) {
+        if (pearl.metadata.name.includes("(White ")) {
+            effectiveHints.push({
+                name: "White Broadcast",
+                lines: [
+                    "White Broadcasts unlock in a fixed sequence rather than being tied to specific locations.",
+                    "For this reason, the locations cannot be listed in this hint. Feel free to check the unlocked version of this Broadcast for a list of all locations."
+                ]
+            });
+        }
+    }
+
+    if (transcriberData.metadata.map && transcriberData.metadata.map.length === 1) {
         effectiveHints.push({
             name: "Region",
-            lines: ["Found in " + (regionNames[transcriberData.metadata.region ?? ''] ?? 'Unknown') + " (" + transcriberData.metadata.region + ")"]
+            lines: ["Found in " + (regionNames[transcriberData.metadata.map[0].region ?? ''] ?? 'Unknown') + " (" + transcriberData.metadata.map[0].region + ")"]
         });
     }
     effectiveHints.push(...pearl.hints);
-    const mapLink = generateMapLinkTranscriber(transcriberData);
-    if (mapLink) {
-        effectiveHints.push({
-            name: "Map link",
-            lines: [mapLink ?? "No map link available"]
-        });
+    if (transcriberData.metadata.map && transcriberData.metadata.map.length === 1) {
+        const mapLink = generateMapLinkFromMapInfo(transcriberData.metadata.map[0]);
+        if (mapLink) {
+            effectiveHints.push({
+                name: "Map link",
+                lines: [mapLink ?? "No map link available"]
+            });
+        }
     }
 
     const renderHintLine = (line: string) => {

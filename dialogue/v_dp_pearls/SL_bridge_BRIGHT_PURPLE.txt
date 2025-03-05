@@ -1,9 +1,7 @@
 color: #9435ed
 type: pearl
 name: Bright Purple
-region: SL
-room: B01
-mapSlugcat: white
+map: region=SL, room=B01, mapSlugcat=white
 
 === transcription: FP-artificer
 This is very old. These are the blueprints for the local aquifer that facilitated my initial construction next to my neighbor, Looks to the Moon.

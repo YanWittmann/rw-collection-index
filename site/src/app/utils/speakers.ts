@@ -79,6 +79,7 @@ export const regionNames: { [key: string]: string } = {
     "CL": "Silent Construct",
     "HR": "Rubicon",
     "UG": "Undergrowth",
+    "LM": "Waterfront Facility",
 }
 
 export function darken(hex: string, amount: number) {
@@ -89,7 +90,9 @@ const variableDefinitions: { [key: string]: any } = {
     "speakersColors": speakersColors,
     "transcribersColors": transcribersColors,
     "SI-CHAT": "When the MSC DLC is disabled, there are only two Sky Island pearls per playthrough, each with one random one of five possible conversations.\nWith the MSC DLC, these have been split into five separate pearls. This is one of them.",
-    "LC-PEARL-MOON": "This Pearl cannot be brought to Moon as Artificer, as the Shoreline has been replaced by the Waterfront Facility.\\nThe only way to bring the Pearl to Moon is to be spawned into the Metropolis as Monk or Survivor in Expedition Mode and bringing the Pearl to Shoreline.",
+    "LC-PEARL-MOON": "This Pearl cannot be brought to Moon as Artificer, as the Shoreline has been replaced by the Waterfront Facility.\nThe only way to bring the Pearl to Moon is to be spawned into the Metropolis as Monk or Survivor in Expedition Mode and bringing the Pearl to Shoreline.",
+    "MAP-LP-PRE-PEB": "White Broadcasts are unlocked in sequential order regardless of the location they are found in.\nThe locations listed here can therefore be visited in any order.",
+    "LP-PRE-PEB": "The seven White Broadcasts are unlocked in sequential order regardless of the location they are found in.\nThey can only be found before meeting Five Pebbles.\nBroadcast names are unofficial and match the Wiki's names.",
 }
 
 /**

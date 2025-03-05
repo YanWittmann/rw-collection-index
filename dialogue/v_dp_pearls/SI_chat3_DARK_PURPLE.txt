@@ -1,9 +1,7 @@
 color: #2d0d42
 type: pearl
 name: Dark Purple (SI-3)
-region: SI
-room: C02
-mapSlugcat: white
+map: region=SI, room=C02, mapSlugcat=white
 info: ${SI-CHAT}
 
 === transcription: FP-artificer

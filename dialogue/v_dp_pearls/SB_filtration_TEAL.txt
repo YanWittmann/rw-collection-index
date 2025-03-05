@@ -1,9 +1,7 @@
 color: #3c9393
 type: pearl
 name: Teal
-region: SB
-room: J03
-mapSlugcat: white
+map: region=SB, room=J03, mapSlugcat=white
 
 === transcription: FP-artificer
 It's a blueprint for the Void Fluid filtration system beneath my facility.

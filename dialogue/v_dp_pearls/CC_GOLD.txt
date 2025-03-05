@@ -1,9 +1,7 @@
 color: #f2cc19
 type: pearl
 name: Gold
-region: CC
-room: A10
-mapSlugcat: white
+map: region=CC, room=A10, mapSlugcat=white
 
 === transcription: FP-artificer
 This was a gift from a close friend. It is instructions on how to remove the self-destruction taboo.

@@ -1,9 +1,7 @@
 color: #ff2667
 type: pearl
 name: Deep Pink
-region: LF
-room: D06
-mapSlugcat: white
+map: region=LF, room=D06, mapSlugcat=white
 
 === transcription: LttM-saint
 This pearl is written in plain text. How did you find this?

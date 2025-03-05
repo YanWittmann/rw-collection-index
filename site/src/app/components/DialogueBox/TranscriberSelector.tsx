@@ -27,8 +27,8 @@ export function TranscriberSelector({
         let color = '';
         let overwriteIcon = undefined;
         let overwriteColor = undefined;
-        if (selectedName?.includes("broadcast")) {
-            color = transcriber.metadata.color ?? transcribersColors[transcriber.transcriber];
+        if (transcriber.transcriber.includes("broadcast")) {
+            color = transcribersColors[transcriber.transcriber] ?? transcriber.metadata.color ?? '#ffffff';
             overwriteColor = color;
             overwriteIcon = "broadcast";
         } else {

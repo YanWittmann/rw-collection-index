@@ -1,9 +1,7 @@
 color: #7da47d
 type: pearl
 name: Pale Green
-region: UW
-room: H01
-mapSlugcat: white
+map: region=UW, room=H01, mapSlugcat=white
 
 === transcription: FP-artificer
 This one has not been archived. It was likely transported by hand...

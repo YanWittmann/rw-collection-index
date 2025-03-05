@@ -1,9 +1,7 @@
 color: #26be3c
 type: pearl
 name: Bright Green
-region: DS
-room: D01
-mapSlugcat: white
+map: region=DS, room=D01, mapSlugcat=white
 
 === transcription: FP-artificer
 This is an archival text, from before the Green hegemonic linguistic dynasty's second revelation.

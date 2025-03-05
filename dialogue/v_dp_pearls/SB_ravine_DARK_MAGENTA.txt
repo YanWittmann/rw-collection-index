@@ -1,9 +1,7 @@
 color: #420d2d
 type: pearl
 name: Dark Magenta (SB)
-region: SB
-room: F03
-mapSlugcat: white
+map: region=SB, room=F03, mapSlugcat=white
 
 === transcription: LttM-post-collapse
 It's a conversation log, all plain text. You want me to read it?

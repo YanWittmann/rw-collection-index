@@ -18,7 +18,7 @@ export function DialogueContent({ lines }: DialogueContentProps) {
                                 key={'tooltip-provider-' + line.speaker + '-' + i}
                                 delayDuration={120}>
                                 <Tooltip>
-                                    <TooltipTrigger>
+                                    <TooltipTrigger className="text-selectable">
                                         {line.speaker}
                                     </TooltipTrigger>
                                     <TooltipContent>

@@ -1,9 +1,7 @@
 color: #ff1bb4
 type: pearl
 name: Bright Magenta
-region: SL
-room: B04
-mapSlugcat: white
+map: region=SL, room=B04, mapSlugcat=white
 
 === transcription: FP-artificer
 This is a genome for a purposed organism. Just a menial cleaning slug.

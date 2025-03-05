@@ -1,0 +1,18 @@
+color: #ffffff
+type: broadcast
+name: Plan in Motion (White 2)
+map: MAP-WHITE-BROADCASTS
+mapInfo: ${MAP-LP-PRE-PEB}
+info: ${LP-PRE-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment
+SRS: I can't stop dwelling over mistakes that I've made. I could just delete those memories of course, but that feels irresponsible.
+NSH: Oh? What kind of mistakes are we talking about here?
+SRS: I once gave someone some... sensitive information... the kind that could be dangerous if acted on.
+SRS: Yet I should have known they weren't in the right state to use that information responsibly.
+NSH: I take it you won't tell me the content, or to who.
+SRS: No, I will not, out of respect.
+NSH: Look, if you ever want to talk about it I can. We can share this little problem of yours. We were made to solve them after all!
+NSH: You're worried they're going to get themselves hurt by messing it up?
+SRS: They already have.

@@ -1,9 +1,7 @@
 color: #c30df5
 type: pearl
 name: Deep Purple
-region: VS
-room: C03
-mapSlugcat: white
+map: region=VS, room=C03, mapSlugcat=white
 
 === transcription: FP-artificer
 This information is very old. Old enough to not be on my records.

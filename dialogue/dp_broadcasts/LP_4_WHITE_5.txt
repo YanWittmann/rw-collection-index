@@ -1,0 +1,22 @@
+color: #ffffff
+type: broadcast
+name: Attachment (White 5)
+map: MAP-WHITE-BROADCASTS
+mapInfo: ${MAP-LP-PRE-PEB}
+info: ${LP-PRE-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment
+SRS: ...
+NSH: What is the matter?
+SRS: For what I'm about to admit, I know you'll tease me.
+SRS: Despite that, I confess I am growing attached to the messenger I sent out.
+NSH: Hah! So you've gotten a soft spot for it? ~
+SRS: Well... Yes. They are a very expressive little creature...
+NSH: I only recall that you used to be repulsed by them.
+SRS: Yes, but with all the time I've invested, I've come to care for its safety.
+SRS: Not only just because it's delivering an important message.
+NSH: I am going to tell everyone this juicy information ~
+SRS: No you are not!
+NSH: I know, I kid.
+SRS: Anyway... I just hope that it can return back to me safely. And perhaps forgive me for this difficult quest...

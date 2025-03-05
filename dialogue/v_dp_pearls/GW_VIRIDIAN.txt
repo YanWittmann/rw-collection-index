@@ -1,9 +1,7 @@
 color: #20c68f
 type: pearl
 name: Viridian
-region: GW
-room: C09
-mapSlugcat: white
+map: region=GW, room=C09, mapSlugcat=white
 
 === transcription: FP-artificer
 This is one of my own pearls, or at least part of it.
