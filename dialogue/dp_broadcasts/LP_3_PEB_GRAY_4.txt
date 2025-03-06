@@ -1,0 +1,19 @@
+color: #7f7f7f
+type: broadcast
+name: Complete Failure (Gray 4)
+map: MAP-GRAY-BROADCASTS
+mapInfo: ${MAP-LP-POST-PEB}
+info: ${LP-POST-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns. No Significant Harassment
+NSH: So what's your plan now? Did you have a backup mission for the messenger or are you just bringing it back home?
+SRS: No, it's over... to tell the truth, I don't even know if the messenger survived.
+NSH: How could you not know? Aren't you surveying the situation with your overseers?
+SRS: Pebbles destroyed the overseer I sent into his can. Then shortly afterwards I lost communication with the rest of my overseers inside his facility.
+SRS: He must have applied a facility-wide lockdown.
+NSH: That's quite a desperate measure. I know he's tired of being spied on, but is he allowed to do that?
+SRS: There's no rules anymore. Who is going to stop him?
+NSH: ...
+NSH: You realize this is very bad news, right? That just complicates the issue further.
+NSH: Your plan was a complete failure.

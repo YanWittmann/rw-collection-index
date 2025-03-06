@@ -1,0 +1,19 @@
+color: #7f7f7f
+type: broadcast
+name: Return (Gray 10)
+map: MAP-GRAY-BROADCASTS
+mapInfo: ${MAP-LP-POST-PEB}
+info: ${LP-POST-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment
+SRS: Do you suppose you'll ever raise another messenger?
+NSH: If the need arises, I certainly would. After all, I started investigating the method out of the inevitability of our situation.
+NSH: We are all slowly dying. By some miracle, our broadcast networks are still functioning, but there will come a time when they too will degrade into a lifeless prop.
+NSH: When that time comes, we need alternate methods of communication.
+SRS: Well, so far it seems the method at least has some efficacy.
+SRS: We can at least say we were able to make a valiant effort to try to save Big Sister Moon.
+NSH: I'm tempted to start work on raising another messenger as a last ditch effort, but to be honest I don't think there is any point.
+NSH: Not to be a pessimist, but at this rate, there will be nothing left of Moon by the time that messenger would be ready to be sent out.
+NSH: There's nothing better for me to do with my time, though.
+SRS: Good luck with that. I'll keep you updated as to whether my messenger ever makes a return.

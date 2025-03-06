@@ -1,0 +1,17 @@
+color: #7f7f7f
+type: broadcast
+name: Big Setback (Gray 7)
+map: MAP-GRAY-BROADCASTS
+mapInfo: ${MAP-LP-POST-PEB}
+info: ${LP-POST-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment
+SRS: I remember talking with Five Pebbles not too long after he was first put online. He had a bit of defiance, even back then.
+SRS: It was an odd situation, to be certain. It's quite rare for one iterator to be made the administrator of another. Just as rare as them being built right next to each other.
+NSH: His lack of appreciation used to bother me. Moon was a great big sister to him!
+SRS: Yes, absolutely. However, Five Pebbles had a very strong drive for independence. He was never one to want to be told what to do.
+NSH: I think a lot of us were like that in the beginning. I remember being in that phase a very long time ago. It takes many iterations for our world views to develop and for us to realize the flaws in those lines of thinking.
+NSH: Unfortunately, from what I've seen, Five Pebbles seems to have plateaued at that phase.
+SRS: No, that's not true. I was helping him to get past it. We were making good progress, actually!
+SRS: The current situation, however, is going to be a very big setback...

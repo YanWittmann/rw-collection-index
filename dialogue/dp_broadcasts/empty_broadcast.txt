@@ -1,8 +1,0 @@
-color: #ffffff
-type: broadcast
-name: Empty Broadcast
-
-=== transcription: broadcast-pre-FP
-...
-=== transcription: broadcast-post-FP
-...

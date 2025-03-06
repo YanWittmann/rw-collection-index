@@ -1,0 +1,15 @@
+color: #e8597f
+type: broadcast
+name: Pink 6
+map: region=SI, room=B12, mapSlugcat=spear
+
+=== transcription: broadcast
+[LIVE BROADCAST] - PUBLIC GROUP [OMENSGATE] all participants anonymous
+WO: I'm getting dusty.
+WO: Dusty and old.
+SI: Aren't we all? But surely you know the old anecdote about the building up of dust.
+WO: That the ground keeps building upwards, trying to touch the sky?
+SI: Yes! I find that idea quite comforting, actually.
+SI: To know that while now I'm a superstructure, in the future I'll be a mountain.
+SI: Doesn't that fill your spirit with anticipation?
+WO: Not really...

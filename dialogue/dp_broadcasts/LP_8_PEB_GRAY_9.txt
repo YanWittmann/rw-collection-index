@@ -1,0 +1,17 @@
+color: #7f7f7f
+type: broadcast
+name: Future Messenger (Gray 9)
+map: MAP-GRAY-BROADCASTS
+mapInfo: ${MAP-LP-POST-PEB}
+info: ${LP-POST-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] PRIVATE Seven Red Suns, No Significant Harassment
+SRS: But really, the problem with the mark is that it would draw attention from other iterators. They needed to sneak by Moon's and your own overseers after all.
+NSH: Is that why the pearl was hidden inside the messenger as well?
+SRS: Partly yes, even your overseers along the way would have caught them if they had been just carrying it. The pearl was also used as a way to influence their behavior. Giving them an instinct of where to go, and to not simply revert to more animalistic behaviors.
+NSH: You really did plan for everything didn't you?
+SRS: Unfortunately, I did not take Five Pebbles' impatience into account. The pearl would take a cycle or so to read without removal. Time he seemed to value more than my messenger...
+NSH: I don't think we could send the same design of messenger in the future to Moon.
+SRS: Yes, those messages would require more traditional methods of transport. However, we would only need to do so if her communications array is unresponsive after she collapses.
+NSH: I'm not sure if I want to imagine that possibility.

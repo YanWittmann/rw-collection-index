@@ -1,0 +1,20 @@
+color: #cce370
+type: broadcast
+name: Light Green 3
+map: region=GW, room=C04_PAST, mapSlugcat=spear
+
+=== transcription: broadcast
+[LIVE BROADCAST] - PUBLIC GROUP [OMENSCAGE] Wandering Omen, Pleading Intellect
+PI: You haven't heard about what No Significant Harassment did?
+WO: All I heard was the complaining. Didn't he send an iterator something distasteful?
+PI: Well, yes, but more importantly, he trained a purposed organism to deliver it!
+WO: Why do that? Was it so distasteful that he was afraid to send it via the broadcast network?
+PI: Just forward thinking. He's been experimenting with alternative communication methods.
+PI: So that we all may stay in touch even once our broadcast machinery meets its end of life.
+WO: What type of organism was it?
+PI: It was based on one of those resourceful, wandering ones that go in pipes. An image should reach you in a few moments...
+WO: ...
+WO: I see...
+WO: How do you even get a dull creature such as that to follow orders? I may consider asking him to teach me his ways.
+PI: I wouldn't do that right now. Recent broadcasts from NSH seem like he's been on edge and stressed.
+PI: I wonder what happened?

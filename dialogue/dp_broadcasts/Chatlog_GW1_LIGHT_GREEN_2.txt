@@ -1,0 +1,15 @@
+color: #cce370
+type: broadcast
+name: Light Green 2
+map: region=GW, room=E02_PAST, mapSlugcat=spear
+
+=== transcription: broadcast
+[[LOST HEADER INFORMATION]] - BROADCAST unknown group(NULL) No Significant Harassment, Big Sis Moon
+NSH: Moon? It's me again.
+NSH: I do not know if you are receiving these. Please signal in any way you can.
+NSH: I need to talk to you. I need to know you're okay.
+NSH: ...
+NSH: It's difficult for us to assist you over this distance.
+NSH: Even more difficult for us to do anything in the midst of these tantrums.
+NSH: We're going to try everything that we can.
+NSH: Just hold on a little longer.

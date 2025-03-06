@@ -1,0 +1,14 @@
+color: #593699
+type: broadcast
+name: Purple
+map: region=SH, room=E05, mapSlugcat=spear
+
+=== transcription: broadcast
+[[LOST HEADER INFORMATION]] - BROADCAST unknown group(NULL) No Significant Harassment, Big Sis Moon
+NSH: Moon? Moon, are you able to communicate?
+NSH: I am unsure if this broadcast will reach you. I do not know how damaged your systems are.
+NSH: ...
+NSH: Moon, hang in there. We're trying to help you.
+NSH: I don't know if we can. But we're going to try.
+NSH: We're going to try to see if we can get Five Pebbles to calm down.
+NSH: If not... I have some ideas.

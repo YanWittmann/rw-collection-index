@@ -1,0 +1,10 @@
+color: #247d45
+type: broadcast
+name: Dark Green
+map: region=DS, room=A19, mapSlugcat=spear
+
+=== transcription: broadcast
+[LIVE BROADCAST] EQUIPMENT MANIFEST
+EM: Wide area equipment failures are approaching unsafe thresholds.
+EM: Notice - Estimated time to installation failure is at 90+ cycles.
+EM: Module advises immediate repairs within the next 30 cycles.

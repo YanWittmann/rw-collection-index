@@ -1,0 +1,13 @@
+color: #e8597f
+type: broadcast
+name: Pink 2
+map: region=SI, room=A07, mapSlugcat=spear
+
+=== transcription: broadcast
+[INCOMING REQUEST] COMMUNICATIONS MANIFEST
+[[FILTER]] Message Blocked - All incoming sources are currently disabled.
+MESSAGE CONTENTS:
+NSH: Five Pebbles, I will say once again. You need to stop. Immediately.
+NSH: I know you are going to trash this message like the rest, but...
+NSH: I hope eventually when you are out of this state of mind you will look back at these.
+NSH: Look back and reflect on all the regrets you've set yourself up to have.

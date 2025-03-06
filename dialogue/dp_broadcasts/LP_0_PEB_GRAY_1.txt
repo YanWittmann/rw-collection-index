@@ -1,0 +1,16 @@
+color: #7f7f7f
+type: broadcast
+name: Furious (Gray 1)
+map: MAP-GRAY-BROADCASTS
+mapInfo: ${MAP-LP-POST-PEB}
+info: ${LP-POST-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment
+SRS: Oh no...
+NSH: What is the matter?
+SRS: ...
+SRS: ...I'm sorry. I need a moment.
+NSH: Seven Red Suns, are you okay?
+SRS: ...The messenger made it to Five Pebbles.
+SRS: He... He was so furious...

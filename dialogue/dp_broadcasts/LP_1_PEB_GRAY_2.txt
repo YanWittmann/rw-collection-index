@@ -1,0 +1,16 @@
+color: #7f7f7f
+type: broadcast
+name: Humiliated (Gray 2)
+map: MAP-GRAY-BROADCASTS
+mapInfo: ${MAP-LP-POST-PEB}
+info: ${LP-POST-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment
+SRS: I'm just so frustrated.
+SRS: I feel like I've doomed not one, but two iterators.
+SRS: And in the whole process I've lost a great friend, who won't even let me help him.
+NSH: We make mistakes, it'll be okay. You know Five Pebbles really looks up to you.
+SRS: Yes, I know that, but...
+NSH: I think he's scared. Scared, and humiliated. Unparalleled Innocence spreading the news probably made him feel even worse.
+SRS: ...I think you're right.

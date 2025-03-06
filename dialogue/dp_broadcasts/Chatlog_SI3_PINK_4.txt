@@ -1,0 +1,18 @@
+color: #e8597f
+type: broadcast
+name: Pink 4
+map: region=SI, room=C07, mapSlugcat=spear
+
+=== transcription: broadcast
+[LIVE BROADCAST] - PUBLIC GROUP [OMENSGATE] all participants anonymous
+SI: There was one particular grand master of cabinet, Seven Clouds Above Endless Canyons, who was quite abrasive in his indoctrination.
+SI: To him, his beliefs were absolute and non-negotiable. To suggest otherwise was heresy.
+SI: It was enough of an issue that a caste system was inherently formed around it.
+SI: Those who strictly upheld the systems of his teachings were treated to the greatest luxuries of literature, art, and architecture.
+SI: However, those who did not were damned to the worst living conditions imaginable.
+SI: It was a particularly dark time for my colony.
+WO: That sounds awful.
+SI: What about you, do you have any stories about your inhabitants?
+WO: Well, I'd say mine were quite obnoxious. They'd hold festivals and celebrations for arbitrary events practically every other cycle.
+SI: Seriously? That sounds like a lot of fun to me. I would have gladly traded spaces with you.
+WO: Hah, well, I guess thinking back on it now, there never was a dull moment while they were around.

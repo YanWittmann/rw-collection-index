@@ -1,0 +1,14 @@
+color: #194fe7
+type: broadcast
+name: Dark Blue 1
+map: region=DM, room=WALL06, mapSlugcat=spear
+
+=== transcription: broadcast
+[OUTGOING REQUEST] COMMUNICATIONS MANIFEST
+[[ERROR]] UNABLE TO SEND - Malformed Message Header
+SOURCE NODE TRACE: LTTM_ROOT, LTTM_COMM06 || DESTINATION: (NULL)unknown group
+MESSAGE CONTENTS:
+BSM: If anyone is is receiving ... messages
+BSM: ...ve problem
+BSM: I'm not sure what to do.
+BSM: Please respond.

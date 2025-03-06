@@ -6,20 +6,23 @@ const DIALOGUE_DIR = path.join(__dirname, '../dialogue');
 const OUTPUT_FILE = path.join(__dirname, 'src/generated/parsed-dialogues.json');
 const MAX_SPEAKER_LENGTH = 12;
 
+const generalWhiteGrayBroadcasts = [
+    { region: "SU", room: "A17", mapSlugcat: "spear" },
+    { region: "HI", room: "B02", mapSlugcat: "spear" },
+    { region: "DS", room: "A11", mapSlugcat: "spear" },
+    { region: "SH", room: "B03", mapSlugcat: "spear" },
+    { region: "VS", room: "A05", mapSlugcat: "spear" },
+    { region: "VS", room: "B10", mapSlugcat: "spear" },
+    { region: "UW", room: "J01", mapSlugcat: "spear" },
+    { region: "SS", room: "D08", mapSlugcat: "spear" },
+    { region: "LF", room: "D01", mapSlugcat: "spear" },
+    { region: "SB", room: "C07", mapSlugcat: "spear" },
+    { region: "LM", room: "EDGE02", mapSlugcat: "spear" },
+]
+
 const mapMetadataTemplates = {
-    "MAP-WHITE-BROADCASTS": [
-        { region: "SU", room: "A17", mapSlugcat: "spear" },
-        { region: "HI", room: "B02", mapSlugcat: "spear" },
-        { region: "DS", room: "A11", mapSlugcat: "spear" },
-        { region: "SH", room: "B03", mapSlugcat: "spear" },
-        { region: "VS", room: "A05", mapSlugcat: "spear" },
-        { region: "VS", room: "B10", mapSlugcat: "spear" },
-        { region: "UW", room: "J01", mapSlugcat: "spear" },
-        { region: "SS", room: "D08", mapSlugcat: "spear" },
-        { region: "LF", room: "D01", mapSlugcat: "spear" },
-        { region: "SB", room: "C07", mapSlugcat: "spear" },
-        { region: "LM", room: "EDGE02", mapSlugcat: "spear" },
-    ]
+    "MAP-WHITE-BROADCASTS": generalWhiteGrayBroadcasts,
+    "MAP-GRAY-BROADCASTS": generalWhiteGrayBroadcasts,
 }
 
 function parseMapEntries(value) {

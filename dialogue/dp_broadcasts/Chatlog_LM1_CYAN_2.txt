@@ -1,0 +1,11 @@
+color: #30bab2
+type: broadcast
+name: Cyan 1
+map: region=LM, room=TOWER02, mapSlugcat=spear
+
+=== transcription: broadcast
+[DIRECT BROADCAST] PRIVATE - Five Pebbles, Big Sister Moon
+SOURCE NODE TRACE: FP_ROOT, LTTM_COMM05, LTTM_ROOT
+FP: Please stop messaging me.
+FP: I cannot help you.
+FP: I cannot even help myself.

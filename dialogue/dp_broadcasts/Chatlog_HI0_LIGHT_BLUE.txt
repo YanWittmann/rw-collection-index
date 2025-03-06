@@ -1,0 +1,20 @@
+color: #667ad1
+type: broadcast
+name: Light Blue
+map: region=HI, room=A18, mapSlugcat=spear
+
+=== transcription: broadcast
+[LIVE BROADCAST] - PRIVATE Gazing Stars, Secluded Instinct
+GS: Have you heard the rumors Unparalleled Innocence has been spreading?
+SI: I've only heard bits and pieces, but I would love to hear more!
+GS: They say that an iterator got the rot! And they have it bad!
+SI: That's terrible. Did they mess up an experiment?
+GS: It's believed so, yes. Everyone is trying to contact him, to find out what happened.
+SI: Who is it, anyway?
+GS: It's Five Pebbles - The one near Looks To The Moon.
+SI: Isn't she his senior, enough to the point where she calls herself Big Sister Moon? What about asking her?
+GS: Contact was lost with her as well. We still don't know what happened.
+SI: This reminds me of the gossip from a while back, with Erratic Pulse. Did we ever hear back from him?
+GS: Nope! I can't wait to! All of this gossiping really makes the cycles passing less dull.
+SI: True, but don't we all have a job to do?
+GS: I suppose so...

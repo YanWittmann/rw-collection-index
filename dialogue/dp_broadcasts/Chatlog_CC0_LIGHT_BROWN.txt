@@ -1,0 +1,19 @@
+color: #d48573
+type: broadcast
+name: Light Brown
+map: region=CC, room=C11, mapSlugcat=spear
+
+=== transcription: broadcast
+[LIVE BROADCAST] - CLOSED GROUP [SLIVEROFOCEAN] all participants anonymous
+WO: It was like a tournament?
+EOC: It appeared to be something like that, but over territory.
+WO: So you and Sliver of Straw took bets on it?
+EOC: Well, it wasn't really a bet, more of an intuition of who we each thought would win.
+WO: Well, which one did you choose?
+EOC: I thought that the green creature was going to win. Sliver thought the red one was.
+EOC: But to our surprise, a little cyan intruder won!
+WO: Really? How did it manage that?
+EOC: The other two had killed most of the competition. Then they were left to fight each other.
+EOC: They both severely injured each other, and then the little cyan one came in and finished them off.
+WO: Wow, such a little opportunist!
+EOC: It was! Sliver and I joked about that little cyan creature often.

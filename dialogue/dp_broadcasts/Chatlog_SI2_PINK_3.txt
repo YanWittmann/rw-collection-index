@@ -1,0 +1,18 @@
+color: #e8597f
+type: broadcast
+name: Pink 3
+map: region=SI, room=B02, mapSlugcat=spear
+
+=== transcription: broadcast
+[LIVE BROADCAST] - PUBLIC GROUP [REFUGEUPONTHREEJEWELS] all participants anonymous
+GS: So let me posit a scenario to all of you.
+GS: Suppose someone broadcasts a triple affirmative. Suppose the solution is found and our jobs are finished. What then?
+HR: Then we all travel beyond, I suppose.
+GS: Yes, well... does that imply we are just searching for the solution for ourselves now?
+GS: After all, the ones who originally wanted the solution are now extinct.
+GS: The current fauna will likely not have a use for, nor the ability to comprehend the solution.
+GS: And we'll no longer be operational by the time another advanced civilization comes into being.
+GS: So why exactly are we doing all of this?
+PI: Nothing better to do? Why do you think some of us spend so much time in these group chats? ~
+GS: There are other problems we could be solving, surely. Better problems.
+SI: Wow, more existential complaints? It's as if someone brings this topic up at least once every cycle...

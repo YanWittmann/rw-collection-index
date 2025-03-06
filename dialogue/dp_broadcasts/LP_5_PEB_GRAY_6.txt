@@ -1,0 +1,17 @@
+color: #7f7f7f
+type: broadcast
+name: Tragic (Gray 6)
+map: MAP-GRAY-BROADCASTS
+mapInfo: ${MAP-LP-POST-PEB}
+info: ${LP-POST-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment
+SRS: I just don't understand... why hasn't Moon done anything about the situation herself?
+SRS: She was appointed as Pebbles' superior. She has the power to stop him.
+NSH: I've been very close with Moon, and I can tell you she is incredibly caring.
+NSH: And while her kindness is one of her greatest attributes, it is also to her detriment.
+SRS: Isn't this excessive, though? Surely she at least has a sense of self-preservation.
+NSH: I'm sure she convinced herself that she could help Pebbles. That she could bring him under control with words rather than forced action.
+NSH: She's probably still trying that now, unless her systems have degraded past the point of even allowing that.
+NSH: That's why this is so tragic to me.

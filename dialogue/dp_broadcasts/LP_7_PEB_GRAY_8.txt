@@ -1,0 +1,18 @@
+color: #7f7f7f
+type: broadcast
+name: Communication (Gray 8)
+map: MAP-GRAY-BROADCASTS
+mapInfo: ${MAP-LP-POST-PEB}
+info: ${LP-POST-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment
+NSH: How much do you think they understand when we talk to them? The mark gives them linguistical cognizance, but it doesn't increase their intelligence. They're still just wild animals, after all.
+NSH: I feel like I need to be simplifying my speech patterns. Is that something you do when conversing with your messenger?
+SRS: I wouldn't know, I never gave them the mark.
+NSH: Really now? Why wouldn't you? Did you just feel the need to add an extra layer of challenge onto this mission?
+SRS: No, the problem with the mark is it's a one way communication. They can understand me, but I can't understand them.
+SRS: I borrowed a coded language authored in the late period of the Yellow hegemonic dynasty. It used gestures and facial expressions as a silent method of communication with the seriously ill.
+NSH: Well, that's certainly one way to go about it. You never cease to surprise me.
+NSH: Communication with facial expressions though? Did you forget our puppet's face doesn't have articulation? ~
+SRS: Yes, well, I had to improvise and use only body gestures, of course.

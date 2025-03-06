@@ -1,0 +1,19 @@
+color: #7f7f7f
+type: broadcast
+name: Watch in Horror (Gray 5)
+map: MAP-GRAY-BROADCASTS
+mapInfo: ${MAP-LP-POST-PEB}
+info: ${LP-POST-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment
+SRS: I'm noticing you are becoming more defensive. This obviously wasn't the end result I was aiming for, you know.
+SRS: Please respond to my messages. I don't want to leave it like this. I need someone to talk to.
+NSH: I don't mean to be cold, I'm just very worried.
+NSH: The activity I'm seeing from Moon's can is becoming increasingly... concerning.
+NSH: Our available options are rapidly diminishing, and I feel helpless to do anything.
+NSH: I can just watch in horror.
+SRS: ...
+NSH: You should have sent the messenger to Moon instead of Pebbles.
+SRS: Do you think that would have helped anything?
+NSH: To be honest, no... I'm not sure that it would.

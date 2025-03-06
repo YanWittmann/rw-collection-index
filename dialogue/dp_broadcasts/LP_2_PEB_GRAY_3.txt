@@ -1,0 +1,17 @@
+color: #7f7f7f
+type: broadcast
+name: Sturdy Creature (Gray 3)
+map: MAP-GRAY-BROADCASTS
+mapInfo: ${MAP-LP-POST-PEB}
+info: ${LP-POST-PEB}
+
+=== transcription: broadcast-pre-FP
+[LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment
+NSH: You seem distracted. What's on your mind?
+SRS: The little messenger I sent out. I'm worried for its safety.
+NSH: I'm sure it'll be okay. You said it's built to withstand a lot of things.
+SRS: Yes, but... the pearl was inside of the messenger's chest. Last time, Five Pebbles was very gentle and careful with removing it.
+SRS: This time, he simply slashed open the chest and ripped the pearl out. The messenger was struggling to stand.
+NSH: They're sturdy creatures. I'm sure it'll heal overtime. You have to have more faith.
+SRS: You're right. I guess I'm just scared of losing them. I've grown more attached than I could've expected...
+SRS: If I lost them as well, I don't know what I'd do.
