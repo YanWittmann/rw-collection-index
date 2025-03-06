@@ -70,6 +70,107 @@ function resolvePatterns(value, variables = {}) {
     });
 }
 
+function hasVariableTranscriptions(parsedData) {
+    return parsedData.transcribers.some(t =>
+        Object.keys(t.metadata).some(k => k.startsWith('var-'))
+    );
+}
+
+function createBaseEntry(baseId, parsedData) {
+    return { id: baseId, ...parsedData };
+}
+
+function processVariableEntries(baseId, parsedData) {
+    const variableGroups = groupTranscriptionsByVariables(parsedData.transcribers);
+    return Array.from(variableGroups.values()).map(group =>
+        createVariableGroupEntry(baseId, parsedData, group)
+    );
+}
+
+function groupTranscriptionsByVariables(transcribers) {
+    const groups = new Map();
+
+    transcribers.forEach(transcriber => {
+        const variables = resolveVariables(transcriber.metadata);
+        const variableKey = createVariableKey(variables);
+
+        if (!groups.has(variableKey)) {
+            groups.set(variableKey, {
+                variables,
+                transcribers: [],
+                randomValues: {}
+            });
+        }
+
+        groups.get(variableKey).transcribers.push(transcriber);
+    });
+
+    return groups;
+}
+
+function createVariableKey(variables) {
+    return JSON.stringify(Object.entries(variables).sort());
+}
+
+function createVariableGroupEntry(baseId, parsedData, group) {
+    // Resolve base entry properties
+    const resolvedId = resolvePatterns(baseId, group.variables);
+    const resolvedMetadata = resolveMetadata(parsedData.metadata, group.variables);
+
+    // Resolve all transcribers in the group
+    const resolvedTranscribers = group.transcribers.map(transcriber =>
+        resolveTranscriberMetadata(transcriber, group.variables, resolvedMetadata)
+    );
+
+    return {
+        id: resolvedId,
+        metadata: resolvedMetadata,
+        transcribers: resolvedTranscribers,
+        hints: resolveHints(parsedData.hints, group.variables)
+    };
+}
+
+function resolveMetadata(metadata, variables) {
+    return Object.fromEntries(
+        Object.entries(metadata).map(([k, v]) => [
+            k,
+            resolvePatterns(v, variables)
+        ])
+    );
+}
+
+function resolveTranscriberMetadata(transcriber, variables, baseMetadata) {
+    const resolvedTransMetadata = Object.fromEntries(
+        Object.entries(transcriber.metadata).map(([k, v]) => [
+            k,
+            typeof v === 'string' ? resolvePatterns(v, variables) : v
+        ])
+    );
+
+    return {
+        ...transcriber,
+        metadata: {
+            ...baseMetadata,
+            ...resolvedTransMetadata,
+            map: [
+                ...new Set([
+                    ...(baseMetadata.map || []),
+                    ...(resolvedTransMetadata.map || [])
+                ])
+            ]
+        }
+    };
+}
+
+function resolveHints(hints, variables) {
+    return hints.map(hint => ({
+        ...hint,
+        lines: hint.lines.map(line =>
+            typeof line === 'string' ? resolvePatterns(line, variables) : line
+        )
+    }));
+}
+
 function resolveVariables(metadata) {
     return Object.entries(metadata)
         .filter(([k]) => k.startsWith('var-'))
@@ -326,6 +427,17 @@ const getAllFiles = (dir, fileList = []) => {
     return fileList;
 };
 
+function writeOutput(result) {
+    fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
+    fs.writeFileSync(OUTPUT_FILE, JSON.stringify(result, null, 2));
+    console.log(`Successfully parsed ${result.length} files to ${OUTPUT_FILE}`);
+}
+
+function handleProcessingError(error) {
+    console.error('Error processing files:', error);
+    process.exit(1);
+}
+
 function processDialogueFiles() {
     try {
         const files = getAllFiles(DIALOGUE_DIR);
@@ -336,32 +448,17 @@ function processDialogueFiles() {
             const baseId = path.basename(file, '.txt');
             const parsed = parseDialogueContent(content);
 
-            // Check if any transcription has variables
-            const hasVariables = parsed.transcribers.some(t =>
-                Object.keys(t.metadata).some(k => k.startsWith('var-'))
-            );
-
-            if (!hasVariables) {
-                // Original behavior - single entry
-                return [{
-                    id: baseId,
-                    ...parsed
-                }];
+            if (!hasVariableTranscriptions(parsed)) {
+                return [createBaseEntry(baseId, parsed)];
             }
 
-            // Variable handling - split into multiple entries
-            return parsed.transcribers.map(transcriber => {
-                const variables = resolveVariables(transcriber.metadata);
-                return createResolvedEntry(baseId, parsed, transcriber, variables);
-            });
+            return processVariableEntries(baseId, parsed);
         });
 
-        fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
-        fs.writeFileSync(OUTPUT_FILE, JSON.stringify(result, null, 2));
-        console.log(`Successfully parsed ${files.length} files to ${OUTPUT_FILE}`);
+        writeOutput(result);
+        return result;
     } catch (error) {
-        console.error('Error processing files:', error);
-        process.exit(1);
+        handleProcessingError(error);
     }
 }
 

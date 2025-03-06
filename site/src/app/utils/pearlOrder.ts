@@ -41,12 +41,6 @@ export const pearlOrder: PearlChapter[] = [
         ]
     },
     {
-        name: "Five Pebble's Pearls (Rivulet)",
-        ids: [
-            { pattern: /PebblesPearl_RIV_\d+/ }
-        ]
-    },
-    {
         name: "White Pearls (Misc)",
         ids: [
             { pattern: /Misc_WHITE_PEARLS_\d+/ }

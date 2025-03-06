@@ -11,9 +11,10 @@ interface PearlGridProps {
     onSelectPearl: (id: string) => void,
     order: (pearls: PearlData[]) => { name: string, items: PearlData[] }[],
     unlockMode: UnlockMode,
+    isAlternateDisplayModeActive: boolean,
 }
 
-export function PearlGrid({ pearls, selectedPearl, onSelectPearl, order, unlockMode }: PearlGridProps) {
+export function PearlGrid({ pearls, selectedPearl, onSelectPearl, order, unlockMode, isAlternateDisplayModeActive }: PearlGridProps) {
     const [textFilter, setTextFilter] = useState<string | undefined>(undefined);
 
     const isPearlIncluded = (pearl: PearlData) => {
@@ -49,6 +50,7 @@ export function PearlGrid({ pearls, selectedPearl, onSelectPearl, order, unlockM
             selectedPearl={selectedPearl}
             onSelectPearl={onSelectPearl}
             unlockMode={unlockMode}
+            showTranscriberCount={isAlternateDisplayModeActive}
         />
     );
 

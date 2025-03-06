@@ -10,28 +10,6 @@ import { urlAccess } from "./utils/urlAccess";
 
 let GRID_DATA: PearlData[] = parsedData as PearlData[];
 
-/*function randomColor() {
-    const r = Math.floor(Math.random() * 200 + 55);
-    const g = Math.floor(Math.random() * 200 + 55);
-    const b = Math.floor(Math.random() * 200 + 55);
-    return `rgb(${r},${g},${b})`;
-}
-for (let i = 0; i < 100; i++) {
-    GRID_DATA.push({
-        id: `DUMMY_${i}`,
-        metadata: {
-            name: "DUMMY" + i,
-            color: randomColor(),
-            type: ["pearl", "broadcast"][Math.floor(Math.random() * 2)] as "pearl" | "broadcast",
-            region: "UNKNOWN",
-            room: "UNKNOWN",
-            mapSlugcat: "UNKNOWN"
-        },
-        hints: [],
-        transcribers: []
-    });
-}*/
-
 export type UnlockMode = "all" | "unlock";
 
 export default function DialogueInterface() {
@@ -39,6 +17,30 @@ export default function DialogueInterface() {
     const { selectedPearl, selectedTranscriber, handleSelectPearl, handleSelectTranscriber } = useDialogue(unlockMode);
     const { refresh } = useUnlockState();
     const [hintProgress, setHintProgress] = useState<number>(0);
+    const [isAlternateDisplayModeActive, setIsAlternateDisplayModeActive] = useState(false);
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Control' || e.key === 'Shift') {
+                setIsAlternateDisplayModeActive(true);
+            }
+        };
+
+        const handleKeyUp = (e: KeyboardEvent) => {
+            if (e.key === 'Control' || e.key === 'Shift') {
+                setIsAlternateDisplayModeActive(false);
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        window.addEventListener('keyup', handleKeyUp);
+
+        // clean up listeners when component unmounts
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('keyup', handleKeyUp);
+        };
+    }, []);
 
     useEffect(() => {
         urlAccess.getParam("pearl") && handleSelectPearl(GRID_DATA.find(pearl => pearl.id === urlAccess.getParam("pearl")!) ?? null);
@@ -65,6 +67,7 @@ export default function DialogueInterface() {
                         setHintProgress(0);
                     }}
                     unlockMode={unlockMode}
+                    isAlternateDisplayModeActive={isAlternateDisplayModeActive}
                 />
 
                 <DialogueBox

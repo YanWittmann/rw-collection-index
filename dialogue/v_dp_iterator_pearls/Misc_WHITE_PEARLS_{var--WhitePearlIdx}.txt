@@ -1,15 +1,28 @@
-color: #b3b3b3
+color: {randomPick--#b3b3b3--#dbdbdb--#878787--#8e8e8e}
 type: pearl
-name: White Pearl (Misc) {var--WhitePearlIdx}
+name: White Pearl {var--WhitePearlIdx} (Misc)
 info: ${WhitePearl-MISC-INFO}
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 1
+This is a movement acceptance invoice. It is nothing important.
 
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 1
 This is a movement acceptance invoice from one of the Dual Celia living blocks, as requested by Eight Bogs of the House of Eight during the Tan hegemonic architectural dynasty. All very standard stuff. I can't imagine that you'd be interested.
 
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 2
+This is just a useless diamond sphere. Regardless of that, the light of my chamber shining through it is pleasing.
+
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 2
 Unfortunately I can't read this as it isn't a memory construct pearl. This is just a simple diamond sphere, as worthless as the carbon it's printed from.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 3
+"...through the mists of memory, your image dances, like the motes of dust, in a ray of sunlight, that pierces a dark room."
+A line of verse from the ancient farmer-poet Pel. I have many of his works archived.
 
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 3
@@ -29,6 +42,10 @@ I am sorry, this pearl is damaged and cannot be read. I suggest you use it for t
 md-var-WhitePearlIdx: 6
 This is an official decree of cultivation sent from the twenty-second Subsistence Council ordering the eastern spoke Farm Array administration to "immediately harvest and process all viable crops, despite whatever misgivings they might have." A short-sighted endeavor for sure. I would assume this was sent sometime during the final cycles leading up to final public ascension, when interest in biosphere sustainability was at an all-time low.
 
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 7
+This is the schematic for a purposed organism. A refuse reclamation automaton. There is little a simple thing like you would understand if I explained it.
+
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 7
 Here we have a schematic for a refuse reclamation automaton. It's an early design, but the long tubular body and single eye-mouth are quite similar to the later models.
@@ -41,9 +58,15 @@ md-var-WhitePearlIdx: 8
 md-var-WhitePearlIdx: 9
 Oh, interesting. This is a diary entry of a pre-Iterator era laborer during the construction of the subterranean transit system south of here. In it they describe restless nights filled with disturbing dreams, where millions glowing stars move menacingly in the distance.
 
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 10
+Such savagery. This pearl has been carved through as decoration. While the information within is not of any particular importance, the primitive methods used to drill through this pearl could have easily destroyed something more complex.
+It is a shame to see them desecrate history for the sake of shiny trinkets.
+
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 10
-There isn't much to the data here, it's just basic theory for karmic transform of n-dimensional geometries. But the pearl itself is quite interesting. You can see the crude holes burned through the center that the scavengers use to tie these pearls onto their totems or to carry. I honestly can't fathom how they achieve this with their primitive level of technology! Fascinating.
+There isn't much to the data here, it's just basic theory for karmic transform of n-dimensional geometries.
+But the pearl itself is quite interesting. You can see the crude holes burned through the center that the scavengers use to tie these pearls onto their totems or to carry. I honestly can't fathom how they achieve this with their primitive level of technology! Fascinating.
 
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 11
@@ -69,6 +92,10 @@ I'm sorry, this one has nothing on it.
 md-var-WhitePearlIdx: 16
 I can't make anything out of this pearl, it's just too faded. But there might have been something on it once.
 
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 17
+This one has been cracked.
+
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 17
 This one has a small crack and has been pretty badly corrupted. There is a slight impression of the shape of a wing on it, but I can't get a clear image.
@@ -85,9 +112,17 @@ I see a vague memory of a family portrait, painted in the High Classical manner 
 md-var-WhitePearlIdx: 20
 It has been written to, but then scrambled, and then scrambled again. Suspicious behavior to be sure.
 
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 21
+This data has been scrambled intentionally. It was likely used to store confidential information.
+
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 21
 This one has been purposefully scrambled, it's completely illegible. Business documents perhaps.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 22
+There is an image of banners on this, but it has been faded to the point of corruption.
 
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 22
@@ -97,6 +132,10 @@ This one seems to have an image on it, but the pearl has been exposed to sunligh
 md-var-WhitePearlIdx: 23
 There might be something on here, but the pearl has been lying in the sun and it's all very pale. I'm too tired to look any deeper, I apologize.
 
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 24
+It is growing instructions for the skeleton of a creature, nothing you would understand.
+
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 24
 This is a growing instruction for the skeleton of a creature, but I don't recognize the creature. It was small, about your size.
@@ -104,6 +143,10 @@ This is a growing instruction for the skeleton of a creature, but I don't recogn
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 25
 This one seems to be a number series... Perhaps a key?
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 26
+Part of a number series. This was likely used as a cipher.
 
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 26
@@ -113,9 +156,17 @@ A number series... I would guess some kind of cipher.
 md-var-WhitePearlIdx: 27
 This one is filled with active working memory - without knowing the surrounding process this information is meaningless.
 
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 28
+Strange, a singular number "8" has been written to this and nothing else.
+
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 28
 It just has the number "8" written on it, the rest is empty.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 29
+It is an old blueprint for construction supports.
 
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 29
@@ -141,6 +192,10 @@ This is the genome of a sulfur-processing microbe. In my opinion these were used
 md-var-WhitePearlIdx: 34
 This one I don't know... It could be an old text, but some parts don't add up. Might be a re-imagination of a classic text that I'm not familiar with.
 
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 35
+A classical hymn from an early dynasty. It is very short and repetitive, but its archiving will please me greatly.
+
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 35
 It's a song, or hymn rather. Very repetitive.
@@ -149,13 +204,25 @@ It's a song, or hymn rather. Very repetitive.
 md-var-WhitePearlIdx: 36
 Can't make out anything legible on this one, sorry.
 
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 37
+There are 71 numbers listed on this pearl, and they are some of the most unlucky numbers I have ever seen.
+
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 37
 A list of someone's lucky numbers. There are no less than 71 of them.
 
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 38
+"Dear diary..." and then nothing.
+
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 38
 "Dear diary..." and that's it.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 39
+A model of a fluid carrying pipe section. The joints are designed to promote self-sealing.
 
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 39
@@ -165,17 +232,37 @@ A model of a pipe section.
 md-var-WhitePearlIdx: 40
 It's a catalog of bolts and screws for sky-sail joinery. We iterators were built for pragmatism, so it is an understatement to say that we were not known for our appreciation of beauty... but the sky-sails in flight during the big festivals always filled my soul with emotion.
 
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 41
+It's the blueprint for a small incense purification filter. An understandable necessity before the departure of my creators.
+
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 41
 It's the blueprint for a small incense purification filter. Life on the superstructure archologies
 
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 42
+md-info: Looks to the Moon reacts to the image with confusion, while Five Pebbles is able to name the specific painting as well as the artist.
+An image of five bottles of water, standing upon a surface of filter feeding plants.
+A reflection of desire for something denied. A painting from the late Red literary dynasty by the famed painter Twenty-One Spokes of a Stone Wheel, a true visionary!
+
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 42
+md-info: Looks to the Moon reacts to the image with confusion, while Five Pebbles is able to name the specific painting as well as the artist.
 An image... of five bottles, standing on a surface made of... plants? I have no idea what this is.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 43
+I would prefer not to speak of the contents recorded in this pearl.
+Some things are best left unknown.
 
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 43
 No. I don't want to talk about the content of this pearl.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 44
+Old schematics for a gas filtration machine, very rough and unoptimized.
 
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 44
@@ -185,10 +272,126 @@ A schematic of a bunch of gas pipes. I don't know the purpose for this machine, 
 md-var-WhitePearlIdx: 45
 It's just the numbers 14, 13, 5, repeated over and over. I have no idea what the purpose for this would be.
 
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 46
+This is an examination on various dilutions and chemical ratios for liquid mediums, and their resulting operating efficiencies when utilized to drive fluid-powered machinery. Not of interest to you at all I'm sure.
+
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 46
 A small portion is still legible: "and Thus we Conclude, that Gold and Water shall..." Some sort of metaphysical or alchemical treatise perhaps.
 
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 47
+This contains the image of a pearl... and within that the same image. This is either a joke, or a method of testing a pearl's recursive density.
+
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 47
 Oh? This contains an image of another pearl just like it. Let me look... yes, as I thought, the image also contains an image of a pearl in it, and so on. Some comedian playing recursion games, I would guess.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 48
+This is damaged and cannot be read.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 49
+It is a historical document containing information on various swords and other weaponry. These were not used in combat, but were rather utilized in a variety of routine rituals and spiritual festivals.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 50
+It's a collection of photographs showcasing a group of monks contorting their bodies in various ways. Most amusing...
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 51
+A description of a manually coded language developed late into the Yellow hegemonic dynasty. It utilized sequences of gestures and facial expressions to describe concepts to those incapable of speech. Too bad I cannot use this with you.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 52
+This is blank.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 53
+It is empty.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 54
+There is nothing here.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 55
+It has faded, and is unreadable.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 56
+...Why did you bring this to me? It is completely blank.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 57
+It is damaged and unreadable.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 58
+The data on this one is clear and uncorrupted, but it is not in any recognizable format.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 59
+The inscriptions within the lattice form a very intricate and deliberate pattern.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 60
+Could it be? This pearl contains the solution to the Big Problem in its entirety. My work is finally finished! At least that's what a dim-witted junkyard dweller like you seems to think will happen by bringing these to me. These pearls are a distraction.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 61
+The surface of this pearl has been scratched thousands of times over by some sharp object. Its contents are faded as well.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 62
+Nothing is left, it is too faded to read.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 63
+This one contains a numerical sequence encoding all of the registered identification numbers for those who dwelled in my city.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 64
+This pearl is filled to capacity, a tremendous feat. However, it only appears to contain a single excessively large image, which happens to be completely blank.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 65
+This is a very early research journal, equating void fluid to antimatter. While that comparison works metaphorically, it fundamentally misunderstands the true nature of the fluid.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 66
+A maintenance log of a routine inspection of my superstructure. No problems to report.
+After all, I was still brand new when this log was written.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 67
+md-info: The dialog referring to "The World Machine" is a reference to <h href="https://oneshot.fandom.com/wiki/OneShot">OneShot</a>, a game about a simulation known as The World Machine.
+This is incomplete source code for a complex simulation of our world, known as The World Machine.
+However, public ascension concluded long before it could be finished by its author.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 68
+It is a drawing by a young child, depicting the likeness of an iterator puppet. Specifically, I presume this is meant to represent my puppet, but the drawing is too crude to tell for sure. How awful.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 69
+This reads like someone attempting to copy a book from their memory alone.
+Many chapters are only partially written, and some do not exist.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 70
+It's a log from a sensor monitoring conditions on the surface. The log ends abruptly after some time, as the sensor suffered irreparable damage from the heavy rainfall.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 71
+It is a catalog of many types of teas, and their brewing techniques. I do not possess the ability to drink tea, so this is of no use to me. You can keep it.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 72
+This pearl contains a series of puzzles designed to exercise the mind. However, I've already solved them all in the time it took me to say these sentences aloud to you.
+
+=== transcription: FP-artificer
+md-var-WhitePearlIdx: 73
+This is a malicious pearl. The data is meaningless, but the way it is formatted would cause older machinery to get stuck in an infinite recursion trying to read it. Luckily, I am more sophisticated than that.

@@ -12,9 +12,10 @@ interface PearlItemProps {
     selectedPearl: string | null
     onSelectPearl: (id: string) => void
     unlockMode: UnlockMode
+    showTranscriberCount: boolean
 }
 
-const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, selectedPearl, onSelectPearl, unlockMode }) => {
+const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, selectedPearl, onSelectPearl, unlockMode, showTranscriberCount }) => {
     const isUnlocked = unlockMode === 'all' || UnlockManager.isPearlUnlocked(pearl);
 
     const generateTooltipText = useMemo(() => {
@@ -60,6 +61,10 @@ const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, selectedPearl,
                         selected={selectedPearl === pearl.id}
                     >
                         <RwIcon color={pearl.metadata.color} type={pearl.metadata.type}/>
+                        {showTranscriberCount && <span
+                            className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-5 h-5 text-xs flex items-center justify-center">
+                            {pearl.transcribers.length}
+                        </span>}
                     </RwIconButton>
                 </TooltipTrigger>
                 <TooltipContent>
