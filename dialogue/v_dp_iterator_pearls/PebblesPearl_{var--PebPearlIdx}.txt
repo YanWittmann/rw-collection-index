@@ -3,7 +3,7 @@ type: pearl
 name: Five Pebbles' Pearl {var--PebPearlIdx}
 info: ${PebblesPearl-INFO}
 
-=== transcription: LttM-riv
+=== transcription: LttM-rivulet
 md-map: region=RM, room=AI, mapSlugcat=rivuletulet
 md-var-PebPearlIdx: 1
 It's an active working memory - raw data has been dropped here in order to later be pasted to a currently occupied memory conflux. Without context it's just a jumble.
