@@ -24,6 +24,8 @@ const generalWhiteGrayBroadcasts = [
 const mapMetadataTemplates = {
     "MAP-WHITE-BROADCASTS": generalWhiteGrayBroadcasts,
     "MAP-GRAY-BROADCASTS": generalWhiteGrayBroadcasts,
+    "MAP-BROADCAST-PEARLS": [
+    ]
 }
 
 // Track selections for arrays of the same length
