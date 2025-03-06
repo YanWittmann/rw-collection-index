@@ -31,7 +31,7 @@
   "scripts": {
     "create-dialogue-files": "node create-dialogue-files.js",
     "start": "craco start",
-    "build": "craco build",
+    "build": "npm run create-dialogue-files && craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
