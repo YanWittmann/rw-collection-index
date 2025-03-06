@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import UnlockManager from '../utils/unlockManager';
 
 export function useUnlockState() {
     const [version, setVersion] = useState(0);
