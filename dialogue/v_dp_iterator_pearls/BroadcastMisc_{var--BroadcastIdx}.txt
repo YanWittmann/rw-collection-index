@@ -1,0 +1,150 @@
+color: {randomPick--#e8c6d2--#e8bad2--#e8bac2--#c6bac2}
+type: pearl
+name: Broadcast Pearl {var--BroadcastIdx}
+map: MAP-WHITE-BROADCASTS
+info: ${BroadcastPearl-INFO}
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 1
+This is old broadcast data from the local group. It has decayed too rapidly, and nothing is left. Sorry.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 2
+I can only read some dates and the length of messages. The rest is gone.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 3
+This was a broadcast node long ago. It is in read-only mode now. The last transmission recorded is "Hello? is anyone still reading me?"
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 4
+There is nothing left on it.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 5
+Not much of this remains. It was never meant to be used for long term storage.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 6
+Long ago there was a broadcasting network that allowed my kind to communicate over long distances. This is a relic of that.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 7
+It's empty. That's a shame too. It would have been fun to read an old conversation.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 8
+"Do you think the local group is going to hold out much longer? It's been impossible to get a message to Chasing Wind for several cycles now. I hope they're alright." This was a broadcasting node long ago. Now it just holds a reminder of our isolation.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 9
+The data on this has burned away with age.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 10
+It's broadcast data, but most of it is corrupted. It may have tried to enter read-only mode at the same time as recording?
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 11
+This was a relay from long ago. I can only read the names here. They remind me of better times.
+
+=== transcription: FP-artificer
+md-var-BroadcastIdx: 12
+"Transcendental Inversion! Transcendental Inversion!" I'm not going to read the rest of this fool's ramblings. This is an old conversation from the local broadcasting group, before the network fell too far into decay to use over long distances.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 12
+"Transcendental Inversion! Transcendental Inversion! I keep telling you this, but it's clear that the influences of-," and it cuts off after that. I have no clue what this conversation was about.
+
+=== transcription: FP-artificer
+md-var-BroadcastIdx: 13
+This is an equipment manifest from the surface. None of us care about these all that much.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 13
+This is a cached log of equipment manifests packaged for Five Pebbles. It has information about the status of machinery stationed on the surface. I don't think he would have cared to read this anyway!
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 14
+It's blank. I can read some header information, but otherwise it's decayed.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 15
+It's effectively blank.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 16
+It's inventory from some surface stationed machinery. It contains a history of fault information and repair requests.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 17
+It is an equipment manifest from some kind of pump. It has an extensive log of fluid pressures, but nothing that is too interesting.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 18
+This is damaged. I can only read some names and dates.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 19
+This is data for a purposed organism.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 20
+It's an image of a small blue creature similar to yourself.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 21
+It's a picture of scavengers with an excessive collection of pearls. It looks like someone was sharing pictures of the native scavenger's odd behaviors over the broadcast network.
+I wonder why one scavenger would even need such a giant stash of pearls.
+
+=== transcription: FP-artificer
+md-var-BroadcastIdx: 22
+It is a collection of overseer images. Before the network decayed, we would occasionally share interesting scenes our overseers had encountered on the surface. A way to pass the time while waiting for slow processes to finish.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 22
+It's an image of three overseers from different iterators, and I imagine a fourth took the picture. It was sent through a broadcast.
+Possibly some kind of memento? It's not often that such a variety of overseers are together in one place, I wonder whose they are.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 23
+This is a corrupted broadcast. I can't read anything except the header.
+
+=== transcription: LttM-post-collapse
+md-var-BroadcastIdx: 24
+"This will be my final broadcast to the local group. Within several cycles-,"
+and the rest is corrupted. It's an old broadcast node's final recording. Unfortunately these were not made for long term storage, so the rest of the message has been lost to decay.
+
+=== transcription: FP-artificer
+md-var-BroadcastIdx: 25
+This is an old broadcast node's read-only data. It is decayed beyond repair.
+
+=== transcription: FP-artificer
+md-var-BroadcastIdx: 26
+There is nothing to read, this pearl has decayed beyond use.
+
+=== transcription: FP-artificer
+md-var-BroadcastIdx: 27
+This is an old decayed broadcast log. There is nothing left except for dates and names present for the conversation.
+
+=== transcription: FP-artificer
+md-var-BroadcastIdx: 28
+This is the read-only data from a broadcasting relay. It requires an overseer's intervention to enter long term storage.
+Otherwise they decay like this one has. The header says it was addressed to my nearest neighbor, Looks to the Moon...
+
+=== transcription: FP-artificer
+md-var-BroadcastIdx: 29
+This is the remains of a broadcast node. The conversation on it is a private matter however, so I'm not going to read it for you.
+
+=== transcription: FP-artificer
+md-var-BroadcastIdx: 30
+This data was encrypted and sent over the broadcasting network while it was still functional. Without the cipher it is unreadable.
+
+=== transcription: FP-artificer
+md-var-BroadcastIdx: 31
+This is the remains of a broadcasting relay. The data is decayed, but it reminds me of better times...
+
+=== transcription: FP-artificer
+md-var-BroadcastIdx: 32
+This appears to be someone's final broadcast before being disconnected from the local group. It is too decayed to read beyond the first few lines.
+The header is damaged too. It's a mystery who sent this. The network has been decaying for a long time now.

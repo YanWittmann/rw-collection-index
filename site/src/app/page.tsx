@@ -21,13 +21,13 @@ export default function DialogueInterface() {
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === 'Control' || e.key === 'Shift') {
+            if (e.key === 'Shift') {
                 setIsAlternateDisplayModeActive(true);
             }
         };
 
         const handleKeyUp = (e: KeyboardEvent) => {
-            if (e.key === 'Control' || e.key === 'Shift') {
+            if (e.key === 'Shift') {
                 setIsAlternateDisplayModeActive(false);
             }
         };

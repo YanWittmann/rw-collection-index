@@ -100,6 +100,7 @@ const variableDefinitions: { [key: string]: any } = {
     "PebblesPearl-INFO": "Pearls from Five Pebbles' chamber have a separate, smaller pool of dialogue to pick from.\nContained in Five Pebbles' Pearls are memories, processes, ciphers, and images he was likely using,\nusually preceded by Looks to the Moon explaining how they were recently used.",
     "PebblesPearl-RIV-INFO": "Five Pebbles' Pearls have a unique pool of dialogue when brought to Looks to the Moon as Rivulet.\nPearls from Five Pebbles' chamber have a separate, smaller pool of dialogue to pick from.\nContained in Five Pebbles' Pearls are memories, processes, ciphers, and images he was likely using,\nusually preceded by Looks to the Moon explaining how they were recently used.",
     "WhitePearl-MISC-INFO": "White Pearls are spawned in set locations throughout the world, but can also be found semi-randomly in Scavenger stashes and on Scavenger totems.\nWhite Pearls have a large dialogue pool to draw from, so repeat readings are extremely rare.\nThey contain minor tidbits of lore, but most are useless or humorous information.",
+    "BroadcastPearl-INFO": "Slugcats that aren't Spearmaster can find cream-colored Pearls at locations where Spearmaster would find Satellite unlocks.",
 }
 
 /**

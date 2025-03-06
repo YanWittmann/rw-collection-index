@@ -429,7 +429,7 @@ const getAllFiles = (dir, fileList = []) => {
 
 function writeOutput(result) {
     fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
-    fs.writeFileSync(OUTPUT_FILE, JSON.stringify(result, null, 2));
+    fs.writeFileSync(OUTPUT_FILE, JSON.stringify(result));
     console.log(`Successfully parsed ${result.length} files to ${OUTPUT_FILE}`);
 }
 

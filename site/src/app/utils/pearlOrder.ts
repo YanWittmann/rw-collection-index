@@ -45,6 +45,12 @@ export const pearlOrder: PearlChapter[] = [
         ids: [
             { pattern: /Misc_WHITE_PEARLS_\d+/ }
         ]
+    },
+    {
+        name: "Broadcast Pearls",
+        ids: [
+            { pattern: /BroadcastMisc_\d+/ }
+        ]
     }
 ]
 

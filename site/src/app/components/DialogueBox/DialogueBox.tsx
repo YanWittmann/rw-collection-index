@@ -119,7 +119,7 @@ export function DialogueBox({
             return null;
         }
 
-        var dialogue = pearl.transcribers[selectedTranscriberIndex];
+        const dialogue = pearl.transcribers[selectedTranscriberIndex];
         const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, dialogue.transcriber);
 
         let titleElement = null;
@@ -130,7 +130,7 @@ export function DialogueBox({
                         <Tooltip key={"pearl-info"}>
                             <TooltipTrigger>
                                 <span className={"flex items-center"}>
-                                    {pearl.metadata.name} (<span className={"w-3 h-3"}><RwIcon type="info"/></span>)
+                                    {dialogue.metadata.name} (<span className={"w-3 h-3"}><RwIcon type="info"/></span>)
                                 </span>
                             </TooltipTrigger>
                             <TooltipContent className="text-center">

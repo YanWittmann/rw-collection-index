@@ -14,6 +14,7 @@ export interface MapInfo {
 export interface Dialogue {
     transcriber: string;
     metadata: {
+        name: string;
         color: string;
         info?: string;
         mapInfo?: string;

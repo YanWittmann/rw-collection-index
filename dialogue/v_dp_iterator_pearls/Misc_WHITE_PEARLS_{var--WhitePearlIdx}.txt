@@ -40,7 +40,8 @@ I am sorry, this pearl is damaged and cannot be read. I suggest you use it for t
 
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 6
-This is an official decree of cultivation sent from the twenty-second Subsistence Council ordering the eastern spoke Farm Array administration to "immediately harvest and process all viable crops, despite whatever misgivings they might have." A short-sighted endeavor for sure. I would assume this was sent sometime during the final cycles leading up to final public ascension, when interest in biosphere sustainability was at an all-time low.
+This is an official decree of cultivation sent from the twenty-second Subsistence Council ordering the eastern spoke Farm Array administration to "immediately harvest and process all viable crops, despite whatever misgivings they might have."
+A short-sighted endeavor for sure. I would assume this was sent sometime during the final cycles leading up to final public ascension, when interest in biosphere sustainability was at an all-time low.
 
 === transcription: FP-artificer
 md-var-WhitePearlIdx: 7
@@ -52,7 +53,8 @@ Here we have a schematic for a refuse reclamation automaton. It's an early desig
 
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 8
-"We, of the Five-hundred-and-ninety-second High Convocation of the True Anointed Citadel, do hereby demand, with full force of Law and Religious doctrine, an Immediate end to construction of the Apostate Superstructure Abomination. To place shadow upon the Divine Body of the True Anointed Citadel is outrageous blasphemy and cannot be tolerated, no matter the circumstances..." Clearly this was ignored.
+"We, of the Five-hundred-and-ninety-second High Convocation of the True Anointed Citadel, do hereby demand, with full force of Law and Religious doctrine, an Immediate end to construction of the Apostate Superstructure Abomination. To place shadow upon the Divine Body of the True Anointed Citadel is outrageous blasphemy and cannot be tolerated, no matter the circumstances..."
+Clearly this was ignored.
 
 === transcription: LttM-post-collapse
 md-var-WhitePearlIdx: 9

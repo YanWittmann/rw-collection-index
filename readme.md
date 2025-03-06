@@ -33,7 +33,7 @@ Information is sourced from the [Rain World Wiki](https://rainworld.miraheze.org
   - `pearl=<id>`: Selects a specific pearl (e.g., `pearl=SI_chat3_DARK_PURPLE`)
   - `transcriber=<id>`: Selects a transcriber for the chosen pearl (e.g., `transcriber=LttM-pre-collapse`)
 - Hover over speaker names to reveal full names
-- Hold control/command/shift to show the amount of transcriptions on each entry
+- Hold shift to show the amount of transcriptions on each entry
 
 ## Installation and Setup
 
