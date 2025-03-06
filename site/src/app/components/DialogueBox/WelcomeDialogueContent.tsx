@@ -18,7 +18,7 @@ export function WelcomeDialogueContent({
         <div className="relative text-center mt-20 pb-6">
             <div className="absolute inset-0 flex items-center justify-center">
                 <img
-                    src="/img/The_Scholar.png"
+                    src="img/The_Scholar.png"
                     alt="The Scholar"
                     className="w-1/2 max-w-[20rem] h-auto opacity-20 mb-36"
                     style={{ imageRendering: 'pixelated' }}

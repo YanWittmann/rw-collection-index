@@ -113,7 +113,7 @@ export default function HintSystemContent({
     return (
         <div className="text-center mt-20 pb-6">
             <div className="relative mb-5 text-xl">
-                <img src="/img/lock.png" alt="Lock" className="w-6 h-6 inline"/> Transcription not yet found
+                <img src="img/lock.png" alt="Lock" className="w-6 h-6 inline"/> Transcription not yet found
             </div>
             <div className="relative flex flex-col items-center justify-center h-full space-y-3">
                 <div className="flex flex-row space-x-3 mb-8">

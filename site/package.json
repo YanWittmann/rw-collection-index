@@ -1,6 +1,7 @@
 {
   "name": "rain-world-collection-index",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@craco/craco": "^7.1.0",

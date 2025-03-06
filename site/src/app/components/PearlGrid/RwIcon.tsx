@@ -8,7 +8,7 @@ interface RwIconProps {
 }
 
 export function RwIcon({ color, type = "pearl" }: RwIconProps) {
-    const imageUrl = `/img/${type}.png`
+    const imageUrl = `img/${type}.png`
 
     if (color) {
         return (

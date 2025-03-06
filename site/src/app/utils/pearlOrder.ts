@@ -66,7 +66,6 @@ export const orderPearls = (pearls: PearlData[]): { name: string, items: PearlDa
             if (typeof idOrSelector === 'string') {
                 return pearlsById[idOrSelector] ? [pearlsById[idOrSelector]] : [];
             } else {
-                console.log(idOrSelector.pattern);
                 return pearls.filter(pearl => idOrSelector.pattern.test(pearl.id));
             }
         })
