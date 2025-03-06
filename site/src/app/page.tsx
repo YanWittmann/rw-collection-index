@@ -53,6 +53,7 @@ export default function DialogueInterface() {
                  backgroundImage: `url(img/Pc-main-menu.png)`,
                  backgroundSize: "cover",
                  backgroundPosition: "center",
+                 backgroundColor: "#101010",
              }}
         >
             <div className="absolute inset-0 backdrop-blur-sm bg-black/30"/>
