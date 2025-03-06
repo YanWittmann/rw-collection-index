@@ -1,7 +1,8 @@
 color: {randomPick--#ff7a02--#b3b3b3--#4b4653}
 type: pearl
-name: Five Pebbles' Pearls {var--PebPearlIdx}
-info: Pearls from Five Pebbles' chamber have a separate, smaller pool of dialogue to pick from.\nContained in Five Pebbles' Pearls are memories, processes, ciphers, and images he was likely using,\nusually preceded by Looks to the Moon explaining how they were recently used.
+name: Five Pebbles' Pearl {var--PebPearlIdx}
+map: region=SS, room=AI, mapSlugcat=white
+info: ${PebblesPearl-INFO}
 
 === transcription: LttM-post-collapse
 md-var-PebPearlIdx: 1
@@ -10,3 +11,42 @@ It's an active working memory - raw data has been dropped here in order to later
 === transcription: LttM-post-collapse
 md-var-PebPearlIdx: 2
 It is the impression of being a small creature, like a wall climbing lizard, and looking up into the branches of a big tree. The last third is partly overwritten with a number series I vaguely recognize, but without my memory…
+
+=== transcription: LttM-post-collapse
+md-var-PebPearlIdx: 3
+A common prayer mantra repeated 7110 times. Each repetition has some slight random variations, which seem to have been written later.
+
+=== transcription: LttM-post-collapse
+md-var-PebPearlIdx: 4
+It's an image of a single grey cloud, hovering above a surface of white clouds under a deep blue sky.
+
+=== transcription: LttM-post-collapse
+md-var-PebPearlIdx: 5
+Two... intertwined number series? I don't quite understand the utility of this.
+It might a key for a cipher processor, customized for some other data which is impossible to infer from this.
+
+=== transcription: LttM-post-collapse
+md-var-PebPearlIdx: 6
+It's qualia, or a moment - a very short one. Someone is holding a black stone, and twisting it slightly as they drag their finger across the rough surface.
+The entire sequence is shorter than a heartbeat, but the resolution is extraordinary.
+
+=== transcription: LttM-post-collapse
+md-var-PebPearlIdx: 7
+An active working memory. Without knowing where this was cut from or where it's to be pasted to, it is not really possible to decipher it. If I had to guess, I would say it has something to do with trance inducing number series.
+
+=== transcription: LttM-post-collapse
+md-var-PebPearlIdx: 8
+It's just an active working memory, I can't really tell you anything without the context.
+
+=== transcription: LttM-post-collapse
+md-var-PebPearlIdx: 9
+Without the process surrounding this data there isn't much I can tell you. It might have something to do with Void Fluid simulation...
+
+=== transcription: LttM-post-collapse
+md-var-PebPearlIdx: 10
+This one is completely blank. Actually, blanker than blank, it must have been deliberately overwritten with repeating negative versions of itself for thousands of iterations.
+
+=== transcription: LttM-post-collapse
+md-var-PebPearlIdx: 11
+A memory... but not really visual, or even concrete, in its character. It reminds of the feeling of a warm wind, but not the physical feeling but the... inner feeling.
+I don't think it has much utility unless you are doing some very fringe Regeneraist research.

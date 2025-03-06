@@ -1,8 +1,12 @@
 import { PearlData } from "../types/types";
 
+export interface PearlSelector {
+    pattern: RegExp;
+}
+
 export interface PearlChapter {
     name: string;
-    ids: string[];
+    ids: string[] | PearlSelector[];
 }
 
 export const pearlOrder: PearlChapter[] = [
@@ -26,8 +30,26 @@ export const pearlOrder: PearlChapter[] = [
     },
     {
         name: "Downpour Addons",
-        ids:[
+        ids: [
             "LttM_SAINT_ANY_OTHER"
+        ]
+    },
+    {
+        name: "Five Pebble's Pearls",
+        ids: [
+            { pattern: /PebblesPearl_\d+/ }
+        ]
+    },
+    {
+        name: "Five Pebble's Pearls (Rivulet)",
+        ids: [
+            { pattern: /PebblesPearl_RIV_\d+/ }
+        ]
+    },
+    {
+        name: "White Pearls (Misc)",
+        ids: [
+            { pattern: /Misc_WHITE_PEARLS_\d+/ }
         ]
     }
 ]
@@ -40,23 +62,40 @@ export const orderPearls = (pearls: PearlData[]): { name: string, items: PearlDa
 
     const orderedPearls = pearlOrder.map(chapter => ({
         name: chapter.name,
-        items: chapter.ids.map(id => pearlsById[id])
+        items: chapter.ids.flatMap(idOrSelector => {
+            if (typeof idOrSelector === 'string') {
+                return pearlsById[idOrSelector] ? [pearlsById[idOrSelector]] : [];
+            } else {
+                console.log(idOrSelector.pattern);
+                return pearls.filter(pearl => idOrSelector.pattern.test(pearl.id));
+            }
+        })
     }));
 
-    // check if any is undefined
-    if (orderedPearls.some(chapter => chapter.items.some(item => !item))) {
-        // find the exact pearls by id that are undefined
-        for (const chapter of pearlOrder) {
-            for (const id of chapter.ids) {
-                if (!pearlsById[id]) {
-                    console.error(`Pearl with id ${id} not found`);
-                }
+    // check if any string IDs are not found
+    for (const chapter of pearlOrder) {
+        for (const idOrSelector of chapter.ids) {
+            if (typeof idOrSelector === 'string' && !pearlsById[idOrSelector]) {
+                console.error(`Pearl with id ${idOrSelector} not found`);
             }
         }
     }
 
-    const coveredIds = new Set(pearlOrder.flatMap(chapter => chapter.ids));
-    const uncoveredPearls = pearls.filter(pearl => !coveredIds.has(pearl.id));
+    // Create a function that checks if a pearl is covered by any selector
+    const isPearlCovered = (pearl: PearlData): boolean => {
+        for (const chapter of pearlOrder) {
+            for (const idOrSelector of chapter.ids) {
+                if (typeof idOrSelector === 'string') {
+                    if (idOrSelector === pearl.id) return true;
+                } else {
+                    if (idOrSelector.pattern.test(pearl.id)) return true;
+                }
+            }
+        }
+        return false;
+    };
+
+    const uncoveredPearls = pearls.filter(pearl => !isPearlCovered(pearl));
     orderedPearls.push({ name: "Other", items: uncoveredPearls });
     return orderedPearls;
 }

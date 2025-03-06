@@ -5,6 +5,7 @@ const path = require('path');
 const DIALOGUE_DIR = path.join(__dirname, '../dialogue');
 const OUTPUT_FILE = path.join(__dirname, 'src/generated/parsed-dialogues.json');
 const MAX_SPEAKER_LENGTH = 12;
+const PATTERN_REGEX = /\{([^}]+)\}/g;
 
 const generalWhiteGrayBroadcasts = [
     { region: "SU", room: "A17", mapSlugcat: "spear" },
@@ -23,6 +24,101 @@ const generalWhiteGrayBroadcasts = [
 const mapMetadataTemplates = {
     "MAP-WHITE-BROADCASTS": generalWhiteGrayBroadcasts,
     "MAP-GRAY-BROADCASTS": generalWhiteGrayBroadcasts,
+}
+
+// Track selections for arrays of the same length
+const randomPickCache = {};
+
+function resolvePatterns(value, variables = {}) {
+    if (typeof value !== 'string') return value;
+
+    return value.replace(PATTERN_REGEX, (match, pattern) => {
+        const [type, ...params] = pattern.split('--');
+        switch(type) {
+            case 'var':
+                return variables[params[0]] || match;
+            case 'randomPick': {
+                const len = params.length;
+
+                // Initialize cache for this length if it doesn't exist
+                if (!randomPickCache[len]) {
+                    randomPickCache[len] = {
+                        indices: [...Array(len).keys()], // [0,1,2,...len-1]
+                        position: len // Start at end to force initial shuffle
+                    };
+                }
+
+                const cache = randomPickCache[len];
+
+                // If we've used all indices, reshuffle
+                if (cache.position >= cache.indices.length) {
+                    // Fisher-Yates shuffle
+                    for (let i = cache.indices.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [cache.indices[i], cache.indices[j]] = [cache.indices[j], cache.indices[i]];
+                    }
+                    cache.position = 0;
+                }
+
+                // Get next index and advance position
+                const index = cache.indices[cache.position++];
+                return params[index];
+            }
+            default:
+                return match;
+        }
+    });
+}
+
+function resolveVariables(metadata) {
+    return Object.entries(metadata)
+        .filter(([k]) => k.startsWith('var-'))
+        .reduce((acc, [k, v]) => ({
+            ...acc,
+            [k.slice(4)]: v
+        }), {});
+}
+
+function createResolvedEntry(baseId, parsed, transcriber, variables) {
+    const resolvedId = resolvePatterns(baseId, variables);
+
+    // Resolve metadata
+    const resolvedMetadata = Object.fromEntries(
+        Object.entries(parsed.metadata).map(([k, v]) => [
+            k,
+            resolvePatterns(v, variables)
+        ])
+    );
+
+    // Resolve transcription metadata
+    const resolvedTranscriberMetadata = Object.fromEntries(
+        Object.entries(transcriber.metadata).map(([k, v]) => [
+            k,
+            typeof v === 'string' ? resolvePatterns(v, variables) : v
+        ])
+    );
+
+    // Merge metadata
+    const finalMetadata = {
+        ...resolvedMetadata,
+        ...resolvedTranscriberMetadata,
+        map: [
+            ...new Set([
+                ...(resolvedMetadata.map || []),
+                ...(resolvedTranscriberMetadata.map || [])
+            ])
+        ]
+    };
+
+    return {
+        id: resolvedId,
+        metadata: finalMetadata,
+        transcribers: [{
+            ...transcriber,
+            metadata: finalMetadata
+        }],
+        hints: parsed.hints
+    };
 }
 
 function parseMapEntries(value) {
@@ -235,15 +331,29 @@ function processDialogueFiles() {
         const files = getAllFiles(DIALOGUE_DIR);
         console.log(`Found ${files.length} files in ${DIALOGUE_DIR} to process`);
 
-        const result = files.map(file => {
-            const content = fs.readFileSync(path.join(file), 'utf-8');
-            const id = path.basename(file, '.txt');
+        const result = files.flatMap(file => {
+            const content = fs.readFileSync(file, 'utf-8');
+            const baseId = path.basename(file, '.txt');
             const parsed = parseDialogueContent(content);
 
-            return {
-                id,
-                ...parsed
-            };
+            // Check if any transcription has variables
+            const hasVariables = parsed.transcribers.some(t =>
+                Object.keys(t.metadata).some(k => k.startsWith('var-'))
+            );
+
+            if (!hasVariables) {
+                // Original behavior - single entry
+                return [{
+                    id: baseId,
+                    ...parsed
+                }];
+            }
+
+            // Variable handling - split into multiple entries
+            return parsed.transcribers.map(transcriber => {
+                const variables = resolveVariables(transcriber.metadata);
+                return createResolvedEntry(baseId, parsed, transcriber, variables);
+            });
         });
 
         fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
