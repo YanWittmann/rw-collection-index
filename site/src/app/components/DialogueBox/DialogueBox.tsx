@@ -12,6 +12,7 @@ import HintSystemContent from "./HintSystemContent";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
 import { RwIcon } from "../PearlGrid/RwIcon";
 import { renderDialogueLine } from "../../utils/renderDialogueLine";
+import { cn } from "@shadcn/lib/utils";
 
 interface DialogueBoxProps {
     pearl: PearlData | null
@@ -23,6 +24,7 @@ interface DialogueBoxProps {
     hintProgress: number
     setHintProgress: (value: (((prevState: number) => number) | number)) => void
     onSelectPearl: (pearl: PearlData | null) => void
+    isMobile: boolean
 }
 
 export function generateMapLinkFromMapInfo(mapInfo: MapInfo | undefined) {
@@ -58,7 +60,8 @@ export function DialogueBox({
                                 triggerRender,
                                 hintProgress,
                                 setHintProgress,
-                                onSelectPearl
+                                onSelectPearl,
+                                isMobile
                             }: DialogueBoxProps) {
     const [hoveredTranscriber, setHoveredTranscriber] = useState<string | null>(null)
     const [lastTranscriberName, setLastTranscriberName] = useState<string | null>(null)
@@ -134,7 +137,8 @@ export function DialogueBox({
                                 </span>
                             </TooltipTrigger>
                             <TooltipContent className="text-center">
-                                <span dangerouslySetInnerHTML={{ __html: renderDialogueLine(resolveVariables(dialogue.metadata.info)) }}/>
+                                <span
+                                    dangerouslySetInnerHTML={{ __html: renderDialogueLine(resolveVariables(dialogue.metadata.info)) }}/>
                             </TooltipContent>
                         </Tooltip>
                     </TooltipProvider>
@@ -187,7 +191,10 @@ export function DialogueBox({
     return (
         <div className="flex-1 relative">
             <div
-                className="bg-black border-2 border-white/80 rounded-xl pl-12 pr-12 lg:pl-24 lg:pr-24 text-white max-h-[80vh] min-h-[80vh] text-sm relative shadow-[0_0_10px_rgba(255,255,255,0.1)]">
+                className={cn(
+                    "bg-black border-2 border-white/80 rounded-xl pl-12 pr-12 lg:pl-24 lg:pr-24 text-white text-sm relative shadow-[0_0_10px_rgba(255,255,255,0.1)]",
+                    isMobile ? "max-h-[90vh] min-h-[90vh]" : "max-h-[80vh] min-h-[80vh]"
+                )}>
                 {pearl ? pearlActiveContent :
                     <WelcomeDialogueContent
                         toggleUnlockModeCallback={toggleUnlockModeCallback}
