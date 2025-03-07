@@ -85,7 +85,7 @@ export default function DialogueInterface() {
     return (
         <div
             className={cn(
-                "min-h-screen w-full relative flex items-center justify-center",
+                "min-h-screen w-full relative flex items-center justify-center overflow-y-hidden",
                 isMobile ? "p-0" : "p-4 md:p-8"
             )}
             style={{

@@ -4,15 +4,20 @@ Hosted at [https://yanwittmann.github.io/rw-collection-index](https://yanwittman
 
 A web application for browsing and reading all Pearls and Broadcasts from Rain World.
 
-## Features
+## Data and Features
 
-- Complete listing of all Pearls and Broadcasts
-- Includes additional items such as White Pearls
+- Complete listing of all:
+    - Pearls (Vanilla, Downpour)
+    - Broadcasts
+    - Five Pebbles Pearls
+    - White Pearls
+    - Broadcast Pearls
 - Location details with map links
 - Progressive unlock and hint system for spoiler-free exploration
 - Search functionality
 
-Information is sourced from the [Rain World Wiki](https://rainworld.miraheze.org/wiki/Pearl/Dialogue) and the game itself.
+Information is sourced from the [Rain World Wiki](https://rainworld.miraheze.org/wiki/Pearl/Dialogue) and the game
+itself.
 
 ![UI Example of a selected Pearl](./doc/ui-demo-01.png)
 
@@ -20,18 +25,18 @@ Information is sourced from the [Rain World Wiki](https://rainworld.miraheze.org
 
 - View All: Instantly access all content
 - Unlock: Gradual discovery system
-  - Items start as locked
-  - Progressive hints guide exploration
-  - Items can be manually unlocked when found in-game
-  - Option to reset unlocks
+    - Items start as locked
+    - Progressive hints guide exploration
+    - Items can be manually unlocked when found in-game
+    - Option to reset unlocks
 
 ## Technical Details
 
 - Built with React and TypeScript
 - Custom UI components styled for Rain World
 - URL parameter support (disabled in unlock mode to prevent spoilers)
-  - `pearl=<id>`: Selects a specific pearl (e.g., `pearl=SI_chat3_DARK_PURPLE`)
-  - `transcriber=<id>`: Selects a transcriber for the chosen pearl (e.g., `transcriber=LttM-pre-collapse`)
+    - `pearl=<id>`: Selects a specific pearl (e.g., `pearl=SI_chat3_DARK_PURPLE`)
+    - `transcriber=<id>`: Selects a transcriber for the chosen pearl (e.g., `transcriber=LttM-pre-collapse`)
 - Hover over speaker names to reveal full names
 - Hold shift to show the amount of transcriptions on each entry
 

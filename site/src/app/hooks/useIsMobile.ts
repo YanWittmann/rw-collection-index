@@ -5,13 +5,12 @@ export function useIsMobile() {
 
     useEffect(() => {
         const checkIsMobile = () => {
-            setIsMobile(window.innerWidth < 768); // md breakpoint
+            setIsMobile(window.innerWidth < 818);
         };
 
-        // Initial check
+        // initial
         checkIsMobile();
 
-        // Add event listener
         window.addEventListener('resize', checkIsMobile);
 
         // Cleanup

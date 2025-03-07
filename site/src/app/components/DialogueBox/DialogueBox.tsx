@@ -166,7 +166,8 @@ export function DialogueBox({
                 }}
                 onHover={setHoveredTranscriber}
             />
-            <div className="overflow-y-auto max-h-[80vh] no-scrollbar">
+            <div
+                className={cn("overflow-y-auto no-scrollbar", isMobile ? "max-h-[calc(85vh-2px)]" : "max-h-[calc(80vh-2px)]")}>
                 {isUnlocked ? <>
                     {titleElement}
                     <DialogueContent
@@ -192,8 +193,8 @@ export function DialogueBox({
         <div className="flex-1 relative">
             <div
                 className={cn(
-                    "bg-black border-2 border-white/80 rounded-xl pl-12 pr-12 lg:pl-24 lg:pr-24 text-white text-sm relative shadow-[0_0_10px_rgba(255,255,255,0.1)]",
-                    isMobile ? "max-h-[90vh] min-h-[90vh]" : "max-h-[80vh] min-h-[80vh]"
+                    "bg-black border-2 border-white/80 rounded-xl px-12 lg:pl-24 lg:pr-24 text-white text-sm relative shadow-[0_0_10px_rgba(255,255,255,0.1)]",
+                    isMobile ? "max-h-[85vh] min-h-[85vh]" : "max-h-[80vh] min-h-[80vh]"
                 )}>
                 {pearl ? pearlActiveContent :
                     <WelcomeDialogueContent
@@ -218,8 +219,9 @@ export function DialogueBox({
             >
                 {lastTranscriberName}
             </motion.div>
-            {pearl === null ? <div className="absolute bottom-[1rem] left-0 right-0 text-center text-white text-sm">
-                Code on <a href="" target="_blank" className="underline">GitHub</a> | Created by Yan Wittmann | <a
+            {pearl === null ? <div className="absolute bottom-[1rem] left-0 right-0 px-2 text-center text-white text-sm">
+                Code on <a href="https://github.com/YanWittmann/rw-collection-index" target="_blank"
+                           className="underline">GitHub</a> | Created by Yan Wittmann | <a
                 href="https://store.steampowered.com/app/312520/Rain_World" target="_blank" className="underline">Rain
                 World</a> is property of <a href="https://twitter.com/VideocultMedia" target="_blank"
                                             className="underline">Videocult</a>
