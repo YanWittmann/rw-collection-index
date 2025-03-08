@@ -1,8 +1,17 @@
 # Rain World Collection Index
 
-Hosted at [https://yanwittmann.github.io/rw-collection-index](https://yanwittmann.github.io/rw-collection-index/)
+<img alt="rw-collection-index-card-hero.png" src="doc/rw-collection-index-card-hero.png" width="1280"/>
 
-A web application for browsing and reading all Pearls and Broadcasts from Rain World.
+[![View deployed site](https://github.com/YanWittmann/rw-collection-index/actions/workflows/static.yaml/badge.svg)](https://yanwittmann.github.io/rw-collection-index)
+
+The Rain World Collection Index is a React web application
+created to help players explore and keep track of the lore in the game
+[Rain World](https://store.steampowered.com/app/312520/Rain_World/).
+It provides a centralized place to browse and read all Pearls and Broadcasts
+from the vanilla version and the Downpour DLC.
+
+🔗 Hosted at
+[https://yanwittmann.github.io/rw-collection-index](https://yanwittmann.github.io/rw-collection-index)
 
 ## Data and Features
 
@@ -24,7 +33,7 @@ itself.
 ## Unlock Modes
 
 - View All: Instantly access all content
-- Unlock: Gradual discovery system
+- Spoiler/Unlock Mode: Gradual discovery system
     - Items start as locked
     - Progressive hints guide exploration
     - Items can be manually unlocked when found in-game
@@ -42,16 +51,11 @@ itself.
 
 ## Installation and Setup
 
-### Clone the Repository
+### Clone the Repository / Install Dependencies
 
 ```bash
 git clone https://github.com/YanWittmann/rw-collection-index
 cd rw-collection-index/site
-```
-
-### Install Dependencies
-
-```bash
 npm install
 ```
 
