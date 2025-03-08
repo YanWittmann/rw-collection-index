@@ -133,7 +133,7 @@ export function DialogueBox({
                         <Tooltip key={"pearl-info"}>
                             <TooltipTrigger>
                                 <span className={"flex items-center"}>
-                                    {dialogue.metadata.name} (<span className={"w-3 h-3"}><RwIcon type="info"/></span>)
+                                    {dialogue.metadata.name || pearl.metadata.name} (<span className={"w-3 h-3"}><RwIcon type="info"/></span>)
                                 </span>
                             </TooltipTrigger>
                             <TooltipContent className="text-center">
@@ -145,7 +145,7 @@ export function DialogueBox({
                 </div>
         } else {
             titleElement = <div className="text-center text-white text-lg mb-14 pb-0 mt-7">
-                {pearl.metadata.name}
+                {dialogue.metadata.name || pearl.metadata.name}
             </div>
         }
 

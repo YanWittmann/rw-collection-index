@@ -124,6 +124,14 @@ function createVariableGroupEntry(baseId, parsedData, group) {
         resolveTranscriberMetadata(transcriber, group.variables, resolvedMetadata)
     );
 
+    // check if the metadata does not contain a name. If so, check if any transcriber has a name and use that as the name
+    if (!resolvedMetadata.name) {
+        resolvedMetadata.name = resolvedTranscribers.find(t => t.metadata.name)?.metadata.name;
+    }
+    if (!resolvedMetadata.color) {
+        resolvedMetadata.color = resolvedTranscribers.find(t => t.metadata.color)?.metadata.color;
+    }
+
     return {
         id: resolvedId,
         metadata: resolvedMetadata,
@@ -180,48 +188,6 @@ function resolveVariables(metadata) {
             ...acc,
             [k.slice(4)]: v
         }), {});
-}
-
-function createResolvedEntry(baseId, parsed, transcriber, variables) {
-    const resolvedId = resolvePatterns(baseId, variables);
-
-    // Resolve metadata
-    const resolvedMetadata = Object.fromEntries(
-        Object.entries(parsed.metadata).map(([k, v]) => [
-            k,
-            resolvePatterns(v, variables)
-        ])
-    );
-
-    // Resolve transcription metadata
-    const resolvedTranscriberMetadata = Object.fromEntries(
-        Object.entries(transcriber.metadata).map(([k, v]) => [
-            k,
-            typeof v === 'string' ? resolvePatterns(v, variables) : v
-        ])
-    );
-
-    // Merge metadata
-    const finalMetadata = {
-        ...resolvedMetadata,
-        ...resolvedTranscriberMetadata,
-        map: [
-            ...new Set([
-                ...(resolvedMetadata.map || []),
-                ...(resolvedTranscriberMetadata.map || [])
-            ])
-        ]
-    };
-
-    return {
-        id: resolvedId,
-        metadata: finalMetadata,
-        transcribers: [{
-            ...transcriber,
-            metadata: finalMetadata
-        }],
-        hints: parsed.hints
-    };
 }
 
 function parseMapEntries(value) {

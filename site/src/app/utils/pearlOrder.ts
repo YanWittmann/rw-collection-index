@@ -51,6 +51,12 @@ export const pearlOrder: PearlChapter[] = [
         ids: [
             { pattern: /BroadcastMisc_\d+/ }
         ]
+    },
+    {
+        name: "Developer Commentary",
+        ids: [
+            { pattern: /DevComm_.+/ }
+        ]
     }
 ]
 

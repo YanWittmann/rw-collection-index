@@ -17,6 +17,13 @@ export const speakersColors: { [key: string]: string } = {
     "PI": "#ffbfff",
     "WO": "#bfbfff",
     "EOC": "#ffffe5",
+    "Andrew": "#ffffff",
+    "Will": "#ff4c59",
+    "Norgad": "#ab8fd6",
+    "Screams": "#4cff87",
+    "Dakras": "#b854ed",
+    "Slugitar": "#ffffff",
+    "Cappin": "#0061d6",
 };
 
 export const transcribersColors: { [key: string]: string } = {
@@ -57,6 +64,13 @@ export const speakerNames: { [key: string]: string } = {
     "broadcast-pre-FP": "Pre-Five Pebbles",
     "broadcast-post-FP": "Post-Five Pebbles",
     "broadcast": "Broadcast",
+    "Andrew": "Andrew Marrero",
+    "Will": "Willburd",
+    "Norgad": "Tom \"Norgad\" Starbuck",
+    "Screams": "the one who screams i guess",
+    "Dakras": "Andy \"Dakras\" Dunn",
+    "Slugitar": "Slugitar",
+    "Cappin": "Evan \"Cappin\" Muncy",
 }
 
 export const regionNames: { [key: string]: string } = {

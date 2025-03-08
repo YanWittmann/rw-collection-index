@@ -1,0 +1,1696 @@
+type: broadcast
+
+=== transcription: broadcast
+md-map: region=CC, room=CLOG, mapSlugcat=white
+md-color: #d48573
+md-var-DevCommId: Stagnant_Puddles
+md-name: Stagnant Puddles
+Norgad: When we needed a subregion to connect CC and DS, I knew exactly the theme I wanted to go for.\nI was inspired by going on walks as a kid and seeing large puddles of stagnant water by the trails.\nThe water had this intense orange color to it, but was so incredibly still.
+Norgad: I wanted a subregion that was basically a giant collection system for all the gunk that must build up in Cc\nThe water goes through sump after sump and filter after filter as it's gradually clarified on its way down.
+Norgad: I never ended up making any actual levels for the area, but I did make a schematic, with the general flow and shapes of rooms.
+
+=== transcription: broadcast
+md-map: region=CC, room=STRAINER02, mapSlugcat=white
+md-color: #d48573
+md-var-DevCommId: Sludge_Water
+md-name: Sludge Water
+Norgad: I believe it was Will that suggested making the water have unique behaviour in The Gutter.\nI like how the effect gradually decreases as you reach cleaner and cleaner chambers, further down the pipes.
+
+=== transcription: broadcast
+md-map: region=CC, room=SUMP01, mapSlugcat=white
+md-color: #d48573
+md-var-DevCommId: Swimming_Inkfish
+md-name: Swimming Inkfish
+Norgad: I was doing a quality pass over the region when I realised the inkfish creatures have the capacity to swim around.
+Norgad: Oddly, I couldn't name an example of actually seeing them do it in the base game though!
+Norgad: I wanted to have a little 'fish tank' where you can see them swimming about in.
+Norgad: They tend to bunch up near the walls, but they do swim about, on occasion.
+
+=== transcription: broadcast
+md-map: region=CL, room=A30, mapSlugcat=saint
+md-color: #47655f
+md-var-DevCommId: Another_Wall
+md-name: Another Wall
+Will: This room is a bit of a fun fake out to players without a good memory of The Wall. A lot of testers\nwere confused at first why this section of wall doesn't match the one we climb on earlier slugcats.
+Will: The answer is really simple. It's not!
+Will: Five Pebbles is just really big, the usual wall collapsing in EXACTLY this place would\nbe way too convenient! Of course you can find the side of Five Pebbles we are all used to!
+
+=== transcription: broadcast
+md-map: region=CL, room=B21, mapSlugcat=saint
+md-color: #47655f
+md-var-DevCommId: Region_Art
+md-name: Region Art
+Norgad: LOVED doing the art for this region.
+Norgad: I really wanted to emphasise how 5P's can had been turned open and exposed bare to the\nelements. The colors also really helped give this feeling of bleakness and only faint residual warmth.
+Norgad: I wanted so badly to share the artwork for this region, but sadly the snow was a huge spoiler.
+
+=== transcription: broadcast
+md-map: region=CL, room=C14, mapSlugcat=saint
+md-color: #47655f
+md-var-DevCommId: Final_Rot
+md-name: Final Rot
+Will: Seeing the rot reduced to such a withered state, after all we've been through with it, is an interesting feeling.
+Will: Even in the remains of Five Pebbles, all it can produce is a few mobile withered cysts.\nOnes that are so decayed themselves that they can barely hunt without getting lucky.
+Will: If you come here late in the cycle, you can watch them dying to the cold.
+Will: A withering end to the rot seemed the most fitting.
+
+=== transcription: broadcast
+md-map: region=CL, room=CORE, mapSlugcat=saint
+md-color: #47655f
+md-var-DevCommId: Trader_Home
+md-name: Trader Home
+Will: Having this tiny room present on Saint was something I had to do.
+Will: Finding it after playing Rivulet's campaign... players are sure to have a heck of a feeling once they realize where they are.
+Will: Of course, this room is just the trader's little home now. It makes me wonder if the\nscavengers ever think about what the strange structures all around them once were?
+Will: How much do they understand? Do they even care? Is this just nice little\ncozy space to live? Or did they understand that this was once something bigger?
+Will: We'll never know I guess.
+
+=== transcription: broadcast
+md-map: region=CL, room=D04, mapSlugcat=saint
+md-color: #47655f
+md-var-DevCommId: Fissures_for_Walls
+md-name: Fissures for Walls
+Andrew: Some testers were a bit perplexed by the layout of this region...\nthinking that Pebbles seems to have at least four different "walls" in this region.
+Andrew: A zoomed out look at the region might give a better idea of the state of Pebbles' can after the collapse.
+Andrew: Because... this is definitely not a wall.
+
+=== transcription: broadcast
+md-map: region=CL, room=D08, mapSlugcat=saint
+md-color: #47655f
+md-var-DevCommId: Ruin
+md-name: Ruin
+Dakras: This room is one of my favorites I've made.
+Dakras: Something about seeing the familiar corridor ruined is special to me.
+Dakras: I just hope it's a special moment for the rest of the people playing as well, or at least seeing what happened here overall.
+
+=== transcription: broadcast
+md-map: region=CL, room=LSSECRET, mapSlugcat=saint
+md-color: #47655f
+md-var-DevCommId: Sanctuary
+md-name: Sanctuary
+Will: After all that Five Pebbles' structure has been through. Showing its collapsed state as something both dark and hopeful was important.
+Will: I wanted to turn the inside into a sort of miniature Undergrowth. Where the remaining body heat of the facility provided safety.
+Will: Shaded was mostly crushed by Five Pebble's collapse, but unlike Moon, it's not clear if all of him fell down.
+Will: His rotten interior likely made him fall in pieces, which is why this place is not as destroyed\nas Waterfront was when Moon fell. Of course, that means Five Pebbles is in a much worse state.
+Will: At least the creatures of the world beneath have a new home in the cold.
+
+=== transcription: broadcast
+md-map: region=DM, room=ENTRANCE, mapSlugcat=spear
+md-color: #194fe7
+md-var-DevCommId: Scrapping_Spearmaster
+md-name: Scrapping Spearmaster
+Will: In the earliest design documents of MSC it was always planned to have a collapsed Moon to explore.
+Will: However, before I joined, Spearmaster was planned to be scrapped for the MSC update. The idea of using Spearmaster\nas a way to go back in time to before Moon's collapse, may have ultimately been what saved them from being scrapped!
+Will: However it created its own new problems... like how we needed to maintain\nconsistency between regions through the timeline to a much greater degree.
+
+=== transcription: broadcast
+md-map: region=DM, room=I02, mapSlugcat=spear
+md-color: #194fe7
+md-var-DevCommId: Finding_Moon
+md-name: Finding Moon
+Will: This small collection of rooms act as the heart of Moon's layout, as it borders all four subregions.
+Will: Imagine Moon's structure as four areas. The upper region, with her topside, chamber, and memory conflux. Two middle regions,\none focused around zappers, and the other more on fluxing gravity. Finally, the bottom region containing her leg and underhang.
+Will: When players move through these areas, they are unlikely to backtrack to the underhang area, as they are\nlikely to feel as if that area will not lead them to progress. This leaves them between the two middle areas.
+Will: If they travel up from this room, they will find Moon's outer chamber, with no access to Moon\nherself. However, they are close to the familiar Shoreline rooms, and may attempt to reach Moon that way.
+Will: If the player explores the left side of Moon, they will find the Precipice gate before moon tells them. However,\nthis gate is much less expensive to leave then enter, and staying inside Moon is more likely the intended path.\nThis will lead them to exploring the right hand region, or reaching the crossover tunnel at the top of the left region.
+Will: In both cases these will eventually connect them to the familiar sights of a memory conflux subregion! From\nthere all the players need is a hint towards her chamber by the use of GSB musical themes similar to Five Pebbles!
+Will: Even with all these hints and attempts to guide players without saying anything, getting lost is inevitable, but that's part of the fun!
+
+=== transcription: broadcast
+md-map: region=DM, room=I10, mapSlugcat=spear
+md-color: #194fe7
+md-var-DevCommId: Mod_Ideas
+md-name: Mod Ideas
+Andrew: I start to wonder if on release, people are going to think MSC stole a lot of ideas from other modders.
+Andrew: There have been many mods released over the course of MSc\ndevelopment that share big commonalities with features that MSC contains.
+Andrew: Electric Spear, Crafting, MoodMod, Forecast, RW Drought... to name just a few.
+Andrew: These are all actually coincidential, and I have plenty of old development\nvideos to show those features implemented in MSC before any of those mods existed.
+Andrew: And likewise those mods couldn't have been inspired by MSC, since most of\nthese features were never teased by us, being held in secret behind closed doors.
+Andrew: It's really just a case of "great minds think alike", I guess!
+Andrew: There are a few instances where we did use things from other mods, though, so I'd like to give those credit.
+Andrew: The ability to choose custom colors for your slugcats was inspired by Colorfoot.
+Andrew: Our Dev Tools incorporates LeeMoriya's Warp Menu mod, which was very nifty in the later parts of development!
+Andrew: Also thanks to Topicular for providing me the assets to replicate\ntheir SoonTM mod in MSC, and get the 1.8 ending cutscenes in here!
+Andrew: As for slugpups, the first person to ever attempt an implementation of them was Topicular.\nSecond came Screams, at which point I quickly got in contact with him to help implement pups into MSC.
+Andrew: Lastly, RatRat made the third attempt at slugpups, and was\nthe first to bless the community with a playable version. Nice job!
+Andrew: Oh, and I guess this is probably common knowledge by now, but the original\nSpearmaster in the first MSC version was inspired by the old Grapecat mod!
+
+=== transcription: broadcast
+md-map: region=DM, room=LAB3, mapSlugcat=spear
+md-color: #194fe7
+md-var-DevCommId: Pearl_Translations
+md-name: Pearl Translations
+Andrew: This same pearl is in this same room in Rivulet's Submerged Superstructure, too.\nAlthough, Past Moon and Future Moon have different dialog if you deliver the pearl to them.
+Andrew: Actually, there's quite a few pearls where this is the case.
+Andrew: Depending on timeline location, the dialog wouldn't always make sense, so we\nhave some different variations of the pearl readings for different points in time.
+Andrew: Did you discover that you can deliver pearls to Pebbles too, during\nArtificer's campaign? He has different things to say for every pearl compared to Moon.
+Andrew: I don't expect the player to see all these different possible variations, as pearl\ndelivery is far too time consuming and tedious. I imagine it'll be more of a community effort.
+Andrew: Though, with all of these timeline differences, I wish good luck to the people\nwho eventually try to organize all of this information on the More Slugcats wiki...
+
+=== transcription: broadcast
+md-map: region=DM, room=LEG01, mapSlugcat=spear
+md-color: #194fe7
+md-var-DevCommId: Creation_of_Waterfront
+md-name: Creation of Waterfront
+Will: Originally, Moon's leg was simply going to be standing in Shoreline. However, Artificer's\ndrowning mechanics combined with Shoreline became a constant issue. One we eventually\ndecided to remove entirely by creating a unique region to replace Shoreline in the past.
+Will: This solved several problems at once. Artificer no longer hit a brick wall in shoreline.\nWe could have a more grand scavenger population roam Waterfront, and finally we could\ncreate a unique area that presented a progression in the timeline between slugcats.
+Will: All while also giving Moon a proper place to stand that did not feel like she was simply dropped\nonto an existing region! And, still maintaining familiar elements and routes, with some interesting twists.
+
+=== transcription: broadcast
+md-map: region=DM, room=LEG02, mapSlugcat=spear
+md-color: #194fe7
+md-var-DevCommId: Shaded_Creatures_in_Struts
+md-name: Shaded Creatures in Struts
+Will: When first planning Moon's leg, I planned to mirror the leg of Five Pebbles when placing creatures. However,\nthis idea felt a bit hollow and derivative. Looking for ideas I chose to dig into nearby regions and see what stuck.
+Will: At first lantern mice felt out of place, until I went afk for an hour, and returned\nto a surprise. The lantern mice had used their threads to hang themselves from the ceiling,\nand completely insulate themselves from the violent electrical events all around them!
+Will: The final introduction of mother spiders, and small swarms of tiny spiders would solidify the design of the\narea. Creating a more peaceful leg climb, with small bursts of combat from miros vultures, and orange lizards.
+
+=== transcription: broadcast
+md-map: region=DM, room=LEG08, mapSlugcat=spear
+md-color: #194fe7
+md-var-DevCommId: First_Region_Art
+md-name: First Region Art
+Norgad: This was actually the first region I made landscape art for. Because of this, there's a few rookie mistakes.
+Norgad: I didn't realise that the game's engine automatically adds blur to the layers, so all the blur is baked in.
+Norgad: Despite this, I'm really happy with how the picture turned out!
+Norgad: The zapper in the center went through multiple revisions in order to get looking quite right.\nThe glow was rather hard to pin down... I believe the old versions of it are hiding somewhere in the .PSD.
+
+=== transcription: broadcast
+md-map: region=DM, room=O04, mapSlugcat=spear
+md-color: #194fe7
+md-var-DevCommId: Older_Model
+md-name: Older Model
+Will: We wanted Moon to clearly be an older model of iterator.
+Will: While a lot of the rooms are my more awkward early style of level work, it works in the design's favor.\nAt least I'd hope so, it makes me a bit conscious of how much my style has changed while working on MSC.
+Will: Back on the proper topic; The major way we wanted to show her older design, was to include more obvious "back room" connections.
+Will: Five Pebble's structure is fancy and new, with all the nastier parts of his internals hidden away deep in the walls.
+Will: Moon's structure is more exposed. With interconnections to her arteries on display, and steaming pipes venting all around them.
+
+=== transcription: broadcast
+md-map: region=DM, room=ROOF03, mapSlugcat=spear
+md-color: #194fe7
+md-var-DevCommId: Fake_Gate
+md-name: Fake Gate
+Will: Early versions of this room had a long fake hallway where this gate door is now.
+Will: Originally, you would pass through an always open region gate on your way to Moon.\nThis gate would later act as the return path for Rivulet after activating Moon's heart.
+Will: However, having a gate in the middle of Moon's GSB, made no sense at all. Eventually, we added\nMoon's city as a sub region, and moved that fake gate to act as her Underhang's always open gate.
+Will: I'm kinda glad we moved an actual gate up here, even if Spearmaster is unable to use it.
+Will: The mystery of what lies beyond it makes for a very fun tease at slugcats further in the timeline!
+
+=== transcription: broadcast
+md-map: region=DM, room=U07, mapSlugcat=spear
+md-color: #194fe7
+md-var-DevCommId: Miros_Vultures
+md-name: Miros Vultures
+Andrew: Why did I create a creature as horrifying as the Miros Vultures?
+Andrew: They were actually created way back in the early ages of the Rain World\nmodding community, even predating the very first version of the MSC mod.
+Andrew: Back in those days we were simply interested if we even could create\na custom creature, so I paid no consideration as to whether I should.
+Andrew: To start with something easy-ish, I decided to use an existing creature's code as a base, and just combine\ntogether bits and pieces from elsewhere to make some horrifying chimera. Both in function and in implementation.
+Andrew: Since I had them functioning and available already, I decided to just\ntoss them into MSC as well. Because why not? What's the worst that can happen?
+Andrew: Lore-wise, I see Miros Vultures as creatures that thrive only in dark areas\nand cold areas. Though between the two, their preference is cold over dark.
+Andrew: They make their first appearance early in the timeline, thriving\nin the dark regions underneath Pebbles' and Moon's superstructures.
+Andrew: Once Moon collapsed, they abandoned the dark areas of Pebbles structure for\nthe more favorable blizzard-like environments that began to form at Bitter Aerie.
+Andrew: Then by Saint's time, they had all the opportunity to spread themselves out across\nthe snowy landscape, and become a horrifying threat that plagued the entire land.
+
+=== transcription: broadcast
+md-map: region=DM, room=WALL04, mapSlugcat=spear
+md-color: #194fe7
+md-var-DevCommId: Defining_Moon's_Region
+md-name: Defining Moon's Region
+Will: This small set of rooms between Luna and Moon's chamber represent a very complex\nissue. Because these rooms are present in multiple parts of the timeline, they must remain\nconsistent! However, Rain World's region based structure requires gates to connect regions.
+Will: Placing gates without any thought can make players confused, as Five\nPebbles' structure has already defined several locations where gates are likely\nto be... and inserting a gate in established rooms wouldn't be right either!
+Will: So, we became tasked with creating a region structure that made sense between Shoreline and Moon before her collapse.
+Will: Our solution in the end was to combine Moon's interior and exterior into one region. Like\nher wall in Shoreline, Moon has many more leaks into the outside world from inside her structure.\nThis also reflects in her Wall's design, featuring many open pipes draining from her systems.
+Will: Unfortunately, we also had one last problem to solve, creating an imposing and moody entrance to her collapsed structure's underside.
+Will: We replaced what would be her CC wall gate,with a connection hallway into her structure, like the kind seen in Five Pebble's Underhang.
+Will: I like to hope these compromises made Moon enjoyable to discover on all points of the timeline!
+
+=== transcription: broadcast
+md-map: region=DS, room=A05, mapSlugcat=white
+md-color: #247d45
+md-var-DevCommId: Fluxing_Water
+md-name: Fluxing Water
+Will: The fluxing water present in Spearmaster and Artificer's drainage system was done mostly for Artificer\ngameplay. It does however offer an interesting lore perspective of drainage system slowly breaking down over time.
+Will: We noticed viewers of the Spearmaster demo stream using this to make\ntheories that could place the slugcats' timeline locations based on it!
+Will: So, this fluxing was also extended slightly into Hunter, but the effect doesn't offer much gameplay change.
+
+=== transcription: broadcast
+md-map: region=DS, room=B03, mapSlugcat=white
+md-color: #247d45
+md-var-DevCommId: Bad_Reputation
+md-name: Bad Reputation
+Will: Drainage System has a bit of a bad reputation. Mostly to new players as being a\nmiserable experience, learning to swim in tight tunnels with no easy chance to fix your\nmistakes. As well as many one way paths that lock the player into rough areas of the region.
+Will: We wanted to change the region up, without destroying the personality that the\nrough edges give it. Would it still be Drainage System if we removed all the drowning?
+Will: Aside from the fluxing water we added for Artificer, we added some more poles and paths. A way to return to\nthe upper levels of the region, and at the same time making the drowning tunnel a sort of "fast travel" for the region.
+Will: Our changes to swimming also cut down on drowning related incidents, without entirely removing the danger of the tunnel.
+
+=== transcription: broadcast
+md-map: region=DS, room=C02, mapSlugcat=white
+md-color: #247d45
+md-var-DevCommId: Drowning_Rework
+md-name: Drowning Rework
+Will: This room brings back some particularly fond memories from playing 1.0 back in the day.
+Will: I nearly gave up the game entirely after wandering into Drainage System, and making it\nall the way to the gate. Only to save before the gate, die in Filter, and be stuck on the side\nof Drainage, with only the tunnel swim for escape. I'm happy I didn't give up back then!
+Will: It did lead to a very large desire to tweak swimming to be less frustrating, but that is an extremely sensitive mechanic!
+Will: If we extend breath timing, we could mess with the feeling of dread that comes from long swims.\nHowever, there is clearly some element of swimming that felt unfair, especially for early players.
+Will: The only major change we made to swimming is the rate of upwards swimming slugcat will attempt while\ndrowning. The original game applies this force linearly, often trapping you against the ceiling very quickly.
+Will: MSC applies this force exponentially, giving you a longer period of control, but with the same amount of time until you drown.
+Will: This allows players to make those final course corrections that might save their lives, but without ruining the drowning time's balance.
+
+=== transcription: broadcast
+md-map: region=DS, room=RIVSTART, mapSlugcat=white
+md-color: #247d45
+md-var-DevCommId: Life_of_Rivulet
+md-name: Life of Rivulet
+Andrew: Rivulet starts out with The Mark, but I don't view them as necessarilly having been raised or trained\nas a messenger by an iterator similarly to Hunter or Spearmaster. They've made contact with one for sure, though.
+Andrew: Rivulet is an adventurous, curious, and agile slugcat that travels long distances across the land,\nand I imagine they've gotten into all sorts of wacky adventures even prior to the start of their campaign.
+Andrew: Proceeding to now eviscerate the zombified corpse of a giant biological supercomputer and revitalize the broken body of a fallen God?
+Andrew: ...Maybe that's just another day in the life of Rivulet.
+
+=== transcription: broadcast
+md-map: region=GW, room=A11, mapSlugcat=white
+md-color: #cce370
+md-var-DevCommId: Look_It's_Me! :>
+md-name: Look It's Me! :>
+Norgad: Look it's me!
+Norgad: ...
+Norgad: ...
+Norgad: ...
+Norgad: :>
+
+=== transcription: broadcast
+md-map: region=GW, room=B01, mapSlugcat=white
+md-color: #cce370
+md-var-DevCommId: Blue_Plant_Color
+md-name: Blue Plant Color
+Will: During the Spearmaster demo stream, we noticed players that were confused about the plant color changes Minkimaro did in this region.
+Will: This inconsistency later became a very minor story element with the creation of the past version of Garbage Wastes.
+Will: The digestion pools pearl explained the likeliness of the pool's purposed bacteria forming co-dependencies with other organisms.
+Will: The orange and yellow plants we are accustomed to in GW's modern appearance are a result of that! They might\nrelease acidic secretions now to protect themselves from being eaten, but that is just fun theory crafting!
+
+=== transcription: broadcast
+md-map: region=GW, room=C03, mapSlugcat=artificer
+md-color: #cce370
+md-var-DevCommId: Mauling_Mechanic_Dynamics
+md-name: Mauling Mechanic Dynamics
+Will: An interesting consequence of game design is seeing the systems you create be twisted by players in ways you didn't imagine.
+Will: One example is Artificer's mauling ability. In all the testing I did, I did it as intended. Simply mauling what I grabbed.
+Will: However, I began to notice during testing streams that Ender was using it in a way I didn't expect!\nThey were stunning scavengers, and then throwing them off ledges, or simply to gain distance from them.
+Will: Dynamic mechanics like these are part of what makes the relationship between devs and testers really fun to experience!
+
+=== transcription: broadcast
+md-map: region=GW, room=C05, mapSlugcat=artificer
+md-color: #cce370
+md-var-DevCommId: No_Happy_Endings
+md-name: No Happy Endings
+Andrew: I thought it'd be interesting to make Artificer, the most violent and aggressive\nof the slugcats, also be the character which shows the most motherly love.
+Andrew: Everything she does is out of vengance for her children.
+Andrew: Artificer's story is a pretty sad one. Forgiveness is not an option for her, but\nno amount of fighting the scavengers will ever be enough, nor really solve anything.
+Andrew: There's no real happy ending for her storyline.
+Andrew: Either you go the path of embracing the violence, and make a life out of it...
+Andrew: Or you can try to take another route, only to find her unfinished business\nkeeps her far too bound to this world to ever have any hope of ascending.
+
+=== transcription: broadcast
+md-map: region=GW, room=C05, mapSlugcat=inv
+md-color: #cce370
+md-var-DevCommId: Playing_as_a_Slugpup
+md-name: Playing as a Slugpup
+Screams: Devtools allows you to load in as a slugpup, but the pup's version of the world is empty.
+Screams: With some simple overrides in the code, I once upgraded this into forcing the\ngame to always spawn you in as a pup regardless of the slugcat you're supposed to be.
+Screams: Of course, I immediately tried playing all the new slugcats like\nthis. I will now list them off in order of (estimated) playability:
+Screams: Survivor, Monk, Hunter, and Gourmand are the most feasible because\nthey don't have custom regions that rely on huge movement changes.
+Screams: I imagine ascending as Rivulet would be possible with some quick thinking,\nbut giving the power cell to Moon is a no-go because of Submerged Superstructure.
+Screams: With Artificer, you can't use scav karma to leave Garbage Wastes, so\nyou're stuck as a six-year-old pursued by killsquads in an acid field forever.
+Screams: Saint and Spearmaster can't get out of their intro rooms without ridiculous\nluck, and Saint's intro crashes the game anyway without further modification.
+Screams: It really puts the helplessness of the pups into perspective, doesn't it?
+
+=== transcription: broadcast
+md-map: region=GW, room=EDGE01, mapSlugcat=white
+md-color: #cce370
+md-var-DevCommId: Artificer's_Path_to_Shaded_Citadel
+md-name: Artificer's Path to Shaded Citadel
+Will: This region connection has always left me a bit nervous!
+Will: We needed a path for Artificer to escape from GW without directly needing to\nalways take on the toll outside. As well as provide more space for Artificer tutorials.
+Will: On the other side of the gate, we also use these new rooms to make the soft lock\npits in shaded no longer a death sentence if you fall into them in certain ways.
+Will: My only concern is how closely it puts you to the leg, but Andrew assures me that the\ndifficulty of the nearby areas, and how out of the way things are, alleviate most of the issues.
+
+=== transcription: broadcast
+md-map: region=GW, room=EDGE04, mapSlugcat=white
+md-color: #cce370
+md-var-DevCommId: Artificer's_Tutorial_Area
+md-name: Artificer's Tutorial Area
+Will: The small area of rooms on each side of this gate are meant to act like a frustrating barrier to players.
+Will: Slugcats with standard mobility will find themselves blocked by tight jumps, ugly ledges,\nand a high karma gate once they reach the top. Along with an awkward to use shelter.
+Will: Players coming from shaded will need to use wall spears, and navigate around miros birds, or cross a crumbling bridge in the dark.
+Will: While none of these paths are brutally hard or unforgiving, they are at least irritating\nand unwelcoming to inexperienced players. The point of this is to create a segment where slugcats\nwith enhanced mobility can shine. In particular, Artificer's explosive jump mechanics.
+Will: Players passing through this room from the start of the campaign will be blocked from using\nthe flooded path, and be forced to make jumps that only Artificer can. As well, the high karma\ngate presented at the start of their campaign is easily overcome by their karma mechanics.
+Will: Sometimes the best choice in design is to create an unwelcoming situation for a player. To which they\ncan succeed, but the cost of doing is either experience, or to return with the tools required to do it easier.
+Will: In this case, Artificer's tutorial is not a friendly place for normal slugcats.
+
+=== transcription: broadcast
+md-map: region=GW, room=PIPE06, mapSlugcat=artificer
+md-color: #cce370
+md-var-DevCommId: Acid_Vats
+md-name: Acid Vats
+Will: We had the ability to create lethal water a long time before we made past-GW.
+Will: Originally, I was going to rebuild Pipeyard to include acidic tanks, but I couldn't find any good locations for them.
+Will: It wasn't until I was working on Saint's GW that I realized the prospects of undoing the damage of Moon's collapse.
+Will: Waterfront was already done a long time ago, but the idea of extending the reconstruction into GW gave me a place to use that acid-vat idea!
+
+=== transcription: broadcast
+md-map: region=HI, room=A17, mapSlugcat=white
+md-color: #667ad1
+md-var-DevCommId: Regional_Difficulty
+md-name: Regional Difficulty
+Will: Regional difficulty is easily the most complex and varied topic in Rain World design, or even game design as a whole.
+Will: The intended route for your game's regions may be completely subverted by your players.\nThey may even regard something you designed as the more difficult path forwards, as the easiest.\nOften because of factors you cannot easily control, as well as individual variations in player skill.
+Will: Players more acclimated to swimming may find Drainage System trivial, while others may find it infuriating, and refuse to enter it entirely!
+Will: Providing alternative routes that explore different player skills was important when we chose to connect certain regions, or make new ones.
+Will: This set of rooms under Industrial has always acted like a hub for the various paths to Shoreline.
+Will: Garbage Wastes is the most direct, but the Scavenger presence might be frustrating for plays with poor luck, or experiences around them.
+Will: Shaded is ahead, but many new players struggle in the region's darkness.
+Will: Finally our own addition, Pipeyard, offers a difficult enemy laden path, before the player is given the choice of darkness or water.
+Will: The water path follows a Drainage System like swimming challenge, at half the size. While\nthe darkness path gives access to Filtration System, and links up near to where Drainage System\ndoes. This offers a safer path into Subterranean without a rough swim through Drainage itself.
+
+=== transcription: broadcast
+md-map: region=HI, room=A19, mapSlugcat=white
+md-color: #667ad1
+md-var-DevCommId: Scavenger_Kill_Squads
+md-name: Scavenger Kill Squads
+Will: Scavenger kill squads in the base game have an insane advantage over the player. They know your room, general location, and\nwill follow you from region to region, for as long as the scavengers are angry enough at the player. They are absolutely relentless!
+Will: Of course this relentless nature made several rooms incredibly dangerous to even enter, this is one of them. As by the time the gate\nhas finished opening, scavengers are already pouring from the nearby den, and into this room. All of them armed, and on the high ground.
+Will: In most cases the player could do nothing. As soon as they entered the gate, they had brought the scav-ageddon upon themselves!
+Will: Of course, removing this relentless nature was somewhat out of the question, we use this as the primary difficulty of Artificer's campaign.\nInstead we added a delay, a large one upon the region's loading, and smaller "reload" delays, between each kill squad's dispatch.
+Will: This can be imagined as news of the player's movements and actions being passed from region to region. Scavenger's squad management\nrequiring time to prepare, and to locate exactly where they should organize to cut the player off. Instead of psychically knowing exactly what to do.
+Will: Another reason we added this was for LC, as the entire 50 scavenger population of the region was once killed\nby Ender in a single room. As soon as one kill squad was destroyed, another was sent to challenge the player.
+Will: It was pretty incredible, the corpses lagged the room!
+
+=== transcription: broadcast
+md-map: region=HI, room=C04, mapSlugcat=white
+md-color: #667ad1
+md-var-DevCommId: Fourth_Background_Layer
+md-name: Fourth Background Layer
+Will: Slime_Cubed's fourth layer mod was added late into development.\nOriginally, the fourth layer was something cut from Rain World's base game.
+Will: It was later restored with this mod, but lacked content to make use of\nit. If we were going to add this mod, we should at least present its use!
+Will: As such, every region with enough background space for a presentable\nfourth layer was given its own unique background screens to use.
+Will: Most of these new layers are uniquely made rooms being projected\nbehind the normal room layers, but some are unique art made in other ways.
+Will: Regardless, I'd call our showcase of MSC's built-in forth layer support,\nto at least be somewhat of a success! Most of the rooms I did were based off\nof the old alpha version! Or contain specific references to features from it.
+
+=== transcription: broadcast
+md-map: region=HI, room=C13, mapSlugcat=white
+md-color: #667ad1
+md-var-DevCommId: Slugpup_Carrying
+md-name: Slugpup Carrying
+Screams: Holding pups' hands and carrying them on your head wasn't added until late in development.\nFor the longest time, they'd just be weightlessly dragged around by their ears, and having them with you\nfelt closer to transporting neurons than actually taking care of something.
+Screams: Now, even carrying a single pup on your head is a big exercise in restraint. You can't\njust spam the throw button when threatened, or you'll toss your pup right into the battlefield.
+
+=== transcription: broadcast
+md-map: region=HI, room=C14, mapSlugcat=white
+md-color: #667ad1
+md-var-DevCommId: Connection_to_Pipeyard
+md-name: Connection to Pipeyard
+Will: This room was always a little favorite of mine.
+Will: When Pipeyard was added, I couldn't resist using it as the connection from Industrial!
+Will: Otherwise, this lovely room would always be just a little off the path\nof most runs, as this room is mostly just for exploration fun and food.
+
+=== transcription: broadcast
+md-map: region=HR, room=A02, mapSlugcat=saint
+md-color: #590e00
+md-var-DevCommId: Full_Circle
+md-name: Full Circle
+Andrew: Rubicon thematically is all about things cycling back.
+Andrew: Inversions, mirrors, and reflections.
+Andrew: Repetitions of old places and events.
+Andrew: Swimming up into the void sea instead of down.
+Andrew: Ascending the void worm instead of the void worm ascending you.
+Andrew: Descending the karmic ladder instead of climbing it.
+Andrew: And fading to white instead of black...
+Andrew: Even the music that plays at the outro, is the Rain World intro theme reversed.
+Andrew: Whereas spearmaster, at the start of the timeline, ends with a pan up to the sky...
+Andrew: Saint, at the end of the timeline, ends with a pan down from the sky.
+Andrew: Revealing Saint's curse to be stuck in an endless karmic loop.
+
+=== transcription: broadcast
+md-map: region=HR, room=A14, mapSlugcat=saint
+md-color: #590e00
+md-var-DevCommId: Slugitar's_Karma_Jedi_Mind_Trip
+md-name: Slugitar's Karma Jedi Mind Trip
+Slugitar: Wow, Rubicon looks incredible! It definitely still has that original feel to it, but with the new colors focusing around\nthe void and the whole region being a "trip", it gives it the very much needed make over since the last time I worked on it.
+Slugitar: Just seeing some of the rooms I’ve made and also the new as well as the remixed rooms in this new coat of\npaint truly shines a new light on what the original concept was, which was kept perfectly after all this time.
+Slugitar: I can remember the chats the team had deciding what would be best for this area as it really didn’t seem\nlike it would physically fit between the void sea, so having it a karma Jedi mind trip works extremely well.
+Slugitar: All in all the team has made incredible progress not just in the graphics department but also the gameplay department.
+Slugitar: This project has truly come a long way.
+
+=== transcription: broadcast
+md-map: region=HR, room=A17, mapSlugcat=saint
+md-color: #590e00
+md-var-DevCommId: All_Slugpups_go_to_Hell
+md-name: All Slugpups go to Hell
+Screams: Did you know that all slugpups go to hell?
+Screams: If you enable pups artificially, Rubicon has a 100% spawn rate.
+Screams: I wasn't expecting Will to actually do it, but here you go.
+
+=== transcription: broadcast
+md-map: region=HR, room=BI01, mapSlugcat=saint
+md-color: #590e00
+md-var-DevCommId: Region_Revisions
+md-name: Region Revisions
+Andrew: This region went through SO many revisions. And passed hands between at least six different level designers.
+Andrew: It also used to just be accessed by a very ordinary region gate. Just one that required 10 karma to pass.
+Andrew: The original idea, when Saint was still seen as just an "extreme difficulty" slugcat\nwas just to have this be some crazy difficult end-game super hell challenge region.
+Andrew: Challenge 80 in challenge mode is some taste of that original design concept.
+Andrew: By the way, after the first revision of the region was scrapped, Slugitar\nasked me if the unused rooms could be used for Eastern Expansion instead.
+Andrew: So, if you ever saw screenshots of Caldera rooms from Eastern Expansion... those were actually early Rubicon rooms from MSC.
+
+=== transcription: broadcast
+md-map: region=HR, room=I01, mapSlugcat=saint
+md-color: #590e00
+md-var-DevCommId: Thank_You_from_Norgad
+md-name: Thank You from Norgad
+Norgad: Thank you for playing.
+Norgad: This mod's been a blast to work on, sorry it took so long!
+Norgad: Hope you enjoy it for many hours to come, and get lost in Rain World all over again.
+Norgad: <3
+
+=== transcription: broadcast
+md-map: region=HR, room=M01, mapSlugcat=saint
+md-color: #590e00
+md-var-DevCommId: Thank_You_from_Screams
+md-name: Thank You from Screams
+Screams: We've come a long way!
+Screams: I joined the More Slugcats team in July of 2019, and I've learned\nquite a lot since then. About Rain World, and also about everything else.
+Screams: My time here has been the most eventful time of my life, both the good and the bad.
+Screams: It's been a wild ride, and it'll only keep going from here.
+Screams: Thanks for playing!
+
+=== transcription: broadcast
+md-map: region=HR, room=M02, mapSlugcat=saint
+md-color: #590e00
+md-var-DevCommId: Thank_You_from_Will
+md-name: Thank You from Will
+Will: I want to thank everyone that stayed optimistic that we would finish this! It's been a crazy ride the whole way.
+Will: Thanks to the Videocult team. Without them, Rain World and its great community would never exist.
+Will: I'm glad Andrew and Marvy got me into this wonderful mess!
+
+=== transcription: broadcast
+md-map: region=HR, room=M04, mapSlugcat=saint
+md-color: #590e00
+md-var-DevCommId: Thank_You_from_Andrew
+md-name: Thank You from Andrew
+Andrew: If you're reading this right now, it means we did it! My dreams have come true.
+Andrew: Despite the insane scope and ambition of the project, I'm so glad it was seen all the way through to its completion.
+Andrew: From the fantastic fan community who kept the hype and anticipation for the expansion going strong for years on end.
+Andrew: The hundreds of pieces of fan art, the fan theories and speculation, the endless sleuthing over every teaser that we posted...
+Andrew: It gave us developers the motivation and drive to keep working so hard on this.
+Andrew: Also to the beta testers who did endless playthroughs and put hundreds of hours into playtesting.
+Andrew: And of course, all of the developers themselves who contributed to this. This was\ndefinitely the most satisfying collaboration I've ever had the pleasure of working on.
+Andrew: Everyone worked so hard, and blew away my expectations, and it really shows...
+Andrew: I hope that the passion and care that was put into this project shines through every aspect of it.
+Andrew: This really could never have happened without all of you.
+
+=== transcription: broadcast
+md-map: region=HR, room=TP1, mapSlugcat=saint
+md-color: #590e00
+md-var-DevCommId: Tasty_Region_Art
+md-name: Tasty Region Art
+Norgad: The art for this region is definitely a favourite. The way the golds and oranges and reds melt together is just...
+Norgad: hgmnhhhhhggmnggnghhhh
+Norgad: Tasty.
+Norgad: I really like the perspective too, and the composition I went with.
+Norgad: It gave a real feeling of immersion in void fluid, and also showed the vastness of the space.
+
+=== transcription: broadcast
+md-map: region=LC, room=elevatorlower, mapSlugcat=artificer
+md-color: #7f3339
+md-var-DevCommId: Scavengers_Fighting_Corruption
+md-name: Scavengers Fighting Corruption
+Will: An older intention we had for this elevator shaft was a way to connect into Five Pebbles' structure.
+Will: This path was likely going to connect somewhere above Unfortunate Development, but\nthis idea never made it beyond the concept of scavengers fighting corruption under Metropolis.
+Will: I guess a big part of that idea was transformed into the labs inside this large\ngovernment temple structure. We left hints that the ancients may have used this place\nas a way to interface with Five Pebbles' systems, without needing to speak to him directly.
+Will: Of course, political and important topics were likely brought into his\nactual chamber. Probably for his full attention, and not just some sub-process.
+Will: All of this is just fun speculation though! I wonder what ideas the players will have instead?
+
+=== transcription: broadcast
+md-map: region=LC, room=entrancezone, mapSlugcat=artificer
+md-color: #7f3339
+md-var-DevCommId: Remote_Communication_with_Pebbles
+md-name: Remote Communication with Pebbles
+Andrew: Pebbles was at one point going to have more interaction with the player.
+Andrew: The drone has the functionality for the citizen to communicate directly with their iterator.
+Andrew: Imagine poor Pebbles in the olden days having to put up with "Hey Siri"/"Hey Alexa" type of inquiries from the Ancients.
+Andrew: The player would be able to hold pearls up to the drone, and it would scan\nthem. Then Pebbles would read the pearl contents remotely to the player via the drone.
+Andrew: But realistically, Pebbles would want to have as little interaction with the player as possible.
+
+=== transcription: broadcast
+md-map: region=LC, room=fence, mapSlugcat=artificer
+md-color: #7f3339
+md-var-DevCommId: Green_Stars
+md-name: Green Stars
+Norgad: Damn, the artwork for this region took forever.
+Norgad: I thought I could save time by using perspective rulers. However,\nthis actually just got me trapped in trying to keep everything looking perfect.
+Norgad: At least all the effort was worth it, the artwork looks really nice, and I even managed to sneak the stars in there.
+Norgad: Why are they green, by the way?
+Norgad: It is a mystery.
+
+=== transcription: broadcast
+md-map: region=LC, room=highestpoint, mapSlugcat=artificer
+md-color: #7f3339
+md-var-DevCommId: Atop_The_Longest_Room
+md-name: Atop The Longest Room
+Cappin: This room was quite the challenge during development.
+Cappin: It was one of the first rooms I made for MSC, only five or six screens tall.
+Cappin: When I got around to remaking it, I decided to make it absolutely gigantic.
+Cappin: It took several weeks to complete! Sixteen screens tall, split\nbetween climbing up the western side and scaling the spire atop it.
+Cappin: Unforunately, the scale caused major preformance issues, so we were forced to cut off the bottom half.
+Cappin: It's still in the files, if you'd like to restore it!
+
+=== transcription: broadcast
+md-map: region=LC, room=mallentrance, mapSlugcat=artificer
+md-color: #7f3339
+md-var-DevCommId: Ancient_Advertisements
+md-name: Ancient Advertisements
+Andrew: Having overseers projecting advertisements is incredibly out of character for our perception of Ancients' way of life.
+Andrew: But that subversion of expectations is what makes it so funny to me.
+Andrew: Now they just continue to do their duty, advertising Five Pebbsi to the Scavengers.
+Will: I like to imagine this is why the scavengers hate them so much!
+
+=== transcription: broadcast
+md-map: region=LC, room=rooftophop, mapSlugcat=artificer
+md-color: #7f3339
+md-var-DevCommId: Dust_Storm
+md-name: Dust Storm
+Andrew: Metropolis originally had a dust storm effect as a major part of the region, that would appear periodically throughout the cycle.
+Andrew: Without having too clear of a goal of the gameplay implications, and also mainly feeling it would be\nexcessive for a region that already had a lot of other stuff going on, we eventually decided to scrap it.
+Andrew: I'm really sad we had to drop it, because the visuals for it were pretty much already fully implemented by Ongomato by that point.
+Andrew: First you would see a huge sky-scraper sized tidal wave of dust in the far background rush over the city in the distance.
+Andrew: Shortly afterwards a big cloud of dust would topple down upon the foreground. This cloud respected\nthe level geometry and would gradually flood-fill its way through the map until every crevace was covered.
+Andrew: It looked absolutely incredible.
+Andrew: Some of the code is still left over in the game. You can get a taste of it by enabling the DustWave room effect through Dev Tools.
+
+=== transcription: broadcast
+md-map: region=LC, room=streets, mapSlugcat=artificer
+md-color: #7f3339
+md-var-DevCommId: Suprise_Expedition_Entry
+md-name: Suprise Expedition Entry
+Will: Did you know? Beating Artificer will allow the random start location option to place Survivor and Monk in Metropolis?
+Will: We made a lot of careful tweaks to the region to allow players to escape from dead ends and traps.
+Will: However, starting in this region should be considered an easter egg, and not something that has been well balanced.
+Will: Some other slugcats also have this feature! Can you figure out which?
+
+=== transcription: broadcast
+md-map: region=LC, room=theclimb, mapSlugcat=artificer
+md-color: #7f3339
+md-var-DevCommId: Extended_City_View
+md-name: Extended City View
+Dakras: At one point, we didn't have the extended city view.
+Dakras: We just re-used the above-clouds view for all of the outdoors room, which really isn't as impressive.
+Dakras: Even with the tall buildings in the back, it still gives a sense of scale that this tower of buildings is absolutely massive.
+Dakras: I wonder what use the community will have for it?
+
+=== transcription: broadcast
+md-map: region=LC, room=topdoor, mapSlugcat=artificer
+md-color: #7f3339
+md-var-DevCommId: Post_Game_Joke_Rifle
+md-name: Post Game Joke Rifle
+Will: One of the more crazy ideas we had for Artificer's campaign was to allow them to find the joke rifle post-game.
+Will: We were likely going to alter it to be some kind of mass accelerator that the\nscavengers had stolen. Similar to their abuse of the power cells, or their electric spears.
+Will: However, this concept eventually died out over the course of development. A lot of the more wild ideas of\nMSC were slowly reigned in, and some ideas were dropped entirely due to their conflicts with the official lore.
+Will: In the end, we decided to unlock the joke rifle for arena by moving it to challenge mode, as a small nod to this phase of development.
+
+=== transcription: broadcast
+md-map: region=LF, room=A03, mapSlugcat=white
+md-color: #608c9e
+md-var-DevCommId: Hunter_Runs
+md-name: Hunter Runs
+Will: I wonder how much Hunter will change with all the new additions. Hopefully, all the new\nroutes and connections find a place in runs, and don't overwhelm Hunter's original balance.
+Will: It will be fun to see if Pipeyard's riskier paths become high traffic areas, or if the Gutter becomes some kind of Hunter hell.
+Andrew: And passages. Are you going to need to factor Martyr into your runs? I'm sorry.
+Will: There are so many things we don't know yet! Our small team of testers can only give us so much feedback in the time we have.
+Will: It's up to time and the community to decide how our work holds up. It's always an intimidating feeling!
+
+=== transcription: broadcast
+md-map: region=LF, room=D03, mapSlugcat=white
+md-color: #608c9e
+md-var-DevCommId: Future_Modding
+md-name: Future Modding
+Will: This room is near where Fiiiiish's Badlands mod connects. It always reminds me that someday we'll have region mods that will\nuse all the new features we've added, as well as all the unique world styles each slugcat has. I hope the workload isn't too intense!
+Will: Making a region on your own is already a lot of work. Needing to restyle\nyour region for both a flood and a snowstorm is pretty silly to do on top of it.
+Will: The new conditional link system opens up so many new ways to build a region as well.
+Will: There is an exciting future ahead for Rain World modding. I can't wait to see what people will make!
+
+=== transcription: broadcast
+md-map: region=LF, room=J01, mapSlugcat=white
+md-color: #608c9e
+md-var-DevCommId: Pain_Deer
+md-name: Pain Deer
+Will: The AI of the Farm Array deer has been modified considerably from the base game.
+Will: At first we only added an option for turning the deer, and stopping their current path, but this ran into more problems.
+Will: We ultimately HAD to reconstruct the deer AI entirely, and correct an entire list of small issues and potential mistakes.
+Will: One example is that deer were incapable of getting unstuck because their bodies are locked\nin place at the end of a path. As well, deer entering a room would begin resting before they wandered.
+Will: This meant that deer would enter a screen, stop, rest, and run out of room time. Leaving the room before they did anything.
+Will: Deer also moved in the direction their body faced while entering the room. Due to\ntheir rest location they would turn around while entering. Often this leads to them leaving\nthe room, but sometimes they would just vibrate against the room border the whole cycle.
+Will: This doesn't even begin to describe the deer-on-deer interaction and priority\nissues that Joar addressed in the 1.5 update. Hopefully, we have finally tamed these\nterrible beasts, while not removing the durpy behavior that made them special.
+
+=== transcription: broadcast
+md-map: region=LF, room=M01, mapSlugcat=white
+md-color: #608c9e
+md-var-DevCommId: Flooded_Shortcut_Deer_Bypass
+md-name: Flooded Shortcut / Deer Bypass
+Will: Rivulet doesn't have the cycle time needed to deal with the deer of Farm Array. These flooded rooms act like a shortcut for them.
+Will: Some slugcats might be able to make use of this by smuggling bubble weed with them for some kind of late game shenanigans.
+Will: At least some of these rooms are useful to other slugcats! Especially if the slugcat can easily use the gate from Subterranean.
+Will: We intentionally made the connections from these rooms hidden, and difficult\nto reach. We had no intention of removing the primary gimmick from Farm Arrays.
+Will: The deer would get moody if we told them they couldn't make more friends.
+
+=== transcription: broadcast
+md-map: region=LM, room=BRIDGE01, mapSlugcat=spear
+md-color: #30bab2
+md-var-DevCommId: Two_Bridges
+md-name: Two Bridges
+Andrew: Some people thought the existence of Precipice was us forgetting that there\nare two more legs before the opposite wall? You just need to think in 3d space!
+Andrew: The Precipice's bridge is coming out the front, and Pebbles' structure forms a T formation with Moon.
+Andrew: There's actually two bridges in canon. The bridge in-game connects Pebbles' second left-most leg to the first\nof Moon's front row of legs. The second connects Pebbles' third left-most leg to the first of Moon's rear row of legs.
+
+=== transcription: broadcast
+md-map: region=LM, room=BRIDGE02, mapSlugcat=spear
+md-color: #30bab2
+md-var-DevCommId: Expansion_of_The_Precipice
+md-name: Expansion of The Precipice
+Will: The Precipice once existed only as a short bridge between Moon and Pebbles. It was later\nexpanded to connect to Waterfront Complex beneath it due to reworking of Moon's structure.
+Will: The intention of this subregion was to create a faster way to reach Five Pebbles in Spearmaster, if the player chose to visit Moon first.
+Will: However, when Artificer was moved to the same part of the timeline as Spearmaster (to avoid an Artificer\nShoreline), having the area between Waterfront and the cable bridge become a CC like gauntlet was irresistible!
+
+=== transcription: broadcast
+md-map: region=LM, room=C02, mapSlugcat=spear
+md-color: #30bab2
+md-var-DevCommId: Dissatisfied_with_Region_Art
+md-name: Dissatisfied with Region Art
+Norgad: While I still enjoy this region's artwork piece, it's definitely my least favourite of the bunch.
+Norgad: I don't like how flat I ended up making it. It feels rather crunched\nup, and a rather literal interpretation of one of the region's rooms.
+Norgad: Despite this, I still like the mint chocolate color scheme I ended up with.
+
+=== transcription: broadcast
+md-map: region=LM, room=F02, mapSlugcat=spear
+md-color: #30bab2
+md-var-DevCommId: No_Deep_Swim_For_Artificer
+md-name: No Deep Swim For Artificer
+Screams: You're really not supposed to go through these "deep swim" segments as Artificer.
+Screams: The fact that you come out of a pipe and are suddenly a whole screen underwater\nis a hint that I did not take when I initially played, and much pain ensued because of\nthe fact that with perfect swim timing, it was technically possible to get through.
+Screams: PERFECT.
+Screams: I think the water level was lowered slightly because I cried so much about these.
+Will: I did~
+
+=== transcription: broadcast
+md-map: region=LM, room=LEGENTRANCEARTY, mapSlugcat=artificer
+md-color: #30bab2
+md-var-DevCommId: Dying_Superstructure
+md-name: Dying Superstructure
+Andrew: Artificer was originally on a point of the timeline after Moon's collapse.
+Andrew: This was very shortly after the collapse, however, with her in a broken and unresponsive state.
+Andrew: Some of the machinery still hadn't completely failed, and there was still some residual\nzero G... and lots of stray electricity and sparks and chaos from the badly damaged parts.
+Andrew: We opted to move Artificer slightly earlier though, so they could be in the less flooded\npre-collapse Shoreline, which much better suited their incompatibility with water-filled environments.
+Andrew: You might be able to still find that unused variant of Moon's collapsed structure in the game, though... somehow.
+
+=== transcription: broadcast
+md-map: region=LM, room=SIDESWAMP, mapSlugcat=spear
+md-color: #30bab2
+md-var-DevCommId: Moon's_Siren
+md-name: Moon's Siren
+Andrew: Moon's siren is pretty creepy. I wanted it to sound like the whole superstructure was howling and crying out in pain.
+Andrew: Is it normally supposed to sound like that?? Or is that some kind of\nside effect of the superstructure's severe deterioration, and impending death?
+Andrew: I also like the detail that it's still functioning in Submerged Superstructure after the\ncollapse... though the sound from it severely muffled, since it's buried so deep under the rubble.
+Andrew: Some people have asked why Moon has a siren but Pebbles does not.
+Andrew: Maybe the siren was used to alert those on the surface of the coming rain. This would have been especially important\nwhile she was still in the middle of construction and the city on top was not yet fully built and ready for inhabitation.
+Andrew: Pebbles is a much newer model of Iterator than Moon, and by the time he was built, the surface was already abandoned.
+Andrew: Not to mention with his close proximity to Moon, a siren might be fairly\nredundant, when Moon was already right next door doing the announcing.
+
+=== transcription: broadcast
+md-map: region=LM, room=TOWER09, mapSlugcat=spear
+md-color: #30bab2
+md-var-DevCommId: Region_Acronyms
+md-name: Region Acronyms
+Andrew: Some of the region acronyms don't match their final region names. Let's take a look at what each of them stood for.
+Andrew: (OE) Outer Expanse, (UG) Under Growth, (LC) Lost City
+Andrew: (LM) Looks to the Moon, (MS) Moon Superstructure, (DM) Depths of Moon
+Andrew: (RM) Rotten Maw, (CL) Collapse
+Andrew: (HR) Hell Region (although Rubicon's early development name was Stygian Depths)
+Andrew: and finally, (VS) Voided Subterranean, which is entirely unrelated\nto Pipeyard and is a topic of a different Dev Commentary discussion...
+
+=== transcription: broadcast
+md-map: region=LM, room=WALL02, mapSlugcat=spear
+md-color: #30bab2
+md-var-DevCommId: Rework_of_Moon's_Exterior
+md-name: Rework of Moon's Exterior
+Will: Moon's exterior rooms went through a considerable rework midway through development.
+Will: The original exterior of Moon was part of Waterfront Complex, and\nincluded all of her leg, and up to the gate that is still used on her wall.
+Will: Originally, the players would climb her leg, enter to the her wall, and enter Moon from\nthe side. While this worked, it created a complex overlap of region themes that felt unfitting.
+Will: The original Precipice only included the scaffolding between Moon and Pebbles as well,\nand the upper area felt completely disconnected, just as badly as Moon's leg in Waterfront.
+Will: To fix this, we moved all of Moon's structure, exterior and all, inside of its own region, while\nalso expanding Waterfront's upper areas to include giant towers that were destroyed by Moon's collapse.
+Will: This allowed us to link the lower region, with the upper Precipice,\nand also gave players more options to path in and out of Moon's structure.
+
+=== transcription: broadcast
+md-map: region=MS, room=AIR03, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Glow_Weeds
+md-name: Glow Weeds
+Will: Glowweeds are one of my favorite new additions to the game! Creating\na unique object that solved multiple problems at once is a great feeling.
+Will: We first needed to solve the problem of food beneath Moon.
+Will: These areas were so isolated and alien that simply placing fruit or mold didn't fit. As well, these areas\nwere also dark. Rivulet needing to explore in complete darkness while drowning didn't seem like a fun idea.
+Will: The solution to these problems was to make a balanced mix of an answer to all of them at once!
+Will: We created a new unique food that was also a light source. We then allowed Rivulet\nto eat food underwater to avoid player irritation. Finally, we made each glowweed provide\nhalf a pip of food, so we could place excessive amounts to light a room.
+Will: Two bonus upsides are that jetfish will compete with the player to collect them, and the\ngreen glow of the plants also defined a bio-luminescent lit cave theme that defined lower MS!
+
+=== transcription: broadcast
+md-map: region=MS, room=ARTERY07, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Cheating
+md-name: Cheating
+Dakras: Or you could call this the Sea of Darkness.
+Dakras: ...I'm really just seeing how many of these will's going to let me get away with, really.
+Dakras: How did you even get up here, anyway? Are you cheating?
+
+=== transcription: broadcast
+md-map: region=MS, room=ARTERY08, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: The_Heart_of_Moon
+md-name: The Heart of Moon
+Andrew: When planning Moon's regions, I wanted hers to not feel redundant with Five Pebbles' regions.
+Andrew: I see the Five Pebbles region as being designed around the theme of the brain.
+Andrew: So I wanted Moon's regions to be thematically designed around the heart.
+Andrew: It only feels fitting given their personalities, storylines, and motives.
+Andrew: Much of Submerged Superstructure's water and pipe systems form a huge mechanical circulatory system.
+Andrew: Slag build-up clogged Moon's arterial passageways and blocked circulation through her conduits,\nleading to her collapse being caused by essentially the iterator equivalent of a heart attack.
+Andrew: This all wraps up in Rivulet's climax of inserting the rarefaction\ncell into her heart, to electrically resuscitate her like a defibrillator.
+
+=== transcription: broadcast
+md-map: region=MS, room=bitteraeriepipeu, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Leaked_Snow
+md-name: Leaked Snow
+Dakras: Did you know Cappin nearly leaked snow once?
+Dakras: He mentioned it in modding general once and I nuked all evidence of it.
+Dakras: The few people who saw it have either forgotten about it, or agreed to stay silent.
+Dakras: Also I'm pretty sure it was shown in a teaser once lol.
+
+=== transcription: broadcast
+md-map: region=MS, room=bitteredge, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Giant_Space_Heaters
+md-name: Giant Space Heaters
+Andrew: Why is it snowing up here? Partially the same reason why there's snow at the peaks of mountains.
+Andrew: In MSC's version of the Rain World, the natural state of this world is a cold, frigid one.
+Andrew: However, certain parts of iterator's superstructures, and their surrounding\nfacilities give off a substantial amount of heat as a byproduct of their functions.
+Andrew: They're like giant space heaters... and collectively they might even increase the global temperature\nof the world... at the very least, they provide significant heat within their local operational region.
+Andrew: For Moon, her machinery has stagnated, and the westward blowing winds\ncarries most of the heat from Pebbles' machinery in the opposite direction of her.
+Andrew: Between the altitude and the far proximity to any functional radiated heat, it has begun to get quite cold here.
+
+=== transcription: broadcast
+md-map: region=MS, room=FARSIDE, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Eastern_Expansion?
+md-name: Eastern Expansion?
+Andrew: We left a pipe entrance open here.
+Andrew: Just in case, maybe...
+Andrew: ...
+Andrew: ...Eastern Expansion confirmed??
+
+=== transcription: broadcast
+md-map: region=MS, room=I02, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Monolith_of_Moon
+md-name: Monolith of Moon
+Will: Moon's collapsed structure is both the largest and most complex region in the game.\nWorking off a modified version of her original map, we went into this quite unprepared!
+Will: This region went through a few reworks, but the route to and location of her heart has remained the same through all of them.
+Will: The arteries act as a fast travel system for Rivulet; any entrance into them will inevitably lead Riv to the heart.
+Will: Without many other goals, large chunks of this region are purely cosmetic, and acts as exploration\nfiller. However, sometimes not cutting the fat of a region has more benefits then it appears!
+Will: As the simple story route goal for Rivulet is hidden inside a region that is made to show the progression of time,\nplayers will likely have very different feelings, based on if they played Rivulet before Spearmaster, or vice versa!
+Will: Familiar places and routes through the structure are intact, but the destruction re-contextualizes them.
+Will: The secret little gem of this design direction, is the realization that Spearmaster and Rivulet's unlock are in the same location.
+
+=== transcription: broadcast
+md-map: region=MS, room=LAB3, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Pearl_Translations_2
+md-name: Pearl Translations 2
+Andrew: This pearl survived the collapse! This same pearl is in this same room in Spearmaster's LTTM,\ntoo. Although, Past Moon and Future Moon have different dialog if you deliver the pearl to them.
+Andrew: Actually, there's quite a few pearls where this is the case.
+Andrew: Depending on timeline location, the dialog wouldn't always make sense, so we\nhave some different variations of the pearl readings for different points in time.
+Andrew: Did you discover that you can deliver pearls to Pebbles too, during\nArtificer's campaign? He has different things to say for every pearl compared to Moon.
+Andrew: I don't expect the player to see all these different possible variations, as pearl\ndelivery is far too time consuming and tedious. I imagine it'll be more of a community effort.
+Andrew: Though, with all of these timeline differences, I wish good luck to the people\nwho eventually try to organize all of this information on the More Slugcats wiki...
+
+=== transcription: broadcast
+md-map: region=MS, room=sewerbridge, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Red_Herrings
+md-name: Red Herrings
+Andrew: Some of the teasers we gave out during development were red herrings.
+Andrew: Some unintentional, because we teased stuff that later got scrapped, or reworked, or drastically changed.
+Andrew: Others intentional, to make sure the hardcore detectives in the community were led off\ntrack and didn't piece together the entire storyline and timeline before the mod was released.
+Andrew: Others also to try to control the level of hype to make sure it didn't get too overblown, and kept at a "simmering" level.
+Andrew: I see a big mistake a lot of developers tend to make is to show the\nbest-of-the-best that their game has to offer in their teasers and trailers.
+Andrew: Which always leads to people getting dissapointed on release, when\nthe majority of the game is not at the level that the teasers were.
+Andrew: One of my favorite instances of this is the Rivulet snow teaser.
+Andrew: I wanted to subtly hint at the existance of snow, but without\nrevealing the amazing blizzard effects we had actually managed to make.
+Andrew: So I tried to make the snow effects in that teaser look as underwhelming and shitty as possible.
+Andrew: The snow breath effects were this ugly oversized grey cloud of smoke that looked like Rivulet was about to catch on fire.
+Andrew: And then later we show another Rivulet teaser with one measly little puddle of snow on the ground. Amazing.
+
+=== transcription: broadcast
+md-map: region=MS, room=U03, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Origin_of_the_More_Slugcats_Expansion
+md-name: Origin of the More Slugcats Expansion
+Andrew: Submerged Superstructure was THE origin of the More Slugcats Expansion.
+Andrew: It was originally a completely separate region mod I was working on, even prior to the first version of More Slugcats.
+Andrew: Moon would give Survivor a blue mark, that enhances their lungs with MAGICAl\nITERATOR POWER. After which, Survivior could reach the lower flooded areas of Moon.
+Andrew: Soon afterwards, I created Rivulet, and realized Submerged Superstructure would be an ideal region for them.
+Andrew: Then I wanted to make custom regions for each of the five slugcats.
+Andrew: Then things got out of hand...
+
+=== transcription: broadcast
+md-map: region=MS, room=VENT04, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Eccos_of_Vents
+md-name: Eccos of Vents
+Dakras: Did you know The Vents (this subregion) is a refrence to Ecco? This\nwhole area is in a way if you think about it with all the underwater caves.
+Dakras: The ridge rocks are as well, based on the ones from the later levels of Ecco 2.
+Dakras: I just wish I made more underwater decorations from the games before I got burnt out.
+Dakras: Some of the plants in that game are beautiful and would translate perfectly to this one, oh well.
+
+=== transcription: broadcast
+md-map: region=MS, room=VENT06, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Tube_of_Medusa
+md-name: Tube of Medusa
+Dakras: I guess you can call this the Tube of Medusa.
+Dakras: Except instead of getting thrown out and wasting 2 minutes of your\nlife when caught, this one wastes upwards of 10+ minutes if you get stung.
+Dakras: Still less annoying overall.
+
+=== transcription: broadcast
+md-map: region=MS, room=VENT08, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Delish_Region_Art
+md-name: Delish Region Art
+Norgad: The region art for this place has some really delish colors.
+Norgad: Since the region's so varied, I had a lot of trouble deciding where\nto paint. I ended up with a mix of a couple locations from different areas.
+Norgad: After the artwork was finished, Ongomato even made a 3D model of it! This was because\nthe limitations of the parallax system meant the pipe got rather flattened in the final render.
+
+=== transcription: broadcast
+md-map: region=MS, room=VENT15, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Underwater_Creatures
+md-name: Underwater Creatures
+Will: We knew from the start that Rivulet's campaign was going to feature a large underwater area beneath Moon.
+Will: However, much of Rain World's creatures wouldn't work in this unique\nenvironment. Having only jetfish, and leviathans to avoid felt underwhelming!
+Will: This is what lead up toward adopting Pipster's aquapede design, and creating the giant jellyfish.
+Will: Underwater combat was already difficult, as spears are nearly useless. So new underwater\nthreats needed to be visible from far away, or are a slow and drawn out grab that leads to death.
+Will: The aquacenti's light, and the swaying arms of the giant jellyfish fill both of these roles.
+Will: Originally, we designed the jellyfish as clams with three long arms that pretend to be glowweeds!
+Will: However, this version of the creature never made it far, as using them anywhere else felt forced.
+Will: Giant jellyfish are not an amazing creature either, as their purely static nature caused difficulties with arena mode.
+
+=== transcription: broadcast
+md-map: region=MS, room=VENT23, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Giant_Jellyfish_Concept
+md-name: Giant Jellyfish Concept
+Norgad: I did the concept artwork for the giant jellyfish.
+Norgad: A big inspiration was the gonarch from Half Life, as well as Rain World's own leviathans.
+Norgad: The concept art is still floating around somewhere I think.
+
+=== transcription: broadcast
+md-map: region=MS, room=X02, mapSlugcat=rivulet
+md-color: #0b9793
+md-var-DevCommId: Room_Migration_from_Moon_to_Pebbles
+md-name: Room Migration from Moon to Pebbles
+Dakras: MS was originally my region, but... if we kept me on it at the rate I work on stuff it'd only be done 3 years later.
+Dakras: Some of my rooms actually still made it into the game, including this one here!
+Dakras: A lot of former MS rooms when I was working on it actually made their way into CL.\nHowever, as it turned out, Will's idea for MS is a lot less ruined than what I was going to do.
+Dakras: I'm still very happy with how it turned out though, I don't think I could have done it this well.
+
+=== transcription: broadcast
+md-map: region=OE, room=CAVE03, mapSlugcat=gourmand
+md-color: #d8ae8a
+md-var-DevCommId: Don't_Think_Too_Much_About_It
+md-name: Don't Think Too Much About It
+Andrew: I wonder how many people will actually jump down the chasm to find this area.
+Andrew: If they noticed all the references to the intro cutscene, they might have realized that's what they're meant to do.
+Andrew: Though, I hope they don't get too pissed off about being sent all the way back to Outskirts.
+Andrew: Also to all you lore masters out there...
+Andrew: I'm well aware there's a big time skip between Survivor / Monk's intro and the start of the game.
+Andrew: Don't think too much about it.
+Andrew: Just enjoy this reference as a cool little easter egg.
+
+=== transcription: broadcast
+md-map: region=OE, room=CAVE09, mapSlugcat=gourmand
+md-color: #d8ae8a
+md-var-DevCommId: Artificer_Void_Spawn
+md-name: Artificer Void Spawn
+Andrew: Originally when OE was going to have NPC slugcats and slugpups regularly roaming\nabout the region, there was going to be a tie-in with Artificer's void sea ending.
+Andrew: There would be a lot of void spawn floating around the deeper parts of the region,\nsimilar to Shaded Citadel, with void spawn bubbles also situated throughout the area.
+Andrew: If you came there with Gourmand after completing Artificer's void sea ending, you could find a crimson colored void spawn bubble.
+Andrew: Popping the bubble would release the void spawn, which could then be\nspotted throughout the region later, following the various slugpups around.
+Andrew: That all got thrown out when we scaled back our ideas for NPC slugcats, however.
+Andrew: Plus I didn't want to introduce the implication that Artificer transformed into a void spawn after their ending, because\nthat's kind of weird, and I don't know the lore implications of that, nor how any of that void sea stuff really works...
+
+=== transcription: broadcast
+md-map: region=OE, room=JUNGLE03, mapSlugcat=gourmand
+md-color: #d8ae8a
+md-var-DevCommId: The_Great_Slugcat_Migration
+md-name: The Great Slugcat Migration
+Andrew: It's my thought that Gourmand's "true ending" (completing the food tracker) triggered the later events of Survivor and Monk.
+Andrew: I see slugcats as a nomadic species. They may congregate and live in an area for a while,\nbut they are open to moving en masse when there is promise of better food and resources.
+Andrew: When Gourmand came back with tales of the large variety of food sources he found beyond\nthe bounds of their current territory, the slugcats began to prepare for a big migration.
+Andrew: Survivor and Monk's intro takes place during this migration, and they\nget separated from their family while travelling away from their old home.
+Andrew: It's also why going back to the tree later on in the timeline, you find it abandoned.
+Andrew: Maybe some of the pups you find during Survivor's campaign were\nalso poor children who got separated and left behind during that process.
+
+=== transcription: broadcast
+md-map: region=OE, room=PUMP02, mapSlugcat=gourmand
+md-color: #d8ae8a
+md-var-DevCommId: The_Plunge
+md-name: The Plunge
+Will: It looks like you've found one of our secrets!
+Will: Did you take the plunge yourself out of curiosity, or are you just following a guide?
+Will: Or are you being cheeky and looking at the files? Hehe!
+Will: Either way, this little addition is mostly just a fast travel method to return Gourmand, Survivor or Monk to the starting areas.
+Will: You've done all the work to get out to OE, we can at least give you an express route back into the middle of the mess!
+
+=== transcription: broadcast
+md-map: region=OE, room=RAIL01, mapSlugcat=gourmand
+md-color: #d8ae8a
+md-var-DevCommId: Progression_of_Custom_Tiles
+md-name: Progression of Custom Tiles
+Dakras: Something about seeing one of my first ever tiles from 2017 to one of\nmy more recent ones is funny. You'd think it wouldn't even be used still, eh?
+Dakras: Most of the custom tiles were done by me, and any of the 3D-looking ones were done by Ongomato.
+Dakras: I have to thank him for helping me with some props, such as the 45 Degree antennae you can find in the editor.
+Dakras: They weren't used as much as I planned but they do exist. Can you find all of the custom tiles we've made?
+
+=== transcription: broadcast
+md-map: region=OE, room=RAIL05, mapSlugcat=gourmand
+md-color: #d8ae8a
+md-var-DevCommId: NPC_Slugcat
+md-name: NPC Slugcat
+Screams: I was brought onto the team for pup work because Andrew took interest in\nan old NPC slugcat project I tried to make way back when I was a little baby modder.
+Screams: For a while, I kept trying to steer the pup project in the "NPC slugcat"\ndirection instead of focusing on the pups themselves, and their quality suffered for it.
+Screams: It was only after I rebuilt them from scratch that they really started getting good.
+Screams: They actually still have some hidden stat variations as a leftover from that period!
+
+=== transcription: broadcast
+md-map: region=OE, room=RUIN02, mapSlugcat=gourmand
+md-color: #d8ae8a
+md-var-DevCommId: Making_Every_Room_Special
+md-name: Making Every Room Special
+Will: OE's early life was plagued by my original style of making rooms. I would try to do too much at once, make every one special.
+Will: While I still love the idea of treating every room like its own beautiful little gem, the\ntruth is that regions are big, and having something special around every screen is exhausting!
+Will: A region needs space for players to breath, rooms that feel like they belong, but aren't putting on a show.
+Will: It wasn't until I did Pipeyard, and the Root 2.0 that I fully understood my own balance for rooms.
+Will: I went on a big redesign binge after that, trying to fix the things that I felt might be doing more harm then good.
+Will: Of course there are limits to what you can change when working on a team! Some liked it that way!
+Will: In the end there are regions I am more happy with than others, but I hope players enjoy every one of them!\nEven if they can be a little bit durpy, or be trying too hard sometimes. That gives them some personality I guess.
+Will: Don't be afraid to just make rooms in the style of your region. They might make good filler if you find a place for them!
+
+=== transcription: broadcast
+md-map: region=OE, room=RUIN04, mapSlugcat=gourmand
+md-color: #d8ae8a
+md-var-DevCommId: Expansive_Region_Art
+md-name: Expansive Region Art
+Norgad: Ooooh boy, this region's artwork was a blast.
+Norgad: After exploring the suspended railway, I knew it had to be the centerpiece\nof the artwork. However, I also wanted a feeling of vastness and freedom.
+Norgad: I settled by having the railway be in the far distance, with the temples and exotic plants taking up the foreground.
+
+=== transcription: broadcast
+md-map: region=OE, room=RUIN11, mapSlugcat=gourmand
+md-color: #d8ae8a
+md-var-DevCommId: Exotic_Yeeks
+md-name: Exotic Yeeks
+Will: Yeeks were created as a sort of parallel to lantern mice, and as a marker of distance from Five Pebbles.
+Will: They are extremely rare in the base game's regions, or only appear on specific slugcats later in the timeline!
+Will: The core reason for this is to make them feel exotic. Like this creature is migrating from\na far away land, and someday will merge with the ecosystem beneath Five Pebbles and Moon.
+Will: Their unique hopping behavior when held was added late in development,\nin response to a tester's disappointment in the inability to hold them.
+Will: Turtle was quite surprised when they could grab one in the next update they got, and even more so about their jumping mechanic!
+Will: The ability to grab and hold them naturally felt like it needed a reason to do so, like the lantern mice that inspired them!
+
+=== transcription: broadcast
+md-map: region=OE, room=RUIN14, mapSlugcat=gourmand
+md-color: #d8ae8a
+md-var-DevCommId: Region_Progression_of_World_Regression
+md-name: Region Progression of World Regression
+Will: It is interesting which regions got more planning compared to others. OE was always\non the back burner in some way, while both of Moon's structures were planned and replanned.
+Will: Every time I came back to OE it was on a break from doing a larger more intricate region.
+Will: It was kind of a good thing, as OE's guiding principle was mostly to keep going west, until all civilization seems to fall away.
+Will: I'm happy with how cohesive it became. Progressing from an iterator like wall structure, through a swamp\nof broken machinery. Over a broken bridge, into ancient ruins, a jungle, and finally into the world beyond!
+Will: It's a wonder that it all somehow came together and worked!
+
+=== transcription: broadcast
+md-map: region=OE, room=RUIN17, mapSlugcat=gourmand
+md-color: #d8ae8a
+md-var-DevCommId: Stowaway_Concept
+md-name: Stowaway Concept
+Andrew: The current Stowaway creatures are extremely far removed from their original concept.
+Andrew: We had an idea for a flying bug creature that would appear as a very rare, special encounter in various regions.
+Andrew: If the creature targeted you, it would attempt to projectile-inject you with some sort of stinger.
+Andrew: If successful, you would be stunned temporarily, and then the creature would flee, but nothing much else would happen.
+Andrew: Upon waking up the next cycle after being injected, you would have\nsome small growth on your body, which would also give you some kind of debuff.
+Andrew: Over the next several cycles, the growth would get bigger, until eventually erupting out a swarm of tiny baby Stowaway bugs.
+
+=== transcription: broadcast
+md-map: region=OE, room=S02, mapSlugcat=gourmand
+md-color: #d8ae8a
+md-var-DevCommId: Alpha_Shelter_Design
+md-name: Alpha Shelter Design
+Will: We planned very early on that OE would have the old alpha design for the region's shelters.
+Will: Initially we only had the intention to reference the geometry of them, with hints to shutters, and a shelter beneath the main chamber.
+Will: However, players seemed underwhelmed with this, or were not aware at the style of shelter we were invoking!
+Will: After putting it off for quite a while, during one of OE's many reworks, we gave this room\na complete makeover, and assembled the parts needed to make a functional alpha style shelter.
+Will: We only intended to have one of them, but it eventually became clear that OE was\nmuch too shelter sparse. So, with the ability to attach multiple doors to a single ancient\nshelter, we used this problem as a chance to flex the creativity this shelter type offered!
+Will: I'm excited to see what modders will create with this!
+
+=== transcription: broadcast
+md-map: region=OE, room=TOWER09, mapSlugcat=gourmand
+md-color: #d8ae8a
+md-var-DevCommId: Beyond_The_Superstructures
+md-name: Beyond The Superstructures
+Will: OE was always planned to be a beautiful sprawling region beyond the machinery of Moon and Five Pebbles' surface areas.
+Will: The transition from SB to OE however was something I wanted to place a twist\non. With the thought of sub feeling like one of the deepest regions in Rain World,\nbeing flipped on its head with the introduction of the retaining wall.
+Will: As well, I wanted players to feel apprehensive about what they might be getting into.
+Will: Opening OE with a parasite ridden swamp, worm grass, darkness, and scavengers. Descending deep beneath the surface they knew.
+Will: Only to flip them upside down once again when they reach the expanse itself, and find the beautiful sparkling ruins ahead.
+Will: The later rooms of the region call back to the swamps from the start, albeit with a much more lighthearted nature!
+
+=== transcription: broadcast
+md-map: region=OE, room=TOWER11, mapSlugcat=gourmand
+md-color: #d8ae8a
+md-var-DevCommId: Straying_Away_from_Machinery
+md-name: Straying Away from Machinery
+Will: OE was one of the first areas I worked on when I was brought onto the team.
+Will: Of course, this means it is also the area with the most reworks and changes!
+Will: Originally Sunken Pier was only half the size it was, before you reached the expanse itself.
+Will: The expanse was also much darker, with a shaded-like underground, and even the idea of a red lizard den hidden in the region!
+Will: The restriction of having almost no machinery was pretty hard to follow at first. Andrew eventually\noffered a compromise that some of the underground could have pipes and machines, and any surface\nmachinery needs to have been put there much later, or is a fallen piece of the railway above!
+Will: I think this region might have one of the best introductions in the mod. Reaching the first screen\nof Outer Expanse after resting in the ancient shelter is something not many players will forget!
+
+=== transcription: broadcast
+md-map: region=RM, room=A04, mapSlugcat=rivulet
+md-color: #9c00ff
+md-var-DevCommId: Level_Design_Without_The_Intended_Tools
+md-name: Level Design Without The Intended Tools
+Will: This region was never really intended to be explored without either zero gravity or the\npower cell. Screams would eventually explore this region to discover potential soft locks.
+Will: This region is a bit horrifying from a level design perspective. At least without either of the\ntools intended to tackle it. At least we made sure you could leave it if you did go in here without them.
+Screams: Exploring the Rot without its intended tools is by far the greatest challenge Rivulet's world has to offer.
+Screams: In the absence of low-gravity jumps, you have to backflip and spear-pin your way up walls to progress.
+Screams: The thing about Rain World's level design is that it's not supposed to feel\nfocused on you, and normal-gravity Rot is the culmination of that in that it's\n*actually* not meant for your skillset. It's perfection, and it wasn't even trying.
+Screams: In case you're wondering, I only found one softlock.
+
+=== transcription: broadcast
+md-map: region=RM, room=A13, mapSlugcat=rivulet
+md-color: #9c00ff
+md-var-DevCommId: Dead_Place
+md-name: Dead Place
+Will: It's sad to imagine what happened to Five Pebbles in the time we don't see him.
+Will: He spends so long looking for how to retry the process, or undo the corruption eating him.\nHelpless to the rot as it finally breaks into the water conduits that run through his entire facility.
+Will: I wanted to make the return to Unfortunate Development, but rather, something just sad to see.
+Will: There is nearly nothing left of it, and the corruption has exhausted itself here.
+Will: Turning into a morbid sort of coral structure. The whole mass ripping part of Memory Conflux down with it...
+Will: This place is a dead place.
+
+=== transcription: broadcast
+md-map: region=RM, room=B01, mapSlugcat=rivulet
+md-color: #9c00ff
+md-var-DevCommId: Enclosed_In_Rot_Region_Art
+md-name: Enclosed In Rot Region Art
+Norgad: Oh lord, this region was quite the experience to explore as I gathered inspiration screenshots for the artwork.
+Norgad: I was really inspired by the feeling of being enclosed and claustrophobic in the mess of rot.
+Norgad: The cables in the middle of the artwork are a little samey, but I like the colors of the overall picture.
+
+=== transcription: broadcast
+md-map: region=RM, room=DEAD02, mapSlugcat=rivulet
+md-color: #9c00ff
+md-var-DevCommId: The_World_Beyond_The_Player's_Perspective
+md-name: The World Beyond The Player's Perspective
+Dakras: Don't you ever wonder how much of the world we don't get to see?
+Dakras: Imagine all we don't get to see behind those pipes in the walls, or even "behind" or "infront" of the rooms in 3D.
+Dakras: Once you start thinking about that, it really puts into perspective on how mangled pebbles really is now.
+Dakras: Just how extensive is the damage here?
+
+=== transcription: broadcast
+md-map: region=RM, room=DEAD03, mapSlugcat=rivulet
+md-color: #9c00ff
+md-var-DevCommId: Region_Variant_Consistency_and_Degredation
+md-name: Region Variant Consistency and Degredation
+Andrew: Great care was taken to keep room layouts and connections consistent across different "variants" of the same region.
+Andrew: Such as with the Five Pebbles, Rot, and Silent Construct regions.
+Andrew: Although, you do have access to a lot more rooms in The Rot, compared to Five Pebbles.
+Andrew: The degradation of the terrain opens up new passages, and allows you to access\nessentially the "back rooms" and inner mechanisms of parts of Pebbles' structure.
+Andrew: This region creeps me out. I hope it does the same for you.
+
+=== transcription: broadcast
+md-map: region=RM, room=GSB1, mapSlugcat=rivulet
+md-color: #9c00ff
+md-var-DevCommId: Harmless_Electric_Bolts
+md-name: Harmless Electric Bolts
+Andrew: Ongomato implemented these electric bolt effects. They give a lot of flavor to the broken\ndown iterator regions, emphasizing the damage while also introducing a sense of danger and chaos.
+Andrew: A lot of the testers expected these things to be lethal if you touched them.
+Andrew: And to be fair, given Rain World's typical design, it would\nbe completely in the spirit of the game for that to be the case.
+Andrew: But consider it our generous gift to you that they're simply cosmetic.
+
+=== transcription: broadcast
+md-map: region=RM, room=LCCACHE, mapSlugcat=rivulet
+md-color: #9c00ff
+md-var-DevCommId: The_Nightmare_Within
+md-name: The Nightmare Within
+Will: Learning that this region spooks Andrew was quite a fun surprise to hear!
+Will: I mean, just imagine being trapped inside the half-flooded arteries of some massive dying creature.
+Will: If the things trapped inside it with you don't catch you, it's possible you could just get stuck and drown.
+Will: Lost in some confusing dark tunnel that no one would find you in.
+Will: ...maybe it's best nothing does, knowing what is in here.
+
+=== transcription: broadcast
+md-map: region=RM, room=LCHUNT, mapSlugcat=rivulet
+md-color: #9c00ff
+md-var-DevCommId: Into_the_Back_Rooms_and_Secret_Ending
+md-name: Into the Back Rooms and Secret Ending
+Will: The design goal of this region was to create a maze of conduits that connect all of Five Pebble's machinery.
+Will: Of course, Five Pebbles has organic components as well, but most are hidden from view.
+Will: Not here, we're beyond maintenance tunnels and inside the actual guts of the facility!\nBeing chased through tight confusing tunnels by corruption as it spreads through Five Pebbles'\nbody. The rot having torn open paths into these pipes as it corrupts him.
+Will: The unsettling nature of this place even made it into a sort of secret ending for Rivulet, if you steal Five Pebble's music pearl.
+
+=== transcription: broadcast
+md-map: region=RM, room=LCLPIPE, mapSlugcat=rivulet
+md-color: #9c00ff
+md-var-DevCommId: Mapmakers'_Nightmare
+md-name: Mapmakers' Nightmare
+Andrew: I was the one who made the maps for all of the vanilla regions on the Rain World wiki.
+Andrew: I was going to do the same for the More Slugcats regions, too.
+Andrew: But then I got to this region and immediately gave up. It's a mess.
+Andrew: The Rot really did a number to Five Pebbles.
+Andrew: To the future map makers, I salute you. You are stronger than me.
+
+=== transcription: broadcast
+md-map: region=RM, room=LSCOREACCESS, mapSlugcat=rivulet
+md-color: #9c00ff
+md-var-DevCommId: The_Core_Chamber
+md-name: The Core Chamber
+Dakras: This chamber for the energy cells is the most impressive thing I've made.
+Dakras: 25x25 with all of the collision done by hand, which took forever.
+Dakras: It's actually why the SpecsEditor exists too! I got fed up with doing\nthe collision by hand, but I still tend to do it by hand anyway at this rate.
+Dakras: Where they're used makes it so worth it to see though.
+
+=== transcription: broadcast
+md-map: region=RM, room=TERROR, mapSlugcat=rivulet
+md-color: #9c00ff
+md-var-DevCommId: Terror_Long_Legs
+md-name: Terror Long Legs
+Dakras: Ah, the Terror Long Legs, Grandaddy long legs, Super DLL, or any other nicknames we've called it.
+Dakras: The big, mother(s) of them all. Originally, will had the idea to have only one in Spearmaster GW.
+Dakras: I think this was before we even had the idea for RM, and was to be the only one!
+Dakras: Though, the fact they're on Rivulet shows how awful it has gotten.
+Dakras: Don't even try to kill them without singularity bombs, it isn't going to happen.\nThough... I did see 3 eat each other at the same time and promptly instantly vanish.
+
+=== transcription: broadcast
+md-map: region=SB, room=A04, mapSlugcat=white
+md-color: #9c5933
+md-var-DevCommId: Threat_Tracks_Mushroom_Layer
+md-name: Threat Tracks Mushroom Layer
+Will: A feature that didn't make it into the final version of the mod was a mushroom layer to the threat tracks.
+Will: This feature is only dummied out however. Adding an (m) to a layer, like used by the day and night threat type is all that is needed!
+Will: The warbling confused sounding noise heard in the OE threat music at night is the only layer that was made for this mushroom effect.
+Will: We never got around to making layers for all the other regions that have threat tracks, so the feature was canceled.
+Will: Maybe modders will have some fun making their own layers, and reviving the mushroom threat effect!
+
+=== transcription: broadcast
+md-map: region=SB, room=E07, mapSlugcat=white
+md-color: #9c5933
+md-var-DevCommId: Unclogging_Filtration_System
+md-name: Unclogging Filtration System
+Will: It seems a bit backward to think that expanding Filtration System could\nmake it easier, but the large reduction in lizard-clogs would help any region.
+Will: Due to the original room layout of Filtration System, the lizards would often become stuck in the tunnel toward the Depths.
+Will: We chose to insert several new rooms. At first just to solve the lizard clog\nitself, but later these rooms would be expanded by a connection to Pipeyard.
+Will: We had to increase the creature density to compensate, but Filter is certainly not any less difficult to explore in the dark.
+Will: I wonder how many players will stumble on their Filtration System knowledge, when they trip into one of the new rooms by mistake!
+
+=== transcription: broadcast
+md-map: region=SB, room=GOR01, mapSlugcat=white
+md-color: #9c5933
+md-var-DevCommId: Feeding_Slugpups
+md-name: Feeding Slugpups
+Screams: Food bars for pups became a thing stupidly late in development.
+Screams: They were in the works for a while, but I gave up because\nUI isn't really my "thing". I did eventually get them done, though.
+Screams: Until they were finished, you checked whether a pup was full by giving it food and seeing if it ate.
+Screams: I got way too used to mentally keeping track of my pups' hunger... It made for good brain exercise, I guess.
+
+=== transcription: broadcast
+md-map: region=SB, room=H03, mapSlugcat=white
+md-color: #9c5933
+md-var-DevCommId: GOOIEDUCKS!
+md-name: GOOIEDUCKS!
+Will: GOOIEDUCKS! Or at least that is what I called them!
+Will: I'm not really sure why, but it felt like it fit.
+Will: We wanted the world beyond Five Pebbles to be more exotic, but of course that requires new creatures and plants.
+Will: Those plants inevitably leaked into the base game's regions to give them some more flavor.
+Will: Of course, they were also used to expand Gourmand's food quest, but their primary goal was adding more exotic foods.
+Will: They also have another feature, but I want players to find this naturally!
+
+=== transcription: broadcast
+md-map: region=SH, room=A21, mapSlugcat=white
+md-color: #593699
+md-var-DevCommId: Slugpup_Lantern_Mouse_Hybrids
+md-name: Slugpup / Lantern Mouse Hybrids
+Screams: Pups looked really, really weird for most of their development.
+Screams: They were just short slugcats with lantern mouse heads. Not even heads with consideration\nput into handling, just code pulled straight from lantern mice and slapped onto the pup graphics.
+Screams: They were weirdly tall, too, with some of them being almost as tall as the player.
+Screams: Eventually, they got custom heads and faces along with both graphical\nand mechanical code upgrades, turning the weird mousecats into actual slugpups.
+Screams: I'd say they look much better for it!
+
+=== transcription: broadcast
+md-map: region=SH, room=E01, mapSlugcat=white
+md-color: #593699
+md-var-DevCommId: In_the_Shadows
+md-name: In the Shadows
+Dakras: I wonder how many people thought something was above shaded citadel at first.
+Dakras: Or did they just think, maybe the rain clouds made it unnaturally dark here?
+Dakras: Perhaps, they realized the underhang was why, or were even more confused by it being there.
+Dakras: It makes you wonder how many secrets the game has.
+
+=== transcription: broadcast
+md-map: region=SH, room=E03, mapSlugcat=white
+md-color: #593699
+md-var-DevCommId: A_Bit_Too_Much
+md-name: A Bit Too Much
+Dakras: At this point though, maybe you know a bit too much about this game.
+Dakras: We hope you've enjoyed it.
+
+=== transcription: broadcast
+md-map: region=SH, room=E04RIV, mapSlugcat=rivulet
+md-color: #593699
+md-var-DevCommId: Rivulet's_Destroyed_Memory_Crypts
+md-name: Rivulet's Destroyed Memory Crypts
+Andrew: Destroyed Memory Crypts was our very first use case for our conditional links system!\nAllowing us to have altered geometry and entirely separate room connections on a per-slugcat basis.
+Andrew: This was mostly because vanilla Memory Crypts is a pain with Rivulet's short cycle time.
+Andrew: But also because it's just cool to show the effects of the passage of time, and to emphasize Pebbles' current condition.
+
+=== transcription: broadcast
+md-map: region=SH, room=E05, mapSlugcat=white
+md-color: #593699
+md-var-DevCommId: Cut_Bottomless_Pit_Monster
+md-name: Cut Bottomless Pit Monster
+Andrew: We had an idea for a creature that never got implemented, some gigantic\nspider-like creature whose body you never really get a full view of.
+Andrew: It would appear randomly as a rare encounter, in many rooms in the game that had bottomless pits in them.
+Andrew: You would just see its spindly legs coming up from out of the pit to try to grab you and pull you down.
+Andrew: In an old halloween teaser, we actually shared a spooky image of this thing's legs peeking up from the bottom of the\nscreen, but I don't think anyone realized it, or thought those were anything more than some plants or roots or something.
+
+=== transcription: broadcast
+md-map: region=SH, room=GOR01, mapSlugcat=white
+md-color: #593699
+md-var-DevCommId: Defining_Gourmand_and_Community_Theories
+md-name: Defining Gourmand and Community Theories
+Will: We had a lot of difficulty early on deciding exactly what Gourmand was going to be about, or if they even had a place in the story.
+Will: In a way we did both of those things, by putting Gourmand's existence intentionally in question. They are such a bizarre creature!
+Will: Spearmaster, Rivulet, and even Artificer to some degree have some in-game explanation now.
+Will: However Gourmand's powers seemed too extreme... how could they have such an endless supply of things?
+Will: Of course, it's not up to us if you believe Gourmand exists! Watch the ending and choose for yourself what you think.
+Will: The community's ideas are always so much more interesting to imagine then us just telling you.
+Will: Never take what we say as absolutes! If you have a better theory for things, go wild!
+
+=== transcription: broadcast
+md-map: region=SI, room=A06, mapSlugcat=white
+md-color: #e8597f
+md-var-DevCommId: The_State_of_Communications_Array
+md-name: The State of Communications Array
+Will: I wanted to expand the SI comm array for quite a while. Even as I write this I want to!
+Will: However, the ending of Spearmaster cemented the state that the tower would be in for all of MSC.
+Will: Scrolling up from the edge of the clouds to the sky as Spearmaster's ending plays is an\nincredibly memorable moment in the mod, and I didn't want to change that moment at all.
+Will: It's only fitting we made Saint's ending about scrolling down from the same view that Spearmaster left us with.
+
+=== transcription: broadcast
+md-map: region=SI, room=A17, mapSlugcat=saint
+md-color: #e8597f
+md-var-DevCommId: First_Experience_with_Saint
+md-name: First Experience with Saint
+Screams: Saint was about 85% done when I joined the team, so I got to experience\nsomething close to an actual new player going through for the first time.
+Screams: I read an old design doc and spoiled the gist of it before playing, but it was no less awe-inspiring\nto hear Chilblain Grace kick in for the first time as I climbed up to face the howling wind.
+Screams: Don't even get me started on the view from Chimney Canopy's right bridge!
+Screams: Those are still my favorite moments in the entire mod, hands down.
+
+=== transcription: broadcast
+md-map: region=SI, room=A18, mapSlugcat=saint
+md-color: #e8597f
+md-var-DevCommId: The_Epilogue_of_Saint
+md-name: The Epilogue of Saint
+Andrew: Saint is meant to serve as an epilogue to the overarching storyline.
+Andrew: A finalization of Rain World's concept of, "As the old world dies, a new ecosystem evolves".
+Andrew: This is really the point in the timeline when the era of the iterators meets its end.
+Andrew: And with them, the last remaining remnants of the Ancients' civilization ceases its function.
+Andrew: I like to think the new state that the ecosystem is now transitioning into is quite similar\nto an older primordial state of the world long before the Ancients even came into being.
+Andrew: It's all one big cycle.
+
+=== transcription: broadcast
+md-map: region=SI, room=B16, mapSlugcat=white
+md-color: #e8597f
+md-var-DevCommId: Expanding_Sky_Islands
+md-name: Expanding Sky Islands
+Will: Expanding Sky Islands was something that was inevitable.
+Will: The default region only has two gates, and only functions as a shortcut between\nFive Pebbles and the end of the game, or from Hunter's start to Five Pebbles.
+Will: The location of Sky Island's gate inside Farm Arrays can hardly be considered useful due\nto deer problems, and the fact the gate from Subterranean is for all purposes, one way.
+Will: This new route offers an alternative to Chimney Canopy or Subterranean at the start of a Hunter run.
+Will: Although, Pipeyard itself functions mostly as a minor hub; a useful path to Shoreline and Industrial Complex.
+Will: I hope it finds a place in some unique routes!
+
+=== transcription: broadcast
+md-map: region=SI, room=C03, mapSlugcat=white
+md-color: #e8597f
+md-var-DevCommId: Spearmaster_Testing_Pains
+md-name: Spearmaster Testing Pains
+Andrew: Originally these things didn't cancel out your momentum when you grabbed them.
+Andrew: Which made it super easy to accidentally fall off cliffs and stuff after grabbing one.
+Andrew: A suffering that is now reserved just to the early spearmaster testers.
+
+=== transcription: broadcast
+md-map: region=SI, room=D05, mapSlugcat=white
+md-color: #e8597f
+md-var-DevCommId: DISGRACE
+md-name: DISGRACE
+Will: The creation of baby centiwings was a bit of a joke at the community's expense.
+Will: We saw some posts saying that the aquapede being added was silly, because there was already enough centipede types in game.
+Will: However, adding some baby centis as cosmetically different food variants for SI and LC gave me an excuse to be a bit of a butt.
+Will: Thankfully, it's only a baby centi with a special spawn flag, and not an actual new creature.
+Andrew: Actually, I wanted to add a White centipede too!
+Andrew: One whose body gets severed and splits into two smaller centipedes every time you spear it.
+Andrew: There's never enough centipedes.
+
+=== transcription: broadcast
+md-map: region=SL, room=BRIDGE01, mapSlugcat=white
+md-color: #ede5cc
+md-var-DevCommId: Two_Bridges_2
+md-name: Two Bridges 2
+Andrew: Some people thought the existence of Precipice was us forgetting that there\nare two more legs before the opposite wall? You just need to think in 3d space!
+Andrew: The Precipice's bridge is coming out the front, and Pebbles' structure forms a T formation with Moon.
+Andrew: There's actually two bridges in canon. The bridge in-game connects Pebbles' second left-most leg to the first\nof Moon's front row of legs. The second connects Pebbles' third left-most leg to the first of Moon's rear row of legs.
+
+=== transcription: broadcast
+md-map: region=SL, room=ROOF03, mapSlugcat=white
+md-color: #ede5cc
+md-var-DevCommId: The_Return_Path_Back_To_Moon
+md-name: The Return Path Back To Moon
+Will: During development we were unsure how to return the player to the area above Moon. We were not sure if we\nwanted to create Moon's city either, as Pebbles' city was already very expansive, and warranted its own region.
+Will: Not many options were viable however, as most of them would place region gates in bizarre locations, such as Memory Conflux.
+Will: We were kinda forced to add Moon's city as a one way gate with no Artificer-style drone to access it.
+Andrew: Which by the way, if you hack Artificer here, the gate still won't open...\nbecause Moon's city requires a different citizens id than Pebbles' city!
+Will: It's funny to look at the old maps where there is a gate between Moon's chamber and the rest of her structure. At\nleast the option we chose, of no shrine gate and having the city gate be inside Moon's shrine, made a lot more sense.
+Will: Even Five Pebble's city gate is a bit more awkward then Moon's, needing to connect to the outer rim of his wall!
+Will: The main reason we wanted the path above Moon, was to have Rivulet use the top door of Moon's chamber as\na cutscene trigger for their ending, or at least as a, "oh hello there, I wasn't expecting that!" Easter egg.
+Will: I'm glad we decided to add the sub-region, but it does make MS itself pretty bloated with all it has to offer...
+Will: If we had the option now, I would have split it off into its own region, but hindsight is 2020,\nand making it big enough to be its own region is too much of an investment this late in the mod.
+Andrew: (He asked me, and I said PLEASE DON'T!)
+
+=== transcription: broadcast
+md-map: region=SL, room=ROOF04, mapSlugcat=white
+md-color: #ede5cc
+md-var-DevCommId: Moon's_Death_Chasm
+md-name: Moon's Death Chasm
+Will: This room became rather infamous during development!
+Will: The original version was five screens tall, and connected directly to Moon's chamber.
+Will: Unfortunately, even with the low gravity provided by finishing Rivulet's campaign, testers would\nrepeatedly meet their ends by falling face first into the floor. From the top of the room no less!
+Will: We tried numerous ways to compensate for this. Ultimately, we decided to just split this room in two, and\nadd more water to stop falls. Requiring us to also go back to Spearmaster's Moon, and update that room too.
+
+=== transcription: broadcast
+md-map: region=SL, room=TEMPLE, mapSlugcat=white
+md-color: #ede5cc
+md-var-DevCommId: Further_Eastward_Expansion
+md-name: Further Eastward Expansion
+Will: Originally, Moon's structure was going to include her Communications Array, and a bit of a Sky Islands like area.
+Will: However, this was already a bit too much at the time. By the time we added the underwater caves and city there was no room.
+Will: It's crazy how many ideas we had planned for Moon, but never had the chance to include all of them.
+Will: I wonder if separating Moon's city into its own giant region with unique connections\nwould have fixed it? Maybe something for the future if we ever expand the mod ourselves?
+Will: Ignore the plant, I just wanted to see how big these could actually get! It looks pretty funny.
+
+=== transcription: broadcast
+md-map: region=SS, room=A10, mapSlugcat=white
+md-color: #939393
+md-var-DevCommId: The_Rot_Plot_Crutch
+md-name: The Rot Plot Crutch
+Will: It became more and more clear over development that the rot was\nbecoming a sort of plot-crutch. It is a very useful plot device after all!
+Will: However, its abuse was pretty apparent. From scavengers fighting it\nin LC, to what we had planned for Rivulet, and even on Spearmaster...
+Will: We decided to take the healthiest option, and avoid its abuse entirely. With one\nexception, any reasonable ideas for corruption had to properly fit within Rivulet's Five\nPebbles. The corruption's ideas were to be contained inside The Rot as a region on its own.
+Will: To abuse the corruption beyond that could lead to too many weak plot\nscenarios, where adding corruption would be a cheap and easy answer.
+Will: Of course this completely closed the door to ideas like the Judge, or Saint's daddy world ever being used again!
+Will: Some idea are better left on the cutting room floor. A single MEGA-ROT themed region was already enough for the mod!
+
+=== transcription: broadcast
+md-map: region=SS, room=C03, mapSlugcat=white
+md-color: #939393
+md-var-DevCommId: Creating_Inspectors
+md-name: Creating Inspectors
+Will: Inspectors were created to solve an issue testers reported very early in the development of Moon's standing structure.
+Will: Without DLLs, it's boring, and lacks threats. While not providing the exact\nsame type of hazard as a DLL, Inspectors can hold their own while angered.
+Will: Creating a scavenger-like dynamic, where angering them provokes a zero-gravity\nspear fight. Making players at least think twice before they eat neurons.
+
+=== transcription: broadcast
+md-map: region=SS, room=D02, mapSlugcat=white
+md-color: #939393
+md-var-DevCommId: Personality_of_Pebbles
+md-name: Personality of Pebbles
+Will: Writing for Five Pebbles was very difficult! It's hard to write both a smug, and angst-feeling character like him.
+Will: A lot of players seem to view him as simply a villain for what happened\nbetween him and Moon, or even mistake the rot as an intentional creation.
+Will: The story itself in the base game is deeper then that, and Moon would never have\nreason to treat him so closely if Five Pebbles was simply a jerk all along. She was a\nbig sister to him, and he did have his own relationship with Seven Red Suns.
+Will: I think we settled on the idea of a mix of helplessness, from something that is physically impossible\nfor slugcat to comprehend. His "god like" identity seems to be posturing, rather then just bragging.
+Will: Under that confidence he is still a dying machine. Eaten from the inside out.
+Will: His slow transition from anger to helplessness was based off one of Moon's neuron conversations.
+Will: Focusing Spearmaster as a sort of betrayal of trust, that SRS understood his goals, but\nthen to have the same friend return to them with the worry they might mess up. Only for Moon\nto have caused that situation, and not himself, or at least in his isolated point of view!
+Will: We noticed his anger slowly subside by Hunter, even giving Moon his regards as he sends the player off.
+Will: Because of that Artificer would serve as a transition period of those two\nstates, and would give us the most interaction out of all the other slugcats.
+
+=== transcription: broadcast
+md-map: region=SS, room=E06, mapSlugcat=white
+md-color: #939393
+md-var-DevCommId: Expanding_the_Writing_for_Pebbles
+md-name: Expanding the Writing for Pebbles
+Will: Writing for an established character is something incredibly difficult.\nEspecially one with little screen time, but with such a big impression.
+Will: Straying too far in any direction can instantly create the sensation\nof "fan fiction," where a character suddenly acts only to further a plot.
+Will: Avoiding that is hard; one of the ways we tried to do so at first\nwas to only follow what was laid out in neuron and pearl conversations.
+Will: This fell apart as we reached Artificer as we had the chance to do\nsomething unique with the character that was not possible to do before.
+Will: We had the chance for the player to interact with Five Pebbles at their\nown pace. Instead of being rushed out of his room at the threat of death. As due\nto the drone, he is unable to simply kill them without a justified reason.
+Will: Things kind of took on a life of their own. Initially his pearl dialog had more spite, and dislike of the player to them.
+Will: However, on specific topics it became interesting to get his insights on certain events, and some of his own pearls.
+Will: This created the idea that he might be a little bit of a history buff, or archivist,\nexcited to see when the player brings them something not yet documented.
+Will: Of course, he still doesn't let down his smug and prideful aura. Even\naround a wild rat he is telling stories to, so it will leave him alone.
+
+=== transcription: broadcast
+md-map: region=SU, room=A23, mapSlugcat=white
+md-color: #38c79e
+md-var-DevCommId: Initial_Slugpup_AI
+md-name: Initial Slugpup AI
+Screams: The initial version of slugpup AI was lacking, to say the least.
+Screams: I wasn't setting my priorities right when I built it, and the result was a chaotic mess,\nto the point where even getting them to follow me up this pole was a monumental achievement.
+Screams: They didn't even look the same, as all of the big changes that\nactually made them look and feel like pups were much later in development.
+Screams: The "old pups" could barely get over one-tile ledges, so it's no wonder\nI eventually scrapped the AI entirely and rebuilt it from the ground up.
+
+=== transcription: broadcast
+md-map: region=SU, room=A53, mapSlugcat=white
+md-color: #38c79e
+md-var-DevCommId: Preserving_while_Improving_the_Original_Game
+md-name: Preserving while Improving the Original Game
+Will: MSC was designed with a new player experience in mind. Taking care to avoid breaking\nthe original tone and feeling of playing Survivor, Hunter and Monk out of the box.
+Will: We made sure to test this experience with a new player as well! It was interesting to hear them try and guess what\nwas MSC and what was not. A lot of features surprised them! From tutorials, to the small quality of life changes we made.
+Will: It's unfortunate how many friends I've seen reject Rain World. Hopefully we've addressed some of those issues.
+Will: While also not undoing the near hands-off nature and intent of Rain World's experimentation and survival learning.
+Will: Instead trying to hint towards exploring the environment more, or thinking about objects in new ways.
+Will: However, to the wiki and lore community, to which this will inevitably affect: We are sorry,\nbut is embracing players that might have never given this game a second chance really so bad?
+Will: The confused wiki additions and edits give me shivers however...
+
+=== transcription: broadcast
+md-map: region=SU, room=CAVE01, mapSlugcat=spear
+md-color: #38c79e
+md-var-DevCommId: Spearmaster_Concepts
+md-name: Spearmaster Concepts
+Will: Before I joined the team, Andrew had plans to scrap Spearmaster's campaign entirely.
+Will: Most of the reasons were because of Hunter's addition in 1.5, as well as Artificer's gameplay being similar.
+Will: What saved Spearmaster was changing perspectives from gameplay to story, and using them as a vehicle to explore the past.
+Will: The addition of the endless spear mechanics came later, based on Minkimaro's\nconcept art of Spearmaster pulling needles out a hole on their back.
+Will: These ideas became the Spearmaster that made it to release, but we actually had two other ideas!
+Will: One idea was to give Spearmaster their own separate game mode, with a single large region to explore.
+Will: The other was the Judge, a Saint-like slugcat who would have guardian-like powers, and\nthrow spears at extremely high speeds. Trapped in a world completely corrupted by the rot.
+Will: However, this Daddy World like concept never made it past the "crazy ideas" phase of design.
+
+=== transcription: broadcast
+md-map: region=SU, room=PMPSTATION01, mapSlugcat=spear
+md-color: #38c79e
+md-var-DevCommId: Prologue_Of_The_Spearmaster
+md-name: Prologue Of The Spearmaster
+Andrew: Spearmaster is meant to serve as a prologue to the overarching storyline.
+Andrew: Letting you be there for the moment when things all went wrong between Pebbles and Moon.
+Andrew: As well as letting you experience a glance at the times when the iterators were\nstill functional enough to talk with each other over the group messaging systems.
+Andrew: I always loved the chatlog pearls, and love what we did with Spearmaster's broadcast satellites.
+Andrew: A bunch of iterators who've largely outserved their purpose, spending the infinite\ntime they have theorizing, arguging, gossiping, and shitposting with each other...
+Andrew: I couldn't resist the urge to get my hands dirty with that type of writing prompt, and to expand out more dialogs like that.
+
+=== transcription: broadcast
+md-map: region=UG, room=B02, mapSlugcat=saint
+md-color: #8fb572
+md-var-DevCommId: Underground_Jungle
+md-name: Underground Jungle
+Will: Undergrowth was a bit of an experiment! Saint's overworld is a snowy wasteland, but making every region like that was repetitive.
+Will: The original concept was made by Tollycastle, creating the idea of a deep underground jungle that was warm enough for life to flourish!
+Will: We tried not to make the surface too barren for gameplay reasons, but undergrowth allowed us to flood a region with unique encounters.
+Will: As well as bring some more exotic creatures to the front, with OE's jungle leeches, and many of the plants finding a new home here.
+Will: There was a thought to use lethal water as a way of adding giant static\npredatory plants as part of the environment, but this concept was never used.
+Will: We eventually settled on the depths of Undergrowth containing bio-luminescent mushrooms instead!
+Will: The twisting of an old region into a new form is something we experimented on with MS and DM, I think UG came out successful too!
+
+=== transcription: broadcast
+md-map: region=UG, room=B04, mapSlugcat=saint
+md-color: #8fb572
+md-var-DevCommId: Region_Variants_Predating_Conditional_Links
+md-name: Region Variants Predating Conditional Links
+Andrew: Undergrowth and Waterfront Complex probably don't quite merit being\ntheir own regions, but their creation predates our conditional links system.
+Andrew: Back then, as a technical limitation, allowing a region to be this\nmuch different was only possible by making it an entirely separate region.
+Andrew: Later, conditional links allowed us to create things like "Past Garbage Wastes".
+Andrew: And allowed it to be incredibly different from "Future Garbage Wastes", despite them both being the same region internally.
+
+=== transcription: broadcast
+md-map: region=UG, room=B10, mapSlugcat=saint
+md-color: #8fb572
+md-var-DevCommId: From_Functional_to_Full_of_Flora_and_Fauna
+md-name: From Functional to Full of Flora and Fauna
+Will: While the surface of Saint's world feels frozen in a near stasis, the underground regions are in a constant state of change.
+Will: Drainage System in particular has been one of the regions to get the most time line care over the course of development.
+Will: Fully functional at the start, with a slow decay into the version we know from the\nbase game. Then finally transforming into the underground jungle of Saint's Undergrowth.
+Will: It might not be everyone's favorite region, but it has certainly put on a show!
+
+=== transcription: broadcast
+md-map: region=UG, room=C01, mapSlugcat=saint
+md-color: #8fb572
+md-var-DevCommId: Art_and_Parallax
+md-name: Art and Parallax
+Norgad: I actually did a little bit of concept art for this region, so\nthe region art was a little easier to derive from exploring the levels.
+Norgad: I'm really happy with how the pipes came out, and the cyan rim light is nice too!
+Norgad: I also used the artwork for this region to test doing mockups of the game's parallax effect outside of the game.
+Norgad: I bodged together an entire 3D parallax system including depth of field inside of\nAfter Effects. It was only after this that I found out AE natively supports 3D and DOF.
+Norgad: ;v;
+
+=== transcription: broadcast
+md-map: region=UW, room=D01, mapSlugcat=saint
+md-color: #886b57
+md-var-DevCommId: Saint_Sharing_The_Rot
+md-name: Saint Sharing The Rot
+Dakras: You're still trying? Well, since you're here...
+Dakras: Did you know CL wasn't ever a thing? Originally Saint and Rivulet were going to share RM and the DLL-ified exterior.
+Dakras: That was way before we decided on the whole 'hey what if saint was suuuper into the future' thing.
+Andrew: RM was going to be structured into a mix of heavily water-based rooms, for\nRivulet's playthrough, that Saint wouldn't have enough breath to make it through.
+Andrew: And then normal rooms that were so packed with corruption that you could only navigate it with Saint's tongue...
+
+=== transcription: broadcast
+md-map: region=UW, room=D07, mapSlugcat=saint
+md-color: #886b57
+md-var-DevCommId: No_Secrets_for_You
+md-name: No Secrets for You
+Dakras: Come on now, you can't try to run from the inevitable.
+Dakras: You and I both know you shouldn't be here.
+Dakras: Go on, shoo. There's nothing special or secret here for you.
+
+=== transcription: broadcast
+md-map: region=UW, room=F01, mapSlugcat=rivulet
+md-color: #886b57
+md-var-DevCommId: Minkimaro's_Final_Palette_Work
+md-name: Minkimaro's Final Palette Work
+Will: This is one of the last rooms that Minkimaro did palette work for. They soon drifted away from the mod team.
+Will: It's unfortunate, I always really liked their palette work, they did most of the palettes for Spearmaster and Rivulet.
+Will: Life caught up with them and they couldn't invest much time in MSC's extended dev cycle.
+Will: This is still some beautiful work though.
+
+=== transcription: broadcast
+md-map: region=UW, room=H01, mapSlugcat=white
+md-color: #886b57
+md-var-DevCommId: Day_Night_Cycle
+md-name: Day / Night Cycle
+Andrew: The day / night cycle was actually one of the very first things to be implemented\ninto More Slugcats Expansion, along with water fluxing, passive rainfall, and lethal water.
+Andrew: Getting it to work properly with the Wall came much later, however, as the background\nelements (such as the city view and distant iterators) don't change color with the palette.
+Andrew: Changing the colors of those requires editing their shaders, which was beyond the scope of anyone's knowledge at that time.\nIt took at least another year or so before the modding community figured out how to mod, edit, and add new shaders into the game.
+Andrew: I'm really happy we added this though... the sunset transition is really beautiful, and it gives a\nlot of extra charm and character to these areas of the world that aren't under the threat of the rainfall.
+Andrew: Nighttime becomes a new threat as well, as all of the daytime creatures go to sleep, while a new set of creature spawns for night come out.
+Andrew: Metropolis is especially dangerous at night, as all of the elite guards come out to patrol. But this can also be a\nreward for a skilled player who managed to survive that long, as you can snatch some really deadly weaponry from them!
+
+=== transcription: broadcast
+md-map: region=UW, room=J01, mapSlugcat=saint
+md-color: #886b57
+md-var-DevCommId: The_Judge
+md-name: The Judge
+Dakras: The Judge was also a thing before we decided upon Spearmaster. Most that got\ndone was ideas, and me poorly making 5P dark and throwing proto-DLLS everywhere.
+Dakras: ...Trust me when I say it's for the best that we brought back spearmaster as early as we did.
+
+=== transcription: broadcast
+md-map: region=VS, room=A02, mapSlugcat=white
+md-color: #75405c
+md-var-DevCommId: Modding_Scene
+md-name: Modding Scene
+Andrew: It was fun to have gotten to get into the Rain World modding scene all the way from the very start.
+Andrew: And watch how everything rapidly progressed over these few short years.
+Andrew: From the very first person managing to toggle on the game's internal dev tools mode.
+Andrew: And everyone having their minds blown (myself included), that the game could even be modded AT ALL.
+Andrew: For a game that was never really intended or designed to be moddable...
+Andrew: Who would have thought we'd come far enough to create an expansion like this!
+Andrew: Big thanks to Videocult for giving us access to their level editor. That was a huge game changer.
+Andrew: I know Videocult was skeptical that we'd even manage to figure out how to use the cursed thing...
+Andrew: But I think we've done pretty well for ourselves.
+
+=== transcription: broadcast
+md-var-DevCommId: Character_Art
+md-name: Character Art
+Norgad: Ahahhh, it's the devs!
+Norgad: It was fun painting all the different characters together, especially in different styles.
+Norgad: See if you can figure out who everyone's meant to be!
+Norgad: ...
+Norgad: Also, thank you for playing. This mod's been a blast to work on, sorry it took so long!
+Norgad: Hope you enjoy it for many hours to come, and get lost in Rain World all over again.
+Norgad: <3
+
+=== transcription: broadcast
+md-var-DevCommId: Paincats
+md-name: Paincats
+Screams: Wanna hear a funny thought?
+Screams: Imagine being someone who discovered Paincat before ever seeing pups in the regular game.
+Screams: I'm glad the slugpup limit is 2 by default, because the game gets exponentially harder when you add more than that.
+Screams: With this in mind, I suggested removing Paincat's pup limit and giving it a\n100% spawn rate in all regions. Will proceeded to add on to this with, and I quote...
+Will: "all paincat slugpups spawn as white with red faces"
+Will: "and when they die they spawn an activated singularity egg"
+Screams: "How do you tell them apart?" I asked.
+Will: "You don't."
+Andrew: And then I implemented them as level editor gremlins instead...
+Dakras: They didn't even have the heart to tell me what they did to my poor, poor slugcat.
+
+=== transcription: broadcast
+md-map: region=VS, room=C05, mapSlugcat=white
+md-color: #75405c
+md-var-DevCommId: Final_Region_Art_RIP_Void_System
+md-name: Final Region Art / RIP Void System
+Norgad: This was the final region artwork I worked on. I'm really happy with how it turned out, it's really bright and hopeful!
+Norgad: The pipes took forever though... Miracle my wrist is still attached.
+Norgad: ...
+Norgad: The region actually reused an old region's internal name (VS). That region\nwas joined with another I believe, and we just decided to reuse the initials.
+Norgad: R.I.P. Void System.
+Will: Unfortunately, VS wasn't anything amazing, it was just Sub with the depths ripped off it. Before\nwe had the conditional link system, we had to duplicate entire regions to change room connections.
+
+=== transcription: broadcast
+md-map: region=VS, room=C13, mapSlugcat=white
+md-color: #75405c
+md-var-DevCommId: Routing_Options
+md-name: Routing Options
+Will: Pipeyard was created pretty quickly, and was mostly the result of a lack of restraint on my part.
+Will: I wanted to redo the Root in some way that would work well with MSC, but nothing quite worked.\nThe big concern was that the Root's path from the exterior to sub wouldn't work well for late game.
+Will: After a lot of rethinking, I decided to make the area about giving Sky Islands more routing options.
+Will: In the base game it acts only as a difficult path between farm and CC, but now\nit offers a third path. One that allows access to sub, industrial, and shoreline.
+Will: However, the sub and shoreline paths are a bit nasty to take.
+Will: The shoreline path itself was very fun to make, invoking the same feelings\nthat made me question Rain World's design back when I first played it!
+Will: Being trapped at the far end of a painful underground swim, but making the end of that segment worth it felt right to me.
+
+=== transcription: broadcast
+md-map: region=VS, room=F01, mapSlugcat=white
+md-color: #75405c
+md-var-DevCommId: Region_Creatures_Timeline
+md-name: Region Creatures Timeline
+Andrew: There was actually a ton of thought that went into the creatures that spawn in each region, at each spot on the timeline.
+Andrew: Will had actually put together an entire illustrated timeline chart for every creature\nin the game, showing their presence, evolution, and extinction events across the game's history.
+Andrew: As well as another long document explaining the origins, food chains, migration\npatterns, preferences, and other attributes of each creature's species over time.
+Andrew: All of these considerations were factored into which creatures to include and exclude in each region for each character.
+Andrew: Will also wrote a region creature density analyzing script, which he used to balance out creature spawns in each\nregion to keep difficulty levels consistent, and creature densities appropriate based on the global population decay.

@@ -21,6 +21,7 @@ from the vanilla version and the Downpour DLC.
     - Five Pebbles Pearls
     - White Pearls
     - Broadcast Pearls
+    - Developer Commentary
 - Location details with map links
 - Progressive unlock and hint system for spoiler-free exploration
 - Search functionality
