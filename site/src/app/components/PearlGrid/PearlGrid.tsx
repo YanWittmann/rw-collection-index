@@ -1,12 +1,11 @@
 import { PearlData } from "../../types/types";
 import { UnlockMode } from "../../page";
 import { RwTextInput } from "./RwTextInput";
-import { useMemo, useState, useCallback } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import PearlItem from "./PearlItem";
 import UnlockManager from "../../utils/unlockManager";
 import { cn } from "@shadcn/lib/utils";
 import { RwIconButton } from "../other/RwIconButton";
-import React from "react";
 
 interface PearlGridProps {
     pearls: PearlData[]

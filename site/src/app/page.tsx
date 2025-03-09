@@ -4,7 +4,7 @@ import { useDialogue } from "./hooks/useDialogue";
 import { PearlGrid } from "./components/PearlGrid/PearlGrid";
 import { DialogueBox } from "./components/DialogueBox/DialogueBox";
 import { orderPearls } from "./utils/pearlOrder";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useUnlockState } from "./hooks/useUnlockState";
 import { urlAccess } from "./utils/urlAccess";
 import { useIsMobile } from "./hooks/useIsMobile";
