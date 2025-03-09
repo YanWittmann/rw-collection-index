@@ -17,7 +17,7 @@ export function useDialogue(unlockMode: UnlockMode) {
         setSelectedPearl(pearl.id);
         const possibleTranscriber = pearl.transcribers[pearl.transcribers.length - 1]?.transcriber;
         if (multipleSameTranscribers && possibleTranscriber) {
-            setSelectedTranscriber(possibleTranscriber + '-0');
+            setSelectedTranscriber(possibleTranscriber + '-' + (pearl.transcribers.length - 1));
         } else {
             setSelectedTranscriber(possibleTranscriber ?? null);
         }

@@ -3,7 +3,7 @@ import { RwIconButton } from "../other/RwIconButton";
 import { Dialogue, PearlData } from "../../types/types";
 import { UnlockMode } from "../../page";
 import UnlockManager from "../../utils/unlockManager";
-import { darken, transcribersColors } from "../../utils/speakers";
+import { darken, transcriberIcons, transcribersColors } from "../../utils/speakers";
 
 interface TranscriberSelectorProps {
     pearl: PearlData
@@ -31,20 +31,21 @@ export function TranscriberSelector({
         let overwriteIcon = undefined;
         let overwriteColor = undefined;
         if (effectiveTranscriberName.includes("broadcast")) {
-            color = transcribersColors[effectiveTranscriberName] ?? transcriber.metadata.color ?? '#ffffff';
+            color = transcribersColors[transcriber.transcriber] ?? transcriber.metadata.color ?? '#ffffff';
             overwriteColor = color;
             overwriteIcon = "broadcast";
         } else if (transcriber.metadata.type === 'item' && transcriber.metadata.subType) {
             overwriteIcon = transcriber.metadata.subType;
         } else {
-            color = transcribersColors[effectiveTranscriberName];
+            color = transcribersColors[transcriber.transcriber];
+            overwriteIcon = transcriberIcons[transcriber.transcriber];
         }
 
-        let transcriberName: string | null;
+        let displayTranscriberName: string | null;
         if (transcriber.metadata.transcriberName) {
-            transcriberName = "plain=" + transcriber.metadata.transcriberName;
+            displayTranscriberName = "plain=" + transcriber.metadata.transcriberName;
         } else {
-            transcriberName = effectiveTranscriberName;
+            displayTranscriberName = effectiveTranscriberName;
         }
 
         if (!isUnlocked) {
@@ -61,7 +62,7 @@ export function TranscriberSelector({
                     key={'select-' + pearl.id + '-' + index}
                     onClick={() => onSelect(effectiveTranscriberName)}
                     selected={effectiveTranscriberName === selectedName}
-                    onMouseEnter={() => onHover(transcriberName)}
+                    onMouseEnter={() => onHover(displayTranscriberName)}
                     onMouseLeave={() => onHover(null)}
                 >
                     {overwriteColor ?

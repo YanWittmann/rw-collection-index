@@ -23,7 +23,8 @@ from the vanilla version and the Downpour DLC.
     - Broadcast Pearls
     - Developer Commentary
     - Item Descriptions
-    - Iterator Dialogue (LttM, FP)
+    - Iterator Dialogue (LttM, FP) (relevant selection)
+    - Echoes Dialogue
 - Location details with map links
 - Progressive unlock and hint system for spoiler-free exploration
 - Search functionality

@@ -1,0 +1,188 @@
+type: echo
+
+=== transcription: base-slugcats
+md-map: region=SH, room=A08, mapSlugcat=white
+md-name: Four Needles under Plentiful Leaves
+md-var-DialogueId: SH
+You have no name.
+I once had! I was embalmed, adorned, readied for the journey.
+So proud. There was jubilation! My name was sung, loud and clear.
+Did they know? That I didn't quite leave, didn't quite stay?
+Should I be ashamed? That I linger here, where my memories are kept?
+Should I be ashamed that I now envy your flesh prison?
+
+=== transcription: saint
+md-map: region=CC, room=C12, mapSlugcat=saint
+md-name: Nineteen Spades, Endless Reflections
+md-var-DialogueId: CC
+From my perch, I've overlooked this land for an eternity.
+Watched as this vast expanse was blanketed into an endless tundra.
+We remain trapped in place, and yet can never stop moving.
+Funneled endlessly into an unknown future...
+To what destination do these memories reach?
+
+=== transcription: base-slugcats
+md-map: region=CC, room=C12, mapSlugcat=white
+md-name: Nineteen Spades, Endless Reflections
+md-var-DialogueId: CC
+Behold this empty husk of a land...
+Populated only by storms, ruins and abominations. It wasn't always thus.
+I was once the Count of 2 living blocks, esteemed by my peers. I had progeny!
+From within my vessel of flesh, I would perch upon this spot to observe the rising of the sun.
+Corporeal matters seem so distant now. Most have forgotten this place, but I remain.
+Perhaps I reminisce because I cannot go. Perhaps I cannot go because memory traps me here.
+
+=== transcription: saint
+md-map: region=CL, room=D05, mapSlugcat=saint
+md-name: Six Grains of Gravel, Mountains Abound
+md-var-DialogueId: UW
+Our presence has been revealed to you now, young one.
+The attunement has become... much nearer.
+Like a ripple distorted upon a moonlit reflection.
+Repetitous, seemingly endless strife.
+An unimaginable curse.
+Swim with the tide or against it.
+
+=== transcription: base-slugcats
+md-map: region=UW, room=A14, mapSlugcat=white
+md-name: Six Grains of Gravel, Mountains Abound
+md-var-DialogueId: UW
+We can feel your presence, little creature.
+Your attunement has become... much closer to ours.
+The mark you received is an unimaginable gift.
+The struggle, the cycles...
+It can all fade, like a morning mist beneath the glory of the sun.
+We found a way.
+
+=== transcription: saint
+md-map: region=SI, room=B11, mapSlugcat=saint
+md-name: Droplets upon Five Large Droplets
+md-var-DialogueId: SI
+Another presence attempts to commune with mine.
+Have I perceived your voice before? I have existed long enough to overhear them all.
+Those who have been, and those who have yet to be.
+Each serving as a wave propagating throughout the annals of history.
+Listened as I have for many eons, 'tis true, some of those swells cannot help but mirror back.
+
+=== transcription: base-slugcats
+md-map: region=SI, room=B11, mapSlugcat=white
+md-name: Droplets upon Five Large Droplets
+md-var-DialogueId: SI
+Do you hear it, little one?
+The buzzing in the air?
+The endless chatter of a thousand thousand voices, long dead?
+They are gone, and yet they speak. Neither here nor there.
+Does that seem familiar? Yes, it is quite amusing for a being in my predicament!
+
+=== transcription: saint
+md-map: region=LF, room=B01, mapSlugcat=saint
+md-name: A Bell, Eighteen Amber Beads
+md-var-DialogueId: LF
+Why is it?
+This long forgotten place beckons me, drawn by a certain presence...
+The fields here are not as I remember. Too much has changed.
+But, by forfeiting familiarities, perhaps something new is gained?
+Despite all, this site still has not revealed the entirety of its secrets.
+Perhaps that is the reason for my continued imprisonment.
+
+=== transcription: base-slugcats
+md-map: region=LF, room=B01, mapSlugcat=white
+md-name: A Bell, Eighteen Amber Beads
+md-var-DialogueId: LF
+Strange...
+Something still draws me here. Even after all this time.
+The weather is so different now, but the fields...
+I do not need eyes to know that the grasses still sway gently in the winds.
+To have grasped at the boundless infinites of the cosmic void...
+Yet here I am contemplating these same fields as I once did, talking to some sort of rodent.
+
+=== transcription: saint
+md-map: region=SB, room=A10, mapSlugcat=saint
+md-name: Two Sprouts, Twelve Brackets
+md-var-DialogueId: SB
+A little beast!
+Come to join me in this great undoing.
+The old world will soon vanish, wiped from history, to pave a path for the dawning of a new era.
+How many have been consumed so far? Were we the tenth civilization, or the thousandth?
+Amusingly, they thought their small struggles bore such great significance.
+All was naught but to serve the void.
+
+=== transcription: base-slugcats
+md-map: region=SB, room=A10, mapSlugcat=white
+md-name: Two Sprouts, Twelve Brackets
+md-var-DialogueId: SB
+A little beast!
+But not as dim as the rest, perhaps?
+So down into the depths you go as many others before you, drawn to the void again and again, an endless drip drip drip.
+Much like these tunnels and caves that amuse me so. The bones of forgotten civilizations, heaped like so many sticks.
+Did they dig too deep, or not deep enough?
+Fools. We were right to drill straight through them!
+
+=== transcription: saint
+md-map: region=MS, room=COMMS, mapSlugcat=saint
+md-name: Eight Spots on a Blind Eye
+md-var-DialogueId: MS
+Such drive! Such tenacity! All to come to such a lonely forsaken place!
+Was it all to find me, young one, or did the idea of such a journey itself spark the fire within you?
+Such enthusiasm should be rewarded! What an amazing little beast you are!
+
+=== transcription: saint
+md-map: region=UG, room=C02, mapSlugcat=saint
+md-name: Rhinestones beneath Shattered Glass
+md-var-DialogueId: UG
+Do you see the same as me?
+Beauty continuing to bloom even in a place long forgotten.
+I did not have the will to depart, nor the desire.
+Why did they always search for an escape, as if we were imprisoned?
+What offering from the void could usurp the gift of life already given?
+This moment, right here! It is where we are meant to be.
+
+=== transcription: saint
+md-map: region=SL, room=WALL06, mapSlugcat=saint
+md-name: Distant Towers upon Cracked Earth
+md-var-DialogueId: SL
+You stand upon our creation.
+I toiled away until my final breath. As did many of us, through countless generations.
+Research, shipments, architecture, computation, politics, worship, revolutions!
+All for a heap of rusted metal steeped in a puddle of frozen water.
+I placed my faith into the hands of random gods.
+Now I must endure it to the end.
+
+=== transcription: base-slugcats
+md-map: region=LC, room=highestpoint, mapSlugcat=artificer
+md-name: Twelve Beads among Burning Skies
+md-transcriberName: As a Slugcat other than Artificer
+md-var-DialogueId: LC
+What brings you to this lonely place?
+Do you seek the same isolation that I once did in flesh?
+An angry fool I was, blinded by fervor and pride!
+Now here I linger. Chained to the memories of a city I had once struggled to escape!
+Bound by recollections of those who I could not leave behind.
+The irony is not lost on me, mouse!
+
+=== transcription: artificer
+md-map: region=LC, room=highestpoint, mapSlugcat=artificer
+md-type: item
+md-subType: item/Chieftain_Scavenger_icon
+md-name: Twelve Beads among Burning Skies
+md-transcriberName: After defeating the Chieftain Scavenger
+md-var-DialogueId: LC
+You, who have encountered a consequence much like my own.
+Gripped by raw emotions whose chains bind you, destined to this land.
+Shortcomings of the past haunt one and all like whispering phantoms.
+An unrewarding battle awaits, culminating in a path of no return.
+A perpetuity of struggles begetting more of the same.
+We are a pair who have forfeited everything.
+
+=== transcription: artificer
+md-map: region=LC, room=highestpoint, mapSlugcat=artificer
+md-name: Twelve Beads among Burning Skies
+md-transcriberName: Before defeating the Chieftain Scavenger
+md-var-DialogueId: LC
+You are stuck in a cycle of wrath and destruction, simple being.
+Gripped by raw emotions whose chains bind you, destined to this land.
+Shortcomings of the past haunt one and all like whispering phantoms.
+Listen. Let this be a warning to you...
+An unrewarding battle awaits, culminating in a path of no return.
+A perpetuity of struggles begetting more of the same.
+Find a way out, if you still can.

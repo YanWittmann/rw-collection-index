@@ -11,10 +11,24 @@ Little... green thing...
 
 === transcription: FP
 md-type: pearl
+md-transcriberName: If Five Pebbles dislikes Saint
+md-var-DialogueId: Following_encounters
+md-name: Following encounters
+<b>One of the following lines is chosen at random:</b>
+... Go away...
+
+... Not forgotten pain...
+
+... So little... left. Why hurt... me more...
+
+... Leave me... alone.
+
+=== transcription: FP
+md-type: pearl
 md-transcriberName: If Five Pebbles does not dislike Saint
 md-var-DialogueId: Following_encounters
 md-name: Following encounters
-<i>One of the following lines is chosen at random:</i>
+<b>One of the following lines is chosen at random:</b>
 ... Why back?
 
 ... It is... warmer... today.
@@ -26,42 +40,6 @@ Little green friend. Hello.
 ... Thank you... for... company.
 
 ... Little visitor... Hello...
-
-=== transcription: FP
-md-type: pearl
-md-transcriberName: If Five Pebbles dislikes Saint
-md-var-DialogueId: Following_encounters
-md-name: Following encounters
-<i>One of the following lines is chosen at random:</i>
-... Go away...
-
-... Not forgotten pain...
-
-... So little... left. Why hurt... me more...
-
-... Leave me... alone.
-
-=== transcription: LttM-saint
-md-type: pearl
-md-transcriberName: Ascending only Looks to the Moon
-md-var-DialogueId: Rubicon
-md-name: Encountering in Rubicon
-Little saint. I perceive your existence as it passes through my own. I know this is only a dream, but your presence is real.
-Do you see it too? Our endless repetitions, circling onward to infinity? From here I can observe the repeating loop of my own existence, every iteration a duplicate of the last.
-I have visions of the entire pattern my creators desired to escape at once. An endless sequence of life and death, further beyond my control with each passing cycle.
-Where does your cycle go, little creature? Its edges twist over themselves, like circles within circles, your cycle consumes itself.
-What have you become?
-
-=== transcription: FP
-md-type: pearl
-md-transcriberName: Ascending only Five Pebbles
-md-var-DialogueId: Rubicon
-md-name: Encountering in Rubicon
-I understand what you are, little beast. This place is not real, a dream from outside.
-As if every cycle of my existence has knotted together with another's, even if for only a fraction of a second it ripples through mine.
-I see my own creation, I see my agonizing decay. I see my hollow structure become a sanctuary in the storm. I see a new world unfold without me, as me. I see myself become something else.
-Yet... I cannot see the beginning, or end of your own. An aberrant cycle twisting into mine, before spiraling onward into the abyss.
-What a horrifying destiny you've found.
 
 === transcription: LttM-FP-saint
 md-type: pearl
@@ -76,3 +54,25 @@ BSM: The question wasn't well defined. If we had stumbled upon a correct solutio
 FP: We were trying to understand what lies beyond a point of no return, while having yet to pass it.
 BSM: Only those who have seen the other side can know the answers, but by definition they can never venture back to deliver the knowledge they have gained.
 FP: Perhaps that is why you need to wake up, little visitor.
+
+=== transcription: FP
+md-type: pearl
+md-transcriberName: Ascending only Five Pebbles
+md-var-DialogueId: Rubicon
+md-name: Encountering in Rubicon
+I understand what you are, little beast. This place is not real, a dream from outside.
+As if every cycle of my existence has knotted together with another's, even if for only a fraction of a second it ripples through mine.
+I see my own creation, I see my agonizing decay. I see my hollow structure become a sanctuary in the storm. I see a new world unfold without me, as me. I see myself become something else.
+Yet... I cannot see the beginning, or end of your own. An aberrant cycle twisting into mine, before spiraling onward into the abyss.
+What a horrifying destiny you've found.
+
+=== transcription: LttM-saint
+md-type: pearl
+md-transcriberName: Ascending only Looks to the Moon
+md-var-DialogueId: Rubicon
+md-name: Encountering in Rubicon
+Little saint. I perceive your existence as it passes through my own. I know this is only a dream, but your presence is real.
+Do you see it too? Our endless repetitions, circling onward to infinity? From here I can observe the repeating loop of my own existence, every iteration a duplicate of the last.
+I have visions of the entire pattern my creators desired to escape at once. An endless sequence of life and death, further beyond my control with each passing cycle.
+Where does your cycle go, little creature? Its edges twist over themselves, like circles within circles, your cycle consumes itself.
+What have you become?

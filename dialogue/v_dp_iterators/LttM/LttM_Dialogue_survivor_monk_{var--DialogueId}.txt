@@ -3,37 +3,17 @@ subType: survivor_monk
 
 === transcription: LttM-post-collapse
 md-type: pearl
-md-transcriberName: If Looks to the Moon has 5 neurons left
+md-transcriberName: If Looks to the Moon has 1 neuron left
 md-var-DialogueId: Second_encounter
 md-name: Second encounter
-<b>If Looks to the Moon likes Slugcat:</b>
-Oh, hello!
-I wonder what it is that you want?
-There is nothing here. Not even my memories remain.
-Even the scavengers that come here from time to time leave with nothing. But... I have told you that already, haven't I?
-I do enjoy the company though. You're welcome to stay a while, quiet little thing.
-<b>If Looks to the Moon dislikes Slugcat:</b>
-You again.
-<b> Otherwise:</b>
-Oh, hello.
-I wonder what it is that you want?
-There is nothing here. Not even my memories remain.
-Even the scavengers that come here from time to time leave with nothing. But... I have told you that already, haven't I?
+...
 
 === transcription: LttM-post-collapse
 md-type: pearl
-md-transcriberName: If Looks to the Moon has 4 neurons left
+md-transcriberName: If Looks to the Moon has 2 neurons left
 md-var-DialogueId: Second_encounter
 md-name: Second encounter
-<b>If Looks to the Moon likes Slugcat:</b>
-Hello there! You again!
-<b>If Looks to the Moon dislikes Slugcat:</b>
-Oh. You.
-<b> Otherwise:</b>
-Hello there. You again!
-I wonder what it is that you want?
-I have had scavengers come by before. Scavengers! And they left me alive! But... I have told you that already, haven't I?
-You must excuse me if I repeat myself. My memory is bad. I used to have a pathetic five neurons... And then you ate one. Maybe I've told you that before as well.
+...leave...
 
 === transcription: LttM-post-collapse
 md-type: pearl
@@ -45,14 +25,34 @@ Please don’t... take... more from me... Go.
 
 === transcription: LttM-post-collapse
 md-type: pearl
-md-transcriberName: If Looks to the Moon has 2 neurons left
+md-transcriberName: If Looks to the Moon has 4 neurons left
 md-var-DialogueId: Second_encounter
 md-name: Second encounter
-...leave...
+<b>If Looks to the Moon likes Slugcat:</b>
+Hello there! You again!
+\n<b>If Looks to the Moon dislikes Slugcat:</b>
+Oh. You.
+\n<b> Otherwise:</b>
+Hello there. You again!
+I wonder what it is that you want?
+I have had scavengers come by before. Scavengers! And they left me alive! But... I have told you that already, haven't I?
+You must excuse me if I repeat myself. My memory is bad. I used to have a pathetic five neurons... And then you ate one. Maybe I've told you that before as well.
 
 === transcription: LttM-post-collapse
 md-type: pearl
-md-transcriberName: If Looks to the Moon has 1 neuron left
+md-transcriberName: If Looks to the Moon has 5 neurons left
 md-var-DialogueId: Second_encounter
 md-name: Second encounter
-...
+<b>If Looks to the Moon likes Slugcat:</b>
+Oh, hello!
+I wonder what it is that you want?
+There is nothing here. Not even my memories remain.
+Even the scavengers that come here from time to time leave with nothing. But... I have told you that already, haven't I?
+I do enjoy the company though. You're welcome to stay a while, quiet little thing.
+\n<b>If Looks to the Moon dislikes Slugcat:</b>
+You again.
+\n<b> Otherwise:</b>
+Oh, hello.
+I wonder what it is that you want?
+There is nothing here. Not even my memories remain.
+Even the scavengers that come here from time to time leave with nothing. But... I have told you that already, haven't I?

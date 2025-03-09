@@ -5,6 +5,18 @@ subType: gourmand
 md-type: pearl
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
+md-transcriberName: If Gourmand took a Neuron Fly before receiving the Mark of Communication
+There is nothing more here for you to take.
+You've been given the gift of communication. So I can only imagine that you have met Five Pebbles. You must already understand how little of me remains functional.
+However, it is nice to have someone to talk to after all this time. My last visitor was very sick, so their visits here were not for very long.
+I can only hope to remember them for as longas I can in my current state...
+They left some time ago. My last overseer watched them head to the west. Perhaps they were returning home with what little time they had left.
+
+=== transcription: LttM-gourmand
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-name: First encounter after receiving the Mark of Communication
+md-transcriberName: First encounter after receiving the Mark of Communication
 Hello little creature, are you lost?
 I am sorry to say that there is nothing here for you.
 You've been given the gift of communication. So I can only imagine that you have met Five Pebbles. You must already understand how little of me remains functional.
@@ -12,13 +24,3 @@ However, it is nice to have someone to talk to after all this time. My last visi
 I can only hope to remember them for as long as I can in my current state.
 Maybe you know them? They left some time ago. My last overseer watched them head to the west. Perhaps they were returning home with what little time they had left.
 You are welcome to stay as long as you desire little creature. It is nice to have company.
-
-=== transcription: LttM-gourmand
-md-type: pearl
-md-var-DialogueId: First_encounter
-md-name: If Gourmand took a Neuron Fly before receiving the Mark of Communication
-There is nothing more here for you to take.
-You've been given the gift of communication. So I can only imagine that you have met Five Pebbles. You must already understand how little of me remains functional.
-However, it is nice to have someone to talk to after all this time. My last visitor was very sick, so their visits here were not for very long.
-I can only hope to remember them for as longas I can in my current state...
-They left some time ago. My last overseer watched them head to the west. Perhaps they were returning home with what little time they had left.

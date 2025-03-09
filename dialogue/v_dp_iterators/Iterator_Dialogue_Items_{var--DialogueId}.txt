@@ -305,9 +305,9 @@ md-var-DialogueId: Slugpup
 md-name: Slugpup
 <b>If Looks to the Moon likes the Slugcat:</b>
 How cute, you brought your child, little creature?
-<b>If Looks to the Moon dislikes the Slugcat:</b>
+\n<b>If Looks to the Moon dislikes the Slugcat:</b>
 Take your offspring with you when you go.
-<b> Otherwise:</b>
+\n<b> Otherwise:</b>
 Do you have a little one with you?
 
 === transcription: LttM-rivulet

@@ -1,4 +1,4 @@
-export type PearlType = "pearl" | "broadcast" | "item";
+export type PearlType = "pearl" | "broadcast" | "echo" | "item";
 
 export interface DialogueLine {
     speaker?: string;

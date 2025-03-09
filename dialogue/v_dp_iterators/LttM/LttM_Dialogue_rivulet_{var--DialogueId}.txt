@@ -3,18 +3,6 @@ subType: rivulet
 
 === transcription: LttM-rivulet
 md-type: pearl
-md-transcriberName: If Rivulet has not taken the Rarefaction Cell
-md-var-DialogueId: First_encounter
-md-name: First encounter
-Oh. Hello there!
-What a strange specimen you are! My memory does not serve me well, but it has been a long time since I've encountered one of your species. And none quite with adaptions such as your own. It appears you can breathe underwater. Amazing!
-More importantly, I wonder who it is that gave you that mark? It could not have been my neighbor Five Pebbles, as he has been sick for a very long time. These frequent downpours suggest to me an acute failure in his machinery, and in that condition, I doubt any creature could get anywhere near him and still make it back alive.
-Then are you from a far away land? Did you meet No Significant Harassment? Or perhaps Chasing Wind? Or even further than that?
-I don't know why you have traveled all this way, but there is nothing for you here. I can only advise you to return to wherever you have come from. These lands have become a tremendous hazard, and conditions will only worsen with the passage of time.
-I hope you understand, my little friend. I don't mean to be discourteous... I am simply fearing for your safety.
-
-=== transcription: LttM-rivulet
-md-type: pearl
 md-transcriberName: If Rivulet has already taken the Rarefaction Cell
 md-var-DialogueId: First_encounter
 md-name: First encounter
@@ -25,6 +13,18 @@ I don't know why you have traveled all this way, but for what it's worth, the he
 I wonder if that means my neighbor's machinery finally succumbed to the decay. He was in awful shape last I remember, and even that was a long time ago. Perhaps he finally solved the riddle? For his sake I almost hope so.
 Ah, in the end, everything reaches the conclusion of its journey. I'm not sure how many of us are even left in this world. A new cycle is already unfolding, one we need not be a part of. We've long outserved our purpose.
 However, as long as the microbes in my processing strata continue to function, I'll be here to talk.
+
+=== transcription: LttM-rivulet
+md-type: pearl
+md-transcriberName: If Rivulet has not taken the Rarefaction Cell
+md-var-DialogueId: First_encounter
+md-name: First encounter
+Oh. Hello there!
+What a strange specimen you are! My memory does not serve me well, but it has been a long time since I've encountered one of your species. And none quite with adaptions such as your own. It appears you can breathe underwater. Amazing!
+More importantly, I wonder who it is that gave you that mark? It could not have been my neighbor Five Pebbles, as he has been sick for a very long time. These frequent downpours suggest to me an acute failure in his machinery, and in that condition, I doubt any creature could get anywhere near him and still make it back alive.
+Then are you from a far away land? Did you meet No Significant Harassment? Or perhaps Chasing Wind? Or even further than that?
+I don't know why you have traveled all this way, but there is nothing for you here. I can only advise you to return to wherever you have come from. These lands have become a tremendous hazard, and conditions will only worsen with the passage of time.
+I hope you understand, my little friend. I don't mean to be discourteous... I am simply fearing for your safety.
 
 === transcription: LttM-rivulet
 md-type: pearl

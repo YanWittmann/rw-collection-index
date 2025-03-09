@@ -59,6 +59,12 @@ export const pearlOrder: PearlChapter[] = [
         ]
     },
     {
+        name: "Echoes",
+        ids: [
+            { pattern: /Echo_Monologue_.+/ }
+        ]
+    },
+    {
         name: "Items",
         ids: [
             { pattern: /Iterator_Dialogue_Items_.+/ }

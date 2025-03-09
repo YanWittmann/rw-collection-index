@@ -31,11 +31,19 @@ export const transcribersColors: { [key: string]: string } = {
     "FP-artificer": "#66d9bf",
     "LttM-pre-collapse": "#FFEB04",
     "LttM-post-collapse": "#ffffff",
+    "LttM-gourmand": "#ffffff",
     "LttM-rivulet": "#ffffff",
     "LttM-saint": "#4B7486",
+    "LttM-FP-saint": "#4B7486",
     "broadcast-pre-FP": "#ffffff",
     "broadcast-post-FP": "#7f7f7f",
 };
+
+export const transcriberIcons: { [key: string]: string } = {
+    "base-slugcats": "survivor",
+    "saint": "saint",
+    "artificer": "artificer",
+}
 
 export const speakerNames: { [key: string]: string } = {
     "FP": "Five Pebbles",
@@ -73,6 +81,9 @@ export const speakerNames: { [key: string]: string } = {
     "Dakras": "Andy \"Dakras\" Dunn",
     "Slugitar": "Slugitar",
     "Cappin": "Evan \"Cappin\" Muncy",
+    "base-slugcats": "Base Slugcats",
+    "saint": "Saint",
+    "artificer": "Artificer",
 }
 
 export const regionNames: { [key: string]: string } = {
