@@ -1,4 +1,4 @@
-export type PearlType = "pearl" | "broadcast";
+export type PearlType = "pearl" | "broadcast" | "item";
 
 export interface DialogueLine {
     speaker?: string;
@@ -16,6 +16,9 @@ export interface Dialogue {
     metadata: {
         name: string;
         color: string;
+        type?: string;
+        subType?: string;
+        transcriberName?: string;
         info?: string;
         mapInfo?: string;
         map?: MapInfo[];
@@ -34,6 +37,7 @@ export interface PearlData {
         color: string;
         type: PearlType;
         name: string;
+        subType?: string;
         info?: string;
         mapInfo?: string;
         map?: MapInfo[];

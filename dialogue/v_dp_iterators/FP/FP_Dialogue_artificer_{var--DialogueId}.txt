@@ -1,0 +1,45 @@
+type: item
+subType: artificer
+
+=== transcription: FP-artificer
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-name: First encounter
+. . .
+. . . is this reaching you?
+I suppose it was only a matter of time before you ended up here.
+Your journey throughout my facility grounds has been incessantly brought to my attention by my overseers, thanks to the device that follows you.
+It is the citizen ID drone of one of my long departed creators. It seems to have been damaged, and imprinted itself with you on reactivation.
+Much of the data on the drone has been corrupted. Allow me to do my duty as an Iterator and resync it to my structure.
+. . .
+Little ruffian. You are stuck in a cycle, a repeating pattern. I assume you have come here because you want a way out.
+However, there is little I can do. A primal urge, one that tears from deep inside your very core, keeps you bound here.
+Even with my divine influence, there is nothing that can be done.
+However, if you intend to carry that device around and masquerade as one of my citizens, then perhaps you can at least properly perform your responsibility of tending to this superstructure.
+From the glimpses I've been shown of your journey so far, it is apparent you have a need to inflict violence against the scavenger population. While I find your way of life appalling, it seems we share a common enemy.
+A large pack of them has made a home in my city, and have been causing progressive damage to the roof of my structure in their attempts to gather scrap metal and other mechanical parts.
+As my dutiful citizen, I would encourage you to return home to your city and pay them a visit.
+Perhaps in that way, we can both depart from this interaction with something we desire.
+. . .
+But unless you have something interesting to show or to bring to me, it is time for you to leave.
+
+=== transcription: FP-artificer
+md-type: pearl
+md-var-DialogueId: Lingering_Too_Long
+md-name: Lingering Too Long
+Please leave.
+This is not a request. I have important work to do.
+Unfortunately, my operations are encoded with a restriction that prevents me from carrying out violent actions against my own citizens.
+Please do not take advantage of this. I do not have the patience for your continued presence here.
+Did you not register what I've said to you?
+LEAVE.
+I'm returning to my work. Unless you have anything productive for me, I have nothing further to say to you.
+
+=== transcription: FP-artificer
+md-type: pearl
+md-var-DialogueId: Killing_Chieftain_Scavenger
+md-name: Returning after killing the Chieftain Scavenger
+ Ah, you've returned. You know that I care very little for the creatures that wander through my facility.
+In your current state. I can only assume that you have found what you were looking for.
+For your own sake, I hope it was worth your struggle.
+Now, please leave. I would prefer to be alone.

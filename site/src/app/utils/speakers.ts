@@ -48,6 +48,8 @@ export const speakerNames: { [key: string]: string } = {
     "LttM-rivulet": "Looks to the Moon (Rivulet)",
     "LttM-post-collapse": "Looks to the Moon",
     "LttM-saint": "Looks to the Moon (Future)",
+    "LttM-FP-saint": "Looks to the Moon / Five Pebbles (Future)",
+    "LttM-gourmand": "Looks to the Moon (Gourmand)",
     "CW": "Chasing Wind",
     "GW": "Grey Wind / Chasing Wind",
     "NSH": "No Significant Harassment",

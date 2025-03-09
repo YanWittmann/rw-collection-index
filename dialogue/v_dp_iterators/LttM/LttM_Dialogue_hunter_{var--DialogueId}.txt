@@ -1,0 +1,22 @@
+type: item
+subType: hunter
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-name: First encounter
+He... hello
+Hello little... creature. You... you did this?
+One moment. My memory isn't responding. I... I have no idea...
+...must have been gone for...
+...
+Oh.
+Little creature...
+You are not well.
+I am so sorry to say, but you do not have much time left.
+If things are as they seem... thank you.
+I don't know why you spent your... last... remaining cycles helping me. But know that I am deeply grateful. I have known very few beings who could aspire to such a noble thing. You really are... an amazing little creature.
+I wish I could say I will always remember it.
+...
+Little friend. Perhaps you already know this, and I don't know what consolation it might bring, but...
+You will wake right back up again.

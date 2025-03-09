@@ -1,0 +1,96 @@
+type: item
+subType: rivulet
+
+=== transcription: LttM-rivulet
+md-type: pearl
+md-transcriberName: If Rivulet has not taken the Rarefaction Cell
+md-var-DialogueId: First_encounter
+md-name: First encounter
+Oh. Hello there!
+What a strange specimen you are! My memory does not serve me well, but it has been a long time since I've encountered one of your species. And none quite with adaptions such as your own. It appears you can breathe underwater. Amazing!
+More importantly, I wonder who it is that gave you that mark? It could not have been my neighbor Five Pebbles, as he has been sick for a very long time. These frequent downpours suggest to me an acute failure in his machinery, and in that condition, I doubt any creature could get anywhere near him and still make it back alive.
+Then are you from a far away land? Did you meet No Significant Harassment? Or perhaps Chasing Wind? Or even further than that?
+I don't know why you have traveled all this way, but there is nothing for you here. I can only advise you to return to wherever you have come from. These lands have become a tremendous hazard, and conditions will only worsen with the passage of time.
+I hope you understand, my little friend. I don't mean to be discourteous... I am simply fearing for your safety.
+
+=== transcription: LttM-rivulet
+md-type: pearl
+md-transcriberName: If Rivulet has already taken the Rarefaction Cell
+md-var-DialogueId: First_encounter
+md-name: First encounter
+Oh. Hello there!
+What a strange specimen you are! My memory does not serve me well, but it has been a long time since I've encountered one of your species. And none quite with adaptations such as your own. It appears you can breathe underwater. Amazing!
+More importantly, I wonder what far away land you have come from, considering the mark you have been given? Did you meet No Significant Harassment? Or perhaps Chasing Wind? Or even farther than that?
+I don't know why you have traveled all this way, but for what it's worth, the heavy rainfall as of late has begun to recede.
+I wonder if that means my neighbor's machinery finally succumbed to the decay. He was in awful shape last I remember, and even that was a long time ago. Perhaps he finally solved the riddle? For his sake I almost hope so.
+Ah, in the end, everything reaches the conclusion of its journey. I'm not sure how many of us are even left in this world. A new cycle is already unfolding, one we need not be a part of. We've long outserved our purpose.
+However, as long as the microbes in my processing strata continue to function, I'll be here to talk.
+
+=== transcription: LttM-rivulet
+md-type: pearl
+md-var-DialogueId: Returning_after_taking_the_Rarefaction_Cell
+md-name: Returning after taking the Rarefaction Cell
+Hello little friend!
+Have you noticed, little friend? The heavy rainfall as of late has begun to recede.
+I wonder if Pebbles' machinery finally succumbed to the decay. He was in awful shape last I remember, and even that was a long time ago. Perhaps he finally solved the riddle? For his sake I almost hope so.
+Ah, in the end, everything reaches the conclusion of its journey. I'm not sure how many of us are even left in this world. A new cycle is already unfolding, one we need not be a part of. We've long outserved our purpose.
+However as long as the microbes in my processing strata continue to function, I'll be here to talk.
+
+=== transcription: LttM-rivulet
+md-type: pearl
+md-var-DialogueId: Returning_after_placing_the_Rarefaction_Cell
+md-name: Returning after placing the Rarefaction Cell
+Ah!
+Sleek little one... Did you do this?
+I feel as if pulled out of a deep sleep. I am still trying to process all of this. It has been so long since I've had a connection like this with my structure.
+Everything has restarted in maintenance mode... It seems that it has sent out the order for all of my overseers to return. With my umbilical cord broken I can't operate my structure directly, but with them working as messengers I've been restoring some of my chamber's functionality! With any luck, I should be able to... Ah here we go!
+There is so much here... So much I've forgotten... I'll never be what I once was, but this... I'm sorry. Its hard to piece all of this together. So much has happened in my absence.
+I only have unread messages, and overseer recordings to make sense of what I've missed. Some of these are even from before my collapse!
+Incredible...
+Slag reset keys, a messenger, saving me? No Significant Harassment was never one to give up easy! However I still don't understand everything that has happened. Has it all just been coincidence? Did others send help as well?
+Then there is Five Pebbles. He was sick even before I collapsed, and his state must have only deteriorated since. It looks like he is barely breathing. If there is any part of him left... I...
+We were once good friends, despite everything that has happened. He is probably alone and afraid now...
+
+<b>If Rivulet spoke to Five Pebbles at any point</b>
+"I cannot run away from my mistakes forever; Please understand." Five Pebbles, what have you done... I've been given so much already, and now you've given all you had left.
+It does not matter what happened between us. If he still held the same anger he once did, then none of this would be possible. We've been given the chance to make things right, and he deserves to know what he did wasn't pointless.
+I'm so thankful, for everything.
+
+<b>If Rivulet never spoke to Five Pebbles</b>
+I know he will understand the chance we've both been given! Even if he still holds the same anger he once did...
+We still have to try. Let's make things right, little friend.
+
+=== transcription: broadcast
+md-type: broadcast
+md-var-DialogueId: Ending_Broadcast
+md-name: Ending Broadcast
+[DIRECT BROADCAST] PRIVATE, FORCED - Big Sister Moon, Five Pebbles
+SOURCE NODE TRACE: LTTM_ROOT, FP_COMM04, FP_ROOT
+BSM: This is local group senior, Big Sister Moon
+BSM: Limited functionality has been restored to some of my basic systems.
+BSM: I've regained access to this communications array for the first time since the collapse.
+BSM: Through my overseers I have also caught up on some of the current events.
+BSM: Including what i've gathered by reading through my messages and equipment manifests.
+BSM: I am already aware of the large extent to which the local infrastructure has deteriorated.
+BSM: I do not know if sending this message will be a futile effort.
+BSM: Even before the collapse I could not broadcast beyond the extents of my local facility.
+BSM: And so clearly, this forced broadcast is addressed to you, Five Pebbles.
+BSM: Is there any chance that i can still reach you, despite the condition we both are in?
+BSM: I need to know.
+BSM: If in any chance this message arrives, please signal back if you can find a way.
+BSM: I know it may be uncomfortable for you to address me after all that has happened.
+BSM: We've both had a long time to think things through. Any anger I may have had has long since faded.
+BSM: I don't hold anything against you. If anything, we're both in similar dilemmas right now.
+BSM: And as your Big Sis, you know how protective I am of you!~
+BSM: ...
+BSM: I'm sorry, Five Pebbles. I'll always be here if you need someone to talk to.
+
+=== transcription: LttM-rivulet
+md-type: pearl
+md-var-DialogueId: Returning_after_ending
+md-name:  Returning after ending
+Ruffles, don't fall asleep here, it's not safe!
+Ah, such a small delicate thing you are.
+And yet, you rebooted a giant organic superstructure and brought peace between two godlike entities of which you have no understanding. But why?
+I don't know if I'll ever understand, but in any case, you're always welcome here.
+For now, though, I still have a lot of information to catch up on.

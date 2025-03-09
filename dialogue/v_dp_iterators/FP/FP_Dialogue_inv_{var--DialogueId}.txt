@@ -1,0 +1,15 @@
+type: item
+subType: inv
+
+=== transcription: FP
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-name: First encounter
+Hello, creature. You've come at the perfect time.
+The solution has been found.
+The solution is portable.
+The solution has been implemented.
+And it comes in three delicious flavors.
+Five Pebbsi: Triple Affirmative
+...
+Would you like to try a sample?

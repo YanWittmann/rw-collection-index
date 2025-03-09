@@ -133,7 +133,7 @@ export function PearlGrid({
                     {filteredPearls
                         .filter(chapter => chapter.items.length > 0)
                         .map((chapter, chapterIndex) => (
-                            <div key={`chapter-${chapterIndex}`} className="mb-4 last:mb-0">
+                            <div key={`chapter-${chapterIndex}`} className="last:mb-4">
                                 {chapter.name && <h3 className="text-white text-sm mb-2">{chapter.name}</h3>}
                                 <div className="grid grid-cols-5 gap-2 w-fit">
                                     {chapter.items.map(

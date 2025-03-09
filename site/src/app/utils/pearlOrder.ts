@@ -57,6 +57,42 @@ export const pearlOrder: PearlChapter[] = [
         ids: [
             { pattern: /DevComm_.+/ }
         ]
+    },
+    {
+        name: "Items",
+        ids: [
+            { pattern: /Iterator_Dialogue_Items_.+/ }
+        ]
+    },
+    {
+        name: "Looks to the Moon Dialogue",
+        ids: [
+            { pattern: /LttM_Dialogue_survivor_(?!monk).+/ },
+            { pattern: /LttM_Dialogue_monk.+/ },
+            { pattern: /LttM_Dialogue_survivor_monk.+/ },
+            { pattern: /LttM_Dialogue_hunter.+/ },
+            { pattern: /LttM_Dialogue_gourmand.+/ },
+            { pattern: /LttM_Dialogue_spearmaster.+/ },
+            { pattern: /LttM_Dialogue_rivulet.+/ },
+            { pattern: /LttM_Dialogue_saint_.+/ },
+            { pattern: /LttM_Dialogue_inv_.+/ },
+            { pattern: /LttM_Dialogue_.+/ },
+        ]
+    },
+    {
+        name: "Five Pebbles Dialogue",
+        ids: [
+            { pattern: /FP_Dialogue_survivor_(?!monk).+/ },
+            { pattern: /FP_Dialogue_monk.+/ },
+            { pattern: /FP_Dialogue_survivor_monk.+/ },
+            { pattern: /FP_Dialogue_hunter.+/ },
+            { pattern: /FP_Dialogue_gourmand.+/ },
+            { pattern: /FP_Dialogue_artificer.+/ },
+            { pattern: /FP_Dialogue_spearmaster.+/ },
+            { pattern: /FP_Dialogue_rivulet.+/ },
+            { pattern: /FP_Dialogue_saint_.+/ },
+            { pattern: /FP_Dialogue_.+/ },
+        ]
     }
 ]
 
@@ -79,18 +115,39 @@ export const orderPearls = (pearls: PearlData[]): { name: string, items: PearlDa
         return acc;
     }, {} as Record<string, PearlData>);
 
-    const orderedPearls = pearlOrder.map(chapter => ({
-        name: chapter.name,
-        items: chapter.ids.flatMap(idOrSelector => {
-            if (typeof idOrSelector === 'string') {
-                return pearlsById[idOrSelector] ? [pearlsById[idOrSelector]] : [];
-            } else {
-                return pearls.filter(pearl => idOrSelector.pattern.test(pearl.id));
-            }
-        })
-    }));
+    // Track processed pearls to avoid duplicates
+    const processedPearlIds = new Set<string>();
 
-    // check if any string IDs are not found
+    const orderedPearls = pearlOrder.map(chapter => {
+        const chapterItems: PearlData[] = [];
+
+        for (const idOrSelector of chapter.ids) {
+            if (typeof idOrSelector === 'string') {
+                const pearl = pearlsById[idOrSelector];
+                if (pearl && !processedPearlIds.has(pearl.id)) {
+                    chapterItems.push(pearl);
+                    processedPearlIds.add(pearl.id);
+                }
+            } else {
+                const matchingPearls = pearls.filter(pearl =>
+                    !processedPearlIds.has(pearl.id) &&
+                    idOrSelector.pattern.test(pearl.id)
+                );
+
+                matchingPearls.forEach(pearl => {
+                    chapterItems.push(pearl);
+                    processedPearlIds.add(pearl.id);
+                });
+            }
+        }
+
+        return {
+            name: chapter.name,
+            items: chapterItems
+        };
+    });
+
+    // Check if any string IDs are not found
     for (const chapter of pearlOrder) {
         for (const idOrSelector of chapter.ids) {
             if (typeof idOrSelector === 'string' && !pearlsById[idOrSelector]) {
@@ -99,7 +156,7 @@ export const orderPearls = (pearls: PearlData[]): { name: string, items: PearlDa
         }
     }
 
-    const uncoveredPearls = pearls.filter(pearl => findPearlCategory(pearl) === "Other");
+    const uncoveredPearls = pearls.filter(pearl => !processedPearlIds.has(pearl.id));
     orderedPearls.push({ name: "Other", items: uncoveredPearls });
     return orderedPearls;
 }

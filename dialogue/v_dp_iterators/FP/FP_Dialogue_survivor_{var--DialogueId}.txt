@@ -1,0 +1,16 @@
+type: item
+subType: survivor
+
+=== transcription: FP
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-name: First encounter
+. . .
+...is this reaching you?
+A little animal, on the floor of my chamber. I think I know what you are looking for.
+You're stuck in a cycle, a repeating pattern. You want a way out.
+Know that this does not make you special - every living thing shares that same frustration. From the microbes in the processing strata to me, who am, if you excuse me, godlike in comparison.
+The good news first. In a way, I am what you are searching for. Me and my kind have as our purpose to solve that very oscillating claustrophobia in the chests of you and countless others. A strange charity - you the unknowing recipient, I the reluctant gift. The noble benefactors? Gone.
+The bad news is that no definitive solution has been found. And every moment the equipment erodes to a new state of decay. I can't help you collectively, or individually. I can't even help myself.
+For you though, there is another way. The old path. Go to the west past the Farm Arrays, and then down into the earth where the land fissures, as deep as you can reach, where the ancients built their temples and danced their silly rituals. The mark I gave you will let you through.[*]
+Not that it solves anyone's problem but yours.

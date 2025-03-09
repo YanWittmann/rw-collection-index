@@ -13,8 +13,14 @@ export function useDialogue(unlockMode: UnlockMode) {
             setSelectedTranscriber(null);
             return;
         }
+        const multipleSameTranscribers = new Set(pearl.transcribers.map(transcriber => transcriber.transcriber)).size !== pearl.transcribers.length;
         setSelectedPearl(pearl.id);
-        setSelectedTranscriber(pearl.transcribers[pearl.transcribers.length - 1]?.transcriber ?? null);
+        const possibleTranscriber = pearl.transcribers[pearl.transcribers.length - 1]?.transcriber;
+        if (multipleSameTranscribers && possibleTranscriber) {
+            setSelectedTranscriber(possibleTranscriber + '-0');
+        } else {
+            setSelectedTranscriber(possibleTranscriber ?? null);
+        }
     };
 
 

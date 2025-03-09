@@ -1,0 +1,44 @@
+type: item
+subType: hunter
+
+=== transcription: FP
+md-subType: item/Neuron_Fly_Hunter_icon
+md-var-DialogueId: With_Green_Neuron
+md-name: With Green Neuron
+Let us see what you have here.
+Eleven... no sixteen! Sixteen slag reset keys.
+I've seen several before, but one or two will be useful.
+However, it seems this delivery was not intended for me. Everything suggests it was tailored for the specific predicaments of a friend of mine.
+Her name is Looks to the Moon, and her state is considerably worse than mine. She's a short distance to the east of here - much shorter than customary. A circumstance that has led to some difficulties between us.
+I am not without responsibility for her situation. It would only be suiting that I aided in this... rescue mission. As other endeavors have proven futile, I'm not ashamed to admit I've become more invested in day to day matters.
+I will do what I can to assist you.
+Unless you are aware, you are not well.
+I was not a medical facility even when the equipment was functioning, but I will attempt to do something to buy you a little time.
+You do not have much time. It is admirable what you choose to do with it.
+Send my regards.
+
+=== transcription: FP
+md-type: pearl
+md-var-DialogueId: Lingering
+md-name: Lingering
+Thank you little creature. I must resume my work.
+I appreciate what you have done but it is time for you to leave.
+As I mentioned you do not have unlimited time.
+
+=== transcription: FP
+md-type: pearl
+md-var-DialogueId: Without_Green_Neuron
+md-name: Without Green Neuron
+I barely listen to the overseers any more. I have concluded that the movements of animals on the premises absolutely and completely lack relevance to my endeavours.
+With you, they have been very persistent ever since you entered my Farm Arrays. You were on an unusually deliberate path.
+Now you are here.
+The images showed you carrying something. You are not any longer.
+Did you lose it along the way? Or did you give it to Looks to the Moon?
+In the latter case, I hope it was of some help to her. Not that I can imagine what one of you could be able to do for one of us, but she needs all the help she can get.
+...
+You seem to have been in contact with an iterator before, so perhaps you are already aware.
+You and I have something in common, little creature. We both have something... unfortunate growing in us.
+In my case, there is not much to be done. For you however, there might be a way. The old path.
+Go to the west past the Farm Arrays, and then down into the earth where the land fissures, as deep as you can reach, where the ancients built their temples and danced their silly rituals.
+I will give you something that might be of help.
+I suggest you hurry.

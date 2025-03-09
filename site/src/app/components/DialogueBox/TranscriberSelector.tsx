@@ -1,4 +1,4 @@
-import { RwIcon, RwIconType } from "../PearlGrid/RwIcon";
+import { RwIcon } from "../PearlGrid/RwIcon";
 import { RwIconButton } from "../other/RwIconButton";
 import { Dialogue, PearlData } from "../../types/types";
 import { UnlockMode } from "../../page";
@@ -21,25 +21,37 @@ export function TranscriberSelector({
                                         onHover
                                     }: TranscriberSelectorProps) {
 
+    const multipleSameTranscribers = new Set(pearl.transcribers.map(transcriber => transcriber.transcriber)).size !== pearl.transcribers.length;
+
     const renderTranscriber = (transcriber: Dialogue, index: number) => {
-        const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, transcriber.transcriber);
+        const effectiveTranscriberName = multipleSameTranscribers ? transcriber.transcriber + '-' + index : transcriber.transcriber;
+        const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, effectiveTranscriberName);
 
         let color = '';
         let overwriteIcon = undefined;
         let overwriteColor = undefined;
-        if (transcriber.transcriber.includes("broadcast")) {
-            color = transcribersColors[transcriber.transcriber] ?? transcriber.metadata.color ?? '#ffffff';
+        if (effectiveTranscriberName.includes("broadcast")) {
+            color = transcribersColors[effectiveTranscriberName] ?? transcriber.metadata.color ?? '#ffffff';
             overwriteColor = color;
             overwriteIcon = "broadcast";
+        } else if (transcriber.metadata.type === 'item' && transcriber.metadata.subType) {
+            overwriteIcon = transcriber.metadata.subType;
         } else {
-            color = transcribersColors[transcriber.transcriber];
+            color = transcribersColors[effectiveTranscriberName];
+        }
+
+        let transcriberName: string | null;
+        if (transcriber.metadata.transcriberName) {
+            transcriberName = "plain=" + transcriber.metadata.transcriberName;
+        } else {
+            transcriberName = effectiveTranscriberName;
         }
 
         if (!isUnlocked) {
             return <RwIconButton
                 key={'select-' + pearl.id + '-' + index}
-                onClick={() => onSelect(transcriber.transcriber)}
-                selected={transcriber.transcriber === selectedName}
+                onClick={() => onSelect(effectiveTranscriberName)}
+                selected={effectiveTranscriberName === selectedName}
             >
                 <RwIcon type={"questionmark"} color={darken(color, 20) ?? 'white'}/>
             </RwIconButton>;
@@ -47,15 +59,15 @@ export function TranscriberSelector({
             return (
                 <RwIconButton
                     key={'select-' + pearl.id + '-' + index}
-                    onClick={() => onSelect(transcriber.transcriber)}
-                    selected={transcriber.transcriber === selectedName}
-                    onMouseEnter={() => onHover(transcriber.transcriber)}
+                    onClick={() => onSelect(effectiveTranscriberName)}
+                    selected={effectiveTranscriberName === selectedName}
+                    onMouseEnter={() => onHover(transcriberName)}
                     onMouseLeave={() => onHover(null)}
                 >
                     {overwriteColor ?
-                        <RwIcon type={(overwriteIcon ?? transcriber.transcriber) as RwIconType}
+                        <RwIcon type={(overwriteIcon ?? transcriber.transcriber)}
                                 color={overwriteColor}/> :
-                        <RwIcon type={(overwriteIcon ?? transcriber.transcriber) as RwIconType}/>
+                        <RwIcon type={(overwriteIcon ?? transcriber.transcriber)}/>
                     }
                 </RwIconButton>
             );

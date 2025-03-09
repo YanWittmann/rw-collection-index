@@ -1,0 +1,73 @@
+type: item
+subType: spearmaster
+
+=== transcription: LttM-pre-collapse
+md-type: pearl
+md-transcriberName: If Spearmaster has already delivered their message
+md-var-DialogueId: First_encounter
+md-name: First encounter
+Hello there.
+Are my words reaching you?
+Poor thing. There are no records of your body’s blueprints. Nor is it reasonable to assume your extreme adaptations are possible through… natural means.
+You are welcome to stay if you do not interrupt.
+I would not mind some company. My neighbor, Five Pebbles, has become dangerous, resulting in significant damage to my structure. I have lost access to all communications devices, and all attempts to directly reach him through our tether have been met with silence after our last conversation.
+If he…
+If he ddd… d d d
+…
+If he does not stop soon…
+Isn’t it funny, my unfortunate little friend? For everything that I am, my last memories may be of monologuing to a strange animal that has lost its way into my chamber.
+There is not much I can do. At least you can make yourself at home.
+
+=== transcription: LttM-pre-collapse
+md-type: pearl
+md-transcriberName: If Spearmaster has not delivered their message
+md-var-DialogueId: First_encounter
+md-name: First encounter
+Brave messenger… What are you?
+I could read the data contained in your body, but the process could take several cycles. Time I very sadly lack.
+I could remove the pearl from you, but the process would be very unpleasant for you. I also do not believe the contents within it are directed to me. If you are indeed a messenger, then I urge you to move on.
+There is a… a a a
+…
+There is another like me near here, his name is Five Pebbles.
+Please. Hurry to his structure. I am unable to calm him, and his excessive output is causing irreversible damage to my own structure. I do not know how long I will continue to even stand.
+There is an elevated cable linking our installations. Crossing that bridge is safer than attempting to scale Five Pebbles from the ground up.
+Hurry little messenger!
+
+=== transcription: LttM-pre-collapse
+md-type: pearl
+md-var-DialogueId: Second_encounter
+md-name: Second encounter
+I have nothing for you, poor thing. Please, I don't have long.
+
+=== transcription: LttM-pre-collapse
+md-type: pearl
+md-transcriberName: If Looks to the Moon's quest has been activated
+md-var-DialogueId: Following_encounters
+md-name: Following encounters
+<b>One of the following options is randomly selected:</b>
+Little messenger, we do not have much time. You must hurry!
+This is no time for games. Run along now, before it is too late!
+It is nice to see you again, but the clock is ticking. Make haste!
+
+=== transcription: LttM-pre-collapse
+md-type: pearl
+md-transcriberName: If Looks to the Moon's quest has not been activated
+md-var-DialogueId: Following_encounters
+md-name: Following encounters
+<b>One of the following options is randomly selected:</b>
+Welcome back little messenger.
+Thank you for visiting me, but I'm afraid there is nothing here for you.
+It is nice to see you again little messenger!
+
+=== transcription: broadcast
+md-type: pearl
+md-var-DialogueId: Ending_Broadcast
+md-name: Ending Broadcast
+[LIVE BROADCAST] - [ANNOUNCEMENT] Big Sis Looks to the Moon to Local Group
+BSM: This will be my final broadcast to the local group.
+BSM: Within several cycles my structure's legs will fail. Even if Five Pebbles were to calm, the damage has already been done.
+BSM: I can only hope that someday you will all find the answer to our great question.
+BSM: I do not think I will see that day. I want to thank everyone for trying so hard. It means a lot to me that you would all go to such lengths.
+BSM: ...
+BSM: I can't excuse his actions, but I understand his frustration. We all share that. I only wish we had the chance to speak one last time.
+BSM: Thank you, everyone. I am happy to not be alone.

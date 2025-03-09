@@ -131,6 +131,9 @@ function createVariableGroupEntry(baseId, parsedData, group) {
     if (!resolvedMetadata.color) {
         resolvedMetadata.color = resolvedTranscribers.find(t => t.metadata.color)?.metadata.color;
     }
+    if (!resolvedMetadata.subType) {
+        resolvedMetadata.subType = resolvedTranscribers.find(t => t.metadata.subType)?.metadata.subType;
+    }
 
     return {
         id: resolvedId,

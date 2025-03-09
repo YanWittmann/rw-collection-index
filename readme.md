@@ -22,6 +22,8 @@ from the vanilla version and the Downpour DLC.
     - White Pearls
     - Broadcast Pearls
     - Developer Commentary
+    - Item Descriptions
+    - Iterator Dialogue (LttM, FP)
 - Location details with map links
 - Progressive unlock and hint system for spoiler-free exploration
 - Search functionality

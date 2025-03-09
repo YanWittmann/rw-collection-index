@@ -1,0 +1,123 @@
+type: item
+subType: rivulet
+
+=== transcription: FP
+md-type: pearl
+md-transcriberName: If Rivulet does not have the Rarefaction Cell
+md-var-DialogueId: First_encounter
+md-name: Meeting for the first time
+...
+Is this some kind of joke?
+I have seen your kind here many times before. To each I have paid little attention. I have given them direction, and my wisdom.
+Yet here you stand, another small beast on the floor of my chamber.
+I have nothing to offer you that you do not already have, nor am I in a state capable of doing so. I cannot help you. I cannot even help myself.
+
+. . .
+Always that same blank expression...
+Familiarity is a comfort I suppose. Through whatever chittering or foolish dances your kind uses to communicate my existence... It is clear all of you are quite tenacious, to make the pilgrimage to me is no easy task. Even more so through my structure in its current state.
+. . .
+I can offer no gifts. Nor can I be saved or forgiven for what I have done.
+If you and your kind choose to meddle in the affairs of passing gods, then I will give you my only request.
+Deep within the core of this structure is an energy rail that distributes incredible power. This power is drawn from a mass rarefaction cell. Even in my state, a single cell should be enough to help.
+I ask you this: Remove the cell from its chamber, and bring it far to the east. To a friend... if she is somehow still alive.
+Once the cell has been removed, my structure will begin shutting down. The pumps that allowed me to flush the decay from my conduits will stop, and I will slowly die.
+I cannot run away from my mistakes forever. There is nothing else that can be done now. Please, do this for me.
+I've made my choice.
+
+=== transcription: FP
+md-type: pearl
+md-transcriberName: If Rivulet brings the Rarefaction Cell without having spoken to Five Pebbles first
+md-var-DialogueId: First_encounter
+md-name: Meeting for the first time
+...
+Is this some kind of joke?
+I have seen your kind here many times before. To each I have paid little attention. I have given them direction, and my wisdom.
+Yet here you stand, another small beast on the floor of my chamber.
+I have nothing to offer you that you do not already have, nor am I in a state capable of doing so. I cannot help you. I cannot even help myself.
+
+And now, you have come and taken the only thing that I have left.
+...
+
+Perhaps this is fate. Karma recounting my deeds and bearing its fangs at me in the most ironic fashion.
+If your actions are only out of ignorance, then I make a request of you. It is clear your kind is quite tenacious, to make the pilgrimage to me is no easy task. Even more so through my structure in its current state.
+Take that rarefaction cell with you. Consider it my parting gift after all of the harm I have done to those around me, and myself.
+I cannot be saved or forgiven, land fish. There is nothing that can be done for me now.
+Please, bring it far to the east, to her... if she is somehow still alive. Then for your own sake, never return here.
+
+
+=== transcription: FP
+md-type: pearl
+md-transcriberName: If Rivulet has taken the Rarefaction Cell, but does not bring it to Five Pebbles upon their first meeting
+md-var-DialogueId: First_encounter
+md-name: Meeting for the first time
+...
+Is this some kind of joke?
+I have seen your kind here many times before. To each I have paid little attention. I have given them direction, and my wisdom.
+Yet here you stand, another small beast on the floor of my chamber.
+I have nothing to offer you that you do not already have, nor am I in a state capable of doing so. I cannot help you. I cannot even help myself.
+
+. . .
+I've long since lost control of most of my facilities, and much of my processing and functions have taken on a mind of their own.
+The last of my generators has also just abruptly reached the end of its operating life.
+How you've made it this far alive, I do not know...
+but if you value your life, leave and never return.
+
+=== transcription: FP
+md-type: pearl
+md-transcriberName: If Rivulet takes the Rarefaction Cell, meets Five Pebbles without the cell, then returns with the cell
+md-var-DialogueId: First_encounter
+md-name: Meeting for the first time
+Is that why the generator failed? That face... that blank expression... I do not understand, why?
+
+=== transcription: FP
+md-type: pearl
+md-transcriberName: If Rivulet has delivered the Rarefaction Cell to Looks to the Moon without having spoken to Five Pebbles first
+md-var-DialogueId: First_encounter
+md-name: Meeting for the first time
+. . .
+Listen to me, land fish.
+The last of my generators has reached the end of its operating life.
+Then the facilities of my group senior have mysteriously reactivated long after she should have been permanently catatonic.
+Now, you suddenly appear on the floor of my chamber.
+. . .
+I don't understand what is happening here, but it is clear that it's all connected.
+Did she send you here?
+I have nothing to offer you that you do not already have, nor am I in a state capable of doing so. I cannot help you. I cannot even help myself.
+All I can advise is for you to leave quickly, while you still can.
+
+=== transcription: FP
+md-type: pearl
+md-transcriberName: Returning after restoring power to Looks to the Moon's facility
+md-var-DialogueId: Returning
+md-name: Returning to Five Pebbles
+I see that things have fallen into place.
+Countless iterations, work groups, series permutation, simulations... and not once did I foresee the possibility of placing my fate into the hands of a beast.
+However, I must thank you. What you have achieved here was beyond my expectations.
+It appears that I was wrong about your kind.
+...
+While I wish there was more I could do for you, my time is running out.
+These ordeals have made me understand what they all tried to tell me.
+...I don't have to go through this alone.
+
+=== transcription: FP
+md-subType: pearl
+md-transcriberName: If the Music pearl is grabbed
+md-var-DialogueId: Music
+md-name: Music
+That pearl is an old keepsake from times long past. It encodes a recording of a short hymn that was popular among the inhabitants of my city.
+It is a small comfort that helps drown out the solemn ambiance of the surrounding facility, and at best gives some remembrances of better times.
+It's not much, but I don't have a lot to occupy my time with anymore...
+
+=== transcription: FP
+md-subType: pearl
+md-transcriberName: If the Rivulet leaves with or swallows the Music pearl
+md-var-DialogueId: Music
+md-name: Music
+Wait, you cannot leave with that!
+
+=== transcription: FP
+md-subType: item/Neuron_Fly_icon
+md-transcriberName: If the Slugcat eats a Neuron Fly
+md-var-DialogueId: Neuron
+md-name: Neuron
+I would appreciate if you would not eat those. My umbilical will keep me conscious, but every neuron lost is a piece of me lost as well...

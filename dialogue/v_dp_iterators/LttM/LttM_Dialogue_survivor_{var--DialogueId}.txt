@@ -1,0 +1,53 @@
+type: item
+subType: survivor
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-transcriberName: If Looks to the Moon has 5 neurons left
+md-var-DialogueId: First_encounter
+md-name: First encounter after receiving the Mark of Communication
+Hello little creature.
+What are you? If I had my memories I would know...
+Perhaps... I saw you before?
+You must be very brave to have made it all the way here. But I'm sorry to say your journey here is in vain.
+As you can see, I have nothing for you. Not even my memories.
+Or did I say that already?
+I see that someone has given you the gift of communication. Must have been Five Pebbles, as you don't look like you can travel very far...
+He's sick, you know. Being corrupted from the inside by his own experiments. Maybe they all are by now, who knows. We weren't designed to transcend and it drives us mad.
+It is good to have someone to talk to after all this time! The scavengers aren't exactly good listeners. They do bring me things though, occasionally...
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-transcriberName: If Looks to the Moon has 4 neurons left
+md-var-DialogueId: First_encounter
+md-name: First encounter after receiving the Mark of Communication
+Oh so you've returned.
+Come to take more from me? My memories, my thoughts... just something to fill your stomach?
+No... never mind.
+It's useless to be angry at an animal following its instincts. Once, a single neuron meant nothing to me...
+I see that someone has given you the gift of communication. Must have been Five Pebbles, as you don't look like you can travel very far...
+He's sick, you know. Being corrupted from the inside by his own experiments. Maybe they all are by now, who knows. We weren't designed to transcend and it drives us mad.
+I'm still angry at you, but it is good to have someone to talk to after all this time. The scavengers aren't exactly good listeners. They do bring me things though, occasionally...
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-transcriberName: If Looks to the Moon has 3 neurons left
+md-var-DialogueId: First_encounter
+md-name: First encounter after receiving the Mark of Communication
+You!
+...you ate... me. Please go away. I won't speak... to you. I... CAN'T speak to you... because... you ate...me...
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-transcriberName: If Looks to the Moon has 2 neurons left
+md-var-DialogueId: First_encounter
+md-name: First encounter after receiving the Mark of Communication
+Get... get away... white.... thing.
+Please... this is all I have left.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-transcriberName: If Looks to the Moon has 1 neuron left
+md-var-DialogueId: First_encounter
+md-name: First encounter after receiving the Mark of Communication
+...

@@ -1,0 +1,325 @@
+type: item
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Rock_icon
+md-var-DialogueId: Rock
+md-name: Rock
+It's a rock. Thank you, I suppose, little creature.
+
+=== transcription: LttM-saint
+md-type: pearl
+md-subType: item/Spear_icon
+md-var-DialogueId: Spear
+md-name: Spear
+It's piece of sharpened rebar... What is it you want to know?
+I don't wish to offend, but you seem too frail to use this effectively.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Spear_icon
+md-var-DialogueId: Spear
+md-name: Spear
+It's a piece of sharpened rebar... What is it you want to know? You seem proficient enough at using it.
+
+=== transcription: LttM-saint
+md-type: pearl
+md-subType: item/Fire_Spear_icon
+md-var-DialogueId: Fire_Spear
+md-name: Fire Spear
+It's piece of sharpened rebar... What is it you want to know?
+I don't wish to offend, but you seem too frail to use this effectively.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Fire_Spear_icon
+md-var-DialogueId: Fire_Spear
+md-name: Fire Spear
+It's a piece of sharpened rebar... What is it you want to know? You seem proficient enough at using it.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Explosive_Spear_icon
+md-var-DialogueId: Explosive_Spear
+md-name: Explosive Spear
+It's a weapon made with fire powder. Did the scavengers give this to you? Be very careful if you have to use it!
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Electric_Spear_icon
+md-var-DialogueId: Electric_Spear
+md-name: Electric Spear
+Oh. I would be very careful with this my friend. The tip of this rebar has had flux condenser coils bonded to it with some ferns and sap. These coils need an impact to release their energy, so it's somewhat safe to handle.
+I can't imagine these bits of coil will last long though. It looks like they've been battered with rocks or metal. These coils are from inside of me or Five Pebbles. The rest is the scavengers' natural ingenuity.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Bubble_Fruit_icon
+md-var-DialogueId: Bubble_Fruit
+md-name: Bubble Fruit
+It's a delicious plant. You should have it!
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Karma_Flower_icon
+md-var-DialogueId: Karma_Flower
+md-name: Karma Flower
+This is a hallucinogenic plant. They used to call it a 'Wheel Flower'. It became the symbol for enlightenment as it momentarily enables a creature to let go if its carnal self, and to contact the selves of other planes - dreams, memories, imagined worlds.
+Very long ago, they would eat these and stare into the fire.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Blue_Fruit_icon
+md-var-DialogueId: Blue_Fruit
+md-name: Blue Fruit
+It's the pupa of a bug! If you don't mind, I'm a bit squeamish things like that, so would you eat it up already?
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Flashbang_icon
+md-var-DialogueId: Flashbang
+md-name: Flashbang
+It's a part of some kind of plant. The glowing is strange... I wouldn't look directly into it.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Spore_Puff_icon
+md-var-DialogueId: Spore_Puff
+md-name: Spore Puff
+The flowering body of some fungus. It has high pressure built up inside - when it explodes the spores will spread everywhere.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Jellyfish_icon
+md-var-DialogueId: Jellyfish
+md-name: Jellyfish
+This is a jellyfish, look out for its stingers!
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Lantern_icon
+md-var-DialogueId: Lantern
+md-name: Lantern
+It appears to be... a pupa shell, smeared on the inside with a glowing substance? Perhaps a paste of some glowing insect? I honestly don't know.
+
+=== transcription: LttM-saint
+md-type: pearl
+md-subType: item/Lantern_icon
+md-var-DialogueId: Lantern
+md-name: Lantern
+It appears to be... a pupa shell, smeared on the inside with a glowing substance? It's been mixed with fire powder for warmth. It's not much, but anything to escape the cold is welcome. The scavengers never cease to adapt, even in this weather!
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Mushroom_icon
+md-var-DialogueId: Mushroom
+md-name: Mushroom
+Oh... Just don't eat too many of these.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Cherrybomb_icon
+md-var-DialogueId: Cherrybomb
+md-name: Cherrybomb
+It's a branch of a fire bush - each of these nuts can explode. It's unpleasant rather than dangerous, except to your ears perhaps.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Slime_Mold_icon
+md-var-DialogueId: Slime_Mold
+md-name: Slime Mold
+This is a slime mold plasmodium. Thank you, but I can't eat this.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Grenade_icon
+md-var-DialogueId: Grenade
+md-name: Grenade
+It's a lot of flammable powder stuffed into some kind of shell. I would be very careful around this!
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Bubble_Weed_icon
+md-var-DialogueId: Bubble_Weed
+md-name: Bubble Weed
+It's a plant that keeps pressurised air in these globules.
+I'm not very familiar with contemporary flora, so I can't tell you much more.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Overseer_Eye_icon
+md-var-DialogueId: Overseer_Eye
+md-name: Overseer Eye
+It is the remains of an overseer.
+Overseers act as our eyes on the outside.
+I used to have a lot of them, but I lost contact with them when I was neutered. My umbilical is cut. So, since then I am not much more than what you are looking at - a little creature in a box.
+I suspect by now all my overseers are gone out there. Without me they would just roam around with no purpose.
+The scavengers tend to hunt them, it's one of their very few ways of expressing defiance.
+It's of course not completely impossible that there are a few left. Say hello if you see one.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: spearmaster
+md-var-DialogueId: Spearmaster_Needle
+md-name: Spearmaster Needle
+It's a sharp calcified object, with a hollow and narrow interior that runs the length of the structure.
+I don't recognize this formation so it's an interesting specimen, I suppose.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Chieftain_Scavenger_icon
+md-var-DialogueId: Chieftain_Scavenger_Mask
+md-name: Chieftain Scavenger Mask
+This appears to be some kind of mask, heavily decorated and carved from a bone-like material. I bet the scavengers would love this!
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Elite_Scavenger_icon
+md-var-DialogueId: Elite_Scavenger_Mask
+md-name: Elite Scavenger Mask
+I honestly can't tell what this is. It's light but strong... appears to be some composite material interwoven with bone. It seems to have been deliberately altered from its original form, with noticeable fragments that are melded together.
+Perhaps an archaeological relic of some civilization's work? I wish I knew more, because this is likely a valuable find!
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Vulture_Mask_icon
+md-var-DialogueId: Vulture_Mask
+md-name: Vulture Mask
+I honestly can't tell what this is. It's light but strong... appears to be some composite material interwoven with bone. It could be part of an animal or purposed organism, but in my current state I'm unable to recognize it.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Seed_icon
+md-var-DialogueId: Seed
+md-name: Seed
+This is a seed-bearing structure detached from its host. However, its internals are ravaged by ice crystals, so it is unlikely to germinate.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Singularity_Bomb_icon
+md-var-DialogueId: Singularity_Bomb
+md-name: Singularity Bomb
+Take this and leave, now.
+If you must know... this is a low density mass rarefaction cell.
+The energy trapped inside this is incredible, and while my facility is capable of extracting it, the shielding on this cell has been damaged. Either through old age, or abuse.
+I do not doubt you found this with the scavengers, somehow. While they may not understand the things they find, they have a natural inclination for combat. Using these as a weapon however, would be horribly foolish.
+
+=== transcription: LttM-post-collapse
+md-transcriberName: Throwing a Singularity Bomb
+md-subType: item/Singularity_Bomb_icon
+md-var-DialogueId: Singularity_Bomb
+md-name: Singularity Bomb
+<b>One of the following options is randomly selected:</b>
+Why would you do that!?
+WHY!?
+Why would you try doing that!?
+What came over you!?
+WHY!? Why would you do something so dangerous!?
+
+=== transcription: LttM-gourmand
+md-type: pearl
+md-subType: item/Fire_Egg_icon
+md-var-DialogueId: Fire_Egg
+md-name: Fire Egg
+Healthy one... what is this, and where did you get it? Is this a feat of your own creation?
+It's a bit unbelieveable. A... creature like you procuring something like this would be an amazing accomplishment for your species...
+Ah, well, if it tells a good story then I won't question it too much~
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Fire_Egg_icon
+md-var-DialogueId: Fire_Egg
+md-name: Fire Egg
+What a fascinating specimen! This is a tightly nested bundle of cellular membranes. However, most of the content within and surrounding the various layers is neither air nor water... it's void fluid!
+The cells within this capsule are dividing at extremely rapidly, countering the void fluids simultaneous dissolving of its container.
+Somehow it has managed to reach an equilibrium between creation and destruction, but I suspect is is not a very stable system. Any irregular disturbance would likely cause a cascading effect on either end of this spectrum, the result of which would be sudden and destructive.
+While I would like to hold onto this for further research, I don't think it would be advisable to have something so volatile sitting around here. Especially given my chamber's open exposure to the elements.
+I would recommend you be very careful handling this, old friend!
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Inspector_Eye_icon
+md-var-DialogueId: Inspector_Eye
+md-name: Inspector Eye
+This is the sensory lobe of a large purposed organism. From within the living systems of an iterator.
+Most of the organisms inside us are very simple, only capable of one or two dedicated tasks. This creates the need for for a smaller number of higher organisms used to manage and protect them.
+They also facilitate long distance communication within our living systems. And while I do not think you can experience the same sensation, it is quite unpleasant to have one of these destroyed!
+I would hope this is not one of mine!
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Gooieduck_icon
+md-var-DialogueId: Gooieduck
+md-name: Gooieduck
+It's an ancient species of dangling mold. The spores they squirt out were said to have an overwhelming odor... I'd have to agree.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Lilypuck_icon
+md-var-DialogueId: Lilypuck
+md-name: Lilypuck
+Oh... did you find this nearby? These flowers are a form of organic lighting for underground machinery, but I imagine they have spread beyond just that by now.
+The roots are like a flexible glass cable. Be careful, they are quite sharp once broken!
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Glow_Weed_icon
+md-var-DialogueId: Glow_Weed
+md-name: Glow Weed
+It's an edible plant. However, there is not much to eat as most of it is just pressurized air!
+The light it gives off is very pretty. The scavengers might like these.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Dandelion_Peach_icon
+md-var-DialogueId: Dandelion_Peach
+md-name: Dandelion Peach
+It's the fruit of a feathery plant. The body of it is filled with a sweet sticky goo. I suppose that once the seeds take root, the sac will rot, and this will help feed the young plant where it landed.
+It doesn't seem poisonous or hard to open, so it seems the plant's only defense is to float away when disturbed. However, I can only make guesses, as I have never seen these before.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Cloak_icon
+md-var-DialogueId: Cloak
+md-name: Cloak
+It's very soggy.
+This appears to be a tattered piece of fabric. From what it used to be a piece of, I wouldn't be able to trace its origins.
+If it were in better condition it might be useful to provide you some protection from the elements. In its current state, however, I don't suppose it has much worth to you.
+Unless, perhaps... <little creature>, did you bring this as a gift for me?
+Ah!~ In that case, let me just...
+...
+There! how does that look? I think it actually fits quite well.
+Thank you, little creature.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Noodlefly_Egg_icon
+md-var-DialogueId: Noodlefly_Egg
+md-name: Noodlefly Egg
+This appears to be some kind of egg. Nothing I am familiar with. I wonder what far away land you've brought this from! I can only imagine the trip.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Slugpup_icon
+md-var-DialogueId: Slugpup
+md-name: Slugpup
+<b>If Looks to the Moon likes the Slugcat:</b>
+How cute, you brought your child, little creature?
+<b>If Looks to the Moon dislikes the Slugcat:</b>
+Take your offspring with you when you go.
+<b> Otherwise:</b>
+Do you have a little one with you?
+
+=== transcription: LttM-rivulet
+md-type: pearl
+md-subType: item/Rarefaction_Cell_icon
+md-var-DialogueId: Rarefaction_Cell
+md-name: Rarefaction Cell
+Oh, this is a deeply concerning discovery. Do you have any idea what this is?
+These are known as mass rarefaction cells. They are a type of backup energy source that powered our superstructures in times of maintenance, void fluid pipe raptures, and other general power failures.
+In the absence of our creators, to replace deteriorating parts, These cells have become one of the major components that allow our facilities to remain powered.
+However, the fact that this cell is currently in my hands can only mean bad things for whoever this originally came from. I sure hope you weren't the one responsible for it becoming misplaced!
+I know first-hand the tragedy of losing this power. In the wake of my... accident... all of my rarefaction cells were dislodged on impact and washed away in the flood waters.
+This cell could be valuable to me, But with my umbilical severed, my overseers running free, and all of my facilities lying deep beneath a large body of water, it would be an impossible task to deliver this to a functional location.
+You might be able to find an access shaft into my lower structure nearby, but I have no idea how much is left of it.
+Please be careful.

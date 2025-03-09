@@ -1,0 +1,20 @@
+type: item
+subType: gourmand
+
+=== transcription: FP
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-name: First encounter
+. . .
+Gluttonous beast, what brings you to my chamber? You are like no other messenger before you. Perhaps I have underestimated the ability for your kind to communicate my existence?
+I may have been too rash in bestowing the mark of communication upon you. With the recent traffic through my structure however, I would hesitate to believe that you will be my last encounter with your kind.
+You have the same problem as everyone else, from the microbes in the processing strata to me, who is, if you excuse me, godlike in comparison. We all want a way out. However, your particular...
+. . .
+rotundness,
+might well imply how little you seem to care. A simple animal ignorantly accepting its existence.
+I do not believe my intended purpose will be much help to you. I can however encourage you and your kind to leave my facility grounds.
+Unfortunately, the same locks that were supposed to prevent creatures from getting in, will now prevent you from getting out. Perhaps this strategy was ill conceived after all.
+Allow me to just...
+Go west, through the underground tunnels at the outskirts of my territory. You will find the gate to the world outside of it now unlocked.
+In return I ask that you encourage your community, through whatever method of communication you choose to employ, to also go west. Off into the wastes below, far away from me and my work.
+Speaking of, on your way out please use the access shaft.

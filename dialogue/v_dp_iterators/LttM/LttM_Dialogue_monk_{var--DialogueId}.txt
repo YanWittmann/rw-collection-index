@@ -1,0 +1,14 @@
+type: item
+subType: monk
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-name: First encounter after receiving the Mark of Communication
+Hello little creature.
+Your shape is familiar to me. I feel as if I... might have met your kind before.
+But my memory is so unreliable now.
+I see that someone has given you the gift of communication. Must have been Five Pebbles, as you don't look like you can travel very far...
+He's sick, you know. Being corrupted from the inside by his own experiments. Maybe they all are by now, who knows. We weren't designed to transcend and it drives us mad.
+Hm...
+Such a familiar feeling.

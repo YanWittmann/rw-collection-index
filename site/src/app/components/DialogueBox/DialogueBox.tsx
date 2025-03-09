@@ -70,36 +70,49 @@ export function DialogueBox({
         if (!pearl) {
             return null;
         }
-        return pearl.transcribers.findIndex(transcriber => transcriber.transcriber === transcriberName);
+        const isMultipleTranscribers = /.+-\d+$/.test(transcriberName);
+        if (isMultipleTranscribers) {
+            return parseInt(transcriberName.replace(/^.+-/, ""));
+        } else {
+            return pearl.transcribers.findIndex(transcriber => transcriber.transcriber === transcriberName);
+        }
     }
 
     // set up the subtitle with the transcriber's name
     if (hoveredTranscriber !== null && pearl) {
-        const transcriberIndex = findTranscriberIndex(hoveredTranscriber);
-        if (transcriberIndex !== null && transcriberIndex !== -1) {
-            let transcriberName = speakerNames[pearl.transcribers[transcriberIndex].transcriber];
-            if (!transcriberName) {
-                console.error("Unable to find transcriber name", pearl.transcribers[transcriberIndex].transcriber);
-                transcriberName = "Unknown";
-            }
-
-            // extract parentheses from end of the name
-            const parenthesisMatch = transcriberName.match(/(.*) \((.*)\)/);
-            let parenthesis = "";
-            if (parenthesisMatch) {
-                transcriberName = parenthesisMatch[1];
-                parenthesis = ` (${parenthesisMatch[2]})`;
-            }
-
-            // remove "s" from the end of the name
-            if (transcriberName[transcriberName.length - 1] === 's') {
-                transcriberName = transcriberName.replace(/s$/, "");
-            }
-
-            transcriberName += "'s Transcription" + parenthesis;
-
+        if (hoveredTranscriber.startsWith("plain=")) {
+            const transcriberName = hoveredTranscriber.replace("plain=", "");
             if (transcriberName !== lastTranscriberName) {
                 setLastTranscriberName(transcriberName);
+            }
+
+        } else {
+            const transcriberIndex = findTranscriberIndex(hoveredTranscriber);
+            if (transcriberIndex !== null && transcriberIndex !== -1) {
+                let transcriberName = speakerNames[pearl.transcribers[transcriberIndex].transcriber];
+                if (!transcriberName) {
+                    console.error("Unable to find transcriber name", pearl.transcribers[transcriberIndex].transcriber);
+                    transcriberName = "Unknown";
+                }
+
+                // extract parentheses from end of the name
+                const parenthesisMatch = transcriberName.match(/(.*) \((.*)\)/);
+                let parenthesis = "";
+                if (parenthesisMatch) {
+                    transcriberName = parenthesisMatch[1];
+                    parenthesis = ` (${parenthesisMatch[2]})`;
+                }
+
+                // remove "s" from the end of the name
+                if (transcriberName[transcriberName.length - 1] === 's') {
+                    transcriberName = transcriberName.replace(/s$/, "");
+                }
+
+                transcriberName += "'s Transcription" + parenthesis;
+
+                if (transcriberName !== lastTranscriberName) {
+                    setLastTranscriberName(transcriberName);
+                }
             }
         }
     }
@@ -133,7 +146,8 @@ export function DialogueBox({
                         <Tooltip key={"pearl-info"}>
                             <TooltipTrigger>
                                 <span className={"flex items-center"}>
-                                    {dialogue.metadata.name || pearl.metadata.name} (<span className={"w-3 h-3"}><RwIcon type="info"/></span>)
+                                    {dialogue.metadata.name || pearl.metadata.name} (<span className={"w-3 h-3"}><RwIcon
+                                    type="info"/></span>)
                                 </span>
                             </TooltipTrigger>
                             <TooltipContent className="text-center">
@@ -219,13 +233,14 @@ export function DialogueBox({
             >
                 {lastTranscriberName}
             </motion.div>
-            {pearl === null ? <div className="absolute bottom-[1rem] left-0 right-0 px-2 text-center text-white text-sm">
-                Code on <a href="https://github.com/YanWittmann/rw-collection-index" target="_blank"
-                           className="underline">GitHub</a> | Created by Yan Wittmann | <a
-                href="https://store.steampowered.com/app/312520/Rain_World" target="_blank" className="underline">Rain
-                World</a> is property of <a href="https://twitter.com/VideocultMedia" target="_blank"
-                                            className="underline">Videocult</a>
-            </div> : null}
+            {pearl === null ?
+                <div className="absolute bottom-[1rem] left-0 right-0 px-2 text-center text-white text-sm">
+                    Code on <a href="https://github.com/YanWittmann/rw-collection-index" target="_blank"
+                               className="underline">GitHub</a> | Created by Yan Wittmann | <a
+                    href="https://store.steampowered.com/app/312520/Rain_World" target="_blank" className="underline">Rain
+                    World</a> is property of <a href="https://twitter.com/VideocultMedia" target="_blank"
+                                                className="underline">Videocult</a>
+                </div> : null}
         </div>
     )
 }

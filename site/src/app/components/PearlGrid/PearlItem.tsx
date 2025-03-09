@@ -16,7 +16,15 @@ interface PearlItemProps {
     unlockVersion: number
 }
 
-const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, selectedPearl, onSelectPearl, unlockMode, showTranscriberCount, unlockVersion }) => {
+const PearlItem: React.FC<PearlItemProps> = ({
+                                                 pearl,
+                                                 pearlIndex,
+                                                 selectedPearl,
+                                                 onSelectPearl,
+                                                 unlockMode,
+                                                 showTranscriberCount,
+                                                 unlockVersion
+                                             }) => {
     const isSelected = pearl.id === selectedPearl;
 
     const isUnlocked = useMemo(() => {
@@ -52,19 +60,22 @@ const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, selectedPearl,
         if (!isUnlocked) {
             return (
                 <RwIconButton onClick={handleClick} selected={isSelected}>
-                    <RwIcon color={pearl.metadata.color} type="questionmark" />
+                    <RwIcon color={pearl.metadata.color} type="questionmark"/>
                 </RwIconButton>
             );
         }
+
+        const iconType = pearl.metadata.type === 'item' ? (pearl.metadata.subType || 'pearl') : pearl.metadata.type;
 
         return (
             <TooltipProvider delayDuration={120}>
                 <Tooltip>
                     <TooltipTrigger>
                         <RwIconButton onClick={handleClick} selected={isSelected}>
-                            <RwIcon color={pearl.metadata.color} type={pearl.metadata.type} />
+                            <RwIcon color={pearl.metadata.color} type={iconType}/>
                             {showTranscriberCount && (
-                                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-5 h-5 text-xs flex items-center justify-center">
+                                <span
+                                    className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-5 h-5 text-xs flex items-center justify-center">
                             {pearl.transcribers.length}
                         </span>
                             )}

@@ -1,0 +1,22 @@
+type: item
+subType: spearmaster
+
+=== transcription: FP
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-name: First encounter
+Suns...?
+Why did you send the messenger here again? Please leave, I cannot afford any further distractions; I am the only one who can fix this now. I trust that you understand me...
+You've brought your overseer all this way, the least I can do is read your message aloud for it.
+"Pebbles, I send you this message as your concerned and long time friend."
+"Unparalleled Innocence had sent an overseer to your can, and we've all observed the state that you are in. I know this is my fault, I should have foreseen you'd be too desperate to escape your situation to do things in proper moderation."
+"For that I'm very very sorry. However, please, don't disable your communication modules. You don't have to go through this alone... everyone has been trying to contact you, We only want to help you..."
+"The behavior from your can has become erratic, it's not healthy, and it is not going to solve your problems. We have lost all communications from Moon as well, and have reason to believe her facility may be suffering irreversible damage from your attempts to fix yourself."
+"I know better than anyone how you can be about these things, but it doesn't have to happen this way... please respond back."
+Astounding.
+You could never understand what I feel right now, being pitied and lectured like this!
+What use would your help be? Your benevolent charity is what got me here in the first place!
+I wanted to find my own way out, and now I sit here rotting because of you and Moon!
+I'm not just another bug wandering your worthless maze! I will reach my own solution, without any of you! Get out!
+GET OUT!
+...
