@@ -29,45 +29,15 @@ export const pearlOrder: PearlChapter[] = [
         ]
     },
     {
-        name: "Downpour Addons",
+        name: "Items",
         ids: [
-            "LttM_SAINT_ANY_OTHER"
-        ]
-    },
-    {
-        name: "Five Pebble's Pearls",
-        ids: [
-            { pattern: /PebblesPearl_\d+/ }
-        ]
-    },
-    {
-        name: "White Pearls (Misc)",
-        ids: [
-            { pattern: /Misc_WHITE_PEARLS_\d+/ }
-        ]
-    },
-    {
-        name: "Broadcast Pearls",
-        ids: [
-            { pattern: /BroadcastMisc_\d+/ }
-        ]
-    },
-    {
-        name: "Developer Commentary",
-        ids: [
-            { pattern: /DevComm_.+/ }
+            { pattern: /Iterator_Dialogue_Items_.+/ }
         ]
     },
     {
         name: "Echoes",
         ids: [
             { pattern: /Echo_Monologue_.+/ }
-        ]
-    },
-    {
-        name: "Items",
-        ids: [
-            { pattern: /Iterator_Dialogue_Items_.+/ }
         ]
     },
     {
@@ -99,7 +69,37 @@ export const pearlOrder: PearlChapter[] = [
             { pattern: /FP_Dialogue_saint_.+/ },
             { pattern: /FP_Dialogue_.+/ },
         ]
-    }
+    },
+    {
+        name: "Downpour Addons",
+        ids: [
+            "LttM_SAINT_ANY_OTHER"
+        ]
+    },
+    {
+        name: "Five Pebble's Pearls",
+        ids: [
+            { pattern: /PebblesPearl_\d+/ }
+        ]
+    },
+    {
+        name: "White Pearls (Misc)",
+        ids: [
+            { pattern: /Misc_WHITE_PEARLS_\d+/ }
+        ]
+    },
+    {
+        name: "Broadcast Pearls",
+        ids: [
+            { pattern: /BroadcastMisc_\d+/ }
+        ]
+    },
+    {
+        name: "Developer Commentary",
+        ids: [
+            { pattern: /DevComm_.+/ }
+        ]
+    },
 ]
 
 export const findPearlCategory = (pearl: PearlData): string => {
