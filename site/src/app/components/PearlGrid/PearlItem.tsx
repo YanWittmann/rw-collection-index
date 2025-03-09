@@ -4,7 +4,7 @@ import { RwIconButton } from "../other/RwIconButton";
 import UnlockManager from "../../utils/unlockManager";
 import { MapInfo, PearlData } from "../../types/types";
 import { UnlockMode } from "../../page";
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 
 interface PearlItemProps {
     pearl: PearlData
@@ -16,7 +16,15 @@ interface PearlItemProps {
 }
 
 const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, selectedPearl, onSelectPearl, unlockMode, showTranscriberCount }) => {
-    const isUnlocked = unlockMode === 'all' || UnlockManager.isPearlUnlocked(pearl);
+    const isSelected = pearl.id === selectedPearl;
+
+    const isUnlocked = useMemo(() => {
+        return unlockMode === 'all' || UnlockManager.isPearlUnlocked(pearl);
+    }, [pearl, unlockMode]);
+
+    const handleClick = useCallback(() => {
+        onSelectPearl(pearl.id);
+    }, [onSelectPearl, pearl.id]);
 
     const generateTooltipText = useMemo(() => {
         // collect all metadata from the dialogue transcriptions
@@ -39,40 +47,63 @@ const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, selectedPearl,
         return tooltip;
     }, [pearl]);
 
-    if (!isUnlocked) {
-        return <RwIconButton
-            key={'select-' + pearl.id + '-' + pearlIndex}
-            onClick={() => onSelectPearl(pearl.id)}
-            selected={selectedPearl === pearl.id}
-        >
-            <RwIcon color={pearl.metadata.color} type={"questionmark"}/>
-        </RwIconButton>
+    return useMemo(() => {
+        if (!isUnlocked) {
+            return (
+                <RwIconButton onClick={handleClick} selected={isSelected}>
+                    <RwIcon color={pearl.metadata.color} type="questionmark" />
+                </RwIconButton>
+            );
+        }
+
+        return (
+            <TooltipProvider delayDuration={120}>
+                <Tooltip>
+                    <TooltipTrigger>
+                        <RwIconButton onClick={handleClick} selected={isSelected}>
+                            <RwIcon color={pearl.metadata.color} type={pearl.metadata.type} />
+                            {showTranscriberCount && (
+                                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-5 h-5 text-xs flex items-center justify-center">
+                            {pearl.transcribers.length}
+                        </span>
+                            )}
+                        </RwIconButton>
+                    </TooltipTrigger>
+                    <TooltipContent>{generateTooltipText}</TooltipContent>
+                </Tooltip>
+            </TooltipProvider>
+        );
+    }, [
+        isUnlocked,
+        handleClick,
+        isSelected,
+        pearl.metadata.color,
+        pearl.metadata.type,
+        showTranscriberCount,
+        pearl.transcribers.length,
+        generateTooltipText
+    ]);
+};
+
+const arePropsEqual = (prevProps: PearlItemProps, nextProps: PearlItemProps) => {
+    // the most important check: has the selection state of THIS item changed?
+    const wasSelected = prevProps.pearl.id === prevProps.selectedPearl;
+    const isSelected = nextProps.pearl.id === nextProps.selectedPearl;
+
+    if (wasSelected !== isSelected) {
+        // if THIS item's selection state changed, we need to re-render
+        return false;
     }
 
+    // otherwise, only re-render if these specific props change
     return (
-        <TooltipProvider
-            key={'tooltip-provider-' + pearl.id + '-' + pearlIndex}
-            delayDuration={120}>
-            <Tooltip>
-                <TooltipTrigger>
-                    <RwIconButton
-                        key={'select-' + pearl.id + '-' + pearlIndex}
-                        onClick={() => onSelectPearl(pearl.id)}
-                        selected={selectedPearl === pearl.id}
-                    >
-                        <RwIcon color={pearl.metadata.color} type={pearl.metadata.type}/>
-                        {showTranscriberCount && <span
-                            className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-5 h-5 text-xs flex items-center justify-center">
-                            {pearl.transcribers.length}
-                        </span>}
-                    </RwIconButton>
-                </TooltipTrigger>
-                <TooltipContent>
-                    {generateTooltipText}
-                </TooltipContent>
-            </Tooltip>
-        </TooltipProvider>
-    )
-}
+        prevProps.unlockMode === nextProps.unlockMode &&
+        prevProps.showTranscriberCount === nextProps.showTranscriberCount &&
+        prevProps.pearl.metadata.color === nextProps.pearl.metadata.color &&
+        prevProps.pearl.metadata.type === nextProps.pearl.metadata.type &&
+        prevProps.pearl.transcribers.length === nextProps.pearl.transcribers.length
+    );
+};
 
-export default React.memo(PearlItem);
+// custom comparison function to prevent re-renders
+export default React.memo(PearlItem, arePropsEqual);

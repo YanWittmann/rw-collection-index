@@ -102,15 +102,12 @@ export default function DialogueInterface() {
                 className={cn("relative z-10 w-full max-w-[1400px]")}>
                 {isMobile ? (
                     <>
-                        {!selectedPearl ? (
-                            <div className="w-full pb-4">
-                                {pearlGridComponent}
-                            </div>
-                        ) : (
-                            <div className={cn("w-full", isMobile ? " p-4" : "")}>
-                                {dialogueBoxComponent}
-                            </div>
-                        )}
+                        <div className="w-full pb-4" style={selectedPearl ? { display: "none" } : {}}>
+                            {pearlGridComponent}
+                        </div>
+                        {selectedPearl && <div className={cn("w-full", isMobile ? " p-4" : "")}>
+                            {dialogueBoxComponent}
+                        </div>}
                     </>
                 ) : (
                     <div className="flex flex-row gap-5">

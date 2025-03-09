@@ -1,11 +1,12 @@
 import { PearlData } from "../../types/types";
 import { UnlockMode } from "../../page";
 import { RwTextInput } from "./RwTextInput";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
 import PearlItem from "./PearlItem";
 import UnlockManager from "../../utils/unlockManager";
 import { cn } from "@shadcn/lib/utils";
 import { RwIconButton } from "../other/RwIconButton";
+import React from "react";
 
 interface PearlGridProps {
     pearls: PearlData[]
@@ -17,6 +18,35 @@ interface PearlGridProps {
     isMobile: boolean
     setUnlockMode: (mode: UnlockMode) => void
 }
+
+interface MemoizedPearlItemProps {
+    pearl: PearlData;
+    pearlIndex: number;
+    selectedPearl: string | null;
+    onSelectPearl: (id: string) => void;
+    unlockMode: UnlockMode;
+    showTranscriberCount: boolean;
+}
+
+const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({
+                                                                  pearl,
+                                                                  pearlIndex,
+                                                                  selectedPearl,
+                                                                  onSelectPearl,
+                                                                  unlockMode,
+                                                                  showTranscriberCount
+                                                              }) => {
+    return (
+        <PearlItem
+            pearl={pearl}
+            pearlIndex={pearlIndex}
+            selectedPearl={selectedPearl}
+            onSelectPearl={onSelectPearl}
+            unlockMode={unlockMode}
+            showTranscriberCount={showTranscriberCount}
+        />
+    );
+});
 
 export function PearlGrid({
                               pearls,
@@ -30,7 +60,11 @@ export function PearlGrid({
                           }: PearlGridProps) {
     const [textFilter, setTextFilter] = useState<string | undefined>(undefined);
 
-    const isPearlIncluded = (pearl: PearlData) => {
+    const handleSelectPearl = useCallback((id: string) => {
+        onSelectPearl(id);
+    }, [onSelectPearl]);
+
+    const isPearlIncluded = useCallback((pearl: PearlData) => {
         if (!textFilter) return true;
         if (unlockMode === "unlock") {
             if (!UnlockManager.isPearlUnlocked(pearl)) {
@@ -45,7 +79,7 @@ export function PearlGrid({
         if (pearl.transcribers.some(transcriber => transcriber.lines.some(line => (line.speaker + ": " + line.text).toLowerCase().includes(textFilter.toLowerCase())))) return true;
         if (pearl.transcribers.some(transcriber => transcriber.transcriber.toLowerCase() === textFilter.toLowerCase())) return true;
         return false;
-    };
+    }, [textFilter, unlockMode]);
 
     const filteredPearls = useMemo(() => {
         const orderedPearls = order(pearls);
@@ -53,19 +87,15 @@ export function PearlGrid({
             name: chapter.name,
             items: chapter.items.filter(isPearlIncluded)
         }));
-    }, [textFilter, pearls])
+    }, [isPearlIncluded, order, pearls]);
 
-    const renderPearl = (pearl: PearlData, pearlIndex: number) => (
-        <PearlItem
-            key={pearl.id + '-' + pearlIndex}
-            pearl={pearl}
-            pearlIndex={pearlIndex}
-            selectedPearl={selectedPearl}
-            onSelectPearl={onSelectPearl}
-            unlockMode={unlockMode}
-            showTranscriberCount={isAlternateDisplayModeActive}
-        />
-    );
+    const toggleUnlockMode = useCallback(() => {
+        setUnlockMode(unlockMode === "all" ? "unlock" : "all");
+    }, [unlockMode, setUnlockMode]);
+
+    const handleTextInput = useCallback((text: string) => {
+        text === '' ? setTextFilter(undefined) : setTextFilter(text);
+    }, []);
 
     return (
         <>
@@ -77,13 +107,13 @@ export function PearlGrid({
                 <div className={"flex gap-2 mb-4"}>
                     <RwTextInput
                         className={cn("", isMobile ? "flex-1" : "w-full")}
-                        onTextInput={text => text === '' ? setTextFilter(undefined) : setTextFilter(text)}
+                        onTextInput={handleTextInput}
                         placeholder="Search..."
                     />
                     {isMobile && (
                         <RwIconButton
                             square={false}
-                            onClick={() => setUnlockMode(unlockMode === "all" ? "unlock" : "all")}
+                            onClick={toggleUnlockMode}
                             className="shrink-0"
                         >
                             <span className="text-white">
@@ -98,12 +128,21 @@ export function PearlGrid({
                     {filteredPearls
                         .filter(chapter => chapter.items.length > 0)
                         .map((chapter, chapterIndex) => (
-                            <div key={chapterIndex} className="mb-4 last:mb-0">
+                            <div key={`chapter-${chapterIndex}`} className="mb-4 last:mb-0">
                                 {chapter.name && <h3 className="text-white text-sm mb-2">{chapter.name}</h3>}
                                 <div className="grid grid-cols-5 gap-2 w-fit">
                                     {chapter.items.map(
-                                        (pearl, pearlIndex) =>
-                                            pearl && pearl.id && renderPearl(pearl, pearlIndex)
+                                        (pearl, pearlIndex) => pearl && pearl.id && (
+                                            <MemoizedPearlItem
+                                                key={`pearl-${pearl.id}`}
+                                                pearl={pearl}
+                                                pearlIndex={pearlIndex}
+                                                selectedPearl={selectedPearl}
+                                                onSelectPearl={handleSelectPearl}
+                                                unlockMode={unlockMode}
+                                                showTranscriberCount={isAlternateDisplayModeActive}
+                                            />
+                                        )
                                     )}
                                 </div>
                             </div>
@@ -111,5 +150,7 @@ export function PearlGrid({
                 </div>
             </div>
         </>
-    )
+    );
 }
+
+export default React.memo(PearlGrid);
