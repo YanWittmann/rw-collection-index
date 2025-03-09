@@ -4,7 +4,7 @@ import { useDialogue } from "./hooks/useDialogue";
 import { PearlGrid } from "./components/PearlGrid/PearlGrid";
 import { DialogueBox } from "./components/DialogueBox/DialogueBox";
 import { orderPearls } from "./utils/pearlOrder";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useUnlockState } from "./hooks/useUnlockState";
 import { urlAccess } from "./utils/urlAccess";
 import { useIsMobile } from "./hooks/useIsMobile";
@@ -17,7 +17,7 @@ export type UnlockMode = "all" | "unlock";
 export default function DialogueInterface() {
     const [unlockMode, setUnlockMode] = useState<UnlockMode>("all");
     const { selectedPearl, selectedTranscriber, handleSelectPearl, handleSelectTranscriber } = useDialogue(unlockMode);
-    const { refresh } = useUnlockState();
+    const { refresh, unlockVersion } = useUnlockState();
     const [hintProgress, setHintProgress] = useState<number>(0);
     const [isAlternateDisplayModeActive, setIsAlternateDisplayModeActive] = useState(false);
     const isMobile = useIsMobile();
@@ -64,8 +64,9 @@ export default function DialogueInterface() {
             isAlternateDisplayModeActive={isAlternateDisplayModeActive}
             isMobile={isMobile}
             setUnlockMode={setUnlockMode}
+            unlockVersion={unlockVersion}
         />
-    ), [GRID_DATA, selectedPearl, unlockMode, isAlternateDisplayModeActive, isMobile, handleSelectPearlWithReset]);
+    ), [GRID_DATA, selectedPearl, unlockMode, isAlternateDisplayModeActive, isMobile, handleSelectPearlWithReset, unlockVersion]);
 
     const dialogueBoxComponent = useMemo(() => (
         <DialogueBox

@@ -13,14 +13,15 @@ interface PearlItemProps {
     onSelectPearl: (id: string) => void
     unlockMode: UnlockMode
     showTranscriberCount: boolean
+    unlockVersion: number
 }
 
-const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, selectedPearl, onSelectPearl, unlockMode, showTranscriberCount }) => {
+const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, selectedPearl, onSelectPearl, unlockMode, showTranscriberCount, unlockVersion }) => {
     const isSelected = pearl.id === selectedPearl;
 
     const isUnlocked = useMemo(() => {
         return unlockMode === 'all' || UnlockManager.isPearlUnlocked(pearl);
-    }, [pearl, unlockMode]);
+    }, [pearl, unlockMode, unlockVersion]);
 
     const handleClick = useCallback(() => {
         onSelectPearl(pearl.id);
@@ -89,9 +90,13 @@ const arePropsEqual = (prevProps: PearlItemProps, nextProps: PearlItemProps) => 
     // the most important check: has the selection state of THIS item changed?
     const wasSelected = prevProps.pearl.id === prevProps.selectedPearl;
     const isSelected = nextProps.pearl.id === nextProps.selectedPearl;
+    const selectionChanged = wasSelected !== isSelected;
 
-    if (wasSelected !== isSelected) {
-        // if THIS item's selection state changed, we need to re-render
+    const wasUnlocked = UnlockManager.isPearlUnlocked(prevProps.pearl);
+    const isUnlocked = UnlockManager.isPearlUnlocked(nextProps.pearl);
+    const unlockChanged = wasUnlocked !== isUnlocked;
+
+    if (selectionChanged || unlockChanged) {
         return false;
     }
 
@@ -101,7 +106,8 @@ const arePropsEqual = (prevProps: PearlItemProps, nextProps: PearlItemProps) => 
         prevProps.showTranscriberCount === nextProps.showTranscriberCount &&
         prevProps.pearl.metadata.color === nextProps.pearl.metadata.color &&
         prevProps.pearl.metadata.type === nextProps.pearl.metadata.type &&
-        prevProps.pearl.transcribers.length === nextProps.pearl.transcribers.length
+        prevProps.pearl.transcribers.length === nextProps.pearl.transcribers.length &&
+        prevProps.unlockVersion === nextProps.unlockVersion
     );
 };
 

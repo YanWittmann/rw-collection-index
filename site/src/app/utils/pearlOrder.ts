@@ -60,6 +60,19 @@ export const pearlOrder: PearlChapter[] = [
     }
 ]
 
+export const findPearlCategory = (pearl: PearlData): string => {
+    for (const chapter of pearlOrder) {
+        for (const idOrSelector of chapter.ids) {
+            if (typeof idOrSelector === 'string') {
+                if (idOrSelector === pearl.id) return chapter.name;
+            } else {
+                if (idOrSelector.pattern.test(pearl.id)) return chapter.name;
+            }
+        }
+    }
+    return "Other";
+};
+
 export const orderPearls = (pearls: PearlData[]): { name: string, items: PearlData[] }[] => {
     const pearlsById = pearls.reduce((acc, pearl) => {
         acc[pearl.id] = pearl;
@@ -86,21 +99,7 @@ export const orderPearls = (pearls: PearlData[]): { name: string, items: PearlDa
         }
     }
 
-    // Create a function that checks if a pearl is covered by any selector
-    const isPearlCovered = (pearl: PearlData): boolean => {
-        for (const chapter of pearlOrder) {
-            for (const idOrSelector of chapter.ids) {
-                if (typeof idOrSelector === 'string') {
-                    if (idOrSelector === pearl.id) return true;
-                } else {
-                    if (idOrSelector.pattern.test(pearl.id)) return true;
-                }
-            }
-        }
-        return false;
-    };
-
-    const uncoveredPearls = pearls.filter(pearl => !isPearlCovered(pearl));
+    const uncoveredPearls = pearls.filter(pearl => findPearlCategory(pearl) === "Other");
     orderedPearls.push({ name: "Other", items: uncoveredPearls });
     return orderedPearls;
 }

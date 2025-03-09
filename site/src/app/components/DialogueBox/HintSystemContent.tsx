@@ -2,6 +2,7 @@ import { Dialogue, Hint, PearlData } from "../../types/types";
 import { RwIconButton } from "../other/RwIconButton";
 import { regionNames } from "../../utils/speakers";
 import { generateMapLinkFromMapInfo } from "./DialogueBox";
+import { findPearlCategory } from "../../utils/pearlOrder";
 
 
 interface HintSystemContentProps {
@@ -24,40 +25,43 @@ export default function HintSystemContent({
     const effectiveHints: Hint[] = [];
 
     if (pearl.metadata.type === "broadcast" && pearl.metadata.name) {
-        effectiveHints.push({
-            name: "Slugcats",
-            lines: [
-                "This Collection Entry only appears in Spearmaster's Campaign."
-            ]
-        });
-        if (pearl.metadata.name.includes("(White ")) {
+        const pearlCategory = findPearlCategory(pearl);
+        if (pearlCategory === "Vanilla / Downpour") {
             effectiveHints.push({
-                name: "White Broadcast (1)",
+                name: "Slugcats",
                 lines: [
-                    "White Broadcasts unlock in a fixed sequence rather than being tied to specific locations.",
-                    "For this reason, the locations cannot be listed in this hint. Feel free to check the unlocked version of this Broadcast for a list of all locations."
+                    "This Collection Entry only appears in Spearmaster's Campaign."
                 ]
             });
-            effectiveHints.push({
-                name: "White Broadcast (2)",
-                lines: [
-                    "White Broadcasts are only available before speaking to Five Pebbles."
-                ]
-            });
-        }else if (pearl.metadata.name.includes("(Gray ")) {
-            effectiveHints.push({
-                name: "Gray Broadcast (1)",
-                lines: [
-                    "Gray Broadcasts unlock in a fixed sequence rather than being tied to specific locations.",
-                    "For this reason, the locations cannot be listed in this hint. Feel free to check the unlocked version of this Broadcast for a list of all locations."
-                ]
-            });
-            effectiveHints.push({
-                name: "Gray Broadcast (2)",
-                lines: [
-                    "Gray Broadcasts are only available after speaking to Five Pebbles."
-                ]
-            });
+            if (pearl.metadata.name.includes("(White ")) {
+                effectiveHints.push({
+                    name: "White Broadcast (1)",
+                    lines: [
+                        "White Broadcasts unlock in a fixed sequence rather than being tied to specific locations.",
+                        "For this reason, the locations cannot be listed in this hint. Feel free to check the unlocked version of this Broadcast for a list of all locations."
+                    ]
+                });
+                effectiveHints.push({
+                    name: "White Broadcast (2)",
+                    lines: [
+                        "White Broadcasts are only available before speaking to Five Pebbles."
+                    ]
+                });
+            } else if (pearl.metadata.name.includes("(Gray ")) {
+                effectiveHints.push({
+                    name: "Gray Broadcast (1)",
+                    lines: [
+                        "Gray Broadcasts unlock in a fixed sequence rather than being tied to specific locations.",
+                        "For this reason, the locations cannot be listed in this hint. Feel free to check the unlocked version of this Broadcast for a list of all locations."
+                    ]
+                });
+                effectiveHints.push({
+                    name: "Gray Broadcast (2)",
+                    lines: [
+                        "Gray Broadcasts are only available after speaking to Five Pebbles."
+                    ]
+                });
+            }
         }
     }
 
@@ -120,12 +124,12 @@ export default function HintSystemContent({
                     <RwIconButton square={false} onClick={unlockTranscription}>
                         Unlock Transcription
                     </RwIconButton>
-                    <RwIconButton square={false} onClick={() => {
+                    {effectiveHints.length > 0 && <RwIconButton square={false} onClick={() => {
                         if (hintProgress === effectiveHints.length) return;
                         setHintProgress(hintProgress + 1);
                     }}>
                         {hintProgress === effectiveHints.length ? "No more hints available" : "Next Hint (" + effectiveHints[hintProgress].name + ")"}
-                    </RwIconButton>
+                    </RwIconButton>}
                 </div>
                 {renderHints()}
             </div>

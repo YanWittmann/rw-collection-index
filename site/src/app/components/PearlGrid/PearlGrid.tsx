@@ -17,6 +17,7 @@ interface PearlGridProps {
     isAlternateDisplayModeActive: boolean
     isMobile: boolean
     setUnlockMode: (mode: UnlockMode) => void
+    unlockVersion: number
 }
 
 interface MemoizedPearlItemProps {
@@ -26,16 +27,18 @@ interface MemoizedPearlItemProps {
     onSelectPearl: (id: string) => void;
     unlockMode: UnlockMode;
     showTranscriberCount: boolean;
+    unlockVersion: number;
 }
 
 const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({
-                                                                  pearl,
-                                                                  pearlIndex,
-                                                                  selectedPearl,
-                                                                  onSelectPearl,
-                                                                  unlockMode,
-                                                                  showTranscriberCount
-                                                              }) => {
+    pearl,
+    pearlIndex,
+    selectedPearl,
+    onSelectPearl,
+    unlockMode,
+    showTranscriberCount,
+    unlockVersion
+}) => {
     return (
         <PearlItem
             pearl={pearl}
@@ -44,20 +47,22 @@ const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({
             onSelectPearl={onSelectPearl}
             unlockMode={unlockMode}
             showTranscriberCount={showTranscriberCount}
+            unlockVersion={unlockVersion}
         />
     );
 });
 
 export function PearlGrid({
-                              pearls,
-                              selectedPearl,
-                              onSelectPearl,
-                              order,
-                              unlockMode,
-                              isAlternateDisplayModeActive,
-                              isMobile,
-                              setUnlockMode
-                          }: PearlGridProps) {
+    pearls,
+    selectedPearl,
+    onSelectPearl,
+    order,
+    unlockMode,
+    isAlternateDisplayModeActive,
+    isMobile,
+    setUnlockMode,
+    unlockVersion
+}: PearlGridProps) {
     const [textFilter, setTextFilter] = useState<string | undefined>(undefined);
 
     const handleSelectPearl = useCallback((id: string) => {
@@ -123,6 +128,7 @@ export function PearlGrid({
                     )}
                 </div>
                 <div className={cn(
+                    "grid grid-cols-1 gap-4",
                     isMobile ? "" : "px-1",
                 )}>
                     {filteredPearls
@@ -141,6 +147,7 @@ export function PearlGrid({
                                                 onSelectPearl={handleSelectPearl}
                                                 unlockMode={unlockMode}
                                                 showTranscriberCount={isAlternateDisplayModeActive}
+                                                unlockVersion={unlockVersion}
                                             />
                                         )
                                     )}

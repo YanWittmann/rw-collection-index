@@ -6,6 +6,10 @@ const getKey = (...parts: string[]): string => {
 
 const cache = new Map<string, string>();
 
+const dispatchUnlockEvent = () => {
+    window.dispatchEvent(new Event('unlock-state-changed'));
+};
+
 const syncLocalStorage = (() => {
     let timeout: NodeJS.Timeout | null = null;
     return () => {
@@ -14,6 +18,7 @@ const syncLocalStorage = (() => {
             cache.forEach((value, key) => {
                 localStorage.setItem(key, value);
             });
+            dispatchUnlockEvent();
             timeout = null;
         }, 100);
     };
@@ -49,6 +54,7 @@ const UnlockManager = {
                 localStorage.removeItem(key);
             }
         });
+        dispatchUnlockEvent();
     },
 };
 

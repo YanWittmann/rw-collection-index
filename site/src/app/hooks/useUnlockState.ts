@@ -4,14 +4,12 @@ export function useUnlockState() {
     const [version, setVersion] = useState(0);
 
     useEffect(() => {
-        const handleStorage = (e: StorageEvent) => {
-            if (e.key?.startsWith('rw-unlock-')) {
-                setVersion(v => v + 1);
-            }
+        const handleUnlockStateChanged = () => {
+            setVersion(v => v + 1);
         };
 
-        window.addEventListener('storage', handleStorage);
-        return () => window.removeEventListener('storage', handleStorage);
+        window.addEventListener('unlock-state-changed', handleUnlockStateChanged);
+        return () => window.removeEventListener('unlock-state-changed', handleUnlockStateChanged);
     }, []);
 
     return {

@@ -1635,31 +1635,6 @@ Andrew: I know Videocult was skeptical that we'd even manage to figure out how t
 Andrew: But I think we've done pretty well for ourselves.
 
 === transcription: broadcast
-md-var-DevCommId: Character_Art
-md-name: Character Art
-Norgad: Ahahhh, it's the devs!
-Norgad: It was fun painting all the different characters together, especially in different styles.
-Norgad: See if you can figure out who everyone's meant to be!
-Norgad: ...
-Norgad: Also, thank you for playing. This mod's been a blast to work on, sorry it took so long!
-Norgad: Hope you enjoy it for many hours to come, and get lost in Rain World all over again.
-Norgad: <3
-
-=== transcription: broadcast
-md-var-DevCommId: Paincats
-md-name: Paincats
-Screams: Wanna hear a funny thought?
-Screams: Imagine being someone who discovered Paincat before ever seeing pups in the regular game.
-Screams: I'm glad the slugpup limit is 2 by default, because the game gets exponentially harder when you add more than that.
-Screams: With this in mind, I suggested removing Paincat's pup limit and giving it a\n100% spawn rate in all regions. Will proceeded to add on to this with, and I quote...
-Will: "all paincat slugpups spawn as white with red faces"
-Will: "and when they die they spawn an activated singularity egg"
-Screams: "How do you tell them apart?" I asked.
-Will: "You don't."
-Andrew: And then I implemented them as level editor gremlins instead...
-Dakras: They didn't even have the heart to tell me what they did to my poor, poor slugcat.
-
-=== transcription: broadcast
 md-map: region=VS, room=C05, mapSlugcat=white
 md-color: #75405c
 md-var-DevCommId: Final_Region_Art_RIP_Void_System
@@ -1694,3 +1669,28 @@ Andrew: Will had actually put together an entire illustrated timeline chart for 
 Andrew: As well as another long document explaining the origins, food chains, migration\npatterns, preferences, and other attributes of each creature's species over time.
 Andrew: All of these considerations were factored into which creatures to include and exclude in each region for each character.
 Andrew: Will also wrote a region creature density analyzing script, which he used to balance out creature spawns in each\nregion to keep difficulty levels consistent, and creature densities appropriate based on the global population decay.
+
+=== transcription: broadcast
+md-var-DevCommId: Character_Art
+md-name: Character Art
+Norgad: Ahahhh, it's the devs!
+Norgad: It was fun painting all the different characters together, especially in different styles.
+Norgad: See if you can figure out who everyone's meant to be!
+Norgad: ...
+Norgad: Also, thank you for playing. This mod's been a blast to work on, sorry it took so long!
+Norgad: Hope you enjoy it for many hours to come, and get lost in Rain World all over again.
+Norgad: <3
+
+=== transcription: broadcast
+md-var-DevCommId: Paincats
+md-name: Paincats
+Screams: Wanna hear a funny thought?
+Screams: Imagine being someone who discovered Paincat before ever seeing pups in the regular game.
+Screams: I'm glad the slugpup limit is 2 by default, because the game gets exponentially harder when you add more than that.
+Screams: With this in mind, I suggested removing Paincat's pup limit and giving it a\n100% spawn rate in all regions. Will proceeded to add on to this with, and I quote...
+Will: "all paincat slugpups spawn as white with red faces"
+Will: "and when they die they spawn an activated singularity egg"
+Screams: "How do you tell them apart?" I asked.
+Will: "You don't."
+Andrew: And then I implemented them as level editor gremlins instead...
+Dakras: They didn't even have the heart to tell me what they did to my poor, poor slugcat.
