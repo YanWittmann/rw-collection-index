@@ -1,7 +1,6 @@
 color: #b02ffb
 type: pearl
 name: Music
-map: region=RM, room=AI, mapSlugcat=rivulet
 info: When the audio is visualised, a Mandala can be seen at the end of the segment.
 
 === transcription: LttM-saint

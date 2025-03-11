@@ -1,7 +1,6 @@
 color: #d7e861
 type: pearl
 name: Dull Yellow
-map: region=GW, room=TOWER07, mapSlugcat=artificer
 info: This pearl can only be obtained as Artificer or Spearmaster.
 
 === transcription: FP-artificer

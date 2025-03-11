@@ -92,3 +92,4 @@ Thanks to:
 | bug leaving room | Info that certain text color only exists in DP.                                                         |
 | Hmoorkin         | Broadcast icons are too similar in color.                                                               |
 | yukithedestroyer | If there are multiple identical transcribers on an entry, they do not unlock correctly in spoiler mode. |
+| Space Dwarf      | Some incorrect map locations.                                                                           |
