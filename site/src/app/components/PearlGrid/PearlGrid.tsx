@@ -31,6 +31,81 @@ interface MemoizedPearlItemProps {
     unlockVersion: number;
 }
 
+// helper components
+const SearchBar = ({ isMobile, unlockMode, onTextInput, onToggleUnlockMode }: {
+    isMobile: boolean
+    unlockMode: UnlockMode
+    onTextInput: (text: string) => void
+    onToggleUnlockMode: () => void
+}) => (
+    <div className={"flex gap-2 mb-4"}>
+        <RwTextInput
+            className={cn("", isMobile ? "flex-1" : "w-full")}
+            onTextInput={onTextInput}
+            placeholder="Search..."
+        />
+        {isMobile && (
+            <RwIconButton
+                square={false}
+                onClick={onToggleUnlockMode}
+                className="shrink-0"
+            >
+                <span className="text-white">
+                    {unlockMode === "all" ? "Spoiler" : "Show All"}
+                </span>
+            </RwIconButton>
+        )}
+    </div>
+);
+
+const ChapterGrid = ({ 
+    chapter, 
+    chapterIndex, 
+    currentGridPosition,
+    selectedPearlRef,
+    getHighlightStyle,
+    unlockMode,
+    selectedPearl,
+    onSelectPearl,
+    isAlternateDisplayModeActive,
+    unlockVersion
+}: {
+    chapter: { name: string, items: PearlData[] }
+    chapterIndex: number
+    currentGridPosition?: [number, number]
+    selectedPearlRef: React.RefObject<HTMLDivElement | null>
+    getHighlightStyle: (chapterIndex: number, itemIndex: number) => React.CSSProperties
+    unlockMode: UnlockMode
+    selectedPearl: string | null
+    onSelectPearl: (id: string) => void
+    isAlternateDisplayModeActive: boolean
+    unlockVersion: number
+}) => (
+    <div key={`chapter-${chapterIndex}`} className="last:mb-4">
+        {chapter.name && <h3 className="text-white text-sm mb-2">{chapter.name}</h3>}
+        <div className="grid grid-cols-5 gap-2 w-fit">
+            {chapter.items.map((pearl, pearlIndex) => pearl && pearl.id && (
+                <div 
+                    key={`pearl-${pearl.id}`}
+                    ref={currentGridPosition && getHighlightStyle(chapterIndex, pearlIndex).outline ? selectedPearlRef : undefined}
+                    style={getHighlightStyle(chapterIndex, pearlIndex)}
+                >
+                    <MemoizedPearlItem
+                        pearl={pearl}
+                        pearlIndex={pearlIndex}
+                        selectedPearl={selectedPearl}
+                        onSelectPearl={onSelectPearl}
+                        unlockMode={unlockMode}
+                        showTranscriberCount={isAlternateDisplayModeActive}
+                        unlockVersion={unlockVersion}
+                    />
+                </div>
+            ))}
+        </div>
+    </div>
+);
+
+// memoized components
 const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({
     pearl,
     pearlIndex,
@@ -39,19 +114,17 @@ const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({
     unlockMode,
     showTranscriberCount,
     unlockVersion
-}) => {
-    return (
-        <PearlItem
-            pearl={pearl}
-            pearlIndex={pearlIndex}
-            selectedPearl={selectedPearl}
-            onSelectPearl={onSelectPearl}
-            unlockMode={unlockMode}
-            showTranscriberCount={showTranscriberCount}
-            unlockVersion={unlockVersion}
-        />
-    );
-});
+}) => (
+    <PearlItem
+        pearl={pearl}
+        pearlIndex={pearlIndex}
+        selectedPearl={selectedPearl}
+        onSelectPearl={onSelectPearl}
+        unlockMode={unlockMode}
+        showTranscriberCount={showTranscriberCount}
+        unlockVersion={unlockVersion}
+    />
+));
 
 export function PearlGrid({
     pearls,
@@ -75,19 +148,21 @@ export function PearlGrid({
 
     const isPearlIncluded = useCallback((pearl: PearlData) => {
         if (!textFilter) return true;
-        if (unlockMode === "unlock") {
-            if (!UnlockManager.isPearlUnlocked(pearl)) {
-                return false;
-            }
+        if (unlockMode === "unlock" && !UnlockManager.isPearlUnlocked(pearl)) {
+            return false;
         }
 
         const isValidRegionName = textFilter.length === 2 && textFilter.match(/^[A-Z]{2}$/);
-        if (isValidRegionName && pearl.metadata.map?.find(m => m.region.toLowerCase() === textFilter.toLowerCase())) return true;
+        if (isValidRegionName && pearl.metadata.map?.find(m => m.region.toLowerCase() === textFilter.toLowerCase())) {
+            return true;
+        }
 
-        if (pearl.metadata.name?.toLowerCase().includes(textFilter.toLowerCase())) return true;
-        if (pearl.transcribers.some(transcriber => transcriber.lines.some(line => (line.speaker + ": " + line.text).toLowerCase().includes(textFilter.toLowerCase())))) return true;
-        if (pearl.transcribers.some(transcriber => transcriber.transcriber.toLowerCase() === textFilter.toLowerCase())) return true;
-        return false;
+        const searchText = textFilter.toLowerCase();
+        return pearl.metadata.name?.toLowerCase().includes(searchText) ||
+            pearl.transcribers.some(t => t.lines.some(line => 
+                (line.speaker + ": " + line.text).toLowerCase().includes(searchText)
+            )) ||
+            pearl.transcribers.some(t => t.transcriber.toLowerCase() === searchText);
     }, [textFilter, unlockMode]);
 
     const filteredPearls = useMemo(() => {
@@ -98,7 +173,6 @@ export function PearlGrid({
         }));
     }, [isPearlIncluded, order, pearls]);
 
-    // convert filtered pearls into a 2D array for keyboard navigation
     const pearlGrid = useMemo(() => {
         const grid: PearlData[][] = [];
         filteredPearls.forEach(chapter => {
@@ -110,12 +184,10 @@ export function PearlGrid({
         return grid;
     }, [filteredPearls]);
 
-    // add keyboard event listener
     useEffect(() => {
         if (!handleKeyNavigation) return;
 
         const handleKeyDown = (e: KeyboardEvent) => {
-            // Only handle navigation keys if we're not in a text input
             if (!(e.target instanceof HTMLInputElement)) {
                 handleKeyNavigation(e, pearlGrid, selectedPearl);
             }
@@ -125,15 +197,13 @@ export function PearlGrid({
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [handleKeyNavigation, pearlGrid, selectedPearl]);
 
-    // Highlight current position in grid
-    const getHighlightStyle = (chapterIndex: number, itemIndex: number) => {
+    const getHighlightStyle = useCallback((chapterIndex: number, itemIndex: number) => {
         if (!currentGridPosition) return {};
         
         const [targetRow, targetCol] = currentGridPosition;
         let currentRow = 0;
         let found = false;
         
-        // Calculate if this item is at the current grid position
         for (let i = 0; i < filteredPearls.length && !found; i++) {
             const chapter = filteredPearls[i];
             const numRows = Math.ceil(chapter.items.length / 5);
@@ -154,101 +224,69 @@ export function PearlGrid({
         }
         
         return {};
-    };
+    }, [currentGridPosition, filteredPearls]);
 
     const toggleUnlockMode = useCallback(() => {
         setUnlockMode(unlockMode === "all" ? "unlock" : "all");
     }, [unlockMode, setUnlockMode]);
 
     const handleTextInput = useCallback((text: string) => {
-        text === '' ? setTextFilter(undefined) : setTextFilter(text);
+        setTextFilter(text === '' ? undefined : text);
     }, []);
 
-    // Scroll selected pearl into view
     useEffect(() => {
-        if (selectedPearlRef.current) {
-            // Get the parent scroll container
-            const scrollContainer = selectedPearlRef.current.closest('.no-scrollbar');
-            if (!scrollContainer) return;
+        if (!selectedPearlRef.current) return;
 
-            const itemRect = selectedPearlRef.current.getBoundingClientRect();
-            const containerRect = scrollContainer.getBoundingClientRect();
-            
-            // Add padding of 2 rows (approximately 120px) above and below
-            const padding = 120;
-            
-            // Calculate if we need to scroll
-            if (itemRect.top < containerRect.top + padding || 
-                itemRect.bottom > containerRect.bottom - padding) {
-                
-                selectedPearlRef.current.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center' // This will try to center the element
-                });
-            }
+        const scrollContainer = selectedPearlRef.current.closest('.no-scrollbar');
+        if (!scrollContainer) return;
+
+        const itemRect = selectedPearlRef.current.getBoundingClientRect();
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const padding = 120;
+        
+        if (itemRect.top < containerRect.top + padding || 
+            itemRect.bottom > containerRect.bottom - padding) {
+            selectedPearlRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
         }
     }, [currentGridPosition]);
 
     return (
-        <>
+        <div className={cn(
+            "no-scrollbar overflow-y-auto box-border",
+            isMobile ? "w-full max-h-[98svh] h-[98svh] p-4" : "w-auto max-h-[80svh] p-1"
+        )}>
+            <SearchBar
+                isMobile={isMobile}
+                unlockMode={unlockMode}
+                onTextInput={handleTextInput}
+                onToggleUnlockMode={toggleUnlockMode}
+            />
             <div className={cn(
-                "no-scrollbar overflow-y-auto box-border",
-                isMobile ? "w-full" : "w-auto",
-                isMobile ? "max-h-[98svh] h-[98svh] p-4" : "max-h-[80svh] p-1"
+                "grid grid-cols-1 gap-4",
+                isMobile ? "" : "px-1",
             )}>
-                <div className={"flex gap-2 mb-4"}>
-                    <RwTextInput
-                        className={cn("", isMobile ? "flex-1" : "w-full")}
-                        onTextInput={handleTextInput}
-                        placeholder="Search..."
-                    />
-                    {isMobile && (
-                        <RwIconButton
-                            square={false}
-                            onClick={toggleUnlockMode}
-                            className="shrink-0"
-                        >
-                            <span className="text-white">
-                                {unlockMode === "all" ? "Spoiler" : "Show All"}
-                            </span>
-                        </RwIconButton>
-                    )}
-                </div>
-                <div className={cn(
-                    "grid grid-cols-1 gap-4",
-                    isMobile ? "" : "px-1",
-                )}>
-                    {filteredPearls
-                        .filter(chapter => chapter.items.length > 0)
-                        .map((chapter, chapterIndex) => (
-                            <div key={`chapter-${chapterIndex}`} className="last:mb-4">
-                                {chapter.name && <h3 className="text-white text-sm mb-2">{chapter.name}</h3>}
-                                <div className="grid grid-cols-5 gap-2 w-fit">
-                                    {chapter.items.map(
-                                        (pearl, pearlIndex) => pearl && pearl.id && (
-                                            <div 
-                                                key={`pearl-${pearl.id}`}
-                                                ref={currentGridPosition && getHighlightStyle(chapterIndex, pearlIndex).outline ? selectedPearlRef : undefined}
-                                                style={getHighlightStyle(chapterIndex, pearlIndex)}
-                                            >
-                                                <MemoizedPearlItem
-                                                    pearl={pearl}
-                                                    pearlIndex={pearlIndex}
-                                                    selectedPearl={selectedPearl}
-                                                    onSelectPearl={handleSelectPearl}
-                                                    unlockMode={unlockMode}
-                                                    showTranscriberCount={isAlternateDisplayModeActive}
-                                                    unlockVersion={unlockVersion}
-                                                />
-                                            </div>
-                                        )
-                                    )}
-                                </div>
-                            </div>
-                        ))}
-                </div>
+                {filteredPearls
+                    .filter(chapter => chapter.items.length > 0)
+                    .map((chapter, chapterIndex) => (
+                        <ChapterGrid
+                            key={`chapter-${chapterIndex}`}
+                            chapter={chapter}
+                            chapterIndex={chapterIndex}
+                            currentGridPosition={currentGridPosition}
+                            selectedPearlRef={selectedPearlRef}
+                            getHighlightStyle={getHighlightStyle}
+                            unlockMode={unlockMode}
+                            selectedPearl={selectedPearl}
+                            onSelectPearl={handleSelectPearl}
+                            isAlternateDisplayModeActive={isAlternateDisplayModeActive}
+                            unlockVersion={unlockVersion}
+                        />
+                    ))}
             </div>
-        </>
+        </div>
     );
 }
 
