@@ -16,7 +16,7 @@ export type UnlockMode = "all" | "unlock";
 
 export default function DialogueInterface() {
     const [unlockMode, setUnlockMode] = useState<UnlockMode>("all");
-    const { selectedPearl, selectedTranscriber, handleSelectPearl, handleSelectTranscriber } = useDialogue(unlockMode);
+    const { selectedPearl, selectedTranscriber, handleSelectPearl, handleSelectTranscriber, handleKeyNavigation, currentGridPosition } = useDialogue(unlockMode);
     const { refresh, unlockVersion } = useUnlockState();
     const [hintProgress, setHintProgress] = useState<number>(0);
     const [isAlternateDisplayModeActive, setIsAlternateDisplayModeActive] = useState(false);
@@ -65,8 +65,10 @@ export default function DialogueInterface() {
             isMobile={isMobile}
             setUnlockMode={setUnlockMode}
             unlockVersion={unlockVersion}
+            handleKeyNavigation={handleKeyNavigation}
+            currentGridPosition={currentGridPosition}
         />
-    ), [GRID_DATA, selectedPearl, unlockMode, isAlternateDisplayModeActive, isMobile, handleSelectPearlWithReset, unlockVersion]);
+    ), [GRID_DATA, selectedPearl, unlockMode, isAlternateDisplayModeActive, isMobile, handleSelectPearlWithReset, unlockVersion, handleKeyNavigation, currentGridPosition]);
 
     const dialogueBoxComponent = useMemo(() => (
         <DialogueBox
@@ -99,8 +101,7 @@ export default function DialogueInterface() {
         >
             <div className="absolute inset-0 backdrop-blur-sm bg-black/30"/>
 
-            <div
-                className={cn("relative z-10 w-full max-w-[1400px]")}>
+            <div className={cn("relative z-10 w-full max-w-[1400px]")}>
                 {isMobile ? (
                     <>
                         <div className="w-full pb-4" style={selectedPearl ? { display: "none" } : {}}>

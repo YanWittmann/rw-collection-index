@@ -84,12 +84,13 @@ Contributions are welcome! Please open an Issue or Pull Request to discuss chang
 
 Thanks to:
 
-| User             | Contribution                                                                                            |
-|------------------|---------------------------------------------------------------------------------------------------------|
-| Space Dwarf      | "Colored Pearls + Broadcasts" category rename.                                                          |
-| Space Dwarf      | DLC Tag for DLC content.                                                                                |
-| bug leaving room | Use up-to-date interactive map links.                                                                   |
-| bug leaving room | Info that certain text color only exists in DP.                                                         |
-| Hmoorkin         | Broadcast icons are too similar in color.                                                               |
-| yukithedestroyer | If there are multiple identical transcribers on an entry, they do not unlock correctly in spoiler mode. |
-| Space Dwarf      | Some incorrect map locations.                                                                           |
+| User                      | Contribution                                                                                            |
+|---------------------------|---------------------------------------------------------------------------------------------------------|
+| Space Dwarf               | "Colored Pearls + Broadcasts" category rename.                                                          |
+| Space Dwarf               | DLC Tag for DLC content.                                                                                |
+| bug leaving room          | Use up-to-date interactive map links.                                                                   |
+| bug leaving room          | Info that certain text color only exists in DP.                                                         |
+| Hmoorkin                  | Broadcast icons are too similar in color.                                                               |
+| yukithedestroyer          | If there are multiple identical transcribers on an entry, they do not unlock correctly in spoiler mode. |
+| Space Dwarf               | Some incorrect map locations.                                                                           |
+| candlesign.4539 / skyball | Keyboard navigation.                                                                                    |
