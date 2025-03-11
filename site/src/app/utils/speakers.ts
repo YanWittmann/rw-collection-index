@@ -37,6 +37,9 @@ export const transcribersColors: { [key: string]: string } = {
     "LttM-FP-saint": "#4B7486",
     "broadcast-pre-FP": "#ffffff",
     "broadcast-post-FP": "#7f7f7f",
+    "saint": "#aaf156",
+    "base-slugcats": "#ffffff",
+    "artificer": "#70233c",
 };
 
 export const transcriberIcons: { [key: string]: string } = {
@@ -112,13 +115,16 @@ export const regionNames: { [key: string]: string } = {
 }
 
 export function darken(hex: string, amount: number) {
+    if (!hex) {
+        return '#7a7a7a';
+    }
     return '#' + hex.replace(/^#/, '').replace(/../g, color => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) - amount)).toString(16)).substr(-2));
 }
 
 const variableDefinitions: { [key: string]: any } = {
     "speakersColors": speakersColors,
     "transcribersColors": transcribersColors,
-    "SI-CHAT": "When the MSC DLC is disabled, there are only two Sky Island pearls per playthrough, each with one random one of five possible conversations.\nWith the MSC DLC, these have been split into five separate pearls. This is one of them.",
+    "SI-CHAT": "When the MSC DLC is disabled, there are only two Sky Island pearls per playthrough, each with one random one of five possible conversations.\nWith the MSC DLC, these have been split into five separate pearls. This is one of them.\nText color is only present in the Downpour version of the game.",
     "LC-PEARL-MOON": "This Pearl cannot be brought to Moon as Artificer, as the Shoreline has been replaced by the Waterfront Facility.\nThe only way to bring the Pearl to Moon is to be spawned into the Metropolis as Monk or Survivor in Expedition Mode and bringing the Pearl to Shoreline.",
     "MAP-LP-PRE-PEB": "White Broadcasts are unlocked in sequential order regardless of the location they are found in.\nThe locations listed here can therefore be visited in any order.",
     "LP-PRE-PEB": "The seven White Broadcasts are unlocked in sequential order regardless of the location they are found in.\nThey can only be found before meeting Five Pebbles.\nBroadcast names are unofficial and match the Wiki's names.",

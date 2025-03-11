@@ -1,7 +1,6 @@
 color: #f6ee53
 type: pearl
 name: Light Yellow
-map: region=DM, room=LAB3, mapSlugcat=spear
 
 === transcription: LttM-pre-collapse
 md-map: region=DM, room=LAB3, mapSlugcat=spear
@@ -11,7 +10,8 @@ As for the contents of this pearl... it's a large batch of my personal notes and
 Could you please just put this pearl back where you found it?
 
 === transcription: LttM-post-collapse
-md-map: region=DS, room=LAB3, mapSlugcat=white
+md-map: region=MS, room=LAB3, mapSlugcat=white
+md-tag: downpour
 This feels quite familiar to me. Did you extract this from my Memory Conflux?
 It's a large batch of my personal notes and research. It details my seven-hundred-and-ninety-second karmic inversion loop simulation. That's where the breakdown of a karmic field's typical bimodal distribution of sensory perception begins...
 begins to...

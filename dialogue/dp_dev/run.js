@@ -1,4 +1,5 @@
 // run on https://rainworld.miraheze.org/wiki/Developer_Commentary
+// make sure to move the paincat's entries to the bottom.
 
 let result = Array.from(document.querySelectorAll('.broadcast')).map(broadcast => {
     const entries = [];
@@ -58,8 +59,8 @@ console.log(result.map(entry => {
         'MS_BITTEREDGE': { region: 'MS', room: 'bitteredge', mapSlugcat: 'rivulet' },
         'MS_SEWERBRIDGE': { region: 'MS', room: 'sewerbridge', mapSlugcat: 'rivulet' },
         'SH_E04RIV': { region: 'SH', room: 'E04RIV', mapSlugcat: 'rivulet' },
-        'VS_BASEMENT01': {},
-        'VS_BASEMENT02': {},
+        'VS_BASEMENT01': { region: 'VS', room: 'BASEMENT01', mapSlugcat: 'inv' },
+        'VS_BASEMENT02': { region: 'VS', room: 'BASEMENT02', mapSlugcat: 'inv' },
     };
 
     const regionToSlugcatMap = {
@@ -83,7 +84,8 @@ console.log(result.map(entry => {
         "SI": "#e8597f",
         "SB": "#9c5933",
         "DM": "#194fe7",
-        "LM": "#30bab2",
+        "LM": "#38d3ca",
+        "MS": "#097370",
         "UW": "#886b57",
         "SS": "#939393",
         "CL": "#47655f",
@@ -91,7 +93,6 @@ console.log(result.map(entry => {
         "UG": "#8fb572",
         "VS": "#75405c",
         "OE": "#d8ae8a",
-        "MS": "#0b9793",
         "LC": "#7f3339",
         "RM": "#9c00ff",
         "LF": "#608c9e",

@@ -15,19 +15,22 @@ from the vanilla version and the Downpour DLC.
 
 ## Data and Features
 
-- Complete listing of all:
-    - Pearls (Vanilla, Downpour)
-    - Broadcasts
-    - Five Pebbles Pearls
-    - White Pearls
-    - Broadcast Pearls
-    - Developer Commentary
-    - Item Descriptions
-    - Iterator Dialogue (LttM, FP) (relevant selection)
-    - Echoes Dialogue
-- Location details with map links
-- Progressive unlock and hint system for spoiler-free exploration
-- Search functionality
+Complete listing of all:
+  - Pearls (Vanilla, Downpour)
+  - Broadcasts
+  - Five Pebbles Pearls
+  - White Pearls
+  - Broadcast Pearls
+  - Developer Commentary
+  - Item Descriptions
+  - Iterator Dialogue (LttM, FP) (relevant selection)
+  - Echoes Dialogue
+
+Further features:
+- Links to the locations on the interactive Rain World map.
+- Spoiler/Unlock mode where all items start hidden ("?") and can display progressive hints if needed.
+- URL stores currently selected entry and transcriber to easily share contents with others.
+- Search functionality that allows to perform a full-text search across all entries.
 
 Information is sourced from the [Rain World Wiki](https://rainworld.miraheze.org/wiki/Pearl/Dialogue) and the game
 itself.
@@ -74,3 +77,18 @@ npm run start
 ```bash
 npm run build
 ```
+
+## Contributing
+
+Contributions are welcome! Please open an Issue or Pull Request to discuss changes.
+
+Thanks to:
+
+| User             | Contribution                                                                                            |
+|------------------|---------------------------------------------------------------------------------------------------------|
+| Space Dwarf      | "Colored Pearls + Broadcasts" category rename.                                                          |
+| Space Dwarf      | DLC Tag for DLC content.                                                                                |
+| bug leaving room | Use up-to-date interactive map links.                                                                   |
+| bug leaving room | Info that certain text color only exists in DP.                                                         |
+| Hmoorkin         | Broadcast icons are too similar in color.                                                               |
+| yukithedestroyer | If there are multiple identical transcribers on an entry, they do not unlock correctly in spoiler mode. |

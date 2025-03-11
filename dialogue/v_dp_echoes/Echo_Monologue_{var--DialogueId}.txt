@@ -153,6 +153,7 @@ md-map: region=LC, room=highestpoint, mapSlugcat=artificer
 md-name: Twelve Beads among Burning Skies
 md-transcriberName: As a Slugcat other than Artificer
 md-var-DialogueId: LC
+md-tag: downpour
 What brings you to this lonely place?
 Do you seek the same isolation that I once did in flesh?
 An angry fool I was, blinded by fervor and pride!
@@ -167,6 +168,7 @@ md-subType: item/Chieftain_Scavenger_icon
 md-name: Twelve Beads among Burning Skies
 md-transcriberName: After defeating the Chieftain Scavenger
 md-var-DialogueId: LC
+md-tag: downpour
 You, who have encountered a consequence much like my own.
 Gripped by raw emotions whose chains bind you, destined to this land.
 Shortcomings of the past haunt one and all like whispering phantoms.
@@ -179,6 +181,7 @@ md-map: region=LC, room=highestpoint, mapSlugcat=artificer
 md-name: Twelve Beads among Burning Skies
 md-transcriberName: Before defeating the Chieftain Scavenger
 md-var-DialogueId: LC
+md-tag: downpour
 You are stuck in a cycle of wrath and destruction, simple being.
 Gripped by raw emotions whose chains bind you, destined to this land.
 Shortcomings of the past haunt one and all like whispering phantoms.

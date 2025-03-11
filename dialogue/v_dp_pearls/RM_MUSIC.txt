@@ -6,6 +6,7 @@ info: When the audio is visualised, a Mandala can be seen at the end of the segm
 
 === transcription: LttM-saint
 md-map: region=CL, room=AI, mapSlugcat=saint
+md-tag: downpour
 This pearl is still warm, and there is only one reason why that could be.
 Please, return this. I am sure what little is left of him misses this dearly.
 If you must know what this is... It is a memento of an age long past, where my kind once stood towering above the clouds. Toiling away at a great problem passed down to us from our creators. Debating, testing, calculating, researching. Thousands of us...
@@ -15,12 +16,14 @@ A new cycle is unfolding. One we need not be a part of.
 
 === transcription: FP-artificer
 md-map: region=RM, room=AI, mapSlugcat=rivulet
+md-tag: downpour
 That pearl is an old keepsake from times long past. It encodes a recording of a short hymn that was popular among the inhabitants of my city.
 It is a small comfort that helps drown out the solemn ambiance of the surrounding facility, and at best gives some remembrances of better times.
 It's not much, but I don't have a lot to occupy my time with anymore...
 
 === transcription: LttM-post-collapse
 md-map: region=RM, room=AI, mapSlugcat=rivulet
+md-tag: downpour
 How strange! This pearl is still warm, as if its data was accessed very recently.
 Unfortunately, there's no text on here for me to read to you. Rather, this pearl has an audio track within it.
 Back when I participated in Iterator conversation groups, there were some out there who had a great interest in cultural archiving. I would have loved to share this with them.

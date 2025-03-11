@@ -1,5 +1,7 @@
 type: item
 subType: inv
+map: region=SS, room=L01, mapSlugcat=inv
+tag: downpour
 
 === transcription: FP
 md-type: pearl

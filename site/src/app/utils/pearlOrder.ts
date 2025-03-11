@@ -11,7 +11,7 @@ export interface PearlChapter {
 
 export const pearlOrder: PearlChapter[] = [
     {
-        name: "Vanilla / Downpour",
+        name: "Colored Pearls + Broadcasts",
         ids: [
             "SL_moon_PALE_YELLOW", "DS_BRIGHT_GREEN", "Red_stomach_AQUAMARINE", "LP_2_PEB_GRAY_3", "Chatlog_GW2_LIGHT_GREEN_3",
             "SL_bridge_BRIGHT_PURPLE", "SH_DEEP_MAGENTA", "DM_LIGHT_YELLOW", "LP_3_PEB_GRAY_4", "Chatlog_SH0_PURPLE",
@@ -165,4 +165,8 @@ export const orderPearls = (pearls: PearlData[]): { name: string, items: PearlDa
     const uncoveredPearls = pearls.filter(pearl => !processedPearlIds.has(pearl.id));
     orderedPearls.push({ name: "Other", items: uncoveredPearls });
     return orderedPearls;
+}
+
+export function hasTag(tags: string[] | undefined, tag: string): boolean {
+    return tags ? tags.includes(tag) : false;
 }

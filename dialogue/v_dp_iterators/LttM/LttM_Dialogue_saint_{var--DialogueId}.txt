@@ -36,6 +36,7 @@ md-type: pearl
 md-transcriberName: Ascending both Looks to the Moon and Five Pebbles
 md-var-DialogueId: Rubicon
 md-name: Encountering in Rubicon
+md-tag: downpour
 BSM: Do you feel it, old friend?
 FP: The sensation of time folding in on itself? The spiraling offshoot of another's reality wrapping around your own?
 BSM: None of this is real, is it? Every repeating cycle of our own existence unwound and laid bare, a cycle pulled into a tangent with itself. Is this what we were looking for? Have we broken free from it, or is it just a dream?
@@ -50,6 +51,7 @@ md-type: pearl
 md-transcriberName: Ascending only Five Pebbles
 md-var-DialogueId: Rubicon
 md-name: Encountering in Rubicon
+md-tag: downpour
 I understand what you are, little beast. This place is not real, a dream from outside.
 As if every cycle of my existence has knotted together with another's, even if for only a fraction of a second it ripples through mine.
 I see my own creation, I see my agonizing decay. I see my hollow structure become a sanctuary in the storm. I see a new world unfold without me, as me. I see myself become something else.
@@ -61,6 +63,7 @@ md-type: pearl
 md-transcriberName: Ascending only Looks to the Moon
 md-var-DialogueId: Rubicon
 md-name: Encountering in Rubicon
+md-tag: downpour
 Little saint. I perceive your existence as it passes through my own. I know this is only a dream, but your presence is real.
 Do you see it too? Our endless repetitions, circling onward to infinity? From here I can observe the repeating loop of my own existence, every iteration a duplicate of the last.
 I have visions of the entire pattern my creators desired to escape at once. An endless sequence of life and death, further beyond my control with each passing cycle.

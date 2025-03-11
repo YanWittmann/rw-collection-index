@@ -35,6 +35,7 @@ export function TranscriberSelector({
             overwriteColor = color;
             overwriteIcon = "broadcast";
         } else if (transcriber.metadata.type === 'item' && transcriber.metadata.subType) {
+            color = transcribersColors[transcriber.transcriber];
             overwriteIcon = transcriber.metadata.subType;
         } else {
             color = transcribersColors[transcriber.transcriber];
@@ -49,6 +50,9 @@ export function TranscriberSelector({
         }
 
         if (!isUnlocked) {
+            if (!color) {
+                console.warn(`No color found for transcriber ${transcriber.transcriber}`);
+            }
             return <RwIconButton
                 key={'select-' + pearl.id + '-' + index}
                 onClick={() => onSelect(effectiveTranscriberName)}

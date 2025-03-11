@@ -32,11 +32,12 @@ export function generateMapLinkFromMapInfo(mapInfo: MapInfo | undefined) {
         return null;
     }
     // https://rain-world-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
+    // https://rain-world-downpour-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
     const { region, room, mapSlugcat } = mapInfo;
     if (!region || !room || !mapSlugcat) {
         return null;
     }
-    return `https://rain-world-map.github.io/map.html?slugcat=${mapSlugcat}&region=${region}&room=${region}_${room}`;
+    return `https://rain-world-downpour-map.github.io/map.html?slugcat=${mapSlugcat}&region=${region}&room=${region}_${room}`;
 }
 
 export function hasMapLocations(dialogue: Dialogue): boolean {
@@ -136,7 +137,9 @@ export function DialogueBox({
         }
 
         const dialogue = pearl.transcribers[selectedTranscriberIndex];
-        const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, dialogue.transcriber);
+        const multipleSameTranscribers = new Set(pearl.transcribers.map(transcriber => transcriber.transcriber)).size !== pearl.transcribers.length;
+        const effectiveTranscriberName = multipleSameTranscribers ? dialogue.transcriber + '-' + selectedTranscriberIndex : dialogue.transcriber;
+        const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, effectiveTranscriberName);
 
         let titleElement = null;
         if (dialogue.metadata.info) {

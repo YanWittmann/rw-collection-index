@@ -664,7 +664,7 @@ Will: The deer would get moody if we told them they couldn't make more friends.
 
 === transcription: broadcast
 md-map: region=LM, room=BRIDGE01, mapSlugcat=spear
-md-color: #30bab2
+md-color: #38d3ca
 md-var-DevCommId: Two_Bridges
 md-name: Two Bridges
 Andrew: Some people thought the existence of Precipice was us forgetting that there\nare two more legs before the opposite wall? You just need to think in 3d space!
@@ -673,7 +673,7 @@ Andrew: There's actually two bridges in canon. The bridge in-game connects Pebbl
 
 === transcription: broadcast
 md-map: region=LM, room=BRIDGE02, mapSlugcat=spear
-md-color: #30bab2
+md-color: #38d3ca
 md-var-DevCommId: Expansion_of_The_Precipice
 md-name: Expansion of The Precipice
 Will: The Precipice once existed only as a short bridge between Moon and Pebbles. It was later\nexpanded to connect to Waterfront Complex beneath it due to reworking of Moon's structure.
@@ -682,7 +682,7 @@ Will: However, when Artificer was moved to the same part of the timeline as Spea
 
 === transcription: broadcast
 md-map: region=LM, room=C02, mapSlugcat=spear
-md-color: #30bab2
+md-color: #38d3ca
 md-var-DevCommId: Dissatisfied_with_Region_Art
 md-name: Dissatisfied with Region Art
 Norgad: While I still enjoy this region's artwork piece, it's definitely my least favourite of the bunch.
@@ -691,7 +691,7 @@ Norgad: Despite this, I still like the mint chocolate color scheme I ended up wi
 
 === transcription: broadcast
 md-map: region=LM, room=F02, mapSlugcat=spear
-md-color: #30bab2
+md-color: #38d3ca
 md-var-DevCommId: No_Deep_Swim_For_Artificer
 md-name: No Deep Swim For Artificer
 Screams: You're really not supposed to go through these "deep swim" segments as Artificer.
@@ -702,7 +702,7 @@ Will: I did~
 
 === transcription: broadcast
 md-map: region=LM, room=LEGENTRANCEARTY, mapSlugcat=artificer
-md-color: #30bab2
+md-color: #38d3ca
 md-var-DevCommId: Dying_Superstructure
 md-name: Dying Superstructure
 Andrew: Artificer was originally on a point of the timeline after Moon's collapse.
@@ -713,7 +713,7 @@ Andrew: You might be able to still find that unused variant of Moon's collapsed 
 
 === transcription: broadcast
 md-map: region=LM, room=SIDESWAMP, mapSlugcat=spear
-md-color: #30bab2
+md-color: #38d3ca
 md-var-DevCommId: Moon's_Siren
 md-name: Moon's Siren
 Andrew: Moon's siren is pretty creepy. I wanted it to sound like the whole superstructure was howling and crying out in pain.
@@ -726,7 +726,7 @@ Andrew: Not to mention with his close proximity to Moon, a siren might be fairly
 
 === transcription: broadcast
 md-map: region=LM, room=TOWER09, mapSlugcat=spear
-md-color: #30bab2
+md-color: #38d3ca
 md-var-DevCommId: Region_Acronyms
 md-name: Region Acronyms
 Andrew: Some of the region acronyms don't match their final region names. Let's take a look at what each of them stood for.
@@ -738,7 +738,7 @@ Andrew: and finally, (VS) Voided Subterranean, which is entirely unrelated\nto P
 
 === transcription: broadcast
 md-map: region=LM, room=WALL02, mapSlugcat=spear
-md-color: #30bab2
+md-color: #38d3ca
 md-var-DevCommId: Rework_of_Moon's_Exterior
 md-name: Rework of Moon's Exterior
 Will: Moon's exterior rooms went through a considerable rework midway through development.
@@ -750,7 +750,7 @@ Will: This allowed us to link the lower region, with the upper Precipice,\nand a
 
 === transcription: broadcast
 md-map: region=MS, room=AIR03, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Glow_Weeds
 md-name: Glow Weeds
 Will: Glowweeds are one of my favorite new additions to the game! Creating\na unique object that solved multiple problems at once is a great feeling.
@@ -762,7 +762,7 @@ Will: Two bonus upsides are that jetfish will compete with the player to collect
 
 === transcription: broadcast
 md-map: region=MS, room=ARTERY07, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Cheating
 md-name: Cheating
 Dakras: Or you could call this the Sea of Darkness.
@@ -771,7 +771,7 @@ Dakras: How did you even get up here, anyway? Are you cheating?
 
 === transcription: broadcast
 md-map: region=MS, room=ARTERY08, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: The_Heart_of_Moon
 md-name: The Heart of Moon
 Andrew: When planning Moon's regions, I wanted hers to not feel redundant with Five Pebbles' regions.
@@ -784,7 +784,7 @@ Andrew: This all wraps up in Rivulet's climax of inserting the rarefaction\ncell
 
 === transcription: broadcast
 md-map: region=MS, room=bitteraeriepipeu, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Leaked_Snow
 md-name: Leaked Snow
 Dakras: Did you know Cappin nearly leaked snow once?
@@ -794,7 +794,7 @@ Dakras: Also I'm pretty sure it was shown in a teaser once lol.
 
 === transcription: broadcast
 md-map: region=MS, room=bitteredge, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Giant_Space_Heaters
 md-name: Giant Space Heaters
 Andrew: Why is it snowing up here? Partially the same reason why there's snow at the peaks of mountains.
@@ -806,7 +806,7 @@ Andrew: Between the altitude and the far proximity to any functional radiated he
 
 === transcription: broadcast
 md-map: region=MS, room=FARSIDE, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Eastern_Expansion?
 md-name: Eastern Expansion?
 Andrew: We left a pipe entrance open here.
@@ -816,7 +816,7 @@ Andrew: ...Eastern Expansion confirmed??
 
 === transcription: broadcast
 md-map: region=MS, room=I02, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Monolith_of_Moon
 md-name: Monolith of Moon
 Will: Moon's collapsed structure is both the largest and most complex region in the game.\nWorking off a modified version of her original map, we went into this quite unprepared!
@@ -829,7 +829,7 @@ Will: The secret little gem of this design direction, is the realization that Sp
 
 === transcription: broadcast
 md-map: region=MS, room=LAB3, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Pearl_Translations_2
 md-name: Pearl Translations 2
 Andrew: This pearl survived the collapse! This same pearl is in this same room in Spearmaster's LTTM,\ntoo. Although, Past Moon and Future Moon have different dialog if you deliver the pearl to them.
@@ -841,7 +841,7 @@ Andrew: Though, with all of these timeline differences, I wish good luck to the 
 
 === transcription: broadcast
 md-map: region=MS, room=sewerbridge, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Red_Herrings
 md-name: Red Herrings
 Andrew: Some of the teasers we gave out during development were red herrings.
@@ -858,7 +858,7 @@ Andrew: And then later we show another Rivulet teaser with one measly little pud
 
 === transcription: broadcast
 md-map: region=MS, room=U03, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Origin_of_the_More_Slugcats_Expansion
 md-name: Origin of the More Slugcats Expansion
 Andrew: Submerged Superstructure was THE origin of the More Slugcats Expansion.
@@ -870,7 +870,7 @@ Andrew: Then things got out of hand...
 
 === transcription: broadcast
 md-map: region=MS, room=VENT04, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Eccos_of_Vents
 md-name: Eccos of Vents
 Dakras: Did you know The Vents (this subregion) is a refrence to Ecco? This\nwhole area is in a way if you think about it with all the underwater caves.
@@ -880,7 +880,7 @@ Dakras: Some of the plants in that game are beautiful and would translate perfec
 
 === transcription: broadcast
 md-map: region=MS, room=VENT06, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Tube_of_Medusa
 md-name: Tube of Medusa
 Dakras: I guess you can call this the Tube of Medusa.
@@ -889,7 +889,7 @@ Dakras: Still less annoying overall.
 
 === transcription: broadcast
 md-map: region=MS, room=VENT08, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Delish_Region_Art
 md-name: Delish Region Art
 Norgad: The region art for this place has some really delish colors.
@@ -898,7 +898,7 @@ Norgad: After the artwork was finished, Ongomato even made a 3D model of it! Thi
 
 === transcription: broadcast
 md-map: region=MS, room=VENT15, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Underwater_Creatures
 md-name: Underwater Creatures
 Will: We knew from the start that Rivulet's campaign was going to feature a large underwater area beneath Moon.
@@ -912,7 +912,7 @@ Will: Giant jellyfish are not an amazing creature either, as their purely static
 
 === transcription: broadcast
 md-map: region=MS, room=VENT23, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Giant_Jellyfish_Concept
 md-name: Giant Jellyfish Concept
 Norgad: I did the concept artwork for the giant jellyfish.
@@ -921,7 +921,7 @@ Norgad: The concept art is still floating around somewhere I think.
 
 === transcription: broadcast
 md-map: region=MS, room=X02, mapSlugcat=rivulet
-md-color: #0b9793
+md-color: #097370
 md-var-DevCommId: Room_Migration_from_Moon_to_Pebbles
 md-name: Room Migration from Moon to Pebbles
 Dakras: MS was originally my region, but... if we kept me on it at the rate I work on stuff it'd only be done 3 years later.
@@ -1671,6 +1671,8 @@ Andrew: All of these considerations were factored into which creatures to includ
 Andrew: Will also wrote a region creature density analyzing script, which he used to balance out creature spawns in each\nregion to keep difficulty levels consistent, and creature densities appropriate based on the global population decay.
 
 === transcription: broadcast
+md-map: region=VS, room=BASEMENT01, mapSlugcat=inv
+md-color: #75405c
 md-var-DevCommId: Character_Art
 md-name: Character Art
 Norgad: Ahahhh, it's the devs!
@@ -1682,6 +1684,8 @@ Norgad: Hope you enjoy it for many hours to come, and get lost in Rain World all
 Norgad: <3
 
 === transcription: broadcast
+md-map: region=VS, room=BASEMENT02, mapSlugcat=inv
+md-color: #75405c
 md-var-DevCommId: Paincats
 md-name: Paincats
 Screams: Wanna hear a funny thought?

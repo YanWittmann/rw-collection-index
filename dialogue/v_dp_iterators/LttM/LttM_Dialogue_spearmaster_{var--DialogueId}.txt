@@ -59,6 +59,26 @@ Welcome back little messenger.
 Thank you for visiting me, but I'm afraid there is nothing here for you.
 It is nice to see you again little messenger!
 
+=== transcription: LttM-pre-collapse
+md-type: pearl
+md-var-DialogueId: Spearmaster_Pearl
+md-name: Commenting on the Spearmaster Pearl
+What is this pearl you've brought along with you?
+It has strange biological attachments. Was this pearl... from inside of you?
+Let me take a look at what's written on it.
+...
+This is...
+I assume you've already shown this to Five Pebbles?
+I was not aware of the extent to which these affairs had reached the wider iterator populace. Nor was I aware of the lengths that the others were going in their attempts to get into contact with us.
+If only I could...
+Brave messenger, do you mind if I rewrite the contents of this pearl? After all, it already served its original purpose.
+I will attach a broadcast key to it, signed with my communications serial.
+...
+To the far west of here, past the silently towering chimney stacks of Five Pebbles' complex, you will find a place of sunbaked lands with beautiful flora that straddle the clouds.
+There is a communications array located there. It is the nearest one that may still be functioning.
+Its systems should recognize and respond to my signed broadcast key. If you could please stop there on your return trip to Seven Red Suns, I would be very grateful. This is my only hope to get a message out to the local group.
+Be careful, messenger.
+
 === transcription: broadcast
 md-type: pearl
 md-var-DialogueId: Ending_Broadcast

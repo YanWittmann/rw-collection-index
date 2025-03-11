@@ -8,6 +8,7 @@ import { regionNames, resolveVariables } from "../../utils/speakers"
 import { renderDialogueLine } from "../../utils/renderDialogueLine"
 import { Popover, PopoverContent, PopoverTrigger } from "@shadcn/components/ui/popover";
 import { generateMapLinkFromMapInfo, getMapLocations, hasMapLocations } from "./DialogueBox";
+import { hasTag } from "../../utils/pearlOrder";
 
 interface DialogueActionBarProps {
     pearl: PearlData
@@ -32,6 +33,19 @@ export function DialogueActionBar({ pearl, transcriberData, isUnlocked, onSelect
             <TooltipContent>Return to the main view</TooltipContent>
         </Tooltip>,
     )
+
+    if (hasTag(transcriberData.metadata.tags, "downpour")) {
+        segments.push(
+            <Tooltip key="open-downpour">
+                <TooltipTrigger>
+                    <RwIconButton>
+                        <RwIcon type="dlc-dp"/>
+                    </RwIconButton>
+                </TooltipTrigger>
+                <TooltipContent>Downpour-Exclusive Content</TooltipContent>
+            </Tooltip>,
+        )
+    }
 
     if (isUnlocked && hasMapLocations(transcriberData)) {
         if (hasMultipleLocations) {

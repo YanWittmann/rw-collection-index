@@ -16,6 +16,7 @@ export interface Dialogue {
     metadata: {
         name: string;
         color: string;
+        tags?: string[];
         type?: string;
         subType?: string;
         transcriberName?: string;
@@ -37,6 +38,7 @@ export interface PearlData {
         color: string;
         type: PearlType;
         name: string;
+        tags?: string[];
         subType?: string;
         info?: string;
         mapInfo?: string;

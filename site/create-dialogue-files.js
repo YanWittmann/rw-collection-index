@@ -24,8 +24,7 @@ const generalWhiteGrayBroadcasts = [
 const mapMetadataTemplates = {
     "MAP-WHITE-BROADCASTS": generalWhiteGrayBroadcasts,
     "MAP-GRAY-BROADCASTS": generalWhiteGrayBroadcasts,
-    "MAP-BROADCAST-PEARLS": [
-    ]
+    "MAP-BROADCAST-PEARLS": []
 }
 
 // Track selections for arrays of the same length
@@ -36,7 +35,7 @@ function resolvePatterns(value, variables = {}) {
 
     return value.replace(PATTERN_REGEX, (match, pattern) => {
         const [type, ...params] = pattern.split('--');
-        switch(type) {
+        switch (type) {
             case 'var':
                 return variables[params[0]] || match;
             case 'randomPick': {
@@ -124,7 +123,7 @@ function createVariableGroupEntry(baseId, parsedData, group) {
         resolveTranscriberMetadata(transcriber, group.variables, resolvedMetadata)
     );
 
-    // check if the metadata does not contain a name. If so, check if any transcriber has a name and use that as the name
+    // Fallback for missing metadata properties
     if (!resolvedMetadata.name) {
         resolvedMetadata.name = resolvedTranscribers.find(t => t.metadata.name)?.metadata.name;
     }
@@ -133,6 +132,13 @@ function createVariableGroupEntry(baseId, parsedData, group) {
     }
     if (!resolvedMetadata.subType) {
         resolvedMetadata.subType = resolvedTranscribers.find(t => t.metadata.subType)?.metadata.subType;
+    }
+
+    // Ensure tags are included in the final metadata
+    if (!resolvedMetadata.tags || resolvedMetadata.tags.length === 0) {
+        resolvedMetadata.tags = resolvedTranscribers
+            .flatMap(t => t.metadata.tags || [])
+            .filter((v, i, a) => a.indexOf(v) === i);
     }
 
     return {
@@ -169,6 +175,12 @@ function resolveTranscriberMetadata(transcriber, variables, baseMetadata) {
                 ...new Set([
                     ...(baseMetadata.map || []),
                     ...(resolvedTransMetadata.map || [])
+                ])
+            ],
+            tags: [
+                ...new Set([
+                    ...(baseMetadata.tags || []),
+                    ...(resolvedTransMetadata.tags || [])
                 ])
             ]
         }
@@ -248,7 +260,10 @@ function parseSectionHeader(headerLine) {
 const sectionHandlers = {
     transcription: (sectionLines, value) => {
         // Extract metadata lines starting with md-
-        const metadata = { map: [] };
+        const metadata = {
+            map: [],
+            tags: []
+        };
         const lines = [];
 
         sectionLines.forEach(line => {
@@ -260,6 +275,10 @@ const sectionHandlers = {
 
                     if (key === 'map') {
                         parseMapEntries(val).forEach(entry => metadata.map.push(entry));
+                    } else if (key === 'tag') {
+                        // Split comma-separated tags and trim whitespace
+                        const tags = val.split(',').map(t => t.trim());
+                        metadata.tags.push(...tags);
                     } else {
                         metadata[key] = val;
                     }
@@ -269,11 +288,28 @@ const sectionHandlers = {
             }
         });
 
+        // add these tags if one of the transcribers is listed
+        const tagAddons = {
+            "downpour": [
+                "LttM-saint", "LttM-rivulet", "LttM-pre-collapse", "LttM-gourmand",
+                "FP-artificer",
+                "LttM-FP-saint",
+                "broadcast-pre-FP", "broadcast-post-FP", "broadcast",
+                "saint", "rivulet", "artificer",
+            ],
+        }
+        for (const [tag, transcribers] of Object.entries(tagAddons)) {
+            if (transcribers.includes(value)) {
+                metadata.tags.push(tag);
+            }
+        }
+
         return {
             transcriber: value,
             metadata: {
                 ...metadata,
-                map: metadata.map.length > 0 ? metadata.map : undefined
+                map: metadata.map.length > 0 ? metadata.map : undefined,
+                tags: metadata.tags.length > 0 ? metadata.tags : undefined
             },
             lines: lines.map(parseLine)
         };
@@ -289,7 +325,10 @@ function parseDialogueContent(content) {
     const lines = content.split('\n').map(l => l.trim()).filter(l => l);
 
     // Parse global metadata
-    const metadata = { map: [] };
+    const metadata = {
+        map: [],
+        tags: [] // Initialize tags array
+    };
     let sectionStartIndex = 0;
 
     while (sectionStartIndex < lines.length && !lines[sectionStartIndex].startsWith('===')) {
@@ -301,6 +340,10 @@ function parseDialogueContent(content) {
 
             if (key === 'map') {
                 parseMapEntries(value).forEach(entry => metadata.map.push(entry));
+            } else if (key === 'tag') {
+                // Split comma-separated tags and trim whitespace
+                const tags = value.split(',').map(t => t.trim());
+                metadata.tags.push(...tags);
             } else {
                 metadata[key] = value;
             }
@@ -310,6 +353,7 @@ function parseDialogueContent(content) {
 
     // Clean up empty arrays
     if (metadata.map.length === 0) delete metadata.map;
+    if (metadata.tags.length === 0) delete metadata.tags;
 
     // Parse sections
     const result = {
@@ -329,16 +373,29 @@ function parseDialogueContent(content) {
                 if (handler) {
                     const sectionData = handler(currentSectionLines, currentHeader.value);
                     if (currentHeader.namespace === 'transcription') {
-                        // iterate over the metadata of the transcriber and add all properties of the global metadata to it that are not already set
+                        // Merge global metadata into transcription metadata
                         for (const key in metadata) {
                             if (metadata.hasOwnProperty(key) && !sectionData.metadata.hasOwnProperty(key)) {
                                 sectionData.metadata[key] = metadata[key];
                             }
                         }
-                        // check whether the transcriber has any map entries and if not, add those from the global metadata
-                        if (!sectionData.metadata.map || sectionData.metadata.map.length === 0) {
-                            sectionData.metadata.map = metadata.map;
-                        }
+
+                        // Merge map arrays using Set
+                        sectionData.metadata.map = [
+                            ...new Set([
+                                ...(sectionData.metadata.map || []),
+                                ...(metadata.map || [])
+                            ])
+                        ];
+
+                        // Merge tag arrays using Set
+                        sectionData.metadata.tags = [
+                            ...new Set([
+                                ...(sectionData.metadata.tags || []),
+                                ...(metadata.tags || [])
+                            ])
+                        ];
+
                         result.transcribers.push(sectionData);
                     } else if (currentHeader.namespace === 'hint') {
                         result.hints.push(sectionData);
@@ -359,16 +416,29 @@ function parseDialogueContent(content) {
         if (handler) {
             const sectionData = handler(currentSectionLines, currentHeader.value);
             if (currentHeader.namespace === 'transcription') {
-                // iterate over the metadata of the transcriber and add all properties of the global metadata to it that are not already set
+                // Merge global metadata into transcription metadata
                 for (const key in metadata) {
                     if (metadata.hasOwnProperty(key) && !sectionData.metadata.hasOwnProperty(key)) {
                         sectionData.metadata[key] = metadata[key];
                     }
                 }
-                // check whether the transcriber has any map entries and if not, add those from the global metadata
-                if (!sectionData.metadata.map || sectionData.metadata.map.length === 0) {
-                    sectionData.metadata.map = metadata.map;
-                }
+
+                // Merge map arrays using Set
+                sectionData.metadata.map = [
+                    ...new Set([
+                        ...(sectionData.metadata.map || []),
+                        ...(metadata.map || [])
+                    ])
+                ];
+
+                // Merge tag arrays using Set
+                sectionData.metadata.tags = [
+                    ...new Set([
+                        ...(sectionData.metadata.tags || []),
+                        ...(metadata.tags || [])
+                    ])
+                ];
+
                 result.transcribers.push(sectionData);
             } else if (currentHeader.namespace === 'hint') {
                 result.hints.push(sectionData);
@@ -379,7 +449,8 @@ function parseDialogueContent(content) {
     return {
         metadata: {
             ...metadata,
-            map: metadata.map || undefined
+            map: metadata.map || undefined,
+            tags: metadata.tags || undefined
         },
         ...result
     };
