@@ -56,7 +56,7 @@ const handleTranscriberSelection = (
     let currentIndex = transcribers.length - 1;
 
     if (currentTranscriber) {
-        const [baseName, indexStr] = currentTranscriber.split('-');
+        const [, indexStr] = currentTranscriber.split('-');
         const index = parseInt(indexStr);
         if (!isNaN(index)) {
             currentIndex = index;
