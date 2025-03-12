@@ -64,8 +64,9 @@ export function DialogueBox({
                                 onSelectPearl,
                                 isMobile
                             }: DialogueBoxProps) {
-    const [hoveredTranscriber, setHoveredTranscriber] = useState<string | null>(null)
-    const [lastTranscriberName, setLastTranscriberName] = useState<string | null>(null)
+    const [hoveredTranscriber, setHoveredTranscriber] = useState<string | null>(null);
+    const [lastTranscriberName, setLastTranscriberName] = useState<string | null>(null);
+    const [justCopiedInternalId, setJustCopiedInternalId] = useState<boolean>(false);
 
     const findTranscriberIndex = (transcriberName: string) => {
         if (!pearl) {
@@ -141,16 +142,40 @@ export function DialogueBox({
         const effectiveTranscriberName = multipleSameTranscribers ? dialogue.transcriber + '-' + selectedTranscriberIndex : dialogue.transcriber;
         const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, effectiveTranscriberName);
 
+        const internalId = dialogue.metadata.internalId || pearl.metadata.internalId;
+        let internalIdElement = null;
+        if (internalId) {
+            internalIdElement =
+                <Tooltip key={"internal-id-tooltip"}>
+                    <TooltipTrigger onClick={() => {
+                        navigator.clipboard.writeText(internalId);
+                        setJustCopiedInternalId(true);
+                        setTimeout(() => setJustCopiedInternalId(false), 1000);
+                    }}>
+                        <div className="font-mono text-xs text-white/70 cursor-pointer">
+                            {justCopiedInternalId ? "Copied!" : internalId}
+                        </div>
+                    </TooltipTrigger>
+                    <TooltipContent className="text-center">
+                        The above-listed name is a community-given name.<br/>
+                        The internal ID is the unique identifier the game uses to reference this pearl.<br/>
+                        Click to copy the internal ID to your clipboard.
+                    </TooltipContent>
+                </Tooltip>
+        }
+
         let titleElement = null;
+        const name = dialogue.metadata.name || pearl.metadata.name;
         if (dialogue.metadata.info) {
-            titleElement =
-                <div className="text-center text-white text-lg mb-14 pb-0 mt-7">
+            titleElement = (
+                <div className="text-white text-lg mb-8 pb-0 mt-7 flex items-center justify-center flex-col">
                     <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
                         <Tooltip key={"pearl-info"}>
                             <TooltipTrigger>
                                 <span className={"flex items-center"}>
-                                    {dialogue.metadata.name || pearl.metadata.name} (<span className={"w-3 h-3"}><RwIcon
-                                    type="info"/></span>)
+                                    <div className="text-selectable">{name}</div>
+                                    &nbsp;
+                                    (<span className={"w-3 h-3"}><RwIcon type="info"/></span>)
                                 </span>
                             </TooltipTrigger>
                             <TooltipContent className="text-center">
@@ -158,16 +183,17 @@ export function DialogueBox({
                                     dangerouslySetInnerHTML={{ __html: renderDialogueLine(resolveVariables(dialogue.metadata.info)) }}/>
                             </TooltipContent>
                         </Tooltip>
+                        <br/>
+                        {internalIdElement}
                     </TooltipProvider>
                 </div>
+            )
         } else {
-            const name = dialogue.metadata.name || pearl.metadata.name;
-            const internalId = dialogue.metadata.internalId || pearl.metadata.internalId;
-            titleElement = <div className="text-center text-white text-lg mb-14 pb-0 mt-7">
-                {internalId && <span className="font-mono bg-white/10 px-1 py-1 mr-2 rounded-md text-sm">
-                    {internalId}
-                </span>}
-                {name}
+            titleElement = <div className="text-white text-lg mb-8 pb-0 mt-7 flex items-center justify-center flex-col">
+                <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
+                    <div className="text-selectable">{name}</div>
+                    {internalIdElement}
+                </TooltipProvider>
             </div>
         }
 
@@ -205,7 +231,7 @@ export function DialogueBox({
                 />}
             </div>
         </>
-    }, [pearl, selectedTranscriber, onSelectTranscriber, unlockMode, unlockTranscription, hintProgress, setHintProgress]);
+    }, [pearl, selectedTranscriber, onSelectTranscriber, unlockMode, unlockTranscription, hintProgress, setHintProgress, justCopiedInternalId]);
 
     const toggleUnlockModeCallback = useCallback(() => {
         setUnlockMode(unlockMode === "all" ? "unlock" : "all");
