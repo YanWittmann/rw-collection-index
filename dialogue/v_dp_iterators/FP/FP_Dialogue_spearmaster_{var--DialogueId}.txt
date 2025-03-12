@@ -1,5 +1,6 @@
 type: item
 subType: spearmaster
+tag: downpour
 
 === transcription: FP
 md-type: pearl

@@ -1,5 +1,6 @@
 type: item
 subType: saint
+tag: downpour
 
 === transcription: FP
 md-type: pearl

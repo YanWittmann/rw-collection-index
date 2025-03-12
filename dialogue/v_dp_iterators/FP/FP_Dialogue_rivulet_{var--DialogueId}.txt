@@ -1,5 +1,6 @@
 type: item
 subType: rivulet
+tag: downpour
 
 === transcription: FP
 md-type: pearl

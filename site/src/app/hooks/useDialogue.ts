@@ -98,6 +98,7 @@ export function useDialogue(unlockMode: UnlockMode, GRID_DATA: PearlData[]) {
 
     const handleKeyNavigation = (e: KeyboardEvent, pearls: PearlData[][], currentPearlId: string | null) => {
         if (!pearls.length) return;
+        if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
 
         const maxRows = pearls.length;
         let [row, col] = currentGridPosition;
