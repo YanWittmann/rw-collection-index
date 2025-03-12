@@ -40,25 +40,24 @@ However as long as the microbes in my processing strata continue to function, I'
 md-type: pearl
 md-var-DialogueId: Returning_after_placing_the_Rarefaction_Cell
 md-name: Returning after placing the Rarefaction Cell
-Ah!
-Sleek little one... Did you do this?
-I feel as if pulled out of a deep sleep. I am still trying to process all of this. It has been so long since I've had a connection like this with my structure.
-Everything has restarted in maintenance mode... It seems that it has sent out the order for all of my overseers to return. With my umbilical cord broken I can't operate my structure directly, but with them working as messengers I've been restoring some of my chamber's functionality! With any luck, I should be able to... Ah here we go!
-There is so much here... So much I've forgotten... I'll never be what I once was, but this... I'm sorry. Its hard to piece all of this together. So much has happened in my absence.
-I only have unread messages, and overseer recordings to make sense of what I've missed. Some of these are even from before my collapse!
-Incredible...
-Slag reset keys, a messenger, saving me? No Significant Harassment was never one to give up easy! However I still don't understand everything that has happened. Has it all just been coincidence? Did others send help as well?
-Then there is Five Pebbles. He was sick even before I collapsed, and his state must have only deteriorated since. It looks like he is barely breathing. If there is any part of him left... I...
-We were once good friends, despite everything that has happened. He is probably alone and afraid now...
-
-<b>If Rivulet spoke to Five Pebbles at any point</b>
-"I cannot run away from my mistakes forever; Please understand." Five Pebbles, what have you done... I've been given so much already, and now you've given all you had left.
-It does not matter what happened between us. If he still held the same anger he once did, then none of this would be possible. We've been given the chance to make things right, and he deserves to know what he did wasn't pointless.
-I'm so thankful, for everything.
-
-<b>If Rivulet never spoke to Five Pebbles</b>
-I know he will understand the chance we've both been given! Even if he still holds the same anger he once did...
-We still have to try. Let's make things right, little friend.
+MONO
+| Ah!
+| Sleek little one... Did you do this?
+| I feel as if pulled out of a deep sleep. I am still trying to process all of this. It has been so long since I've had a connection like this with my structure.
+| Everything has restarted in maintenance mode... It seems that it has sent out the order for all of my overseers to return. With my umbilical cord broken I can't operate my structure directly, but with them working as messengers I've been restoring some of my chamber's functionality! With any luck, I should be able to... Ah here we go!
+| There is so much here... So much I've forgotten... I'll never be what I once was, but this... I'm sorry. Its hard to piece all of this together. So much has happened in my absence.
+| I only have unread messages, and overseer recordings to make sense of what I've missed. Some of these are even from before my collapse!
+| Incredible...
+| Slag reset keys, a messenger, saving me? No Significant Harassment was never one to give up easy! However I still don't understand everything that has happened. Has it all just been coincidence? Did others send help as well?
+| Then there is Five Pebbles. He was sick even before I collapsed, and his state must have only deteriorated since. It looks like he is barely breathing. If there is any part of him left... I...
+| We were once good friends, despite everything that has happened. He is probably alone and afraid now...
+/ If Rivulet spoke to Five Pebbles at any point
+|  "I cannot run away from my mistakes forever; Please understand." Five Pebbles, what have you done... I've been given so much already, and now you've given all you had left.
+|  It does not matter what happened between us. If he still held the same anger he once did, then none of this would be possible. We've been given the chance to make things right, and he deserves to know what he did wasn't pointless.
+|  I'm so thankful, for everything.
+/ If Rivulet never spoke to Five Pebbles
+|  I know he will understand the chance we've both been given! Even if he still holds the same anger he once did...
+|  We still have to try. Let's make things right, little friend.
 
 === transcription: broadcast
 md-type: broadcast
@@ -94,3 +93,77 @@ Ah, such a small delicate thing you are.
 And yet, you rebooted a giant organic superstructure and brought peace between two godlike entities of which you have no understanding. But why?
 I don't know if I'll ever understand, but in any case, you're always welcome here.
 For now, though, I still have a lot of information to catch up on.
+
+=== transcription: LttM-rivulet
+md-subType: item/Neuron_Fly_icon
+md-transcriberName: Eating a Neuron Fly
+md-var-DialogueId: Interruptions
+md-name: Interruptions
+MONO
+/ If Looks to the Moon has 5 or more neurons
+/  One of the following options is selected randomly:
+|   Please stop! I beg you. I don't... understand your motivation...
+|   Why?! Why would you?? Please, I have so much more I need to do, still...
+|   What are you doing? Please!! I only just got my freedom back, how cruel can you possibly be?
+/ If Looks to the Moon has 4 neurons
+/  One of the following options is selected randomly:
+|   ...stop... please...
+|   ...why did you... save... me...
+/ If Looks to the Moon has 3 neurons
+|  ...help... me...
+/ If Looks to the Moon has 2 neurons
+|  ...
+
+=== transcription: LttM-rivulet
+md-subType: item/Neuron_Fly_icon
+md-transcriberName: Taking a Neuron Fly
+md-var-DialogueId: Interruptions
+md-name: Interruptions
+MONO
+/ Before Rivulet's ending
+/  If Looks to the Moon has 4 or more neurons
+/   One of the following options is selected randomly:
+|    No, please, release it!
+|    Wait, that's not food!
+|    What are you doing? Stop!
+|    Please, don't touch those!
+/  If Looks to the Moon has 3 or fewer neurons
+/   One of the following options is selected randomly:
+|    NO! ... no. Let it go, please.
+|    not... edible, please.
+|    stop, don... don't!
+|    LET GO! p please
+/ After Rivulet's ending
+/  One of the following options is selected randomly:
+|   Despite some power to my facility being restored, those are still crucial to my survival!
+|   Those are the only memories I have left. I will cease functioning without them.
+|   Your intention was to help me, was it not? Then please don't play with those!
+/ Releasing a neuron
+/  If Looks to the Moon has 4 or more neurons
+/   One of the following options is selected randomly:
+|    Thank you. I must ask you... Don't do that again.
+|    Please, don't scare me like that. I don't appreciate it.
+|    Those aren't toys, &lt;little creature&gt;. I cannot trust anyone with them.
+/  If Looks to the Moon has 3 or fewer neurons
+/   One of the following options is selected randomly:
+|    ...don't... do that.
+|    Leave me... alone.
+|    ...don't... trust you.
+
+=== transcription: LttM-rivulet
+md-type: pearl
+md-transcriberName: Attacking
+md-var-DialogueId: Interruptions
+md-name: Interruptions
+MONO
+/ After Rivulet's ending
+/  If Looks to the Moon has 4 or more neurons
+/   One of the following options is selected randomly:
+|    What are you doing?! Just because you helped me doesn't mean you can treat me this way.
+|    Why would you do that to me?! I don't understand you, &lt;little creature&gt;.
+|    Stop, that's dangerous! You are going to break something again!
+/  If Looks to the Moon has 3 or fewer neurons
+/   One of the following options is selected randomly:
+|    ...WHY?
+|    it... hurts...
+|    No! Don't... hurt me!

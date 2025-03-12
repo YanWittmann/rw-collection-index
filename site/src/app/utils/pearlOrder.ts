@@ -52,6 +52,7 @@ export const pearlOrder: PearlChapter[] = [
             { pattern: /LttM_Dialogue_rivulet.+/ },
             { pattern: /LttM_Dialogue_saint_.+/ },
             { pattern: /LttM_Dialogue_inv_.+/ },
+            { pattern: /LttM_Dialogue_short_.+/ },
             { pattern: /LttM_Dialogue_.+/ },
         ]
     },

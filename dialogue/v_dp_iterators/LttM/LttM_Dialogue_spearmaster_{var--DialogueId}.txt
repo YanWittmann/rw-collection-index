@@ -41,23 +41,19 @@ I have nothing for you, poor thing. Please, I don't have long.
 
 === transcription: LttM-pre-collapse
 md-type: pearl
-md-transcriberName: If Looks to the Moon's quest has been activated
 md-var-DialogueId: Following_encounters
 md-name: Following encounters
-<b>One of the following options is randomly selected:</b>
-Little messenger, we do not have much time. You must hurry!
-This is no time for games. Run along now, before it is too late!
-It is nice to see you again, but the clock is ticking. Make haste!
-
-=== transcription: LttM-pre-collapse
-md-type: pearl
-md-transcriberName: If Looks to the Moon's quest has not been activated
-md-var-DialogueId: Following_encounters
-md-name: Following encounters
-<b>One of the following options is randomly selected:</b>
-Welcome back little messenger.
-Thank you for visiting me, but I'm afraid there is nothing here for you.
-It is nice to see you again little messenger!
+MONO
+/ If Looks to the Moon's quest has not been activated:
+/  One of the following options is randomly selected:
+|   Welcome back little messenger.
+|   Thank you for visiting me, but I'm afraid there is nothing here for you.
+|   It is nice to see you again little messenger!
+/ If Looks to the Moon's quest has been activated:
+/  One of the following options is randomly selected:
+|   Little messenger, we do not have much time. You must hurry!
+|   This is no time for games. Run along now, before it is too late!
+|   It is nice to see you again, but the clock is ticking. Make haste!
 
 === transcription: LttM-pre-collapse
 md-type: pearl

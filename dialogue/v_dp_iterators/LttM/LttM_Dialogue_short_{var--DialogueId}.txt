@@ -1,0 +1,532 @@
+type: item
+subType: survivor
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-transcriberName: If Looks to the Moon is not on speaking terms with Slugcat
+md-var-DialogueId: Receiving_an_object
+md-name: Receiving an object
+MONO
+/ After speaking, Looks to the Moon throws the object away.
+/ One of the following options is selected randomly:
+/  If Looks to the Moon has 4 or more Neurons
+|   I have nothing to say to you, &lt;little creature&gt;.
+|   Go away, &lt;little creature&gt;.
+|   ...
+|   Leave me alone...
+|   Stop! Stop giving me your junk!
+|   Leave me alone! You terrible creature!
+/  If Looks to the Moon has between 2 and 4 Neurons
+|   No! &lt;Little creature&gt; ate... me!
+|   Go... away! You ate... me!
+|   No! Am... broken... because you...
+|   ...
+|   No!
+|   Leave... me alone. Terrible... creature...
+/  If Looks to the Moon has 1 Neuron
+|   Go... away... bad... thing...
+|   ...
+|   Too... broken...
+|   No! You... killed... me!
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-transcriberName: If Looks to the Moon is on speaking terms with Slugcat
+md-var-DialogueId: Receiving_an_object
+md-name: Receiving an object
+MONO
+/ First time
+|  What is that ?
+/ Second time
+|  Another gift ?
+/  If Looks to the Moon likes Slugcat, this line is added:
+|   I will take a look.
+/ Third time
+/  If Looks to the Moon likes Slugcat:
+|   Oh, what is that, &lt;little creature&gt;?
+/  Otherwise:
+|   What is that, &lt;little creature&gt;?
+/ Fourth time
+|  Yet another gift?
+/ Following times
+/  If Looks to the Moon likes Slugcat, this line is added:
+|   Another gift for me?
+|   I will take a look.
+/  One of the following options is selected randomly:
+/   a:
+/    If Looks to the Moon likes Slugcat:
+|     Yet another gift? You're quite curious, &lt;little creature&gt;!
+/    Otherwise:
+|     Yet another thing? Your curiosity seems boundless, &lt;little creature&gt;.
+/   b:
+/    If Looks to the Moon likes Slugcat:
+|     Oh... I will look at it.
+/    Otherwise:
+|     Something new you want me to look at, I suppose, &lt;little creature&gt;?
+/   c:
+/    If Looks to the Moon likes Slugcat:
+|     Oh... Of course I will take a look
+/    Otherwise:
+|     Oh... I will take a look
+|     You want me to take a look at that?
+|     Oh... Should I look at that?
+|     A gift for me, &lt;little creature&gt;?
+|     A new gift for me, &lt;little creature&gt;?
+|     Another thing you want me to look at?
+|     Oh, what is that, &lt;little creature&gt;?
+|     Something new you want me to look at, &lt;little creature&gt;?
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-transcriberName: Other object
+md-var-DialogueId: Commenting_already_discussed_object
+md-name: Commenting on an already discussed object
+md-tag: downpour
+MONO
+/ One of the following options is selected randomly: [v1.9 Remix only]
+|  I think we have already talked about this one, &lt;little creature&gt;.
+|  I've told you about this one, &lt;little creature&gt;.
+|  &lt;Little creature&gt;, this one again?
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-transcriberName: Pearl
+md-var-DialogueId: Commenting_already_discussed_object
+md-name: Commenting on an already discussed object
+MONO
+/ One of the following options is selected randomly:
+|  Oh, I have already read this one to you, &lt;little creature&gt;.
+|  This one I’ve already read to you, &lt;little creature&gt;.
+|  This one again, &lt;little creature&gt;?
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-var-DialogueId: Take_back_while_commenting
+md-name: When Slugcat takes back an object while Moon is commenting on it
+MONO
+/ If Looks to the Moon does not dislike Slugcat
+/  One of the following options is selected randomly:
+|   Oh... Never mind, I suppose.
+|   Want it back, &lt;little creature&gt;?
+|   Oh...
+|   Yes, you're welcome to have it back.
+|   If Looks to the Moon likes Slugcat:
+|   Oh, you want it back?
+|   Otherwise:
+|   And now you're taking it back.
+/ If Looks to the Moon dislikes Slugcat
+/  One of the following options is selected randomly:
+|   Yes, take it and leave me alone.
+|   And now you're taking it, apparently.
+
+
+=== transcription: LttM-post-collapse
+md-super-type: pearl
+md-super-color: #ff7a02
+md-type: pearl
+md-transcriberName: Five Pebbles' pearls
+md-var-DialogueId: Receiving_a_pearl
+md-name: Receiving a pearl
+md-info: See Pearl Dialogue for the contents of the pearls.
+MONO
+/ One of the following options is selected randomly:
+|  You would like me to read this?
+|  It's still warm... this was in use recently.
+|  A pearl... This one is crystal clear - it was used just recently.
+|  Would you like me to read this pearl?
+|  Strange... it seems to have been used not too long ago.
+|  This pearl has been written to just now!
+|  Let's see... A pearl...
+|  And this one is fresh! It was not long ago this data was written to it!
+
+=== transcription: LttM-post-collapse
+md-super-type: pearl
+md-type: pearl
+md-transcriberName: Miscellaneous & colored pearls
+md-var-DialogueId: Receiving_a_pearl
+md-name: Receiving a pearl
+md-info: See Pearl Dialogue for the contents of the pearls.
+MONO
+/ First time
+|  Ah, you would like me to read this?
+|  It's a bit dusty, but I will do my best. Hold on...
+/ Second time
+|  Another pearl! You want me to read this one too? Just a moment...
+/ Third time
+|  And yet another one! I will read it to you.
+/ Fourth time
+|  Another? You're no better than the scavengers!
+/  If Looks to the Moon likes Slugcat, this line is added:
+|   Let us see... to be honest, I'm as curious to see it as you are.
+/ Following times
+|  One of the following options is selected randomly:
+|   The scavengers must be jealous of you, finding all these
+|   Here we go again, little archeologist. Let's read your pearl.
+|   ... You're getting quite good at this you know. A little archeologist beast. Now, let's see what it says.
+|   And yet another one! I will read it to you.
+
+=== transcription: LttM-post-collapse
+md-super-subType: item/Neuron_Fly_icon
+md-type: pearl
+md-var-DialogueId: Seeing_Slugcat_bringing_a_Neuron_Fly
+md-name: Seeing Slugcat bringing a Neuron Fly
+MONO
+/ If Looks to the Moon has more than 3 neurons left
+/  If Looks to the Moon does not dislike Slugcat
+/  One of the following options is selected randomly:
+|   That... That is for me?
+|   Ah... &lt;little creature&gt;, a neuron from Pebbles?
+|   If Looks to the Moon likes Slugcat:
+|   Hello! That... Oh, thank you.
+|   Otherwise:
+|   Hello. That... Oh, thank you.
+/  If Looks to the Moon dislikes Slugcat
+/   One of the following options is selected randomly:
+|    You are bringing a neuron. Is it to taunt me?
+|    A neuron.
+/ If Looks to the Moon has 3 neurons left
+|  You... brought that... for me?
+/ If Looks to the Moon has 2 neurons left
+|  ...oh... to... save me?
+/ If Looks to the Moon has 1 neuron left
+|  ...
+
+=== transcription: LttM-rivulet
+md-super-subType: item/Neuron_Fly_icon
+md-type: pearl
+md-var-DialogueId: Receiving_Neuron_Fly
+md-name: Receiving a Neuron Fly
+MONO
+/ First time
+|   I could read a bit of Five Pebbles in this neuron before formatting it.
+|   I can understand your desire to help, but please do not make his situation worse. He has been sick for a very long time. I am unsure how much of him is even left now. Being eaten from within by his own experiments.
+|   I've felt anger in these before, but now they seem to be filled with fear and sadness.
+|   We were supposed to help everyone, you know. Everything. That was our purpose: a great gift to the lesser beings of the world. When facing our inability to do so, we all reacted differently. Many with madness.
+|   Some, out there, might still be trying. Communications have been bad for a very long time, and by now I suspect most of us are isolated like me, or connected only in small groups.
+|   But even back when we were all more or less connected, there were those who reacted to their task with anger, I can only imagine they are angrier now, alone in their cans, left only with their insatiable drive, like he is.
+|   I don't know how many of us are still alive at this point. By now I cannot imagine many of us desire to be.
+/ Second time
+|   Thank you again &lt;little creature&gt;, but please, leave Five Pebbles be.
+|   Neither of us are well. We have both lost more than we could ever recover from.
+|   ...
+|   It is for the best that our circumstances are not agitated.
+
+=== transcription: LttM-post-collapse
+md-super-subType: item/Neuron_Fly_icon
+md-type: pearl
+md-var-DialogueId: Receiving_Neuron_Fly
+md-name: Receiving a Neuron Fly
+MONO
+/ If Looks to the Moon has 4 or more neurons left before the gift
+/  If Looks to the Moon is refusing to speak to Slugcat
+|   You... Strange thing. Now this?
+|   I will accept your gift...
+|   Thank you. I do wonder what you want.
+/  If Looks to the Moon is not refusing to speak to Slugcat
+/   First neuron received
+/    If Looks to the Moon has lost one neuron
+|     After all this time, a lifeline. Thank you.
+|     I'll never feel the power I once had, but this is something to sustain an old soul.
+|     I could read a bit of Five Pebbles in this neuron before formatting it. A ghost left from his processing routines.
+|     Erratic... Pulse. "Erratic Pulse." I wonder what that means.
+/    If Looks to the Moon has never lost any neuron
+|     I am grateful - the relief is indescribable!
+|     ...
+|     I could read a bit of Five Pebbles in this neuron before formatting it. His condition has severely deteriorated since last I heard of him. The frustration he feels is profound, and that angst has seeped into every part of him, every neuron.
+|     We were supposed to help everyone, you know. Everything. That was our purpose: a great gift to the lesser beings of the world. When facing our inability to do so, we all reacted differently. Many with madness.
+|     Some, out there, might still be trying. Communications have been bad for a long time, and by now I suspect most of us are isolated like me, or connected only in small groups.
+|     But even back when we were all more or less connected there were those who reacted to their task with anger. I can only imagine they are angrier now, alone in their cans, left only with their insatiable drive.
+|     But to be honest, I don't know how many of us are still alive at this point.
+/   Second neuron received
+|    You get these at Five Pebbles'? Thank you so much. I'm sure he won't mind.
+|    ...
+|    Or actually I'm sure he would, but he has so many of these~ it doesn't do him any difference. For me though, it does! Thank you, little creature!
+/   Following neurons
+/    One of the following options is selected randomly:
+|     Thank you, again. I feel wonderful.
+|     Thank you so very much!
+|     It is strange... I'm remembering myself, but also... him.
+|     Thank you... Sincerely.
+/ If Looks to the Moon has 3 neurons left before the gift
+/  If Looks to the Moon is refusing to speak to Slugcat
+|   You... Strange thing. Now this?
+|   I will accept your gift...
+|   Thank you... That is a little better. Thank you, creature.
+/  If Looks to the Moon is not refusing to speak to Slugcat
+|   Thank you... That is a little better. Thank you, creature.
+|   Maybe this is asking too much... But, would you bring me another one?
+/ If Looks to the Moon has 2 neurons left before the gift
+|  ...thank you... better...
+|  still, very... bad.
+/ If Looks to the Moon has 1 neuron left before the gift
+|  ...
+|  You!
+|  ...you...killed...
+|  ...
+|  ...me
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-transcriberName: Interrupted by Slugcat grabbing a neuron
+md-var-DialogueId: Interruptions
+md-name: Interruptions
+MONO
+/ Grabbing the neuron
+/  First time
+/   If Looks to the Moon has more than 3 neurons left
+|    No, please, release it!
+|    If you eat it or leave with it, I will die. I beg you.
+/   If Looks to the Moon has 3 or fewer neurons left
+|    NO! ... no. Let it go, please.
+|    ...please...
+/  Second time or fifth interruption
+/   If Looks to the Moon has more than 3 neurons left
+|    Release that, and leave. I will not speak to you any more.
+/   If Looks to the Moon has 3 or fewer neurons left
+|    NO! I will...not speak to you...
+/ After Slugcat has released a grabbed neuron
+/  If Looks to the Moon likes Slugcat
+/   If Looks to the Moon has more than 3 neurons left
+|    Thank you. I must ask you... Don't do that again. &lt;Little creature&gt;, if you do that, I will not speak to you any more.
+/   If Looks to the Moon has 3 or fewer neurons left
+|    Thank... you. I... won't speak to you... if you do that.
+/  If Looks to the Moon dislikes Slugcat
+/   If Looks to the Moon has more than 3 neurons left
+|    Never do that again. Or just kill me quickly. Whichever way. &lt;Little creature&gt;, if you do that, I will not speak to you any more.
+/   If Looks to the Moon has 3 or fewer neurons left
+|    ...don’t... do that. I... won't speak to you... if you do that.
+/  If Looks to the Moon is neutral towards Slugcat
+/   If Looks to the Moon has more than 3 neurons left
+|    I must ask you... Don't do that again. &lt;Little creature&gt;, if you do that, I will not speak to you any more.
+/   If Looks to the Moon has 3 or fewer neurons left
+|    Please... don't do... that. I... won't speak to you... if you do that.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-transcriberName: Interrupted by Slugcat jumping/moving around
+md-var-DialogueId: Interruptions
+md-name: Interruptions
+MONO
+/ First time
+/  If Looks to the Moon has more than 3 neurons left
+|   Please. Be still for a moment.
+/  If Looks to the Moon has 3 or fewer neurons left
+|   ...please... be still...
+/ Second time
+/  If Looks to the Moon has more than 3 neurons left
+|   Little creature! Stay still and listen.
+/  If Looks to the Moon has 3 or fewer neurons left
+|   ...stop...
+/ Third & fourth times
+/  This only appears if Looks to the Moon has more than 3 neurons left.
+/  One of the following options is selected randomly:
+/   In any case:
+|    &lt;Little creature&gt;! Stay still and listen.
+|    Why should I tolerate this?
+|    STOP!
+|    This again.
+|    Leave me alone!
+/   If Remix is enabled:
+|    Calm down!
+/   If Remix is disabled:
+|    I won't talk to you if you continue like this.
+/ Fifth interruption
+/  If Looks to the Moon has more than 3 neurons left
+|   I will not speak to you any more.
+/  If Looks to the Moon has 3 or fewer neurons left
+|   I will...not speak to you...
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-transcriberName: Interrupted by Slugcat leaving
+md-var-DialogueId: Interruptions
+md-name: Interruptions
+MONO
+/ First time
+/  If Looks to the Moon does not dislike Slugcat
+|   Oh... You are leaving.
+/  If Looks to the Moon has more than 3 neurons left, this line is added:
+|   Good bye, I suppose...
+/  If Looks to the Moon dislikes Slugcat and has more than 3 neurons left
+|   Oh, leaving. Please don’t come back.
+/  If Looks to the Moon has 3 or fewer neurons left
+|   ...leaving now? Don’t... return.
+/ Second time
+/  If Looks to the Moon does not dislike Slugcat and has more than 3 neurons left
+|   There you go again.
+/  If Looks to the Moon has 3 or fewer neurons left
+|   again... leaving...
+/  If Looks to the Moon dislikes Slugcat and has more than 3 neurons left
+|   Leaving again.
+/  If Looks to the Moon has 3 or fewer neurons left
+|   ...yes... leave.
+/ Third time
+/  If Looks to the Moon does not dislike Slugcat and more than 3 neurons left
+|   Yet again leaving.
+/  If Looks to the Moon has 3 or fewer neurons left
+|   ...
+/  If Looks to the Moon dislikes Slugcat and has more than 3 neurons left
+|   You’re leaving yet again. This time, stay away.
+/  If Looks to the Moon has 3 or fewer neurons left
+|   This... time... don't... come back.
+/ Fourth time
+/  If Looks to the Moon does not dislike Slugcat
+/   This only appears if Looks to the Moon has more than 3 neurons left.
+/    One of the following options is selected randomly:
+|     Yes, there you go.
+|     Again.
+|     *sigh*
+|     ...
+|     This again.
+|     &lt;Little creature&gt;... Never mind.
+/  If Looks to the Moon dislikes Slugcat and has more than 3 neurons left
+|   Yes, there you go. This is ridiculous.
+/  If Looks to the Moon has 3 or fewer neurons left
+|   Again? ... just, go.
+/ Fifth time
+/  This only appears if Looks to the Moon dislikes Slugcat.
+/   If Looks to the Moon has more than 3 neurons left
+|    I don't know what to say. Never come back, creature!
+/  If Looks to the Moon has 3 or fewer neurons left
+|   ...Fifth interruption
+/  If Looks to the Moon has more than 3 neurons left
+|   Please don't come back.
+/  If Looks to the Moon has 3 or fewer neurons left
+|   ...don’t... come back.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-var-DialogueId: Resuming_conversation_interruption
+md-name: Resuming conversation after an interruption
+MONO
+/ First part
+/  If the interruption was Slugcat leaving
+/   First time
+/    If Looks to the Moon has more than 3 neurons left
+|     And you are back.
+/    If Looks to the Moon has 3 or fewer neurons left
+|     You... are back.
+/   Second time
+/    If Looks to the Moon has more than 3 neurons left
+|     Back again.
+/    If Looks to the Moon has 3 or fewer neurons left
+|     And...back.
+/   Following times
+/    This only appears if Looks to the Moon has more than 3 neurons left.
+|     Here again.
+/  If the interruption was Slugcat jumping/moving around
+/   This only appears for the two first times.
+/    If Looks to the Moon has more than 3 neurons left
+|     Thank you.
+/    If Looks to the Moon has 3 or fewer neurons left
+|     Thank... you.
+/ Second part
+/  First time
+/   If Looks to the Moon has more than 3 neurons left
+|    As I was saying...
+/   If Looks to the Moon has 3 or fewer neurons left
+|    I...said...
+/  Second time
+/   If Looks to the Moon has more than 3 neurons left
+|    As I tried to say to you...
+/   If Looks to the Moon has 3 or fewer neurons left
+|    Tried to say... to you...
+/  Third time
+/   If Looks to the Moon has more than 3 neurons left
+|    Little creature, why don't you stay calm and listen?
+|    As I tried to say to you...
+/   If Looks to the Moon has 3 or fewer neurons left
+|    Stay! ... Still...
+|    And...listen!
+/  Fourth time
+/   If Looks to the Moon has more than 3 neurons left
+|    And now you expect me to continue speaking?
+/   If Looks to the Moon has less than 5 neurons left, this line is added:
+|    First you hurt me, then you come back to annoy me. I wish I knew what was going on in that little head of yours.
+|    Let us try again - not that it has worked well before. I was saying...
+/   If Looks to the Moon has 3 or fewer neurons left
+|    And...now you expect me to... talk again?
+/  Fifth time
+/   If Looks to the Moon has more than 3 neurons left
+|    If you behave like this, why should I talk to you?
+|    You come here, but you can't be respectful enough to listen to me. Will you listen this time?
+|    Look at me. The only thing I have to offer is my words. If you come here, I must assume you want me to speak? So then would you PLEASE listen? If not, you are welcome to leave me alone.
+|    Now if you'll let me, I will try to say this again.
+/   If Looks to the Moon has 3 or fewer neurons left
+|    I am... too tired.
+|    Stop doing... this, or I... will not speak... to you again.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-var-DialogueId: Annoyed_Jumping
+md-name: Annoyed by Slugcat jumping/moving around
+MONO
+/ First time
+/  If Looks to the Moon has more than 3 neurons left
+|   &lt;Little creature&gt;... Please settle down.
+/  If Looks to the Moon has 3 or fewer neurons left
+|   ...stop...
+/ Second time
+/  If Looks to the Moon has more than 3 neurons left
+|   Please stop it!
+/  If Looks to the Moon has 3 or fewer neurons left
+|   no...
+/ Third & fourth times
+/  This only appears if Looks to the Moon has more than 3 neurons left.
+/   One of the following options is selected randomly:
+|    Why are you doing this?
+|    Please!
+|    Why should I tolerate this?
+|    STOP!
+|    This again.
+|    Leave me alone!
+/ Fifth time
+/  If Looks to the Moon has more than 3 neurons left
+|   I will not speak to you any more.
+/  If Looks to the Moon has 3 or fewer neurons left
+|   I will...not speak to you...
+/ After Slugcat stops annoying Looks to the Moon
+/   If Looks to the Moon has more than 3 neurons left
+|    Thank you.
+/   If Looks to the Moon has 3 neurons left
+|    ...thank you.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-var-DialogueId: Rain_Coming
+md-name: When rain comes
+MONO
+/ If Looks to the Moon has 5 neurons left
+/  If Looks to the Moon does not dislike Slugcat:
+|   I think the rain is approaching.
+|   You better go, &lt;little creature&gt;! I will be fine. It's not pleasant, but I have been through it before.
+/   If Slugcat brought a Slugpup:
+|    Keep your family safe!
+/   If Slugcat brought a creature:[v1.9 Remix only]
+|    Keep your friend safe!
+/  Otherwise:
+|   The rain is coming. If you stay, you will drown. Now, leave me alone.
+/   If Slugcat brought a Slugpup:
+|    Take your offspring with you.
+/   If Slugcat brought a creature:[v1.9 Remix only]
+|    Take your pet with you.
+/ If Looks to the Moon has 4 neurons left
+|  ...
+|  Rain... You better go. I will be fine.
+/ If Looks to the Moon has 3 neurons left
+|  ...
+|  ...rain... coming... Go!
+/ If Looks to the Moon has 2 neurons left
+|  ...rain...
+|  run
+
+=== transcription: LttM-post-collapse
+md-super-subType: item/Karma_Flower_icon
+md-type: pearl
+md-var-DialogueId: Slugcat_Death
+md-name: If Slugcat dies
+md-tag: downpour
+...
+&lt;Little creature&gt;, are you okay?
+...
+Oh...

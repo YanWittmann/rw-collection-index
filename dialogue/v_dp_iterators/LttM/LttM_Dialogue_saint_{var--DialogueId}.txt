@@ -31,6 +31,24 @@ The passage of time has taken them away, of course. That was a while ago.
 Stay as long as you'd like. But not too long.
 This chamber is not very well insulated from the cold.
 
+=== transcription: LttM-saint
+md-type: pearl
+md-var-DialogueId: Blizzard_approaching
+md-name: Blizzard approaching
+md-tag: downpour
+MONO
+/ If Looks to the Moon has 5 neurons
+/  If Looks to the Moon dislikes Saint:
+|   The downpour is about to start. You should get out of here.
+/  Otherwise:
+|   It's getting frigid. You need to find shelter, &lt;little creature&gt;! Don't worry about me.
+/ If Looks to the Moon has 4 neurons
+|  Cold... You better leave. I will be fine.
+/ If Looks to the Moon has 3 neurons
+|  ...storm... coming... Go!
+/ If Looks to the Moon has 2 neurons
+|  ...storm... run
+
 === transcription: LttM-FP-saint
 md-type: pearl
 md-transcriberName: Ascending both Looks to the Moon and Five Pebbles

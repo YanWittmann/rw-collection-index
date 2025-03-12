@@ -1,6 +1,25 @@
 type: item
 subType: survivor
 
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-var-DialogueId: Slugcat_Naming_Convention
+md-name: LttM Slugcat Naming Convention
+MONO
+/ The name given to the Slugcat by Looks to the Moon will differ according to various parameters. Each time "&lt;little creature&gt;" is written in the dialogue, it means that other names can appear instead of the default one.
+/ A first random value determines which word is used to describe Slugcat (7/10 chance of using something else than "creature"). If it happens, the following words are used:
+/  If Looks to the Moon likes Slugcat:
+/   If Slugcat has brought more than 5 pearls to Looks to the Moon and Looks to the Moon has more than 3 neurons left:
+|    archaeologist
+/   Otherwise:
+|    friend
+/  If Looks to the Moon dislikes Slugcat:
+|   tormentor
+/ Otherwise:
+|  creature
+/ If Looks to the Moon has 3 or fewer neurons left, a second random value determines whether she will have trouble speaking or not when saying Slugcat's name (1/2 chance of having trouble). If it happens, she will instead say:
+|  Little... creature
+/  "Little" can be found capitalized or not.
 
 === transcription: LttM-post-collapse
 md-type: pearl
@@ -52,3 +71,34 @@ Or did I say that already?
 I see that someone has given you the gift of communication. Must have been Five Pebbles, as you don't look like you can travel very far...
 He's sick, you know. Being corrupted from the inside by his own experiments. Maybe they all are by now, who knows. We weren't designed to transcend and it drives us mad.
 It is good to have someone to talk to after all this time! The scavengers aren't exactly good listeners. They do bring me things though, occasionally...
+
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-var-DialogueId: Following_Encounters
+md-name: Following encounters
+MONO
+| If Looks to the Moon does not dislike Slugcat and has more than 3 neurons:
+|  Punctuation differs whether Looks to the Moon likes Slugcat or not. Each time &lt;!&gt; is written, it means "!" will be used if she likes Slugcat, and "." if not.
+|  One of the following options is selected randomly:
+|   Hello again, &lt;little creature&gt;&lt;!&gt;
+|  If Looks to the Moon likes Slugcat:
+|   Hello, &lt;little creature&gt;! How have you been?
+|  Otherwise:
+|   Hello, &lt;little creature&gt;. You’re here again.
+|   Oh, &lt;little creature&gt;. Hello&lt;!&gt;
+|   It’s you, &lt;little creature&gt;&lt;!&gt; Hello.
+|   Ah... &lt;little creature&gt;, you’re here again&lt;!&gt;
+|   Ah... &lt;little creature&gt;, you’re back&lt;!&gt;
+| If Looks to the Moon dislikes Slugcat
+|  One of the following options is selected randomly:
+|   Here again.
+|   You. I wish you would stop coming here.
+|   You again. Please leave me alone.
+|   Oh, it's you, &lt;little creature&gt;.
+|  If Looks to the Moon has 3 neurons left
+|   ...you. ...leave me alone...
+|  If Looks to the Moon has 2 neurons left
+|   ...leave...
+|  If Looks to the Moon has 1 neuron left
+|   ...

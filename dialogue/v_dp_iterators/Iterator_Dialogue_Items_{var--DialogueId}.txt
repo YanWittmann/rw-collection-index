@@ -301,7 +301,7 @@ md-tag: downpour
 It's very soggy.
 This appears to be a tattered piece of fabric. From what it used to be a piece of, I wouldn't be able to trace its origins.
 If it were in better condition it might be useful to provide you some protection from the elements. In its current state, however, I don't suppose it has much worth to you.
-Unless, perhaps... <little creature>, did you bring this as a gift for me?
+Unless, perhaps... &lt;little creature&gt;, did you bring this as a gift for me?
 Ah!~ In that case, let me just...
 ...
 There! how does that look? I think it actually fits quite well.
@@ -321,12 +321,13 @@ md-subType: item/Slugpup_icon
 md-var-DialogueId: Slugpup
 md-name: Slugpup
 md-tag: downpour
-<b>If Looks to the Moon likes the Slugcat:</b>
-How cute, you brought your child, little creature?
-\n<b>If Looks to the Moon dislikes the Slugcat:</b>
-Take your offspring with you when you go.
-\n<b> Otherwise:</b>
-Do you have a little one with you?
+MONO
+| If Looks to the Moon likes the Slugcat:
+|  How cute, you brought your child, little creature?
+| If Looks to the Moon dislikes the Slugcat:
+|  Take your offspring with you when you go.
+| Otherwise:
+|  Do you have a little one with you?
 
 === transcription: LttM-rivulet
 md-type: pearl
@@ -342,3 +343,21 @@ I know first-hand the tragedy of losing this power. In the wake of my... acciden
 This cell could be valuable to me, But with my umbilical severed, my overseers running free, and all of my facilities lying deep beneath a large body of water, it would be an impossible task to deliver this to a functional location.
 You might be able to find an access shaft into my lower structure nearby, but I have no idea how much is left of it.
 Please be careful.
+
+=== transcription: LttM-rivulet
+md-type: pearl
+md-subType: item/King_Vulture_icon
+md-var-DialogueId: Joke_Creatures
+md-name: Joke dialogue
+md-tag: downpour
+MONO
+/ Vulture, Leviathan, Miros Bird, Miros Vulture
+|  Your friend is very large, how did you fit them in here?
+/ Rain Deer
+|  How did you bring that in here... I think it is as surprised as I am!
+/ Rot
+|  Oh no.
+/ Red Centipede
+|  Oh, that is not a friend...
+/ Rot
+|  What did you do!?

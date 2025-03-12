@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const chokidar = require('chokidar');
 
 // CONFIGURATION
 const DIALOGUE_DIR = path.join(__dirname, '../dialogue');
@@ -141,6 +142,15 @@ function createVariableGroupEntry(baseId, parsedData, group) {
             .filter((v, i, a) => a.indexOf(v) === i);
     }
 
+    // go through the transcribers and add the superValues to the metadata
+    resolvedTranscribers.forEach(transcriber => {
+        if (transcriber.metadata.superValues) {
+            for (const [key, value] of Object.entries(transcriber.metadata.superValues)) {
+                resolvedMetadata[key] = value;
+            }
+        }
+    });
+
     return {
         id: resolvedId,
         metadata: resolvedMetadata,
@@ -228,7 +238,7 @@ function parseLine(line) {
 
     const speakerPart = line.slice(0, colonIndex).trim();
     // Only recognize as speaker if it's not metadata and within length limit
-    if (!speakerPart.startsWith('md-') && speakerPart.length <= MAX_SPEAKER_LENGTH) {
+    if (!speakerPart.startsWith('md-') && !speakerPart.startsWith('|') && !speakerPart.startsWith('/') && speakerPart.length <= MAX_SPEAKER_LENGTH) {
         return {
             speaker: speakerPart,
             text: line.slice(colonIndex + 1).trim()
@@ -262,7 +272,7 @@ const sectionHandlers = {
         // Extract metadata lines starting with md-
         const metadata = {
             map: [],
-            tags: []
+            tags: [],
         };
         const lines = [];
 
@@ -276,9 +286,11 @@ const sectionHandlers = {
                     if (key === 'map') {
                         parseMapEntries(val).forEach(entry => metadata.map.push(entry));
                     } else if (key === 'tag') {
-                        // Split comma-separated tags and trim whitespace
                         const tags = val.split(',').map(t => t.trim());
                         metadata.tags.push(...tags);
+                    } else if (key.startsWith('super-')) {
+                        if (!metadata.superValues) metadata.superValues = {};
+                        metadata.superValues[key.slice(6)] = val;
                     } else {
                         metadata[key] = val;
                     }
@@ -504,4 +516,27 @@ function processDialogueFiles() {
     }
 }
 
-processDialogueFiles();
+function watchDialogueFiles() {
+    const watcher = chokidar.watch(DIALOGUE_DIR, {
+        persistent: true,
+        ignoreInitial: true, // ignore initial scan to avoid double-processing
+        depth: 99, // watch all subdirectories
+    });
+
+    watcher.on('all', (event, filePath) => {
+        if (filePath.endsWith('.txt')) {
+            console.log(`Detected change in ${filePath}. Re-generating...`);
+            processDialogueFiles();
+        }
+    });
+
+    console.log(`Watching for changes in ${DIALOGUE_DIR}...`);
+}
+
+if (process.argv.includes('--watch')) {
+    console.log('Starting in watch mode...');
+    watchDialogueFiles();
+} else {
+    console.log('Processing files once...');
+    processDialogueFiles();
+}

@@ -15,32 +15,26 @@ md-type: pearl
 md-transcriberName: If Five Pebbles dislikes Saint
 md-var-DialogueId: Following_encounters
 md-name: Following encounters
-<b>One of the following lines is chosen at random:</b>
-... Go away...
-
-... Not forgotten pain...
-
-... So little... left. Why hurt... me more...
-
-... Leave me... alone.
+MONO
+/ One of the following lines is chosen at random:
+|  ... Go away...
+|  ... Not forgotten pain...
+|  ... So little... left. Why hurt... me more...
+|  ... Leave me... alone.
 
 === transcription: FP
 md-type: pearl
 md-transcriberName: If Five Pebbles does not dislike Saint
 md-var-DialogueId: Following_encounters
 md-name: Following encounters
-<b>One of the following lines is chosen at random:</b>
-... Why back?
-
-... It is... warmer... today.
-
-Little green friend. Hello.
-
-... Nice to see...
-
-... Thank you... for... company.
-
-... Little visitor... Hello...
+MONO
+/ One of the following lines is chosen at random:
+|  ... Why back?
+|  ... It is... warmer... today.
+|  Little green friend. Hello.
+|  ... Nice to see...
+|  ... Thank you... for... company.
+|  ... Little visitor... Hello...
 
 === transcription: LttM-FP-saint
 md-type: pearl
