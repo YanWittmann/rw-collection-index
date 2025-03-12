@@ -1,3 +1,4 @@
+internalId: SI_chat4
 color: #2d420d
 type: pearl
 name: Olive Green (SI-4)

@@ -1,3 +1,4 @@
+internalId: LC_second
 color: #c26600
 type: pearl
 name: Bronze

@@ -1,3 +1,4 @@
+internalId: SI_chat5
 color: #420d2d
 type: pearl
 name: Dark Magenta (SI-5)

@@ -1,3 +1,4 @@
+internalId: VS
 color: #c30df5
 type: pearl
 name: Deep Purple

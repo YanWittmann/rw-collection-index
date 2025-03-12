@@ -1,3 +1,4 @@
+internalId: LF_west
 color: #ff2667
 type: pearl
 name: Deep Pink

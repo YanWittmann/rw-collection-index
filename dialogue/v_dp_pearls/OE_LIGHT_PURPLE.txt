@@ -1,3 +1,4 @@
+internalId: OE
 color: #9d76d4
 type: pearl
 name: Light Purple

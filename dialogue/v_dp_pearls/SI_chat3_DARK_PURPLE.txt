@@ -1,3 +1,4 @@
+internalId: SI_chat3
 color: #2d0d42
 type: pearl
 name: Dark Purple (SI-3)

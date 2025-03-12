@@ -1,7 +1,7 @@
 import { PearlData } from "../../types/types";
 import { UnlockMode } from "../../page";
 import { RwTextInput } from "./RwTextInput";
-import React, { useCallback, useEffect, useMemo, useState, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import PearlItem from "./PearlItem";
 import UnlockManager from "../../utils/unlockManager";
 import { cn } from "@shadcn/lib/utils";
@@ -58,18 +58,18 @@ const SearchBar = ({ isMobile, unlockMode, onTextInput, onToggleUnlockMode }: {
     </div>
 );
 
-const ChapterGrid = ({ 
-    chapter, 
-    chapterIndex, 
-    currentGridPosition,
-    selectedPearlRef,
-    getHighlightStyle,
-    unlockMode,
-    selectedPearl,
-    onSelectPearl,
-    isAlternateDisplayModeActive,
-    unlockVersion
-}: {
+const ChapterGrid = ({
+                         chapter,
+                         chapterIndex,
+                         currentGridPosition,
+                         selectedPearlRef,
+                         getHighlightStyle,
+                         unlockMode,
+                         selectedPearl,
+                         onSelectPearl,
+                         isAlternateDisplayModeActive,
+                         unlockVersion
+                     }: {
     chapter: { name: string, items: PearlData[] }
     chapterIndex: number
     currentGridPosition?: [number, number]
@@ -85,7 +85,7 @@ const ChapterGrid = ({
         {chapter.name && <h3 className="text-white text-sm mb-2">{chapter.name}</h3>}
         <div className="grid grid-cols-5 gap-2 w-fit">
             {chapter.items.map((pearl, pearlIndex) => pearl && pearl.id && (
-                <div 
+                <div
                     key={`pearl-${pearl.id}`}
                     ref={currentGridPosition && getHighlightStyle(chapterIndex, pearlIndex).outline ? selectedPearlRef : undefined}
                     style={getHighlightStyle(chapterIndex, pearlIndex)}
@@ -107,14 +107,14 @@ const ChapterGrid = ({
 
 // memoized components
 const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({
-    pearl,
-    pearlIndex,
-    selectedPearl,
-    onSelectPearl,
-    unlockMode,
-    showTranscriberCount,
-    unlockVersion
-}) => (
+                                                                  pearl,
+                                                                  pearlIndex,
+                                                                  selectedPearl,
+                                                                  onSelectPearl,
+                                                                  unlockMode,
+                                                                  showTranscriberCount,
+                                                                  unlockVersion
+                                                              }) => (
     <PearlItem
         pearl={pearl}
         pearlIndex={pearlIndex}
@@ -127,18 +127,18 @@ const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({
 ));
 
 export function PearlGrid({
-    pearls,
-    selectedPearl,
-    onSelectPearl,
-    order,
-    unlockMode,
-    isAlternateDisplayModeActive,
-    isMobile,
-    setUnlockMode,
-    unlockVersion,
-    handleKeyNavigation,
-    currentGridPosition
-}: PearlGridProps) {
+                              pearls,
+                              selectedPearl,
+                              onSelectPearl,
+                              order,
+                              unlockMode,
+                              isAlternateDisplayModeActive,
+                              isMobile,
+                              setUnlockMode,
+                              unlockVersion,
+                              handleKeyNavigation,
+                              currentGridPosition
+                          }: PearlGridProps) {
     const [textFilter, setTextFilter] = useState<string | undefined>(undefined);
     const selectedPearlRef = useRef<HTMLDivElement>(null);
 
@@ -159,7 +159,7 @@ export function PearlGrid({
 
         const searchText = textFilter.toLowerCase();
         return pearl.metadata.name?.toLowerCase().includes(searchText) ||
-            pearl.transcribers.some(t => t.lines.some(line => 
+            pearl.transcribers.some(t => t.lines.some(line =>
                 (line.speaker + ": " + line.text).toLowerCase().includes(searchText)
             )) ||
             pearl.transcribers.some(t => t.transcriber.toLowerCase() === searchText);
@@ -199,15 +199,15 @@ export function PearlGrid({
 
     const getHighlightStyle = useCallback((chapterIndex: number, itemIndex: number) => {
         if (!currentGridPosition) return {};
-        
+
         const [targetRow, targetCol] = currentGridPosition;
         let currentRow = 0;
         let found = false;
-        
+
         for (let i = 0; i < filteredPearls.length && !found; i++) {
             const chapter = filteredPearls[i];
             const numRows = Math.ceil(chapter.items.length / 5);
-            
+
             if (i === chapterIndex) {
                 const itemRow = Math.floor(itemIndex / 5);
                 const itemCol = itemIndex % 5;
@@ -219,10 +219,10 @@ export function PearlGrid({
                 }
                 found = true;
             }
-            
+
             currentRow += numRows;
         }
-        
+
         return {};
     }, [currentGridPosition, filteredPearls]);
 
@@ -243,8 +243,8 @@ export function PearlGrid({
         const itemRect = selectedPearlRef.current.getBoundingClientRect();
         const containerRect = scrollContainer.getBoundingClientRect();
         const padding = 120;
-        
-        if (itemRect.top < containerRect.top + padding || 
+
+        if (itemRect.top < containerRect.top + padding ||
             itemRect.bottom > containerRect.bottom - padding) {
             selectedPearlRef.current.scrollIntoView({
                 behavior: 'smooth',

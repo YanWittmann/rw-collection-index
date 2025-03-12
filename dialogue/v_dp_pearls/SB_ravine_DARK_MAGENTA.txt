@@ -1,3 +1,4 @@
+internalId: SB_ravine
 color: #420d2d
 type: pearl
 name: Dark Magenta (SB)

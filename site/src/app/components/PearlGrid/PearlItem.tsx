@@ -38,6 +38,9 @@ const PearlItem: React.FC<PearlItemProps> = ({
     const generateTooltipText = useMemo(() => {
         // collect all metadata from the dialogue transcriptions
         let tooltip = pearl.metadata.name ?? 'Unknown';
+        if (pearl.metadata.internalId) {
+            tooltip += ' (' + pearl.metadata.internalId + ')';
+        }
         const metadatas = pearl.transcribers.map(transcriber => transcriber.metadata);
         const mapInfos: MapInfo[] = metadatas.filter(metadata => metadata.map && metadata.map.length > 0).map(metadata => metadata.map as any as MapInfo).flat();
 

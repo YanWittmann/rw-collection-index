@@ -1,3 +1,4 @@
+internalId: SB_filtration
 color: #3c9393
 type: pearl
 name: Teal

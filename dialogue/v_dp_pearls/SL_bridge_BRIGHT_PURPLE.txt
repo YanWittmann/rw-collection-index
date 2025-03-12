@@ -1,3 +1,4 @@
+internalId: SL_bridge
 color: #9435ed
 type: pearl
 name: Bright Purple

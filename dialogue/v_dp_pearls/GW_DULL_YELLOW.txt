@@ -1,3 +1,4 @@
+internalId: GW
 color: #d7e861
 type: pearl
 name: Dull Yellow

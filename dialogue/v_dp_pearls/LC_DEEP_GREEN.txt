@@ -1,3 +1,4 @@
+internalId: LC
 color: #267d2a
 type: pearl
 name: Deep Green

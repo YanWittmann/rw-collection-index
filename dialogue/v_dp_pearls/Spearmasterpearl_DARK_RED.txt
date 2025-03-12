@@ -1,3 +1,4 @@
+internalId: Spearmasterpearl
 color: #7e020a
 type: pearl
 name: Dark Red (Spearmaster)

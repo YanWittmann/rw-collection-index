@@ -1,3 +1,4 @@
+internalId: SH
 color: #841451
 type: pearl
 name: Deep Magenta

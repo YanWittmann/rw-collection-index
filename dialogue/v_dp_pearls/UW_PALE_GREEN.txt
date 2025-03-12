@@ -1,3 +1,4 @@
+internalId: UW
 color: #7da47d
 type: pearl
 name: Pale Green

@@ -1,3 +1,4 @@
+internalId: SU
 color: #93a8e9
 type: pearl
 name: Light Blue

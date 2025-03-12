@@ -1,3 +1,4 @@
+internalId: SI_west
 color: #0d2d42
 type: pearl
 name: Dark Blue (SI-2)

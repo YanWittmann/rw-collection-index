@@ -1,3 +1,4 @@
+internalId: RM
 color: #b02ffb
 type: pearl
 name: Music

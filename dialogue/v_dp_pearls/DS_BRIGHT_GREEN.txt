@@ -1,3 +1,4 @@
+internalId: DS
 color: #26be3c
 type: pearl
 name: Bright Green

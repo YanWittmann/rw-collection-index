@@ -66,7 +66,7 @@ const handleTranscriberSelection = (
         }
     }
 
-    const newIndex = direction === 'next' 
+    const newIndex = direction === 'next'
         ? (currentIndex + 1) % transcribers.length
         : (currentIndex - 1 + transcribers.length) % transcribers.length;
 
@@ -75,7 +75,7 @@ const handleTranscriberSelection = (
     return sameTranscribers.length > 1 ? `${newTranscriber}-${newIndex}` : newTranscriber;
 };
 
-export function useDialogue(unlockMode: UnlockMode) {
+export function useDialogue(unlockMode: UnlockMode, GRID_DATA: PearlData[]) {
     const [selectedPearl, setSelectedPearl] = useState<string | null>(null);
     const [selectedTranscriber, setSelectedTranscriber] = useState<string | null>(null);
     const [currentGridPosition, setCurrentGridPosition] = useState<[number, number]>([0, 0]);
@@ -98,7 +98,7 @@ export function useDialogue(unlockMode: UnlockMode) {
 
     const handleKeyNavigation = (e: KeyboardEvent, pearls: PearlData[][], currentPearlId: string | null) => {
         if (!pearls.length) return;
-        
+
         const maxRows = pearls.length;
         let [row, col] = currentGridPosition;
 
@@ -110,10 +110,11 @@ export function useDialogue(unlockMode: UnlockMode) {
                 setCurrentGridPosition(pearlPos);
             }
         }
-        
+
         let handled = true;
 
         switch (e.key.toLowerCase()) {
+            case 'arrowup':
             case 'w': {
                 for (let r = row - 1; r >= 0; r--) {
                     if (pearls[r] && pearls[r][col]) {
@@ -123,6 +124,7 @@ export function useDialogue(unlockMode: UnlockMode) {
                 }
                 break;
             }
+            case 'arrowdown':
             case 's': {
                 for (let r = row + 1; r < maxRows; r++) {
                     if (pearls[r] && pearls[r][col]) {
@@ -132,11 +134,13 @@ export function useDialogue(unlockMode: UnlockMode) {
                 }
                 break;
             }
+            case 'arrowleft':
             case 'a': {
                 const newPos = findNextValidPosition(row, col - 1, pearls, 'left');
                 if (newPos) [row, col] = newPos;
                 break;
             }
+            case 'arrowright':
             case 'd': {
                 const newPos = findNextValidPosition(row, col + 1, pearls, 'right');
                 if (newPos) [row, col] = newPos;
@@ -171,7 +175,7 @@ export function useDialogue(unlockMode: UnlockMode) {
                 if (newPos) [row, col] = newPos;
             }
             setCurrentGridPosition([row, col]);
-            
+
             if (pearls[row]?.[col]) {
                 handleSelectPearl(pearls[row][col]);
             }
@@ -188,11 +192,20 @@ export function useDialogue(unlockMode: UnlockMode) {
         }
     }, [selectedPearl]);
 
+    function pearlIdToUrlId(id: string) {
+        for (let element of GRID_DATA) {
+            if (element.metadata.internalId && element.id === id) {
+                return element.metadata.internalId;
+            }
+        }
+        return id;
+    }
+
     // update url params
     useEffect(() => {
         if (unlockMode === "all") {
             if (selectedPearl) {
-                urlAccess.setParam("pearl", selectedPearl);
+                urlAccess.setParam("pearl", pearlIdToUrlId(selectedPearl));
             } else {
                 urlAccess.clearParam("pearl");
             }

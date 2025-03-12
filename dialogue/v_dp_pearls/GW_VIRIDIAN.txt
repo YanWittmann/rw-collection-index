@@ -1,3 +1,4 @@
+internalId: GW
 color: #20c68f
 type: pearl
 name: Viridian

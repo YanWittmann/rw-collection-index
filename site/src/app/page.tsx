@@ -16,7 +16,7 @@ export type UnlockMode = "all" | "unlock";
 
 export default function DialogueInterface() {
     const [unlockMode, setUnlockMode] = useState<UnlockMode>("all");
-    const { selectedPearl, selectedTranscriber, handleSelectPearl, handleSelectTranscriber, handleKeyNavigation, currentGridPosition } = useDialogue(unlockMode);
+    const { selectedPearl, selectedTranscriber, handleSelectPearl, handleSelectTranscriber, handleKeyNavigation, currentGridPosition } = useDialogue(unlockMode, GRID_DATA);
     const { refresh, unlockVersion } = useUnlockState();
     const [hintProgress, setHintProgress] = useState<number>(0);
     const [isAlternateDisplayModeActive, setIsAlternateDisplayModeActive] = useState(false);
@@ -45,7 +45,16 @@ export default function DialogueInterface() {
     }, []);
 
     useEffect(() => {
-        urlAccess.getParam("pearl") && handleSelectPearl(GRID_DATA.find(pearl => pearl.id === urlAccess.getParam("pearl")!) ?? null);
+        function urlIdToPearlId(id: string) {
+            for (let element of GRID_DATA) {
+                if (element.metadata.internalId && element.metadata.internalId === id) {
+                    return element.id;
+                }
+            }
+            return id;
+        }
+
+        urlAccess.getParam("pearl") && handleSelectPearl(GRID_DATA.find(pearl => pearl.id === urlIdToPearlId(urlAccess.getParam("pearl")!)) ?? null);
         urlAccess.getParam("transcriber") && handleSelectTranscriber(urlAccess.getParam("transcriber")!);
     }, []);
 

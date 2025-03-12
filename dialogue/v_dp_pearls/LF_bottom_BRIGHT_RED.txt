@@ -1,3 +1,4 @@
+internalId: LF_bottom
 color: #ff3c3c
 type: pearl
 name: Bright Red

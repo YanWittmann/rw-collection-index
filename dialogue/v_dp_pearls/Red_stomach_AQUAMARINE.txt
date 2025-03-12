@@ -1,3 +1,4 @@
+internalId: Red_stomach
 color: #99ffe5
 type: pearl
 name: Aquamarine (Hunter)

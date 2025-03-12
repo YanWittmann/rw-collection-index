@@ -1,3 +1,4 @@
+internalId: SU_filt
 color: #ffc9e9
 type: pearl
 name: Light Pink

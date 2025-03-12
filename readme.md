@@ -94,3 +94,5 @@ Thanks to:
 | yukithedestroyer          | If there are multiple identical transcribers on an entry, they do not unlock correctly in spoiler mode. |
 | Space Dwarf               | Some incorrect map locations.                                                                           |
 | candlesign.4539 / skyball | Keyboard navigation.                                                                                    |
+| bug leaving room          | Show Pearl's internal identifiers.                                                                      |
+| scir                      | Created new Icon set.                                                                                   |

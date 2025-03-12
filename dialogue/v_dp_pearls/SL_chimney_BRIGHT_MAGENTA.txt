@@ -1,3 +1,4 @@
+internalId: SL_chimney
 color: #ff1bb4
 type: pearl
 name: Bright Magenta

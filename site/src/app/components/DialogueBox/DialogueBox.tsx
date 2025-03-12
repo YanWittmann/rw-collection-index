@@ -161,8 +161,13 @@ export function DialogueBox({
                     </TooltipProvider>
                 </div>
         } else {
+            const name = dialogue.metadata.name || pearl.metadata.name;
+            const internalId = dialogue.metadata.internalId || pearl.metadata.internalId;
             titleElement = <div className="text-center text-white text-lg mb-14 pb-0 mt-7">
-                {dialogue.metadata.name || pearl.metadata.name}
+                {internalId && <span className="font-mono bg-white/10 px-1 py-1 mr-2 rounded-md text-sm">
+                    {internalId}
+                </span>}
+                {name}
             </div>
         }
 

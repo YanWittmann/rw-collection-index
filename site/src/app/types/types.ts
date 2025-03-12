@@ -14,6 +14,7 @@ export interface MapInfo {
 export interface Dialogue {
     transcriber: string;
     metadata: {
+        internalId?: string;
         name: string;
         color: string;
         tags?: string[];
@@ -35,6 +36,7 @@ export interface Hint {
 export interface PearlData {
     id: string;
     metadata: {
+        internalId?: string;
         color: string;
         type: PearlType;
         name: string;

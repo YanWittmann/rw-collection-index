@@ -1,3 +1,4 @@
+internalId: SL_moon
 color: #e9f452
 type: pearl
 name: Pale Yellow

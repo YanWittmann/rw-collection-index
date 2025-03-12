@@ -1,3 +1,4 @@
+internalId: CC
 color: #f2cc19
 type: pearl
 name: Gold
