@@ -1,5 +1,6 @@
 type: item
 subType: gourmand
+tag: downpour
 
 === transcription: FP
 md-type: pearl
