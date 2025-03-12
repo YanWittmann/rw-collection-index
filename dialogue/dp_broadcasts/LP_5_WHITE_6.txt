@@ -1,3 +1,4 @@
+internalId: LP_5
 color: #ffffff
 type: broadcast
 name: A Name (White 6)

@@ -1,3 +1,4 @@
+internalId: Chatlog_SI4
 color: #e8597f
 type: broadcast
 name: Pink 5

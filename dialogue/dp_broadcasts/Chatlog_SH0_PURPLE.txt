@@ -1,3 +1,4 @@
+internalId: Chatlog_SH0
 color: #593699
 type: broadcast
 name: Purple

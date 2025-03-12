@@ -1,3 +1,4 @@
+internalId: Chatlog_SB0
 color: #9c5933
 type: broadcast
 name: Dark Brown

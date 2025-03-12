@@ -1,3 +1,4 @@
+internalId: Chatlog_HI0
 color: #667ad1
 type: broadcast
 name: Light Blue

@@ -1,3 +1,4 @@
+internalId: LP_2
 color: #ffffff
 type: broadcast
 name: Sending Information (White 3)

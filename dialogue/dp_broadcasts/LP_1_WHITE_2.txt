@@ -1,3 +1,4 @@
+internalId: LP_1
 color: #ffffff
 type: broadcast
 name: Plan in Motion (White 2)

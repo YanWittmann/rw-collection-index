@@ -1,3 +1,4 @@
+internalId: LP_6
 color: #ffffff
 type: broadcast
 name: World Warmth (White 7)

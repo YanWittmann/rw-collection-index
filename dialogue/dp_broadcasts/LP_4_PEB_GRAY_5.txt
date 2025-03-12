@@ -1,3 +1,4 @@
+internalId: LP_4_PEB
 color: #7f7f7f
 type: broadcast
 name: Watch in Horror (Gray 5)

@@ -157,8 +157,8 @@ export function DialogueBox({
                         </div>
                     </TooltipTrigger>
                     <TooltipContent className="text-center">
-                        The above-listed name is a community-given name.<br/>
-                        The internal ID is the unique identifier the game uses to reference this pearl.<br/>
+                        The above-listed name is a community-given.<br/>
+                        The game references this pearl using this internal ID.<br/>
                         Click to copy the internal ID to your clipboard.
                     </TooltipContent>
                 </Tooltip>
@@ -168,7 +168,10 @@ export function DialogueBox({
         const name = dialogue.metadata.name || pearl.metadata.name;
         if (dialogue.metadata.info) {
             titleElement = (
-                <div className="text-white text-lg mb-8 pb-0 mt-7 flex items-center justify-center flex-col">
+                <div className={cn(
+                    "text-white text-lg mb-8 pb-0 flex items-center justify-center flex-col",
+                    internalId ? "mt-5" : "mt-7"
+                )}>
                     <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
                         <Tooltip key={"pearl-info"}>
                             <TooltipTrigger>
@@ -189,12 +192,16 @@ export function DialogueBox({
                 </div>
             )
         } else {
-            titleElement = <div className="text-white text-lg mb-8 pb-0 mt-7 flex items-center justify-center flex-col">
-                <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
-                    <div className="text-selectable">{name}</div>
-                    {internalIdElement}
-                </TooltipProvider>
-            </div>
+            titleElement =
+                <div className={cn(
+                    "text-white text-lg mb-8 pb-0 flex items-center justify-center flex-col",
+                    internalId ? "mt-5" : "mt-7"
+                )}>
+                    <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
+                        <div className="text-selectable">{name}</div>
+                        {internalIdElement}
+                    </TooltipProvider>
+                </div>
         }
 
         return <>
@@ -273,7 +280,9 @@ export function DialogueBox({
                                className="underline">GitHub</a> | Created by Yan Wittmann | <a
                     href="https://store.steampowered.com/app/312520/Rain_World" target="_blank" className="underline">Rain
                     World</a> is property of <a href="https://twitter.com/VideocultMedia" target="_blank"
-                                                className="underline">Videocult</a>
+                                                className="underline">Videocult</a> | <a
+                    href="https://github.com/YanWittmann/rw-collection-index/blob/main/privacy.md" target="_blank"
+                    className="underline">Privacy Policy</a>
                 </div> : null}
         </div>
     )

@@ -16,17 +16,19 @@ from the vanilla version and the Downpour DLC.
 ## Data and Features
 
 Complete listing of all:
-  - Pearls (Vanilla, Downpour)
-  - Broadcasts
-  - Five Pebbles Pearls
-  - White Pearls
-  - Broadcast Pearls
-  - Developer Commentary
-  - Item Descriptions
-  - Iterator Dialogue (LttM, FP) (relevant selection)
-  - Echoes Dialogue
+
+- Pearls (Vanilla, Downpour)
+- Broadcasts
+- Five Pebbles Pearls
+- White Pearls
+- Broadcast Pearls
+- Developer Commentary
+- Item Descriptions
+- Iterator Dialogue (LttM, FP) (relevant selection)
+- Echoes Dialogue
 
 Further features:
+
 - Links to the locations on the interactive Rain World map.
 - Spoiler/Unlock mode where all items start hidden ("?") and can display progressive hints if needed.
 - URL stores currently selected entry and transcriber to easily share contents with others.
@@ -96,3 +98,7 @@ Thanks to:
 | candlesign.4539 / skyball | Keyboard navigation.                                                                                    |
 | bug leaving room          | Show Pearl's internal identifiers.                                                                      |
 | scir                      | Created new Icon set.                                                                                   |
+
+### Privacy Notice
+
+See [Privacy Notice](./privacy.md).

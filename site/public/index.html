@@ -38,4 +38,12 @@
 <noscript>You need to enable JavaScript to view the pearls collection.</noscript>
 <div id="root"></div>
 </body>
+<script>
+    if (window.location.hostname !== 'localhost' && !window.location.hostname.startsWith('127.0.0')) {
+        setTimeout(() => {
+            fetch('https://yanwittmann.de/projects/countapi/increment.php?namespace=rwci&key=access', { method: 'GET' })
+                .catch(error => console.error('Error tracking page view:', error));
+        }, 1000);
+    }
+</script>
 </html>

@@ -157,6 +157,13 @@ export function PearlGrid({
             return true;
         }
 
+        if (pearl.id.toLowerCase().includes(textFilter.toLowerCase())) {
+            return true;
+        }
+        if (pearl.metadata.internalId && pearl.metadata.internalId.toLowerCase().includes(textFilter.toLowerCase())) {
+            return true;
+        }
+
         const searchText = textFilter.toLowerCase();
         return pearl.metadata.name?.toLowerCase().includes(searchText) ||
             pearl.transcribers.some(t => t.lines.some(line =>

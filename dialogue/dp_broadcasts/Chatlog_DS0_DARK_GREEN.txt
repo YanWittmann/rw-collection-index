@@ -1,3 +1,4 @@
+internalId: Chatlog_DS0
 color: #247d45
 type: broadcast
 name: Dark Green

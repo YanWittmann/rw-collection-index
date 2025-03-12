@@ -1,3 +1,4 @@
+internalId: Chatlog_GW1
 color: #cce370
 type: broadcast
 name: Light Green 2

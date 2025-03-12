@@ -1,3 +1,4 @@
+internalId: Chatlog_LM0
 color: #30bab2
 type: broadcast
 name: Cyan 1

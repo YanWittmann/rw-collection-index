@@ -1,3 +1,4 @@
+internalId: Chatlog_DM0
 color: #194fe7
 type: broadcast
 name: Dark Blue 1

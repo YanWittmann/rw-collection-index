@@ -1,3 +1,4 @@
+internalId: LP_2_PEB
 color: #7f7f7f
 type: broadcast
 name: Sturdy Creature (Gray 3)
