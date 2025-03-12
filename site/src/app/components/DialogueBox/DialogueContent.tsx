@@ -23,7 +23,6 @@ export function DialogueContent({ lines }: DialogueContentProps) {
     }
 
     const renderMonoText = (text: string) => {
-        const startsWithPipe = text.startsWith("| ");
         const startsWithSlash = text.startsWith("/");
         const textClass = startsWithSlash ? "text-gray-400" : "";
         text = text.replace(/^[|/] /, "");
