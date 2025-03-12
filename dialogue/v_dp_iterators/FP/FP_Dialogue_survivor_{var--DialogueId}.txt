@@ -5,12 +5,63 @@ subType: survivor
 md-type: pearl
 md-var-DialogueId: First_encounter
 md-name: First encounter
-. . .
-...is this reaching you?
-A little animal, on the floor of my chamber. I think I know what you are looking for.
-You're stuck in a cycle, a repeating pattern. You want a way out.
-Know that this does not make you special - every living thing shares that same frustration. From the microbes in the processing strata to me, who am, if you excuse me, godlike in comparison.
-The good news first. In a way, I am what you are searching for. Me and my kind have as our purpose to solve that very oscillating claustrophobia in the chests of you and countless others. A strange charity - you the unknowing recipient, I the reluctant gift. The noble benefactors? Gone.
-The bad news is that no definitive solution has been found. And every moment the equipment erodes to a new state of decay. I can't help you collectively, or individually. I can't even help myself.
-For you though, there is another way. The old path. Go to the west past the Farm Arrays, and then down into the earth where the land fissures, as deep as you can reach, where the ancients built their temples and danced their silly rituals. The mark I gave you will let you through.[*]
-Not that it solves anyone's problem but yours.
+MONO
+~ . . .
+~ ...is this reaching you?
+~ A little animal, on the floor of my chamber. I think I know what you are looking for.
+~ You're stuck in a cycle, a repeating pattern. You want a way out.
+~ Know that this does not make you special - every living thing shares that same frustration. From the microbes in the processing strata to me, who am, if you excuse me, godlike in comparison.
+~ The good news first. In a way, I am what you are searching for. Me and my kind have as our purpose to solve that very oscillating claustrophobia in the chests of you and countless others. A strange charity - you the unknowing recipient, I the reluctant gift. The noble benefactors? Gone.
+~ The bad news is that no definitive solution has been found. And every moment the equipment erodes to a new state of decay. I can't help you collectively, or individually. I can't even help myself.
+~ For you though, there is another way. The old path. Go to the west past the Farm Arrays, and then down into the earth where the land fissures, as deep as you can reach, where the ancients built their temples and danced their silly rituals. The mark I gave you will let you through.[*]
+~ Not that it solves anyone's problem but yours.
+~ &nbsp;
+/ Traveling from General Systems Bus
+|  At the end of time none of this will matter I suppose, but it would be nice if you took another way out. One free of... frolicking in my memory arrays. There is a perfectly good access shaft right here.
+/ Traveling from The Wall
+|  Best of luck to you, little creature. I must resume my work.
+/ [*] If the Slugcat dies without saving after meeting Five Pebbles, the mark is kept; therefore, if Five Pebbles is encountered once again, he does not give it again and this sentence is omitted.
+
+=== transcription: FP
+md-super-name: Common Dialogue
+md-type: pearl
+md-transcriberName: Creature Dialogue
+md-var-DialogueId: Common_Dialogue
+md-name: Creature Dialogue
+md-tag: downpour
+MONO
+/ This is the default dialogue for when any Slugcat brings live creatures into Five Pebbles's chamber.
+/ Unlike the dialogue in Looks to the Moon's Creature Dialogue, these dialogue easter eggs are exclusively available when meeting Five Pebbles for the first time. Additionally, it will not trigger if the More Slugcats Expansion is not enabled.
+/ The following two lines replace "Best of luck to you, little creature. I must resume my work."
+/ Slugpup
+|  Best of luck to you, and your family. There is nothing else I can do.
+|  I must resume my work.
+/ Most Other Creatures
+|  Best of luck to you, and your companion. There is nothing else I can do.
+|  I must resume my work.
+
+
+=== transcription: FP
+md-type: pearl
+md-transcriberName: Picking up a pearl
+md-var-DialogueId: Common_Dialogue
+md-name: Picking up a pearl
+Yes, help yourself. They are not edible.
+
+=== transcription: FP
+md-type: pearl
+md-transcriberName: Lingering
+md-var-DialogueId: Common_Dialogue
+md-name: Lingering
+Thank you little creature. I must resume my work.
+I appreciate what you have done but it is time for you to leave.
+As I mentioned you do not have unlimited time.
+
+=== transcription: FP
+md-type: pearl
+md-transcriberName: Returning to the Chamber
+md-var-DialogueId: Common_Dialogue
+md-name: Returning to the Chamber
+You again? I have nothing for you.
+I won't tolerate this. Leave immediately and don't come back.
+You had your chances.

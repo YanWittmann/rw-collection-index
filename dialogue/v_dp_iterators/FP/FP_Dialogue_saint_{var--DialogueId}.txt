@@ -12,29 +12,71 @@ Little... green thing...
 
 === transcription: FP
 md-type: pearl
-md-transcriberName: If Five Pebbles dislikes Saint
 md-var-DialogueId: Following_encounters
 md-name: Following encounters
 MONO
-/ One of the following lines is chosen at random:
-|  ... Go away...
-|  ... Not forgotten pain...
-|  ... So little... left. Why hurt... me more...
-|  ... Leave me... alone.
+/ If Five Pebbles dislikes Saint:
+/  One of the following lines is chosen at random:
+|   ... Go away...
+|   ... Not forgotten pain...
+|   ... So little... left. Why hurt... me more...
+|   ... Leave me... alone.
+/ If Five Pebbles does not dislike Saint:
+/  One of the following lines is chosen at random:
+|   ... Why back?
+|   ... It is... warmer... today.
+|   Little green friend. Hello.
+|   ... Nice to see...
+|   ... Thank you... for... company.
+|   ... Little visitor... Hello...
 
 === transcription: FP
 md-type: pearl
-md-transcriberName: If Five Pebbles does not dislike Saint
-md-var-DialogueId: Following_encounters
-md-name: Following encounters
+md-transcriberName: Saint's death
+md-var-DialogueId: Interrupts
+md-name: Interrupts: Saint's death
+MONO
+| / One of the following options is selected randomly:
+|  ... Why did... you stay...
+|  ... Too cold... Alone again.
+|  ...
+
+=== transcription: FP
+md-type: pearl
+md-transcriberName: Attacked
+md-var-DialogueId: Interrupts
+md-name: Interrupts: Attacked
+...
+
+=== transcription: FP
+md-type: pearl
+md-transcriberName: Stealing Music Pearl
+md-var-DialogueId: Interrupts
+md-name: Interrupts: Stealing Music Pearl
 MONO
 / One of the following lines is chosen at random:
-|  ... Why back?
-|  ... It is... warmer... today.
-|  Little green friend. Hello.
-|  ... Nice to see...
-|  ... Thank you... for... company.
-|  ... Little visitor... Hello...
+|  ... No, don't... take!
+|  ... No...
+|  ... Give... back...
+|  ... All I... have...
+
+=== transcription: FP
+md-type: pearl
+md-transcriberName: Blizzard
+md-var-DialogueId: Interrupts
+md-name: Interrupts: Blizzard
+MONO
+/ This dialogue only appears if Five Pebbles does not dislike Saint.
+/  Blizzard approaching
+/   One of the following options is selected randomly:
+|   ... ...You should... find heat.
+|   ... ...Go find... shelter.
+|   ... ...Friend... please find... safety.
+/  Blizzarding
+/   One of the following options is selected randomly:
+|    ... Cold coming...
+|    ... Please find... Warmth.
+|    ... Find heat... Cold is danger.
 
 === transcription: LttM-FP-saint
 md-type: pearl

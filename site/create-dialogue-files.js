@@ -238,7 +238,7 @@ function parseLine(line) {
 
     const speakerPart = line.slice(0, colonIndex).trim();
     // Only recognize as speaker if it's not metadata and within length limit
-    if (!speakerPart.startsWith('md-') && !speakerPart.startsWith('|') && !speakerPart.startsWith('/') && speakerPart.length <= MAX_SPEAKER_LENGTH) {
+    if (!speakerPart.startsWith('md-') && !speakerPart.startsWith('|') && !speakerPart.startsWith('/') && !speakerPart.startsWith('~') && speakerPart.length <= MAX_SPEAKER_LENGTH) {
         return {
             speaker: speakerPart,
             text: line.slice(colonIndex + 1).trim()

@@ -24,8 +24,9 @@ export function DialogueContent({ lines }: DialogueContentProps) {
 
     const renderMonoText = (text: string) => {
         const startsWithSlash = text.startsWith("/");
-        const textClass = startsWithSlash ? "text-gray-400" : "";
-        text = text.replace(/^[|/] /, "");
+        const startsWithTilde = text.startsWith("~");
+        const textClass = (startsWithSlash ? "text-gray-400" : "") + (startsWithTilde ? " text-center" : "");
+        text = text.replace(/^[|/~] /, "");
 
         // count leading spaces to determine indentation level
         const match = text.match(/^( +)/)

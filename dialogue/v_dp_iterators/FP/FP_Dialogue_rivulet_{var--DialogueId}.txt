@@ -100,7 +100,24 @@ These ordeals have made me understand what they all tried to tell me.
 ...I don't have to go through this alone.
 
 === transcription: FP
-md-subType: pearl
+md-var-DialogueId: Subsequent_meetings
+md-name: Subsequent meetings
+md-tag: downpour
+MONO
+/ One of the following options is selected randomly:
+|  You should not be here. This facility is in a constant state of decay. Nothing in here is hospitable to the normal definition of life.
+|  Please, leave quickly, while you still can.
+|  I used to be furious at the idea of creatures crawling through my superstructure. However, I am actually grateful for this rare opportunity to not be alone.
+|  However, you really shouldn't stay. It's too dangerous.
+/  If Slugcat has had fewer than 3 conversations with Five Pebbles
+|   Why have you returned? Do you have a death wish? I have nothing left to give you... please leave, for your own sake.
+/  If Slugcat has had more than 5 conversations with Five Pebbles
+|   ...
+|   Your company is welcome little creature, but please do not stay.
+
+=== transcription: FP
+md-super-color: #b02ffb
+md-super-type: pearl
 md-transcriberName: If the Rivulet leaves with or swallows the Music pearl
 md-var-DialogueId: Music
 md-name: Music
@@ -108,7 +125,8 @@ md-tag: downpour
 Wait, you cannot leave with that!
 
 === transcription: FP
-md-subType: pearl
+md-super-color: #b02ffb
+md-super-type: pearl
 md-transcriberName: If the Music pearl is grabbed
 md-var-DialogueId: Music
 md-name: Music
@@ -124,3 +142,24 @@ md-var-DialogueId: Neuron
 md-name: Neuron
 md-tag: downpour
 I would appreciate if you would not eat those. My umbilical will keep me conscious, but every neuron lost is a piece of me lost as well...
+
+=== transcription: FP
+md-super-subType: item/Rot_icon
+md-subType: item/Rot_icon
+md-transcriberName: If Rivulet dies to the Proto Long Legs in the chamber
+md-var-DialogueId: Proto_Long_Legs_Death
+md-name: Dies to Proto Long Legs
+md-tag: downpour
+MONO
+/ One of the following options is selected randomly:
+/  a:
+|   ...
+|   That can't be good...
+/  b:
+|   ...
+|   How did it even manage to do that?
+|   What a dumb creature...
+/  c:
+|   ...
+|   Well then...
+|   Another ordeal to add to my running tally of bad luck...

@@ -37,6 +37,60 @@ I'm returning to my work. Unless you have anything productive for me, I have not
 
 === transcription: FP-artificer
 md-type: pearl
+md-var-DialogueId: Visiting_Multiple_Times
+md-name: Visiting Multiple Times
+MONO
+/ After three total visits (not counting sharing the mask with him.)
+|  . . .
+
+=== transcription: FP-artificer
+md-type: pearl
+md-var-DialogueId: Hitting_with_a_rock_or_spear
+md-name: Hitting with a rock or spear
+MONO
+/ Hitting with a rock or spear
+/  One of the following options is selected randomly:
+|   GET OUT.
+|   LEAVE.
+
+=== transcription: FP-artificer
+md-type: pearl
+md-var-DialogueId: Pebbles_Pearl
+md-name: Leaving as Pebbles reads
+MONO
+/ [WIKI]: This requires further research, but it appears that the dialogue simply progresses instead of selecting from a pool.
+/ First and Second time leaving:
+|  Please, a moment of your time to finish?
+/ Third time leaving:
+|  Please do not return.
+
+=== transcription: FP-artificer
+md-type: pearl
+md-var-DialogueId: Pebbles_Pearl
+md-name: Giving a Pearl
+MONO
+/ First Pearl
+|  Ah, you have found me something to read?
+/ Second Pearl
+/  One of the following options is selected randomly:
+|   Have you found something else for me to read?
+|   Let us take a look.
+/ Third Pearl
+|  I am surprised you have found so many of these.
+/ Fourth Pearl
+/  One of the following options is selected randomly:
+|   Where do you find all of these?
+|   I wonder, just how much time has passed since some of these were written.
+/ Subsequent Pearls
+/  One of the following options is selected randomly:
+|   Let us see what you have found.
+|   Ah. Have you found something new?
+|   What is this?
+|   Is that something new? Allow me to see.
+|   Let us see if there is anything important written on this.
+
+=== transcription: FP-artificer
+md-type: pearl
 md-var-DialogueId: Killing_Chieftain_Scavenger
 md-name: Returning after killing the Chieftain Scavenger
  Ah, you've returned. You know that I care very little for the creatures that wander through my facility.

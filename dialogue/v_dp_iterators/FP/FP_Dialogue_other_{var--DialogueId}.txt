@@ -1,0 +1,8 @@
+type: item
+
+=== transcription: FP
+md-super-subType: item/Singularity_Bomb_icon
+md-type: item/Singularity_Bomb_icon
+md-var-DialogueId: Throwing_Singularity_Bomb
+md-name: Throwing a Singularity Bomb
+...!
