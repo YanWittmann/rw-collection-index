@@ -2,7 +2,8 @@
 
 import type * as React from "react"
 import { motion } from "framer-motion"
-import { cn } from "@shadcn/lib/utils";
+import { cn } from "@shadcn/lib/utils"
+import { useState } from "react"
 
 interface RwIconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     selected?: boolean
@@ -22,21 +23,28 @@ export function RwIconButton({
                                  onMouseEnter,
                                  onMouseLeave,
                                  className,
-                                 children
+                                 children,
                              }: RwIconButtonProps) {
+    const [isHovering, setIsHovering] = useState(false)
+
     return (
         <motion.button
             className={cn(
                 "relative p-0 flex items-center justify-center",
                 className,
-                square ? "aspect-square h-12 w-12" : "h-12 min-w-[3rem]"
+                square ? "aspect-square h-12 w-12" : "h-12 min-w-[3rem]",
             )}
             initial="default"
-            whileHover={selected ? "selected" : "hover"}
-            animate={selected ? "selected" : "default"}
+            animate={selected ? "selected" : isHovering ? "hover" : "default"}
             onClick={onClick}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
+            onMouseEnter={(e) => {
+                setIsHovering(true)
+                onMouseEnter && onMouseEnter()
+            }}
+            onMouseLeave={(e) => {
+                setIsHovering(false)
+                onMouseLeave && onMouseLeave()
+            }}
         >
             {/* Background Layer */}
             <motion.div
@@ -80,7 +88,7 @@ export function RwIconButton({
                         opacity: [0, 1, 0],
                         transition: {
                             opacity: {
-                                repeat: Infinity,
+                                repeat: Number.POSITIVE_INFINITY,
                                 duration: 0.35,
                             },
                         },
@@ -94,10 +102,12 @@ export function RwIconButton({
             />
 
             {/* Content container */}
-            <div className={cn(
-                "relative z-10 flex items-center justify-center",
-                square ? ("w-full h-full " + padding) : "px-4 py-3"
-            )}>
+            <div
+                className={cn(
+                    "relative z-10 flex items-center justify-center",
+                    square ? "w-full h-full " + padding : "px-4 py-3",
+                )}
+            >
                 {children}
             </div>
         </motion.button>

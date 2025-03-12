@@ -86,7 +86,7 @@ Contributions are welcome! Please open an Issue or Pull Request to discuss chang
 
 Thanks to:
 
-| User                      | Contribution                                                                                            |
+| User                      | Suggestions and Contributions                                                                           |
 |---------------------------|---------------------------------------------------------------------------------------------------------|
 | Space Dwarf               | "Colored Pearls + Broadcasts" category rename.                                                          |
 | Space Dwarf               | DLC Tag for DLC content.                                                                                |
@@ -98,6 +98,8 @@ Thanks to:
 | candlesign.4539 / skyball | Keyboard navigation.                                                                                    |
 | bug leaving room          | Show Pearl's internal identifiers.                                                                      |
 | scir                      | Created new Icon set.                                                                                   |
+| ShockMicro                | Some DP items were not marked as such.                                                                  |
+| candlesign.4539           | Buttons get stuck in the hovered state; replaced framer-motion native logic with custom hover logic.    |
 
 ### Privacy Notice
 

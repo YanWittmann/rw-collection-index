@@ -1,7 +1,7 @@
 color: #aaaaaa
 type: pearl
 name: Saint: All other Pearls
-info: Most Pearls in Saint's Campaign have deteriorated and display this Dialogue.\nThe remaining ones are the Music Pearl, LF_west (Deep Pink)
+info: Most Pearls in Saint's Campaign have deteriorated and display this Dialogue.\nThe remaining ones are the Pearls RM (Music), LF_west (Deep Pink)
 tag: downpour
 
 === transcription: LttM-saint

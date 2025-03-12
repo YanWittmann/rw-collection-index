@@ -1,3 +1,4 @@
+internalId: BroadcastMisc
 color: {randomPick--#e8c6d2--#e8bad2--#e8bac2--#c6bac2}
 type: pearl
 name: Broadcast Pearl {var--BroadcastIdx}

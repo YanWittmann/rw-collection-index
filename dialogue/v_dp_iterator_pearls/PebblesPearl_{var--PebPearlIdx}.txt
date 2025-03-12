@@ -1,3 +1,4 @@
+internalId: PebblesPearl
 color: {randomPick--#ff7a02--#b3b3b3--#4b4653}
 type: pearl
 name: Five Pebbles' Pearl {var--PebPearlIdx}
