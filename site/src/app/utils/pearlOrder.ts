@@ -52,8 +52,13 @@ export const pearlOrder: PearlChapter[] = [
             { pattern: /LttM_Dialogue_rivulet.+/ },
             { pattern: /LttM_Dialogue_saint_.+/ },
             { pattern: /LttM_Dialogue_inv_.+/ },
-            { pattern: /LttM_Dialogue_short_.+/ },
             { pattern: /LttM_Dialogue_.+/ },
+        ]
+    },
+    {
+        name: "Looks to the Moon Various",
+        ids: [
+            { pattern: /LttM_short_Dialogue_.+/ },
         ]
     },
     {
