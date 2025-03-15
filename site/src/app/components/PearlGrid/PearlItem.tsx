@@ -37,10 +37,9 @@ const PearlItem: React.FC<PearlItemProps> = ({
 
     const generateTooltipText = useMemo(() => {
         // collect all metadata from the dialogue transcriptions
-        let tooltip = pearl.metadata.name ?? 'Unknown';
-        if (pearl.metadata.internalId) {
-            tooltip += ' (' + pearl.metadata.internalId + ')';
-        }
+        let mainText = pearl.metadata.name ?? 'Unknown';
+        const internalId = pearl.metadata.internalId;
+        
         const metadatas = pearl.transcribers.map(transcriber => transcriber.metadata);
         const mapInfos: MapInfo[] = metadatas.filter(metadata => metadata.map && metadata.map.length > 0).map(metadata => metadata.map as any as MapInfo).flat();
 
@@ -52,11 +51,11 @@ const PearlItem: React.FC<PearlItemProps> = ({
         }
 
         if (regionCollector.size > 3) {
-            tooltip += ' / ' + mapInfos.length + ' locations';
+            mainText += ' / ' + mapInfos.length + ' locations';
         } else {
-            regionCollector.forEach(region => tooltip += ' / ' + region);
+            regionCollector.forEach(region => mainText += ' / ' + region);
         }
-        return tooltip;
+        return { mainText, internalId };
     }, [pearl]);
 
     return useMemo(() => {
@@ -84,7 +83,14 @@ const PearlItem: React.FC<PearlItemProps> = ({
                             )}
                         </RwIconButton>
                     </TooltipTrigger>
-                    <TooltipContent>{generateTooltipText}</TooltipContent>
+                    <TooltipContent>
+                        <div className="text-center">
+                            <div>{generateTooltipText.mainText}</div>
+                            {generateTooltipText.internalId && (
+                                <div className="text-xs text-muted-foreground">{generateTooltipText.internalId}</div>
+                            )}
+                        </div>
+                    </TooltipContent>
                 </Tooltip>
             </TooltipProvider>
         );
