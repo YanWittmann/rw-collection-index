@@ -46,35 +46,6 @@ const findNextValidPosition = (row: number, col: number, pearls: PearlData[][], 
     return null;
 };
 
-const handleTranscriberSelection = (
-    transcribers: PearlData['transcribers'],
-    currentTranscriber: string | null,
-    direction: 'next' | 'prev'
-): string | null => {
-    if (!transcribers.length) return null;
-
-    let currentIndex = transcribers.length - 1;
-
-    if (currentTranscriber) {
-        const [, indexStr] = currentTranscriber.split('-');
-        const index = parseInt(indexStr);
-        if (!isNaN(index)) {
-            currentIndex = index;
-        } else {
-            currentIndex = transcribers.findIndex(t => t.transcriber === currentTranscriber);
-            if (currentIndex === -1) currentIndex = transcribers.length - 1;
-        }
-    }
-
-    const newIndex = direction === 'next'
-        ? (currentIndex + 1) % transcribers.length
-        : (currentIndex - 1 + transcribers.length) % transcribers.length;
-
-    const newTranscriber = transcribers[newIndex].transcriber;
-    const sameTranscribers = transcribers.filter(t => t.transcriber === newTranscriber);
-    return sameTranscribers.length > 1 ? `${newTranscriber}-${newIndex}` : newTranscriber;
-};
-
 export function useDialogue(unlockMode: UnlockMode, GRID_DATA: PearlData[]) {
     const [selectedPearl, setSelectedPearl] = useState<string | null>(null);
     const [selectedTranscriber, setSelectedTranscriber] = useState<string | null>(null);
@@ -86,14 +57,62 @@ export function useDialogue(unlockMode: UnlockMode, GRID_DATA: PearlData[]) {
             setSelectedTranscriber(null);
             return;
         }
-        const multipleSameTranscribers = new Set(pearl.transcribers.map(t => t.transcriber)).size !== pearl.transcribers.length;
+        
         setSelectedPearl(pearl.id);
-        const possibleTranscriber = pearl.transcribers[pearl.transcribers.length - 1]?.transcriber;
-        if (multipleSameTranscribers && possibleTranscriber) {
-            setSelectedTranscriber(possibleTranscriber + '-' + (pearl.transcribers.length - 1));
-        } else {
-            setSelectedTranscriber(possibleTranscriber ?? null);
+        
+        // always start with the last transcriber
+        const lastTranscriber = pearl.transcribers[pearl.transcribers.length - 1];
+        if (!lastTranscriber) {
+            setSelectedTranscriber(null);
+            return;
         }
+        
+        // check if this transcriber name appears multiple times
+        const duplicateCount = pearl.transcribers.filter(t => t.transcriber === lastTranscriber.transcriber).length;
+        const lastIndex = pearl.transcribers.length - 1;
+        
+        // if multiple occurrences, include the index
+        setSelectedTranscriber(duplicateCount > 1 
+            ? `${lastTranscriber.transcriber}-${lastIndex}`
+            : lastTranscriber.transcriber
+        );
+    };
+
+    const handleTranscriberSelection = (
+        transcribers: PearlData['transcribers'],
+        currentTranscriber: string | null,
+        direction: 'next' | 'prev'
+    ): string | null => {
+        if (!transcribers.length) return null;
+
+        // find current index
+        let currentIndex = 0;
+        if (currentTranscriber) {
+            // First try to find exact match
+            currentIndex = transcribers.findIndex(t => 
+                t.transcriber === currentTranscriber || 
+                `${t.transcriber}-${transcribers.indexOf(t)}` === currentTranscriber
+            );
+            // if not found, default to first/last based on direction
+            if (currentIndex === -1) {
+                currentIndex = direction === 'next' ? 0 : transcribers.length - 1;
+            }
+        }
+
+        // calculate new index
+        const newIndex = direction === 'next'
+            ? (currentIndex + 1) % transcribers.length
+            : (currentIndex - 1 + transcribers.length) % transcribers.length;
+
+        const newTranscriber = transcribers[newIndex];
+        
+        // check if this transcriber name appears multiple times
+        const duplicateCount = transcribers.filter(t => t.transcriber === newTranscriber.transcriber).length;
+        
+        // if multiple occurrences, include the index
+        return duplicateCount > 1 
+            ? `${newTranscriber.transcriber}-${newIndex}`
+            : newTranscriber.transcriber;
     };
 
     const handleKeyNavigation = (e: KeyboardEvent, pearls: PearlData[][], currentPearlId: string | null) => {
