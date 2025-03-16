@@ -24,7 +24,7 @@ Complete listing of all:
 - Broadcast Pearls
 - Developer Commentary
 - Item Descriptions
-- Iterator Dialogue (LttM, FP) (relevant selection)
+- Iterator Dialogue (LttM, FP)
 - Echoes Dialogue
 
 Further features:
@@ -33,6 +33,7 @@ Further features:
 - Spoiler/Unlock mode where all items start hidden ("?") and can display progressive hints if needed.
 - URL stores currently selected entry and transcriber to easily share contents with others.
 - Search functionality that allows to perform a full-text search across all entries.
+- Keyboard navigation.
 
 Information is sourced from the [Rain World Wiki](https://rainworld.miraheze.org/wiki/Pearl/Dialogue) and the game
 itself.
