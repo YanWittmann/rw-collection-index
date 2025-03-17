@@ -1,0 +1,1 @@
+pyftsubset Segoe-UI-Semibold.ttf --output-file=Segoe-UI-Semibold-subset.woff2 --flavor=woff2 --text-file=glyphs.txt

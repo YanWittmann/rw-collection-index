@@ -44,16 +44,16 @@
     <style>
         @font-face {
             font-family: 'Rodondo';
-            src: url('%PUBLIC_URL%/font/Rodondo.otf') format('opentype');
+            src: url('%PUBLIC_URL%/font/Rodondo.woff2') format('woff2'), url('%PUBLIC_URL%/font/Rodondo.otf') format('opentype');
             size-adjust: 150%;
-            font-display: optional;
+            font-display: swap;
         }
 
         @font-face {
             font-family: 'Segoe-UI-Semibold';
-            src: url('%PUBLIC_URL%/font/Segoe-UI-Semibold.ttf') format('truetype');
+            src: url('%PUBLIC_URL%/font/Segoe-UI-Semibold-subset.woff2') format('woff2'), url('%PUBLIC_URL%/font/Segoe-UI-Semibold.ttf') format('truetype');
             size-adjust: 110%;
-            font-display: optional;
+            font-display: swap;
         }
 
         html, body {
