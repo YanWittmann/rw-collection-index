@@ -121,13 +121,13 @@ export default function HintSystemContent({
             </div>
             <div className="relative flex flex-col items-center justify-center h-full space-y-3">
                 <div className="flex flex-row space-x-3 mb-8">
-                    <RwIconButton square={false} onClick={unlockTranscription}>
+                    <RwIconButton square={false} onClick={unlockTranscription} aria-label="Unlock Transcription">
                         Unlock Transcription
                     </RwIconButton>
                     {effectiveHints.length > 0 && <RwIconButton square={false} onClick={() => {
                         if (hintProgress === effectiveHints.length) return;
                         setHintProgress(hintProgress + 1);
-                    }}>
+                    }} aria-label="Next Hint">
                         {hintProgress === effectiveHints.length ? "No more hints available" : "Next Hint (" + effectiveHints[hintProgress].name + ")"}
                     </RwIconButton>}
                 </div>

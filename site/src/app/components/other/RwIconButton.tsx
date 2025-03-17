@@ -13,6 +13,7 @@ interface RwIconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
     children?: React.ReactNode
     square?: boolean
     padding?: string
+    'aria-label': string
 }
 
 export function RwIconButton({
@@ -24,6 +25,7 @@ export function RwIconButton({
                                  onMouseLeave,
                                  className,
                                  children,
+                                 'aria-label': ariaLabel,
                              }: RwIconButtonProps) {
     const [isHovering, setIsHovering] = useState(false)
 
@@ -45,6 +47,7 @@ export function RwIconButton({
                 setIsHovering(false)
                 onMouseLeave && onMouseLeave()
             }}
+            aria-label={ariaLabel}
         >
             {/* Background Layer */}
             <motion.div

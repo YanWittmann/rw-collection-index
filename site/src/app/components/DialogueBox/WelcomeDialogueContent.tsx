@@ -57,7 +57,8 @@ export function WelcomeDialogueContent({
                             <TooltipProvider delayDuration={200}>
                                 <Tooltip>
                                     <TooltipTrigger>
-                                        <RwIconButton square={false} onClick={toggleUnlockModeCallback}>
+                                        <RwIconButton square={false} onClick={toggleUnlockModeCallback}
+                                                      aria-label="Unlock Mode">
                                             Try Unlock Mode
                                         </RwIconButton>
                                     </TooltipTrigger>
@@ -72,7 +73,8 @@ export function WelcomeDialogueContent({
                                 </Tooltip>
                             </TooltipProvider>
                         ) : (
-                            <RwIconButton square={false} onClick={toggleUnlockModeCallback} className="w-full">
+                            <RwIconButton square={false} onClick={toggleUnlockModeCallback} className="w-full"
+                                          aria-label="Unlock Mode">
                                 View all pearls
                             </RwIconButton>
                         )}
@@ -86,6 +88,7 @@ export function WelcomeDialogueContent({
                                     }
                                 }}
                                 className="w-full"
+                                aria-label="Reset Unlocks"
                             >
                                 Reset Unlocks
                             </RwIconButton>
@@ -96,7 +99,9 @@ export function WelcomeDialogueContent({
                     </div>
                     <div className="flex flex-row space-x-3">
                         <RwIconButton square={false}
-                                      onClick={() => window.open("https://github.com/YanWittmann/rw-collection-index/issues/new", "_blank")}>
+                                      onClick={() => window.open("https://github.com/YanWittmann/rw-collection-index/issues/new", "_blank")}
+                                      aria-label="Open an Issue"
+                        >
                             Open an Issue
                         </RwIconButton>
                     </div>

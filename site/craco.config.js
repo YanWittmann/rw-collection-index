@@ -9,12 +9,11 @@ console.log('Configuring craco webpack overwrite for', isDevelopment ? 'Developm
 module.exports = {
     webpack: {
         configure: (webpackConfig) => {
-
             if (isProduction) {
                 // enable production mode optimizations
                 webpackConfig.mode = 'production';
 
-                // split vendor chunks
+                // optimize bundle size
                 webpackConfig.optimization = {
                     ...webpackConfig.optimization,
                     splitChunks: {
@@ -51,9 +50,44 @@ module.exports = {
                                 name: 'sanitize-html',
                                 chunks: 'all',
                             },
+                            // add more specific chunks for large dependencies
+                            react: {
+                                test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+                                name: 'react',
+                                chunks: 'all',
+                            },
+                            // add chunks for specific features
+                            features: {
+                                test: /[\\/]src[\\/]app[\\/]components[\\/]/,
+                                name(module) {
+                                    // Extract component name from the path
+                                    const match = module.context.match(/[\\/]components[\\/]([^\\/]+)[\\/]/);
+                                    return match ? `feature-${match[1]}` : 'feature-common';
+                                },
+                                chunks: 'all',
+                            },
                         },
                     },
+                    // enable tree shaking
+                    usedExports: true,
+                    minimize: true,
+                    // add runtime chunk
+                    runtimeChunk: 'single',
+                    // enable module concatenation
+                    concatenateModules: true,
+                    // enable side effects optimization
+                    sideEffects: true,
                 };
+
+                // add performance hints
+                webpackConfig.performance = {
+                    hints: 'warning',
+                    maxEntrypointSize: 512000,
+                    maxAssetSize: 512000,
+                };
+
+                // enable source maps for debugging
+                webpackConfig.devtool = 'source-map';
             }
 
             // add bundle analyzer in development
@@ -61,9 +95,7 @@ module.exports = {
                 webpackConfig.plugins.push(new BundleAnalyzerPlugin());
             }
 
-            // shadcn-ui uses aliases to import components.
-            // react-scripts does not support aliases, so we need to use craco to add them.
-            // note that this will not work: module.exports = {webpack: {resolve: {alias: {'@shadcn': path.resolve(__dirname, 'src/@shadcn/')}}}}
+            // shadcn-ui uses aliases to import components
             webpackConfig.resolve.alias = {
                 ...webpackConfig.resolve.alias,
                 '@shadcn': path.resolve(__dirname, 'src/@shadcn/'),

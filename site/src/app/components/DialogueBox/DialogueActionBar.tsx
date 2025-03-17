@@ -26,7 +26,7 @@ export function DialogueActionBar({ pearl, transcriberData, isUnlocked, onSelect
     segments.push(
         <Tooltip key="close-dialogue-box">
             <TooltipTrigger>
-                <RwIconButton onClick={() => onSelectPearl(null)} padding="p-[.6rem]">
+                <RwIconButton onClick={() => onSelectPearl(null)} padding="p-[.6rem]" aria-label="Close Dialogue Box">
                     <RwIcon type="close"/>
                 </RwIconButton>
             </TooltipTrigger>
@@ -38,7 +38,7 @@ export function DialogueActionBar({ pearl, transcriberData, isUnlocked, onSelect
         segments.push(
             <Tooltip key="open-downpour">
                 <TooltipTrigger>
-                    <RwIconButton>
+                    <RwIconButton aria-label="Downpour-Exclusive Content">
                         <RwIcon type="dlc-dp"/>
                     </RwIconButton>
                 </TooltipTrigger>
@@ -54,7 +54,7 @@ export function DialogueActionBar({ pearl, transcriberData, isUnlocked, onSelect
                     <Tooltip key="open-rain-world-map">
                         <PopoverTrigger>
                             <TooltipTrigger>
-                                <RwIconButton>
+                                <RwIconButton aria-label="Open Rain World Map">
                                     <RwIcon type="pin"/>
                                     {hasMultipleLocations && (
                                         <span
@@ -115,7 +115,7 @@ export function DialogueActionBar({ pearl, transcriberData, isUnlocked, onSelect
                 segments.push(
                     <Tooltip key="open-rain-world-map">
                         <TooltipTrigger>
-                            <RwIconButton onClick={() => window.open(mapLink, "_blank")}>
+                            <RwIconButton onClick={() => window.open(mapLink, "_blank")} aria-label="Open Rain World Map">
                                 <RwIcon type="pin"/>
                             </RwIconButton>
                         </TooltipTrigger>

@@ -9,19 +9,18 @@ import { useIsMobile } from "./hooks/useIsMobile";
 import { cn } from "@shadcn/lib/utils";
 import { LoadingSpinner } from "./components/LoadingSpinner";
 
-const PearlGrid = lazy(() => {
-  const component = import("./components/PearlGrid/PearlGrid").then(module => ({ default: module.PearlGrid }));
-  // Preload the component
-  component.then(() => {});
-  return component;
-});
+// lazy load components with preloading
+const PearlGrid = lazy(() => import("./components/PearlGrid/PearlGrid").then(module => ({ default: module.PearlGrid })));
+const DialogueBox = lazy(() => import("./components/DialogueBox/DialogueBox").then(module => ({ default: module.DialogueBox })));
 
-const DialogueBox = lazy(() => {
-  const component = import("./components/DialogueBox/DialogueBox").then(module => ({ default: module.DialogueBox }));
-  // preload the component
-  component.then(() => {});
-  return component;
-});
+// preload critical components
+const preloadComponents = async () => {
+    const [pearlGridModule, dialogueBoxModule] = await Promise.all([
+        import("./components/PearlGrid/PearlGrid"),
+        import("./components/DialogueBox/DialogueBox")
+    ]);
+    return { pearlGridModule, dialogueBoxModule };
+};
 
 let GRID_DATA: PearlData[] = parsedData as PearlData[];
 
@@ -36,12 +35,6 @@ export default function DialogueInterface() {
     const isMobile = useIsMobile();
 
     useEffect(() => {
-        const preloadComponents = async () => {
-            await Promise.all([
-                import("./components/PearlGrid/PearlGrid"),
-                import("./components/DialogueBox/DialogueBox")
-            ]);
-        };
         preloadComponents();
     }, []);
 
@@ -128,7 +121,7 @@ export default function DialogueInterface() {
                 isMobile ? "p-0" : "p-4 md:p-8"
             )}
             style={{
-                backgroundImage: `url(img/Pc-main-menu.png)`,
+                backgroundImage: `url(img/Pc-main-menu.webp)`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundAttachment: "fixed",

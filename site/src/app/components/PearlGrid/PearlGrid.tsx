@@ -49,6 +49,7 @@ const SearchBar = ({ isMobile, unlockMode, onTextInput, onToggleUnlockMode }: {
                 square={false}
                 onClick={onToggleUnlockMode}
                 className="shrink-0"
+                aria-label="Toggle Unlock Mode"
             >
                 <span className="text-white">
                     {unlockMode === "all" ? "Spoiler" : "Show All"}
@@ -58,20 +59,25 @@ const SearchBar = ({ isMobile, unlockMode, onTextInput, onToggleUnlockMode }: {
     </div>
 );
 
-const ChapterGrid = ({
-                         chapter,
-                         chapterIndex,
-                         currentGridPosition,
-                         selectedPearlRef,
-                         getHighlightStyle,
-                         unlockMode,
-                         selectedPearl,
-                         onSelectPearl,
-                         isAlternateDisplayModeActive,
-                         unlockVersion
-                     }: {
+// wrapper component for lazy loading
+const LazyChapterGrid = ({
+                          chapter,
+                          chapterIndex,
+                          isVisible,
+                          setVisibleChapters,
+                          currentGridPosition,
+                          selectedPearlRef,
+                          getHighlightStyle,
+                          unlockMode,
+                          selectedPearl,
+                          onSelectPearl,
+                          isAlternateDisplayModeActive,
+                          unlockVersion
+                      }: {
     chapter: { name: string, items: PearlData[] }
     chapterIndex: number
+    isVisible: boolean
+    setVisibleChapters: (callback: (prev: Set<number>) => Set<number>) => void
     currentGridPosition?: [number, number]
     selectedPearlRef: React.RefObject<HTMLDivElement | null>
     getHighlightStyle: (chapterIndex: number, itemIndex: number) => React.CSSProperties
@@ -80,30 +86,61 @@ const ChapterGrid = ({
     onSelectPearl: (id: string) => void
     isAlternateDisplayModeActive: boolean
     unlockVersion: number
-}) => (
-    <div key={`chapter-${chapterIndex}`} className="last:mb-4">
-        {chapter.name && <h3 className="text-white text-sm mb-2">{chapter.name}</h3>}
-        <div className="grid grid-cols-5 gap-2 w-fit">
-            {chapter.items.map((pearl, pearlIndex) => pearl && pearl.id && (
-                <div
-                    key={`pearl-${pearl.id}`}
-                    ref={currentGridPosition && getHighlightStyle(chapterIndex, pearlIndex).outline ? selectedPearlRef : undefined}
-                    style={getHighlightStyle(chapterIndex, pearlIndex)}
-                >
-                    <MemoizedPearlItem
-                        pearl={pearl}
-                        pearlIndex={pearlIndex}
-                        selectedPearl={selectedPearl}
-                        onSelectPearl={onSelectPearl}
-                        unlockMode={unlockMode}
-                        showTranscriberCount={isAlternateDisplayModeActive}
-                        unlockVersion={unlockVersion}
-                    />
+}) => {
+    const observerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const currentRef = observerRef.current;
+        
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setVisibleChapters(prev => new Set([...Array.from(prev), chapterIndex]));
+                }
+            },
+            { rootMargin: '200px' } // Load when within 200px of viewport
+        );
+
+        if (currentRef) {
+            observer.observe(currentRef);
+        }
+
+        return () => {
+            if (currentRef) {
+                observer.unobserve(currentRef);
+            }
+        };
+    }, [chapterIndex, setVisibleChapters]);
+
+    return (
+        <div ref={observerRef} className="last:mb-4">
+            {chapter.name && <h3 className="text-white text-sm mb-2">{chapter.name}</h3>}
+            {isVisible ? (
+                <div className="grid grid-cols-5 gap-2 w-fit">
+                    {chapter.items.map((pearl, pearlIndex) => pearl && pearl.id && (
+                        <div
+                            key={`pearl-${pearl.id}`}
+                            ref={currentGridPosition && getHighlightStyle(chapterIndex, pearlIndex).outline ? selectedPearlRef : undefined}
+                            style={getHighlightStyle(chapterIndex, pearlIndex)}
+                        >
+                            <MemoizedPearlItem
+                                pearl={pearl}
+                                pearlIndex={pearlIndex}
+                                selectedPearl={selectedPearl}
+                                onSelectPearl={onSelectPearl}
+                                unlockMode={unlockMode}
+                                showTranscriberCount={isAlternateDisplayModeActive}
+                                unlockVersion={unlockVersion}
+                            />
+                        </div>
+                    ))}
                 </div>
-            ))}
+            ) : (
+                <div className="h-[100px] bg-black/20 rounded-xl" />
+            )}
         </div>
-    </div>
-);
+    );
+};
 
 // memoized components
 const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({
@@ -141,6 +178,7 @@ export function PearlGrid({
                           }: PearlGridProps) {
     const [textFilter, setTextFilter] = useState<string | undefined>(undefined);
     const selectedPearlRef = useRef<HTMLDivElement>(null);
+    const [visibleChapters, setVisibleChapters] = useState(new Set([0])); // Start with first chapter visible
 
     const handleSelectPearl = useCallback((id: string) => {
         onSelectPearl(id);
@@ -260,6 +298,18 @@ export function PearlGrid({
         }
     }, [currentGridPosition]);
 
+    // find which chapter contains the selected pearl (if any)
+    useEffect(() => {
+        if (!selectedPearl) return;
+        
+        for (let i = 0; i < filteredPearls.length; i++) {
+            if (filteredPearls[i].items.some(pearl => pearl.id === selectedPearl)) {
+                setVisibleChapters(prev => new Set([...Array.from(prev), i]));
+                break;
+            }
+        }
+    }, [selectedPearl, filteredPearls]);
+
     return (
         <div className={cn(
             "no-scrollbar overflow-y-auto box-border",
@@ -278,10 +328,12 @@ export function PearlGrid({
                 {filteredPearls
                     .filter(chapter => chapter.items.length > 0)
                     .map((chapter, chapterIndex) => (
-                        <ChapterGrid
+                        <LazyChapterGrid
                             key={`chapter-${chapterIndex}`}
                             chapter={chapter}
                             chapterIndex={chapterIndex}
+                            isVisible={visibleChapters.has(chapterIndex)}
+                            setVisibleChapters={setVisibleChapters}
                             currentGridPosition={currentGridPosition}
                             selectedPearlRef={selectedPearlRef}
                             getHighlightStyle={getHighlightStyle}

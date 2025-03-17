@@ -61,7 +61,7 @@ const PearlItem: React.FC<PearlItemProps> = ({
     return useMemo(() => {
         if (!isUnlocked) {
             return (
-                <RwIconButton onClick={handleClick} selected={isSelected}>
+                <RwIconButton onClick={handleClick} selected={isSelected} aria-label="Locked pearl">
                     <RwIcon color={pearl.metadata.color} type="questionmark"/>
                 </RwIconButton>
             );
@@ -73,7 +73,11 @@ const PearlItem: React.FC<PearlItemProps> = ({
             <TooltipProvider delayDuration={120}>
                 <Tooltip>
                     <TooltipTrigger>
-                        <RwIconButton onClick={handleClick} selected={isSelected}>
+                        <RwIconButton 
+                            onClick={handleClick} 
+                            selected={isSelected} 
+                            aria-label={`${pearl.metadata.name || 'Unknown pearl'} - ${pearl.transcribers.length} transcription${pearl.transcribers.length !== 1 ? 's' : ''}`}
+                        >
                             <RwIcon color={pearl.metadata.color} type={iconType}/>
                             {showTranscriberCount && (
                                 <span

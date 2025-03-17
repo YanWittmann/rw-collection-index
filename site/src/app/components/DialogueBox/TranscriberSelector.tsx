@@ -57,6 +57,7 @@ export function TranscriberSelector({
                 key={'select-' + pearl.id + '-' + index}
                 onClick={() => onSelect(effectiveTranscriberName)}
                 selected={effectiveTranscriberName === selectedName}
+                aria-label={displayTranscriberName}
             >
                 <RwIcon type={"questionmark"} color={darken(color, 20) ?? 'white'}/>
             </RwIconButton>;
@@ -68,6 +69,7 @@ export function TranscriberSelector({
                     selected={effectiveTranscriberName === selectedName}
                     onMouseEnter={() => onHover(displayTranscriberName)}
                     onMouseLeave={() => onHover(null)}
+                    aria-label={displayTranscriberName}
                 >
                     {overwriteColor ?
                         <RwIcon type={(overwriteIcon ?? transcriber.transcriber)}
