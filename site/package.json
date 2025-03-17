@@ -57,6 +57,7 @@
   },
   "devDependencies": {
     "@types/sanitize-html": "^2.13.0",
-    "chokidar": "^4.0.3"
+    "chokidar": "^4.0.3",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }

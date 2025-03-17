@@ -1,14 +1,27 @@
 import parsedData from "../generated/parsed-dialogues.json";
 import { PearlData } from "./types/types";
 import { useDialogue } from "./hooks/useDialogue";
-import { PearlGrid } from "./components/PearlGrid/PearlGrid";
-import { DialogueBox } from "./components/DialogueBox/DialogueBox";
 import { orderPearls } from "./utils/pearlOrder";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, Suspense, lazy } from "react";
 import { useUnlockState } from "./hooks/useUnlockState";
 import { urlAccess } from "./utils/urlAccess";
 import { useIsMobile } from "./hooks/useIsMobile";
 import { cn } from "@shadcn/lib/utils";
+import { LoadingSpinner } from "./components/LoadingSpinner";
+
+const PearlGrid = lazy(() => {
+  const component = import("./components/PearlGrid/PearlGrid").then(module => ({ default: module.PearlGrid }));
+  // Preload the component
+  component.then(() => {});
+  return component;
+});
+
+const DialogueBox = lazy(() => {
+  const component = import("./components/DialogueBox/DialogueBox").then(module => ({ default: module.DialogueBox }));
+  // preload the component
+  component.then(() => {});
+  return component;
+});
 
 let GRID_DATA: PearlData[] = parsedData as PearlData[];
 
@@ -21,6 +34,16 @@ export default function DialogueInterface() {
     const [hintProgress, setHintProgress] = useState<number>(0);
     const [isAlternateDisplayModeActive, setIsAlternateDisplayModeActive] = useState(false);
     const isMobile = useIsMobile();
+
+    useEffect(() => {
+        const preloadComponents = async () => {
+            await Promise.all([
+                import("./components/PearlGrid/PearlGrid"),
+                import("./components/DialogueBox/DialogueBox")
+            ]);
+        };
+        preloadComponents();
+    }, []);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -64,34 +87,38 @@ export default function DialogueInterface() {
     };
 
     const pearlGridComponent = useMemo(() => (
-        <PearlGrid
-            pearls={GRID_DATA}
-            order={orderPearls}
-            selectedPearl={selectedPearl}
-            onSelectPearl={handleSelectPearlWithReset}
-            unlockMode={unlockMode}
-            isAlternateDisplayModeActive={isAlternateDisplayModeActive}
-            isMobile={isMobile}
-            setUnlockMode={setUnlockMode}
-            unlockVersion={unlockVersion}
-            handleKeyNavigation={handleKeyNavigation}
-            currentGridPosition={currentGridPosition}
-        />
+        <Suspense fallback={<LoadingSpinner />}>
+            <PearlGrid
+                pearls={GRID_DATA}
+                order={orderPearls}
+                selectedPearl={selectedPearl}
+                onSelectPearl={handleSelectPearlWithReset}
+                unlockMode={unlockMode}
+                isAlternateDisplayModeActive={isAlternateDisplayModeActive}
+                isMobile={isMobile}
+                setUnlockMode={setUnlockMode}
+                unlockVersion={unlockVersion}
+                handleKeyNavigation={handleKeyNavigation}
+                currentGridPosition={currentGridPosition}
+            />
+        </Suspense>
     ), [GRID_DATA, selectedPearl, unlockMode, isAlternateDisplayModeActive, isMobile, handleSelectPearlWithReset, unlockVersion, handleKeyNavigation, currentGridPosition]);
 
     const dialogueBoxComponent = useMemo(() => (
-        <DialogueBox
-            pearl={selectedPearl !== null ? GRID_DATA.find(pearl => pearl.id === selectedPearl) ?? null : null}
-            selectedTranscriber={selectedTranscriber}
-            onSelectTranscriber={handleSelectTranscriber}
-            setUnlockMode={setUnlockMode}
-            unlockMode={unlockMode}
-            triggerRender={refresh}
-            hintProgress={hintProgress}
-            setHintProgress={setHintProgress}
-            onSelectPearl={handleSelectPearl}
-            isMobile={isMobile}
-        />
+        <Suspense fallback={<LoadingSpinner />}>
+            <DialogueBox
+                pearl={selectedPearl !== null ? GRID_DATA.find(pearl => pearl.id === selectedPearl) ?? null : null}
+                selectedTranscriber={selectedTranscriber}
+                onSelectTranscriber={handleSelectTranscriber}
+                setUnlockMode={setUnlockMode}
+                unlockMode={unlockMode}
+                triggerRender={refresh}
+                hintProgress={hintProgress}
+                setHintProgress={setHintProgress}
+                onSelectPearl={handleSelectPearl}
+                isMobile={isMobile}
+            />
+        </Suspense>
     ), [selectedPearl, selectedTranscriber, unlockMode, hintProgress, refresh, handleSelectPearl]);
 
     return (
