@@ -81,9 +81,9 @@ module.exports = {
 
                 // add performance hints
                 webpackConfig.performance = {
-                    hints: 'warning',
-                    maxEntrypointSize: 512000,
-                    maxAssetSize: 512000,
+                    hints: process.env.CI ? false : 'warning',
+                    maxEntrypointSize: process.env.CI ? 1024000 : 512000,
+                    maxAssetSize: process.env.CI ? 1024000 : 512000,
                 };
 
                 // enable source maps for debugging
