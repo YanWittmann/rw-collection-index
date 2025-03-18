@@ -4,7 +4,7 @@ import { RwIcon } from "../PearlGrid/RwIcon"
 import { RwIconButton } from "../other/RwIconButton"
 import type { Dialogue, MapInfo, PearlData } from "../../types/types"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
-import { regionNames, resolveVariables } from "../../utils/speakers"
+import { regionNames, resolveVariables, SOURCE_DECRYPTED } from "../../utils/speakers"
 import { renderDialogueLine } from "../../utils/renderDialogueLine"
 import { Popover, PopoverContent, PopoverTrigger } from "@shadcn/components/ui/popover";
 import { generateMapLinkFromMapInfo, getMapLocations, hasMapLocations } from "./DialogueBox";
@@ -44,6 +44,56 @@ export function DialogueActionBar({ pearl, transcriberData, isUnlocked, onSelect
                 </TooltipTrigger>
                 <TooltipContent>Downpour-Exclusive Content</TooltipContent>
             </Tooltip>,
+        )
+    }
+
+    if (transcriberData.metadata.sourceDialogue) {
+        const sourceDialogueFilename = transcriberData.metadata.sourceDialogue.split(/[\/\\]/).pop();
+        const foundEntry = SOURCE_DECRYPTED.find(entry => entry.n === sourceDialogueFilename);
+        console.log(foundEntry)
+        segments.push(
+            <Popover key="source-dialogue">
+                <Tooltip key="source-dialogue">
+                    <PopoverTrigger>
+                        <TooltipTrigger>
+                            <RwIconButton aria-label="Source Dialogue">
+                                <RwIcon type="source"/>
+                            </RwIconButton>
+                        </TooltipTrigger>
+                        <TooltipContent className={"text-center"}>
+                            Dialogue is stored in encrypted files inside the game's folders.<br/>
+                            Click here to view this transcription's source file.<br/>
+                            <b>{sourceDialogueFilename}</b>
+                        </TooltipContent>
+                    </PopoverTrigger>
+                    <PopoverContent
+                        className="w-[40rem] p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg text-white"
+                        align="start"
+                        sideOffset={5}
+                    >
+                        {/* Outer container with styling */}
+                        <div className="relative rounded-xl overflow-hidden">
+                            {/* Inner border */}
+                            <div
+                                className="absolute inset-[3px] rounded-lg border-2 border-white/60 pointer-events-none"/>
+
+                            {/* Content container */}
+                            <div className="max-h-[340px] overflow-y-auto py-2 relative z-10 no-scrollbar">
+                                {foundEntry && (
+                                    <div className="text-center px-8 pb-4">
+                                        <div className="text-lg font-medium">{foundEntry.n}</div>
+                                        <span className="text-sm opacity-80"
+                                            dangerouslySetInnerHTML={{
+                                                __html: renderDialogueLine(foundEntry.c.replaceAll("\n\n", "\n")),
+                                            }}
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </PopoverContent>
+                </Tooltip>
+            </Popover>
         )
     }
 
@@ -115,7 +165,8 @@ export function DialogueActionBar({ pearl, transcriberData, isUnlocked, onSelect
                 segments.push(
                     <Tooltip key="open-rain-world-map">
                         <TooltipTrigger>
-                            <RwIconButton onClick={() => window.open(mapLink, "_blank")} aria-label="Open Rain World Map">
+                            <RwIconButton onClick={() => window.open(mapLink, "_blank")}
+                                          aria-label="Open Rain World Map">
                                 <RwIcon type="pin"/>
                             </RwIconButton>
                         </TooltipTrigger>

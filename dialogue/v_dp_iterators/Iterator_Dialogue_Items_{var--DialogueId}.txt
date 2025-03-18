@@ -322,11 +322,11 @@ md-var-DialogueId: Slugpup
 md-name: Slugpup
 md-tag: downpour
 MONO
-| If Looks to the Moon likes the Slugcat:
+/ If Looks to the Moon likes the Slugcat:
 |  How cute, you brought your child, little creature?
-| If Looks to the Moon dislikes the Slugcat:
+/ If Looks to the Moon dislikes the Slugcat:
 |  Take your offspring with you when you go.
-| Otherwise:
+/ Otherwise:
 |  Do you have a little one with you?
 
 === transcription: LttM-rivulet

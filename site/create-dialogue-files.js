@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const chokidar = require('chokidar');
+const levenshtein = require('fast-levenshtein');
 
 // CONFIGURATION
 const DIALOGUE_DIR = path.join(__dirname, '../dialogue');
@@ -28,7 +29,110 @@ const mapMetadataTemplates = {
     "MAP-BROADCAST-PEARLS": []
 }
 
-// Track selections for arrays of the same length
+// SECTION: rain world game text source files
+
+function parseSourceDecryptedJsonFile(filePath) {
+    try {
+        const fileData = fs.readFileSync(filePath, 'utf8');
+        const jsonData = JSON.parse(fileData);
+        // preprocess
+        return jsonData.map(entry => ({
+            ...entry,
+            linesA: entry.c.split(/\n|<LINE>/).map(l => l.replace(/^((\d+|[A-Z]+) : )+/, '').trim()).filter(l => l),
+            linesB: entry.c.split(/\n/).map(l => l.replace(/^((\d+|[A-Z]+) : )+/, '').trim()).filter(l => l)
+        }));
+    } catch (error) {
+        console.error('Error reading or parsing the JSON file:', error);
+        return null;
+    }
+}
+
+const sourceDecryptedJsonFile = path.join(DIALOGUE_DIR, 'source/decrypted.json');
+const gameFiles = parseSourceDecryptedJsonFile(sourceDecryptedJsonFile);
+
+// copy file to generated folder
+fs.copyFileSync(sourceDecryptedJsonFile, path.join(__dirname, 'src/generated/source-decrypted.json'));
+
+function normalizedLevenshteinDistance(a, b) {
+    const maxLength = Math.max(a.length, b.length);
+    if (maxLength === 0) return 0;
+    const distance = levenshtein.get(a, b);
+    return 1 - (distance / maxLength);
+}
+
+/*console.log(findBestMatch(
+    []
+));*/
+
+// if (true) process.exit(0);
+
+function checkLinesMatch(lines, entryLines) {
+    let matchCount = 0;
+    let totalScore = 0;
+
+    lines.forEach(line => {
+        let maxLineScore = 0;
+
+        entryLines.forEach(entryLine => {
+            const score = normalizedLevenshteinDistance(line, entryLine);
+            if (score > maxLineScore) {
+                maxLineScore = score;
+            }
+            if (maxLineScore === 1) {
+                return;
+            }
+        });
+
+        if (maxLineScore >= 0.4) {
+            matchCount++;
+        }
+
+        totalScore += maxLineScore;
+    });
+
+    const matchPercentage = (matchCount / lines.length) * 100;
+    return { matchPercentage, totalScore };
+}
+
+function findBestMatch(lines) {
+    lines = [...lines];
+
+    lines = lines.filter(line => !line.includes("MONO"));
+    lines = lines.filter(line => !line.startsWith("/") && !line.startsWith("~"));
+    lines = lines.map(line => line.replace(/^\|/, "").trim());
+    lines = lines.flatMap(line => line.split("\\n"));
+    lines = lines.filter(line => line.trim().length > 0);
+
+    let bestMatch = null;
+    let bestScore = -1;
+
+    gameFiles.forEach(entry => {
+        let { matchPercentage, totalScore } = checkLinesMatch(lines, entry.linesA);
+        if (matchPercentage < 80) {
+            const resultB = checkLinesMatch(lines, entry.linesB);
+            if (resultB.matchPercentage >= 80) {
+                matchPercentage = resultB.matchPercentage;
+                totalScore = resultB.totalScore;
+            }
+        }
+
+        if (matchPercentage >= 80) {
+            const averageScore = totalScore / lines.length;
+            if (averageScore > bestScore) {
+                bestScore = averageScore;
+                bestMatch = entry;
+            }
+        }
+    });
+
+    /*if (bestMatch === null) {
+        console.log('No match found for:', lines);
+    }*/
+
+    return bestMatch;
+}
+
+// SECTION: Patterns resolution
 const randomPickCache = {};
 
 function resolvePatterns(value, variables = {}) {
@@ -313,6 +417,14 @@ const sectionHandlers = {
         for (const [tag, transcribers] of Object.entries(tagAddons)) {
             if (transcribers.includes(value)) {
                 metadata.tags.push(tag);
+            }
+        }
+
+        // use the findBestMatch to determine the best match for the transcriber text
+        if (process.argv.includes('--sourceFiles')) {
+            const bestMatch = findBestMatch(lines);
+            if (bestMatch) {
+                metadata.sourceDialogue = bestMatch.p;
             }
         }
 

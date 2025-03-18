@@ -1,3 +1,13 @@
+import sourceDecrypted from "../../generated/source-decrypted.json";
+
+export interface SourceDecrypted {
+    n: string;
+    p: string;
+    c: string;
+}
+
+export const SOURCE_DECRYPTED: SourceDecrypted[] = sourceDecrypted;
+
 export const speakersColors: { [key: string]: string } = {
     "FP": "#66d9bf",
     "Five Pebbles": "#66d9bf",

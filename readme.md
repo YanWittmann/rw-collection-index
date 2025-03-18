@@ -81,6 +81,26 @@ npm run start
 npm run build
 ```
 
+### Preparation: Rain World strings (old)
+
+> :warn: This method does not work on the broadcasts and is therefore deprecated.
+
+We need to extract the strings from Rain World to use them in the application.
+Copy the following python program [decrypt-rw-text.py](site/build-scripts/decrypt-rw-text.py) into your
+`SteamLibrary\steamapps\common\Rain World` folder and run it.
+This will create a folder `decrypted` with all the source files in them and a `decrypted.json` file with all the
+english variants of the strings.
+
+Copy the `decrypted.json` file into the [source](dialogue/source) folder.
+
+### Preparation: Rain World strings (new)
+
+Run https://steamcommunity.com/sharedfiles/filedetails/?id=2933241596 on your game as a mod to extract the strings.
+Rename the directories to `text_[lang]` instead of `[lang]` (e.g. `text_eng` instead of `Eng`).
+Then run [decrypt-rw-text.py](site/build-scripts/decrypt-rw-text.py) inside your
+`SteamLibrary\steamapps\common\Rain World\RainWorld_Data\StreamingAssets\decrypt` folder to create the `decrypted.json`
+and move it to the [source](dialogue/source) folder.
+
 ## Contributing
 
 Contributions are welcome! Please open an Issue or Pull Request to discuss changes.

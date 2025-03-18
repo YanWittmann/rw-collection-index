@@ -31,7 +31,7 @@
   },
   "scripts": {
     "watch-dialogue-files": "node create-dialogue-files.js --watch",
-    "create-dialogue-files": "node create-dialogue-files.js",
+    "create-dialogue-files": "node create-dialogue-files.js --sourceFiles",
     "start": "craco start",
     "build": "npm run create-dialogue-files && craco build",
     "test": "craco test",
@@ -58,6 +58,7 @@
   "devDependencies": {
     "@types/sanitize-html": "^2.13.0",
     "chokidar": "^4.0.3",
+    "fast-levenshtein": "^3.0.0",
     "webpack-bundle-analyzer": "^4.10.2"
   }
 }

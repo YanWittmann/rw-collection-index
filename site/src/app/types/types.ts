@@ -24,6 +24,7 @@ export interface Dialogue {
         info?: string;
         mapInfo?: string;
         map?: MapInfo[];
+        sourceDialogue?: string;
     }
     lines: DialogueLine[];
 }
@@ -45,6 +46,7 @@ export interface PearlData {
         info?: string;
         mapInfo?: string;
         map?: MapInfo[];
+        sourceDialogue?: string;
     };
     transcribers: Dialogue[];
     hints: Hint[];
