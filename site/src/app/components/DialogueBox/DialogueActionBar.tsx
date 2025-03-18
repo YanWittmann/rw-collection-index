@@ -48,7 +48,7 @@ export function DialogueActionBar({ pearl, transcriberData, isUnlocked, onSelect
     }
 
     if (transcriberData.metadata.sourceDialogue) {
-        const sourceDialogueFilename = transcriberData.metadata.sourceDialogue.split(/[\/\\]/).pop();
+        const sourceDialogueFilename = transcriberData.metadata.sourceDialogue.split(/[/\\]/).pop();
         const foundEntry = SOURCE_DECRYPTED.find(entry => entry.n === sourceDialogueFilename);
         console.log(foundEntry)
         segments.push(
