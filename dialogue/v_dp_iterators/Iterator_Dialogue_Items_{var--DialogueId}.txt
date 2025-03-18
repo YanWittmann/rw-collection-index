@@ -5,6 +5,7 @@ md-type: pearl
 md-subType: item/Rock_icon
 md-var-DialogueId: Rock
 md-name: Rock
+md-sourceDialogue: none
 It's a rock. Thank you, I suppose, little creature.
 
 === transcription: LttM-saint
@@ -27,6 +28,7 @@ md-type: pearl
 md-subType: item/Explosive_Spear_icon
 md-var-DialogueId: Explosive_Spear
 md-name: Explosive Spear
+md-sourceDialogue: none
 It's a weapon made with fire powder. Did the scavengers give this to you? Be very careful if you have to use it!
 
 === transcription: LttM-saint
@@ -59,6 +61,7 @@ md-type: pearl
 md-subType: item/Bubble_Fruit_icon
 md-var-DialogueId: Bubble_Fruit
 md-name: Bubble Fruit
+md-sourceDialogue: none
 It's a delicious plant. You should have it!
 
 === transcription: LttM-post-collapse
@@ -102,6 +105,7 @@ md-type: pearl
 md-subType: item/Lantern_icon
 md-var-DialogueId: Lantern
 md-name: Lantern
+md-sourceDialogue: 31-saint.txt
 It appears to be... a pupa shell, smeared on the inside with a glowing substance? It's been mixed with fire powder for warmth. It's not much, but anything to escape the cold is welcome. The scavengers never cease to adapt, even in this weather!
 
 === transcription: LttM-post-collapse
@@ -109,6 +113,7 @@ md-type: pearl
 md-subType: item/Lantern_icon
 md-var-DialogueId: Lantern
 md-name: Lantern
+md-sourceDialogue: 31.txt
 It appears to be... a pupa shell, smeared on the inside with a glowing substance? Perhaps a paste of some glowing insect? I honestly don't know.
 
 === transcription: LttM-post-collapse
@@ -190,6 +195,7 @@ md-type: pearl
 md-subType: item/Vulture_Mask_icon
 md-var-DialogueId: Vulture_Mask
 md-name: Vulture Mask
+md-sourceDialogue: 28.txt
 I honestly can't tell what this is. It's light but strong... appears to be some composite material interwoven with bone. It could be part of an animal or purposed organism, but in my current state I'm unable to recognize it.
 
 === transcription: LttM-post-collapse
@@ -199,17 +205,6 @@ md-var-DialogueId: Seed
 md-name: Seed
 md-tag: downpour
 This is a seed-bearing structure detached from its host. However, its internals are ravaged by ice crystals, so it is unlikely to germinate.
-
-=== transcription: LttM-post-collapse
-md-type: pearl
-md-subType: item/Singularity_Bomb_icon
-md-var-DialogueId: Singularity_Bomb
-md-name: Singularity Bomb
-md-tag: downpour
-Take this and leave, now.
-If you must know... this is a low density mass rarefaction cell.
-The energy trapped inside this is incredible, and while my facility is capable of extracting it, the shielding on this cell has been damaged. Either through old age, or abuse.
-I do not doubt you found this with the scavengers, somehow. While they may not understand the things they find, they have a natural inclination for combat. Using these as a weapon however, would be horribly foolish.
 
 === transcription: LttM-post-collapse
 md-transcriberName: Throwing a Singularity Bomb
@@ -223,6 +218,17 @@ WHY!?
 Why would you try doing that!?
 What came over you!?
 WHY!? Why would you do something so dangerous!?
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-subType: item/Singularity_Bomb_icon
+md-var-DialogueId: Singularity_Bomb
+md-name: Singularity Bomb
+md-tag: downpour
+Take this and leave, now.
+If you must know... this is a low density mass rarefaction cell.
+The energy trapped inside this is incredible, and while my facility is capable of extracting it, the shielding on this cell has been damaged. Either through old age, or abuse.
+I do not doubt you found this with the scavengers, somehow. While they may not understand the things they find, they have a natural inclination for combat. Using these as a weapon however, would be horribly foolish.
 
 === transcription: LttM-gourmand
 md-type: pearl

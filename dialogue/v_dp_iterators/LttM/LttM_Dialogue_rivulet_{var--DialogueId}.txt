@@ -40,17 +40,18 @@ However as long as the microbes in my processing strata continue to function, I'
 md-type: pearl
 md-var-DialogueId: Returning_after_placing_the_Rarefaction_Cell
 md-name: Returning after placing the Rarefaction Cell
+md-sourceDialogue: 154.txt
 MONO
-| Ah!
-| Sleek little one... Did you do this?
-| I feel as if pulled out of a deep sleep. I am still trying to process all of this. It has been so long since I've had a connection like this with my structure.
-| Everything has restarted in maintenance mode... It seems that it has sent out the order for all of my overseers to return. With my umbilical cord broken I can't operate my structure directly, but with them working as messengers I've been restoring some of my chamber's functionality! With any luck, I should be able to... Ah here we go!
-| There is so much here... So much I've forgotten... I'll never be what I once was, but this... I'm sorry. Its hard to piece all of this together. So much has happened in my absence.
-| I only have unread messages, and overseer recordings to make sense of what I've missed. Some of these are even from before my collapse!
-| Incredible...
-| Slag reset keys, a messenger, saving me? No Significant Harassment was never one to give up easy! However I still don't understand everything that has happened. Has it all just been coincidence? Did others send help as well?
-| Then there is Five Pebbles. He was sick even before I collapsed, and his state must have only deteriorated since. It looks like he is barely breathing. If there is any part of him left... I...
-| We were once good friends, despite everything that has happened. He is probably alone and afraid now...
+~ Ah!
+~ Sleek little one... Did you do this?
+~ I feel as if pulled out of a deep sleep. I am still trying to process all of this. It has been so long since I've had a connection like this with my structure.
+~ Everything has restarted in maintenance mode... It seems that it has sent out the order for all of my overseers to return. With my umbilical cord broken I can't operate my structure directly, but with them working as messengers I've been restoring some of my chamber's functionality! With any luck, I should be able to... Ah here we go!
+~ There is so much here... So much I've forgotten... I'll never be what I once was, but this... I'm sorry. Its hard to piece all of this together. So much has happened in my absence.
+~ I only have unread messages, and overseer recordings to make sense of what I've missed. Some of these are even from before my collapse!
+~ Incredible...
+~ Slag reset keys, a messenger, saving me? No Significant Harassment was never one to give up easy! However I still don't understand everything that has happened. Has it all just been coincidence? Did others send help as well?
+~ Then there is Five Pebbles. He was sick even before I collapsed, and his state must have only deteriorated since. It looks like he is barely breathing. If there is any part of him left... I...
+~ We were once good friends, despite everything that has happened. He is probably alone and afraid now...
 / If Rivulet spoke to Five Pebbles at any point
 |  "I cannot run away from my mistakes forever; Please understand." Five Pebbles, what have you done... I've been given so much already, and now you've given all you had left.
 |  It does not matter what happened between us. If he still held the same anger he once did, then none of this would be possible. We've been given the chance to make things right, and he deserves to know what he did wasn't pointless.
@@ -63,6 +64,9 @@ MONO
 md-type: broadcast
 md-var-DialogueId: Ending_Broadcast
 md-name: Ending Broadcast
+md-sourceDialogue: chatlog_lm7.txt
+md-sourceDialogue: chatlog_lm8.txt
+md-sourceDialogue: chatlog_lm9.txt
 [DIRECT BROADCAST] PRIVATE, FORCED - Big Sister Moon, Five Pebbles
 SOURCE NODE TRACE: LTTM_ROOT, FP_COMM04, FP_ROOT
 BSM: This is local group senior, Big Sister Moon

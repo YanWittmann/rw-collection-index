@@ -6,6 +6,9 @@ tag: downpour
 md-type: pearl
 md-var-DialogueId: First_encounter
 md-name: First encounter
+md-sourceDialogue: strings.txt
+md-sourceDialogue: 100.txt
+md-sourceDialogue: 141.txt
 Suns...?
 Why did you send the messenger here again? Please leave, I cannot afford any further distractions; I am the only one who can fix this now. I trust that you understand me...
 You've brought your overseer all this way, the least I can do is read your message aloud for it.

@@ -5,6 +5,7 @@ name: Deep Pink
 map: region=LF, room=D06, mapSlugcat=white
 
 === transcription: LttM-saint
+md-sourceDialogue: 10-saint.txt
 This pearl is written in plain text. How did you find this?
 "On regards of the (by spiritual splendor eternally graced) people of the Congregation of..."
 I am sorry little creature, I am too amazed about the clarity of this data, despite its age...
@@ -12,11 +13,13 @@ At this point it's safe to say that this text has been burned into the pearl's s
 What a bizarre thing to have lasted all this time. I wonder how much of my creators will be remembered.
 
 === transcription: FP-artificer
+md-sourceDialogue: 10-artificer.txt
 "On regards of the (by spiritual splendor eternally graced) people of the Congregation of Never Dwindling..."
 This is pointless. The data is a shipment confirmation to an automated farming plot.
 A waste of the crystal memory complex it was printed onto. I would refresh it for use as storage, but the message has been repeatedly burned into the pearl several thousand times. Likely to prevent reuse, or loss of data.
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 10.txt
 This one is just plain text. I will read it to you.
 "On regards of the (by spiritual splendor eternally graced) people of the Congregation of Never Dwindling Righteousness, we Wish to congratulate (o so thankfully) this Facility on its Loyal and Relished services, and to Offer our Hopes and Aspirations that the Fruitful and Mutually Satisfactory Cooperation may continue, for as long as the Stars stay fixed on their Celestial Spheres and/or the Cooperation continues to be Fruitful and Mutually Satisfactory."
 "It is with Honor I, Eight Suns-Countless Leaves, of the House of Six Wagons, Count of no living blocks, Counselor of 2, Duke of 1, Humble Secretary of the Congregation of Never Dwindling Righteousness, write this to You."

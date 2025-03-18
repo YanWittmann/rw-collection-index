@@ -35,6 +35,7 @@ md-type: pearl
 md-transcriberName: Saint's death
 md-var-DialogueId: Interrupts
 md-name: Interrupts: Saint's death
+md-sourceDialogue: strings.txt
 MONO
 | / One of the following options is selected randomly:
 |  ... Why did... you stay...
@@ -46,6 +47,7 @@ md-type: pearl
 md-transcriberName: Attacked
 md-var-DialogueId: Interrupts
 md-name: Interrupts: Attacked
+md-sourceDialogue: none
 ...
 
 === transcription: FP

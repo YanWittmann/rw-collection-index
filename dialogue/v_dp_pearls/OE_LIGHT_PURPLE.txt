@@ -5,6 +5,7 @@ name: Light Purple
 map: region=OE, room=OE_SPIRE, mapSlugcat=gourmand
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 104.txt
 Did you find this beyond the retaining wall? I can't imagine another place you might.
 These are the final operating logs of a transit control tower. They regulated the inbound and outbound traffic of shipments to and from of our facility. This log shows the point at which the caravans suspended their final shipments, and became frozen in time as they remain now.
 While some of the machinery out there has ceased function due to age and decay, others were purposely ordered to stop during the final moments before our creators' global ascension reached its conclusion.

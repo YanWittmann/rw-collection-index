@@ -1,7 +1,7 @@
 import { TranscriberSelector } from "./TranscriberSelector";
 import { DialogueContent } from "./DialogueContent";
-import { Dialogue, MapInfo, PearlData } from "../../types/types";
-import { resolveVariables, speakerNames } from "../../utils/speakers";
+import { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types";
+import { resolveVariables, SOURCE_DECRYPTED, speakerNames } from "../../utils/speakers";
 import { useCallback, useMemo, useState } from "react";
 import { motion } from "framer-motion"
 import { DialogueActionBar } from "./DialogueActionBar";
@@ -25,6 +25,8 @@ interface DialogueBoxProps {
     setHintProgress: (value: (((prevState: number) => number) | number)) => void
     onSelectPearl: (pearl: PearlData | null) => void
     isMobile: boolean
+    sourceFileDisplay: string | null
+    setSourceFileDisplay: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void
 }
 
 export function generateMapLinkFromMapInfo(mapInfo: MapInfo | undefined) {
@@ -62,7 +64,9 @@ export function DialogueBox({
                                 hintProgress,
                                 setHintProgress,
                                 onSelectPearl,
-                                isMobile
+                                isMobile,
+                                setSourceFileDisplay,
+                                sourceFileDisplay,
                             }: DialogueBoxProps) {
     const [hoveredTranscriber, setHoveredTranscriber] = useState<string | null>(null);
     const [lastTranscriberName, setLastTranscriberName] = useState<string | null>(null);
@@ -143,34 +147,58 @@ export function DialogueBox({
         const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, effectiveTranscriberName);
 
         const internalId = dialogue.metadata.internalId || pearl.metadata.internalId;
-        let internalIdElement = null;
-        if (internalId) {
-            internalIdElement =
-                <Tooltip key={"internal-id-tooltip"}>
-                    <TooltipTrigger onClick={() => {
-                        navigator.clipboard.writeText(internalId);
-                        setJustCopiedInternalId(true);
-                        setTimeout(() => setJustCopiedInternalId(false), 1000);
-                    }}>
-                        <div className="font-mono text-xs text-white/70 cursor-pointer">
-                            {justCopiedInternalId ? "Copied!" : internalId}
-                        </div>
-                    </TooltipTrigger>
-                    <TooltipContent className="text-center">
-                        The above-listed name is a community-given.<br/>
-                        The game references this pearl using this internal ID.<br/>
-                        Click to copy the internal ID to your clipboard.
-                    </TooltipContent>
-                </Tooltip>
+        const sourceFileDisplayText = (dialogue.metadata.sourceDialogue && dialogue.metadata.sourceDialogue.length === 1) ? dialogue.metadata.sourceDialogue[0].split(/[/\\]/).pop() : null;
+        const internalIdElement = internalId && <Tooltip key={"internal-id-tooltip"}>
+            <TooltipTrigger onClick={() => {
+                navigator.clipboard.writeText(internalId);
+                setJustCopiedInternalId(true);
+                setTimeout(() => setJustCopiedInternalId(false), 1000);
+            }}>
+                <div className="font-mono text-xs text-white/70 cursor-pointer">
+                    {justCopiedInternalId ? "Copied!" : internalId}
+                </div>
+            </TooltipTrigger>
+            <TooltipContent className="text-center">
+                The above-listed name is a community-given.<br/>
+                The game references this pearl using this internal ID.<br/>
+                Click to copy the internal ID to your clipboard.
+            </TooltipContent>
+        </Tooltip>;
+        const sourceFileElement = sourceFileDisplayText && <Tooltip key={"source-file-tooltip"}>
+            <TooltipTrigger
+                onClick={() => sourceFileDisplayText === sourceFileDisplay ? setSourceFileDisplay(null) : setSourceFileDisplay(sourceFileDisplayText)}
+            >
+                <span className={"font-mono text-xs text-white/70"}>
+                    {sourceFileDisplayText}
+                </span>
+            </TooltipTrigger>
+            <TooltipContent className="text-center">
+                Dialogue is stored in encrypted files inside the game's folders.<br/>
+                This is the filename that the current transcriber's dialogue is stored in.
+            </TooltipContent>
+        </Tooltip>;
+
+        let bottomElement = null;
+        if (internalIdElement) {
+            bottomElement = internalIdElement;
+        }
+        if (sourceFileElement) {
+            if (bottomElement) {
+                bottomElement = <span className={"font-mono text-xs text-white/70 cursor-pointer"}>
+                    {bottomElement} / {sourceFileElement}
+                </span>
+            } else {
+                bottomElement = <span className={"font-mono text-xs text-white/70 cursor-pointer"}>{sourceFileElement}</span>;
+            }
         }
 
         let titleElement = null;
-        const name = dialogue.metadata.name || pearl.metadata.name;
+        const name = (sourceFileDisplay ? sourceFileDisplay : null) || dialogue.metadata.name || pearl.metadata.name;
         if (dialogue.metadata.info) {
             titleElement = (
                 <div className={cn(
                     "text-white text-lg mb-8 pb-0 flex items-center justify-center flex-col",
-                    internalId ? "mt-5" : "mt-7"
+                    bottomElement ? "mt-5" : "mt-7"
                 )}>
                     <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
                         <Tooltip key={"pearl-info"}>
@@ -187,7 +215,7 @@ export function DialogueBox({
                             </TooltipContent>
                         </Tooltip>
                         <br/>
-                        {internalIdElement}
+                        {bottomElement}
                     </TooltipProvider>
                 </div>
             )
@@ -195,13 +223,25 @@ export function DialogueBox({
             titleElement =
                 <div className={cn(
                     "text-white text-lg mb-8 pb-0 flex items-center justify-center flex-col",
-                    internalId ? "mt-5" : "mt-7"
+                    bottomElement ? "mt-5" : "mt-7"
                 )}>
                     <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
                         <div className="text-selectable">{name}</div>
-                        {internalIdElement}
+                        {bottomElement}
                     </TooltipProvider>
                 </div>
+        }
+
+        let displayLines: DialogueLine[];
+        if (sourceFileDisplay) {
+            const foundEntry = SOURCE_DECRYPTED.find(entry => entry.n === sourceFileDisplay);
+            if (foundEntry) {
+                displayLines = foundEntry.c.replaceAll("\n\n", "\n").replaceAll("<", "&lt;").replaceAll(">", "&gt;").split("\n").map(line => ({ text: line }));
+            } else {
+                displayLines = [{ text: "Error: Source file not found." }];
+            }
+        } else {
+            displayLines = dialogue.lines;
         }
 
         return <>
@@ -210,6 +250,8 @@ export function DialogueBox({
                 pearl={pearl}
                 transcriberData={dialogue}
                 onSelectPearl={onSelectPearl}
+                sourceFileDisplay={sourceFileDisplay}
+                setSourceFileDisplay={setSourceFileDisplay}
             />
             <TranscriberSelector
                 pearl={pearl}
@@ -226,7 +268,7 @@ export function DialogueBox({
                 {isUnlocked ? <>
                     {titleElement}
                     <DialogueContent
-                        lines={dialogue.lines}
+                        lines={displayLines}
                     />
                 </> : <HintSystemContent
                     pearl={pearl}
@@ -238,7 +280,7 @@ export function DialogueBox({
                 />}
             </div>
         </>
-    }, [pearl, selectedTranscriber, onSelectTranscriber, unlockMode, unlockTranscription, hintProgress, setHintProgress, justCopiedInternalId]);
+    }, [pearl, selectedTranscriber, onSelectTranscriber, unlockMode, unlockTranscription, hintProgress, setHintProgress, justCopiedInternalId, sourceFileDisplay]);
 
     const toggleUnlockModeCallback = useCallback(() => {
         setUnlockMode(unlockMode === "all" ? "unlock" : "all");

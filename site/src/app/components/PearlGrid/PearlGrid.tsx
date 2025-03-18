@@ -212,10 +212,20 @@ export function PearlGrid({
 
     const filteredPearls = useMemo(() => {
         const orderedPearls = order(pearls);
-        return orderedPearls.map(chapter => ({
+        const result = orderedPearls.map(chapter => ({
             name: chapter.name,
             items: chapter.items.filter(isPearlIncluded)
         }));
+        const totalCount = result.reduce((acc, chapter) => acc + chapter.items.length, 0);
+        if (totalCount === 1) {
+            const first = result.find(chapter => chapter.items.length > 0);
+            if (first && first.items.length === 1) {
+                setTimeout(() => {
+                    onSelectPearl(first.items[0].id);
+                }, 0);
+            }
+        }
+        return result;
     }, [isPearlIncluded, order, pearls]);
 
     const pearlGrid = useMemo(() => {

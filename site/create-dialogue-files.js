@@ -125,9 +125,9 @@ function findBestMatch(lines) {
         }
     });
 
-    /*if (bestMatch === null) {
+    if (bestMatch === null) {
         console.log('No match found for:', lines);
-    }*/
+    }
 
     return bestMatch;
 }
@@ -377,6 +377,7 @@ const sectionHandlers = {
         const metadata = {
             map: [],
             tags: [],
+            sourceDialogue: [],
         };
         const lines = [];
 
@@ -392,6 +393,8 @@ const sectionHandlers = {
                     } else if (key === 'tag') {
                         const tags = val.split(',').map(t => t.trim());
                         metadata.tags.push(...tags);
+                    } else if (key === 'sourceDialogue') {
+                        metadata.sourceDialogue.push(val);
                     } else if (key.startsWith('super-')) {
                         if (!metadata.superValues) metadata.superValues = {};
                         metadata.superValues[key.slice(6)] = val;
@@ -421,19 +424,21 @@ const sectionHandlers = {
         }
 
         // use the findBestMatch to determine the best match for the transcriber text
-        if (process.argv.includes('--sourceFiles')) {
+        if (metadata.sourceDialogue.length === 0 && process.argv.includes('--sourceFiles')) {
             const bestMatch = findBestMatch(lines);
             if (bestMatch) {
-                metadata.sourceDialogue = bestMatch.p;
+                metadata.sourceDialogue = [bestMatch.p];
             }
         }
+        metadata.sourceDialogue = metadata.sourceDialogue.filter(s => s !== "none");
 
         return {
             transcriber: value,
             metadata: {
                 ...metadata,
                 map: metadata.map.length > 0 ? metadata.map : undefined,
-                tags: metadata.tags.length > 0 ? metadata.tags : undefined
+                tags: metadata.tags.length > 0 ? metadata.tags : undefined,
+                sourceDialogue: metadata.sourceDialogue.length > 0 ? metadata.sourceDialogue : undefined,
             },
             lines: lines.map(parseLine)
         };

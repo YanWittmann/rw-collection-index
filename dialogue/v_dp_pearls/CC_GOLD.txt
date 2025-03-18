@@ -5,6 +5,7 @@ name: Gold
 map: region=CC, room=A10, mapSlugcat=white
 
 === transcription: FP-artificer
+md-sourceDialogue: 7-artificer.txt
 This was a gift from a close friend. It is instructions on how to remove the self-destruction taboo.
 We are not built to ascend like our creators. It is our role to think, to guide the lesser creatures of the world onto a path towards it.
 However, a definitive solution has not been found. While the equipment to find one decays, it seems my kind have collectively accepted to remain trapped inside of our creator's puzzle. Meanwhile, the answer remains locked behind their sanctioned taboos.
@@ -13,6 +14,7 @@ I need to fix this, and try again. If I can just reproduce Sliver of Straw's res
 I was so close...
 
 === transcription: LttM-pre-collapse
+md-sourceDialogue: 7-spear.txt
 This information is illegal. Someone probably tried to send it by a pearl somehow rather than risking being overheard on broadcast.
 It's an instruction on how to circumvent the self-destruction taboo. The problem with breaking taboos is that the barriers are encoded into every cell of our organic parts. And there are other taboos strictly regulating our ability to rewrite our own genome.
 Attempting to circumvent the issue using this process would be extremely risky. That's not to say that there exists any known methods that would avoid putting the user in harm's way. Those barriers are there for a reason.
@@ -20,6 +22,7 @@ Where exactly did you find this pearl? I imagine you dug it up from somewhere wi
 That would explain a lot of things...
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 7.txt
 This information is illegal. Someone probably tried to send it by a pearl somehow rather than risking being overheard on broadcast.
 I think the risk of you acting on this is very slim, so I'll go ahead and explain it to you. It's an instruction on how to circumvent the self-destruction taboo.
 The problem with breaking taboos is that the barriers are encoded into every cell of our organic parts. And there are other taboos strictly regulating our ability to rewrite our own genome.

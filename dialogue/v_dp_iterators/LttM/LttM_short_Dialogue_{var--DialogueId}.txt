@@ -216,6 +216,10 @@ md-super-subType: item/Neuron_Fly_icon
 md-type: pearl
 md-var-DialogueId: Receiving_Neuron_Fly
 md-name: Receiving a Neuron Fly
+md-sourceDialogue: 45.txt
+md-sourceDialogue: 130.txt
+md-sourceDialogue: 19.txt
+md-sourceDialogue: 158.txt
 MONO
 / If Looks to the Moon has 4 or more neurons left before the gift
 /  If Looks to the Moon is refusing to speak to Slugcat
@@ -526,6 +530,7 @@ md-type: pearl
 md-var-DialogueId: Slugcat_Death
 md-name: If Slugcat dies
 md-tag: downpour
+md-sourceDialogue: none
 ...
 &lt;Little creature&gt;, are you okay?
 ...

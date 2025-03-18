@@ -2,8 +2,10 @@ internalId: Red_stomach
 color: #99ffe5
 type: pearl
 name: Aquamarine (Hunter)
+md-sourceDialogue:
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 51.txt
 "Triple affirmative! Triple affirmative!
 In all seriousness though, noticed barely any rain from your can so figured a little support might be in order.
 Wasn't that easy to see of course, with Pebbles' shall we say healthy output.

@@ -5,6 +5,7 @@ name: Bright Purple
 map: region=SL, room=B01, mapSlugcat=white
 
 === transcription: FP-artificer
+md-sourceDialogue: 17-artificer.txt
 This is very old. These are the blueprints for the local aquifer that facilitated my initial construction next to my neighbor, Looks to the Moon.
 She was built adjacent to a large canyon that was rich in resources. But continual operation of her facility lowered the waterbed to such an extent that the area began to wither away into an infertile state.
 Continual cycles of rain from our operation forces the water into smaller localized pockets around the nearby terrain. The aquifer was meant to consolidate these distributed water systems and funnel their contents back into the canyon.
@@ -13,6 +14,7 @@ Many solutions were discussed, but ultimately my construction was the one settle
 ...How ironic then, how things have turned out.
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 17.txt
 It's about the local aquifer - it must be quite old, from when Five Pebbles was in the planning phase.
 Water is the most important resource for our basic function. Most of our processing is outsourced to microbe strata which need a flow of clean water or else slag builds up, our processes seize, and eventually we die. It is... very painful. They used to say that an iterator drinks a river, but neither of us two have seen a natural river so I suppose the analogy is lost on us, little creature!
 Originally water supply was very important when placing iterators. Later there would be a great equalizer - the fact that we breathe out as much vapor as we inhale water led to there being water available everywhere, and the latest few generations could be placed almost completely freely.

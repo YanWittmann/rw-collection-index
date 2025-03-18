@@ -49,30 +49,33 @@ const findNextValidPosition = (row: number, col: number, pearls: PearlData[][], 
 export function useDialogue(unlockMode: UnlockMode, GRID_DATA: PearlData[]) {
     const [selectedPearl, setSelectedPearl] = useState<string | null>(null);
     const [selectedTranscriber, setSelectedTranscriber] = useState<string | null>(null);
+    const [sourceFileDisplay, setSourceFileDisplay] = useState<string | null>(null);
     const [currentGridPosition, setCurrentGridPosition] = useState<[number, number]>([0, 0]);
 
     const handleSelectPearl = (pearl: PearlData | null) => {
+        setSourceFileDisplay(null);
+
         if (pearl === null) {
             setSelectedPearl(null);
             setSelectedTranscriber(null);
             return;
         }
-        
+
         setSelectedPearl(pearl.id);
-        
+
         // always start with the last transcriber
         const lastTranscriber = pearl.transcribers[pearl.transcribers.length - 1];
         if (!lastTranscriber) {
             setSelectedTranscriber(null);
             return;
         }
-        
+
         // check if this transcriber name appears multiple times
         const duplicateCount = pearl.transcribers.filter(t => t.transcriber === lastTranscriber.transcriber).length;
         const lastIndex = pearl.transcribers.length - 1;
-        
+
         // if multiple occurrences, include the index
-        setSelectedTranscriber(duplicateCount > 1 
+        setSelectedTranscriber(duplicateCount > 1
             ? `${lastTranscriber.transcriber}-${lastIndex}`
             : lastTranscriber.transcriber
         );
@@ -83,14 +86,16 @@ export function useDialogue(unlockMode: UnlockMode, GRID_DATA: PearlData[]) {
         currentTranscriber: string | null,
         direction: 'next' | 'prev'
     ): string | null => {
+        setSourceFileDisplay(null);
+
         if (!transcribers.length) return null;
 
         // find current index
         let currentIndex = 0;
         if (currentTranscriber) {
             // First try to find exact match
-            currentIndex = transcribers.findIndex(t => 
-                t.transcriber === currentTranscriber || 
+            currentIndex = transcribers.findIndex(t =>
+                t.transcriber === currentTranscriber ||
                 `${t.transcriber}-${transcribers.indexOf(t)}` === currentTranscriber
             );
             // if not found, default to first/last based on direction
@@ -105,12 +110,12 @@ export function useDialogue(unlockMode: UnlockMode, GRID_DATA: PearlData[]) {
             : (currentIndex - 1 + transcribers.length) % transcribers.length;
 
         const newTranscriber = transcribers[newIndex];
-        
+
         // check if this transcriber name appears multiple times
         const duplicateCount = transcribers.filter(t => t.transcriber === newTranscriber.transcriber).length;
-        
+
         // if multiple occurrences, include the index
-        return duplicateCount > 1 
+        return duplicateCount > 1
             ? `${newTranscriber.transcriber}-${newIndex}`
             : newTranscriber.transcriber;
     };
@@ -234,18 +239,30 @@ export function useDialogue(unlockMode: UnlockMode, GRID_DATA: PearlData[]) {
             } else {
                 urlAccess.clearParam("transcriber");
             }
+            if (sourceFileDisplay) {
+                urlAccess.setParam("source", sourceFileDisplay);
+            } else {
+                urlAccess.clearParam("source");
+            }
         } else {
             urlAccess.clearParam("pearl");
             urlAccess.clearParam("transcriber");
+            urlAccess.clearParam("source");
         }
-    }, [selectedPearl, selectedTranscriber, unlockMode]);
+    }, [selectedPearl, selectedTranscriber, sourceFileDisplay, unlockMode]);
+
+    const handleSelectTranscriber = (transcriber: string | null) => {
+        setSourceFileDisplay(null);
+        setSelectedTranscriber(transcriber);
+    };
 
     return {
         selectedPearl,
         selectedTranscriber,
         handleSelectPearl,
-        handleSelectTranscriber: setSelectedTranscriber,
+        handleSelectTranscriber: handleSelectTranscriber,
         handleKeyNavigation,
-        currentGridPosition
+        currentGridPosition,
+        sourceFileDisplay, setSourceFileDisplay
     };
 }

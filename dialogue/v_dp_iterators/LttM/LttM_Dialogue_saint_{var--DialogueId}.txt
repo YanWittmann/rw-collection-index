@@ -24,6 +24,7 @@ Hopefully you can find an escape to your suffering.
 md-type: pearl
 md-var-DialogueId: Third_Encounter
 md-name: Third Encounter
+md-sourceDialogue: none
 Oh hello.
 Have you come back to see me again?
 Ah, you remind me of a old creature who used to visit here often.

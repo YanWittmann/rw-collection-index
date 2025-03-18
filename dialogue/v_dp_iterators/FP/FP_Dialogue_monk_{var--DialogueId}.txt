@@ -5,6 +5,7 @@ subType: monk
 md-type: pearl
 md-var-DialogueId: First_encounter
 md-name: First encounter
+md-sourceDialogue: 48.txt
 I am growing increasingly impatient with the traffic of your kind through me and my premises.
 During previous interactions, I have been rewarded no other response than a blank stare. Yet you apparently have sufficient ability for communication to circulate complex instructions on how to enter this chamber among each other.
 You and your kind have the same problem as everyone else, from the microbes in the processing strata to me, who am, if you excuse me, godlike in comparison. We all want a way out. It is only unfortunate that you have collectively decided on... me as your solution to that very elemental desire.

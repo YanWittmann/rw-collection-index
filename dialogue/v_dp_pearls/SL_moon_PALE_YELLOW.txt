@@ -5,6 +5,7 @@ name: Pale Yellow
 map: region=SL, room=I01, mapSlugcat=white
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 18.txt
 Interesting... This one is written by me.
 It's about an iterator called Sliver of Straw. I don't remember when I wrote it... Do you know Sliver of Straw? She's quite legendary among us.
 Sliver of Straw is the only one to ever broadcast a specific signal: that the Big Problem we're all working on has been solved. The triple affirmative - affirmative that a solution has been found, affirmative that the solution is portable, and affirmative that a technical implementation is possible and generally applicable. She's also one of few that has ever been confirmed as exhaustively incapacitated, or dead. We do not die easily.

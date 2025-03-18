@@ -7,6 +7,7 @@ md-type: pearl
 md-transcriberName: If Rivulet has delivered the Rarefaction Cell to Looks to the Moon without having spoken to Five Pebbles first
 md-var-DialogueId: First_encounter
 md-name: Meeting for the first time
+md-sourceDialogue: 152.txt
 . . .
 Listen to me, land fish.
 The last of my generators has reached the end of its operating life.
@@ -23,13 +24,23 @@ md-type: pearl
 md-transcriberName: If Rivulet takes the Rarefaction Cell, meets Five Pebbles without the cell, then returns with the cell
 md-var-DialogueId: First_encounter
 md-name: Meeting for the first time
-Is that why the generator failed? That face... that blank expression... I do not understand, why?
+md-sourceDialogue: 149.txt
+Is that why the generator failed? That face... that blank expression...
+I do not understand, why?
+Perhaps this is fate. Karma recounting my deeds and bearing its fangs at me in the most ironic fashion.
+I cannot run away from my mistakes forever.
+If your actions are only out of ignorance, then I make a request of you. It is clear your kind is quite tenacious, to make the pilgrimage to me is no easy task. Even more so through my structure in its current state.
+Take that rarefaction cell with you. Consider it my parting gift after all of the harm I have done to those around me, and myself.
+I cannot be saved or forgiven, land fish. There is nothing that can be done for me now.
+Please, bring it far to the east, to her... if she is somehow still alive. Then for your own sake, never return here.
 
 === transcription: FP
 md-type: pearl
 md-transcriberName: If Rivulet has taken the Rarefaction Cell, but does not bring it to Five Pebbles upon their first meeting
 md-var-DialogueId: First_encounter
 md-name: Meeting for the first time
+md-sourceDialogue: 144.txt
+md-sourceDialogue: 146.txt
 ...
 Is this some kind of joke?
 I have seen your kind here many times before. To each I have paid little attention. I have given them direction, and my wisdom.
@@ -47,6 +58,8 @@ md-type: pearl
 md-transcriberName: If Rivulet brings the Rarefaction Cell without having spoken to Five Pebbles first
 md-var-DialogueId: First_encounter
 md-name: Meeting for the first time
+md-sourceDialogue: 144.txt
+md-sourceDialogue: 145.txt
 ...
 Is this some kind of joke?
 I have seen your kind here many times before. To each I have paid little attention. I have given them direction, and my wisdom.
@@ -67,6 +80,8 @@ md-type: pearl
 md-transcriberName: If Rivulet does not have the Rarefaction Cell
 md-var-DialogueId: First_encounter
 md-name: Meeting for the first time
+md-sourceDialogue: 144.txt
+md-sourceDialogue: 147.txt
 ...
 Is this some kind of joke?
 I have seen your kind here many times before. To each I have paid little attention. I have given them direction, and my wisdom.
@@ -150,6 +165,7 @@ md-transcriberName: If Rivulet dies to the Proto Long Legs in the chamber
 md-var-DialogueId: Proto_Long_Legs_Death
 md-name: Dies to Proto Long Legs
 md-tag: downpour
+md-sourceDialogue: strings.txt
 MONO
 / One of the following options is selected randomly:
 /  a:

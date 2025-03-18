@@ -5,6 +5,7 @@ name: Bright Red
 map: region=LF, room=D07, mapSlugcat=white
 
 === transcription: FP-artificer
+md-sourceDialogue: 11-artificer.txt
 Oh, this is a small plate of spiritual guidance. From an age long before the Void Fluid revolution.
 The text is typical for its era, and details how to shed oneself of the fourth natural urge of life, gluttony.
 I cannot imagine you are familiar with the literature, but all living things have an understanding of the five natural urges. Even if that understanding is only a subconscious one.
@@ -14,6 +15,7 @@ Of course, that holds true only in theory... it is, arguable that a member of my
 In any case, thank you. I have a fondness for artifacts such as this. They remind me of better times.
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 11.txt
 It's a Small Plate, a little text of spiritual guidance. It's written by a monk called Four Cabinets, Eleven Hatchets. It's old, several ages before the Void Fluid revolution.
 Like most writing from this time it’s quite shrouded in analogies, but the subject is how to shed one of the five natural urges which tie a creature to life. Namely number four, gluttony.
 It is basically an instruction on how to starve yourself on herbal tea and gravel, but disguised as a poem.

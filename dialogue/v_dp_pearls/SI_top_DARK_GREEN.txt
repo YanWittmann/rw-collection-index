@@ -6,6 +6,7 @@ map: region=SI, room=B12, mapSlugcat=white
 info: ${SI-CHAT}
 
 === transcription: FP-artificer
+md-sourceDialogue: 20-artificer.txt
 This is an old conversation between myself and a close friend who I considered a mentor.
 We have... Not spoken for a long time now. I can't bring myself to do so. Not after what happened between us.
 None of them understood my theories, but Suns, they trusted me. They risked so much trying to help me, and I hurt them. It's only now, after I've had so much time to think on it, that I understand why I was so angry.
@@ -14,6 +15,7 @@ I can't go back now. All I can try to do is recover and try again.
 I have to.
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 20.txt
 This one is an old conversation between Five Pebbles and a friend of his. I'll read it to you.
 "1591.290 - PRIVATE\nFive Pebbles, Seven Red Suns
 FP: Can I tell you something? Lately...

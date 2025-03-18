@@ -6,6 +6,7 @@ map: region=SI, room=C02, mapSlugcat=white
 info: ${SI-CHAT}
 
 === transcription: FP-artificer
+md-sourceDialogue: 22-artificer.txt
 This is an old conversation log between my nearby peers. They were concerned about my goal for personal ascension. Although they were unaware it was me at the time, as my conversations on that topic were anonymous.
 It is... disappointing that they refused to understand. Nor could they ever even comprehend, as it is not supposed to be within our design to do so. To cross ourselves out is meant to be unthinkable!
 It is a taboo written into every cell of our organic bodies, but should it be considered such? Should we respect the will of our creators, who are no longer here?
@@ -15,6 +16,7 @@ Should we discard Sliver of Straw too? For the sake of our creator's mandate?!
 Of course, a beast like you could never fathom.
 
 === transcription: LttM-pre-collapse
+md-sourceDialogue: 22-spear.txt
 It's an old conversation log from my friends and I. I was quite naive back then! Let me read it to you:
 "1650.800 - PRIVATE\nFive Pebbles, Chasing Wind, Big Sis Moon, No Significant Harassment
 CW: this is in confidence, but apparently a pseudonym "Erratic Pulse" has appeared on a nearby Sliverist conversation with ideas about personal ascension. Someone here in our vicinity is trying to cross themselves out.
@@ -28,6 +30,7 @@ BSM: I will try to find him and talk to him. Please don't spread this around!
 NSH: Moon will go get them! Long live the inquisition!"
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 22.txt
 It's an old conversation log. I seem to be in it, but I can't recall much. Let me read it to you:
 "1650.800 - PRIVATE\nFive Pebbles, Chasing Wind, Big Sis Moon, No Significant Harassment
 CW: this is in confidence, but apparently a pseudonym "Erratic Pulse" has appeared on a nearby Sliverist conversation with ideas about personal ascension. Someone here in our vicinity is trying to cross themselves out.

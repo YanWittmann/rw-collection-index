@@ -5,6 +5,7 @@ subType: hunter
 md-subType: item/Neuron_Fly_Hunter_icon
 md-var-DialogueId: With_Green_Neuron
 md-name: With Green Neuron
+md-sourceDialogue: 46.txt
 Let us see what you have here.
 Eleven... no sixteen! Sixteen slag reset keys.
 I've seen several before, but one or two will be useful.
@@ -29,6 +30,7 @@ As I mentioned you do not have unlimited time.
 md-type: pearl
 md-var-DialogueId: Without_Green_Neuron
 md-name: Without Green Neuron
+md-sourceDialogue: 47.txt
 I barely listen to the overseers any more. I have concluded that the movements of animals on the premises absolutely and completely lack relevance to my endeavours.
 With you, they have been very persistent ever since you entered my Farm Arrays. You were on an unusually deliberate path.
 Now you are here.

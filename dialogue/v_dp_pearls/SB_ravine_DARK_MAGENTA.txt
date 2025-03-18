@@ -6,6 +6,7 @@ map: region=SB, room=F03, mapSlugcat=white
 info: Text color is only present in the Downpour version of the game.
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 43.txt
 It's a conversation log, all plain text. You want me to read it?
 "1681.662 - PRIVATE\nSeven Red Suns, Chasing Wind
 CW: Have you had any contact with Five Pebbles recently?

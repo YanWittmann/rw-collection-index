@@ -28,7 +28,7 @@ export type UnlockMode = "all" | "unlock";
 
 export default function DialogueInterface() {
     const [unlockMode, setUnlockMode] = useState<UnlockMode>("all");
-    const { selectedPearl, selectedTranscriber, handleSelectPearl, handleSelectTranscriber, handleKeyNavigation, currentGridPosition } = useDialogue(unlockMode, GRID_DATA);
+    const { selectedPearl, selectedTranscriber, handleSelectPearl, handleSelectTranscriber, handleKeyNavigation, currentGridPosition, sourceFileDisplay, setSourceFileDisplay } = useDialogue(unlockMode, GRID_DATA);
     const { refresh, unlockVersion } = useUnlockState();
     const [hintProgress, setHintProgress] = useState<number>(0);
     const [isAlternateDisplayModeActive, setIsAlternateDisplayModeActive] = useState(false);
@@ -72,6 +72,7 @@ export default function DialogueInterface() {
 
         urlAccess.getParam("pearl") && handleSelectPearl(GRID_DATA.find(pearl => pearl.id === urlIdToPearlId(urlAccess.getParam("pearl")!)) ?? null);
         urlAccess.getParam("transcriber") && handleSelectTranscriber(urlAccess.getParam("transcriber")!);
+        urlAccess.getParam("source") && setSourceFileDisplay(urlAccess.getParam("source")!);
     }, []);
 
     const handleSelectPearlWithReset = (pearl: string) => {
@@ -103,6 +104,8 @@ export default function DialogueInterface() {
                 pearl={selectedPearl !== null ? GRID_DATA.find(pearl => pearl.id === selectedPearl) ?? null : null}
                 selectedTranscriber={selectedTranscriber}
                 onSelectTranscriber={handleSelectTranscriber}
+                sourceFileDisplay={sourceFileDisplay}
+                setSourceFileDisplay={setSourceFileDisplay}
                 setUnlockMode={setUnlockMode}
                 unlockMode={unlockMode}
                 triggerRender={refresh}

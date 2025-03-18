@@ -5,6 +5,7 @@ name: Deep Green
 map: region=LC, room=ruin02, mapSlugcat=artificer
 
 === transcription: FP-artificer
+md-sourceDialogue: 103-artificer.txt
 You took this from within the city? These are architectural notes from the original construction of my facility.
 The notes entail plans for bridges that connect two of my legs to those of my neighbor's, Looks to the Moon. This particular configuration between two iterators is quite unique, and very peculiar. It is a rare occurrence for two iterators to be located this close to each other.
 During the time period of these plans, solutions were being drafted to allow for a mass migration of citizens out of Moon's city. With how inhospitable the surface had become, attempting to escort an entire city's populace across the ground over any length of distance would have been disastrous.
@@ -14,6 +15,7 @@ These are my mistakes to endure, not hers.
 
 === transcription: LttM-post-collapse
 md-info: ${LC-PEARL-MOON}
+md-sourceDialogue: 103.txt
 Oh, little creature. Where did you find this? It is quite old, around the time of Five Pebbles' construction.
 It's a large collection of architectural notes from his facility, during its initial construction. Most prominently the two transfer bridges between our facilities. These were two large spans that ran between our two closest sets of legs, that I can only presume were both lost in my collapse.
 I exist as an old model, and the concept of an iterator was still fairly new at the time of my construction. Knowledge of the technology, and more importantly its limits, had not quite reached maturity.

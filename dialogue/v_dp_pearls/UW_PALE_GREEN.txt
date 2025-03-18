@@ -5,6 +5,7 @@ name: Pale Green
 map: region=UW, room=H01, mapSlugcat=white
 
 === transcription: FP-artificer
+md-sourceDialogue: 42-artificer.txt
 This one has not been archived. It was likely transported by hand...
 It is a message of political discourse regarding concerns about the increasingly tense relationship between myself and the various Houses. This part is amusing.
 "I therefor ask you to Do Anything in your Might to stop the House(We both know which House) from Further Obstruction! They have less than forty members on the Council, but still Tilt the spiritual Discourse with Our Iterator in a direction that most obviously Displeases him, and is hardly High Held by anyone in the Community either! We can not Risk this!"
@@ -15,6 +16,7 @@ None of this matters any more. The only displeasing presence I have now is you.
 Allow me to get back to my work.
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 42.txt
 This one has plain text. Let me cut the lengthy introductions...
 "...we will not consider the Current Situation acceptable. Although our community is Blessed with an ever shrinking Population, and we can Almost Glimpse that Glorious moment when the last of us has joined our most Admired peers, we must still (at All Times!) maintain Good Relations with our Iterator.
 The Moral Argument: Five Pebbles is our Creation, and we have Parental Obligations towards him. As an Iterator, he is also a Gift of Charity from Us to The World (unable to reach Enlightenment by itself - being composed mostly of Rock, Gas, dull witted Bugs and Microbes - and towards which We thus have Obligations).

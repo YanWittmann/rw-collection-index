@@ -5,12 +5,14 @@ name: Deep Magenta
 map: region=SH, room=A19, mapSlugcat=white
 
 === transcription: FP-artificer
+md-sourceDialogue: 13-artificer.txt
 Ah, you found this in the memory crypts? I would advise against wandering into such secure areas. The memory crypts were considered sacred ground by my creators.
 The memories and wealth of entire family houses were laid to rest within, and their destruction or theft by surface creatures was considered abhorrent. As such, the crypts are guarded by extremely durable and aggressive purposed organisms. Not that I would stop you from finding me more pearls from there...
 It was customary to enshrine all material possessions and memories to the crypts on one's ascent. None of these qualia are present in my logs, and many of these may find some use in my research.
 Thank you.
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 13.txt
 Oh this one is interesting. You must have found it in the memory crypts? It has some plain text, I can read it out to you.
 "In this vessel is the living memories of Seventeen Axes, Fifteen Spoked Wheel, of the House of Braids, Count of 8 living blocks, Counselor of 16, Grand Master of the Twelfth Pillar of Community, High Commander of opinion group Winged Opinions, of pure Braid heritage, voted Local Champion in the speaking tournament of 1511.090, Mother, Father and Spouse, Spiritual Explorer and honorary member of the Congregation of Balanced Ambiguity. Artist, Warrior, and Fashion Legend.
 Seventeen Axes, Fifteen Spoked Wheel nobly decided to ascend in the beginning of 1514.008, after graciously donating all (ALL!) earthly possessions to the local Iterator project (Unparalleled Innocence), and left these memories to be cherished by the carnal plane.

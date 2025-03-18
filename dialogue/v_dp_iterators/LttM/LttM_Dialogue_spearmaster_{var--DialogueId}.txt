@@ -6,6 +6,7 @@ md-type: pearl
 md-transcriberName: If Spearmaster has already delivered their message
 md-var-DialogueId: First_encounter
 md-name: First encounter
+md-sourceDialogue: 139.txt
 Hello there.
 Are my words reaching you?
 Poor thing. There are no records of your body’s blueprints. Nor is it reasonable to assume your extreme adaptations are possible through… natural means.
@@ -37,6 +38,7 @@ Hurry little messenger!
 md-type: pearl
 md-var-DialogueId: Second_encounter
 md-name: Second encounter
+md-sourceDialogue: none
 I have nothing for you, poor thing. Please, I don't have long.
 
 === transcription: LttM-pre-collapse

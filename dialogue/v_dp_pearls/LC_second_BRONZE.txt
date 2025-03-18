@@ -5,12 +5,14 @@ name: Bronze
 map: region=LC, room=floorpipes, mapSlugcat=artificer
 
 === transcription: FP-artificer
+md-sourceDialogue: 121-artificer.txt
 This is a blueprint for a living block cell. It stores and processes organic waste.
 There is nothing too interesting here. Modular city cell blocks have been in production for a long time, and are likely to be abandoned for even longer now that my creators have departed.
 Unless a junkyard dweller like you has an vested interest in septic system design, there is very little information here that either of us would enjoy reading.
 
 === transcription: LttM-post-collapse
 md-info: ${LC-PEARL-MOON}
+md-sourceDialogue: 121.txt
 Where did you find this, little creature? It's a blueprint for a type of large immobile purposed organism. This one seems to be specifically for the cities built on top of one of our structures.
 Have you been to one before? I'm sure it would not be an easy task! Older models had more traditional constructions, but newer designs began to use mass-produced cellular buildings called living blocks. Each cell in those blocks has a different shell reflecting their purpose.
 Some of these units contain completely immobile organisms or machinery. Others are small dwellings for cleaners or messengers to rest. Other, much larger cells, serve as residences and storage.

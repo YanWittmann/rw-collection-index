@@ -5,12 +5,14 @@ name: Bright Blue
 map: region=HI, room=B08, mapSlugcat=white
 
 === transcription: FP-artificer
+md-sourceDialogue: 12-artificer.txt
 This is a production log from a facility on the surface. It has been a very long time since I've cared about reading one, but the name... roughly translates as Side House. I remember the shipments of holy ash I used to receive from there.
 I don't know how I would gain access to holy ash in the present day, not that I have much use for it. Despite all the independent power of my machinery, the relationship I had with my creators was a mutually symbiotic one.
 I was built to provide for them, but there was also much I relied on them to provide to me.
 Their absence has made things harder. I suppose the only gifts I receive now are pearls and such from your kind.
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 12.txt
 It's a production record of a mask factory, for what seems to be its last time in service. Have you seen a bone mask? Likely not, they are all gone with their owners.
 In ancient times the masks were actually about showing spiritual persuasion - covering the face as a way to symbolically abate the self. Then of course, that was quite subverted as excessively ornate and lavish masks became an expression of identity. Some public persons did have problems with narrow doorways.
 Originally monks in a temple would make the masks using bone plaster, and when the production was automated it would generally remain on the same site. So that the old stones could... radiate the material with holiness, I suppose.

@@ -5,62 +5,71 @@ name: Five Pebbles' Pearl {var--PebPearlIdx}
 info: ${PebblesPearl-INFO}
 
 === transcription: LttM-rivulet
-md-map: region=RM, room=AI, mapSlugcat=rivulet
 md-var-PebPearlIdx: 1
-It's an active working memory - raw data has been dropped here in order to later be pasted to a currently occupied memory conflux. Without context it's just a jumble.
+md-map: region=RM, room=AI, mapSlugcat=rivulet
+The data on this one repeats itself many times, with a number of redundancy checks in place.
+This extent of integrity checking is rarely seen, except when pearls have to be stored in highly contaminated environments where data corruption is likely.
 
 === transcription: LttM-post-collapse
 md-var-PebPearlIdx: 1
 md-map: region=SS, room=AI, mapSlugcat=white
+md-sourceDialogue: none
 The data on this one repeats itself many times, with a number of redundancy checks in place.
 This extent of integrity checking is rarely seen, except when pearls have to be stored in highly contaminated environments where data corruption is likely.
 
 === transcription: LttM-rivulet
 md-var-PebPearlIdx: 2
 md-map: region=RM, room=AI, mapSlugcat=rivulet
-It is the impression of being a small creature, like a wall climbing lizard, and looking up into the branches of a big tree. The last third is partly overwritten with a number series I vaguely recognize, but without my memory…
+A common prayer mantra repeated 7110 times. Each repetition has some slight random variations, which seem to have been written later.
 
-=== transcription: LttM-rivulet
-md-var-PebPearlIdx: 3
-md-map: region=RM, room=AI, mapSlugcat=rivulet
+=== transcription: LttM-post-collapse
+md-var-PebPearlIdx: 2
+md-map: region=SS, room=AI, mapSlugcat=white
+md-sourceDialogue: none
 A common prayer mantra repeated 7110 times. Each repetition has some slight random variations, which seem to have been written later.
 
 === transcription: LttM-post-collapse
 md-var-PebPearlIdx: 3
 md-map: region=SS, room=AI, mapSlugcat=white
-A common prayer mantra repeated 7110 times. Each repetition has some slight random variations, which seem to have been written later.
-
-=== transcription: LttM-rivulet
-md-var-PebPearlIdx: 4
-md-map: region=RM, room=AI, mapSlugcat=rivulet
+md-sourceDialogue: none
 It's an image of a single grey cloud, hovering above a surface of white clouds under a deep blue sky.
 
 === transcription: LttM-rivulet
-md-var-PebPearlIdx: 5
+md-var-PebPearlIdx: 4
 md-map: region=RM, room=AI, mapSlugcat=rivulet
 Two... intertwined number series? I don't quite understand the utility of this.
 It might a key for a cipher processor, customized for some other data which is impossible to infer from this.
 
 === transcription: LttM-post-collapse
-md-var-PebPearlIdx: 5
+md-var-PebPearlIdx: 4
 md-map: region=SS, room=AI, mapSlugcat=white
+md-sourceDialogue: none
 Two... intertwined number series? I don't quite understand the utility of this.
 It might be a key for a cipher processor, customized for some other data which is impossible to infer from this.
 
-=== transcription: LttM-rivulet
-md-var-PebPearlIdx: 6
-md-map: region=RM, room=AI, mapSlugcat=rivulet
+=== transcription: LttM-post-collapse
+md-var-PebPearlIdx: 5
+md-map: region=SS, room=AI, mapSlugcat=white
+md-sourceDialogue: none
 It's qualia, or a moment - a very short one. Someone is holding a black stone, and twisting it slightly as they drag their finger across the rough surface.
 The entire sequence is shorter than a heartbeat, but the resolution is extraordinary.
 
-=== transcription: LttM-rivulet
+=== transcription: LttM-post-collapse
+md-var-PebPearlIdx: 6
+md-map: region=SS, room=AI, mapSlugcat=white
+md-sourceDialogue: none
+It's an active working memory - raw data has been dropped here in order to later be pasted to a currently occupied memory conflux. Without context it's just a jumble.
+
+=== transcription: LttM-post-collapse
 md-var-PebPearlIdx: 7
-md-map: region=RM, room=AI, mapSlugcat=rivulet
+md-map: region=SS, room=AI, mapSlugcat=white
+md-sourceDialogue: none
 An active working memory. Without knowing where this was cut from or where it's to be pasted to, it is not really possible to decipher it. If I had to guess, I would say it has something to do with trance inducing number series.
 
-=== transcription: LttM-rivulet
+=== transcription: LttM-post-collapse
 md-var-PebPearlIdx: 8
-md-map: region=RM, room=AI, mapSlugcat=rivulet
+md-map: region=SS, room=AI, mapSlugcat=white
+md-sourceDialogue: none
 It's just an active working memory, I can't really tell you anything without the context.
 
 === transcription: LttM-rivulet
@@ -71,6 +80,7 @@ Without the process surrounding this data there isn't much I can tell you. It mi
 === transcription: LttM-post-collapse
 md-var-PebPearlIdx: 9
 md-map: region=SS, room=AI, mapSlugcat=white
+md-sourceDialogue: none
 Without the process surrounding this data there isn't much I can tell you. It might have something to do with Void Fluid simulation...
 
 === transcription: LttM-rivulet
@@ -81,42 +91,50 @@ This one is completely blank. Actually, blanker than blank, it must have been de
 === transcription: LttM-post-collapse
 md-var-PebPearlIdx: 10
 md-map: region=SS, room=AI, mapSlugcat=white
+md-sourceDialogue: none
 This one is completely blank. Actually, blanker than blank, it must have been deliberately overwritten with repeating negative versions of itself for thousands of iterations.
 
-=== transcription: LttM-rivulet
+=== transcription: LttM-post-collapse
 md-var-PebPearlIdx: 11
-md-map: region=RM, room=AI, mapSlugcat=rivulet
+md-map: region=SS, room=AI, mapSlugcat=white
+md-sourceDialogue: none
 A memory... but not really visual, or even concrete, in its character. It reminds of the feeling of a warm wind, but not the physical feeling but the... inner feeling.
 I don't think it has much utility unless you are doing some very fringe Regeneraist research.
 
-=== transcription: LttM-rivulet
+=== transcription: LttM-post-collapse
 md-var-PebPearlIdx: 12
+md-map: region=SS, room=AI, mapSlugcat=white
+md-sourceDialogue: none
+It is the impression of being a small creature, like a wall climbing lizard, and looking up into the branches of a big tree. The last third is partly overwritten with a number series I vaguely recognize, but without my memory…
+
+=== transcription: LttM-rivulet
+md-var-PebPearlIdx: 13
 md-map: region=RM, room=AI, mapSlugcat=rivulet
 The surface of this pearl is pristine, but the internal lattice is fractured beyond repair.
 Something must have gone terribly wrong in the process of writing the data onto this.
 
 === transcription: LttM-rivulet
-md-var-PebPearlIdx: 13
+md-var-PebPearlIdx: 14
 md-map: region=RM, room=AI, mapSlugcat=rivulet
 It is a stored equipment manifest, showing rapidly deteriorating conditions over time. I suppose any equipment manifest you will find out there will look like this.
 
 === transcription: LttM-rivulet
-md-var-PebPearlIdx: 14
+md-var-PebPearlIdx: 15
 md-map: region=RM, room=AI, mapSlugcat=rivulet
 I don't understand this one. It is mostly blank, except for a small section at the start which appears to have been unsuccessfully written to hundreds of times. Perhaps by faulty machinery?
 
 === transcription: LttM-rivulet
-md-var-PebPearlIdx: 15
+md-var-PebPearlIdx: 16
 md-map: region=RM, room=AI, mapSlugcat=rivulet
 Incredible, this is seemingly a complete backup of an iterator's non-volatile core memory, transferred via the General Systems Bus. I don't recall such a thing ever being attempted to be stored in a pearl.
 It's not even a compatible data format without substantial conversions.
 
 === transcription: LttM-rivulet
-md-var-PebPearlIdx: 16
+md-var-PebPearlIdx: 17
 md-map: region=RM, room=AI, mapSlugcat=rivulet
 This contains partial data that seems abruptly truncated. Whatever machinery was used to write this pearl must have been interrupted or suspended in the middle of its operation.
 
 === transcription: LttM-rivulet
-md-var-PebPearlIdx: 17
+md-var-PebPearlIdx: 18
 md-map: region=RM, room=AI, mapSlugcat=rivulet
 Most of the data on this one is corrupted, but not through age. From the small bit that I can decipher, it appears that it may be a backup of some old conversation logs.

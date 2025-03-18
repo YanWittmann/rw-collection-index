@@ -29,11 +29,11 @@ md-transcriberName: If Looks to the Moon has 4 neurons left
 md-var-DialogueId: Second_encounter
 md-name: Second encounter
 MONO
-| If Looks to the Moon likes Slugcat:
+/ If Looks to the Moon likes Slugcat:
 |  Hello there! You again!
-| If Looks to the Moon dislikes Slugcat:
+/ If Looks to the Moon dislikes Slugcat:
 |  Oh. You.
-| Otherwise:
+/ Otherwise:
 |  Hello there. You again!
 |  I wonder what it is that you want?
 |  I have had scavengers come by before. Scavengers! And they left me alive! But... I have told you that already, haven't I?
@@ -45,15 +45,15 @@ md-transcriberName: If Looks to the Moon has 5 neurons left
 md-var-DialogueId: Second_encounter
 md-name: Second encounter
 MONO
-| If Looks to the Moon likes Slugcat:
+/ If Looks to the Moon likes Slugcat:
 |  Oh, hello!
 |  I wonder what it is that you want?
 |  There is nothing here. Not even my memories remain.
 |  Even the scavengers that come here from time to time leave with nothing. But... I have told you that already, haven't I?
 |  I do enjoy the company though. You're welcome to stay a while, quiet little thing.
-| If Looks to the Moon dislikes Slugcat:
+/ If Looks to the Moon dislikes Slugcat:
 |  You again.
-| Otherwise:
+/ Otherwise:
 |  Oh, hello.
 |  I wonder what it is that you want?
 |  There is nothing here. Not even my memories remain.

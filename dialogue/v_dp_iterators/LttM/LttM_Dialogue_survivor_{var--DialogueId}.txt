@@ -26,6 +26,7 @@ md-type: pearl
 md-transcriberName: If Looks to the Moon has 1 neuron left
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
+md-sourceDialogue: none
 ...
 
 === transcription: LttM-post-collapse
@@ -49,6 +50,8 @@ md-type: pearl
 md-transcriberName: If Looks to the Moon has 4 neurons left
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
+md-sourceDialogue: 35.txt
+md-sourceDialogue: 37.txt
 Oh so you've returned.
 Come to take more from me? My memories, my thoughts... just something to fill your stomach?
 No... never mind.
@@ -62,6 +65,7 @@ md-type: pearl
 md-transcriberName: If Looks to the Moon has 5 neurons left
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
+md-sourceDialogue: 37.txt
 Hello little creature.
 What are you? If I had my memories I would know...
 Perhaps... I saw you before?
@@ -78,27 +82,27 @@ md-type: pearl
 md-var-DialogueId: Following_Encounters
 md-name: Following encounters
 MONO
-| If Looks to the Moon does not dislike Slugcat and has more than 3 neurons:
-|  Punctuation differs whether Looks to the Moon likes Slugcat or not. Each time &lt;!&gt; is written, it means "!" will be used if she likes Slugcat, and "." if not.
-|  One of the following options is selected randomly:
+/ If Looks to the Moon does not dislike Slugcat and has more than 3 neurons:
+/  Punctuation differs whether Looks to the Moon likes Slugcat or not. Each time &lt;!&gt; is written, it means "!" will be used if she likes Slugcat, and "." if not.
+/  One of the following options is selected randomly:
 |   Hello again, &lt;little creature&gt;&lt;!&gt;
-|  If Looks to the Moon likes Slugcat:
+/  If Looks to the Moon likes Slugcat:
 |   Hello, &lt;little creature&gt;! How have you been?
-|  Otherwise:
+/  Otherwise:
 |   Hello, &lt;little creature&gt;. You’re here again.
 |   Oh, &lt;little creature&gt;. Hello&lt;!&gt;
 |   It’s you, &lt;little creature&gt;&lt;!&gt; Hello.
 |   Ah... &lt;little creature&gt;, you’re here again&lt;!&gt;
 |   Ah... &lt;little creature&gt;, you’re back&lt;!&gt;
-| If Looks to the Moon dislikes Slugcat
-|  One of the following options is selected randomly:
+/ If Looks to the Moon dislikes Slugcat
+/  One of the following options is selected randomly:
 |   Here again.
 |   You. I wish you would stop coming here.
 |   You again. Please leave me alone.
 |   Oh, it's you, &lt;little creature&gt;.
-|  If Looks to the Moon has 3 neurons left
+/  If Looks to the Moon has 3 neurons left
 |   ...you. ...leave me alone...
-|  If Looks to the Moon has 2 neurons left
+/  If Looks to the Moon has 2 neurons left
 |   ...leave...
-|  If Looks to the Moon has 1 neuron left
+/  If Looks to the Moon has 1 neuron left
 |   ...

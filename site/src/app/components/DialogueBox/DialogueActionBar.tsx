@@ -9,15 +9,25 @@ import { renderDialogueLine } from "../../utils/renderDialogueLine"
 import { Popover, PopoverContent, PopoverTrigger } from "@shadcn/components/ui/popover";
 import { generateMapLinkFromMapInfo, getMapLocations, hasMapLocations } from "./DialogueBox";
 import { hasTag } from "../../utils/pearlOrder";
+import { RwScrollableList } from "../other/RwScrollableList";
 
 interface DialogueActionBarProps {
-    pearl: PearlData
-    transcriberData: Dialogue
-    isUnlocked: boolean
-    onSelectPearl: (pearl: PearlData | null) => void
+    pearl: PearlData,
+    transcriberData: Dialogue,
+    isUnlocked: boolean,
+    onSelectPearl: (pearl: PearlData | null) => void,
+    setSourceFileDisplay: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void,
+    sourceFileDisplay: string | null
 }
 
-export function DialogueActionBar({ pearl, transcriberData, isUnlocked, onSelectPearl }: DialogueActionBarProps) {
+export function DialogueActionBar({
+                                      pearl,
+                                      transcriberData,
+                                      isUnlocked,
+                                      onSelectPearl,
+                                      setSourceFileDisplay,
+                                      sourceFileDisplay
+                                  }: DialogueActionBarProps) {
     const mapLocations = getMapLocations(transcriberData)
     const hasMultipleLocations = mapLocations.length > 1
 
@@ -34,67 +44,87 @@ export function DialogueActionBar({ pearl, transcriberData, isUnlocked, onSelect
         </Tooltip>,
     )
 
-    if (hasTag(transcriberData.metadata.tags, "downpour")) {
+    if (sourceFileDisplay) {
         segments.push(
-            <Tooltip key="open-downpour">
+            <Tooltip key="source-dialogue">
                 <TooltipTrigger>
-                    <RwIconButton aria-label="Downpour-Exclusive Content">
-                        <RwIcon type="dlc-dp"/>
+                    <RwIconButton aria-label="Source Dialogue"
+                                  onClick={() => setSourceFileDisplay(null)}>
+                        <RwIcon type="source"/>
                     </RwIconButton>
                 </TooltipTrigger>
-                <TooltipContent>Downpour-Exclusive Content</TooltipContent>
-            </Tooltip>,
+                <TooltipContent className={"text-center"}>
+                    View the default text for this transcriber.
+                </TooltipContent>
+            </Tooltip>
         )
-    }
 
-    if (transcriberData.metadata.sourceDialogue) {
-        const sourceDialogueFilename = transcriberData.metadata.sourceDialogue.split(/[/\\]/).pop();
-        const foundEntry = SOURCE_DECRYPTED.find(entry => entry.n === sourceDialogueFilename);
-        console.log(foundEntry)
-        segments.push(
-            <Popover key="source-dialogue">
-                <Tooltip key="source-dialogue">
-                    <PopoverTrigger>
+    } else if (transcriberData.metadata.sourceDialogue) {
+        const hasMultipleSourceFiles = transcriberData.metadata.sourceDialogue.length > 1
+
+        if (hasMultipleSourceFiles) {
+            // use scrollable list for multiple source files
+            segments.push(
+                <Popover key="source-dialogue-selector">
+                    <Tooltip key="source-dialogue-files">
+                        <PopoverTrigger>
+                            <TooltipTrigger>
+                                <RwIconButton aria-label="Source Dialogue Files">
+                                    <RwIcon type="source"/>
+                                    <span
+                                        className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-5 h-5 text-xs flex items-center justify-center">
+                    {transcriberData.metadata.sourceDialogue.length}
+                  </span>
+                                </RwIconButton>
+                            </TooltipTrigger>
+                            <TooltipContent className="text-center">
+                                Dialogue is stored in encrypted files inside the game's folders.<br/>
+                                Click to view the source files for this transcription.
+                            </TooltipContent>
+                        </PopoverTrigger>
+                        <PopoverContent
+                            className="w-64 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg"
+                            align="start"
+                            sideOffset={5}
+                        >
+                            <RwScrollableList
+                                items={transcriberData.metadata.sourceDialogue.map((sourcePath, index) => {
+                                    const filename = sourcePath.split(/[/\\]/).pop() || `Source File ${index + 1}`
+                                    const foundEntry = SOURCE_DECRYPTED.find((entry) => entry.n === filename)
+
+                                    return {
+                                        id: `source-file-${index}`,
+                                        title: filename,
+                                        subtitle: foundEntry ? foundEntry.p : "Entry unavailable. Likely an error.",
+                                        onClick: () => setSourceFileDisplay(filename),
+                                    }
+                                })}
+                            />
+                        </PopoverContent>
+                    </Tooltip>
+                </Popover>,
+            )
+        } else {
+            // single source file
+            const sourceDialogueFilename = transcriberData.metadata.sourceDialogue[0].split(/[/\\]/).pop()
+            if (sourceDialogueFilename) {
+                const foundEntry = SOURCE_DECRYPTED.find((entry) => entry.n === sourceDialogueFilename)
+                segments.push(
+                    <Tooltip key="source-dialogue">
                         <TooltipTrigger>
-                            <RwIconButton aria-label="Source Dialogue">
+                            <RwIconButton aria-label="Source Dialogue"
+                                          onClick={() => setSourceFileDisplay(sourceDialogueFilename)}>
                                 <RwIcon type="source"/>
                             </RwIconButton>
                         </TooltipTrigger>
                         <TooltipContent className={"text-center"}>
                             Dialogue is stored in encrypted files inside the game's folders.<br/>
-                            Click here to view this transcription's source file.<br/>
-                            <b>{sourceDialogueFilename}</b>
+                            Click here to view this transcription's source file.
                         </TooltipContent>
-                    </PopoverTrigger>
-                    <PopoverContent
-                        className="w-[40rem] p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg text-white"
-                        align="start"
-                        sideOffset={5}
-                    >
-                        {/* Outer container with styling */}
-                        <div className="relative rounded-xl overflow-hidden">
-                            {/* Inner border */}
-                            <div
-                                className="absolute inset-[3px] rounded-lg border-2 border-white/60 pointer-events-none"/>
-
-                            {/* Content container */}
-                            <div className="max-h-[340px] overflow-y-auto py-2 relative z-10 no-scrollbar">
-                                {foundEntry && (
-                                    <div className="text-center px-8 pb-4">
-                                        <div className="text-lg font-medium">{foundEntry.n}</div>
-                                        <span className="text-sm opacity-80"
-                                            dangerouslySetInnerHTML={{
-                                                __html: renderDialogueLine(foundEntry.c.replaceAll("\n\n", "\n")),
-                                            }}
-                                        />
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    </PopoverContent>
-                </Tooltip>
-            </Popover>
-        )
+                    </Tooltip>,
+                )
+            }
+        }
     }
 
     if (isUnlocked && hasMapLocations(transcriberData)) {
@@ -129,31 +159,17 @@ export function DialogueActionBar({ pearl, transcriberData, isUnlocked, onSelect
                             align="start"
                             sideOffset={5}
                         >
-                            {/* Outer container with styling */}
-                            <div className="relative rounded-xl overflow-hidden">
-                                {/* Inner border */}
-                                <div
-                                    className="absolute inset-[3px] rounded-lg border-2 border-white/60 pointer-events-none"/>
-
-                                {/* Content container */}
-                                <div className="max-h-[340px] overflow-y-auto py-2 relative z-10 no-scrollbar">
-                                    {mapLocations.map((location: MapInfo, index: number) => (
-                                        <button
-                                            key={`${location.region}_${location.room}_${index}`}
-                                            className="w-full text-left px-4 py-1 relative group text-white/90 hover:underline"
-                                            onClick={() => {
-                                                const link = generateMapLinkFromMapInfo(location)
-                                                if (link) window.open(link, "_blank")
-                                            }}
-                                        >
-                                            <div className="font-medium">
-                                                {regionNames[location.region] || "Unknown"} ({location.region})
-                                            </div>
-                                            <div className="text-sm opacity-80">Room: {location.room}</div>
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
+                            <RwScrollableList
+                                items={mapLocations.map((location: MapInfo, index: number) => ({
+                                    id: `${location.region}_${location.room}_${index}`,
+                                    title: `${regionNames[location.region] || "Unknown"} (${location.region})`,
+                                    subtitle: `Room: ${location.room}`,
+                                    onClick: () => {
+                                        const link = generateMapLinkFromMapInfo(location)
+                                        if (link) window.open(link, "_blank")
+                                    },
+                                }))}
+                            />
                         </PopoverContent>
                     </Tooltip>
                 </Popover>
@@ -185,6 +201,19 @@ export function DialogueActionBar({ pearl, transcriberData, isUnlocked, onSelect
                 );
             }
         }
+    }
+
+    if (hasTag(transcriberData.metadata.tags, "downpour")) {
+        segments.push(
+            <Tooltip key="open-downpour">
+                <TooltipTrigger>
+                    <RwIconButton aria-label="Downpour-Exclusive Content">
+                        <RwIcon type="dlc-dp"/>
+                    </RwIconButton>
+                </TooltipTrigger>
+                <TooltipContent>Downpour-Exclusive Content</TooltipContent>
+            </Tooltip>,
+        )
     }
 
     return (

@@ -5,6 +5,7 @@ name: Viridian
 map: region=GW, room=C09, mapSlugcat=white
 
 === transcription: FP-artificer
+md-sourceDialogue: 16-artificer.txt
 This is one of my own pearls, or at least part of it.
 I have always been very protective of my research, and much of my early work was encrypted before storage. Though my younger self has done a very poor job. I can still read these memories very clearly, but with small gaps.
 It's an old methodology for global ascension. I'm sure I argued quite vigorously on its merits at the time, but now I can just see all of the holes in it. Created from a youthful and reticent mentality.
@@ -17,12 +18,14 @@ Please leave with this. I don't want to think about it anymore. Not until I've r
 . . .
 
 === transcription: LttM-pre-collapse
+md-sourceDialogue: 16-spear.txt
 This one... is authored by Five Pebbles, when he was young. There has been an attempt to scramble the data, but it's sloppily done, and most is still somewhat legible.
 It's written in an internal language, or thoughts, so it is hard for me to translate for you. It's a methodology for global ascension of course - quite good, although the Peripherists or the Slab Mongers certainly wouldn't agree!
 "...considering the eight and the twenty sixth amendments to the Capricious Dogma, we are apparently supposed to take for granted that a meaning collector point inversion is the only way to approach what has later become referred to as 'noise milking' (or occasionally 'rock swatting'). I will argue my disagreement with this, not in regards to kind but in regards to..." Could it say... "volume"? Actually, are you getting anything out of this?
 Reading this takes me back to those simpler times of methodological theory making. Probing through the doldrums of subservient research used to be unfulfilling, but lately I've begun to feel a great longing to return to it. Unfortunately, I have more pressing issues at hand that I need to deal with first.
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 16.txt
 This one... is authored by Five Pebbles, when he was young. There has been an attempt to scramble the data, but it's sloppily done, and most is still somewhat legible.
 It's written in internal language, or thoughts, so it is hard for me to translate so you would understand. It's a methodology for global ascension of course - quite good, although the Peripherists or the Slab Mongers certainly wouldn't agree!
 "...considering the eight and the twenty sixth amendments to the Capricious Dogma, we are apparently supposed to take for granted that a meaning collector point inversion is the only way to approach what has later become referred to as 'noise milking' (or occasionally 'rock swatting'). I will argue my disagreement with this, not in regards to kind but in regards to..." Could it say... "volume"? Actually, are you getting anything out of this?

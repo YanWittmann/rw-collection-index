@@ -4,6 +4,7 @@ type: pearl
 name: Celadon (Rivulet)
 
 === transcription: LttM-post-collapse
+md-sourceDialogue: 119.txt
 Oh! This is a very rare find, water dancer. This is a highly compressed schematic of an iterator superstructure!
 Where did you find this? I hope you didn't plan to give this to the scavengers! I doubt they would value it as much as I would!~
 Hmm... let's take a look!
