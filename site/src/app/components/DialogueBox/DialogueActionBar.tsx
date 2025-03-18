@@ -108,7 +108,6 @@ export function DialogueActionBar({
             // single source file
             const sourceDialogueFilename = transcriberData.metadata.sourceDialogue[0].split(/[/\\]/).pop()
             if (sourceDialogueFilename) {
-                const foundEntry = SOURCE_DECRYPTED.find((entry) => entry.n === sourceDialogueFilename)
                 segments.push(
                     <Tooltip key="source-dialogue">
                         <TooltipTrigger>
