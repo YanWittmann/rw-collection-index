@@ -33,6 +33,8 @@ Further features:
 - Spoiler/Unlock mode where all items start hidden ("?") and can display progressive hints if needed.
 - URL stores currently selected entry and transcriber to easily share contents with others.
 - Search functionality that allows to perform a full-text search across all entries.
+- Hover over speaker names to reveal full names.
+- Display of the original game files when viewing a transcription.
 - Keyboard navigation.
 
 Information is sourced from the [Rain World Wiki](https://rainworld.miraheze.org/wiki/Pearl/Dialogue) and the game
