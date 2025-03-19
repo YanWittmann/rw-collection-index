@@ -66,8 +66,17 @@
 </body>
 <script>
     if (window.location.hostname !== 'localhost' && !window.location.hostname.startsWith('127.0.0')) {
+        const lastAccessKey = 'lastAccessTime';
+
+        const lastAccessTime = localStorage.getItem(lastAccessKey);
+        const currentTime = Date.now();
+
+        const keyToUse = lastAccessTime && (currentTime - lastAccessTime < 10 * 60 * 1000) ? 'access-iden' : 'access';
+
+        localStorage.setItem(lastAccessKey, currentTime);
+
         setTimeout(() => {
-            fetch('https://yanwittmann.de/projects/countapi/increment.php?namespace=rwci&key=access', { method: 'GET' })
+            fetch(`https://yanwittmann.de/projects/countapi/increment.php?namespace=rwci&key=${keyToUse}`, { method: 'GET' })
                 .catch(error => console.error('Error tracking page view:', error));
         }, 1000);
     }
