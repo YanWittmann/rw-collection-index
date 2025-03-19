@@ -264,7 +264,7 @@ export function DialogueBox({
                 onHover={setHoveredTranscriber}
             />
             <div
-                className={cn("overflow-y-auto no-scrollbar", isMobile ? "max-h-[calc(85vh-2px)]" : "max-h-[calc(80vh-2px)]")}>
+                className={cn("overflow-y-auto no-scrollbar", isMobile ? "max-h-[calc(85vh-2px)] pt-16" : "max-h-[calc(80vh-2px)]")}>
                 {isUnlocked ? <>
                     {titleElement}
                     <DialogueContent
