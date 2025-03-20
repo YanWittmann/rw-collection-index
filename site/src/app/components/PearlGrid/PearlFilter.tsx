@@ -9,12 +9,15 @@ export interface FilterState {
     text: string | undefined;
     tags: Set<string>;
     types: Set<string>;
+    regions: Set<string>;
 }
 
 export interface FilterOption {
     id: string;
     label: string;
+    content?: string;
     icon?: string;
+    iconColor?: string;
 }
 
 export interface FilterSection {
@@ -48,12 +51,20 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
                     newTypes.add(optionId);
                 }
                 newFilters.types = newTypes;
+            } else if (section === 'regions') {
+                const newRegions = new Set(prev.regions);
+                if (newRegions.has(optionId)) {
+                    newRegions.delete(optionId);
+                } else {
+                    newRegions.add(optionId);
+                }
+                newFilters.regions = newRegions;
             }
             return newFilters;
         });
     };
 
-    const activeFilterCount = filters.tags.size + filters.types.size;
+    const activeFilterCount = filters.tags.size + filters.types.size + filters.regions.size;
 
     return (
         <Popover>
@@ -67,7 +78,8 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
                             >
                                 <RwIcon type="filter"/>
                                 {activeFilterCount > 0 && (
-                                    <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-5 h-5 text-xs flex items-center justify-center">
+                                    <span
+                                        className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-5 h-5 text-xs flex items-center justify-center">
                                         {activeFilterCount}
                                     </span>
                                 )}
@@ -82,8 +94,9 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
                     >
                         <div className="relative">
                             {/* Inner border */}
-                            <div className="absolute inset-[3px] rounded-lg border-2 border-white/60 pointer-events-none" />
-                            
+                            <div
+                                className="absolute inset-[3px] rounded-lg border-2 border-white/60 pointer-events-none"/>
+
                             {/* Content */}
                             <div className="relative z-10 p-2">
                                 {filterSections.map((section, index) => (
@@ -101,15 +114,17 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
                                                             onClick={() => toggleFilter(section.title.toLowerCase(), option.id)}
                                                             selected={section.title.toLowerCase() === 'tags'
                                                                 ? filters.tags.has(option.id)
-                                                                : filters.types.has(option.id)
+                                                                : section.title.toLowerCase() === 'types'
+                                                                    ? filters.types.has(option.id)
+                                                                    : filters.regions.has(option.id)
                                                             }
                                                             aria-label={option.label}
                                                         >
-                                                            {option.icon ? (
-                                                                <RwIcon type={option.icon} />
-                                                            ) : (
-                                                                <span className="text-xs">{option.label}</span>
-                                                            )}
+                                                            {option.icon &&
+                                                                <RwIcon type={option.icon} color={option.iconColor}/>}
+                                                            {option.content && <span className="pb-[0.3rem] text-lg rw-title-font"
+                                                                                     style={{ color: option.iconColor }}>
+                                                                {option.content}</span>}
                                                         </RwIconButton>
                                                     </TooltipTrigger>
                                                     <TooltipContent>

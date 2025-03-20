@@ -52,6 +52,31 @@ export const transcribersColors: { [key: string]: string } = {
     "artificer": "#70233c",
 };
 
+export const regionColors: { [key: string]: string } = {
+    "HI": "#667ad1",
+    "DS": "#247d45",
+    "GW": "#cce370",
+    "SH": "#593699",
+    "CC": "#d48573",
+    "SI": "#e8597f",
+    "SB": "#9c5933",
+    "DM": "#194fe7",
+    "LM": "#38d3ca",
+    "MS": "#097370",
+    "UW": "#886b57",
+    "SS": "#939393",
+    "CL": "#47655f",
+    "HR": "#590e00",
+    "UG": "#8fb572",
+    "VS": "#75405c",
+    "OE": "#d8ae8a",
+    "LC": "#7f3339",
+    "RM": "#9c00ff",
+    "LF": "#608c9e",
+    "SL": "#ede5cc",
+    "SU": "#38c79e",
+};
+
 export const transcriberIcons: { [key: string]: string } = {
     "base-slugcats": "survivor",
     "saint": "saint",

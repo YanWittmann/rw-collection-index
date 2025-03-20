@@ -6,7 +6,8 @@ import PearlItem from "./PearlItem";
 import UnlockManager from "../../utils/unlockManager";
 import { cn } from "@shadcn/lib/utils";
 import { RwIconButton } from "../other/RwIconButton";
-import { FilterSection, FilterState, PearlFilter } from "./PearlFilter";
+import { FilterOption, FilterSection, FilterState, PearlFilter } from "./PearlFilter";
+import { regionColors, regionNames } from "../../utils/speakers";
 
 interface PearlGridProps {
     pearls: PearlData[]
@@ -44,15 +45,15 @@ const SearchBar = ({ isMobile, unlockMode, onTextInput, onToggleUnlockMode, filt
 }) => {
     return (
         <div className={"flex gap-2 mb-4"}>
-            <PearlFilter
-                filters={filters}
-                setFilters={setFilters}
-                filterSections={filterSections}
-            />
             <RwTextInput
                 className={cn("", isMobile ? "flex-1" : "w-full")}
                 onTextInput={onTextInput}
                 placeholder="Search..."
+            />
+            <PearlFilter
+                filters={filters}
+                setFilters={setFilters}
+                filterSections={filterSections}
             />
             {isMobile && (
                 <RwIconButton
@@ -176,6 +177,10 @@ const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>((
     />
 ));
 
+function randomHexColor() {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+}
+
 export function PearlGrid({
                               pearls,
                               selectedPearl,
@@ -192,27 +197,52 @@ export function PearlGrid({
     const [filters, setFilters] = useState<FilterState>({
         text: undefined,
         tags: new Set(),
-        types: new Set()
+        types: new Set(),
+        regions: new Set()
     });
 
-    const filterSections: FilterSection[] = [
-        {
-            title: "Types",
-            options: [
-                { id: "pearl", label: "Pearl", icon: "pearl" },
-                { id: "broadcast", label: "Broadcast", icon: "broadcast" },
-                { id: "echo", label: "Echo", icon: "echo" },
-                { id: "item", label: "Other", icon: "item/Karma_Flower_icon" }
-            ]
-        },
-        {
-            title: "Tags",
-            options: [
-                { id: "vanilla", label: "Vanilla (No DLC)", icon: "vanilla-rw" },
-                { id: "downpour", label: "Downpour", icon: "dlc-dp" },
-            ]
-        }
-    ];
+    const filterSections: FilterSection[] = useMemo(() => {
+        // Extract unique regions from all pearls
+        const uniqueRegions = new Set<string>();
+        pearls.forEach(pearl => {
+            pearl.metadata.map?.forEach(mapInfo => {
+                if (mapInfo.region) {
+                    uniqueRegions.add(mapInfo.region);
+                }
+            });
+        });
+
+        // Convert to sorted array for consistent display
+        const sortedRegions = Array.from(uniqueRegions).sort();
+
+        return [
+            {
+                title: "Types",
+                options: [
+                    { id: "pearl", label: "Pearl", icon: "pearl", iconColor: randomHexColor() },
+                    { id: "broadcast", label: "Broadcast", icon: "broadcast", iconColor: randomHexColor() },
+                    { id: "echo", label: "Echo", icon: "echo" },
+                    { id: "item", label: "Other", icon: "item/Karma_Flower_icon" }
+                ]
+            },
+            {
+                title: "Tags",
+                options: [
+                    { id: "vanilla", label: "Vanilla (No DLC)", icon: "vanilla-rw" },
+                    { id: "downpour", label: "Downpour", icon: "dlc-dp" },
+                ]
+            },
+            {
+                title: "Regions",
+                options: sortedRegions.map(region => ({
+                    id: region,
+                    label: regionNames[region] ?? region,
+                    content: region,
+                    iconColor: regionColors[region]
+                }))
+            }
+        ] as FilterSection[];
+    }, [pearls]);
 
     const selectedPearlRef = useRef<HTMLDivElement>(null);
     const [visibleChapters, setVisibleChapters] = useState(new Set([0]));
@@ -242,6 +272,19 @@ export function PearlGrid({
         // Apply type filters
         if (filters.types.size > 0) {
             if (!filters.types.has(pearl.metadata.type)) return false;
+        }
+
+        // Apply region filters
+        if (filters.regions.size > 0) {
+            const pearlRegions = new Set(pearl.metadata.map?.map(m => m.region) || []);
+            let found = false;
+            for (let region of Array.from(filters.regions)) {
+                if (pearlRegions.has(region)) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) return false;
         }
 
         // Apply text filter
