@@ -32,7 +32,8 @@ Further features:
 - Links to the locations on the interactive Rain World map.
 - Spoiler/Unlock mode where all items start hidden ("?") and can display progressive hints if needed.
 - URL stores currently selected entry and transcriber to easily share contents with others.
-- Search functionality that allows to perform a full-text search across all entries.
+- Search functionality that allows to perform a full-text search across all entries and filter for regions, speakers and
+  more.
 - Hover over speaker names to reveal full names.
 - Display of the original game files when viewing a transcription.
 - Keyboard navigation.
