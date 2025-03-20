@@ -2,7 +2,7 @@ import parsedData from "../generated/parsed-dialogues.json";
 import { PearlData } from "./types/types";
 import { useDialogue } from "./hooks/useDialogue";
 import { orderPearls } from "./utils/pearlOrder";
-import { useEffect, useMemo, useState, Suspense, lazy } from "react";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { useUnlockState } from "./hooks/useUnlockState";
 import { urlAccess } from "./utils/urlAccess";
 import { useIsMobile } from "./hooks/useIsMobile";

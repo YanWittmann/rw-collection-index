@@ -6,7 +6,7 @@ import PearlItem from "./PearlItem";
 import UnlockManager from "../../utils/unlockManager";
 import { cn } from "@shadcn/lib/utils";
 import { RwIconButton } from "../other/RwIconButton";
-import { FilterOption, FilterSection, FilterState, PearlFilter } from "./PearlFilter";
+import { FilterSection, FilterState, PearlFilter } from "./PearlFilter";
 import { regionColors, regionNames, speakerNames, speakersColors } from "../../utils/speakers";
 
 interface PearlGridProps {

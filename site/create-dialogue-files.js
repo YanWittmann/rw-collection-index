@@ -439,7 +439,7 @@ const sectionHandlers = {
         }
 
         // use the findBestMatch to determine the best match for the transcriber text
-        if (false && metadata.sourceDialogue.length === 0 && process.argv.includes('--sourceFiles')) {
+        if (metadata.sourceDialogue.length === 0 && process.argv.includes('--sourceFiles')) {
             const bestMatch = findBestMatch(lines);
             if (bestMatch) {
                 metadata.sourceDialogue = [bestMatch.p];

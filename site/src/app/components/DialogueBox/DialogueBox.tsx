@@ -2,7 +2,7 @@ import { TranscriberSelector } from "./TranscriberSelector";
 import { DialogueContent } from "./DialogueContent";
 import { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types";
 import { resolveVariables, SOURCE_DECRYPTED, speakerNames } from "../../utils/speakers";
-import { useCallback, useMemo, useState, useEffect } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion"
 import { DialogueActionBar } from "./DialogueActionBar";
 import { WelcomeDialogueContent } from "./WelcomeDialogueContent";
