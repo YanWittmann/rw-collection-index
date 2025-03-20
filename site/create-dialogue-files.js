@@ -9,6 +9,16 @@ const OUTPUT_FILE = path.join(__dirname, 'src/generated/parsed-dialogues.json');
 const MAX_SPEAKER_LENGTH = 12;
 const PATTERN_REGEX = /\{([^}]+)\}/g;
 
+const excludeSpeakers = [
+    "Water",
+    "Hydrocarbons",
+    "Sulfur",
+    "Silicon",
+    "Phosphates",
+    "EM", // equipment manifest
+    "Five Pebbsi",
+]
+
 const generalWhiteGrayBroadcasts = [
     { region: "SU", room: "A17", mapSlugcat: "spear" },
     { region: "HI", room: "B02", mapSlugcat: "spear" },
@@ -341,8 +351,13 @@ function parseLine(line) {
     }
 
     const speakerPart = line.slice(0, colonIndex).trim();
-    // Only recognize as speaker if it's not metadata and within length limit
-    if (!speakerPart.startsWith('md-') && !speakerPart.startsWith('|') && !speakerPart.startsWith('/') && !speakerPart.startsWith('~') && speakerPart.length <= MAX_SPEAKER_LENGTH) {
+    // Only recognize as speaker if it's not metadata, not in excludeSpeakers array, and within length limit
+    if (!speakerPart.startsWith('md-') &&
+        !speakerPart.startsWith('|') &&
+        !speakerPart.startsWith('/') &&
+        !speakerPart.startsWith('~') &&
+        !excludeSpeakers.includes(speakerPart) &&
+        speakerPart.length <= MAX_SPEAKER_LENGTH) {
         return {
             speaker: speakerPart,
             text: line.slice(colonIndex + 1).trim()

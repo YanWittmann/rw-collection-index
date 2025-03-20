@@ -10,6 +10,7 @@ export interface FilterState {
     tags: Set<string>;
     types: Set<string>;
     regions: Set<string>;
+    speakers: Set<string>;
 }
 
 export interface FilterOption {
@@ -29,6 +30,37 @@ interface PearlFilterProps {
     filters: FilterState;
     setFilters: React.Dispatch<React.SetStateAction<FilterState>>;
     filterSections: FilterSection[];
+}
+
+/**
+ * <pre>
+ * import numpy as np
+ * from scipy.optimize import curve_fit
+ *
+ * x_values = np.array([2, 3, 6, 7, 8])
+ * y_values = np.array([1.125, 1, 0.5, 0.4, 0.35])
+ *
+ * def model(x, a, b, c):
+ *     return a / (x + b) + c
+ *
+ * params, _ = curve_fit(model, x_values, y_values, p0=[1, 1, 0])
+ *
+ * a, b, c = params
+ * a, b, c
+ * </pre>
+ *
+ * produces:
+ *
+ * \[
+ * f(x) = \frac{30.77}{x + 10.24} - 1.37
+ * \]
+ */
+function worldLengthToTextSize(x: number): number {
+    return 30.77 / (x + 10.24) - 1.37;
+}
+
+function longestWord(sentence: string): string {
+    return sentence.split(" ").reduce((a, b) => (b.length > a.length ? b : a), "");
 }
 
 export function PearlFilter({ filters, setFilters, filterSections }: PearlFilterProps) {
@@ -59,12 +91,20 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
                     newRegions.add(optionId);
                 }
                 newFilters.regions = newRegions;
+            } else if (section === 'speakers') {
+                const newSpeakers = new Set(prev.speakers);
+                if (newSpeakers.has(optionId)) {
+                    newSpeakers.delete(optionId);
+                } else {
+                    newSpeakers.add(optionId);
+                }
+                newFilters.speakers = newSpeakers;
             }
             return newFilters;
         });
     };
 
-    const activeFilterCount = filters.tags.size + filters.types.size + filters.regions.size;
+    const activeFilterCount = filters.tags.size + filters.types.size + filters.regions.size + filters.speakers.size;
 
     return (
         <Popover>
@@ -88,7 +128,7 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
                         <TooltipContent>Filter Options</TooltipContent>
                     </PopoverTrigger>
                     <PopoverContent
-                        className="w-64 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg"
+                        className="w-60 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg"
                         align="start"
                         sideOffset={5}
                     >
@@ -98,7 +138,7 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
                                 className="absolute inset-[3px] rounded-lg border-2 border-white/60 pointer-events-none"/>
 
                             {/* Content */}
-                            <div className="relative z-10 p-2">
+                            <div className="relative z-10 p-2 max-h-[70vh] overflow-y-auto no-scrollbar">
                                 {filterSections.map((section, index) => (
                                     <div key={section.title} className={cn(
                                         "p-2",
@@ -107,7 +147,7 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
                                         <div className="text-sm font-medium text-white mb-2">{section.title}</div>
                                         <div className="flex flex-wrap gap-1">
                                             {section.options.map(option => (
-                                                <Tooltip>
+                                                <Tooltip key={option.id}>
                                                     <TooltipTrigger>
                                                         <RwIconButton
                                                             key={option.id}
@@ -116,14 +156,17 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
                                                                 ? filters.tags.has(option.id)
                                                                 : section.title.toLowerCase() === 'types'
                                                                     ? filters.types.has(option.id)
-                                                                    : filters.regions.has(option.id)
+                                                                    : section.title.toLowerCase() === 'regions'
+                                                                        ? filters.regions.has(option.id)
+                                                                        : filters.speakers.has(option.id)
                                                             }
                                                             aria-label={option.label}
                                                         >
                                                             {option.icon &&
                                                                 <RwIcon type={option.icon} color={option.iconColor}/>}
-                                                            {option.content && <span className="pb-[0.3rem] text-lg rw-title-font"
-                                                                                     style={{ color: option.iconColor }}>
+                                                            {option.content && <span
+                                                                className={"pb-[0.3rem] rw-title-font"}
+                                                                style={{ color: option.iconColor, fontSize: worldLengthToTextSize(longestWord(option.content).length).toFixed(3) + "rem" }}>
                                                                 {option.content}</span>}
                                                         </RwIconButton>
                                                     </TooltipTrigger>

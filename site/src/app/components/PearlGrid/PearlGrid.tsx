@@ -7,7 +7,7 @@ import UnlockManager from "../../utils/unlockManager";
 import { cn } from "@shadcn/lib/utils";
 import { RwIconButton } from "../other/RwIconButton";
 import { FilterOption, FilterSection, FilterState, PearlFilter } from "./PearlFilter";
-import { regionColors, regionNames } from "../../utils/speakers";
+import { regionColors, regionNames, speakerNames, speakersColors } from "../../utils/speakers";
 
 interface PearlGridProps {
     pearls: PearlData[]
@@ -198,7 +198,8 @@ export function PearlGrid({
         text: undefined,
         tags: new Set(),
         types: new Set(),
-        regions: new Set()
+        regions: new Set(),
+        speakers: new Set()
     });
 
     const filterSections: FilterSection[] = useMemo(() => {
@@ -212,24 +213,52 @@ export function PearlGrid({
             });
         });
 
-        // Convert to sorted array for consistent display
+        // Extract unique speakers from all pearls
+        const uniqueSpeakers = new Set<string>();
+        pearls.forEach(pearl => {
+            pearl.transcribers.forEach(transcriber => {
+                transcriber.lines.forEach(line => {
+                    if (line.speaker) {
+                        uniqueSpeakers.add(line.speaker);
+                    }
+                });
+            });
+        });
+
+        // Convert to sorted arrays for consistent display
         const sortedRegions = Array.from(uniqueRegions).sort();
+        const sortedSpeakers = Array.from(uniqueSpeakers).sort((a, b) => {
+            const indexA = Object.keys(speakerNames).indexOf(a);
+            const indexB = Object.keys(speakerNames).indexOf(b);
+
+            // If both speakers are in speakerNames, sort by their order in the object
+            if (indexA !== -1 && indexB !== -1) {
+                return indexA - indexB;
+            }
+
+            // If only one is in speakerNames, prioritize that one
+            if (indexA !== -1) return -1;
+            if (indexB !== -1) return 1;
+
+            // If neither is in speakerNames, sort alphabetically
+            return a.localeCompare(b);
+        });
 
         return [
+            {
+                title: "Tags",
+                options: [
+                    { id: "vanilla", label: "Vanilla (No DLC)", icon: "vanilla-rw" },
+                    { id: "downpour", label: "Downpour", icon: "dlc-dp" },
+                ]
+            },
             {
                 title: "Types",
                 options: [
                     { id: "pearl", label: "Pearl", icon: "pearl", iconColor: randomHexColor() },
                     { id: "broadcast", label: "Broadcast", icon: "broadcast", iconColor: randomHexColor() },
                     { id: "echo", label: "Echo", icon: "echo" },
-                    { id: "item", label: "Other", icon: "item/Karma_Flower_icon" }
-                ]
-            },
-            {
-                title: "Tags",
-                options: [
-                    { id: "vanilla", label: "Vanilla (No DLC)", icon: "vanilla-rw" },
-                    { id: "downpour", label: "Downpour", icon: "dlc-dp" },
+                    { id: "item", label: "Other", icon: "item/Bubble_Weed_icon" }
                 ]
             },
             {
@@ -239,6 +268,15 @@ export function PearlGrid({
                     label: regionNames[region] ?? region,
                     content: region,
                     iconColor: regionColors[region]
+                }))
+            },
+            {
+                title: "Speakers",
+                options: sortedSpeakers.map(speaker => ({
+                    id: speaker,
+                    label: speakerNames[speaker] ?? speaker,
+                    content: speaker,
+                    iconColor: speakersColors[speaker]
                 }))
             }
         ] as FilterSection[];
@@ -280,6 +318,21 @@ export function PearlGrid({
             let found = false;
             for (let region of Array.from(filters.regions)) {
                 if (pearlRegions.has(region)) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) return false;
+        }
+
+        // Apply speaker filters
+        if (filters.speakers.size > 0) {
+            const pearlSpeakers = new Set(pearl.transcribers.flatMap(t => 
+                t.lines.map(line => line.speaker).filter((s): s is string => !!s)
+            ));
+            let found = false;
+            for (let speaker of Array.from(filters.speakers)) {
+                if (pearlSpeakers.has(speaker)) {
                     found = true;
                     break;
                 }
