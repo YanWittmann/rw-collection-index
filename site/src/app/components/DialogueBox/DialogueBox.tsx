@@ -2,7 +2,7 @@ import { TranscriberSelector } from "./TranscriberSelector";
 import { DialogueContent } from "./DialogueContent";
 import { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types";
 import { resolveVariables, SOURCE_DECRYPTED, speakerNames } from "../../utils/speakers";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion"
 import { DialogueActionBar } from "./DialogueActionBar";
 import { WelcomeDialogueContent } from "./WelcomeDialogueContent";
@@ -55,22 +55,67 @@ export function getMapLocations(dialogue: Dialogue): MapInfo[] {
 }
 
 export function DialogueBox({
-                                pearl,
-                                selectedTranscriber,
-                                onSelectTranscriber,
-                                setUnlockMode,
-                                unlockMode,
-                                triggerRender,
-                                hintProgress,
-                                setHintProgress,
-                                onSelectPearl,
-                                isMobile,
-                                setSourceFileDisplay,
-                                sourceFileDisplay,
-                            }: DialogueBoxProps) {
+    pearl,
+    selectedTranscriber,
+    onSelectTranscriber,
+    setUnlockMode,
+    unlockMode,
+    triggerRender,
+    hintProgress,
+    setHintProgress,
+    onSelectPearl,
+    isMobile,
+    setSourceFileDisplay,
+    sourceFileDisplay,
+}: DialogueBoxProps) {
     const [hoveredTranscriber, setHoveredTranscriber] = useState<string | null>(null);
     const [lastTranscriberName, setLastTranscriberName] = useState<string | null>(null);
     const [justCopiedInternalId, setJustCopiedInternalId] = useState<boolean>(false);
+    const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null);
+
+    useEffect(() => {
+        // touch event handler for swipe gestures
+        if (!isMobile) return;
+
+        const handleTouchStart = (e: TouchEvent) => {
+            setTouchStart({
+                x: e.touches[0].clientX,
+                y: e.touches[0].clientY
+            });
+        };
+
+        const handleTouchEnd = (e: TouchEvent) => {
+            if (!touchStart) return;
+
+            const touchEnd = {
+                x: e.changedTouches[0].clientX,
+                y: e.changedTouches[0].clientY
+            };
+
+            const deltaX = touchEnd.x - touchStart.x;
+            const deltaY = touchEnd.y - touchStart.y;
+
+            // Only handle horizontal swipes that are longer than vertical movement
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                // Create and dispatch a synthetic keyboard event
+                const syntheticEvent = new KeyboardEvent('keydown', {
+                    key: deltaX > 0 ? 'ArrowLeft' : 'ArrowRight',
+                    bubbles: true
+                });
+                window.dispatchEvent(syntheticEvent);
+            }
+
+            setTouchStart(null);
+        };
+
+        window.addEventListener('touchstart', handleTouchStart);
+        window.addEventListener('touchend', handleTouchEnd);
+
+        return () => {
+            window.removeEventListener('touchstart', handleTouchStart);
+            window.removeEventListener('touchend', handleTouchEnd);
+        };
+    }, [isMobile, touchStart]);
 
     const findTranscriberIndex = (transcriberName: string) => {
         if (!pearl) {
