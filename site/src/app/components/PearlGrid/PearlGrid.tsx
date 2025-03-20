@@ -6,6 +6,7 @@ import PearlItem from "./PearlItem";
 import UnlockManager from "../../utils/unlockManager";
 import { cn } from "@shadcn/lib/utils";
 import { RwIconButton } from "../other/RwIconButton";
+import { FilterSection, FilterState, PearlFilter } from "./PearlFilter";
 
 interface PearlGridProps {
     pearls: PearlData[]
@@ -32,66 +33,77 @@ interface MemoizedPearlItemProps {
 }
 
 // helper components
-const SearchBar = ({ isMobile, unlockMode, onTextInput, onToggleUnlockMode }: {
+const SearchBar = ({ isMobile, unlockMode, onTextInput, onToggleUnlockMode, filters, setFilters, filterSections }: {
     isMobile: boolean
     unlockMode: UnlockMode
     onTextInput: (text: string) => void
     onToggleUnlockMode: () => void
-}) => (
-    <div className={"flex gap-2 mb-4"}>
-        <RwTextInput
-            className={cn("", isMobile ? "flex-1" : "w-full")}
-            onTextInput={onTextInput}
-            placeholder="Search..."
-        />
-        {isMobile && (
-            <RwIconButton
-                square={false}
-                onClick={onToggleUnlockMode}
-                className="shrink-0"
-                aria-label="Toggle Unlock Mode"
-            >
-                <span className="text-white">
-                    {unlockMode === "all" ? "Spoiler" : "Show All"}
-                </span>
-            </RwIconButton>
-        )}
-    </div>
-);
+    filters: FilterState
+    setFilters: React.Dispatch<React.SetStateAction<FilterState>>
+    filterSections: FilterSection[]
+}) => {
+    return (
+        <div className={"flex gap-2 mb-4"}>
+            <PearlFilter
+                filters={filters}
+                setFilters={setFilters}
+                filterSections={filterSections}
+            />
+            <RwTextInput
+                className={cn("", isMobile ? "flex-1" : "w-full")}
+                onTextInput={onTextInput}
+                placeholder="Search..."
+            />
+            {isMobile && (
+                <RwIconButton
+                    square={false}
+                    onClick={onToggleUnlockMode}
+                    className="shrink-0"
+                    aria-label="Toggle Unlock Mode"
+                >
+                    <span className="text-white">
+                        {unlockMode === "all" ? "Spoiler" : "Show All"}
+                    </span>
+                </RwIconButton>
+            )}
+        </div>
+    );
+};
 
 // wrapper component for lazy loading
-const LazyChapterGrid = ({
-                          chapter,
-                          chapterIndex,
-                          isVisible,
-                          setVisibleChapters,
-                          currentGridPosition,
-                          selectedPearlRef,
-                          getHighlightStyle,
-                          unlockMode,
-                          selectedPearl,
-                          onSelectPearl,
-                          isAlternateDisplayModeActive,
-                          unlockVersion
-                      }: {
-    chapter: { name: string, items: PearlData[] }
-    chapterIndex: number
-    isVisible: boolean
-    setVisibleChapters: (callback: (prev: Set<number>) => Set<number>) => void
-    currentGridPosition?: [number, number]
-    selectedPearlRef: React.RefObject<HTMLDivElement | null>
-    getHighlightStyle: (chapterIndex: number, itemIndex: number) => React.CSSProperties
-    unlockMode: UnlockMode
-    selectedPearl: string | null
-    onSelectPearl: (id: string) => void
-    isAlternateDisplayModeActive: boolean
-    unlockVersion: number
-}) => {
+const LazyChapterGrid = (
+    {
+        chapter,
+        chapterIndex,
+        isVisible,
+        setVisibleChapters,
+        currentGridPosition,
+        selectedPearlRef,
+        getHighlightStyle,
+        unlockMode,
+        selectedPearl,
+        onSelectPearl,
+        isAlternateDisplayModeActive,
+        unlockVersion
+    }: {
+        chapter: { name: string, items: PearlData[] }
+        chapterIndex: number
+        isVisible: boolean
+        setVisibleChapters: (callback: (prev: Set<number>) => Set<number>) => void
+        currentGridPosition?: [number, number]
+        selectedPearlRef: React.RefObject<HTMLDivElement | null>
+        getHighlightStyle: (chapterIndex: number, itemIndex: number) => React.CSSProperties
+        unlockMode: UnlockMode
+        selectedPearl: string | null
+        onSelectPearl: (id: string) => void
+        isAlternateDisplayModeActive: boolean
+        unlockVersion: number
+    }) => {
     const observerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const currentRef = observerRef.current;
-        
+
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -136,22 +148,23 @@ const LazyChapterGrid = ({
                     ))}
                 </div>
             ) : (
-                <div className="h-[100px] bg-black/20 rounded-xl" />
+                <div className="h-[100px] bg-black/20 rounded-xl"/>
             )}
         </div>
     );
 };
 
 // memoized components
-const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({
-                                                                  pearl,
-                                                                  pearlIndex,
-                                                                  selectedPearl,
-                                                                  onSelectPearl,
-                                                                  unlockMode,
-                                                                  showTranscriberCount,
-                                                                  unlockVersion
-                                                              }) => (
+const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>((
+    {
+        pearl,
+        pearlIndex,
+        selectedPearl,
+        onSelectPearl,
+        unlockMode,
+        showTranscriberCount,
+        unlockVersion
+    }) => (
     <PearlItem
         pearl={pearl}
         pearlIndex={pearlIndex}
@@ -176,39 +189,84 @@ export function PearlGrid({
                               handleKeyNavigation,
                               currentGridPosition
                           }: PearlGridProps) {
-    const [textFilter, setTextFilter] = useState<string | undefined>(undefined);
+    const [filters, setFilters] = useState<FilterState>({
+        text: undefined,
+        tags: new Set(),
+        types: new Set()
+    });
+
+    const filterSections: FilterSection[] = [
+        {
+            title: "Types",
+            options: [
+                { id: "pearl", label: "Pearl", icon: "pearl" },
+                { id: "broadcast", label: "Broadcast", icon: "broadcast" },
+                { id: "echo", label: "Echo", icon: "echo" },
+                { id: "item", label: "Other", icon: "item/Karma_Flower_icon" }
+            ]
+        },
+        {
+            title: "Tags",
+            options: [
+                { id: "vanilla", label: "Vanilla (No DLC)", icon: "vanilla-rw" },
+                { id: "downpour", label: "Downpour", icon: "dlc-dp" },
+            ]
+        }
+    ];
+
     const selectedPearlRef = useRef<HTMLDivElement>(null);
-    const [visibleChapters, setVisibleChapters] = useState(new Set([0])); // Start with first chapter visible
+    const [visibleChapters, setVisibleChapters] = useState(new Set([0]));
 
     const handleSelectPearl = useCallback((id: string) => {
         onSelectPearl(id);
     }, [onSelectPearl]);
 
     const isPearlIncluded = useCallback((pearl: PearlData) => {
-        if (!textFilter) return true;
         if (unlockMode === "unlock" && !UnlockManager.isPearlUnlocked(pearl)) {
             return false;
         }
 
-        const isValidRegionName = textFilter.length === 2 && textFilter.match(/^[A-Z]{2}$/);
-        if (isValidRegionName && pearl.metadata.map?.find(m => m.region.toLowerCase() === textFilter.toLowerCase())) {
+        // Apply tag filters
+        if (filters.tags.size > 0) {
+            const aggregatedTags = pearl.transcribers.flatMap(t => t.metadata.tags ? t.metadata.tags : []);
+            let found = false;
+            for (let tag of Array.from(filters.tags)) {
+                if (aggregatedTags.includes(tag)) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) return false;
+        }
+
+        // Apply type filters
+        if (filters.types.size > 0) {
+            if (!filters.types.has(pearl.metadata.type)) return false;
+        }
+
+        // Apply text filter
+        if (!filters.text) return true;
+
+        const text = filters.text;
+        const isValidRegionName = text.length === 2 && text.match(/^[A-Z]{2}$/);
+        if (isValidRegionName && pearl.metadata.map?.find(m => m.region.toLowerCase() === text.toLowerCase())) {
             return true;
         }
 
-        if (pearl.id.toLowerCase().includes(textFilter.toLowerCase())) {
+        if (pearl.id.toLowerCase().includes(text.toLowerCase())) {
             return true;
         }
-        if (pearl.metadata.internalId && pearl.metadata.internalId.toLowerCase().includes(textFilter.toLowerCase())) {
+        if (pearl.metadata.internalId && pearl.metadata.internalId.toLowerCase().includes(text.toLowerCase())) {
             return true;
         }
 
-        const searchText = textFilter.toLowerCase();
+        const searchText = text.toLowerCase();
         return pearl.metadata.name?.toLowerCase().includes(searchText) ||
             pearl.transcribers.some(t => t.lines.some(line =>
                 (line.speaker + ": " + line.text).toLowerCase().includes(searchText)
             )) ||
             pearl.transcribers.some(t => t.transcriber.toLowerCase() === searchText);
-    }, [textFilter, unlockMode]);
+    }, [filters, unlockMode]);
 
     const filteredPearls = useMemo(() => {
         const orderedPearls = order(pearls);
@@ -216,13 +274,16 @@ export function PearlGrid({
             name: chapter.name,
             items: chapter.items.filter(isPearlIncluded)
         }));
-        const totalCount = result.reduce((acc, chapter) => acc + chapter.items.length, 0);
-        if (totalCount === 1) {
-            const first = result.find(chapter => chapter.items.length > 0);
-            if (first && first.items.length === 1) {
-                setTimeout(() => {
-                    onSelectPearl(first.items[0].id);
-                }, 0);
+
+        if (!isMobile) {
+            const totalCount = result.reduce((acc, chapter) => acc + chapter.items.length, 0);
+            if (totalCount === 1) {
+                const first = result.find(chapter => chapter.items.length > 0);
+                if (first && first.items.length === 1) {
+                    setTimeout(() => {
+                        onSelectPearl(first.items[0].id);
+                    }, 0);
+                }
             }
         }
         return result;
@@ -286,7 +347,7 @@ export function PearlGrid({
     }, [unlockMode, setUnlockMode]);
 
     const handleTextInput = useCallback((text: string) => {
-        setTextFilter(text === '' ? undefined : text);
+        setFilters(prev => ({ ...prev, text: text === '' ? undefined : text }));
     }, []);
 
     useEffect(() => {
@@ -311,7 +372,7 @@ export function PearlGrid({
     // find which chapter contains the selected pearl (if any)
     useEffect(() => {
         if (!selectedPearl) return;
-        
+
         for (let i = 0; i < filteredPearls.length; i++) {
             if (filteredPearls[i].items.some(pearl => pearl.id === selectedPearl)) {
                 setVisibleChapters(prev => new Set([...Array.from(prev), i]));
@@ -323,13 +384,16 @@ export function PearlGrid({
     return (
         <div className={cn(
             "no-scrollbar overflow-y-auto box-border",
-            isMobile ? "w-full max-h-[98svh] h-[98svh] p-4" : "w-auto max-h-[80svh] p-1"
+            isMobile ? "w-full max-h-[98svh] h-[98svh] p-4" : "w-[18rem] max-h-[80svh] p-1"
         )}>
             <SearchBar
                 isMobile={isMobile}
                 unlockMode={unlockMode}
                 onTextInput={handleTextInput}
                 onToggleUnlockMode={toggleUnlockMode}
+                filters={filters}
+                setFilters={setFilters}
+                filterSections={filterSections}
             />
             <div className={cn(
                 "grid grid-cols-1 gap-4",

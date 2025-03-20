@@ -424,7 +424,7 @@ const sectionHandlers = {
         }
 
         // use the findBestMatch to determine the best match for the transcriber text
-        if (metadata.sourceDialogue.length === 0 && process.argv.includes('--sourceFiles')) {
+        if (false && metadata.sourceDialogue.length === 0 && process.argv.includes('--sourceFiles')) {
             const bestMatch = findBestMatch(lines);
             if (bestMatch) {
                 metadata.sourceDialogue = [bestMatch.p];
@@ -585,6 +585,14 @@ function parseDialogueContent(content) {
     };
 }
 
+function postProcessTags(pearl) {
+    for (let transcriber of pearl.transcribers) {
+        if (!transcriber.metadata.tags.includes("downpour")) {
+            transcriber.metadata.tags.push("vanilla");
+        }
+    }
+}
+
 const getAllFiles = (dir, fileList = []) => {
     const files = fs.readdirSync(dir);
     files.forEach(file => {
@@ -625,6 +633,8 @@ function processDialogueFiles() {
 
             return processVariableEntries(baseId, parsed);
         });
+
+        result.forEach(postProcessTags);
 
         writeOutput(result);
         return result;
