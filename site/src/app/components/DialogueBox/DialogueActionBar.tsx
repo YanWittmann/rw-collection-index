@@ -35,10 +35,12 @@ export function DialogueActionBar({
 
     segments.push(
         <Tooltip key="close-dialogue-box">
-            <TooltipTrigger>
+            <TooltipTrigger asChild>
+                <span>
                 <RwIconButton onClick={() => onSelectPearl(null)} padding="p-[.6rem]" aria-label="Close Dialogue Box">
                     <RwIcon type="close"/>
                 </RwIconButton>
+                </span>
             </TooltipTrigger>
             <TooltipContent>Return to the main view</TooltipContent>
         </Tooltip>,
@@ -47,11 +49,13 @@ export function DialogueActionBar({
     if (sourceFileDisplay) {
         segments.push(
             <Tooltip key="source-dialogue">
-                <TooltipTrigger>
+                <TooltipTrigger asChild>
+                <span>
                     <RwIconButton aria-label="Source Dialogue"
                                   onClick={() => setSourceFileDisplay(null)}>
                         <RwIcon type="source"/>
                     </RwIconButton>
+                </span>
                 </TooltipTrigger>
                 <TooltipContent className={"text-center"}>
                     View the default text for this transcriber.
@@ -68,7 +72,8 @@ export function DialogueActionBar({
                 <Popover key="source-dialogue-selector">
                     <Tooltip key="source-dialogue-files">
                         <PopoverTrigger>
-                            <TooltipTrigger>
+                            <TooltipTrigger asChild>
+                <span>
                                 <RwIconButton aria-label="Source Dialogue Files">
                                     <RwIcon type="source"/>
                                     <span
@@ -76,6 +81,7 @@ export function DialogueActionBar({
                     {transcriberData.metadata.sourceDialogue.length}
                   </span>
                                 </RwIconButton>
+                </span>
                             </TooltipTrigger>
                             <TooltipContent className="text-center">
                                 Dialogue is stored in encrypted files inside the game's folders.<br/>

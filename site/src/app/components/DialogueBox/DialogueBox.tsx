@@ -349,10 +349,10 @@ export function DialogueBox({
                 key={lastTranscriberName}
                 initial={{ opacity: 0 }}
                 animate={{
-                    opacity: hoveredTranscriber !== null ? [0.6, 0.95] : [0],
+                    opacity: hoveredTranscriber !== null ? [0.5, 0.95] : [0],
                     transition: {
                         ease: "easeInOut",
-                        duration: 0.7,
+                        duration: 0.4,
                         repeat: hoveredTranscriber !== null ? Number.POSITIVE_INFINITY : 0,
                         repeatType: "reverse"
                     },

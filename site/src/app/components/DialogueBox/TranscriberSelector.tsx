@@ -3,7 +3,8 @@ import { RwIconButton } from "../other/RwIconButton";
 import { Dialogue, PearlData } from "../../types/types";
 import { UnlockMode } from "../../page";
 import UnlockManager from "../../utils/unlockManager";
-import { darken, transcriberIcons, transcribersColors } from "../../utils/speakers";
+import { darken, speakerNames, transcriberIcons, transcribersColors } from "../../utils/speakers";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
 
 interface TranscriberSelectorProps {
     pearl: PearlData
@@ -63,20 +64,29 @@ export function TranscriberSelector({
             </RwIconButton>;
         } else {
             return (
-                <RwIconButton
-                    key={'select-' + pearl.id + '-' + index}
-                    onClick={() => onSelect(effectiveTranscriberName)}
-                    selected={effectiveTranscriberName === selectedName}
-                    onMouseEnter={() => onHover(displayTranscriberName)}
-                    onMouseLeave={() => onHover(null)}
-                    aria-label={displayTranscriberName}
-                >
-                    {overwriteColor ?
-                        <RwIcon type={(overwriteIcon ?? transcriber.transcriber)}
-                                color={overwriteColor}/> :
-                        <RwIcon type={(overwriteIcon ?? transcriber.transcriber)}/>
-                    }
-                </RwIconButton>
+                <TooltipProvider delayDuration={200}
+                                 key={'select-' + pearl.id + '-' + index}>
+                    <Tooltip>
+                        <TooltipTrigger>
+                            <RwIconButton
+                                onClick={() => onSelect(effectiveTranscriberName)}
+                                selected={effectiveTranscriberName === selectedName}
+                                onMouseEnter={() => onHover(displayTranscriberName)}
+                                onMouseLeave={() => onHover(null)}
+                                aria-label={displayTranscriberName}
+                            >
+                                {overwriteColor ?
+                                    <RwIcon type={(overwriteIcon ?? transcriber.transcriber)}
+                                            color={overwriteColor}/> :
+                                    <RwIcon type={(overwriteIcon ?? transcriber.transcriber)}/>
+                                }
+                            </RwIconButton>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            {speakerNames[displayTranscriberName] ?? displayTranscriberName.replace("plain=", "")}
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
             );
         }
     }
