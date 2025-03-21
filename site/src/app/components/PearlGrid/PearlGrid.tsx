@@ -21,6 +21,7 @@ interface PearlGridProps {
     unlockVersion: number
     handleKeyNavigation?: (e: KeyboardEvent, pearls: PearlData[][], currentPearlId: string | null) => void
     currentGridPosition?: [number, number]
+    onSearchTextChange?: (text: string | undefined) => void
 }
 
 interface MemoizedPearlItemProps {
@@ -192,7 +193,8 @@ export function PearlGrid({
                               setUnlockMode,
                               unlockVersion,
                               handleKeyNavigation,
-                              currentGridPosition
+                              currentGridPosition,
+                              onSearchTextChange
                           }: PearlGridProps) {
     const [filters, setFilters] = useState<FilterState>({
         text: undefined,
@@ -444,7 +446,8 @@ export function PearlGrid({
 
     const handleTextInput = useCallback((text: string) => {
         setFilters(prev => ({ ...prev, text: text === '' ? undefined : text }));
-    }, []);
+        onSearchTextChange?.(text === '' ? undefined : text);
+    }, [onSearchTextChange]);
 
     useEffect(() => {
         if (!selectedPearlRef.current) return;

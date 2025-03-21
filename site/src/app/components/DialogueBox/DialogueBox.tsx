@@ -27,6 +27,7 @@ interface DialogueBoxProps {
     isMobile: boolean
     sourceFileDisplay: string | null
     setSourceFileDisplay: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void
+    searchText?: string
 }
 
 export function generateMapLinkFromMapInfo(mapInfo: MapInfo | undefined) {
@@ -67,6 +68,7 @@ export function DialogueBox({
     isMobile,
     setSourceFileDisplay,
     sourceFileDisplay,
+    searchText,
 }: DialogueBoxProps) {
     const [hoveredTranscriber, setHoveredTranscriber] = useState<string | null>(null);
     const [lastTranscriberName, setLastTranscriberName] = useState<string | null>(null);
@@ -314,6 +316,7 @@ export function DialogueBox({
                     {titleElement}
                     <DialogueContent
                         lines={displayLines}
+                        searchText={searchText}
                     />
                 </> : <HintSystemContent
                     pearl={pearl}
@@ -325,7 +328,7 @@ export function DialogueBox({
                 />}
             </div>
         </>
-    }, [pearl, selectedTranscriber, onSelectTranscriber, unlockMode, unlockTranscription, hintProgress, setHintProgress, justCopiedInternalId, sourceFileDisplay]);
+    }, [pearl, selectedTranscriber, onSelectTranscriber, unlockMode, unlockTranscription, hintProgress, setHintProgress, justCopiedInternalId, sourceFileDisplay, searchText]);
 
     const toggleUnlockModeCallback = useCallback(() => {
         setUnlockMode(unlockMode === "all" ? "unlock" : "all");

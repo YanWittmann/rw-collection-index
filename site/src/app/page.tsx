@@ -32,6 +32,7 @@ export default function DialogueInterface() {
     const { refresh, unlockVersion } = useUnlockState();
     const [hintProgress, setHintProgress] = useState<number>(0);
     const [isAlternateDisplayModeActive, setIsAlternateDisplayModeActive] = useState(false);
+    const [searchText, setSearchText] = useState<string | undefined>(undefined);
     const isMobile = useIsMobile();
 
     useEffect(() => {
@@ -94,6 +95,7 @@ export default function DialogueInterface() {
                 unlockVersion={unlockVersion}
                 handleKeyNavigation={handleKeyNavigation}
                 currentGridPosition={currentGridPosition}
+                onSearchTextChange={setSearchText}
             />
         </Suspense>
     ), [GRID_DATA, selectedPearl, unlockMode, isAlternateDisplayModeActive, isMobile, handleSelectPearlWithReset, unlockVersion, handleKeyNavigation, currentGridPosition]);
@@ -113,9 +115,10 @@ export default function DialogueInterface() {
                 setHintProgress={setHintProgress}
                 onSelectPearl={handleSelectPearl}
                 isMobile={isMobile}
+                searchText={searchText}
             />
         </Suspense>
-    ), [selectedPearl, selectedTranscriber, unlockMode, hintProgress, refresh, handleSelectPearl]);
+    ), [selectedPearl, selectedTranscriber, unlockMode, hintProgress, refresh, handleSelectPearl, searchText]);
 
     return (
         <div

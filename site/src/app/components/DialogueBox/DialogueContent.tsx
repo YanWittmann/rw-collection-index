@@ -5,9 +5,10 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadc
 
 interface DialogueContentProps {
     lines: DialogueLine[]
+    searchText?: string
 }
 
-export function DialogueContent({ lines }: DialogueContentProps) {
+export function DialogueContent({ lines, searchText }: DialogueContentProps) {
     if (lines.length === 0) {
         return null
     }
@@ -22,6 +23,12 @@ export function DialogueContent({ lines }: DialogueContentProps) {
         lines = lines.slice(1)
     }
 
+    const highlightText = (text: string) => {
+        if (!searchText) return text;
+        const regex = new RegExp(`(${searchText})`, 'gi');
+        return text.replace(regex, '<mark class="bg-yellow-500/50 text-yellow-200">$1</mark>');
+    };
+
     const renderMonoText = (text: string) => {
         const startsWithSlash = text.startsWith("/");
         const startsWithTilde = text.startsWith("~");
@@ -31,14 +38,14 @@ export function DialogueContent({ lines }: DialogueContentProps) {
         // count leading spaces to determine indentation level
         const match = text.match(/^( +)/)
         if (!match) {
-            return <div dangerouslySetInnerHTML={{ __html: renderDialogueLine(text) }} className={textClass}/>
+            return <div dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(text)) }} className={textClass}/>
         }
 
         const indentLevel = match[1].length
         const content = text.substring(indentLevel)
 
         // nested divs based on indentation level
-        let element = <div dangerouslySetInnerHTML={{ __html: renderDialogueLine(content) }} className={textClass}/>
+        let element = <div dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(content)) }} className={textClass}/>
         for (let i = 0; i < indentLevel; i++) {
             element = <div className="pl-8 border-l-[1px] border-white/20">{element}</div>
         }
@@ -64,13 +71,13 @@ export function DialogueContent({ lines }: DialogueContentProps) {
                             {displayType === "mono" ? (
                                 renderMonoText(line.text)
                             ) : (
-                                <span dangerouslySetInnerHTML={{ __html: renderDialogueLine(line.text) }} />
+                                <span dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(line.text)) }} />
                             )}
             </span>
                     ) : displayType === "mono" ? (
                         renderMonoText(line.text)
                     ) : (
-                        <span className="text-white" dangerouslySetInnerHTML={{ __html: renderDialogueLine(line.text) }} />
+                        <span className="text-white" dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(line.text)) }} />
                     )}
                 </div>
             ))}
