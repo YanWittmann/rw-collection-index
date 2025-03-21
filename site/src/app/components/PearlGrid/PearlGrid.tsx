@@ -314,7 +314,7 @@ export function PearlGrid({
 
         // Apply region filters
         if (filters.regions.size > 0) {
-            const pearlRegions = new Set(pearl.metadata.map?.map(m => m.region) || []);
+            const pearlRegions = new Set(pearl.transcribers.flatMap(t => t.metadata.map?.map(m => m.region) || []));
             let found = false;
             for (let region of Array.from(filters.regions)) {
                 if (pearlRegions.has(region)) {
