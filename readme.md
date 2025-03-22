@@ -124,7 +124,8 @@ Thanks to:
 | scir                      | Created new Icon set.                                                                                   |
 | ShockMicro                | Some DP items were not marked as such.                                                                  |
 | candlesign.4539           | Buttons get stuck in the hovered state; replaced framer-motion native logic with custom hover logic.    |
-| SUNFISH                   | Incorrectly "vanilla" tagged elements.                                                                  |
+| capwolfbane / SUNFISH     | Incorrectly "vanilla" tagged elements.                                                                  |
+| capwolfbane               | Merge "FP" and "Five Pebbles" filter entries.                                                           |
 
 Feel like you should be on this list? Let me know!
 

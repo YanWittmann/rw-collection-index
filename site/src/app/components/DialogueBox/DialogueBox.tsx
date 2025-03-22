@@ -251,7 +251,7 @@ export function DialogueBox({
                         <Tooltip key={"pearl-info"}>
                             <TooltipTrigger>
                                 <span className={"flex items-center"}>
-                                    <div className="text-selectable">{name}</div>
+                                    <div className="text-selectable text-center">{name}</div>
                                     &nbsp;
                                     (<span className={"w-3 h-3"}><RwIcon type="info"/></span>)
                                 </span>
@@ -273,7 +273,7 @@ export function DialogueBox({
                     bottomElement ? "mt-5" : "mt-7"
                 )}>
                     <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
-                        <div className="text-selectable">{name}</div>
+                        <div className="text-selectable text-center">{name}</div>
                         {bottomElement}
                     </TooltipProvider>
                 </div>
@@ -289,6 +289,19 @@ export function DialogueBox({
             }
         } else {
             displayLines = dialogue.lines;
+        }
+
+        let textContainerClass;
+        if (isMobile) {
+            textContainerClass = "max-h-[calc(85vh-2px)] pt-16";
+        } else {
+            const textFactor = window.innerWidth - (name.length + (dialogue.metadata.info ? 4 : 0)) * 5;
+            const moveDown: boolean = textFactor < 850 || pearl.transcribers.length > 3;
+            if (moveDown) {
+                textContainerClass = "max-h-[calc(80vh-2px)] pt-16";
+            } else {
+                textContainerClass = "max-h-[calc(80vh-2px)]";
+            }
         }
 
         return <>
@@ -311,7 +324,7 @@ export function DialogueBox({
                 onHover={setHoveredTranscriber}
             />
             <div
-                className={cn("overflow-y-auto no-scrollbar", isMobile ? "max-h-[calc(85vh-2px)] pt-16" : "max-h-[calc(80vh-2px)]")}>
+                className={cn("overflow-y-auto no-scrollbar", textContainerClass)}>
                 {isUnlocked ? <>
                     {titleElement}
                     <DialogueContent
@@ -327,7 +340,7 @@ export function DialogueBox({
                     setHintProgress={setHintProgress}
                 />}
             </div>
-        </>
+        </>;
     }, [pearl, selectedTranscriber, onSelectTranscriber, unlockMode, unlockTranscription, hintProgress, setHintProgress, justCopiedInternalId, sourceFileDisplay, searchText]);
 
     const toggleUnlockModeCallback = useCallback(() => {

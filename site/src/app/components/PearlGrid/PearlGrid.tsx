@@ -275,6 +275,8 @@ export function PearlGrid({
                 });
             });
         });
+        // FP == Five Pebbles, use the acronym
+        uniqueSpeakers.delete("Five Pebbles");
 
         // Convert to sorted arrays for consistent display
         const sortedRegions = Array.from(uniqueRegions).sort();
@@ -378,11 +380,15 @@ export function PearlGrid({
 
         // Apply speaker filters
         if (filters.speakers.size > 0) {
-            const pearlSpeakers = new Set(pearl.transcribers.flatMap(t => 
+            const clonedSpeakers = new Set(filters.speakers);
+            if (clonedSpeakers.has("FP")) {
+                clonedSpeakers.add("Five Pebbles");
+            }
+            const pearlSpeakers = new Set(pearl.transcribers.flatMap(t =>
                 t.lines.map(line => line.speaker).filter((s): s is string => !!s)
             ));
             let found = false;
-            for (let speaker of Array.from(filters.speakers)) {
+            for (let speaker of Array.from(clonedSpeakers)) {
                 if (pearlSpeakers.has(speaker)) {
                     found = true;
                     break;
