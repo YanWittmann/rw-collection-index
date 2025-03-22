@@ -124,6 +124,9 @@ Thanks to:
 | scir                      | Created new Icon set.                                                                                   |
 | ShockMicro                | Some DP items were not marked as such.                                                                  |
 | candlesign.4539           | Buttons get stuck in the hovered state; replaced framer-motion native logic with custom hover logic.    |
+| SUNFISH                   | Incorrectly "vanilla" tagged elements.                                                                  |
+
+Feel like you should be on this list? Let me know!
 
 ### Privacy Notice
 

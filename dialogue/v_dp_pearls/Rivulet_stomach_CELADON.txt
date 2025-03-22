@@ -2,6 +2,7 @@ internalId: Rivulet_stomach
 color: #a6e3ae
 type: pearl
 name: Celadon (Rivulet)
+tag: downpour
 
 === transcription: LttM-post-collapse
 md-sourceDialogue: 119.txt

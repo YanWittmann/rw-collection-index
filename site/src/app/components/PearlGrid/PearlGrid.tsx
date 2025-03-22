@@ -182,6 +182,55 @@ function randomHexColor() {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);
 }
 
+const useIsScrollable = (ref: React.RefObject<HTMLDivElement | null>) => {
+    const [isScrollable, setIsScrollable] = useState(false);
+    const [showGradient, setShowGradient] = useState(false);
+
+    useEffect(() => {
+        const checkScrollable = () => {
+            if (ref.current) {
+                const { scrollHeight, clientHeight, scrollTop } = ref.current;
+                // only consider it scrollable if there's actually more content than fits
+                const hasScrollableContent = scrollHeight > clientHeight;
+                setIsScrollable(hasScrollableContent);
+                
+                if (hasScrollableContent) {
+                    // show gradient if not at bottom
+                    const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+                    setShowGradient(!isAtBottom);
+                } else {
+                    // if not scrollable, always hide the gradient
+                    setShowGradient(false);
+                }
+            }
+        };
+
+        const handleScroll = () => {
+            if (ref.current) {
+                const { scrollHeight, clientHeight, scrollTop } = ref.current;
+                // only show gradient if we have scrollable content and aren't at bottom
+                if (scrollHeight > clientHeight) {
+                    const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+                    setShowGradient(!isAtBottom);
+                } else {
+                    setShowGradient(false);
+                }
+            }
+        };
+
+        checkScrollable();
+        window.addEventListener('resize', checkScrollable);
+        ref.current?.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('resize', checkScrollable);
+            ref.current?.removeEventListener('scroll', handleScroll);
+        };
+    }, [ref]);
+
+    return { isScrollable, showGradient, setShowGradient };
+};
+
 export function PearlGrid({
                               pearls,
                               selectedPearl,
@@ -480,44 +529,79 @@ export function PearlGrid({
         }
     }, [selectedPearl, filteredPearls]);
 
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { isScrollable, showGradient, setShowGradient } = useIsScrollable(containerRef);
+
+    // add effect to check scrollable state when content changes
+    useEffect(() => {
+        // use a small delay to ensure the DOM has updated
+        const timer = setTimeout(() => {
+            if (containerRef.current) {
+                const { scrollHeight, clientHeight, scrollTop } = containerRef.current;
+                const hasScrollableContent = scrollHeight > clientHeight;
+                
+                if (hasScrollableContent) {
+                    // show gradient if not at bottom
+                    const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+                    setShowGradient(!isAtBottom);
+                } else {
+                    setShowGradient(false);
+                }
+            }
+        }, 0);
+
+        return () => clearTimeout(timer);
+    }, [filteredPearls]); // check when filtered content changes
+
     return (
         <div className={cn(
-            "no-scrollbar overflow-y-auto box-border",
-            isMobile ? "w-full max-h-[98svh] h-[98svh] p-4" : "w-[18rem] max-h-[80svh] p-1"
+            "relative",
+            isMobile ? "w-full max-h-[98svh] h-[98svh]" : "w-[18rem] max-h-[80svh]"
         )}>
-            <SearchBar
-                isMobile={isMobile}
-                unlockMode={unlockMode}
-                onTextInput={handleTextInput}
-                onToggleUnlockMode={toggleUnlockMode}
-                filters={filters}
-                setFilters={setFilters}
-                filterSections={filterSections}
-            />
             <div className={cn(
-                "grid grid-cols-1 gap-4",
-                isMobile ? "" : "px-1",
-            )}>
-                {filteredPearls
-                    .filter(chapter => chapter.items.length > 0)
-                    .map((chapter, chapterIndex) => (
-                        <LazyChapterGrid
-                            key={`chapter-${chapterIndex}`}
-                            chapter={chapter}
-                            chapterIndex={chapterIndex}
-                            isVisible={visibleChapters.has(chapterIndex)}
-                            setVisibleChapters={setVisibleChapters}
-                            currentGridPosition={currentGridPosition}
-                            selectedPearlRef={selectedPearlRef}
-                            getHighlightStyle={getHighlightStyle}
-                            unlockMode={unlockMode}
-                            selectedPearl={selectedPearl}
-                            onSelectPearl={handleSelectPearl}
-                            isAlternateDisplayModeActive={isAlternateDisplayModeActive}
-                            unlockVersion={unlockVersion}
-                        />
-                    ))}
+                "no-scrollbar overflow-y-auto box-border h-full",
+                isMobile ? "p-4" : "p-1"
+            )} ref={containerRef}>
+                <SearchBar
+                    isMobile={isMobile}
+                    unlockMode={unlockMode}
+                    onTextInput={handleTextInput}
+                    onToggleUnlockMode={toggleUnlockMode}
+                    filters={filters}
+                    setFilters={setFilters}
+                    filterSections={filterSections}
+                />
+                <div className={cn(
+                    "grid grid-cols-1 gap-4",
+                    isMobile ? "" : "px-1",
+                )}>
+                    {filteredPearls
+                        .filter(chapter => chapter.items.length > 0)
+                        .map((chapter, chapterIndex) => (
+                            <LazyChapterGrid
+                                key={`chapter-${chapterIndex}`}
+                                chapter={chapter}
+                                chapterIndex={chapterIndex}
+                                isVisible={visibleChapters.has(chapterIndex)}
+                                setVisibleChapters={setVisibleChapters}
+                                currentGridPosition={currentGridPosition}
+                                selectedPearlRef={selectedPearlRef}
+                                getHighlightStyle={getHighlightStyle}
+                                unlockMode={unlockMode}
+                                selectedPearl={selectedPearl}
+                                onSelectPearl={handleSelectPearl}
+                                isAlternateDisplayModeActive={isAlternateDisplayModeActive}
+                                unlockVersion={unlockVersion}
+                            />
+                        ))}
+                </div>
             </div>
+            <div 
+                className={cn(
+                    "absolute bottom-0 left-0 right-0 h-8 pointer-events-none bg-gradient-to-t from-white/15 via-white/7 to-transparent transition-opacity duration-300 border-b-2 border-white/50 z-10",
+                    isScrollable && showGradient ? "opacity-100" : "opacity-0"
+                )} 
+            />
         </div>
     );
 }

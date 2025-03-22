@@ -3,6 +3,7 @@ color: #ffc9e9
 type: pearl
 name: Light Pink
 map: region=SU, room=VR1, mapSlugcat=white
+tag: downpour
 
 === transcription: FP-artificer
 md-sourceDialogue: 101-artificer.txt

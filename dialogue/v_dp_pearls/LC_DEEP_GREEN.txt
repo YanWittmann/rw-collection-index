@@ -3,6 +3,7 @@ color: #267d2a
 type: pearl
 name: Deep Green
 map: region=LC, room=ruin02, mapSlugcat=artificer
+tag: downpour
 
 === transcription: FP-artificer
 md-sourceDialogue: 103-artificer.txt
