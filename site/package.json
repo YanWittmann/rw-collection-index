@@ -35,13 +35,23 @@
     "start": "craco start",
     "build": "npm run create-dialogue-files && craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
-    ]
+      "react-app/jest",
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "react/react-in-jsx-scope": "off"
+    }
   },
   "browserslist": {
     "production": [
@@ -58,6 +68,7 @@
   "devDependencies": {
     "@types/sanitize-html": "^2.13.0",
     "chokidar": "^4.0.3",
+    "eslint": "^8.56.0",
     "fast-levenshtein": "^3.0.0",
     "webpack-bundle-analyzer": "^4.10.2"
   }

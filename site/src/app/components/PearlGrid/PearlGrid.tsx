@@ -598,7 +598,7 @@ export function PearlGrid({
             </div>
             <div 
                 className={cn(
-                    "absolute bottom-0 left-0 right-0 h-8 pointer-events-none bg-gradient-to-t from-white/15 via-white/7 to-transparent transition-opacity duration-300 border-b-2 border-white/50 z-10",
+                    "absolute bottom-0 left-0 right-0 h-8 pointer-events-none bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-white/20 to-transparent transition-opacity duration-300 border-b-2 border-white/50 z-10",
                     isScrollable && showGradient ? "opacity-100" : "opacity-0"
                 )} 
             />
