@@ -3,9 +3,10 @@ import { cn } from "@shadcn/lib/utils"
 
 export interface RwScrollableListItem {
     id: string
-    title: string
+    title?: string
     subtitle?: string
     onClick?: () => void
+    customElement?: React.ReactNode
 }
 
 interface RwScrollableListProps {
@@ -24,14 +25,20 @@ export function RwScrollableList({ items, maxHeight = "340px", className, itemCl
             {/* Content container */}
             <div className={`max-h-[${maxHeight}] overflow-y-auto py-2 relative z-10 no-scrollbar`}>
                 {items.map((item) => (
-                    <button
-                        key={item.id}
-                        className={cn("w-full text-left px-4 py-1 relative group text-white/90 hover:underline", itemClassName)}
-                        onClick={item.onClick}
-                    >
-                        <div className="font-medium">{item.title}</div>
-                        {item.subtitle && <div className="text-sm opacity-80">{item.subtitle}</div>}
-                    </button>
+                    item.customElement ? (
+                        <div key={item.id} className={cn("w-full", itemClassName)}>
+                            {item.customElement}
+                        </div>
+                    ) : (
+                        <button
+                            key={item.id}
+                            className={cn("w-full text-left px-4 py-1 relative group text-white/90 hover:underline", itemClassName)}
+                            onClick={item.onClick}
+                        >
+                            <div className="font-medium">{item.title}</div>
+                            {item.subtitle && <div className="text-sm opacity-80">{item.subtitle}</div>}
+                        </button>
+                    )
                 ))}
             </div>
         </div>

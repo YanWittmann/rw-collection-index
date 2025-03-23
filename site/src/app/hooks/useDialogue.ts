@@ -124,6 +124,16 @@ export function useDialogue(unlockMode: UnlockMode, GRID_DATA: PearlData[]) {
         if (!pearls.length) return;
         if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
 
+        // Ignore keyboard navigation when focus is on a text input element
+        const activeElement = document.activeElement;
+        if (
+            activeElement instanceof HTMLInputElement ||
+            activeElement instanceof HTMLTextAreaElement ||
+            (activeElement instanceof HTMLElement && activeElement.isContentEditable)
+        ) {
+            return; // Skip navigation when in text inputs
+        }
+
         const maxRows = pearls.length;
         let [row, col] = currentGridPosition;
 

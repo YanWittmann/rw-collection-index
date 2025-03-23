@@ -309,6 +309,7 @@ export function DialogueBox({
                 isUnlocked={isUnlocked}
                 pearl={pearl}
                 transcriberData={dialogue}
+                selectedTranscriberIndex={selectedTranscriberIndex}
                 onSelectPearl={onSelectPearl}
                 sourceFileDisplay={sourceFileDisplay}
                 setSourceFileDisplay={setSourceFileDisplay}

@@ -343,10 +343,6 @@ export function PearlGrid({
     }, [onSelectPearl]);
 
     const isPearlIncluded = useCallback((pearl: PearlData) => {
-        if (unlockMode === "unlock" && !UnlockManager.isPearlUnlocked(pearl)) {
-            return false;
-        }
-
         // Apply tag filters
         if (filters.tags.size > 0) {
             const aggregatedTags = pearl.transcribers.flatMap(t => t.metadata.tags ? t.metadata.tags : []);

@@ -1,8 +1,6 @@
-"use client"
-
 import { RwIcon } from "../PearlGrid/RwIcon"
-import type { Dialogue, MapInfo, PearlData } from "../../types/types"
-import { regionNames, resolveVariables, SOURCE_DECRYPTED } from "../../utils/speakers"
+import type { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types"
+import { regionNames, resolveVariables, SOURCE_DECRYPTED, speakersColors } from "../../utils/speakers"
 import { renderDialogueLine } from "../../utils/renderDialogueLine"
 import { hasTag } from "../../utils/pearlOrder"
 import { RwScrollableList } from "../other/RwScrollableList"
@@ -12,14 +10,20 @@ import { Popover, PopoverContent, PopoverTrigger } from "@shadcn/components/ui/p
 import { RwTabButton } from "../other/RwTabButton"
 import { useState } from "react";
 import copy from 'copy-to-clipboard';
+import RwShareTextEditor, { preProcessContent } from "../share/RwShareTextEditor";
+import { RwIconButton } from "../other/RwIconButton";
+import { renderMonoText } from "./DialogueContent";
+import ReactDOMServer from 'react-dom/server';
+import { getTranscriberIcon } from "./TranscriberSelector";
 
 interface DialogueActionTabsProps {
-    pearl: PearlData
-    transcriberData: Dialogue
-    isUnlocked: boolean
-    onSelectPearl: (pearl: PearlData | null) => void
-    setSourceFileDisplay: (value: ((prevState: string | null) => string | null) | string | null) => void
-    sourceFileDisplay: string | null
+    pearl: PearlData,
+    transcriberData: Dialogue,
+    isUnlocked: boolean,
+    onSelectPearl: (pearl: PearlData | null) => void,
+    setSourceFileDisplay: (value: ((prevState: string | null) => string | null) | string | null) => void,
+    sourceFileDisplay: string | null,
+    selectedTranscriberIndex: number
 }
 
 export function DialogueActionTabs({
@@ -29,6 +33,7 @@ export function DialogueActionTabs({
                                        onSelectPearl,
                                        setSourceFileDisplay,
                                        sourceFileDisplay,
+                                       selectedTranscriberIndex
                                    }: DialogueActionTabsProps) {
     const mapLocations = getMapLocations(transcriberData)
     const hasMultipleLocations = mapLocations.length > 1
@@ -54,11 +59,20 @@ export function DialogueActionTabs({
         setIsSharePopoverOpen(false);
     };
 
-    tabs.push(
-        <Popover key="source-dialogue-selector" open={isSharePopoverOpen} onOpenChange={setIsSharePopoverOpen}>
-            <Tooltip key="share-content">
-                <PopoverTrigger>
-                    <TooltipTrigger asChild><span>
+    {
+        const leftIconType = pearl.metadata.type === 'item' ? (pearl.metadata.subType || 'pearl') : pearl.metadata.type;
+        const multipleSameTranscribers = new Set(pearl.transcribers.map(transcriber => transcriber.transcriber)).size !== pearl.transcribers.length;
+        const {
+            iconType: rightIconType,
+            color: rightIconColor,
+            overwriteColor: overwriteRightColor,
+        } = getTranscriberIcon(transcriberData, multipleSameTranscribers ? selectedTranscriberIndex : undefined);
+
+        tabs.push(
+            <Popover key="source-dialogue-selector" open={isSharePopoverOpen} onOpenChange={setIsSharePopoverOpen}>
+                <Tooltip key="share-content">
+                    <PopoverTrigger>
+                        <TooltipTrigger asChild><span>
                         <RwTabButton
                             onClick={() => null}
                             aria-label="Share Content"
@@ -66,30 +80,83 @@ export function DialogueActionTabs({
                           <RwIcon type="share"/>
                         </RwTabButton>
                 </span></TooltipTrigger>
-                    <TooltipContent side="bottom">Share entry via</TooltipContent>
-                </PopoverTrigger>
-                <PopoverContent
-                    className="w-64 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg text-white"
-                    align="start"
-                    sideOffset={5}
-                >
-                    <RwScrollableList
-                        items={[
-                            {
-                                id: "copy",
-                                title: "Copy Link",
-                                subtitle: "Share this entry via a link",
-                                onClick: () => {
-                                    copy(window.location.toString());
-                                    handleShareItemClick();
+                        <TooltipContent side="bottom">Share entry via</TooltipContent>
+                    </PopoverTrigger>
+                    <PopoverContent
+                        className="w-64 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg text-white"
+                        align="start"
+                        sideOffset={5}
+                    >
+                        <RwScrollableList
+                            items={[
+                                {
+                                    id: "copy",
+                                    title: "Copy Link",
+                                    subtitle: "Share this entry via a link",
+                                    onClick: () => {
+                                        copy(window.location.toString());
+                                        handleShareItemClick();
+                                    }
+                                },
+                                {
+                                    id: "export-as-image",
+                                    title: "Export as image",
+                                    subtitle: "Share the transcription text",
+                                    customElement: <RwShareTextEditor
+                                        defaultText={(() => {
+                                            if (transcriberData.lines.length === 0) return "";
+                                            let lines: DialogueLine[] = JSON.parse(JSON.stringify(transcriberData.lines));
+                                            const firstLine = lines[0];
+                                            const displayType = firstLine.text === "MONO" ? "mono" : "centered"
+                                            if (displayType === "mono") {
+                                                lines = lines.slice(1);
+                                                return lines.map(d => {
+                                                    return ReactDOMServer.renderToStaticMarkup(renderMonoText(d.text.replace("\n\n", "\n"), undefined));
+                                                }).join("\n");
+                                            } else {
+                                                return lines.map(d => {
+                                                    let speakerPrefix = "";
+                                                    let speakerSuffix = "";
+                                                    const speakerColor = speakersColors[d.speaker ?? ""];
+                                                    if (d.speaker) {
+                                                        if (speakerColor) {
+                                                            speakerPrefix = `<span style="color: ${speakerColor};">${d.speaker}: `;
+                                                            speakerSuffix = "</span>";
+                                                        } else {
+                                                            speakerPrefix = `${d.speaker}: `;
+                                                        }
+                                                    }
+                                                    return speakerPrefix + renderDialogueLine(d.text) + speakerSuffix;
+                                                }).join("\n");
+                                            }
+                                        })()}
+                                        preProcessContent={preProcessContent}
+                                        onExport={() => console.log("export")}
+                                        closeIcon={
+                                            <RwIconButton aria-label="Close">
+                                                <RwIcon type="close"/>
+                                            </RwIconButton>
+                                        }
+                                        onOpen={() => {
+                                        }}
+                                        leftIcon={<RwIcon color={pearl.metadata.color} type={leftIconType}/>}
+                                        leftText={transcriberData.metadata.name || pearl.metadata.name}
+                                        rightIcon={<RwIcon color={overwriteRightColor ? rightIconColor : undefined} type={rightIconType}/>}
+                                    >
+                                        <div
+                                            className="w-full text-left px-4 py-1 relative group text-white/90 hover:underline cursor-pointer">
+                                            <div>Export Transcription</div>
+                                            <div className={"text-sm opacity-80"}>Download text as image</div>
+                                        </div>
+                                    </RwShareTextEditor>
                                 }
-                            },
-                        ]}
-                    />
-                </PopoverContent>
-            </Tooltip>
-        </Popover>,
-    )
+                            ]}
+                        />
+                    </PopoverContent>
+                </Tooltip>
+            </Popover>,
+        );
+    }
 
     if (sourceFileDisplay) {
         tabs.push(
