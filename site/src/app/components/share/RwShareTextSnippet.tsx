@@ -16,6 +16,8 @@ interface RwShareTextSnippetProps {
     renderHtml?: (content: string) => string
     preProcessContent?: (rawText: string) => string
     fitContent?: boolean
+    centered?: boolean
+    customWidth?: number
 }
 
 export default function RwShareTextSnippet({
@@ -29,8 +31,10 @@ export default function RwShareTextSnippet({
                                                renderHtml,
                                                preProcessContent,
                                                fitContent = false,
+                                               centered = false,
+                                               customWidth = 100,
                                            }: RwShareTextSnippetProps) {
-    const [value, setValue] = useState(defaultValue)
+    const [value, setValue] = useState(defaultValue);
     const textareaRef = useRef<HTMLTextAreaElement>(null)
 
     useEffect(() => {
@@ -51,7 +55,8 @@ export default function RwShareTextSnippet({
     }
 
     return (
-        <div className={cn(fitContent ? "inline-flex max-w-full" : "w-auto min-w-[300px] max-w-full", className)}>
+        <div className={cn(fitContent ? "inline-flex max-w-full" : "w-auto min-w-[300px] max-w-full", className)}
+             style={{ width: customWidth !== 100 ? `${customWidth}%` : undefined }}>
             <div
                 className={cn(
                     "bg-black border-2 border-white/80 rounded-xl px-3 text-white text-sm relative shadow-[0_0_10px_rgba(255,255,255,0.1)]",
@@ -61,7 +66,10 @@ export default function RwShareTextSnippet({
                 <div className="flex flex-col gap-3">
                     {htmlMode ? (
                         <div
-                            className="rw-text-font px-1 min-h-[20px] whitespace-pre-wrap"
+                            className={cn(
+                                "rw-text-font px-1 min-h-[20px] whitespace-pre-wrap",
+                                centered && "text-center"
+                            )}
                             dangerouslySetInnerHTML={{
                                 __html: renderHtml
                                     ? renderHtml(preProcessContent ? preProcessContent(value) : value)
@@ -73,7 +81,10 @@ export default function RwShareTextSnippet({
                             ref={textareaRef}
                             value={value}
                             onChange={handleChange}
-                            className="bg-transparent resize-none outline-none rw-text-font min-h-[20px] px-1 overflow-hidden"
+                            className={cn(
+                                "bg-transparent resize-none outline-none rw-text-font min-h-[20px] px-1 overflow-hidden",
+                                centered && "text-center"
+                            )}
                             style={{
                                 width: fitContent ? "auto" : "100%",
                                 minWidth: fitContent ? "0" : "300px",

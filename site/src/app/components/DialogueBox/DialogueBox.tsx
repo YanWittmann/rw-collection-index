@@ -80,6 +80,8 @@ export function DialogueBox({
         if (!isMobile) return;
 
         const handleTouchStart = (e: TouchEvent) => {
+            // check if the target is an input field
+            if (e.target instanceof HTMLElement && e.target.tagName === 'INPUT') return;
             setTouchStart({
                 x: e.touches[0].clientX,
                 y: e.touches[0].clientY
