@@ -4,6 +4,7 @@ import React, { ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import RwShareTextSnippet from "./RwShareTextSnippet";
 import { Button } from "@shadcn/components/ui/button";
+import html2canvas from "html2canvas";
 
 interface RwShareTextEditorProps {
     children: ReactNode;
@@ -17,10 +18,98 @@ interface RwShareTextEditorProps {
     leftIcon?: React.ReactNode;
     rightIcon?: React.ReactNode;
     leftText?: string;
+    exportName?: string;
 }
 
 export const preProcessContent = (text: string) => {
     return "<span class=\"flex gap-1 flex-col\"><span>" + text.replaceAll("\n", "</span><span>") + "</span></span>";
+};
+
+const renderIconToCanvas = async (
+    type: string,
+    color: string | null,
+    width: number,
+    height: number
+): Promise<HTMLCanvasElement> => {
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+
+    if (!ctx) throw new Error("Could not get canvas context");
+
+    ctx.imageSmoothingEnabled = false;
+
+    // Load the icon image
+    const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+        const image = new Image();
+        image.src = `img/${type}.png`;
+        image.crossOrigin = "anonymous";
+        image.onload = () => resolve(image);
+        image.onerror = () => reject(new Error("Failed to load icon image"));
+    });
+
+    // Draw the original image onto the canvas
+    ctx.drawImage(img, 0, 0, width, height);
+
+    if (color) {
+        // Get the image data (to manipulate pixels)
+        const imageData = ctx.getImageData(0, 0, width, height);
+        const data = imageData.data;
+
+        // Convert color from hex to RGBA
+        const rgba = hexToRgba(color);
+
+        const scaleFrom255To1 = (value: number) => value / 255;
+        const scaleFrom1To255 = (value: number) => value * 255;
+
+        // Apply the color overlay by replacing non-transparent pixels with the color
+        for (let i = 0; i < data.length; i += 4) {
+            if (data[i + 3] > 0) { // Check if pixel is not fully transparent
+                data[i] = scaleFrom1To255(scaleFrom255To1(rgba.r) * scaleFrom255To1(data[i]));
+                data[i + 1] = scaleFrom1To255(scaleFrom255To1(rgba.g) * scaleFrom255To1(data[i + 1]));
+                data[i + 2] = scaleFrom1To255(scaleFrom255To1(rgba.b) * scaleFrom255To1(data[i + 2]));
+                // Maintain the alpha channel (transparency)
+            }
+        }
+
+        // Put the modified pixel data back to the canvas
+        ctx.putImageData(imageData, 0, 0);
+    }
+
+    return canvas;
+};
+
+// Helper function to convert hex to RGB
+const hexToRgba = (hex: string) => {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return { r, g, b, a: 255 };
+};
+
+const replaceIconsWithCanvas = async (container: HTMLElement) => {
+    const iconElements = container.querySelectorAll(".rw-icon-container");
+
+    for (const iconElement of Array.from(iconElements)) {
+        const type = iconElement.getAttribute("data-type");
+        const color = iconElement.getAttribute("data-color");
+        const width = iconElement.clientWidth;
+        const height = iconElement.clientHeight;
+
+        if (type && width && height) {
+            const canvas = await renderIconToCanvas(type, color, width, height);
+            iconElement.innerHTML = ""; // Clear the icon content
+
+            // Ensure the canvas matches the original icon's size and position
+            canvas.style.width = `${width}px`;
+            canvas.style.height = `${height}px`;
+            canvas.style.display = "block";
+            canvas.style.verticalAlign = "bottom"; // Align to the bottom
+
+            iconElement.appendChild(canvas); // Add the canvas
+        }
+    }
 };
 
 export default function RwShareTextEditor({
@@ -35,10 +124,13 @@ export default function RwShareTextEditor({
                                               leftIcon,
                                               rightIcon,
                                               leftText,
+                                              exportName,
                                           }: RwShareTextEditorProps) {
     const [showModal, setShowModal] = useState(false);
     const [content, setContent] = useState(defaultText);
     const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null);
+
+    exportName = exportName?.replace(/[^a-z0-9]/gi, '_').toLowerCase();
 
     useEffect(() => {
         if (showModal) {
@@ -52,9 +144,34 @@ export default function RwShareTextEditor({
         }
     }, [showModal]);
 
-    const handleExport = () => {
-        onExport?.(content);
-        setShowModal(false);
+    const handleExport = async () => {
+        const snippetElement = document.querySelector(".rw-share-text-snippet") as HTMLElement;
+
+        if (snippetElement) {
+            // Replace icons with canvas elements
+            await replaceIconsWithCanvas(snippetElement);
+
+            // Use html2canvas to capture the element
+            html2canvas(snippetElement, {
+                backgroundColor: null,
+                scale: 2,
+                logging: true,
+                useCORS: true,
+            }).then((canvas) => {
+                const imgData = canvas.toDataURL("image/png");
+                const link = document.createElement("a");
+                link.href = imgData;
+                link.download = exportName ?? "exported-transcription.png";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                setShowModal(false);
+                onExport?.(content);
+            }).catch((error: Error) => {
+                console.error("Error capturing snippet:", error);
+            });
+        }
     };
 
     return (
@@ -86,6 +203,7 @@ export default function RwShareTextEditor({
                             <div className="p-4">
                                 <h3 className="text-white mb-2">Preview:</h3>
                                 <RwShareTextSnippet
+                                    className="rw-share-text-snippet"
                                     defaultValue={content}
                                     htmlMode={true}
                                     preProcessContent={preProcessContent}

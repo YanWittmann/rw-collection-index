@@ -80,7 +80,7 @@ export function DialogueActionTabs({
                           <RwIcon type="share"/>
                         </RwTabButton>
                 </span></TooltipTrigger>
-                        <TooltipContent side="bottom">Share entry via</TooltipContent>
+                        <TooltipContent side="bottom" className={"text-center"}>Share entry via...<br/>Icon is WIP.</TooltipContent>
                     </PopoverTrigger>
                     <PopoverContent
                         className="w-64 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg text-white"
@@ -142,6 +142,7 @@ export function DialogueActionTabs({
                                         leftIcon={<RwIcon color={pearl.metadata.color} type={leftIconType}/>}
                                         leftText={transcriberData.metadata.name || pearl.metadata.name}
                                         rightIcon={<RwIcon color={overwriteRightColor ? rightIconColor : undefined} type={rightIconType}/>}
+                                        exportName={`${transcriberData.metadata.name || pearl.metadata.name}_${transcriberData.transcriber}`}
                                     >
                                         <div
                                             className="w-full text-left px-4 py-1 relative group text-white/90 hover:underline cursor-pointer">

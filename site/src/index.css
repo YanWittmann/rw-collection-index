@@ -108,3 +108,9 @@ html.rw-text-font {
   -ms-user-select: text;
   user-select: text;
 }
+
+.rw-icon-container {
+  display: inline-block;
+  vertical-align: bottom; /* Align to the bottom */
+  line-height: 1; /* Prevent extra spacing */
+}

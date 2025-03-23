@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState, useRef, useEffect } from "react"
-import { useIsMobile } from "../../hooks/useIsMobile";
 import { cn } from "@shadcn/lib/utils";
 
 interface RwShareTextSnippetProps {
@@ -32,7 +31,6 @@ export default function RwShareTextSnippet({
                                                fitContent = false,
                                            }: RwShareTextSnippetProps) {
     const [value, setValue] = useState(defaultValue)
-    const isMobile = useIsMobile()
     const textareaRef = useRef<HTMLTextAreaElement>(null)
 
     useEffect(() => {
@@ -57,7 +55,7 @@ export default function RwShareTextSnippet({
             <div
                 className={cn(
                     "bg-black border-2 border-white/80 rounded-xl px-3 text-white text-sm relative shadow-[0_0_10px_rgba(255,255,255,0.1)]",
-                    isMobile ? "py-3" : "py-4",
+                    "pb-4 pt-2",
                 )}
             >
                 <div className="flex flex-col gap-3">
