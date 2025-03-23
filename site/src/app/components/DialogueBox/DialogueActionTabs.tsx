@@ -141,7 +141,7 @@ export function DialogueActionTabs({
                                         onOpen={() => {
                                         }}
                                         leftIcon={<RwIcon color={pearl.metadata.color} type={leftIconType}/>}
-                                        leftText={(transcriberData.metadata.internalId ? transcriberData.metadata.internalId + " - " : "") + transcriberData.metadata.name || pearl.metadata.name}
+                                        leftText={(transcriberData.metadata.internalId ? transcriberData.metadata.internalId + " - " : "") + (transcriberData.metadata.name || pearl.metadata.name)}
                                         rightIcon={<RwIcon color={overwriteRightColor ? rightIconColor : undefined}
                                                            type={rightIconType}/>}
                                         exportName={`${transcriberData.metadata.name || pearl.metadata.name}_${transcriberData.transcriber}`}
