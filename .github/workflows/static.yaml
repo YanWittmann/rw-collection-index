@@ -30,7 +30,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: cd site && npm install
+        run: cd site && npm install --legacy-peer-deps
 
       - name: Build project
         run: cd site && npm run build
