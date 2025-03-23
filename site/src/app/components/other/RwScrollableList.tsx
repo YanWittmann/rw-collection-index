@@ -37,4 +37,3 @@ export function RwScrollableList({ items, maxHeight = "340px", className, itemCl
         </div>
     )
 }
-

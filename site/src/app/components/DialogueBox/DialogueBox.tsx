@@ -4,7 +4,6 @@ import { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types";
 import { resolveVariables, SOURCE_DECRYPTED, speakerNames } from "../../utils/speakers";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion"
-import { DialogueActionBar } from "./DialogueActionBar";
 import { WelcomeDialogueContent } from "./WelcomeDialogueContent";
 import { UnlockMode } from "../../page";
 import UnlockManager from "../../utils/unlockManager";
@@ -13,6 +12,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadc
 import { RwIcon } from "../PearlGrid/RwIcon";
 import { renderDialogueLine } from "../../utils/renderDialogueLine";
 import { cn } from "@shadcn/lib/utils";
+import { DialogueActionTabs } from "./DialogueActionTabs";
 
 interface DialogueBoxProps {
     pearl: PearlData | null
@@ -305,7 +305,7 @@ export function DialogueBox({
         }
 
         return <>
-            <DialogueActionBar
+            <DialogueActionTabs
                 isUnlocked={isUnlocked}
                 pearl={pearl}
                 transcriberData={dialogue}
