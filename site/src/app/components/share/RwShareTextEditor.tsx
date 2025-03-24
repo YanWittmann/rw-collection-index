@@ -226,6 +226,11 @@ export default function RwShareTextEditor({
 
                 setShowModal(false);
                 onExport?.(content);
+
+                try {
+                    setTimeout(() => fetch("https://yanwittmann.de/projects/countapi/increment.php?namespace=rwci&key=use-export"), 0);
+                } catch (error) {
+                }
             }).catch((error: Error) => {
                 console.error("Error capturing snippet:", error);
             });
