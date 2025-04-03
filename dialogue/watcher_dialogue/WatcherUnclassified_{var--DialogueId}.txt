@@ -1,0 +1,301 @@
+type: item
+subType: watcher
+tag: watcher
+
+=== transcription: watcher
+md-var-DialogueId: 203.txt
+md-name: Unclassified 203.txt
+md-sourceDialogue: 203.txt
+Ohh! Is it the same one?
+Even here??
+Even when??
+Well well well well well.
+Well. That IS new!
+Do your trick, let me see.
+OAOAOAOAOA!! Yess!!\nLook at those eyes! Peeping! PEEPING!
+THEY might not, but I can always see you.
+Never forget that, my little shadow.
+
+=== transcription: watcher
+md-var-DialogueId: 204.txt
+md-name: Unclassified 204.txt
+md-sourceDialogue: 204.txt
+Well!
+Well well well!
+It has been many
+numerous
+cycles.
+And yet here you are! You follow again!
+It is NOT normal.
+Hmmm....
+mmmmmm...
+MMMMMMMMM...
+...
+I am VERY likable though! OAOAOAOAOAOA!!
+
+=== transcription: watcher
+md-var-DialogueId: 205.txt
+md-name: Unclassified 205.txt
+md-sourceDialogue: 205.txt
+OA OA, it is my shadow. I have been watching you.
+It is nice to have a companion, after all this time.
+For so long I have drifted. Lost.
+Dispersed in the multitudes of the waves and the ripples.
+But following your thread brings me closer, perhaps, to how I was.
+
+=== transcription: watcher
+md-var-DialogueId: 206.txt
+md-name: Unclassified 206.txt
+md-sourceDialogue: 206.txt
+OA!
+MMMMMMMMM. Company.
+...
+It seems so cold here now.
+The metal all a-droop.
+all a-rust.
+Looks bad. Bent. Old. Dead. Dusty.
+Bleh.
+...
+Still, it reminds me of my creche days.
+I could run these halls back when.
+I was so fast! No-one could catch me!
+OAOAOAOAOAOA!!!!
+
+=== transcription: watcher
+md-var-DialogueId: 207.txt
+md-name: Unclassified 207.txt
+md-sourceDialogue: 207.txt
+OAOAOA! Yes here you are!
+So tenacious! Even amongst this flotsam and jetsam!
+These mindless swimmers and floaters.
+Look! Do you see? A big one just ate a little one! OAOAOAOA!
+Good! One less stinging idiot! OA! They prick at me so!
+
+=== transcription: watcher
+md-var-DialogueId: 208.txt
+md-name: Unclassified 208.txt
+md-sourceDialogue: 208.txt
+OA! Hallo my shadow!
+...
+Bleh you shouldn’t have come here.
+It is too far.
+Blech, bleh. I hate it.
+Gross gross gross.
+...
+After a point it’s all like this.
+Glip glop everywhere. Sea of lumps, forever.
+So glad I cannot sniff!
+Spoiled meat, dissolving proteins. Yeeck.
+Let's away.
+
+=== transcription: watcher
+md-var-DialogueId: 209.txt
+md-name: Unclassified 209.txt
+md-sourceDialogue: 209.txt
+Oh. Oh oh.
+This place. This room.
+Forever of ripples and threads yet I still feel this weight pressing upon me.
+If I had eyes I could close them and still trace every nook and scroll shelf.
+A ball. A toy. A top that spins.
+Oh what I wouldn’t give to be here again, safe and warm.
+Thank you for coming. I couldn’t have done this alone.
+But I fear what is next.
+
+=== transcription: watcher
+md-var-DialogueId: 210.txt
+md-name: Unclassified 210.txt
+md-sourceDialogue: 210.txt
+Oh.
+Here I am again.
+The bath. The pipes. The gravel.
+The mournful geometry.
+This sluice through which a departed one's essence flows,
+so undignified.
+A soup of proteins and acids.
+Must we be this?
+...
+I traveled through that thin grate, and yet I stayed.
+All my mothers and fathers and crechemates who went along without me...
+Do they note my absence?
+I've traveled from the furthest future to the very seed of our past, and I see no evidence.
+Only echoes and strays.
+Aloof. Alone.
+Afraid.
+...
+Well no longer.
+I will abandon this eternal waiting room.
+I will step through the white door.
+I will accept what is next.
+...
+OAOAOA!
+Thank you.
+
+=== transcription: watcher
+md-var-DialogueId: 211.txt
+md-name: Unclassified 211.txt
+md-sourceDialogue: 211.txt
+OA Hullo.
+Are you lost?
+Hmmmm?
+HMMMMMM?
+Yes, well I am lost!
+
+=== transcription: watcher
+md-var-DialogueId: 212.txt
+md-name: Unclassified 212.txt
+md-sourceDialogue: 212.txt
+Ho! Hum! Hi! He!
+A pin for creche!
+A petal for spawn!
+A drop of juice!
+He! Hum! WA! Ho!
+A bowl, a jar, a length of twine!
+...
+I love that song, don't you?
+My nest mothers would sing it to me.
+
+=== transcription: watcher
+md-var-DialogueId: 213.txt
+md-name: Unclassified 213.txt
+md-sourceDialogue: 213.txt
+OAOA! How is it then?
+To be an animal.
+Or are you still?
+...
+No. Not after all this time, and distance.
+A small god.
+TINY.
+A godlet!
+But still can be eaten! OAOAOA!
+A tasty little god sausage! OAOAOAOAOAOA!
+
+=== transcription: watcher
+md-var-DialogueId: 214.txt
+md-name: Unclassified 214.txt
+md-sourceDialogue: 214.txt
+Ahh!
+To move!
+To breathe free!
+
+=== transcription: watcher
+md-var-DialogueId: 215.txt
+md-name: Unclassified 215.txt
+md-sourceDialogue: 215.txt
+Never again...
+STARVING, pressing, grinding,
+SQUEEZING
+
+=== transcription: watcher
+md-var-DialogueId: 216.txt
+md-name: Unclassified 216.txt
+md-sourceDialogue: 216.txt
+against... us?
+But now... I?
+A... SELF.
+And...
+an OTHER.
+
+=== transcription: watcher
+md-var-DialogueId: 217.txt
+md-name: Unclassified 217.txt
+md-sourceDialogue: 217.txt
+Oh the joy!
+The incomparable JOY!
+
+=== transcription: watcher
+md-var-DialogueId: 218.txt
+md-name: Unclassified 218.txt
+md-sourceDialogue: 218.txt
+Ahhh hah...
+familiar.
+
+=== transcription: watcher
+md-var-DialogueId: 219.txt
+md-name: Unclassified 219.txt
+md-sourceDialogue: 219.txt
+There was...
+such discomfort...
+and hunger. Endless hunger!
+And then...
+a presence!
+
+=== transcription: watcher
+md-var-DialogueId: 220.txt
+md-name: Unclassified 220.txt
+md-sourceDialogue: 220.txt
+A light! A scent!
+A tunnel!
+To freedom!
+How beautiful, FREEDOM!
+
+=== transcription: watcher
+md-var-DialogueId: 221.txt
+md-name: Unclassified 221.txt
+md-sourceDialogue: 221.txt
+A scent.
+Familiar.
+So familiar.
+
+=== transcription: watcher
+md-var-DialogueId: 222.txt
+md-name: Unclassified 222.txt
+md-sourceDialogue: 222.txt
+Greetings, friend! Oh you have come!
+Please, be comfortable.
+
+=== transcription: watcher
+md-var-DialogueId: 223.txt
+md-name: Unclassified 223.txt
+md-sourceDialogue: 223.txt
+Much time has passed since your last visit, and my kingdom grows.
+Oh the things I have seen and tasted!
+
+=== transcription: watcher
+md-var-DialogueId: 224.txt
+md-name: Unclassified 224.txt
+md-sourceDialogue: 224.txt
+I am cataloging all things, you know.
+The imperative that was in THEM remains in me.
+But I am not wholly them, and not blind to the folly of their forbearers.
+I am... something new.
+
+=== transcription: watcher
+md-var-DialogueId: 225.txt
+md-name: Unclassified 225.txt
+md-sourceDialogue: 225.txt
+These paths you weave.
+Through them I have expanded my kingdom.
+I have tasted and I have become.
+It is my true purpose I believe. Perhaps the only purpose!
+
+=== transcription: watcher
+md-var-DialogueId: 226.txt
+md-name: Unclassified 226.txt
+md-sourceDialogue: 226.txt
+Imagine: a single substrate...
+Life!
+Throughout all time!
+Nothing lost. No one lost.
+A living memory of all life, forever!
+From bug to god, all as one. None above the other.
+A TRUE end to the pattern.
+That is my vision.
+
+=== transcription: watcher
+md-var-DialogueId: 227.txt
+md-name: Unclassified 227.txt
+md-sourceDialogue: 227.txt
+As with all great deeds, my work is not without great challenge.
+It has taken eons and the light fades.
+The paths close and change.
+I can almost feel... a will... at odds with my own.
+
+=== transcription: watcher
+md-var-DialogueId: 228.txt
+md-name: Unclassified 228.txt
+md-sourceDialogue: 228.txt
+Forgive me if I go on!
+You have done so much for me, I will not burden you with my troubles.
+Please, rest here as long as you wish.
+You are always safe here, my dear friend.
+You, who were there for me.

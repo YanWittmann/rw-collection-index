@@ -1,0 +1,38 @@
+type: item
+subType: watcher
+tag: watcher
+
+=== transcription: spinning-top
+md-type: pearl
+md-var-DialogueId: ST_Dialogue_1
+md-name: First Encounter
+md-sourceDialogue: 200.txt
+OAOAOAOA! Minerals! Sinew! Liquids! OAOAOA liquids??
+Do you excrete, little thing?? Yes you do! OAOAOAOAOA!!\nYes you do excrete OAOAOAO!!!!
+All those minerals you worked so hard for, right back to the soil!\nAs will YOU, OAOAOAOA!!
+What a waste! What a joke! OAOAOAOAOAOAOAOA!!
+
+=== transcription: spinning-top
+md-type: pearl
+md-var-DialogueId: ST_Dialogue_2
+md-name: Second Encounter
+md-sourceDialogue: 201.txt
+You again! Odd little thing, trembling. Peeping eyes.\nSO PEEPING OAOAOAOA!! But I suppose you must peep.
+So many sharp teeth and claws in this meat world.
+They look to grind up your sticks!! OAOAOAOAOAOA!!
+...
+Here, I will give you a gift.
+
+=== transcription: spinning-top
+md-type: pearl
+md-var-DialogueId: ST_Dialogue_3
+md-name: Third Encounter
+md-sourceDialogue: 202.txt
+OAOAOA! It is this thing! Have you really not been eaten?
+Well well well well! Not in this strand, no.
+But don’t be too proud OAOAOA!! I can see your reflections, yes!!
+Behold: Chomped by a flying thing!
+Torn to ribbons by a crawling thing!
+Pulled into the earth by wiggling things!! OAOAOAOAOA!!!
+A world of teeth! and claws! and beaks! and pressures! and acids!
+Forever-where and forever-when! OAOAOAOA!!!!

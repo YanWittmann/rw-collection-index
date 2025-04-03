@@ -122,6 +122,9 @@ export const speakerNames: { [key: string]: string } = {
     "base-slugcats": "Base Slugcats",
     "saint": "Saint",
     "artificer": "Artificer",
+    "ST": "Spinning Top",
+    "Spinning Top": "Spinning Top",
+    "spinning-top": "Spinning Top",
 }
 
 export const regionNames: { [key: string]: string } = {

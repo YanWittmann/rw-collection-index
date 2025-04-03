@@ -165,6 +165,10 @@ process_directory(
     "RainWorld_Data/StreamingAssets/mods/moreslugcats/text",
     "decrypted/dp"
 )
+process_directory(
+    "RainWorld_Data/StreamingAssets/mods/watcher/text",
+    "decrypted/watcher"
+)
 
 ### SECTION: write into a single file
 

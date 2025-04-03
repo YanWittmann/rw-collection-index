@@ -602,7 +602,7 @@ function parseDialogueContent(content) {
 
 function postProcessTags(pearl) {
     for (let transcriber of pearl.transcribers) {
-        if (!transcriber.metadata.tags.includes("downpour")) {
+        if (!transcriber.metadata.tags.includes("downpour") && !transcriber.metadata.tags.includes("watcher")) {
             transcriber.metadata.tags.push("vanilla");
         }
     }

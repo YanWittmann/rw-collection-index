@@ -106,6 +106,18 @@ export const pearlOrder: PearlChapter[] = [
             { pattern: /DevComm_.+/ }
         ]
     },
+    {
+        name: "The Watcher",
+        ids: [
+            { pattern: /WatcherPreMultiverse_.+/ },
+        ]
+    },
+    {
+        name: "The Watcher (Unclassified for now)",
+        ids: [
+            { pattern: /WatcherUnclassified_.+/ },
+        ]
+    },
 ]
 
 export const findPearlCategory = (pearl: PearlData): string => {

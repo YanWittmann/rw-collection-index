@@ -123,6 +123,7 @@ md-subType: item/Neuron_Fly_icon
 md-transcriberName: Taking a Neuron Fly
 md-var-DialogueId: Interruptions
 md-name: Interruptions
+md-sourceDialogue: none
 MONO
 / Before Rivulet's ending
 /  If Looks to the Moon has 4 or more neurons

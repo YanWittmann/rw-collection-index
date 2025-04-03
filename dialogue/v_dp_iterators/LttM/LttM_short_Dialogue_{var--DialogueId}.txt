@@ -93,6 +93,7 @@ md-type: pearl
 md-transcriberName: Pearl
 md-var-DialogueId: Commenting_already_discussed_object
 md-name: Commenting on an already discussed object
+md-sourceDialogue: none
 MONO
 / One of the following options is selected randomly:
 |  Oh, I have already read this one to you, &lt;little creature&gt;.
@@ -103,6 +104,7 @@ MONO
 md-type: pearl
 md-var-DialogueId: Take_back_while_commenting
 md-name: When Slugcat takes back an object while Moon is commenting on it
+md-sourceDialogue: none
 MONO
 / If Looks to the Moon does not dislike Slugcat
 /  One of the following options is selected randomly:
@@ -128,6 +130,7 @@ md-transcriberName: Five Pebbles' pearls
 md-var-DialogueId: Receiving_a_pearl
 md-name: Receiving a pearl
 md-info: See Pearl Dialogue for the contents of the pearls.
+md-sourceDialogue: none
 MONO
 / One of the following options is selected randomly:
 |  You would like me to read this?
@@ -146,6 +149,7 @@ md-transcriberName: Miscellaneous & colored pearls
 md-var-DialogueId: Receiving_a_pearl
 md-name: Receiving a pearl
 md-info: See Pearl Dialogue for the contents of the pearls.
+md-sourceDialogue: none
 MONO
 / First time
 |  Ah, you would like me to read this?
@@ -170,6 +174,7 @@ md-super-subType: item/Neuron_Fly_icon
 md-type: pearl
 md-var-DialogueId: Seeing_Slugcat_bringing_a_Neuron_Fly
 md-name: Seeing Slugcat bringing a Neuron Fly
+md-sourceDialogue: none
 MONO
 / If Looks to the Moon has more than 3 neurons left
 /  If Looks to the Moon does not dislike Slugcat
@@ -196,6 +201,7 @@ md-super-subType: item/Neuron_Fly_icon
 md-type: pearl
 md-var-DialogueId: Receiving_Neuron_Fly
 md-name: Receiving a Neuron Fly
+md-sourceDialogue: none
 MONO
 / First time
 |   I could read a bit of Five Pebbles in this neuron before formatting it.
@@ -274,6 +280,7 @@ md-type: pearl
 md-transcriberName: Interrupted by Slugcat grabbing a neuron
 md-var-DialogueId: Interruptions
 md-name: Interruptions
+md-sourceDialogue: none
 MONO
 / Grabbing the neuron
 /  First time
@@ -310,6 +317,7 @@ md-type: pearl
 md-transcriberName: Interrupted by Slugcat jumping/moving around
 md-var-DialogueId: Interruptions
 md-name: Interruptions
+md-sourceDialogue: none
 MONO
 / First time
 /  If Looks to the Moon has more than 3 neurons left
@@ -345,6 +353,7 @@ md-type: pearl
 md-transcriberName: Interrupted by Slugcat leaving
 md-var-DialogueId: Interruptions
 md-name: Interruptions
+md-sourceDialogue: none
 MONO
 / First time
 /  If Looks to the Moon does not dislike Slugcat
@@ -402,6 +411,7 @@ MONO
 md-type: pearl
 md-var-DialogueId: Resuming_conversation_interruption
 md-name: Resuming conversation after an interruption
+md-sourceDialogue: none
 MONO
 / First part
 /  If the interruption was Slugcat leaving
@@ -464,6 +474,7 @@ MONO
 md-type: pearl
 md-var-DialogueId: Annoyed_Jumping
 md-name: Annoyed by Slugcat jumping/moving around
+md-sourceDialogue: none
 MONO
 / First time
 /  If Looks to the Moon has more than 3 neurons left
@@ -499,6 +510,7 @@ MONO
 md-type: pearl
 md-var-DialogueId: Rain_Coming
 md-name: When rain comes
+md-sourceDialogue: none
 MONO
 / If Looks to the Moon has 5 neurons left
 /  If Looks to the Moon does not dislike Slugcat:
