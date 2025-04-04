@@ -261,6 +261,13 @@ export function PearlGrid({
                     uniqueRegions.add(mapInfo.region);
                 }
             });
+            pearl.transcribers.forEach(transcriberData => {
+                transcriberData.metadata.map?.forEach(mapInfo => {
+                    if (mapInfo.region) {
+                        uniqueRegions.add(mapInfo.region);
+                    }
+                });
+            });
         });
 
         // Extract unique speakers from all pearls
@@ -303,7 +310,7 @@ export function PearlGrid({
                     { id: "vanilla", label: "Vanilla (No DLC)", icon: "vanilla-rw" },
                     { id: "downpour", label: "Downpour", icon: "dlc-dp" },
                     // TODO: Update icon
-                    { id: "watcher", label: "Watcher", icon: "watcher" },
+                    { id: "watcher", label: "Watcher", icon: "dlc-watcher" },
                 ]
             },
             {

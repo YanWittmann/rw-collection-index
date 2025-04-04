@@ -33,7 +33,7 @@
   },
   "scripts": {
     "watch-dialogue-files": "node create-dialogue-files.js --watch",
-    "create-dialogue-files": "node create-dialogue-files.js --sourceFiles",
+    "create-dialogue-files": "node create-dialogue-files.js",
     "start": "craco start",
     "build": "npm run create-dialogue-files && craco build",
     "test": "craco test",

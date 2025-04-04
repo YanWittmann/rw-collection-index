@@ -9,6 +9,7 @@ const OUTPUT_FILE = path.join(__dirname, 'src/generated/parsed-dialogues.json');
 const MAX_SPEAKER_LENGTH = 12;
 const PATTERN_REGEX = /\{([^}]+)\}/g;
 
+// ignore speakers
 const excludeSpeakers = [
     "Water",
     "Hydrocarbons",
@@ -17,6 +18,8 @@ const excludeSpeakers = [
     "Phosphates",
     "EM", // equipment manifest
     "Five Pebbsi",
+    "Behold",
+    "Imagine"
 ]
 
 const generalWhiteGrayBroadcasts = [

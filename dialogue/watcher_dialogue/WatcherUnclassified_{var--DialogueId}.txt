@@ -3,20 +3,6 @@ subType: watcher
 tag: watcher
 
 === transcription: watcher
-md-var-DialogueId: 203.txt
-md-name: Unclassified 203.txt
-md-sourceDialogue: 203.txt
-Ohh! Is it the same one?
-Even here??
-Even when??
-Well well well well well.
-Well. That IS new!
-Do your trick, let me see.
-OAOAOAOAOA!! Yess!!\nLook at those eyes! Peeping! PEEPING!
-THEY might not, but I can always see you.
-Never forget that, my little shadow.
-
-=== transcription: watcher
 md-var-DialogueId: 204.txt
 md-name: Unclassified 204.txt
 md-sourceDialogue: 204.txt
@@ -42,34 +28,6 @@ It is nice to have a companion, after all this time.
 For so long I have drifted. Lost.
 Dispersed in the multitudes of the waves and the ripples.
 But following your thread brings me closer, perhaps, to how I was.
-
-=== transcription: watcher
-md-var-DialogueId: 206.txt
-md-name: Unclassified 206.txt
-md-sourceDialogue: 206.txt
-OA!
-MMMMMMMMM. Company.
-...
-It seems so cold here now.
-The metal all a-droop.
-all a-rust.
-Looks bad. Bent. Old. Dead. Dusty.
-Bleh.
-...
-Still, it reminds me of my creche days.
-I could run these halls back when.
-I was so fast! No-one could catch me!
-OAOAOAOAOAOA!!!!
-
-=== transcription: watcher
-md-var-DialogueId: 207.txt
-md-name: Unclassified 207.txt
-md-sourceDialogue: 207.txt
-OAOAOA! Yes here you are!
-So tenacious! Even amongst this flotsam and jetsam!
-These mindless swimmers and floaters.
-Look! Do you see? A big one just ate a little one! OAOAOAOA!
-Good! One less stinging idiot! OA! They prick at me so!
 
 === transcription: watcher
 md-var-DialogueId: 208.txt
