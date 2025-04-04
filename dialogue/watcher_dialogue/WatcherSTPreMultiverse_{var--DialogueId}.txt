@@ -1,6 +1,10 @@
 type: item
 subType: watcher
 tag: watcher
+map: region=CC, room=C12, mapSlugcat=watcher
+map: region=LF, room=B01, mapSlugcat=watcher
+map: region=SH, room=A08, mapSlugcat=watcher
+mapInfo: Spinning Top can be encountered in any order in the three regions.\nThe region you encounter them last determines the region you are sent to by the warp.\nWatcher locations are not yet supported by the interactive map.
 
 === transcription: spinning-top
 md-type: pearl

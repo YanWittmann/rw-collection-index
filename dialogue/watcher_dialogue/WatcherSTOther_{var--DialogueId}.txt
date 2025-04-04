@@ -1,0 +1,16 @@
+type: item
+subType: watcher
+tag: watcher
+mapInfo: Watcher locations are not yet supported by the interactive map.
+
+=== transcription: spinning-top
+md-super-subType: wa-region/wara
+md-var-DialogueId: WARA
+md-name: Shattered Terrace
+md-map: region=WARA, room=P09, mapSlugcat=watcher
+md-sourceDialogue: 207.txt
+OAOAOA! Yes here you are!
+So tenacious! Even amongst this flotsam and jetsam!
+These mindless swimmers and floaters.
+Look! Do you see? A big one just ate a little one! OAOAOAOA!
+Good! One less stinging idiot! OA! They prick at me so!

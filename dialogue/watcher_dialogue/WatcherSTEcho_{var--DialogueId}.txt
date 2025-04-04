@@ -1,10 +1,13 @@
 type: item
 subType: watcher
 tag: watcher
+map: region=WPTA, room=F03, mapSlugcat=watcher
+map: region=WARF, room=B33, mapSlugcat=watcher
+mapInfo: Spinning Top can be encountered in any order in these regions.\nSeven Encounters are necessary to unlock the Shattered Terrace to Ancient Urban portal.\nWatcher locations are not yet supported by the interactive map.
 
 === transcription: spinning-top
 md-type: pearl
-md-var-DialogueId: Enc_1
+md-var-DialogueId: 1
 md-name: First Encounter
 md-sourceDialogue: 203.txt
 Ohh! Is it the same one?
@@ -18,22 +21,9 @@ THEY might not, but I can always see you.
 Never forget that, my little shadow.
 
 === transcription: spinning-top
-md-super-subType: wa-region/wara
-md-var-DialogueId: RA
-md-name: Shattered Terrace
-md-map: region=WARA, room=P09, mapSlugcat=watcher
-md-sourceDialogue: 207.txt
-OAOAOA! Yes here you are!
-So tenacious! Even amongst this flotsam and jetsam!
-These mindless swimmers and floaters.
-Look! Do you see? A big one just ate a little one! OAOAOAOA!
-Good! One less stinging idiot! OA! They prick at me so!
-
-=== transcription: watcher
-md-super-subType: wa-region/wara
-md-var-DialogueId: RA
-md-name: Shattered Terrace
-md-map: region=WARA, room=P09, mapSlugcat=watcher
+md-type: pearl
+md-var-DialogueId: X
+md-name: Some Encounter
 md-sourceDialogue: 206.txt
 OA!
 MMMMMMMMM. Company.

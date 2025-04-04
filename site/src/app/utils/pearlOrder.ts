@@ -109,8 +109,9 @@ export const pearlOrder: PearlChapter[] = [
     {
         name: "The Watcher: Spinning Top",
         ids: [
-            { pattern: /WatcherPreMultiverse_.+/ },
-            { pattern: /WatcherST_.+/ },
+            { pattern: /WatcherSTPreMultiverse.+/ },
+            { pattern: /WatcherSTEcho.+/ },
+            { pattern: /WatcherSTOther.+/ },
         ]
     },
     {
