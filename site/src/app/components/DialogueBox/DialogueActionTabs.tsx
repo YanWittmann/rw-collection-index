@@ -184,7 +184,7 @@ export function DialogueActionTabs({
 
         if (hasMultipleSourceFiles) {
             tabs.push(
-                <Popover key="source-dialogue-selector">
+                <Popover key="source-dialogue-selector-multiple">
                     <Tooltip key="source-dialogue-files">
                         <PopoverTrigger>
                             <TooltipTrigger asChild><span>
@@ -202,7 +202,7 @@ export function DialogueActionTabs({
                             </TooltipContent>
                         </PopoverTrigger>
                         <PopoverContent
-                            className="w-64 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg"
+                            className="w-80 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg"
                             align="start"
                             sideOffset={5}
                         >
@@ -214,7 +214,7 @@ export function DialogueActionTabs({
                                     return {
                                         id: `source-file-${index}`,
                                         title: filename,
-                                        subtitle: foundEntry ? foundEntry.p : "Entry unavailable. Likely an error.",
+                                        subtitle: foundEntry ? foundEntry.p.replaceAll("\\", "/") : "Entry unavailable. Likely an error.",
                                         onClick: () => setSourceFileDisplay(filename),
                                     }
                                 })}

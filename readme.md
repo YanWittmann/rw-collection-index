@@ -99,7 +99,13 @@ Copy the `decrypted.json` file into the [source](dialogue/source) folder.
 ### Preparation: Rain World strings (new)
 
 Run https://steamcommunity.com/sharedfiles/filedetails/?id=2933241596 on your game as a mod to extract the strings.
-Rename the directories to `text_[lang]` instead of `[lang]` (e.g. `text_eng` instead of `Eng`).
+They will be written into the `Rain World/RainWorld_Data/StreamingAssets/decrypt` directory.
+Rename the directories to `text_[Lang]` instead of `[lang]` (e.g. `text_eng` instead of `Eng`).
+
+Certain decompiled source files have been extracted from the `Rain World/RainWorld_Data/Managed/Assembly-CSharp.dll`
+file using dnSpy and moved to the [dialogue/source/dll](dialogue/source/dll) directory.
+Copy this directory into the `decrypt`, next to the other files.
+
 Then run [decrypt-rw-text.py](site/build-scripts/decrypt-rw-text.py) inside your
 `SteamLibrary\steamapps\common\Rain World\RainWorld_Data\StreamingAssets\decrypt` folder to create the `decrypted.json`
 and move it to the [source](dialogue/source) folder.

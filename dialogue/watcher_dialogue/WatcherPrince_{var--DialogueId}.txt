@@ -1,9 +1,26 @@
 type: item
 subType: rot-prince
 tag: watcher
-map: region=TODO, room=TODO, mapSlugcat=watcher
+map: region=WORA, room=AI, mapSlugcat=watcher
 mapInfo: The Prince can only be encountered once the four portals in the Throne have been created.
 
+
+=== transcription: rot-prince
+md-type: pearl
+md-var-DialogueId: AcknowledgePlayerCamouflage
+md-name: Acknowledge Player Camouflage
+md-sourceDialogue: strings.txt
+md-sourceDialogue: AcknowledgePlayerCamouflage.cs
+MONO
+/ If the Prince is not paralyzed:
+/  If the player has a Ripple Level of 5 or more:
+/   One of the following options is selected randomly:
+|    Ahh yes! The paths! How wonderous!
+|    How auspicious it was, our meeting...
+/  Otherwise:
+/   One of the following options is selected randomly:
+|    Marvelous!
+|    Oh, show me again!
 
 === transcription: rot-prince
 md-type: pearl
@@ -88,13 +105,6 @@ md-var-DialogueId: 12
 md-name: Dialogue 12
 md-sourceDialogue: strings.txt
 My processes will dissolve them to their base components and those components will be added to the mass.
-
-=== transcription: rot-prince
-md-type: pearl
-md-var-DialogueId: 13
-md-name: Dialogue 13
-md-sourceDialogue: strings.txt
-Ahh yes! The paths! How wonderous!
 
 === transcription: rot-prince
 md-type: pearl

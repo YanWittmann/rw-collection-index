@@ -1,16 +1,16 @@
 type: item
 subType: watcher
 tag: watcher
-map: region=WARF, room=B33, mapSlugcat=watcher
 map: region=WARB, room=J01, mapSlugcat=watcher
 map: region=WARC, room=F01, mapSlugcat=watcher
 map: region=WARD, room=R02, mapSlugcat=watcher
 map: region=WARE, room=H05, mapSlugcat=watcher
-map: region=WDSR, room=A25, mapSlugcat=watcher
-map: region=WPTA, room=F03, mapSlugcat=watcher
-map: region=WHIR, room=A21, mapSlugcat=watcher
+map: region=WARF, room=B33, mapSlugcat=watcher
 map: region=WBLA, room=D03, mapSlugcat=watcher
+map: region=WDSR, room=A25, mapSlugcat=watcher
 map: region=WGWR, room=Disposal, mapSlugcat=watcher
+map: region=WHIR, room=A21, mapSlugcat=watcher
+map: region=WPTA, room=F03, mapSlugcat=watcher
 map: region=WRFB, room=A22, mapSlugcat=watcher
 map: region=WSKC, room=A23, mapSlugcat=watcher
 map: region=WSKD, room=B40, mapSlugcat=watcher
@@ -52,6 +52,17 @@ md-sourceDialogue: none
 md-type: pearl
 md-var-DialogueId: 4
 md-name: Fourth Encounter
+md-sourceDialogue: 211.txt
+OA Hullo.
+Are you lost?
+Hmmmm?
+HMMMMMM?
+Yes, well I am lost!
+
+=== transcription: spinning-top
+md-type: pearl
+md-var-DialogueId: 5
+md-name: Fifth Encounter
 md-sourceDialogue: 206.txt
 OA!
 MMMMMMMMM. Company.
@@ -69,15 +80,15 @@ OAOAOAOAOAOA!!!!
 
 === transcription: spinning-top
 md-type: pearl
-md-var-DialogueId: 5
-md-name: Fifth Encounter
+md-var-DialogueId: 6
+md-name: Sixth Encounter
 md-sourceDialogue: none
 ...
 
 === transcription: spinning-top
 md-type: pearl
-md-var-DialogueId: 6
-md-name: Sixth Encounter
+md-var-DialogueId: 7
+md-name: Seventh Encounter
 md-sourceDialogue: 204.txt
 Well!
 Well well well!
@@ -91,17 +102,6 @@ mmmmmm...
 MMMMMMMMM...
 ...
 I am VERY likable though! OAOAOAOAOAOA!!
-
-=== transcription: watcher
-md-type: pearl
-md-var-DialogueId: 7
-md-name: Seventh Encounter
-md-sourceDialogue: 205.txt
-OA OA, it is my shadow. I have been watching you.
-It is nice to have a companion, after all this time.
-For so long I have drifted. Lost.
-Dispersed in the multitudes of the waves and the ripples.
-But following your thread brings me closer, perhaps, to how I was.
 
 === transcription: spinning-top
 md-type: pearl
@@ -132,10 +132,28 @@ md-name: Tenth Encounter
 md-sourceDialogue: none
 ...
 
-=== transcription: spinning-top
+=== transcription: watcher
 md-type: pearl
 md-var-DialogueId: 11
 md-name: Eleventh Encounter
+md-sourceDialogue: 205.txt
+OA OA, it is my shadow. I have been watching you.
+It is nice to have a companion, after all this time.
+For so long I have drifted. Lost.
+Dispersed in the multitudes of the waves and the ripples.
+But following your thread brings me closer, perhaps, to how I was.
+
+=== transcription: spinning-top
+md-type: pearl
+md-var-DialogueId: 12
+md-name: Twelfth Encounter
+md-sourceDialogue: none
+...
+
+=== transcription: spinning-top
+md-type: pearl
+md-var-DialogueId: 13
+md-name: Thirteenth Encounter
 md-sourceDialogue: 213.txt
 OAOA! How is it then?
 To be an animal.
@@ -152,6 +170,7 @@ A tasty little god sausage! OAOAOAOAOAOA!
 md-super-subType: wa-region/wdsr
 md-var-DialogueId: rot
 md-name: Encounter in rotten region
+md-info: When Spinning Top is encountered in a region infected by The Rot\nfor the first time, the dialogue is replaced by this one.
 md-sourceDialogue: 208.txt
 OA! Hallo my shadow!
 ...

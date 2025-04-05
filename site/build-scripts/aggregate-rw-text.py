@@ -29,4 +29,7 @@ def write_json(data, output_file):
 
 
 decrypted_files = scan_directory(".", "text_eng")
-write_json(decrypted_files, "decrypted.json")
+dll_files = scan_directory(".", "dll")
+
+combined_files = decrypted_files + dll_files
+write_json(combined_files, "decrypted.json")

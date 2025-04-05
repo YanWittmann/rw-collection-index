@@ -3,29 +3,6 @@ subType: watcher
 tag: watcher
 
 === transcription: watcher
-md-var-DialogueId: 209.txt
-md-name: Unclassified 209.txt
-md-sourceDialogue: 209.txt
-Oh. Oh oh.
-This place. This room.
-Forever of ripples and threads yet I still feel this weight pressing upon me.
-If I had eyes I could close them and still trace every nook and scroll shelf.
-A ball. A toy. A top that spins.
-Oh what I wouldn’t give to be here again, safe and warm.
-Thank you for coming. I couldn’t have done this alone.
-But I fear what is next.
-
-=== transcription: watcher
-md-var-DialogueId: 211.txt
-md-name: Unclassified 211.txt
-md-sourceDialogue: 211.txt
-OA Hullo.
-Are you lost?
-Hmmmm?
-HMMMMMM?
-Yes, well I am lost!
-
-=== transcription: watcher
 md-var-DialogueId: 214.txt
 md-name: Unclassified 214.txt
 md-sourceDialogue: 214.txt
