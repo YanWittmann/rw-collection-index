@@ -200,8 +200,8 @@ export function DialogueBox({
         if (dialogue.metadata.sourceDialogue) {
             if (dialogue.metadata.sourceDialogue.length === 1) {
                 sourceFileDisplayText = dialogue.metadata.sourceDialogue[0].split(/[/\\]/).pop() || "";
-            } else if (dialogue.metadata.sourceDialogue.filter(f => f.includes(".cs")).length === 1) {
-                sourceFileDisplayText = dialogue.metadata.sourceDialogue.filter(f => f.includes(".cs"))[0].split(/[/\\]/).pop() || "";
+            } else if (dialogue.metadata.sourceDialogue.filter(f => !f.includes("strings")).length) {
+                sourceFileDisplayText = dialogue.metadata.sourceDialogue.filter(f => !f.includes("strings"))[0].split(/[/\\]/).pop() || "";
             } else {
                 sourceFileDisplayText = null;
             }

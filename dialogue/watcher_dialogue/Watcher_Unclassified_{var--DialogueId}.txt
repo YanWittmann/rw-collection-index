@@ -1,26 +1,29 @@
 type: item
-subType: watcher
+subType: rot-prince-pre
 tag: watcher
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_1_1
 md-var-DialogueId: 214.txt
-md-name: Unclassified 214.txt
+md-name: Prince_KS_1_1
 md-sourceDialogue: 214.txt
 Ahh!
 To move!
 To breathe free!
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_1_2
 md-var-DialogueId: 215.txt
-md-name: Unclassified 215.txt
+md-name: Prince_KS_1_2
 md-sourceDialogue: 215.txt
 Never again...
 STARVING, pressing, grinding,
 SQUEEZING
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_1_3
 md-var-DialogueId: 216.txt
-md-name: Unclassified 216.txt
+md-name: Prince_KS_1_3
 md-sourceDialogue: 216.txt
 against... us?
 But now... I?
@@ -28,23 +31,26 @@ A... SELF.
 And...
 an OTHER.
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_1_4
 md-var-DialogueId: 217.txt
-md-name: Unclassified 217.txt
+md-name: Prince_KS_1_4
 md-sourceDialogue: 217.txt
 Oh the joy!
 The incomparable JOY!
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_2_1
 md-var-DialogueId: 218.txt
-md-name: Unclassified 218.txt
+md-name: Prince_KS_2_1
 md-sourceDialogue: 218.txt
 Ahhh hah...
 familiar.
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_2_2
 md-var-DialogueId: 219.txt
-md-name: Unclassified 219.txt
+md-name: Prince_KS_2_2
 md-sourceDialogue: 219.txt
 There was...
 such discomfort...
@@ -52,58 +58,65 @@ and hunger. Endless hunger!
 And then...
 a presence!
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_2_3
 md-var-DialogueId: 220.txt
-md-name: Unclassified 220.txt
+md-name: Prince_KS_2_3
 md-sourceDialogue: 220.txt
 A light! A scent!
 A tunnel!
 To freedom!
 How beautiful, FREEDOM!
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_2_4
 md-var-DialogueId: 221.txt
-md-name: Unclassified 221.txt
+md-name: Prince_KS_2_4
 md-sourceDialogue: 221.txt
 A scent.
 Familiar.
 So familiar.
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_1
 md-var-DialogueId: 222.txt
-md-name: Unclassified 222.txt
+md-name: Prince_1
 md-sourceDialogue: 222.txt
 Greetings, friend! Oh you have come!
 Please, be comfortable.
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_2
 md-var-DialogueId: 223.txt
-md-name: Unclassified 223.txt
+md-name: Prince_2
 md-sourceDialogue: 223.txt
 Much time has passed since your last visit, and my kingdom grows.
 Oh the things I have seen and tasted!
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_3
 md-var-DialogueId: 224.txt
-md-name: Unclassified 224.txt
+md-name: Prince_3
 md-sourceDialogue: 224.txt
 I am cataloging all things, you know.
 The imperative that was in THEM remains in me.
 But I am not wholly them, and not blind to the folly of their forbearers.
 I am... something new.
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_4
 md-var-DialogueId: 225.txt
-md-name: Unclassified 225.txt
+md-name: Prince_4
 md-sourceDialogue: 225.txt
 These paths you weave.
 Through them I have expanded my kingdom.
 I have tasted and I have become.
 It is my true purpose I believe. Perhaps the only purpose!
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_5
 md-var-DialogueId: 226.txt
-md-name: Unclassified 226.txt
+md-name: Prince_5
 md-sourceDialogue: 226.txt
 Imagine: a single substrate...
 Life!
@@ -114,18 +127,20 @@ From bug to god, all as one. None above the other.
 A TRUE end to the pattern.
 That is my vision.
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_6
 md-var-DialogueId: 227.txt
-md-name: Unclassified 227.txt
+md-name: Prince_6
 md-sourceDialogue: 227.txt
 As with all great deeds, my work is not without great challenge.
 It has taken eons and the light fades.
 The paths close and change.
 I can almost feel... a will... at odds with my own.
 
-=== transcription: watcher
+=== transcription: rot-prince-pre
+md-internalId: Prince_7
 md-var-DialogueId: 228.txt
-md-name: Unclassified 228.txt
+md-name: Prince_7
 md-sourceDialogue: 228.txt
 Forgive me if I go on!
 You have done so much for me, I will not burden you with my troubles.

@@ -4,6 +4,7 @@ tag: watcher
 mapInfo: Watcher locations are not yet supported by the interactive map.
 
 === transcription: spinning-top
+md-internalId: Ghost_ST_RIP1
 md-super-subType: wa-region/wara
 md-var-DialogueId: WARA
 md-name: Shattered Terrace
@@ -16,6 +17,7 @@ Look! Do you see? A big one just ate a little one! OAOAOAOA!
 Good! One less stinging idiot! OA! They prick at me so!
 
 === transcription: spinning-top
+md-internalId: Ghost_ST_AU2
 md-super-subType: spinning-top
 md-var-DialogueId: toys
 md-name: Ancient Urban Toys
@@ -31,6 +33,7 @@ Thank you for coming. I couldn’t have done this alone.
 But I fear what is next.
 
 === transcription: spinning-top
+md-internalId: Ghost_ST_AU1
 md-super-subType: wa-region/waua
 md-var-DialogueId: WAUA
 md-name: Void Bath

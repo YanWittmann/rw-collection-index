@@ -83,6 +83,12 @@ export const pearlOrder: PearlChapter[] = [
         ]
     },
     {
+        name: "The Watcher: Vanilla Regions",
+        ids: [
+            { pattern: /Watcher_vanillaEncounter_.+/ },
+        ]
+    },
+    {
         name: "The Watcher: Spinning Top",
         ids: [
             { pattern: /Watcher_ST_Echo.+/ },
@@ -123,12 +129,6 @@ export const pearlOrder: PearlChapter[] = [
         name: "Developer Commentary",
         ids: [
             { pattern: /DevComm_.+/ }
-        ]
-    },
-    {
-        name: "The Watcher: Vanilla Regions",
-        ids: [
-            { pattern: /Watcher_vanillaEncounter_.+/ },
         ]
     },
 ]

@@ -26,6 +26,7 @@ md-sourceDialogue: strings.txt
 OA! Look! It's too stupid to even pay attention! OAOAOAOA!!
 
 === transcription: spinning-top
+md-internalId: Ghost_ST_V1
 md-type: pearl
 md-var-DialogueId: 1
 md-super-name: First Encounter
@@ -56,6 +57,7 @@ md-sourceDialogue: strings.txt
 OA!! How rude!! I was going to give it a gift.
 
 === transcription: spinning-top
+md-internalId: Ghost_ST_V2
 md-type: pearl
 md-var-DialogueId: 2
 md-super-name: Second Encounter
@@ -79,6 +81,7 @@ OAOAOAOAOA!! And here too it seems?? Too dumb to live, too base to die.
 How boring! Bleh! I will depart.
 
 === transcription: spinning-top
+md-internalId: Ghost_ST_V3
 md-type: pearl
 md-var-DialogueId: 3
 md-super-name: Third Encounter

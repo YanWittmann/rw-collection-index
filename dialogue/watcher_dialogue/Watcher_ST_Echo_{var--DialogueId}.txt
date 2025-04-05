@@ -20,6 +20,7 @@ map: region=WVWA, room=F03, mapSlugcat=watcher
 mapInfo: Spinning Top can be encountered in any order in these regions.\nSeven Encounters are necessary to unlock the Shattered Terrace to Ancient Urban portal.\nWatcher locations are not yet supported by the interactive map.
 
 === transcription: spinning-top
+md-internalId: Ghost_ST_N1
 md-type: pearl
 md-var-DialogueId: 1
 md-name: First Encounter
@@ -49,6 +50,7 @@ md-sourceDialogue: none
 ...
 
 === transcription: spinning-top
+md-internalId: Ghost_ST_N5
 md-type: pearl
 md-var-DialogueId: 4
 md-name: Fourth Encounter
@@ -60,6 +62,7 @@ HMMMMMM?
 Yes, well I am lost!
 
 === transcription: spinning-top
+md-internalId: Ghost_ST_N4
 md-type: pearl
 md-var-DialogueId: 5
 md-name: Fifth Encounter
@@ -86,6 +89,7 @@ md-sourceDialogue: none
 ...
 
 === transcription: spinning-top
+md-internalId: Ghost_ST_N2
 md-type: pearl
 md-var-DialogueId: 7
 md-name: Seventh Encounter
@@ -111,6 +115,7 @@ md-sourceDialogue: none
 ...
 
 === transcription: watcher
+md-internalId: Ghost_ST_N6
 md-type: pearl
 md-var-DialogueId: 9
 md-name: Ninth Encounter
@@ -133,6 +138,7 @@ md-sourceDialogue: none
 ...
 
 === transcription: watcher
+md-internalId: Ghost_ST_N3
 md-type: pearl
 md-var-DialogueId: 11
 md-name: Eleventh Encounter
@@ -151,6 +157,7 @@ md-sourceDialogue: none
 ...
 
 === transcription: spinning-top
+md-internalId: Ghost_ST_N7
 md-type: pearl
 md-var-DialogueId: 13
 md-name: Thirteenth Encounter
@@ -167,6 +174,7 @@ But still can be eaten! OAOAOA!
 A tasty little god sausage! OAOAOAOAOAOA!
 
 === transcription: spinning-top
+md-internalId: Ghost_ST_ROT1
 md-super-subType: wa-region/wdsr
 md-var-DialogueId: rot
 md-name: Encounter in rotten region
