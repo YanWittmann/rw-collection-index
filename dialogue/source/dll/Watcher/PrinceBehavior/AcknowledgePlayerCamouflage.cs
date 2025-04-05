@@ -1,4 +1,3 @@
-// Watcher.PrinceBehavior
 // Token: 0x06002831 RID: 10289 RVA: 0x002FFB9C File Offset: 0x002FDD9C
 public void AcknowledgePlayerCamouflage()
 {

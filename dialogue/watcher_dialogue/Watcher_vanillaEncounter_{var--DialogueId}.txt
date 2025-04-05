@@ -28,8 +28,8 @@ OA! Look! It's too stupid to even pay attention! OAOAOAOA!!
 === transcription: spinning-top
 md-type: pearl
 md-var-DialogueId: 1
-md-super-name: Pre-Multiverse First Encounter
-md-name: Pre-Multiverse First Encounter
+md-super-name: First Encounter
+md-name: First Encounter
 md-sourceDialogue: 200.txt
 OAOAOAOA! Minerals! Sinew! Liquids! OAOAOA liquids??
 Do you excrete, little thing?? Yes you do! OAOAOAOAOA!!\nYes you do excrete OAOAOAO!!!!
@@ -58,8 +58,8 @@ OA!! How rude!! I was going to give it a gift.
 === transcription: spinning-top
 md-type: pearl
 md-var-DialogueId: 2
-md-super-name: Pre-Multiverse Second Encounter
-md-name: Pre-Multiverse Second Encounter
+md-super-name: Second Encounter
+md-name: Second Encounter
 md-sourceDialogue: 201.txt
 You again! Odd little thing, trembling. Peeping eyes.\nSO PEEPING OAOAOAOA!! But I suppose you must peep.
 So many sharp teeth and claws in this meat world.
@@ -81,8 +81,8 @@ How boring! Bleh! I will depart.
 === transcription: spinning-top
 md-type: pearl
 md-var-DialogueId: 3
-md-super-name: Pre-Multiverse Third Encounter
-md-name: Pre-Multiverse Third Encounter
+md-super-name: Third Encounter
+md-name: Third Encounter
 md-sourceDialogue: 202.txt
 OAOAOA! It is this thing! Have you really not been eaten?
 Well well well well! Not in this strand, no.

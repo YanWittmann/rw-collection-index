@@ -1,0 +1,65 @@
+type: item
+subType: rot-prince
+tag: watcher
+map: region=WORA, room=AI, mapSlugcat=watcher
+mapInfo: The Prince can only be encountered once the four portals in the Throne have been created.
+
+
+=== transcription: rot-prince
+md-type: pearl
+md-var-DialogueId: AcknowledgePlayerCamouflage
+md-name: Acknowledge Player Camouflage
+md-sourceDialogue: strings.txt
+md-sourceDialogue: AcknowledgePlayerCamouflage.cs
+MONO
+/ If the Prince is not paralyzed:
+/  If the player has a Ripple Level of 5 or more:
+/   One of the following options is selected randomly:
+|    Ahh yes! The paths! How wonderous!
+|    How auspicious it was, our meeting...
+/  Otherwise:
+/   One of the following options is selected randomly:
+|    Marvelous!
+|    Oh, show me again!
+
+=== transcription: rot-prince
+md-type: pearl
+md-var-DialogueId: TalkToDeadPlayer
+md-name: Talk To Dead Player
+md-sourceDialogue: strings.txt
+md-sourceDialogue: TalkToDeadPlayer.cs
+MONO
+/ If the Prince can see the player and the Prince is not paralyzed:
+/  If the player died to tentacles:
+/   One of the following options is selected randomly:
+|    How I have wished for this day. My dear friend, welcome.
+|    Delight! For you will be exalted in this new kingdom!
+/  Otherwise:
+/   One of the following options is selected randomly:
+|    Oh such enthusiasm! I am honored!
+|    Never again will you be alone.
+
+=== transcription: rot-prince
+md-type: pearl
+md-var-DialogueId: AcknowledgePlayerGift
+md-name: Acknowledge Player Gift
+md-sourceDialogue: strings.txt
+md-sourceDialogue: AcknowledgePlayerGift.cs
+Oh, you have brought sundries?
+You can leave them here if you wish, as a contribution.
+My processes will dissolve them to their base components and those components will be added to the mass.
+Nothing to waste, every bit counts!
+
+=== transcription: rot-prince
+md-type: pearl
+md-var-DialogueId: Pain
+md-name: Pain
+md-sourceDialogue: strings.txt
+md-sourceDialogue: Pain.cs
+MONO
+/ If the Prince is not paralyzed and was hit by a weapon:
+/  One of the following options is selected randomly:
+|   Ah! So spirited!
+|   So vital! Hah ha!
+|   It is a joy to see you play!
+|   Forgive me if I cannot respond in kind. This body is so limited...

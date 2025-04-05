@@ -83,6 +83,25 @@ export const pearlOrder: PearlChapter[] = [
         ]
     },
     {
+        name: "The Watcher: Spinning Top",
+        ids: [
+            { pattern: /Watcher_ST_Echo.+/ },
+            { pattern: /Watcher_ST_Other.+/ },
+        ]
+    },
+    {
+        name: "The Watcher: Rot Prince",
+        ids: [
+            { pattern: /Watcher_Prince.+/ },
+        ]
+    },
+    {
+        name: "The Watcher (Unclassified for now)",
+        ids: [
+            { pattern: /Watcher_Unclassified_.+/ },
+        ]
+    },
+    {
         name: "Five Pebble's Pearls",
         ids: [
             { pattern: /PebblesPearl_\d+/ }
@@ -107,28 +126,9 @@ export const pearlOrder: PearlChapter[] = [
         ]
     },
     {
-        name: "The Watcher: Pre-Multiverse",
+        name: "The Watcher: Vanilla Regions",
         ids: [
-            { pattern: /WatcherSTPreMultiverse.+/ },
-        ]
-    },
-    {
-        name: "The Watcher: Spinning Top Dialogue",
-        ids: [
-            { pattern: /WatcherSTEcho.+/ },
-            { pattern: /WatcherSTOther.+/ },
-        ]
-    },
-    {
-        name: "The Watcher: Rot Prince",
-        ids: [
-            { pattern: /WatcherPrince.+/ },
-        ]
-    },
-    {
-        name: "The Watcher (Unclassified for now)",
-        ids: [
-            { pattern: /WatcherUnclassified_.+/ },
+            { pattern: /Watcher_vanillaEncounter_.+/ },
         ]
     },
 ]

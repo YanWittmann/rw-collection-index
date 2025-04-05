@@ -196,7 +196,18 @@ export function DialogueBox({
         const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, effectiveTranscriberName);
 
         const internalId = dialogue.metadata.internalId || pearl.metadata.internalId;
-        const sourceFileDisplayText = (dialogue.metadata.sourceDialogue && dialogue.metadata.sourceDialogue.length === 1) ? dialogue.metadata.sourceDialogue[0].split(/[/\\]/).pop() : null;
+        let sourceFileDisplayText: string | null;
+        if (dialogue.metadata.sourceDialogue) {
+            if (dialogue.metadata.sourceDialogue.length === 1) {
+                sourceFileDisplayText = dialogue.metadata.sourceDialogue[0].split(/[/\\]/).pop() || "";
+            } else if (dialogue.metadata.sourceDialogue.filter(f => f.includes(".cs")).length === 1) {
+                sourceFileDisplayText = dialogue.metadata.sourceDialogue.filter(f => f.includes(".cs"))[0].split(/[/\\]/).pop() || "";
+            } else {
+                sourceFileDisplayText = null;
+            }
+        } else {
+            sourceFileDisplayText = null;
+        }
         const internalIdElement = internalId && <Tooltip key={"internal-id-tooltip"}>
             <TooltipTrigger onClick={() => {
                 navigator.clipboard.writeText(internalId);
