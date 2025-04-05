@@ -42,7 +42,7 @@ export function getTranscriberIcon(transcriber: Dialogue, index?: number) {
     if (transcriber.metadata.transcriberName) {
         displayTranscriberName = "plain=" + transcriber.metadata.transcriberName;
     } else {
-        displayTranscriberName = effectiveTranscriberName;
+        displayTranscriberName = transcriber.transcriber;
     }
 
     return { iconType, color, effectiveTranscriberName, overwriteColor, displayTranscriberName };

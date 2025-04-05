@@ -107,11 +107,22 @@ export const pearlOrder: PearlChapter[] = [
         ]
     },
     {
-        name: "The Watcher: Spinning Top",
+        name: "The Watcher: Pre-Multiverse",
         ids: [
             { pattern: /WatcherSTPreMultiverse.+/ },
+        ]
+    },
+    {
+        name: "The Watcher: Spinning Top Dialogue",
+        ids: [
             { pattern: /WatcherSTEcho.+/ },
             { pattern: /WatcherSTOther.+/ },
+        ]
+    },
+    {
+        name: "The Watcher: Rot Prince",
+        ids: [
+            { pattern: /WatcherPrince.+/ },
         ]
     },
     {

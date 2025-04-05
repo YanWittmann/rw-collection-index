@@ -14,3 +14,34 @@ So tenacious! Even amongst this flotsam and jetsam!
 These mindless swimmers and floaters.
 Look! Do you see? A big one just ate a little one! OAOAOAOA!
 Good! One less stinging idiot! OA! They prick at me so!
+
+=== transcription: spinning-top
+md-super-subType: wa-region/waua
+md-var-DialogueId: WAUA
+md-name: Void Bath
+md-map: region=WAUA, room=BATH, mapSlugcat=watcher
+md-sourceDialogue: 210.txt
+Oh.
+Here I am again.
+The bath. The pipes. The gravel.
+The mournful geometry.
+This sluice through which a departed one's essence flows,
+so undignified.
+A soup of proteins and acids.
+Must we be this?
+...
+I traveled through that thin grate, and yet I stayed.
+All my mothers and fathers and crechemates who went along without me...
+Do they note my absence?
+I've traveled from the furthest future to the very seed of our past, and I see no evidence.
+Only echoes and strays.
+Aloof. Alone.
+Afraid.
+...
+Well no longer.
+I will abandon this eternal waiting room.
+I will step through the white door.
+I will accept what is next.
+...
+OAOAOA!
+Thank you.

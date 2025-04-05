@@ -3,50 +3,6 @@ subType: watcher
 tag: watcher
 
 === transcription: watcher
-md-var-DialogueId: 204.txt
-md-name: Unclassified 204.txt
-md-sourceDialogue: 204.txt
-Well!
-Well well well!
-It has been many
-numerous
-cycles.
-And yet here you are! You follow again!
-It is NOT normal.
-Hmmm....
-mmmmmm...
-MMMMMMMMM...
-...
-I am VERY likable though! OAOAOAOAOAOA!!
-
-=== transcription: watcher
-md-var-DialogueId: 205.txt
-md-name: Unclassified 205.txt
-md-sourceDialogue: 205.txt
-OA OA, it is my shadow. I have been watching you.
-It is nice to have a companion, after all this time.
-For so long I have drifted. Lost.
-Dispersed in the multitudes of the waves and the ripples.
-But following your thread brings me closer, perhaps, to how I was.
-
-=== transcription: watcher
-md-var-DialogueId: 208.txt
-md-name: Unclassified 208.txt
-md-sourceDialogue: 208.txt
-OA! Hallo my shadow!
-...
-Bleh you shouldn’t have come here.
-It is too far.
-Blech, bleh. I hate it.
-Gross gross gross.
-...
-After a point it’s all like this.
-Glip glop everywhere. Sea of lumps, forever.
-So glad I cannot sniff!
-Spoiled meat, dissolving proteins. Yeeck.
-Let's away.
-
-=== transcription: watcher
 md-var-DialogueId: 209.txt
 md-name: Unclassified 209.txt
 md-sourceDialogue: 209.txt
@@ -60,35 +16,6 @@ Thank you for coming. I couldn’t have done this alone.
 But I fear what is next.
 
 === transcription: watcher
-md-var-DialogueId: 210.txt
-md-name: Unclassified 210.txt
-md-sourceDialogue: 210.txt
-Oh.
-Here I am again.
-The bath. The pipes. The gravel.
-The mournful geometry.
-This sluice through which a departed one's essence flows,
-so undignified.
-A soup of proteins and acids.
-Must we be this?
-...
-I traveled through that thin grate, and yet I stayed.
-All my mothers and fathers and crechemates who went along without me...
-Do they note my absence?
-I've traveled from the furthest future to the very seed of our past, and I see no evidence.
-Only echoes and strays.
-Aloof. Alone.
-Afraid.
-...
-Well no longer.
-I will abandon this eternal waiting room.
-I will step through the white door.
-I will accept what is next.
-...
-OAOAOA!
-Thank you.
-
-=== transcription: watcher
 md-var-DialogueId: 211.txt
 md-name: Unclassified 211.txt
 md-sourceDialogue: 211.txt
@@ -97,35 +24,6 @@ Are you lost?
 Hmmmm?
 HMMMMMM?
 Yes, well I am lost!
-
-=== transcription: watcher
-md-var-DialogueId: 212.txt
-md-name: Unclassified 212.txt
-md-sourceDialogue: 212.txt
-Ho! Hum! Hi! He!
-A pin for creche!
-A petal for spawn!
-A drop of juice!
-He! Hum! WA! Ho!
-A bowl, a jar, a length of twine!
-...
-I love that song, don't you?
-My nest mothers would sing it to me.
-
-=== transcription: watcher
-md-var-DialogueId: 213.txt
-md-name: Unclassified 213.txt
-md-sourceDialogue: 213.txt
-OAOA! How is it then?
-To be an animal.
-Or are you still?
-...
-No. Not after all this time, and distance.
-A small god.
-TINY.
-A godlet!
-But still can be eaten! OAOAOA!
-A tasty little god sausage! OAOAOAOAOAOA!
 
 === transcription: watcher
 md-var-DialogueId: 214.txt

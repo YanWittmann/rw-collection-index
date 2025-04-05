@@ -154,6 +154,7 @@ export const speakerNames: { [key: string]: string } = {
     "ST": "Spinning Top",
     "Spinning Top": "Spinning Top",
     "spinning-top": "Spinning Top",
+    "rot-prince": "Rot Prince",
 }
 
 export const regionNames: { [key: string]: string } = {

@@ -11,19 +11,18 @@ export interface RwScrollableListItem {
 
 interface RwScrollableListProps {
     items: RwScrollableListItem[]
-    maxHeight?: string
     className?: string
     itemClassName?: string
 }
 
-export function RwScrollableList({ items, maxHeight = "340px", className, itemClassName }: RwScrollableListProps) {
+export function RwScrollableList({ items, className, itemClassName }: RwScrollableListProps) {
     return (
         <div className={cn("relative rounded-xl overflow-hidden", className)}>
             {/* Inner border */}
-            <div className="absolute inset-[3px] rounded-lg border-2 border-white/60 pointer-events-none" />
+            <div className="absolute inset-[3px] rounded-lg border-2 border-white/60 pointer-events-none"/>
 
             {/* Content container */}
-            <div className={`max-h-[${maxHeight}] overflow-y-auto py-2 relative z-10 no-scrollbar`}>
+            <div className={`overflow-y-auto py-2 relative z-10 no-scrollbar`} style={{ maxHeight: "80svh" }}>
                 {items.map((item) => (
                     item.customElement ? (
                         <div key={item.id} className={cn("w-full", itemClassName)}>
