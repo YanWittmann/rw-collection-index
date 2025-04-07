@@ -1,5 +1,6 @@
 type: item
 subType: hunter
+map: region=SL, room=AI, mapSlugcat=red
 
 === transcription: LttM-post-collapse
 md-type: pearl
@@ -20,3 +21,14 @@ I wish I could say I will always remember it.
 ...
 Little friend. Perhaps you already know this, and I don't know what consolation it might bring, but...
 You will wake right back up again.
+
+=== transcription: LttM-post-collapse
+md-type: pearl
+md-var-DialogueId: Second_encounter
+md-name: Second encounter
+Hi! Little saviour!
+It is good to see you again.
+I wish I could help you like you have helped me... But like this, there is very little I can do.
+All I can do is express how thankful I am. You have given me some additional time... despite not having a lot of it yourself.
+I hope... this was meaningful for you.
+It was for me.

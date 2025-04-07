@@ -17,7 +17,7 @@ map: region=WSKD, room=B40, mapSlugcat=watcher
 map: region=WTDA, room=Z14, mapSlugcat=watcher
 map: region=WTDB, room=A26, mapSlugcat=watcher
 map: region=WVWA, room=F03, mapSlugcat=watcher
-mapInfo: Spinning Top can be encountered in any order in these regions.\nSeven Encounters are necessary to unlock the Shattered Terrace to Ancient Urban portal.\nWatcher locations are not yet supported by the interactive map.
+mapInfo: Spinning Top can be encountered in any order in these regions.\nSeven Encounters are necessary to unlock the Shattered Terrace to Ancient Urban portal.
 info: To determine what dialogue to display for each encounter,\nthe game (mainly) uses the min and max Ripple Level of the player.\nAfter the Vanilla intro, the min/max Ripple Levels are both 1.\nThe max Ripple Level increases by 0.5 for each encounter, with the min Level trailing behind by 2.\nThe Level cap of 5.0 corresponds to the ten Karma levels the player can reach.
 
 === transcription: spinning-top

@@ -1,7 +1,6 @@
 type: item
 subType: watcher
 tag: watcher
-mapInfo: Watcher locations are not yet supported by the interactive map.
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_RIP1
