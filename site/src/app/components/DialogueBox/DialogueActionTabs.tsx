@@ -4,7 +4,6 @@ import {
     findSourceDialogue,
     regionNames,
     resolveVariables,
-    SOURCE_DECRYPTED,
     speakersColors
 } from "../../utils/speakers"
 import { renderDialogueLine } from "../../utils/renderDialogueLine"
