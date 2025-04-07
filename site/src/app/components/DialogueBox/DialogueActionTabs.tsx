@@ -337,14 +337,27 @@ export function DialogueActionTabs({
             <Tooltip key="open-downpour">
                 <TooltipTrigger asChild>
           <span>
-            <RwTabButton
-                aria-label="Downpour-Exclusive Content"
-            >
+            <RwTabButton aria-label="Downpour-Exclusive Content">
               <RwIcon type="dlc-dp"/>
             </RwTabButton>
           </span>
                 </TooltipTrigger>
                 <TooltipContent side="bottom">Downpour-Exclusive Content</TooltipContent>
+            </Tooltip>,
+        )
+    }
+
+    if (hasTag(transcriberData.metadata.tags, "watcher")) {
+        tabs.push(
+            <Tooltip key="open-watcher">
+                <TooltipTrigger asChild>
+          <span>
+            <RwTabButton aria-label="The Watcher-Exclusive Content">
+              <RwIcon type="dlc-watcher"/>
+            </RwTabButton>
+          </span>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">The Watcher-Exclusive Content</TooltipContent>
             </Tooltip>,
         )
     }
