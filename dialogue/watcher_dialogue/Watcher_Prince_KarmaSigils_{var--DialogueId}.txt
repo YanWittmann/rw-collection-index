@@ -1,0 +1,104 @@
+type: item
+subType: rot-prince-pre
+tag: watcher
+
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_1_4
+md-var-DialogueId: Prince_KS_1
+md-name: First Encounter, Fourth Karma Sigil
+md-map: region=WORA, room=AI, mapSlugcat=watcher
+md-sourceDialogue: 217.txt
+md-sourceDialogue: WORA_KarmaSigils/Update.cs
+md-sourceDialogue: WORA_KarmaSigils/explanation.txt
+Oh the joy!
+The incomparable JOY!
+
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_1_3
+md-var-DialogueId: Prince_KS_1
+md-name: First Encounter, Third Karma Sigil
+md-map: region=WORA, room=AI, mapSlugcat=watcher
+md-sourceDialogue: 216.txt
+md-sourceDialogue: WORA_KarmaSigils/Update.cs
+md-sourceDialogue: WORA_KarmaSigils/explanation.txt
+against... us?
+But now... I?
+A... SELF.
+And...
+an OTHER.
+
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_1_2
+md-var-DialogueId: Prince_KS_1
+md-name: First Encounter, Second Karma Sigil
+md-map: region=WORA, room=THRONE02, mapSlugcat=watcher
+md-sourceDialogue: 215.txt
+md-sourceDialogue: WORA_KarmaSigils/Update.cs
+md-sourceDialogue: WORA_KarmaSigils/explanation.txt
+Never again...
+STARVING, pressing, grinding,
+SQUEEZING
+
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_1_1
+md-var-DialogueId: Prince_KS_1
+md-super-name: Karma Sigils, First Encounter
+md-name: First Encounter, First Karma Sigil
+md-map: region=WORA, room=THRONE02, mapSlugcat=watcher
+md-sourceDialogue: 214.txt
+md-sourceDialogue: WORA_KarmaSigils/Update.cs
+md-sourceDialogue: WORA_KarmaSigils/explanation.txt
+Ahh!
+To move!
+To breathe free!
+
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_2_4
+md-var-DialogueId: Prince_KS_2
+md-name: Second Encounter, Fourth Karma Sigil
+md-map: region=WORA, room=AI, mapSlugcat=watcher
+md-sourceDialogue: 221.txt
+md-sourceDialogue: WORA_KarmaSigils/Update.cs
+md-sourceDialogue: WORA_KarmaSigils/explanation.txt
+A scent.
+Familiar.
+So familiar.
+
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_2_3
+md-var-DialogueId: Prince_KS_2
+md-name: Second Encounter, Third Karma Sigil
+md-map: region=WORA, room=AI, mapSlugcat=watcher
+md-sourceDialogue: 220.txt
+md-sourceDialogue: WORA_KarmaSigils/Update.cs
+md-sourceDialogue: WORA_KarmaSigils/explanation.txt
+A light! A scent!
+A tunnel!
+To freedom!
+How beautiful, FREEDOM!
+
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_2_2
+md-var-DialogueId: Prince_KS_2
+md-name: Second Encounter, Second Karma Sigil
+md-map: region=WORA, room=THRONE02, mapSlugcat=watcher
+md-sourceDialogue: 219.txt
+md-sourceDialogue: WORA_KarmaSigils/Update.cs
+md-sourceDialogue: WORA_KarmaSigils/explanation.txt
+There was...
+such discomfort...
+and hunger. Endless hunger!
+And then...
+a presence!
+
+=== transcription: rot-prince-pre
+md-internalId: Prince_KS_2_1
+md-var-DialogueId: Prince_KS_2
+md-super-name: Karma Sigils, Second Encounter
+md-name: Second Encounter, First Karma Sigil
+md-map: region=WORA, room=THRONE02, mapSlugcat=watcher
+md-sourceDialogue: 218.txt
+md-sourceDialogue: WORA_KarmaSigils/Update.cs
+md-sourceDialogue: WORA_KarmaSigils/explanation.txt
+Ahhh hah...
+familiar.

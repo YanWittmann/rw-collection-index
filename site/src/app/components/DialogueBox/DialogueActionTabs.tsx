@@ -1,6 +1,12 @@
 import { RwIcon } from "../PearlGrid/RwIcon"
 import type { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types"
-import { regionNames, resolveVariables, SOURCE_DECRYPTED, speakersColors } from "../../utils/speakers"
+import {
+    findSourceDialogue,
+    regionNames,
+    resolveVariables,
+    SOURCE_DECRYPTED,
+    speakersColors
+} from "../../utils/speakers"
 import { renderDialogueLine } from "../../utils/renderDialogueLine"
 import { hasTag } from "../../utils/pearlOrder"
 import { RwScrollableList } from "../other/RwScrollableList"
@@ -209,7 +215,7 @@ export function DialogueActionTabs({
                             <RwScrollableList
                                 items={transcriberData.metadata.sourceDialogue.map((sourcePath, index) => {
                                     const filename = sourcePath.split(/[/\\]/).pop() || `Source File ${index + 1}`
-                                    const foundEntry = SOURCE_DECRYPTED.find((entry) => entry.n === filename)
+                                    const foundEntry = findSourceDialogue(sourcePath);
 
                                     return {
                                         id: `source-file-${index}`,

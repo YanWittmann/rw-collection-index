@@ -7,6 +7,17 @@ mapInfo: The Prince can only be encountered once the four portals in the Throne 
 
 === transcription: rot-prince
 md-type: pearl
+md-var-DialogueId: AcknowledgePlayerGift
+md-name: Acknowledge Player Gift
+md-sourceDialogue: strings.txt
+md-sourceDialogue: AcknowledgePlayerGift.cs
+Oh, you have brought sundries?
+You can leave them here if you wish, as a contribution.
+My processes will dissolve them to their base components and those components will be added to the mass.
+Nothing to waste, every bit counts!
+
+=== transcription: rot-prince
+md-type: pearl
 md-var-DialogueId: AcknowledgePlayerCamouflage
 md-name: Acknowledge Player Camouflage
 md-sourceDialogue: strings.txt
@@ -38,17 +49,6 @@ MONO
 /   One of the following options is selected randomly:
 |    Oh such enthusiasm! I am honored!
 |    Never again will you be alone.
-
-=== transcription: rot-prince
-md-type: pearl
-md-var-DialogueId: AcknowledgePlayerGift
-md-name: Acknowledge Player Gift
-md-sourceDialogue: strings.txt
-md-sourceDialogue: AcknowledgePlayerGift.cs
-Oh, you have brought sundries?
-You can leave them here if you wish, as a contribution.
-My processes will dissolve them to their base components and those components will be added to the mass.
-Nothing to waste, every bit counts!
 
 === transcription: rot-prince
 md-type: pearl

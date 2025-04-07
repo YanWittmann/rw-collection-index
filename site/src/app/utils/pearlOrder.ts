@@ -98,13 +98,9 @@ export const pearlOrder: PearlChapter[] = [
     {
         name: "The Watcher: Rot Prince",
         ids: [
-            { pattern: /Watcher_Prince.+/ },
-        ]
-    },
-    {
-        name: "The Watcher (Unclassified for now)",
-        ids: [
-            { pattern: /Watcher_Unclassified_.+/ },
+            { pattern: /Watcher_Prince_KarmaSigils.+/ },
+            { pattern: /Watcher_Prince_Dialogue.+/ },
+            { pattern: /Watcher_Prince_Events.+/ },
         ]
     },
     {

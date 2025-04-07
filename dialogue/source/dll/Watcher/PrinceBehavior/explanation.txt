@@ -1,0 +1,42 @@
+MONO
+
+Prince_X (General Story Dialogues)
+These are triggered based on rot infection progression and the player’s history with the Prince.
+
+Trigger Conditions:
+ Controlled by: TargetConversation(int highestConversationSeen, int infections)
+ Progressively unlocked as the player spreads Sentient Rot (tracked via infections)
+
+Dialogue Unlocks:
+ Prince_1:
+  Unlock Condition: First encounter (always plays)
+  Internal ID: 222
+
+ Prince_2:
+  Unlock Condition: Default follow-up
+  Internal ID: 223
+
+ Prince_3:
+  Unlock Condition: infections > 4
+  Internal ID: 224
+
+ Prince_4:
+  Unlock Condition: infections > 6
+  Internal ID: 225
+
+ Prince_5:
+  Unlock Condition: infections > 8
+  Internal ID: 226
+
+ Prince_6:
+  Unlock Condition: infections > 10
+  Internal ID: 227
+
+ Prince_7:
+  Unlock Condition: infections > 12
+  Internal ID: 228
+
+Mechanics:
+ Prince_1 is the introductory dialogue (first meeting)
+ Subsequent dialogues (Prince_2 to Prince_7) are locked behind rot spread milestones
+ highestPrinceConversationSeen ensures no repeats

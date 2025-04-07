@@ -1,7 +1,7 @@
 import { TranscriberSelector } from "./TranscriberSelector";
 import { DialogueContent } from "./DialogueContent";
 import { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types";
-import { resolveVariables, SOURCE_DECRYPTED, speakerNames } from "../../utils/speakers";
+import { findSourceDialogue, resolveVariables, speakerNames } from "../../utils/speakers";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion"
 import { WelcomeDialogueContent } from "./WelcomeDialogueContent";
@@ -56,20 +56,20 @@ export function getMapLocations(dialogue: Dialogue): MapInfo[] {
 }
 
 export function DialogueBox({
-    pearl,
-    selectedTranscriber,
-    onSelectTranscriber,
-    setUnlockMode,
-    unlockMode,
-    triggerRender,
-    hintProgress,
-    setHintProgress,
-    onSelectPearl,
-    isMobile,
-    setSourceFileDisplay,
-    sourceFileDisplay,
-    searchText,
-}: DialogueBoxProps) {
+                                pearl,
+                                selectedTranscriber,
+                                onSelectTranscriber,
+                                setUnlockMode,
+                                unlockMode,
+                                triggerRender,
+                                hintProgress,
+                                setHintProgress,
+                                onSelectPearl,
+                                isMobile,
+                                setSourceFileDisplay,
+                                sourceFileDisplay,
+                                searchText,
+                            }: DialogueBoxProps) {
     const [hoveredTranscriber, setHoveredTranscriber] = useState<string | null>(null);
     const [lastTranscriberName, setLastTranscriberName] = useState<string | null>(null);
     const [justCopiedInternalId, setJustCopiedInternalId] = useState<boolean>(false);
@@ -229,7 +229,7 @@ export function DialogueBox({
                 onClick={() => sourceFileDisplayText === sourceFileDisplay ? setSourceFileDisplay(null) : setSourceFileDisplay(sourceFileDisplayText)}
             >
                 <span className={"font-mono text-xs text-white/70"}>
-                    {sourceFileDisplayText}
+                    {sourceFileDisplayText} {dialogue.metadata.sourceDialogue && dialogue.metadata.sourceDialogue.length > 1 && ("(+" + (dialogue.metadata.sourceDialogue.length - 1) + ")")}
                 </span>
             </TooltipTrigger>
             <TooltipContent className="text-center">
@@ -248,7 +248,8 @@ export function DialogueBox({
                     {bottomElement} / {sourceFileElement}
                 </span>
             } else {
-                bottomElement = <span className={"font-mono text-xs text-white/70 cursor-pointer"}>{sourceFileElement}</span>;
+                bottomElement =
+                    <span className={"font-mono text-xs text-white/70 cursor-pointer"}>{sourceFileElement}</span>;
             }
         }
 
@@ -294,7 +295,7 @@ export function DialogueBox({
 
         let displayLines: DialogueLine[];
         if (sourceFileDisplay) {
-            const foundEntry = SOURCE_DECRYPTED.find(entry => entry.n === sourceFileDisplay);
+            const foundEntry = findSourceDialogue(sourceFileDisplay);
             if (foundEntry) {
                 displayLines = foundEntry.c.replaceAll("\n\n", "\n").replaceAll("<", "&lt;").replaceAll(">", "&gt;").split("\n").map(line => ({ text: line }));
             } else {

@@ -1,0 +1,47 @@
+MONO
+The "KS" in "Prince_KS_*" stands for "Karma Sigil", as these conversations are tied to the karma sigil mechanics in the WORA_KarmaSigils class.
+
+These are triggered in WORA_KarmaSigils under specific conditions:
+
+For numberOfPrinceEncounters == 1:
+ Prince_KS_1_1:
+  Room: WORA_THRONE02
+  Trigger Position: player.mainBodyChunk.pos.y >= 940f (near the first sigil)
+  Tile Check: player.mainBodyChunk.pos.x >= 680f && player.mainBodyChunk.pos.x <= 940f
+
+ Prince_KS_1_2:
+  Room: WORA_THRONE02
+  Trigger Position: player.mainBodyChunk.pos.y >= 2980f (near the second sigil)
+  Tile Check:
+   player.mainBodyChunk.pos.x <= 415f
+   OR between 515f–570f
+   OR between 750f–830f
+
+ Prince_KS_1_3:
+  Room: WORA_AI
+  Trigger Position: player.mainBodyChunk.pos.x <= 2630f (first checkpoint)
+
+ Prince_KS_1_4:
+  Room: WORA_AI
+  Trigger Position: player.mainBodyChunk.pos.x <= 1810f (second checkpoint)
+
+For numberOfPrinceEncounters == 2:
+ Prince_KS_2_1:
+  Room: WORA_THRONE02
+  Same Y-position check as KS_1_1 but for the second encounter
+
+ Prince_KS_2_2:
+  Room: WORA_THRONE02
+  Same Y-position check as KS_1_2 but for the second encounter
+
+ Prince_KS_2_3:
+  Room: WORA_AI
+  Same X-position check as KS_1_3 but for the second encounter
+
+ Prince_KS_2_4:
+  Room: WORA_AI
+  Same X-position check as KS_1_4 but for the second encounter
+
+Common Conditions for All KS Dialogues:
+ lockedOuterRimProgressionFlag must be false
+ The player must not have seen the conversation before (highestPrinceConversationSeen < conversationID)

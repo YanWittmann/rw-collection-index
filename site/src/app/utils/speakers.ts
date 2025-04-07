@@ -262,3 +262,13 @@ export function resolveVariables(str: string): string {
         return `\${${variable}}`;
     });
 }
+
+export function findSourceDialogue(name: string) {
+    const entry = SOURCE_DECRYPTED.find(entry => entry.n === name)
+        || SOURCE_DECRYPTED.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/") === name)
+        || SOURCE_DECRYPTED.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/").includes(name));
+    if (!entry) {
+        console.warn(name, 'not found');
+    }
+    return entry;
+}

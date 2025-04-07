@@ -1,0 +1,95 @@
+type: item
+subType: rot-prince
+tag: watcher
+
+=== transcription: rot-prince
+md-internalId: Prince_2
+md-var-DialogueId: Prince_1_2
+md-name: First Encounter (Second Paragraph)
+md-sourceDialogue: 223.txt
+md-sourceDialogue: PrinceBehavior/InitateConversation.cs
+md-sourceDialogue: PrinceBehavior/explanation.txt
+Much time has passed since your last visit, and my kingdom grows.
+Oh the things I have seen and tasted!
+
+=== transcription: rot-prince
+md-internalId: Prince_1
+md-var-DialogueId: Prince_1_2
+md-super-name: First Encounter
+md-name: First Encounter (First Paragraph)
+md-sourceDialogue: 222.txt
+md-sourceDialogue: PrinceBehavior/InitateConversation.cs
+md-sourceDialogue: PrinceBehavior/TargetConversation.cs
+md-sourceDialogue: PrinceBehavior/explanation.txt
+Greetings, friend! Oh you have come!
+Please, be comfortable.
+
+=== transcription: rot-prince
+md-internalId: Prince_3
+md-var-DialogueId: Prince_3
+md-name: 5+ Infected Regions
+md-sourceDialogue: 224.txt
+md-sourceDialogue: PrinceBehavior/InitateConversation.cs
+md-sourceDialogue: PrinceBehavior/TargetConversation.cs
+md-sourceDialogue: PrinceBehavior/explanation.txt
+I am cataloging all things, you know.
+The imperative that was in THEM remains in me.
+But I am not wholly them, and not blind to the folly of their forbearers.
+I am... something new.
+
+=== transcription: rot-prince
+md-internalId: Prince_4
+md-var-DialogueId: Prince_4
+md-name: 7+ Infected Regions
+md-sourceDialogue: 225.txt
+md-sourceDialogue: PrinceBehavior/InitateConversation.cs
+md-sourceDialogue: PrinceBehavior/TargetConversation.cs
+md-sourceDialogue: PrinceBehavior/explanation.txt
+These paths you weave.
+Through them I have expanded my kingdom.
+I have tasted and I have become.
+It is my true purpose I believe. Perhaps the only purpose!
+
+=== transcription: rot-prince
+md-internalId: Prince_5
+md-var-DialogueId: Prince_5
+md-name: 9+ Infected Regions
+md-sourceDialogue: 226.txt
+md-sourceDialogue: PrinceBehavior/InitateConversation.cs
+md-sourceDialogue: PrinceBehavior/TargetConversation.cs
+md-sourceDialogue: PrinceBehavior/explanation.txt
+Imagine: a single substrate...
+Life!
+Throughout all time!
+Nothing lost. No one lost.
+A living memory of all life, forever!
+From bug to god, all as one. None above the other.
+A TRUE end to the pattern.
+That is my vision.
+
+=== transcription: rot-prince
+md-internalId: Prince_6
+md-var-DialogueId: Prince_6
+md-name: 11+ Infected Regions
+md-sourceDialogue: 227.txt
+md-sourceDialogue: PrinceBehavior/InitateConversation.cs
+md-sourceDialogue: PrinceBehavior/TargetConversation.cs
+md-sourceDialogue: PrinceBehavior/explanation.txt
+As with all great deeds, my work is not without great challenge.
+It has taken eons and the light fades.
+The paths close and change.
+I can almost feel... a will... at odds with my own.
+
+=== transcription: rot-prince
+md-internalId: Prince_7
+md-var-DialogueId: Prince_7
+md-name: 13+ Infected Regions
+md-sourceDialogue: 228.txt
+md-sourceDialogue: PrinceBehavior/InitateConversation.cs
+md-sourceDialogue: PrinceBehavior/TargetConversation.cs
+md-sourceDialogue: PrinceBehavior/explanation.txt
+Forgive me if I go on!
+You have done so much for me, I will not burden you with my troubles.
+Please, rest here as long as you wish.
+You are always safe here, my dear friend.
+You, who were there for me.
