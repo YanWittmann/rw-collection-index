@@ -265,8 +265,9 @@ export function resolveVariables(str: string): string {
 
 export function findSourceDialogue(name: string) {
     const entry = SOURCE_DECRYPTED.find(entry => entry.n === name)
-        || SOURCE_DECRYPTED.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/") === name)
-        || SOURCE_DECRYPTED.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/").includes(name));
+        || SOURCE_DECRYPTED.find(entry => entry.p === name)
+        || SOURCE_DECRYPTED.find(entry => entry.p.includes(name))
+        || SOURCE_DECRYPTED.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/") === name);
     if (!entry) {
         console.warn(name, 'not found');
     }
