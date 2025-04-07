@@ -220,7 +220,7 @@ export function DialogueActionTabs({
                                         id: `source-file-${index}`,
                                         title: filename,
                                         subtitle: foundEntry ? foundEntry.p.replaceAll("\\", "/") : "Entry unavailable. Likely an error.",
-                                        onClick: () => setSourceFileDisplay(filename),
+                                        onClick: () => setSourceFileDisplay(sourcePath),
                                     }
                                 })}
                             />

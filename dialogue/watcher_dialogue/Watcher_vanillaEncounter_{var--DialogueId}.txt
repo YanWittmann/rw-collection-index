@@ -6,13 +6,13 @@ map: region=LF, room=B01W, mapSlugcat=watcher
 map: region=SH, room=A08, mapSlugcat=watcher
 mapInfo: Spinning Top can be encountered in any order in the three regions.\nThe region you encounter them last determines the region you are sent to by the warp.\nWatcher locations are not yet supported by the interactive map.
 
-
 === transcription: spinning-top
 md-type: pearl
 md-internalId: DieAtSpinningTop1
 md-var-DialogueId: 1
 md-name: Die at Spinning Top
 md-transcriberName: Die at Spinning Top
+md-sourceDialogue: SpinningTop/Update.cs
 md-sourceDialogue: strings.txt
 OAOAOA!! Yes!!! Back into the ground you go!! What an idiot!! OAOAOAOAOAO
 
@@ -22,16 +22,20 @@ md-internalId: LeaveSpinningTop1
 md-var-DialogueId: 1
 md-name: Leaving early
 md-transcriberName: Leaving early
+md-sourceDialogue: SpinningTop/Update.cs
 md-sourceDialogue: strings.txt
 OA! Look! It's too stupid to even pay attention! OAOAOAOA!!
 
 === transcription: spinning-top
-md-internalId: Ghost_ST_V1
 md-type: pearl
+md-internalId: Ghost_ST_V1
 md-var-DialogueId: 1
-md-super-name: First Encounter
-md-name: First Encounter
+md-super-name: First Encounter (Next Max. Ripple Lvl. 0.25)
+md-name: First Encounter (Next Max. Ripple Lvl. 0.25)
 md-sourceDialogue: 200.txt
+md-sourceDialogue: SpinningTop/VanillaRegionSpinningTopEncounter.cs
+md-sourceDialogue: SpinningTop/StartConversation.cs
+md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
 OAOAOAOA! Minerals! Sinew! Liquids! OAOAOA liquids??
 Do you excrete, little thing?? Yes you do! OAOAOAOAOA!!\nYes you do excrete OAOAOAO!!!!
 All those minerals you worked so hard for, right back to the soil!\nAs will YOU, OAOAOAOA!!
@@ -44,6 +48,7 @@ md-internalId: DieAtSpinningTop2
 md-var-DialogueId: 2
 md-name: Die at Spinning Top
 md-transcriberName: Die at Spinning Top
+md-sourceDialogue: SpinningTop/Update.cs
 md-sourceDialogue: strings.txt
 OA!! See!! They get you already! OAOAOAOAOAO
 
@@ -53,6 +58,7 @@ md-internalId: LeaveSpinningTop2
 md-var-DialogueId: 2
 md-name: Leaving early
 md-transcriberName: Leaving early
+md-sourceDialogue: SpinningTop/Update.cs
 md-sourceDialogue: strings.txt
 OA!! How rude!! I was going to give it a gift.
 
@@ -60,9 +66,12 @@ OA!! How rude!! I was going to give it a gift.
 md-internalId: Ghost_ST_V2
 md-type: pearl
 md-var-DialogueId: 2
-md-super-name: Second Encounter
-md-name: Second Encounter
+md-super-name: Second Encounter (Next Max. Ripple Lvl. 0.5)
+md-name: Second Encounter (Next Max. Ripple Lvl. 0.5)
 md-sourceDialogue: 201.txt
+md-sourceDialogue: SpinningTop/VanillaRegionSpinningTopEncounter.cs
+md-sourceDialogue: SpinningTop/StartConversation.cs
+md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
 You again! Odd little thing, trembling. Peeping eyes.\nSO PEEPING OAOAOAOA!! But I suppose you must peep.
 So many sharp teeth and claws in this meat world.
 They look to grind up your sticks!! OAOAOAOAOAOA!!
@@ -76,6 +85,7 @@ md-internalId: DieAtSpinningTop3
 md-var-DialogueId: 3
 md-name: Die at Spinning Top
 md-transcriberName: Die at Spinning Top
+md-sourceDialogue: SpinningTop/Update.cs
 md-sourceDialogue: strings.txt
 OAOAOAOAOA!! And here too it seems?? Too dumb to live, too base to die.
 How boring! Bleh! I will depart.
@@ -84,9 +94,12 @@ How boring! Bleh! I will depart.
 md-internalId: Ghost_ST_V3
 md-type: pearl
 md-var-DialogueId: 3
-md-super-name: Third Encounter
-md-name: Third Encounter
+md-super-name: Third Encounter (Next Max. Ripple Lvl. 1.0)
+md-name: Third Encounter (Next Max. Ripple Lvl. 1.0)
 md-sourceDialogue: 202.txt
+md-sourceDialogue: SpinningTop/VanillaRegionSpinningTopEncounter.cs
+md-sourceDialogue: SpinningTop/StartConversation.cs
+md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
 OAOAOA! It is this thing! Have you really not been eaten?
 Well well well well! Not in this strand, no.
 But don’t be too proud OAOAOA!! I can see your reflections, yes!!

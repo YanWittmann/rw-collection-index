@@ -67,11 +67,16 @@ export default function DialogueInterface() {
                 if (element.metadata.internalId && element.metadata.internalId === id) {
                     return element.id;
                 }
+                const transcriberMatch = element.transcribers.find(transcriber => transcriber.metadata.internalId === id);
+                if (transcriberMatch) {
+                    return element.id;
+                }
             }
             return id;
         }
 
         urlAccess.getParam("pearl") && handleSelectPearl(GRID_DATA.find(pearl => pearl.id === urlIdToPearlId(urlAccess.getParam("pearl")!)) ?? null);
+        urlAccess.getParam("item") && handleSelectPearl(GRID_DATA.find(pearl => pearl.id === urlIdToPearlId(urlAccess.getParam("item")!)) ?? null);
         urlAccess.getParam("transcriber") && handleSelectTranscriber(urlAccess.getParam("transcriber")!);
         urlAccess.getParam("source") && setSourceFileDisplay(urlAccess.getParam("source")!);
     }, []);

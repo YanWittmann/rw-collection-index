@@ -197,16 +197,24 @@ export function DialogueBox({
 
         const internalId = dialogue.metadata.internalId || pearl.metadata.internalId;
         let sourceFileDisplayText: string | null;
-        if (dialogue.metadata.sourceDialogue) {
+        let sourceFileDisplayTextSelection: string | null;
+        if (sourceFileDisplay) {
+            sourceFileDisplayTextSelection = sourceFileDisplay;
+            sourceFileDisplayText = sourceFileDisplay.split(/[/\\]/).pop() || "";
+        } else if (dialogue.metadata.sourceDialogue) {
             if (dialogue.metadata.sourceDialogue.length === 1) {
-                sourceFileDisplayText = dialogue.metadata.sourceDialogue[0].split(/[/\\]/).pop() || "";
+                sourceFileDisplayTextSelection = dialogue.metadata.sourceDialogue[0];
+                sourceFileDisplayText = sourceFileDisplayTextSelection.split(/[/\\]/).pop() || "";
             } else if (dialogue.metadata.sourceDialogue.filter(f => !f.includes("strings")).length) {
-                sourceFileDisplayText = dialogue.metadata.sourceDialogue.filter(f => !f.includes("strings"))[0].split(/[/\\]/).pop() || "";
+                sourceFileDisplayTextSelection = dialogue.metadata.sourceDialogue.filter(f => !f.includes("strings"))[0];
+                sourceFileDisplayText = sourceFileDisplayTextSelection.split(/[/\\]/).pop() || "";
             } else {
                 sourceFileDisplayText = null;
+                sourceFileDisplayTextSelection = null;
             }
         } else {
             sourceFileDisplayText = null;
+            sourceFileDisplayTextSelection = null;
         }
         const internalIdElement = internalId && <Tooltip key={"internal-id-tooltip"}>
             <TooltipTrigger onClick={() => {
@@ -226,7 +234,7 @@ export function DialogueBox({
         </Tooltip>;
         const sourceFileElement = sourceFileDisplayText && <Tooltip key={"source-file-tooltip"}>
             <TooltipTrigger
-                onClick={() => sourceFileDisplayText === sourceFileDisplay ? setSourceFileDisplay(null) : setSourceFileDisplay(sourceFileDisplayText)}
+                onClick={() => sourceFileDisplayTextSelection === sourceFileDisplay ? setSourceFileDisplay(null) : setSourceFileDisplay(sourceFileDisplayTextSelection)}
             >
                 <span className={"font-mono text-xs text-white/70"}>
                     {sourceFileDisplayText} {dialogue.metadata.sourceDialogue && dialogue.metadata.sourceDialogue.length > 1 && ("(+" + (dialogue.metadata.sourceDialogue.length - 1) + ")")}
@@ -254,7 +262,7 @@ export function DialogueBox({
         }
 
         let titleElement = null;
-        const name = (sourceFileDisplay ? sourceFileDisplay : null) || dialogue.metadata.name || pearl.metadata.name;
+        const name = (sourceFileDisplay ? (sourceFileDisplay.split(/[/\\]/).pop() || "") : null) || dialogue.metadata.name || pearl.metadata.name;
         if (dialogue.metadata.info) {
             titleElement = (
                 <div className={cn(

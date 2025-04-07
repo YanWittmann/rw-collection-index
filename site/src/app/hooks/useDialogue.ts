@@ -227,10 +227,33 @@ export function useDialogue(unlockMode: UnlockMode, GRID_DATA: PearlData[]) {
         }
     }, [selectedPearl]);
 
-    function pearlIdToUrlId(id: string) {
+    const findTranscriberIndex = (pearl: PearlData, transcriberName: string) => {
+        if (!pearl) {
+            return null;
+        }
+        const isMultipleTranscribers = /.+-\d+$/.test(transcriberName);
+        if (isMultipleTranscribers) {
+            return parseInt(transcriberName.replace(/^.+-/, ""));
+        } else {
+            return pearl.transcribers.findIndex(transcriber => transcriber.transcriber === transcriberName);
+        }
+    }
+
+    function pearlIdToUrlId(id: string, selectedTranscriber: string | null) {
         for (let element of GRID_DATA) {
-            if (element.metadata.internalId && element.id === id) {
-                return element.metadata.internalId;
+            if (element.id === id) {
+                if (selectedTranscriber) {
+                    const transcriberIndex = findTranscriberIndex(element, selectedTranscriber);
+                    if (transcriberIndex !== null && transcriberIndex >= 0 && element.transcribers[transcriberIndex]) {
+                        const transcriberInternalId = element.transcribers[transcriberIndex].metadata.internalId;
+                        if (transcriberInternalId) {
+                            return transcriberInternalId;
+                        }
+                    }
+                }
+                if (element.metadata.internalId) {
+                    return element.metadata.internalId;
+                }
             }
         }
         return id;
@@ -240,9 +263,9 @@ export function useDialogue(unlockMode: UnlockMode, GRID_DATA: PearlData[]) {
     useEffect(() => {
         if (unlockMode === "all") {
             if (selectedPearl) {
-                urlAccess.setParam("pearl", pearlIdToUrlId(selectedPearl));
+                urlAccess.setParam("item", pearlIdToUrlId(selectedPearl, selectedTranscriber));
             } else {
-                urlAccess.clearParam("pearl");
+                urlAccess.clearParam("item");
             }
             if (selectedTranscriber) {
                 urlAccess.setParam("transcriber", selectedTranscriber);
@@ -255,10 +278,11 @@ export function useDialogue(unlockMode: UnlockMode, GRID_DATA: PearlData[]) {
                 urlAccess.clearParam("source");
             }
         } else {
-            urlAccess.clearParam("pearl");
+            urlAccess.clearParam("item");
             urlAccess.clearParam("transcriber");
             urlAccess.clearParam("source");
         }
+        urlAccess.getParam("pearl") && urlAccess.clearParam("pearl");
     }, [selectedPearl, selectedTranscriber, sourceFileDisplay, unlockMode]);
 
     const handleSelectTranscriber = (transcriber: string | null) => {
