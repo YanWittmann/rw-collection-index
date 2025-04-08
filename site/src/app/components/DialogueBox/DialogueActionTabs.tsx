@@ -85,8 +85,7 @@ export function DialogueActionTabs({
                           <RwIcon type="share"/>
                         </RwTabButton>
                 </span></TooltipTrigger>
-                        <TooltipContent side="bottom" className={"text-center"}>Share entry via...<br/>Icon is
-                            WIP.</TooltipContent>
+                        <TooltipContent side="bottom" className={"text-center"}>Share entry via...</TooltipContent>
                     </PopoverTrigger>
                     <PopoverContent
                         className="w-64 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg text-white"

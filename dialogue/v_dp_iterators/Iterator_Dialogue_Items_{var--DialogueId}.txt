@@ -5,7 +5,7 @@ md-type: pearl
 md-subType: item/Rock_icon
 md-var-DialogueId: Rock
 md-name: Rock
-md-sourceDialogue: none
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a rock. Thank you, I suppose, little creature.
 
 === transcription: LttM-saint
@@ -13,6 +13,7 @@ md-type: pearl
 md-subType: item/Spear_icon
 md-var-DialogueId: Spear
 md-name: Spear
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's piece of sharpened rebar... What is it you want to know?
 I don't wish to offend, but you seem too frail to use this effectively.
 
@@ -21,6 +22,7 @@ md-type: pearl
 md-subType: item/Spear_icon
 md-var-DialogueId: Spear
 md-name: Spear
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a piece of sharpened rebar... What is it you want to know? You seem proficient enough at using it.
 
 === transcription: LttM-post-collapse
@@ -28,7 +30,7 @@ md-type: pearl
 md-subType: item/Explosive_Spear_icon
 md-var-DialogueId: Explosive_Spear
 md-name: Explosive Spear
-md-sourceDialogue: none
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a weapon made with fire powder. Did the scavengers give this to you? Be very careful if you have to use it!
 
 === transcription: LttM-saint
@@ -36,6 +38,7 @@ md-type: pearl
 md-subType: item/Fire_Spear_icon
 md-var-DialogueId: Fire_Spear
 md-name: Fire Spear
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's piece of sharpened rebar... What is it you want to know?
 I don't wish to offend, but you seem too frail to use this effectively.
 
@@ -45,6 +48,7 @@ md-subType: item/Fire_Spear_icon
 md-var-DialogueId: Fire_Spear
 md-name: Fire Spear
 md-tag: downpour
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a piece of sharpened rebar... What is it you want to know? You seem proficient enough at using it.
 
 === transcription: LttM-post-collapse
@@ -53,6 +57,8 @@ md-subType: item/Electric_Spear_icon
 md-var-DialogueId: Electric_Spear
 md-name: Electric Spear
 md-tag: downpour
+md-sourceDialogue: 112.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 Oh. I would be very careful with this my friend. The tip of this rebar has had flux condenser coils bonded to it with some ferns and sap. These coils need an impact to release their energy, so it's somewhat safe to handle.
 I can't imagine these bits of coil will last long though. It looks like they've been battered with rocks or metal. These coils are from inside of me or Five Pebbles. The rest is the scavengers' natural ingenuity.
 
@@ -61,7 +67,7 @@ md-type: pearl
 md-subType: item/Bubble_Fruit_icon
 md-var-DialogueId: Bubble_Fruit
 md-name: Bubble Fruit
-md-sourceDialogue: none
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a delicious plant. You should have it!
 
 === transcription: LttM-post-collapse
@@ -69,6 +75,8 @@ md-type: pearl
 md-subType: item/Karma_Flower_icon
 md-var-DialogueId: Karma_Flower
 md-name: Karma Flower
+md-sourceDialogue: 25.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 This is a hallucinogenic plant. They used to call it a 'Wheel Flower'. It became the symbol for enlightenment as it momentarily enables a creature to let go if its carnal self, and to contact the selves of other planes - dreams, memories, imagined worlds.
 Very long ago, they would eat these and stare into the fire.
 
@@ -77,6 +85,8 @@ md-type: pearl
 md-subType: item/Blue_Fruit_icon
 md-var-DialogueId: Blue_Fruit
 md-name: Blue Fruit
+md-sourceDialogue: 26.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's the pupa of a bug! If you don't mind, I'm a bit squeamish things like that, so would you eat it up already?
 
 === transcription: LttM-post-collapse
@@ -84,6 +94,8 @@ md-type: pearl
 md-subType: item/Flashbang_icon
 md-var-DialogueId: Flashbang
 md-name: Flashbang
+md-sourceDialogue: 27.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a part of some kind of plant. The glowing is strange... I wouldn't look directly into it.
 
 === transcription: LttM-post-collapse
@@ -91,6 +103,8 @@ md-type: pearl
 md-subType: item/Spore_Puff_icon
 md-var-DialogueId: Spore_Puff
 md-name: Spore Puff
+md-sourceDialogue: 29.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 The flowering body of some fungus. It has high pressure built up inside - when it explodes the spores will spread everywhere.
 
 === transcription: LttM-post-collapse
@@ -98,6 +112,8 @@ md-type: pearl
 md-subType: item/Jellyfish_icon
 md-var-DialogueId: Jellyfish
 md-name: Jellyfish
+md-sourceDialogue: 30.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 This is a jellyfish, look out for its stingers!
 
 === transcription: LttM-saint
@@ -114,6 +130,7 @@ md-subType: item/Lantern_icon
 md-var-DialogueId: Lantern
 md-name: Lantern
 md-sourceDialogue: 31.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It appears to be... a pupa shell, smeared on the inside with a glowing substance? Perhaps a paste of some glowing insect? I honestly don't know.
 
 === transcription: LttM-post-collapse
@@ -121,6 +138,8 @@ md-type: pearl
 md-subType: item/Mushroom_icon
 md-var-DialogueId: Mushroom
 md-name: Mushroom
+md-sourceDialogue: 32.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 Oh... Just don't eat too many of these.
 
 === transcription: LttM-post-collapse
@@ -128,6 +147,8 @@ md-type: pearl
 md-subType: item/Cherrybomb_icon
 md-var-DialogueId: Cherrybomb
 md-name: Cherrybomb
+md-sourceDialogue: 33.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a branch of a fire bush - each of these nuts can explode. It's unpleasant rather than dangerous, except to your ears perhaps.
 
 === transcription: LttM-post-collapse
@@ -135,6 +156,8 @@ md-type: pearl
 md-subType: item/Slime_Mold_icon
 md-var-DialogueId: Slime_Mold
 md-name: Slime Mold
+md-sourceDialogue: 34.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 This is a slime mold plasmodium. Thank you, but I can't eat this.
 
 === transcription: LttM-post-collapse
@@ -142,6 +165,8 @@ md-type: pearl
 md-subType: item/Grenade_icon
 md-var-DialogueId: Grenade
 md-name: Grenade
+md-sourceDialogue: 44.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a lot of flammable powder stuffed into some kind of shell. I would be very careful around this!
 
 === transcription: LttM-post-collapse
@@ -149,6 +174,8 @@ md-type: pearl
 md-subType: item/Bubble_Weed_icon
 md-var-DialogueId: Bubble_Weed
 md-name: Bubble Weed
+md-sourceDialogue: 53.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a plant that keeps pressurised air in these globules.
 I'm not very familiar with contemporary flora, so I can't tell you much more.
 
@@ -157,6 +184,8 @@ md-type: pearl
 md-subType: item/Overseer_Eye_icon
 md-var-DialogueId: Overseer_Eye
 md-name: Overseer Eye
+md-sourceDialogue: 52.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It is the remains of an overseer.
 Overseers act as our eyes on the outside.
 I used to have a lot of them, but I lost contact with them when I was neutered. My umbilical is cut. So, since then I am not much more than what you are looking at - a little creature in a box.
@@ -170,6 +199,8 @@ md-subType: spearmaster
 md-var-DialogueId: Spearmaster_Needle
 md-name: Spearmaster Needle
 md-tag: downpour
+md-sourceDialogue: 166.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a sharp calcified object, with a hollow and narrow interior that runs the length of the structure.
 I don't recognize this formation so it's an interesting specimen, I suppose.
 
@@ -179,6 +210,8 @@ md-subType: item/Chieftain_Scavenger_icon
 md-var-DialogueId: Chieftain_Scavenger_Mask
 md-name: Chieftain Scavenger Mask
 md-tag: downpour
+md-sourceDialogue: 137.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 This appears to be some kind of mask, heavily decorated and carved from a bone-like material. I bet the scavengers would love this!
 
 === transcription: LttM-post-collapse
@@ -187,6 +220,8 @@ md-subType: item/Elite_Scavenger_icon
 md-var-DialogueId: Elite_Scavenger_Mask
 md-name: Elite Scavenger Mask
 md-tag: downpour
+md-sourceDialogue: 136.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 I honestly can't tell what this is. It's light but strong... appears to be some composite material interwoven with bone. It seems to have been deliberately altered from its original form, with noticeable fragments that are melded together.
 Perhaps an archaeological relic of some civilization's work? I wish I knew more, because this is likely a valuable find!
 
@@ -196,6 +231,7 @@ md-subType: item/Vulture_Mask_icon
 md-var-DialogueId: Vulture_Mask
 md-name: Vulture Mask
 md-sourceDialogue: 28.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 I honestly can't tell what this is. It's light but strong... appears to be some composite material interwoven with bone. It could be part of an animal or purposed organism, but in my current state I'm unable to recognize it.
 
 === transcription: LttM-post-collapse
@@ -204,6 +240,8 @@ md-subType: item/Seed_icon
 md-var-DialogueId: Seed
 md-name: Seed
 md-tag: downpour
+md-sourceDialogue: 167.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 This is a seed-bearing structure detached from its host. However, its internals are ravaged by ice crystals, so it is unlikely to germinate.
 
 === transcription: LttM-post-collapse
@@ -212,12 +250,14 @@ md-subType: item/Singularity_Bomb_icon
 md-var-DialogueId: Singularity_Bomb
 md-name: Singularity Bomb
 md-tag: downpour
-<b>One of the following options is randomly selected:</b>
-Why would you do that!?
-WHY!?
-Why would you try doing that!?
-What came over you!?
-WHY!? Why would you do something so dangerous!?
+md-sourceDialogue: SLOracleBehaviorHasMark/SingularityProtest.cs
+MONO
+/ One of the following options is randomly selected:
+|  Why would you do that!?
+|  WHY!?
+|  Why would you try doing that!?
+|  What came over you!?
+|  WHY!? Why would you do something so dangerous!?
 
 === transcription: LttM-post-collapse
 md-type: pearl
@@ -225,6 +265,8 @@ md-subType: item/Singularity_Bomb_icon
 md-var-DialogueId: Singularity_Bomb
 md-name: Singularity Bomb
 md-tag: downpour
+md-sourceDialogue: 127.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 Take this and leave, now.
 If you must know... this is a low density mass rarefaction cell.
 The energy trapped inside this is incredible, and while my facility is capable of extracting it, the shielding on this cell has been damaged. Either through old age, or abuse.
@@ -236,6 +278,8 @@ md-subType: item/Fire_Egg_icon
 md-var-DialogueId: Fire_Egg
 md-name: Fire Egg
 md-tag: downpour
+md-sourceDialogue: 164.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 Healthy one... what is this, and where did you get it? Is this a feat of your own creation?
 It's a bit unbelieveable. A... creature like you procuring something like this would be an amazing accomplishment for your species...
 Ah, well, if it tells a good story then I won't question it too much~
@@ -246,6 +290,7 @@ md-subType: item/Fire_Egg_icon
 md-var-DialogueId: Fire_Egg
 md-name: Fire Egg
 md-tag: downpour
+md-sourceDialogue: 164-gourmand.txt
 What a fascinating specimen! This is a tightly nested bundle of cellular membranes. However, most of the content within and surrounding the various layers is neither air nor water... it's void fluid!
 The cells within this capsule are dividing at extremely rapidly, countering the void fluids simultaneous dissolving of its container.
 Somehow it has managed to reach an equilibrium between creation and destruction, but I suspect is is not a very stable system. Any irregular disturbance would likely cause a cascading effect on either end of this spectrum, the result of which would be sudden and destructive.
@@ -258,6 +303,8 @@ md-subType: item/Inspector_Eye_icon
 md-var-DialogueId: Inspector_Eye
 md-name: Inspector Eye
 md-tag: downpour
+md-sourceDialogue: 113.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 This is the sensory lobe of a large purposed organism. From within the living systems of an iterator.
 Most of the organisms inside us are very simple, only capable of one or two dedicated tasks. This creates the need for for a smaller number of higher organisms used to manage and protect them.
 They also facilitate long distance communication within our living systems. And while I do not think you can experience the same sensation, it is quite unpleasant to have one of these destroyed!
@@ -269,6 +316,8 @@ md-subType: item/Gooieduck_icon
 md-var-DialogueId: Gooieduck
 md-name: Gooieduck
 md-tag: downpour
+md-sourceDialogue: 114.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's an ancient species of dangling mold. The spores they squirt out were said to have an overwhelming odor... I'd have to agree.
 
 === transcription: LttM-post-collapse
@@ -277,6 +326,8 @@ md-subType: item/Lilypuck_icon
 md-var-DialogueId: Lilypuck
 md-name: Lilypuck
 md-tag: downpour
+md-sourceDialogue: 117.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 Oh... did you find this nearby? These flowers are a form of organic lighting for underground machinery, but I imagine they have spread beyond just that by now.
 The roots are like a flexible glass cable. Be careful, they are quite sharp once broken!
 
@@ -286,6 +337,8 @@ md-subType: item/Glow_Weed_icon
 md-var-DialogueId: Glow_Weed
 md-name: Glow Weed
 md-tag: downpour
+md-sourceDialogue: 118.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's an edible plant. However, there is not much to eat as most of it is just pressurized air!
 The light it gives off is very pretty. The scavengers might like these.
 
@@ -295,6 +348,8 @@ md-subType: item/Dandelion_Peach_icon
 md-var-DialogueId: Dandelion_Peach
 md-name: Dandelion Peach
 md-tag: downpour
+md-sourceDialogue: 122.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's the fruit of a feathery plant. The body of it is filled with a sweet sticky goo. I suppose that once the seeds take root, the sac will rot, and this will help feed the young plant where it landed.
 It doesn't seem poisonous or hard to open, so it seems the plant's only defense is to float away when disturbed. However, I can only make guesses, as I have never seen these before.
 
@@ -304,6 +359,8 @@ md-subType: item/Cloak_icon
 md-var-DialogueId: Cloak
 md-name: Cloak
 md-tag: downpour
+md-sourceDialogue: 123.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's very soggy.
 This appears to be a tattered piece of fabric. From what it used to be a piece of, I wouldn't be able to trace its origins.
 If it were in better condition it might be useful to provide you some protection from the elements. In its current state, however, I don't suppose it has much worth to you.
@@ -319,6 +376,8 @@ md-subType: item/Noodlefly_Egg_icon
 md-var-DialogueId: Noodlefly_Egg
 md-name: Noodlefly Egg
 md-tag: downpour
+md-sourceDialogue: 116.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 This appears to be some kind of egg. Nothing I am familiar with. I wonder what far away land you've brought this from! I can only imagine the trip.
 
 === transcription: LttM-post-collapse
@@ -327,6 +386,8 @@ md-subType: item/Slugpup_icon
 md-var-DialogueId: Slugpup
 md-name: Slugpup
 md-tag: downpour
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/ThirdAndUpGreeting.cs
+md-sourceDialogue: strings.txt
 MONO
 / If Looks to the Moon likes the Slugcat:
 |  How cute, you brought your child, little creature?
@@ -341,6 +402,8 @@ md-subType: item/Rarefaction_Cell_icon
 md-var-DialogueId: Rarefaction_Cell
 md-name: Rarefaction Cell
 md-tag: downpour
+md-sourceDialogue: 110.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 Oh, this is a deeply concerning discovery. Do you have any idea what this is?
 These are known as mass rarefaction cells. They are a type of backup energy source that powered our superstructures in times of maintenance, void fluid pipe raptures, and other general power failures.
 In the absence of our creators, to replace deteriorating parts, These cells have become one of the major components that allow our facilities to remain powered.
@@ -356,14 +419,17 @@ md-subType: item/King_Vulture_icon
 md-var-DialogueId: Joke_Creatures
 md-name: Joke dialogue
 md-tag: downpour
+md-sourceDialogue: SLOracleBehaviorHasMark/CreatureJokeDialog.cs
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/ThirdAndUpGreeting.cs
+md-sourceDialogue: strings.txt
 MONO
 / Vulture, Leviathan, Miros Bird, Miros Vulture
 |  Your friend is very large, how did you fit them in here?
 / Rain Deer
 |  How did you bring that in here... I think it is as surprised as I am!
-/ Rot
+/ Daddy Long Legs, Brother Long Legs, Terror Long Legs
 |  Oh no.
 / Red Centipede
 |  Oh, that is not a friend...
-/ Rot
+/ Temple Guardian
 |  What did you do!?

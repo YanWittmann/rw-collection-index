@@ -3,8 +3,9 @@ subType: monk
 
 === transcription: LttM-post-collapse
 md-type: pearl
-md-var-DialogueId: First_encounter
+md-var-DialogueId: Moon_Yellow_First_Conversation
 md-name: First encounter after receiving the Mark of Communication
+md-sourceDialogue: 49.txt
 Hello little creature.
 Your shape is familiar to me. I feel as if I... might have met your kind before.
 But my memory is so unreliable now.

@@ -16,6 +16,17 @@ interface PearlItemProps {
     unlockVersion: number
 }
 
+function max(array: (number | undefined)[]) {
+    let maxValue = array[0];
+    for (let i = 1; i < array.length; i++) {
+        const currentValue = array[i];
+        if (currentValue !== undefined && (maxValue === undefined || currentValue > maxValue)) {
+            maxValue = currentValue;
+        }
+    }
+    return maxValue;
+}
+
 const PearlItem: React.FC<PearlItemProps> = ({
                                                  pearl,
                                                  pearlIndex,
@@ -39,7 +50,7 @@ const PearlItem: React.FC<PearlItemProps> = ({
         // collect all metadata from the dialogue transcriptions
         let mainText = pearl.metadata.name ?? 'Unknown';
         const internalId = pearl.metadata.internalId;
-        
+
         const metadatas = pearl.transcribers.map(transcriber => transcriber.metadata);
         const mapInfos: MapInfo[] = metadatas.filter(metadata => metadata.map && metadata.map.length > 0).map(metadata => metadata.map as any as MapInfo).flat();
 
@@ -68,22 +79,23 @@ const PearlItem: React.FC<PearlItemProps> = ({
         }
 
         const iconType = pearl.metadata.type === 'item' ? (pearl.metadata.subType || 'pearl') : pearl.metadata.type;
+        const sourceFileCount = max(pearl.transcribers.map(p => p.metadata.sourceDialogue?.length)) || 0;
 
         return (
             <TooltipProvider delayDuration={120}>
                 <Tooltip>
                     <TooltipTrigger>
-                        <RwIconButton 
-                            onClick={handleClick} 
-                            selected={isSelected} 
+                        <RwIconButton
+                            onClick={handleClick}
+                            selected={isSelected}
                             aria-label={`${pearl.metadata.name || 'Unknown pearl'} - ${pearl.transcribers.length} transcription${pearl.transcribers.length !== 1 ? 's' : ''}`}
                         >
                             <RwIcon color={pearl.metadata.color} type={iconType}/>
                             {showTranscriberCount && (
                                 <span
-                                    className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-5 h-5 text-xs flex items-center justify-center">
-                            {pearl.transcribers.length}
-                        </span>
+                                    className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-6 h-4 text-xs flex items-center justify-center">
+                                    {pearl.transcribers.length}{sourceFileCount > 0 ? `~${sourceFileCount}` : ''}
+                                </span>
                             )}
                         </RwIconButton>
                     </TooltipTrigger>

@@ -5,8 +5,40 @@ tag: downpour
 === transcription: LttM-gourmand
 md-type: pearl
 md-var-DialogueId: First_encounter
-md-name: First encounter after receiving the Mark of Communication
-md-transcriberName: If Gourmand took a Neuron Fly before receiving the Mark of Communication
+md-name: If one Neuron remains
+md-transcriberName: If one Neuron remains
+md-sourceDialogue: strings.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Gourmand_First_Conversation.cs
+...
+
+=== transcription: LttM-gourmand
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-name: If two Neurons remain
+md-transcriberName: If two Neurons remain
+md-sourceDialogue: strings.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Gourmand_First_Conversation.cs
+Get... get away... round.... thing.
+Please... thiss all I have left.
+
+=== transcription: LttM-gourmand
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-name: If three Neurons remain
+md-transcriberName: If three Neurons remain
+md-sourceDialogue: strings.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Gourmand_First_Conversation.cs
+You!
+...you ate... me. Please go away. I won't speak... to you.
+I... CAN'T speak to you... because... you ate...me...
+
+=== transcription: LttM-gourmand
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-name: If four Neurons remain
+md-transcriberName: If four Neurons remain
+md-sourceDialogue: 163.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Gourmand_First_Conversation.cs
 There is nothing more here for you to take.
 You've been given the gift of communication. So I can only imagine that you have met Five Pebbles. You must already understand how little of me remains functional.
 However, it is nice to have someone to talk to after all this time. My last visitor was very sick, so their visits here were not for very long.
@@ -18,6 +50,8 @@ md-type: pearl
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
 md-transcriberName: First encounter after receiving the Mark of Communication
+md-sourceDialogue: 162.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Gourmand_First_Conversation.cs
 Hello little creature, are you lost?
 I am sorry to say that there is nothing here for you.
 You've been given the gift of communication. So I can only imagine that you have met Five Pebbles. You must already understand how little of me remains functional.

@@ -641,6 +641,10 @@ function processDialogueFiles() {
         console.log(`Found ${files.length} files in ${DIALOGUE_DIR} to process`);
 
         const result = files.flatMap(file => {
+            if (file.replaceAll("\\\\", "/").replaceAll("\\", "/").includes('source/')) {
+                return []; // Skip the source decrypted file
+            }
+
             const content = fs.readFileSync(file, 'utf-8');
             const baseId = path.basename(file, '.txt');
             const parsed = parseDialogueContent(content);

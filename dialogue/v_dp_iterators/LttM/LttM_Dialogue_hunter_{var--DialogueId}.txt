@@ -4,8 +4,9 @@ map: region=SL, room=AI, mapSlugcat=red
 
 === transcription: LttM-post-collapse
 md-type: pearl
-md-var-DialogueId: First_encounter
+md-var-DialogueId: Moon_Red_First_Conversation
 md-name: First encounter
+md-sourceDialogue: 50.txt
 He... hello
 Hello little... creature. You... you did this?
 One moment. My memory isn't responding. I... I have no idea...
@@ -24,8 +25,9 @@ You will wake right back up again.
 
 === transcription: LttM-post-collapse
 md-type: pearl
-md-var-DialogueId: Second_encounter
+md-var-DialogueId: Moon_Red_Second_Conversation
 md-name: Second encounter
+md-sourceDialogue: 55.txt
 Hi! Little saviour!
 It is good to see you again.
 I wish I could help you like you have helped me... But like this, there is very little I can do.

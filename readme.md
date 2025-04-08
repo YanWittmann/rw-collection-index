@@ -26,6 +26,7 @@ Complete listing of all:
 - Item Descriptions
 - Iterator Dialogue (LttM, FP)
 - Echoes Dialogue
+- The Watcher Dialogue
 
 Further features:
 
@@ -57,7 +58,7 @@ itself.
 - Built with React and TypeScript
 - Custom UI components styled for Rain World
 - URL parameter support (disabled in unlock mode to prevent spoilers)
-    - `pearl=<id>`: Selects a specific pearl (e.g., `pearl=SI_chat3_DARK_PURPLE`)
+    - `item=<id>`: Selects a specific pearl (e.g., `item=SI_chat3`)
     - `transcriber=<id>`: Selects a transcriber for the chosen pearl (e.g., `transcriber=LttM-pre-collapse`)
 - Hover over speaker names to reveal full names
 - Hold shift to show the amount of transcriptions on each entry
@@ -103,7 +104,8 @@ They will be written into the `Rain World/RainWorld_Data/StreamingAssets/decrypt
 Rename the directories to `text_[Lang]` instead of `[lang]` (e.g. `text_eng` instead of `Eng`).
 
 Certain decompiled source files have been extracted from the `Rain World/RainWorld_Data/Managed/Assembly-CSharp.dll`
-file using dnSpy and moved to the [dialogue/source/dll](dialogue/source/dll) directory.
+file using [dnSpy](https://github.com/dnSpy/dnSpy) and moved to the
+[dialogue/source/dll](dialogue/source/dll) directory.
 Copy this directory into the `decrypt`, next to the other files.
 
 Then run [decrypt-rw-text.py](site/build-scripts/decrypt-rw-text.py) inside your

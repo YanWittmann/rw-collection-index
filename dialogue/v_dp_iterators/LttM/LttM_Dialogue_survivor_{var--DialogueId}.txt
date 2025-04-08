@@ -5,6 +5,7 @@ subType: survivor
 md-type: pearl
 md-var-DialogueId: Slugcat_Naming_Convention
 md-name: LttM Slugcat Naming Convention
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/NameForPlayer.cs
 MONO
 / The name given to the Slugcat by Looks to the Moon will differ according to various parameters. Each time "&lt;little creature&gt;" is written in the dialogue, it means that other names can appear instead of the default one.
 / A first random value determines which word is used to describe Slugcat (7/10 chance of using something else than "creature"). If it happens, the following words are used:
@@ -26,7 +27,7 @@ md-type: pearl
 md-transcriberName: If Looks to the Moon has 1 neuron left
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
-md-sourceDialogue: none
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/MoonFirstPostMarkConversation.cs
 ...
 
 === transcription: LttM-post-collapse
@@ -34,6 +35,7 @@ md-type: pearl
 md-transcriberName: If Looks to the Moon has 2 neurons left
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/MoonFirstPostMarkConversation.cs
 Get... get away... white.... thing.
 Please... this is all I have left.
 
@@ -42,6 +44,7 @@ md-type: pearl
 md-transcriberName: If Looks to the Moon has 3 neurons left
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/MoonFirstPostMarkConversation.cs
 You!
 ...you ate... me. Please go away. I won't speak... to you. I... CAN'T speak to you... because... you ate...me...
 
@@ -52,6 +55,7 @@ md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
 md-sourceDialogue: 35.txt
 md-sourceDialogue: 37.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/MoonFirstPostMarkConversation.cs
 Oh so you've returned.
 Come to take more from me? My memories, my thoughts... just something to fill your stomach?
 No... never mind.
@@ -66,6 +70,7 @@ md-transcriberName: If Looks to the Moon has 5 neurons left
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
 md-sourceDialogue: 37.txt
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/MoonFirstPostMarkConversation.cs
 Hello little creature.
 What are you? If I had my memories I would know...
 Perhaps... I saw you before?
@@ -81,6 +86,7 @@ It is good to have someone to talk to after all this time! The scavengers aren't
 md-type: pearl
 md-var-DialogueId: Following_Encounters
 md-name: Following encounters
+md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/ThirdAndUpGreeting.cs
 MONO
 / If Looks to the Moon does not dislike Slugcat and has more than 3 neurons:
 /  Punctuation differs whether Looks to the Moon likes Slugcat or not. Each time &lt;!&gt; is written, it means "!" will be used if she likes Slugcat, and "." if not.

@@ -5,7 +5,7 @@ subType: survivor
 md-type: pearl
 md-transcriberName: If Looks to the Moon is not on speaking terms with Slugcat
 md-var-DialogueId: Receiving_an_object
-md-name: Receiving an object
+md-name: If Looks to the Moon is not on speaking terms with Slugcat
 MONO
 / After speaking, Looks to the Moon throws the object away.
 / One of the following options is selected randomly:
