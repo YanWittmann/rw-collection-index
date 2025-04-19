@@ -10,7 +10,8 @@ interface DialogueContentProps {
 
 const highlightText = (text: string, searchText?: string) => {
     if (!searchText) return text
-    const regex = new RegExp(`(${searchText})`, "gi")
+    const escapedSearch = searchText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const regex = new RegExp(`(${escapedSearch})`, "gi")
     return text.replace(regex, '<mark class="bg-yellow-500/50 text-yellow-200">$1</mark>')
 }
 
