@@ -24,7 +24,7 @@ md-sourceDialogue: strings.txt
 md-sourceDialogue: AcknowledgePlayerCamouflage.cs
 MONO
 / If the Prince is not paralyzed:
-/  If the player has a Ripple Level of 5 or more:
+/  If the player has a Ripple Level of 5 or more (maximum):
 /   One of the following options is selected randomly:
 |    Ahh yes! The paths! How wonderous!
 |    How auspicious it was, our meeting...

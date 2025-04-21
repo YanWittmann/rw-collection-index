@@ -37,12 +37,13 @@ export function generateMapLinkFromMapInfo(mapInfo: MapInfo | undefined) {
     // https://rain-world-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
     // https://rain-world-downpour-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
     // https://rw-watchermap.github.io/map.html?slugcat=white&region=SU&room=SU_B05
+    // https://alduris.github.io/watcher-map/map.html?slugcat=white&region=SU&room=SU_B05
     const { region, room, mapSlugcat } = mapInfo;
     if (!region || !room || !mapSlugcat) {
         return null;
     }
     if (mapSlugcat === 'watcher') {
-        return `https://rw-watchermap.github.io/map.html?slugcat=${mapSlugcat}&region=${region}&room=${region}_${room}`;
+        return `https://alduris.github.io/watcher-map/map.html?slugcat=${mapSlugcat}&region=${region}&room=${region}_${room}`;
     }
     return `https://rain-world-downpour-map.github.io/map.html?slugcat=${mapSlugcat}&region=${region}&room=${region}_${room}`;
 }
