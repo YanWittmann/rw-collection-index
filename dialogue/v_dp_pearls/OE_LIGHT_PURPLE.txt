@@ -3,6 +3,7 @@ color: #9d76d4
 type: pearl
 name: Light Purple
 map: region=OE, room=OE_SPIRE, mapSlugcat=gourmand
+tag: downpour
 
 === transcription: LttM-post-collapse
 md-sourceDialogue: 104.txt
