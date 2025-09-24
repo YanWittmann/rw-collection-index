@@ -2,6 +2,7 @@ internalId: AUDIO_JAM1
 color: #5FB71A
 type: pearl
 name: Audio: Jam 1
+tag: watcher
 
 === transcription: PearlReader
 Audio File content

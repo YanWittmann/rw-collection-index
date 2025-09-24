@@ -1,7 +1,8 @@
-internalId: DRONE
+internalId: Drone
 color: #493828
 type: pearl
 name: DRONE
+tag: watcher
 
 === transcription: PearlReader
 md-sourceDialogue: pearl_3a.png

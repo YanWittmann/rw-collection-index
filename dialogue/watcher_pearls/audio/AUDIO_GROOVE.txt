@@ -2,6 +2,7 @@ internalId: AUDIO_GROOVE
 color: #B26889
 type: pearl
 name: Audio: Groove
+tag: watcher
 
 === transcription: PearlReader
 Audio File content

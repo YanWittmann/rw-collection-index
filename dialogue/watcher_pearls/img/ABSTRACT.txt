@@ -1,7 +1,8 @@
-internalId: ABSTRACT
+internalId: Abstract
 color: #685959
 type: pearl
 name: ABSTRACT
+tag: watcher
 
 === transcription: PearlReader
 md-sourceDialogue: pearl3_l1.png

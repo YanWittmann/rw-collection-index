@@ -4,6 +4,15 @@ type: pearl
 name: Gold
 map: region=CC, room=A10, mapSlugcat=white
 
+=== transcription: PearlReader
+md-sourceDialogue: informationisillegal.png
+md-tag: watcher
+SEQUENCE
+![PearlReader/CC_1.png][STYLE=rounded]
+![PearlReader/CC_2.png][STYLE=rounded]
+![PearlReader/CC_3.png][STYLE=rounded]
+![PearlReader/CC_4.png][STYLE=rounded]
+
 === transcription: FP-artificer
 md-sourceDialogue: 7-artificer.txt
 This was a gift from a close friend. It is instructions on how to remove the self-destruction taboo.

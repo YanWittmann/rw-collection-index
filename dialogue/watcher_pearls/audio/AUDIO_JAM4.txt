@@ -2,6 +2,7 @@ internalId: AUDIO_JAM4
 color: #930795
 type: pearl
 name: Audio: Jam 4
+tag: watcher
 
 === transcription: PearlReader
 Audio File content
