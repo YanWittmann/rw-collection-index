@@ -1,0 +1,43 @@
+type: item
+subType: void-weaver
+tag: watcher
+
+=== transcription: void-weaver
+md-internalId: Weaver_1
+md-var-DialogueId: Weaver_1
+md-name: Weaver Encounter 1
+md-sourceDialogue: 229.txt
+CONSIDER:
+A droplet of rain pierces the still water.
+A ripple, A ring, ever expanding.
+
+=== transcription: void-weaver
+md-internalId: Weaver_2
+md-var-DialogueId: Weaver_2
+md-name: Weaver Encounter 2
+md-sourceDialogue: 230.txt
+CONSIDER:
+Movement along the circumference of a ring.
+From one eye a loop, from one eye a spiral, from one eye the motion of a line.
+
+=== transcription: void-weaver
+md-internalId: Weaver_3
+md-var-DialogueId: Weaver_3
+md-name: Weaver Encounter 3
+md-sourceDialogue: 231.txt
+CONSIDER:
+A second drop. A thousandth.
+A multiplex of rings, spirals, interacting in countless ways.
+A froth. A seeth. An effervescence of disruption!
+
+=== transcription: void-weaver
+md-internalId: Weaver_4
+md-var-DialogueId: Weaver_4
+md-name: Weaver Encounter 4
+md-sourceDialogue: 232.txt
+NOW:
+An understanding.
+A path. A purpose.
+Movement along the line, from distant to origin.
+From spiral to loop. From loop to point.
+An understanding!

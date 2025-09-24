@@ -101,6 +101,25 @@ export const pearlOrder: PearlChapter[] = [
             { pattern: /Watcher_Prince_KarmaSigils.+/ },
             { pattern: /Watcher_Prince_Dialogue.+/ },
             { pattern: /Watcher_Prince_Events.+/ },
+            { pattern: /Watcher_Prince_Weaver.+/ },
+        ]
+    },
+    {
+        name: "The Watcher: Void Weaver",
+        ids: [
+            { pattern: /Watcher_Weaver.+/ },
+        ]
+    },
+    {
+        name: "The Watcher: Pearls",
+        ids: [
+            "WORA", "ABSTRACT",
+        ]
+    },
+    {
+        name: "The Watcher: Various",
+        ids: [
+            { pattern: /Watcher_Text.+/ },
         ]
     },
     {

@@ -168,7 +168,11 @@ export function DialogueBox({
                     transcriberName = transcriberName.replace(/s$/, "");
                 }
 
-                transcriberName += "'s Transcription" + parenthesis;
+                if (transcriberName.includes("Pearl Reader")) {
+                    transcriberName += "'s Projection" + parenthesis;
+                } else {
+                    transcriberName += "'s Transcription" + parenthesis;
+                }
 
                 if (transcriberName !== lastTranscriberName) {
                     setLastTranscriberName(transcriberName);

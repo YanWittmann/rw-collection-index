@@ -156,6 +156,9 @@ export const speakerNames: { [key: string]: string } = {
     "spinning-top": "Spinning Top",
     "rot-prince": "Rot Prince",
     "rot-prince-pre": "Rot Prince (Pre-Awakening)",
+    "rot-prince-weaver": "Rot Prince",
+    "void-weaver": "Void Weaver",
+    "PearlReader": "Pearl Reader",
 }
 
 export const regionNames: { [key: string]: string } = {

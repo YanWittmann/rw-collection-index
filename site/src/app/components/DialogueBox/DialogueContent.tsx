@@ -111,31 +111,53 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
     const displayType = isMonoMode ? "mono" : isSourceCode ? "source-code" : "centered";
     if (isMonoMode) clonedLines.shift();
 
+    const imageRegex = /!\[(.*?)](?:\[(.*?)])?/;
+
     return (
         <div className="space-y-3 pb-6">
-            {clonedLines.map((line, i) => (
-                <div key={i} className={displayType === "centered" ? "text-center" : "mt-0"}>
-                    {line.speaker ? (
-                        <span style={{ color: speakersColors[line.speaker] }}>
-                            <TooltipProvider>
-                                <Tooltip>
-                                    <TooltipTrigger className="text-selectable">
-                                        {line.speaker}
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                        {speakerNames[line.speaker]} ({speakersColors[line.speaker]})
-                                    </TooltipContent>
-                                </Tooltip>
-                            </TooltipProvider>
-                            : {displayType === "mono" ? renderMonoText(line.text, searchText) :
+            {clonedLines.map((line, i) => {
+                const imageMatch = line.text.match(imageRegex);
+
+                if (imageMatch) {
+                    const [, path, alt] = imageMatch;
+                    return (
+                        <div key={i} className="flex justify-center">
+                            <figure className="w-full max-w-xl">
+                                <img src={`img/${path}`} alt={alt ?? ''} className="w-full h-auto rounded-md"/>
+                                {alt && <figcaption className="text-sm text-center text-gray-400 mt-2">
+                                    {alt}
+                                </figcaption>}
+                            </figure>
+                        </div>
+                    );
+                }
+
+                return (
+                    <div key={i} className={displayType === "centered" ? "text-center" : "mt-0"}>
+                        {line.speaker ? (
+                            <span style={{ color: speakersColors[line.speaker] }}>
+                                <TooltipProvider>
+                                    <Tooltip>
+                                        <TooltipTrigger className="text-selectable">
+                                            {line.speaker}
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            {speakerNames[line.speaker]} ({speakersColors[line.speaker]})
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </TooltipProvider>
+                                : {displayType === "mono" ? renderMonoText(line.text, searchText) :
+                                displayType === "source-code" ? renderSourceCode(line.text, searchText) :
+                                    <span
+                                        dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(line.text, searchText)) }}/>}
+                            </span>
+                        ) : displayType === "mono" ? renderMonoText(line.text, searchText) :
                             displayType === "source-code" ? renderSourceCode(line.text, searchText) :
-                                <span dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(line.text, searchText)) }} />}
-                        </span>
-                    ) : displayType === "mono" ? renderMonoText(line.text, searchText) :
-                        displayType === "source-code" ? renderSourceCode(line.text, searchText) :
-                            <span className="text-white" dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(line.text, searchText)) }} />}
-                </div>
-            ))}
+                                <span className="text-white"
+                                      dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(line.text, searchText)) }}/>}
+                    </div>
+                );
+            })}
         </div>
     );
 }

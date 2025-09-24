@@ -1,0 +1,64 @@
+type: item
+subType: rot-prince-weaver
+tag: watcher
+
+=== transcription: rot-prince-weaver
+md-type: pearl
+md-internalId: Prince_Weaver_1
+md-var-DialogueId: Prince_Weaver_1
+md-name: Prince Weaver 1
+md-sourceDialogue: 233.txt
+Oh my! You have grown... and you have become!
+The scent...
+yes....
+Yes!! I percieve it now!
+Paths crossed and intertwined! Across such time and distance...
+How fantastic our fates!
+How wonderous you are, to me.
+Alpha and Omega.
+
+=== transcription: rot-prince-weaver
+md-type: pearl
+md-internalId: Prince_Weaver_2
+md-var-DialogueId: Prince_Weaver_2
+md-name: Prince Weaver 2
+md-sourceDialogue: 234.txt
+And so we have arrived at the endgame.
+We have each played our hands,
+and it is for fate to decide.
+For my part, I have so enjoyed our journey together.
+From nothing... to gods.
+Think of me well.
+My dear friend.
+
+=== transcription: rot-prince-weaver
+md-type: pearl
+md-internalId: Prince_Ascension_Marked
+md-var-DialogueId: Prince_Ascension
+md-name: Prince Ascension (Mark of Communication already obtained)
+md-sourceDialogue: 242.txt
+Ah my friend!
+It has been so long,
+I was afraid you wouldn't come.
+Please, sit and rest.
+...
+Here we are, at the end of it all.
+...
+What a lovely view.
+
+=== transcription: rot-prince-weaver
+md-type: pearl
+md-internalId: Prince_Ascension
+md-var-DialogueId: Prince_Ascension
+md-name: Prince Ascension
+md-sourceDialogue: 235.txt
+Ah my friend!
+It has been so long,
+I was afraid you wouldn't come.
+Please, sit and rest.
+...
+Here we are, at the end of it all.
+...
+What a lovely view.
+Oh, before you go... a gift.
+Perhaps I am not so different after all.
