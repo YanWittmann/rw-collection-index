@@ -2,6 +2,7 @@ import { speakerNames, speakersColors } from "../../utils/speakers"
 import type { DialogueLine } from "../../types/types"
 import { renderDialogueLine, sanitizeHtmlSafe } from "../../utils/renderDialogueLine"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
+import { useState, useEffect } from "react"
 
 interface DialogueContentProps {
     lines: DialogueLine[]
@@ -97,6 +98,107 @@ export const renderSourceCode = (text: string, searchText?: string) => {
     );
 };
 
+const parseAttributes = (text: string) => {
+    const attributesRegex = /\[(.*?)=(.*?)]/g;
+    const attributes: { [key: string]: string } = {};
+    let attrMatch;
+    while ((attrMatch = attributesRegex.exec(text)) !== null) {
+        const [, key, value] = attrMatch;
+        if (key && value) {
+            attributes[key.trim().toUpperCase()] = value.trim();
+        }
+    }
+    return attributes;
+}
+
+const parseImageDetails = (text: string) => {
+    const imagePathRegex = /!\[(.*?)]/;
+    const imageMatch = text.match(imagePathRegex);
+    if (!imageMatch) return null;
+
+    const path = imageMatch[1];
+    const restOfString = text.substring(imageMatch[0].length);
+    const attributes = parseAttributes(restOfString);
+
+    const alt = attributes.ALT?.toLowerCase() || '';
+    const style = attributes.STYLE?.toLowerCase();
+
+    return { path, alt, style };
+};
+
+const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attributes?: { [key: string]: string } }) => {
+    let [currentIndex, setCurrentIndex] = useState(0);
+    const [isHovering, setIsHovering] = useState(false);
+
+    if (currentIndex != 0 && currentIndex >= frames.length) {
+        currentIndex = 0;
+        setCurrentIndex(0);
+    }
+
+    useEffect(() => {
+        if (frames.length <= 1 || isHovering) return;
+
+        const speed = Number(attributes?.SPEED) || 1300;
+        const interval = setInterval(() => {
+            setCurrentIndex(prevIndex => (prevIndex + 1) % frames.length);
+        }, speed);
+        return () => clearInterval(interval);
+    }, [frames.length, attributes, isHovering]);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        if (frames.length <= 1) return;
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const width = rect.width;
+        const percent = Math.max(0, Math.min(1, x / width));
+        const frameIndex = Math.min(frames.length - 1, Math.floor(percent * frames.length));
+        setCurrentIndex(frameIndex);
+    };
+
+    const details = parseImageDetails(frames[currentIndex].text);
+    if (!details) return null;
+
+    const { path, alt, style } = details;
+    let imageElement;
+
+    if (style === 'rounded') {
+        const featherGradient = 'radial-gradient(circle, black 50%, transparent 70%)';
+        const divStyles: React.CSSProperties = {
+            width: '100%',
+            height: 'auto',
+            aspectRatio: '1 / 1',
+            backgroundImage: `url(img/${path})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            maskImage: featherGradient,
+            WebkitMaskImage: featherGradient,
+        };
+        imageElement = <div style={divStyles} role="img" aria-label={alt}></div>;
+    } else {
+        imageElement = <img src={`img/${path}`} alt={alt} className="w-full h-auto rounded-md" />;
+    }
+
+    return (
+        <div className="flex justify-center">
+            <figure className="w-full max-w-xl">
+                <a
+                    href={`img/${path}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-zoom-in"
+                    onMouseEnter={() => setIsHovering(true)}
+                    onMouseLeave={() => setIsHovering(false)}
+                    onMouseMove={handleMouseMove}
+                >
+                    {imageElement}
+                    {alt && <figcaption className="text-sm text-center text-gray-400 mt-2">{alt}</figcaption>}
+                </a>
+            </figure>
+        </div>
+    );
+};
+
+
 export function DialogueContent({ lines, searchText }: DialogueContentProps) {
     if (lines.length === 0) return null;
 
@@ -111,56 +213,42 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
     const displayType = isMonoMode ? "mono" : isSourceCode ? "source-code" : "centered";
     if (isMonoMode) clonedLines.shift();
 
+    const processedContent: (DialogueLine | { type: 'sequence'; frames: DialogueLine[]; attributes: { [key: string]: string } })[] = [];
+    let i = 0;
+    while (i < clonedLines.length) {
+        const line = clonedLines[i];
+        if (line.text.trim().startsWith('SEQUENCE')) {
+            const attributes = parseAttributes(line.text);
+            const sequenceFrames: DialogueLine[] = [];
+            let j = i + 1;
+            while (j < clonedLines.length && /!\[(.*?)]/.test(clonedLines[j].text)) {
+                sequenceFrames.push(clonedLines[j]);
+                j++;
+            }
+            if (sequenceFrames.length > 0) {
+                processedContent.push({ type: 'sequence', frames: sequenceFrames, attributes });
+                i = j;
+            } else {
+                i++;
+            }
+        } else {
+            processedContent.push(line);
+            i++;
+        }
+    }
+
     return (
         <div className="space-y-3 pb-6">
-            {clonedLines.map((line, i) => {
-                const imagePathRegex = /!\[(.*?)]/;
-                const imageMatch = line.text.match(imagePathRegex);
+            {processedContent.map((item, i) => {
+                if ('type' in item && item.type === 'sequence') {
+                    return <ImageRenderer key={i} frames={item.frames} attributes={item.attributes} />;
+                }
 
-                if (imageMatch) {
-                    const path = imageMatch[1];
-                    const restOfString = line.text.substring(imageMatch[0].length);
+                const line = item as DialogueLine;
+                const isImage = /!\[(.*?)]/.test(line.text);
 
-                    const attributesRegex = /\[(.*?)=(.*?)]/g;
-                    const attributes: { [key: string]: string } = {};
-                    let attrMatch;
-                    while ((attrMatch = attributesRegex.exec(restOfString)) !== null) {
-                        const [, key, value] = attrMatch;
-                        if (key && value) {
-                            attributes[key.trim().toUpperCase()] = value.trim().toLowerCase();
-                        }
-                    }
-
-                    const alt = attributes.ALT || '';
-                    let imageElement;
-
-                    if (attributes.STYLE === 'rounded') {
-                        const featherGradient = 'radial-gradient(circle, black 50%, transparent 70%)';
-                        const divStyles: React.CSSProperties = {
-                            width: '100%',
-                            height: 'auto',
-                            aspectRatio: '1 / 1',
-                            backgroundImage: `url(img/${path})`,
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            maskImage: featherGradient,
-                            WebkitMaskImage: featherGradient,
-                        };
-                        imageElement = <div style={divStyles} role="img" aria-label={alt}></div>;
-                    } else {
-                        imageElement = <img src={`img/${path}`} alt={alt} className="w-full h-auto rounded-md" />;
-                    }
-
-                    return (
-                        <div key={i} className="flex justify-center">
-                            <figure className="w-full max-w-xl">
-                                <a href={`img/${path}`} target="_blank" rel="noopener noreferrer" className="cursor-zoom-in">
-                                    {imageElement}
-                                    {alt && <figcaption className="text-sm text-center text-gray-400 mt-2">{alt}</figcaption>}
-                                </a>
-                            </figure>
-                        </div>
-                    );
+                if (isImage) {
+                    return <ImageRenderer key={i} frames={[line]} />;
                 }
 
                 return (

@@ -6,6 +6,7 @@ name: DRONE
 === transcription: PearlReader
 md-sourceDialogue: pearl_3a.png
 md-sourceDialogue: pearl_3b.png
+SEQUENCE
 ![PearlReader/DRONE_1.png][STYLE=rounded]
 ![PearlReader/DRONE_2.png][STYLE=rounded]
 ![PearlReader/DRONE_3.png][STYLE=rounded]
