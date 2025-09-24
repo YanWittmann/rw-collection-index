@@ -130,7 +130,7 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
     let [currentIndex, setCurrentIndex] = useState(0);
     const [isHovering, setIsHovering] = useState(false);
 
-    if (currentIndex != 0 && currentIndex >= frames.length) {
+    if (currentIndex !== 0 && currentIndex >= frames.length) {
         currentIndex = 0;
         setCurrentIndex(0);
     }
