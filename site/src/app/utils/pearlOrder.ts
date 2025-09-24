@@ -113,7 +113,8 @@ export const pearlOrder: PearlChapter[] = [
     {
         name: "The Watcher: Pearls",
         ids: [
-            "WORA", "ABSTRACT",
+            "WORA", "ABSTRACT", "DRONE",
+            "AUDIO_GROOVE", "AUDIO_JAM1", "AUDIO_JAM2", "AUDIO_JAM3", "AUDIO_JAM4", "AUDIO_VOICEWIND1", "AUDIO_VOICEWIND2",
         ]
     },
     {

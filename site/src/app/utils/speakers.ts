@@ -3,7 +3,7 @@ import sourceDecrypted from "../../generated/source-decrypted.json";
 export interface SourceDecrypted {
     n: string;
     p: string;
-    c: string;
+    c?: string;
 }
 
 export const SOURCE_DECRYPTED: SourceDecrypted[] = sourceDecrypted;

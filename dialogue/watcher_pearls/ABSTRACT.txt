@@ -1,7 +1,0 @@
-internalId: ABSTRACT
-color: #685959
-type: pearl
-name: ABSTRACT
-
-=== transcription: PearlReader
-![PearlReader/ABSTRACT.png]

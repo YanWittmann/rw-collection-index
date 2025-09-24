@@ -4,7 +4,6 @@ tag: watcher
 map: region=WORA, room=AI, mapSlugcat=watcher
 mapInfo: The Prince can only be encountered once the four portals in the Throne have been created.
 
-
 === transcription: rot-prince
 md-type: pearl
 md-var-DialogueId: AcknowledgePlayerGift

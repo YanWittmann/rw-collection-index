@@ -1,0 +1,7 @@
+internalId: AUDIO_JAM3
+color: #0E8F59
+type: pearl
+name: Audio: Jam 3
+
+=== transcription: PearlReader
+Audio File content

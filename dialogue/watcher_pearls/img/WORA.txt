@@ -1,0 +1,14 @@
+internalId: WORA
+color: #5F8B34
+type: pearl
+name: WORA
+
+=== transcription: PearlReader
+md-sourceDialogue: pearl1_l1.png
+md-sourceDialogue: pearl1_l2.png
+md-sourceDialogue: pearl1_l3.png
+md-sourceDialogue: pearl1_l4.png
+md-sourceDialogue: pearl1_l5.png
+md-sourceDialogue: pearl1_l6.png
+md-sourceDialogue: pearl1_l7.png
+![PearlReader/WORA.png][STYLE=rounded]

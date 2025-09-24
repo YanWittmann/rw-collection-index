@@ -1,0 +1,7 @@
+internalId: AUDIO_VOICEWIND2
+color: #3F2A11
+type: pearl
+name: Audio: Voicewind 2
+
+=== transcription: PearlReader
+Audio File content

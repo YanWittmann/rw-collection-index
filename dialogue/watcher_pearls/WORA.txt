@@ -1,7 +1,0 @@
-internalId: WORA
-color: #5F8B34
-type: pearl
-name: WORA
-
-=== transcription: PearlReader
-![PearlReader/WORA.png]

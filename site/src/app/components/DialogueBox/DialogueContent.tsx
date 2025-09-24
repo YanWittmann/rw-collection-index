@@ -111,22 +111,53 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
     const displayType = isMonoMode ? "mono" : isSourceCode ? "source-code" : "centered";
     if (isMonoMode) clonedLines.shift();
 
-    const imageRegex = /!\[(.*?)](?:\[(.*?)])?/;
-
     return (
         <div className="space-y-3 pb-6">
             {clonedLines.map((line, i) => {
-                const imageMatch = line.text.match(imageRegex);
+                const imagePathRegex = /!\[(.*?)]/;
+                const imageMatch = line.text.match(imagePathRegex);
 
                 if (imageMatch) {
-                    const [, path, alt] = imageMatch;
+                    const path = imageMatch[1];
+                    const restOfString = line.text.substring(imageMatch[0].length);
+
+                    const attributesRegex = /\[(.*?)=(.*?)]/g;
+                    const attributes: { [key: string]: string } = {};
+                    let attrMatch;
+                    while ((attrMatch = attributesRegex.exec(restOfString)) !== null) {
+                        const [, key, value] = attrMatch;
+                        if (key && value) {
+                            attributes[key.trim().toUpperCase()] = value.trim().toLowerCase();
+                        }
+                    }
+
+                    const alt = attributes.ALT || '';
+                    let imageElement;
+
+                    if (attributes.STYLE === 'rounded') {
+                        const featherGradient = 'radial-gradient(circle, black 50%, transparent 70%)';
+                        const divStyles: React.CSSProperties = {
+                            width: '100%',
+                            height: 'auto',
+                            aspectRatio: '1 / 1',
+                            backgroundImage: `url(img/${path})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            maskImage: featherGradient,
+                            WebkitMaskImage: featherGradient,
+                        };
+                        imageElement = <div style={divStyles} role="img" aria-label={alt}></div>;
+                    } else {
+                        imageElement = <img src={`img/${path}`} alt={alt} className="w-full h-auto rounded-md" />;
+                    }
+
                     return (
                         <div key={i} className="flex justify-center">
                             <figure className="w-full max-w-xl">
-                                <img src={`img/${path}`} alt={alt ?? ''} className="w-full h-auto rounded-md"/>
-                                {alt && <figcaption className="text-sm text-center text-gray-400 mt-2">
-                                    {alt}
-                                </figcaption>}
+                                <a href={`img/${path}`} target="_blank" rel="noopener noreferrer" className="cursor-zoom-in">
+                                    {imageElement}
+                                    {alt && <figcaption className="text-sm text-center text-gray-400 mt-2">{alt}</figcaption>}
+                                </a>
                             </figure>
                         </div>
                     );
@@ -148,13 +179,11 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
                                 </TooltipProvider>
                                 : {displayType === "mono" ? renderMonoText(line.text, searchText) :
                                 displayType === "source-code" ? renderSourceCode(line.text, searchText) :
-                                    <span
-                                        dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(line.text, searchText)) }}/>}
+                                    <span dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(line.text, searchText)) }} />}
                             </span>
                         ) : displayType === "mono" ? renderMonoText(line.text, searchText) :
                             displayType === "source-code" ? renderSourceCode(line.text, searchText) :
-                                <span className="text-white"
-                                      dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(line.text, searchText)) }}/>}
+                                <span className="text-white" dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(line.text, searchText)) }} />}
                     </div>
                 );
             })}

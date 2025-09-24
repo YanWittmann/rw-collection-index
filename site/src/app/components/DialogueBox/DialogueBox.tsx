@@ -314,7 +314,13 @@ export function DialogueBox({
         if (sourceFileDisplay) {
             const foundEntry = findSourceDialogue(sourceFileDisplay);
             if (foundEntry) {
-                displayLines = foundEntry.c.replaceAll("\n\n", "\n").replaceAll("<", "&lt;").replaceAll(">", "&gt;").split("\n").map(line => ({ text: line }));
+                if (foundEntry.c) {
+                    displayLines = foundEntry.c.replaceAll("\n\n", "\n").replaceAll("<", "&lt;").replaceAll(">", "&gt;").split("\n").map(line => ({ text: line }));
+                } else if (foundEntry.n.includes("png")) {
+                    displayLines = [{ text: "![" + foundEntry.p + "]" }];
+                } else {
+                    displayLines = [{ text: "Error: Source file does not provide content." }];
+                }
             } else {
                 displayLines = [{ text: "Error: Source file not found." }];
             }

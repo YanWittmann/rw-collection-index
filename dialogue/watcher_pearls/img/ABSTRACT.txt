@@ -1,0 +1,10 @@
+internalId: ABSTRACT
+color: #685959
+type: pearl
+name: ABSTRACT
+
+=== transcription: PearlReader
+md-sourceDialogue: pearl3_l1.png
+md-sourceDialogue: pearl3_l2.png
+md-sourceDialogue: pearl3_l3.png
+![PearlReader/ABSTRACT.png][STYLE=rounded]

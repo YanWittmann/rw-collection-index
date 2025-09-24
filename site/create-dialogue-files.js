@@ -49,7 +49,7 @@ function parseSourceDecryptedJsonFile(filePath) {
         const fileData = fs.readFileSync(filePath, 'utf8');
         const jsonData = JSON.parse(fileData);
         // preprocess
-        return jsonData.map(entry => ({
+        return jsonData.filter(entry => entry.c !== undefined).map(entry => ({
             ...entry,
             linesA: entry.c.split(/\n|<LINE>/).map(l => l.replace(/^((\d+|[A-Z]+) : )+/, '').trim()).filter(l => l),
             linesB: entry.c.split(/\n/).map(l => l.replace(/^((\d+|[A-Z]+) : )+/, '').trim()).filter(l => l)
@@ -65,6 +65,15 @@ const gameFiles = parseSourceDecryptedJsonFile(sourceDecryptedJsonFile);
 
 // copy file to generated folder
 fs.copyFileSync(sourceDecryptedJsonFile, path.join(__dirname, 'src/generated/source-decrypted.json'));
+
+// SECTION: rain world game source images
+const sourceImgDir = path.join(DIALOGUE_DIR, 'source/img');
+const publicImgDir = path.join(__dirname, 'public/img/src');
+
+fs.rmSync(publicImgDir, { recursive: true, force: true });
+fs.cpSync(sourceImgDir, publicImgDir, { recursive: true });
+
+console.log(`Successfully copied image directory ${sourceImgDir} to ${publicImgDir}`);
 
 function normalizedLevenshteinDistance(a, b) {
     const maxLength = Math.max(a.length, b.length);
