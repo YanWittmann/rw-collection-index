@@ -16,17 +16,6 @@ interface PearlItemProps {
     unlockVersion: number
 }
 
-function max(array: (number | undefined)[]) {
-    let maxValue = array[0];
-    for (let i = 1; i < array.length; i++) {
-        const currentValue = array[i];
-        if (currentValue !== undefined && (maxValue === undefined || currentValue > maxValue)) {
-            maxValue = currentValue;
-        }
-    }
-    return maxValue;
-}
-
 const PearlItem: React.FC<PearlItemProps> = ({
                                                  pearl,
                                                  pearlIndex,
