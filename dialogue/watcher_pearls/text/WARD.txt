@@ -3,6 +3,7 @@ color: #143225
 type: pearl
 name: Concerns on Star Energies
 tag: watcher
+map: region=WARD, room=R02, mapSlugcat=watcher
 
 === transcription: PearlReader
 md-sourceDialogue: 239.txt

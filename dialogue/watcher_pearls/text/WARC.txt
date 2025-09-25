@@ -3,6 +3,7 @@ color: #2A1C1F
 type: pearl
 name: Bonemeal Brick Complaint
 tag: watcher
+map: region=WARC, room=C10, mapSlugcat=watcher
 
 === transcription: PearlReader
 md-sourceDialogue: 238.txt

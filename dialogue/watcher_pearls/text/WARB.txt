@@ -3,6 +3,7 @@ color: #350C12
 type: pearl
 name: The Counselor's Consort
 tag: watcher
+map: region=WARB, room=F10, mapSlugcat=watcher
 
 === transcription: PearlReader
 md-sourceDialogue: 237.txt

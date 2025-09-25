@@ -3,6 +3,7 @@ color: #0E8F59
 type: pearl
 name: Audio: Jam 3
 tag: watcher
+map: region=WTDB, room=A15, mapSlugcat=watcher
 
 === transcription: PearlReader
 Audio File content

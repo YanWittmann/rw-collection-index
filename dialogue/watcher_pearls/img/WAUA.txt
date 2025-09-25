@@ -3,6 +3,7 @@ color: #350C12
 type: pearl
 name: WAUA
 tag: watcher
+map: region=WAUA, room=E02B, mapSlugcat=watcher
 
 === transcription: PearlReader
 md-sourceDialogue: pearl2_b_l1.png

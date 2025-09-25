@@ -3,6 +3,7 @@ color: #B26889
 type: pearl
 name: Audio: Groove
 tag: watcher
+map: region=WARG, room=W05, mapSlugcat=watcher
 
 === transcription: PearlReader
 Audio File content

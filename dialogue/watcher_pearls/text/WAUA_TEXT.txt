@@ -3,6 +3,7 @@ color: #9F1181
 type: pearl
 name: Interview with Bell of Gesture
 tag: watcher
+map: region=WAUA, room=D02, mapSlugcat=watcher
 
 === transcription: PearlReader
 md-sourceDialogue: 240.txt

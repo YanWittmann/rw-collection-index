@@ -3,6 +3,7 @@ color: #493828
 type: pearl
 name: Drone
 tag: watcher
+map: region=WPTA, room=D01, mapSlugcat=watcher
 
 === transcription: PearlReader
 md-sourceDialogue: pearl_3a.png

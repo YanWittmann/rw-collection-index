@@ -1,8 +1,0 @@
-internalId: WBLA
-color: #6A28B4
-type: pearl
-name: Audio: WBLA
-tag: watcher
-
-=== transcription: PearlReader
-Audio File content

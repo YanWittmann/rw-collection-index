@@ -3,6 +3,7 @@ color: #527B29
 type: pearl
 name: WORA
 tag: watcher
+map: region=WORA, room=STARCATCHER04, mapSlugcat=watcher
 
 === transcription: PearlReader
 md-sourceDialogue: pearl1_l1.png

@@ -3,6 +3,7 @@ color: #3F2A11
 type: pearl
 name: Audio: Voicewind 2
 tag: watcher
+map: region=WARE, room=I13, mapSlugcat=watcher
 
 === transcription: PearlReader
 Audio File content

@@ -1,8 +1,0 @@
-internalId: WARG
-color: #7D56EF
-type: pearl
-name: Audio: WARG
-tag: watcher
-
-=== transcription: PearlReader
-Audio File content

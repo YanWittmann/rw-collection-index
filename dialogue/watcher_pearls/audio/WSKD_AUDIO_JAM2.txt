@@ -3,6 +3,7 @@ color: #967D23
 type: pearl
 name: Audio: Jam 2
 tag: watcher
+map: region=WSKD, room=B07, mapSlugcat=watcher
 
 === transcription: PearlReader
 Audio File content

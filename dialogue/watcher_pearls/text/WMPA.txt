@@ -3,6 +3,7 @@ color: #3C683E
 type: pearl
 name: K'Arelus of Mart
 tag: watcher
+map: region=WMPA, room=C06, mapSlugcat=watcher
 
 === transcription: PearlReader
 md-sourceDialogue: 236.txt

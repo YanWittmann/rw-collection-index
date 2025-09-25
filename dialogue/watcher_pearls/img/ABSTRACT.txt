@@ -1,8 +1,9 @@
 internalId: Abstract
-color: #685959
+color: #2C7868
 type: pearl
 name: ABSTRACT
 tag: watcher
+map: region=WSKC, room=A30, mapSlugcat=watcher
 
 === transcription: PearlReader
 md-sourceDialogue: pearl3_l1.png

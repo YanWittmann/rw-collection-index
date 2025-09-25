@@ -116,15 +116,15 @@ export const pearlOrder: PearlChapter[] = [
     {
         name: "The Watcher: Logs",
         ids: [
-            "WAUA_TEXT", "WARB", "WARC", "WARD", "WMPA",
+            "WAUA_TEXT", "WARB", "WARC", "WARD", "WMPA", "WVWA",
             { pattern: /Watcher_Text.+/ },
         ]
     },
     {
         name: "The Watcher: Recordings",
         ids: [
-            "AUDIO_GROOVE", "AUDIO_JAM1", "AUDIO_JAM2", "AUDIO_JAM3", "AUDIO_JAM4", "AUDIO_VOICEWIND1",
-            "AUDIO_VOICEWIND2", "TEXT_AUDIO_TALKSHOW", "WARE", "WARG", "WBLA",
+            "WARG_AUDIO_GROOVE", "WTDA_AUDIO_JAM1", "WSKD_AUDIO_JAM2", "WTDB_AUDIO_JAM3", "WRFB_AUDIO_JAM4", "WBLA_AUDIO_VOICEWIND1",
+            "WARE_AUDIO_VOICEWIND2", "TEXT_AUDIO_TALKSHOW",
         ]
     },
     {
