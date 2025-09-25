@@ -4,6 +4,16 @@ type: pearl
 name: Pale Yellow
 map: region=SL, room=I01, mapSlugcat=white
 
+=== transcription: PearlReader
+md-sourceDialogue: ec_anim.png
+md-tag: watcher
+SEQUENCE[SPEED=1000]
+![PearlReader/SL_moon_1.png][STYLE=rounded]
+![PearlReader/SL_moon_2.png][STYLE=rounded]
+![PearlReader/SL_moon_3.png][STYLE=rounded]
+![PearlReader/SL_moon_4.png][STYLE=rounded]
+![PearlReader/SL_moon_5.png][STYLE=rounded]
+
 === transcription: LttM-post-collapse
 md-sourceDialogue: 18.txt
 Interesting... This one is written by me.

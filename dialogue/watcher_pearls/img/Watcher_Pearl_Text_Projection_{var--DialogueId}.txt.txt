@@ -1,0 +1,37 @@
+type: pearl
+tag: watcher
+
+=== transcription: PearlReader
+md-internalId: TEXT_CONTEMPT
+md-var-DialogueId: TEXT_CONTEMPT
+md-name: Contempt
+md-color: #27191F
+![PearlReader/TEXT_CONTEMPT.png][STYLE=rounded]
+
+=== transcription: PearlReader
+md-internalId: TEXT_KITESDAY
+md-var-DialogueId: TEXT_KITESDAY
+md-name: Kitesday
+md-color: #352514
+![PearlReader/TEXT_KITESDAY.png][STYLE=rounded]
+
+=== transcription: PearlReader
+md-internalId: TEXT_NOTIONOFSELF
+md-var-DialogueId: TEXT_NOTIONOFSELF
+md-name: Notionofself
+md-color: #152815
+![PearlReader/TEXT_NOTIONOFSELF.png][STYLE=rounded]
+
+=== transcription: PearlReader
+md-internalId: TEXT_SECRET
+md-var-DialogueId: TEXT_SECRET
+md-name: Secret
+md-color: #1C0E26
+![PearlReader/TEXT_SECRET.png][STYLE=rounded]
+
+=== transcription: PearlReader
+md-internalId: TEXT_STARDUST
+md-var-DialogueId: TEXT_STARDUST
+md-name: Stardust
+md-color: #143125
+![PearlReader/TEXT_STARDUST.png][STYLE=rounded]

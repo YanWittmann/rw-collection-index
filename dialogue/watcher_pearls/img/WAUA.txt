@@ -1,0 +1,19 @@
+internalId: WAUA
+color: #350C12
+type: pearl
+name: WAUA
+tag: watcher
+
+=== transcription: PearlReader
+md-sourceDialogue: pearl2_b_l1.png
+md-sourceDialogue: pearl2_b_l2.png
+md-sourceDialogue: pearl2_b_l3.png
+md-sourceDialogue: pearl2_l1.png
+md-sourceDialogue: pearl2_l2.png
+md-sourceDialogue: pearl2_l3.png
+md-sourceDialogue: pearl2_l4.png
+md-sourceDialogue: pearl2_l5.png
+md-sourceDialogue: pearl2_l6.png
+SEQUENCE[SPEED=2500]
+![PearlReader/WAUA_1.png][STYLE=rounded]
+![PearlReader/WAUA_2.png][STYLE=rounded]

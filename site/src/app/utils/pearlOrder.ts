@@ -6,7 +6,7 @@ export interface PearlSelector {
 
 export interface PearlChapter {
     name: string;
-    ids: string[] | PearlSelector[];
+    ids: (string | PearlSelector)[];
 }
 
 export const pearlOrder: PearlChapter[] = [
@@ -83,14 +83,9 @@ export const pearlOrder: PearlChapter[] = [
         ]
     },
     {
-        name: "The Watcher: Vanilla Regions",
-        ids: [
-            { pattern: /Watcher_vanillaEncounter_.+/ },
-        ]
-    },
-    {
         name: "The Watcher: Spinning Top",
         ids: [
+            { pattern: /Watcher_vanillaEncounter_.+/ },
             { pattern: /Watcher_ST_Echo.+/ },
             { pattern: /Watcher_ST_Other.+/ },
         ]
@@ -111,16 +106,23 @@ export const pearlOrder: PearlChapter[] = [
         ]
     },
     {
-        name: "The Watcher: Pearls",
+        name: "The Watcher: Projections",
         ids: [
-            "WORA", "ABSTRACT", "DRONE",
-            "AUDIO_GROOVE", "AUDIO_JAM1", "AUDIO_JAM2", "AUDIO_JAM3", "AUDIO_JAM4", "AUDIO_VOICEWIND1", "AUDIO_VOICEWIND2",
+            "WAUA", "WORA", "ABSTRACT", "DRONE",
+            { pattern: /Watcher_Pearl_Text_Projection.+/ }
         ]
     },
     {
-        name: "The Watcher: Various",
+        name: "The Watcher: Logs",
         ids: [
             { pattern: /Watcher_Text.+/ },
+        ]
+    },
+    {
+        name: "The Watcher: Recordings",
+        ids: [
+            "AUDIO_GROOVE", "AUDIO_JAM1", "AUDIO_JAM2", "AUDIO_JAM3", "AUDIO_JAM4", "AUDIO_VOICEWIND1",
+            "AUDIO_VOICEWIND2", "TEXT_AUDIO_TALKSHOW",
         ]
     },
     {

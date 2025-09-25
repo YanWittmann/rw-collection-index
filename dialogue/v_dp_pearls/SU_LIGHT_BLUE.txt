@@ -4,6 +4,12 @@ type: pearl
 name: Light Blue
 map: region=SU, room=B05, mapSlugcat=white
 
+=== transcription: PearlReader
+md-sourceDialogue: repeatingmantra_a.png
+md-sourceDialogue: repeatingmantra_b.png
+md-tag: watcher
+![PearlReader/SU.png][STYLE=rounded]
+
 === transcription: FP-artificer
 md-sourceDialogue: 41-artificer.txt
 This pearl is an amulet of repeating mantras, followed by a termination verse. Likely a small decoration lost from some garment. I cannot imagine it has much significance.

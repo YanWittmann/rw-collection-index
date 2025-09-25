@@ -1,0 +1,8 @@
+internalId: TEXT_AUDIO_TALKSHOW
+color: #39062E
+type: pearl
+name: Audio: Talkshow
+tag: watcher
+
+=== transcription: PearlReader
+Audio File content

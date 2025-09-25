@@ -10,6 +10,7 @@ md-sourceDialogue: masks_bg_elements.png
 md-sourceDialogue: masks_bg_pattern.png
 md-sourceDialogue: masks_bg_text1.png
 md-sourceDialogue: masks_bg_text2.png
+md-tag: watcher
 SEQUENCE
 ![PearlReader/HI_1.png][STYLE=rounded]
 ![PearlReader/HI_2.png][STYLE=rounded]

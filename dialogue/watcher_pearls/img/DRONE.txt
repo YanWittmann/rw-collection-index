@@ -1,7 +1,7 @@
-internalId: Drone
+internalId: DRONE
 color: #493828
 type: pearl
-name: DRONE
+name: Drone
 tag: watcher
 
 === transcription: PearlReader
