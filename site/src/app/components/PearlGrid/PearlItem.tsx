@@ -79,7 +79,7 @@ const PearlItem: React.FC<PearlItemProps> = ({
         }
 
         const iconType = pearl.metadata.type === 'item' ? (pearl.metadata.subType || 'pearl') : pearl.metadata.type;
-        const sourceFileCount = max(pearl.transcribers.map(p => p.metadata.sourceDialogue?.length)) || 0;
+        // const sourceFileCount = max(pearl.transcribers.map(p => p.metadata.sourceDialogue?.length)) || 0;
 
         return (
             <TooltipProvider delayDuration={120}>
