@@ -5,6 +5,7 @@ import { UnlockMode } from "../../page";
 import UnlockManager from "../../utils/unlockManager";
 import { darken, speakerNames, transcriberIcons, transcribersColors } from "../../utils/speakers";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
+import { Ref } from "react";
 
 interface TranscriberSelectorProps {
     pearl: PearlData
@@ -12,6 +13,7 @@ interface TranscriberSelectorProps {
     selectedName: string | null
     onSelect: (name: string) => void
     onHover: (name: string | null) => void
+    ref?: Ref<any>
 }
 
 export function getTranscriberIcon(transcriber: Dialogue, index?: number) {
@@ -53,7 +55,8 @@ export function TranscriberSelector({
                                         unlockMode,
                                         selectedName,
                                         onSelect,
-                                        onHover
+                                        onHover,
+                                        ref
                                     }: TranscriberSelectorProps) {
 
     const multipleSameTranscribers = new Set(pearl.transcribers.map(transcriber => transcriber.transcriber)).size !== pearl.transcribers.length;
@@ -105,7 +108,7 @@ export function TranscriberSelector({
     }
 
     return (
-        <div className="absolute top-2 right-2 flex gap-2 p-2">
+        <div className="absolute top-2 right-2 flex gap-2 p-2" ref={ref}>
             {pearl.transcribers.map((transcriber, index) => renderTranscriber(transcriber, index))}
         </div>
     );

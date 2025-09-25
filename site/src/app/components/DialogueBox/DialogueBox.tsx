@@ -2,7 +2,7 @@ import { TranscriberSelector } from "./TranscriberSelector";
 import { DialogueContent } from "./DialogueContent";
 import { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types";
 import { findSourceDialogue, resolveVariables, speakerNames } from "../../utils/speakers";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion"
 import { WelcomeDialogueContent } from "./WelcomeDialogueContent";
 import { UnlockMode } from "../../page";
@@ -79,6 +79,7 @@ export function DialogueBox({
     const [lastTranscriberName, setLastTranscriberName] = useState<string | null>(null);
     const [justCopiedInternalId, setJustCopiedInternalId] = useState<boolean>(false);
     const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null);
+    const selfRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         // touch event handler for swipe gestures
@@ -270,12 +271,60 @@ export function DialogueBox({
             }
         }
 
-        let titleElement = null;
+        let displayLines: DialogueLine[];
+        if (sourceFileDisplay) {
+            const foundEntry = findSourceDialogue(sourceFileDisplay);
+            if (foundEntry) {
+                if (foundEntry.c) {
+                    displayLines = foundEntry.c.replaceAll("\n\n", "\n").replaceAll("<", "&lt;").replaceAll(">", "&gt;").split("\n").map(line => ({ text: line }));
+                } else if (foundEntry.n.includes("png")) {
+                    displayLines = [{ text: "![" + foundEntry.p + "]" }];
+                } else {
+                    displayLines = [{ text: "Error: Source file does not provide content." }];
+                }
+            } else {
+                displayLines = [{ text: "Error: Source file not found." }];
+            }
+        } else {
+            displayLines = dialogue.lines;
+        }
+
+
         const name = (sourceFileDisplay ? (sourceFileDisplay.split(/[/\\]/).pop() || "") : null) || dialogue.metadata.name || pearl.metadata.name;
+        let moveTitleLeft: boolean = false;
+        let textContainerClass;
+        if (isMobile) {
+            textContainerClass = "max-h-[calc(85vh-2px)] pt-16";
+        } else {
+            let moveDown: boolean;
+            if (selfRef.current) {
+                let remainingSpaceHalf = (selfRef.current!.clientWidth / 2)
+                    - ((name.length + (dialogue.metadata.info ? 4 : 0)) * 9.5) / 2
+                    - pearl.transcribers.length * 54;
+                let remainingSpaceFull = selfRef.current!.clientWidth
+                    - ((name.length + (dialogue.metadata.info ? 4 : 0)) * 9.5)
+                    - pearl.transcribers.length * 54;
+
+                moveDown = remainingSpaceFull < 110;
+                moveTitleLeft = !moveDown && remainingSpaceHalf < 30;
+            } else {
+                // fallback in case of the first render
+                const textFactor: number = window.innerWidth - (name.length + (dialogue.metadata.info ? 4 : 0)) * 5;
+                moveDown = textFactor < 850;
+            }
+            if (moveDown) {
+                textContainerClass = "max-h-[calc(80vh-2px)] pt-16";
+            } else {
+                textContainerClass = "max-h-[calc(80vh-2px)]";
+            }
+        }
+
+        let titleElement = null;
         if (dialogue.metadata.info) {
             titleElement = (
                 <div className={cn(
-                    "text-white text-lg mb-8 pb-0 flex items-center justify-center flex-col",
+                    "text-white text-lg mb-8 pb-0 flex justify-center flex-col",
+                    moveTitleLeft ? "items-start pl-10" : "items-center",
                     bottomElement ? "mt-5" : "mt-7"
                 )}>
                     <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
@@ -300,7 +349,8 @@ export function DialogueBox({
         } else {
             titleElement =
                 <div className={cn(
-                    "text-white text-lg mb-8 pb-0 flex items-center justify-center flex-col",
+                    "text-white text-lg mb-8 pb-0 flex justify-center flex-col",
+                    moveTitleLeft ? "items-start pl-10" : "items-center",
                     bottomElement ? "mt-5" : "mt-7"
                 )}>
                     <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
@@ -308,37 +358,6 @@ export function DialogueBox({
                         {bottomElement}
                     </TooltipProvider>
                 </div>
-        }
-
-        let displayLines: DialogueLine[];
-        if (sourceFileDisplay) {
-            const foundEntry = findSourceDialogue(sourceFileDisplay);
-            if (foundEntry) {
-                if (foundEntry.c) {
-                    displayLines = foundEntry.c.replaceAll("\n\n", "\n").replaceAll("<", "&lt;").replaceAll(">", "&gt;").split("\n").map(line => ({ text: line }));
-                } else if (foundEntry.n.includes("png")) {
-                    displayLines = [{ text: "![" + foundEntry.p + "]" }];
-                } else {
-                    displayLines = [{ text: "Error: Source file does not provide content." }];
-                }
-            } else {
-                displayLines = [{ text: "Error: Source file not found." }];
-            }
-        } else {
-            displayLines = dialogue.lines;
-        }
-
-        let textContainerClass;
-        if (isMobile) {
-            textContainerClass = "max-h-[calc(85vh-2px)] pt-16";
-        } else {
-            const textFactor = window.innerWidth - (name.length + (dialogue.metadata.info ? 4 : 0)) * 5;
-            const moveDown: boolean = textFactor < 850 || pearl.transcribers.length > 3;
-            if (moveDown) {
-                textContainerClass = "max-h-[calc(80vh-2px)] pt-16";
-            } else {
-                textContainerClass = "max-h-[calc(80vh-2px)]";
-            }
         }
 
         return <>
@@ -361,8 +380,7 @@ export function DialogueBox({
                 }}
                 onHover={setHoveredTranscriber}
             />
-            <div
-                className={cn("overflow-y-auto no-scrollbar", textContainerClass)}>
+            <div className={cn("overflow-y-auto no-scrollbar", textContainerClass)}>
                 {isUnlocked ? <>
                     {titleElement}
                     <DialogueContent
@@ -387,11 +405,11 @@ export function DialogueBox({
 
     return (
         <div className="flex-1 relative">
-            <div
-                className={cn(
-                    "bg-black border-2 border-white/80 rounded-xl px-12 lg:pl-24 lg:pr-24 text-white text-sm relative shadow-[0_0_10px_rgba(255,255,255,0.1)]",
-                    isMobile ? "max-h-[85vh] min-h-[85vh]" : "max-h-[80vh] min-h-[80vh]"
-                )}>
+            <div ref={selfRef}
+                 className={cn(
+                     "bg-black border-2 border-white/80 rounded-xl px-12 lg:pl-24 lg:pr-24 text-white text-sm relative shadow-[0_0_10px_rgba(255,255,255,0.1)]",
+                     isMobile ? "max-h-[85vh] min-h-[85vh]" : "max-h-[80vh] min-h-[80vh]"
+                 )}>
                 {pearl ? pearlActiveContent :
                     <WelcomeDialogueContent
                         toggleUnlockModeCallback={toggleUnlockModeCallback}

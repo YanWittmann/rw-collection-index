@@ -94,7 +94,7 @@ const PearlItem: React.FC<PearlItemProps> = ({
                             {showTranscriberCount && (
                                 <span
                                     className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-6 h-4 text-xs flex items-center justify-center">
-                                    {pearl.transcribers.length}{sourceFileCount > 0 ? `~${sourceFileCount}` : ''}
+                                    {pearl.transcribers.length}{/*sourceFileCount > 0 ? `~${sourceFileCount}` : ''*/}
                                 </span>
                             )}
                         </RwIconButton>

@@ -2,7 +2,7 @@ import { speakerNames, speakersColors } from "../../utils/speakers"
 import type { DialogueLine } from "../../types/types"
 import { renderDialogueLine, sanitizeHtmlSafe } from "../../utils/renderDialogueLine"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 
 interface DialogueContentProps {
     lines: DialogueLine[]
@@ -175,7 +175,7 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
         };
         imageElement = <div style={divStyles} role="img" aria-label={alt}></div>;
     } else {
-        imageElement = <img src={`img/${path}`} alt={alt} className="w-full h-auto rounded-md" />;
+        imageElement = <img src={`img/${path}`} alt={alt} className="w-full h-auto rounded-md"/>;
     }
 
     return (
@@ -213,7 +213,13 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
     const displayType = isMonoMode ? "mono" : isSourceCode ? "source-code" : "centered";
     if (isMonoMode) clonedLines.shift();
 
-    const processedContent: (DialogueLine | { type: 'sequence'; frames: DialogueLine[]; attributes: { [key: string]: string } })[] = [];
+    const processedContent: (DialogueLine | {
+        type: 'sequence';
+        frames: DialogueLine[];
+        attributes: { [key: string]: string }
+    })[] = [];
+    const preloadImagePaths = new Set<string>();
+
     let i = 0;
     while (i < clonedLines.length) {
         const line = clonedLines[i];
@@ -222,6 +228,10 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
             const sequenceFrames: DialogueLine[] = [];
             let j = i + 1;
             while (j < clonedLines.length && /!\[(.*?)]/.test(clonedLines[j].text)) {
+                const imageDetails = parseImageDetails(clonedLines[j].text);
+                if (imageDetails) {
+                    preloadImagePaths.add(imageDetails.path);
+                }
                 sequenceFrames.push(clonedLines[j]);
                 j++;
             }
@@ -232,6 +242,10 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
                 i++;
             }
         } else {
+            const imageDetails = parseImageDetails(line.text);
+            if (imageDetails) {
+                preloadImagePaths.add(imageDetails.path);
+            }
             processedContent.push(line);
             i++;
         }
@@ -239,16 +253,21 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
 
     return (
         <div className="space-y-3 pb-6">
+            {Array.from(preloadImagePaths).map(path => (
+                <img key={path} src={`img/${path}`} alt="preload"
+                     style={{ position: 'absolute', left: '10px', top: '1200px' }}/>
+            ))}
+
             {processedContent.map((item, i) => {
                 if ('type' in item && item.type === 'sequence') {
-                    return <ImageRenderer key={i} frames={item.frames} attributes={item.attributes} />;
+                    return <ImageRenderer key={i} frames={item.frames} attributes={item.attributes}/>;
                 }
 
                 const line = item as DialogueLine;
                 const isImage = /!\[(.*?)]/.test(line.text);
 
                 if (isImage) {
-                    return <ImageRenderer key={i} frames={[line]} />;
+                    return <ImageRenderer key={i} frames={[line]}/>;
                 }
 
                 return (
@@ -267,11 +286,13 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
                                 </TooltipProvider>
                                 : {displayType === "mono" ? renderMonoText(line.text, searchText) :
                                 displayType === "source-code" ? renderSourceCode(line.text, searchText) :
-                                    <span dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(line.text, searchText)) }} />}
+                                    <span
+                                        dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(line.text, searchText)) }}/>}
                             </span>
                         ) : displayType === "mono" ? renderMonoText(line.text, searchText) :
                             displayType === "source-code" ? renderSourceCode(line.text, searchText) :
-                                <span className="text-white" dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(line.text, searchText)) }} />}
+                                <span className="text-white"
+                                      dangerouslySetInnerHTML={{ __html: renderDialogueLine(highlightText(line.text, searchText)) }}/>}
                     </div>
                 );
             })}

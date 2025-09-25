@@ -4,6 +4,20 @@ type: pearl
 name: Bright Blue
 map: region=HI, room=B08, mapSlugcat=white
 
+=== transcription: PearlReader
+md-sourceDialogue: masks.png
+md-sourceDialogue: masks_bg_elements.png
+md-sourceDialogue: masks_bg_pattern.png
+md-sourceDialogue: masks_bg_text1.png
+md-sourceDialogue: masks_bg_text2.png
+SEQUENCE
+![PearlReader/HI_1.png][STYLE=rounded]
+![PearlReader/HI_2.png][STYLE=rounded]
+![PearlReader/HI_3.png][STYLE=rounded]
+![PearlReader/HI_4.png][STYLE=rounded]
+![PearlReader/HI_5.png][STYLE=rounded]
+![PearlReader/HI_6.png][STYLE=rounded]
+
 === transcription: FP-artificer
 md-sourceDialogue: 12-artificer.txt
 This is a production log from a facility on the surface. It has been a very long time since I've cared about reading one, but the name... roughly translates as Side House. I remember the shipments of holy ash I used to receive from there.

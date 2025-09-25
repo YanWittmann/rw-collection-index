@@ -1,6 +1,6 @@
 tag: watcher
 
-=== transcription: watcher
+=== transcription: PearlReader
 md-name: Notions of Self
 md-var-DialogueId: 236
 md-sourceDialogue: 236.txt
@@ -9,7 +9,7 @@ These were represented in lines as the three waves of the river, and then of the
 This notion of a triplicate self long predates our modern spiral augury but nonetheless presents a primitive understanding of the path of cosmic retransfiguration: first a notion of the multiple self, then a cosmic intercedence and expansion, and then when deflated the self is transformed, here into the supporting columns of the final three figure.
 In this essay I will...
 
-=== transcription: void-weaver
+=== transcription: PearlReader
 md-name: The Counselor's Consort
 md-var-DialogueId: 237
 md-sourceDialogue: 237.txt
@@ -18,7 +18,7 @@ The beating of respiration resonates through the very density of my bones, to ja
 My mask unclasped, I feel the balmy caress of the sun. Ho, joy! For even amongst the many shining in the grand court, that they have perceived... Me.
 Scroll 47f of The Counselor's Consort
 
-=== transcription: void-weaver
+=== transcription: PearlReader
 md-name: Bonemeal Brick Complaint
 md-var-DialogueId: 238
 md-sourceDialogue: 238.txt
@@ -28,7 +28,7 @@ When you came, you said to me as follows: "I will give Nine-Leaf, when he comes,
 You left then, but you did not do what you promised me. You put brick which were of LOW QUALITY before my messenger Nine-Leaf and said "If you want to take them, take them; if you do not want to take them, go away!"
 What do you take me for, that you treat someone like me with such contempt? I have sent as messengers respected individuals like ourselves to collect the bag with my coin, deposited with you, but you have treated me with contempt by sending th...
 
-=== transcription: void-weaver
+=== transcription: PearlReader
 md-name: Concerns on Star Energies
 md-var-DialogueId: 239
 md-sourceDialogue: 239.txt
@@ -38,7 +38,7 @@ To trust our Blessed Future to esoteric Energies and Fields and yet again more i
 Further datum is needed before such drastic measures are taken! Many even say the falling Dust may yet decrease on its own!
 I, One Glass Cylinder, Perpetual Servant Elect of Knowledge and Resources, propose to form a committee to study...
 
-=== transcription: void-weaver
+=== transcription: PearlReader
 md-name: Interview with Bell of Gesture
 md-var-DialogueId: 240
 md-sourceDialogue: 240.txt
@@ -54,7 +54,7 @@ Host: These are all-
 Gesture: Politically inexpedient topics? Yes, yes. Call me an extremist if you must, but I have work to do.
 Host: ...and that was Iterator Bell of Gesture.
 
-=== transcription: void-weaver
+=== transcription: PearlReader
 md-name: All-Kites Day Specials
 md-var-DialogueId: 241
 md-sourceDialogue: 241.txt
