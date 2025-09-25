@@ -1,0 +1,13 @@
+internalId: WARC
+color: #2A1C1F
+type: pearl
+name: Bonemeal Brick Complaint
+tag: watcher
+
+=== transcription: PearlReader
+md-sourceDialogue: 238.txt
+TO: Pathel of Twelve Spoked Wheels, Grey House Facility\nFROM: Three-Carafe Nine-Frond, Grand Manufactor, House of Astor Leaves
+TRANSCRIBED
+When you came, you said to me as follows: "I will give Nine-Leaf, when he comes, fine quality bonemeal brick."
+You left then, but you did not do what you promised me. You put brick which were of LOW QUALITY before my messenger Nine-Leaf and said "If you want to take them, take them; if you do not want to take them, go away!"
+What do you take me for, that you treat someone like me with such contempt? I have sent as messengers respected individuals like ourselves to collect the bag with my coin, deposited with you, but you have treated me with contempt by sending th...

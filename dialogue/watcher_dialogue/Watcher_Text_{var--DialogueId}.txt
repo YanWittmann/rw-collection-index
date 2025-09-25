@@ -1,15 +1,6 @@
 tag: watcher
 
 === transcription: PearlReader
-md-name: Notions of Self
-md-var-DialogueId: 236
-md-sourceDialogue: 236.txt
-In the era of K'Arelus of Mart, long before the era of numeration and object idolatry, there were understood to be three, five, and then three again notions of self.
-These were represented in lines as the three waves of the river, and then of the star with five spokes, and then the three of columns vertical.
-This notion of a triplicate self long predates our modern spiral augury but nonetheless presents a primitive understanding of the path of cosmic retransfiguration: first a notion of the multiple self, then a cosmic intercedence and expansion, and then when deflated the self is transformed, here into the supporting columns of the final three figure.
-In this essay I will...
-
-=== transcription: PearlReader
 md-name: The Counselor's Consort
 md-var-DialogueId: 237
 md-sourceDialogue: 237.txt
@@ -17,42 +8,6 @@ Ho, the joy to be alone, among the reeds and the dancing yan flies with such a s
 The beating of respiration resonates through the very density of my bones, to jangle the golden coins and the wires along my ears, creating a sweet percussion song of thirst and yearning!
 My mask unclasped, I feel the balmy caress of the sun. Ho, joy! For even amongst the many shining in the grand court, that they have perceived... Me.
 Scroll 47f of The Counselor's Consort
-
-=== transcription: PearlReader
-md-name: Bonemeal Brick Complaint
-md-var-DialogueId: 238
-md-sourceDialogue: 238.txt
-TO: Pathel of Twelve Spoked Wheels, Grey House Facility FROM: Three-Carafe Nine-Frond, Grand Manufactor, House of Astor Leaves
-TRANSCRIBED
-When you came, you said to me as follows: "I will give Nine-Leaf, when he comes, fine quality bonemeal brick."
-You left then, but you did not do what you promised me. You put brick which were of LOW QUALITY before my messenger Nine-Leaf and said "If you want to take them, take them; if you do not want to take them, go away!"
-What do you take me for, that you treat someone like me with such contempt? I have sent as messengers respected individuals like ourselves to collect the bag with my coin, deposited with you, but you have treated me with contempt by sending th...
-
-=== transcription: PearlReader
-md-name: Concerns on Star Energies
-md-var-DialogueId: 239
-md-sourceDialogue: 239.txt
-... and as Thought-Leader of this Most Righteous Congregation of Minds and Souls, it humbly falls to me to present these concerns before you regarding the curious plan for the harvesting of so-called Star Energies.
-The dimming pallor of our own dear star does concern, yes, and some solution must be found. But many say this is simply the result of Dust --yes the most natural of all things!-- which appears to precipitate increasingly these recent cycles.
-To trust our Blessed Future to esoteric Energies and Fields and yet again more inscrutable Calculations and Resonances seems reckless! Do we even know wherefore this energy comes? And what Else may come with it?
-Further datum is needed before such drastic measures are taken! Many even say the falling Dust may yet decrease on its own!
-I, One Glass Cylinder, Perpetual Servant Elect of Knowledge and Resources, propose to form a committee to study...
-
-=== transcription: PearlReader
-md-name: Interview with Bell of Gesture
-md-var-DialogueId: 240
-md-sourceDialogue: 240.txt
-Host: With us today is Iterator Bell of Gesture.
-Gesture: Yes, greetings. Let us be quick, I have many tasks.
-Host: Ah, yes. I suppose your impatience with your constituents is well documented...
-Gesture: Its not my constituents so much as the speed at which you speak. I've many processing cycles, yet just one avatar to communicate with.
-Host: Eigen-selves were banned, were they not?
-Gesture: Yes.
-Host: And rightly-
-Gesture: Before you say it, no. Parallel processing is not some devious machine work-around for the self-annihilation edict. Isn't it absurd to limit our capabilities based on the benefactors dogmatic need to have us mimic biological bottlenecks? We could achieve so-
-Host: These are all-
-Gesture: Politically inexpedient topics? Yes, yes. Call me an extremist if you must, but I have work to do.
-Host: ...and that was Iterator Bell of Gesture.
 
 === transcription: PearlReader
 md-name: All-Kites Day Specials

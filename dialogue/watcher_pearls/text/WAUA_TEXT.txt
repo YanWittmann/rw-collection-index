@@ -1,0 +1,19 @@
+internalId: WAUA_TEXT
+color: #9F1181
+type: pearl
+name: Interview with Bell of Gesture
+tag: watcher
+
+=== transcription: PearlReader
+md-sourceDialogue: 240.txt
+Host: With us today is Iterator Bell of Gesture.
+Gesture: Yes, greetings. Let us be quick, I have many tasks.
+Host: Ah, yes. I suppose your impatience with your constituents is well documented...
+Gesture: Its not my constituents so much as the speed at which you speak. I've many processing cycles, yet just one avatar to communicate with.
+Host: Eigen-selves were banned, were they not?
+Gesture: Yes.
+Host: And rightly-
+Gesture: Before you say it, no. Parallel processing is not some devious machine work-around for the self-annihilation edict. Isn't it absurd to limit our capabilities based on the benefactors dogmatic need to have us mimic biological bottlenecks? We could achieve so-
+Host: These are all-
+Gesture: Politically inexpedient topics? Yes, yes. Call me an extremist if you must, but I have work to do.
+Host: ...and that was Iterator Bell of Gesture.

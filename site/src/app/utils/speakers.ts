@@ -34,6 +34,8 @@ export const speakersColors: { [key: string]: string } = {
     "Dakras": "#b854ed",
     "Slugitar": "#ffffff",
     "Cappin": "#0061d6",
+    "Host": "#ffffff",
+    "Gesture": "#ffffff",
 };
 
 export const transcribersColors: { [key: string]: string } = {
@@ -159,6 +161,8 @@ export const speakerNames: { [key: string]: string } = {
     "rot-prince-weaver": "Rot Prince",
     "void-weaver": "Void Weaver",
     "PearlReader": "Pearl Reader",
+    "Host": "Host",
+    "Gesture": "Bell of Gesture",
 }
 
 export const regionNames: { [key: string]: string } = {

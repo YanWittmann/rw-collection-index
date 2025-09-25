@@ -1,5 +1,5 @@
 internalId: WORA
-color: #5F8B34
+color: #527B29
 type: pearl
 name: WORA
 tag: watcher

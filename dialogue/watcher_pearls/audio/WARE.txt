@@ -1,0 +1,8 @@
+internalId: WARE
+color: #431B71
+type: pearl
+name: Audio: WARE
+tag: watcher
+
+=== transcription: PearlReader
+Audio File content
