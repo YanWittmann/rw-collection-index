@@ -4,14 +4,6 @@ type: pearl
 name: Celadon (Rivulet)
 tag: downpour
 
-=== transcription: PearlReader
-md-tag: watcher
-SEQUENCE
-![PearlReader/Rivulet_stomach_1.png][STYLE=rounded]
-![PearlReader/Rivulet_stomach_2.png][STYLE=rounded]
-![PearlReader/Rivulet_stomach_3.png][STYLE=rounded]
-![PearlReader/Rivulet_stomach_4.png][STYLE=rounded]
-
 === transcription: LttM-post-collapse
 md-sourceDialogue: 119.txt
 Oh! This is a very rare find, water dancer. This is a highly compressed schematic of an iterator superstructure!

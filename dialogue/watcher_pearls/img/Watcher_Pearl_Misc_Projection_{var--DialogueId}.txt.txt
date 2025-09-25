@@ -1,0 +1,61 @@
+type: pearl
+tag: watcher
+color: {randomPick--#ff7a02--#b3b3b3--#4b4653}
+info: Pearls without individually specified projections display a random misc projection.
+
+=== transcription: PearlReader
+md-internalId: a
+md-var-DialogueId: a
+md-name: Misc A
+md-tag: watcher
+SEQUENCE[SPEED=1000]
+![PearlReader/misc/a/1.png][STYLE=rounded]
+![PearlReader/misc/a/2.png][STYLE=rounded]
+![PearlReader/misc/a/3.png][STYLE=rounded]
+![PearlReader/misc/a/4.png][STYLE=rounded]
+![PearlReader/misc/a/5.png][STYLE=rounded]
+
+=== transcription: PearlReader
+md-internalId: b
+md-var-DialogueId: b
+md-name: Misc B
+md-tag: watcher
+SEQUENCE[SPEED=1000]
+![PearlReader/misc/b/1.png][STYLE=rounded]
+![PearlReader/misc/b/2.png][STYLE=rounded]
+![PearlReader/misc/b/3.png][STYLE=rounded]
+![PearlReader/misc/b/4.png][STYLE=rounded]
+![PearlReader/misc/b/5.png][STYLE=rounded]
+
+=== transcription: PearlReader
+md-internalId: c
+md-var-DialogueId: c
+md-name: Misc C
+md-tag: watcher
+SEQUENCE[SPEED=1000]
+![PearlReader/misc/c/1.png][STYLE=rounded]
+![PearlReader/misc/c/2.png][STYLE=rounded]
+![PearlReader/misc/c/3.png][STYLE=rounded]
+![PearlReader/misc/c/4.png][STYLE=rounded]
+![PearlReader/misc/c/5.png][STYLE=rounded]
+![PearlReader/misc/c/6.png][STYLE=rounded]
+![PearlReader/misc/c/7.png][STYLE=rounded]
+
+=== transcription: PearlReader
+md-internalId: d
+md-var-DialogueId: d
+md-name: Misc D
+md-tag: watcher
+SEQUENCE[SPEED=1000]
+![PearlReader/misc/d/1.png][STYLE=rounded]
+![PearlReader/misc/d/2.png][STYLE=rounded]
+![PearlReader/misc/d/3.png][STYLE=rounded]
+![PearlReader/misc/d/4.png][STYLE=rounded]
+![PearlReader/misc/d/5.png][STYLE=rounded]
+![PearlReader/misc/d/6.png][STYLE=rounded]
+![PearlReader/misc/d/7.png][STYLE=rounded]
+![PearlReader/misc/d/8.png][STYLE=rounded]
+![PearlReader/misc/d/9.png][STYLE=rounded]
+![PearlReader/misc/d/10.png][STYLE=rounded]
+![PearlReader/misc/d/11.png][STYLE=rounded]
+![PearlReader/misc/d/12.png][STYLE=rounded]
