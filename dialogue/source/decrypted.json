@@ -2314,5 +2314,520 @@
   {
     "n": "slugcat_image.png",
     "p": "src/watcher/pearlslides/pearls/slugcat_image.png"
+  },
+  {
+    "n": "ec_anim.png",
+    "p": "img/watcher/pearlslides/other/ec_anim.png",
+    "c": ""
+  },
+  {
+    "n": "eggs.png",
+    "p": "img/watcher/pearlslides/other/eggs.png",
+    "c": ""
+  },
+  {
+    "n": "informationisillegal.png",
+    "p": "img/watcher/pearlslides/other/informationisillegal.png",
+    "c": ""
+  },
+  {
+    "n": "masks.png",
+    "p": "img/watcher/pearlslides/other/masks.png",
+    "c": ""
+  },
+  {
+    "n": "masks_bg_elements.png",
+    "p": "img/watcher/pearlslides/other/masks_bg_elements.png",
+    "c": ""
+  },
+  {
+    "n": "masks_bg_pattern.png",
+    "p": "img/watcher/pearlslides/other/masks_bg_pattern.png",
+    "c": ""
+  },
+  {
+    "n": "masks_bg_text1.png",
+    "p": "img/watcher/pearlslides/other/masks_bg_text1.png",
+    "c": ""
+  },
+  {
+    "n": "masks_bg_text2.png",
+    "p": "img/watcher/pearlslides/other/masks_bg_text2.png",
+    "c": ""
+  },
+  {
+    "n": "misc_img1.png",
+    "p": "img/watcher/pearlslides/other/misc_img1.png",
+    "c": ""
+  },
+  {
+    "n": "misc_img2.png",
+    "p": "img/watcher/pearlslides/other/misc_img2.png",
+    "c": ""
+  },
+  {
+    "n": "misc_img3.png",
+    "p": "img/watcher/pearlslides/other/misc_img3.png",
+    "c": ""
+  },
+  {
+    "n": "misc_img_anim1.png",
+    "p": "img/watcher/pearlslides/other/misc_img_anim1.png",
+    "c": ""
+  },
+  {
+    "n": "misc_img_anim2.png",
+    "p": "img/watcher/pearlslides/other/misc_img_anim2.png",
+    "c": ""
+  },
+  {
+    "n": "misc_img_anim3.png",
+    "p": "img/watcher/pearlslides/other/misc_img_anim3.png",
+    "c": ""
+  },
+  {
+    "n": "pearl1_l1.png",
+    "p": "img/watcher/pearlslides/pearls/pearl1_l1.png",
+    "c": ""
+  },
+  {
+    "n": "pearl1_l2.png",
+    "p": "img/watcher/pearlslides/pearls/pearl1_l2.png",
+    "c": ""
+  },
+  {
+    "n": "pearl1_l3.png",
+    "p": "img/watcher/pearlslides/pearls/pearl1_l3.png",
+    "c": ""
+  },
+  {
+    "n": "pearl1_l4.png",
+    "p": "img/watcher/pearlslides/pearls/pearl1_l4.png",
+    "c": ""
+  },
+  {
+    "n": "pearl1_l5.png",
+    "p": "img/watcher/pearlslides/pearls/pearl1_l5.png",
+    "c": ""
+  },
+  {
+    "n": "pearl1_l6.png",
+    "p": "img/watcher/pearlslides/pearls/pearl1_l6.png",
+    "c": ""
+  },
+  {
+    "n": "pearl1_l7.png",
+    "p": "img/watcher/pearlslides/pearls/pearl1_l7.png",
+    "c": ""
+  },
+  {
+    "n": "pearl2_b_l1.png",
+    "p": "img/watcher/pearlslides/pearls/pearl2_b_l1.png",
+    "c": ""
+  },
+  {
+    "n": "pearl2_b_l2.png",
+    "p": "img/watcher/pearlslides/pearls/pearl2_b_l2.png",
+    "c": ""
+  },
+  {
+    "n": "pearl2_b_l3.png",
+    "p": "img/watcher/pearlslides/pearls/pearl2_b_l3.png",
+    "c": ""
+  },
+  {
+    "n": "pearl2_l1.png",
+    "p": "img/watcher/pearlslides/pearls/pearl2_l1.png",
+    "c": ""
+  },
+  {
+    "n": "pearl2_l2.png",
+    "p": "img/watcher/pearlslides/pearls/pearl2_l2.png",
+    "c": ""
+  },
+  {
+    "n": "pearl2_l3.png",
+    "p": "img/watcher/pearlslides/pearls/pearl2_l3.png",
+    "c": ""
+  },
+  {
+    "n": "pearl2_l4.png",
+    "p": "img/watcher/pearlslides/pearls/pearl2_l4.png",
+    "c": ""
+  },
+  {
+    "n": "pearl2_l5.png",
+    "p": "img/watcher/pearlslides/pearls/pearl2_l5.png",
+    "c": ""
+  },
+  {
+    "n": "pearl2_l6.png",
+    "p": "img/watcher/pearlslides/pearls/pearl2_l6.png",
+    "c": ""
+  },
+  {
+    "n": "pearl3_l1.png",
+    "p": "img/watcher/pearlslides/pearls/pearl3_l1.png",
+    "c": ""
+  },
+  {
+    "n": "pearl3_l2.png",
+    "p": "img/watcher/pearlslides/pearls/pearl3_l2.png",
+    "c": ""
+  },
+  {
+    "n": "pearl3_l3.png",
+    "p": "img/watcher/pearlslides/pearls/pearl3_l3.png",
+    "c": ""
+  },
+  {
+    "n": "pearl3_l4.png",
+    "p": "img/watcher/pearlslides/pearls/pearl3_l4.png",
+    "c": ""
+  },
+  {
+    "n": "pearl_3a.png",
+    "p": "img/watcher/pearlslides/pearls/pearl_3a.png",
+    "c": ""
+  },
+  {
+    "n": "pearl_3b.png",
+    "p": "img/watcher/pearlslides/pearls/pearl_3b.png",
+    "c": ""
+  },
+  {
+    "n": "repeatingmantra_a.png",
+    "p": "img/watcher/pearlslides/pearls/repeatingmantra_a.png",
+    "c": ""
+  },
+  {
+    "n": "repeatingmantra_b.png",
+    "p": "img/watcher/pearlslides/pearls/repeatingmantra_b.png",
+    "c": ""
+  },
+  {
+    "n": "slugcat_image.png",
+    "p": "img/watcher/pearlslides/pearls/slugcat_image.png",
+    "c": ""
+  },
+  {
+    "n": "abstract.txt",
+    "p": "watcher/pearls/abstract.txt",
+    "c": "650,650,800\n|\nimg:pearl3_l4\nrndmove:0.5,0.02,0.02\noschsv:1,0.5,1,1,0\n|\nimg:pearl3_l3\nrndmove:0.5,0.07,0.07\nrgb:0,0,0\nrgb:1,1,1,0,0.27\n|\nimg:pearl3_l2\nrndmove:0.5,0.03,0.03\nrgb:1,1,1,0,0.2\n|\nimg:pearl3_l1\nrndmove:0.5,0.01,0.01\n|\nfadetime:3\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n\n"
+  },
+  {
+    "n": "audio_groove.txt",
+    "p": "watcher/pearls/audio_groove.txt",
+    "c": "300,300,200\n|\nholdpoint:.5\n|\nsndvis:Pearl_AGrumbGroove\nsize:.7,1\nalpha:.7\nrgb:0,1,.7\n|\nimg:listDivider\nrect:0,0,1,1\nalpha:.4\nrot:90\nrgb:0,1,.7\n"
+  },
+  {
+    "n": "audio_jam1.txt",
+    "p": "watcher/pearls/audio_jam1.txt",
+    "c": "300,300,1356\n|\nholdpoint:1\n|\nsndvis:Pearl_AJam1\nsize:.7,1\nalpha:.7\nrgb:0,1,.7\n|\nimg:listDivider\nrect:0,0,1,1\nalpha:.4\nrot:90\nrgb:0,1,.7\n"
+  },
+  {
+    "n": "audio_jam2.txt",
+    "p": "watcher/pearls/audio_jam2.txt",
+    "c": "300,300,1600\n|\nholdpoint:1\n|\nsndvis:Pearl_AJam2\nsize:.7,1\nalpha:.7\nrgb:0,1,.7\n|\nimg:listDivider\nrect:0,0,1,1\nalpha:.4\nrot:90\nrgb:0,1,.7\n"
+  },
+  {
+    "n": "audio_jam3.txt",
+    "p": "watcher/pearls/audio_jam3.txt",
+    "c": "300,300,1160\n|\nholdpoint:1\n|\nsndvis:Pearl_AJam3\nsize:.7,1\nalpha:.7\nrgb:0,1,.7\n|\nimg:listDivider\nrect:0,0,1,1\nalpha:.4\nrot:90\nrgb:0,1,.7\n"
+  },
+  {
+    "n": "audio_jam4.txt",
+    "p": "watcher/pearls/audio_jam4.txt",
+    "c": "300,300,1800\n|\nholdpoint:1\n|\nsndvis:Pearl_AJam4\nsize:.7,1\nalpha:.7\nrgb:0,1,.7\n|\nimg:listDivider\nrect:0,0,1,1\nalpha:.4\nrot:90\nrgb:0,1,.7\n"
+  },
+  {
+    "n": "audio_voicewind1.txt",
+    "p": "watcher/pearls/audio_voicewind1.txt",
+    "c": "300,300,200\n|\nholdpoint:.5\n|\nsndvis:Pearl_AVoiceWind1\nsize:.7,1\nalpha:.7\nrgb:0,1,.7\n|\nimg:listDivider\nrect:0,0,1,1\nalpha:.4\nrot:90\nrgb:0,1,.7\n"
+  },
+  {
+    "n": "audio_voicewind2.txt",
+    "p": "watcher/pearls/audio_voicewind2.txt",
+    "c": "300,300,200\n|\nholdpoint:.5\n|\nsndvis:Pearl_AVoiceWind2\nsize:.7,1\nalpha:.7\nrgb:0,1,.7\n|\nimg:listDivider\nrect:0,0,1,1\nalpha:.4\nrot:90\nrgb:0,1,.7\n"
+  },
+  {
+    "n": "calibration_sequence.txt",
+    "p": "watcher/pearls/calibration_sequence.txt",
+    "c": "200,200,200\n|\nimage:Futile_White\nrgb:0.529, 0.365, 0.184\nalpha:0\nalpha:.8,.7,.9\n|\natlas:eggs,3,4,12\nalpha:.5\n|\nimage:EndGameCircle\nalpha:.3\nplay:.1\nalpha:0,.3,.8\nsize:1.5,1.5\nsize:.1,.1,0,.2\n|\nimage:EndGameCircle\nalpha:.26\nplay:.2\nalpha:0,.3,.8\nsize:1.5,1.5\nsize:.2,.2,0,.2\n|\nimage:EndGameCircle\nalpha:.22\nplay:.3\nalpha:0,.3,.8\nsize:1.5,1.5\nsize:.3,.3,0,.2\n|\nimage:EndGameCircle\nalpha:.18\nplay:.4\nalpha:0,.3,.8\nsize:1.5,1.5\nsize:.4,.4,0,.2\n|\nimage:EndGameCircle\nalpha:.14\nplay:.5\nalpha:0,.3,.8\nsize:1.5,1.5\nsize:.5,.5,0,.2\n|\nimage:EndGameCircle\nalpha:.1\nplay:.6\nalpha:0,.3,.8\nsize:1.5,1.5\nsize:.6,.6,0,.2\n|\nimage:EndGameCircle\nalpha:.06\nplay:.7\nalpha:0,.3,.8\nsize:1.5,1.5\nsize:.7,.7,0,.2\n|\ntext:8,1,0\nalpha:.8\nalpha:0,.5,.8\nalpha:0,.3,.8\nplay:0\nrgb:0.529, 0.365, 0.184,.1,.2\nsize:.5,.08\nmove:-.7,0\nmove:1,0,0,.1\nmove:0,.3\n|\ntext:8,1,0,1\nalpha:.8\nalpha:0,.5,.8\nplay:0.1\nrgb:0.529, 0.365, 0.184,.1,.2\nsize:.5,.08\nmove:-.7,0\nmove:1,0,0,.1\nmove:0,.2\n|\ntext:8,1,0,2\nalpha:.8\nalpha:0,.5,.8\nplay:0.2\nrgb:0.529, 0.365, 0.184,.1,.2\nsize:.5,.08\nmove:-.7,0\nmove:1,0,0,.1\nmove:0,.1\n|\ntext:8,1,0,3\nalpha:.8\nalpha:0,.5,.8\nplay:0.3\nrgb:0.529, 0.365, 0.184,.1,.2\nsize:.5,.08\nmove:-.7,0\nmove:1,0,0,.1\nmove:0,.0\n|\ntext:8,1,0,4\nalpha:.8\nalpha:0,.5,.8\nplay:0.4\nrgb:0.529, 0.365, 0.184,.1,.2\nsize:.5,.08\nmove:-.7,0\nmove:1,0,0,.1\nmove:0,-.1\n|\ntext:8,1,0,5\nalpha:.8\nalpha:0,.5,.8\nplay:0.5\nrgb:0.529, 0.365, 0.184,.1,.2\nsize:.5,.08\nmove:-.7,0\nmove:1,0,0,.1\nmove:0,-.2\n|\ntext:8,1,0,6\nalpha:.8\nalpha:0,.5,.8\nplay:0.6\nrgb:0.529, 0.365, 0.184,.1,.2\nsize:.5,.08\nmove:-.7,0\nmove:1,0,0,.1\nmove:0,-.3\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "cc.txt",
+    "p": "watcher/pearls/cc.txt",
+    "c": "500,500,800\n|\nimg:Futile_White\nrgb:1,0,0\nlevel:.1\nblink:.2,.1\n|\natlas:informationisillegal,2,2,4\nplay:0,1,4\nrndmove:1,.1,.1\nsize:.6,.6\nrndzoom:2,1,.6\nrndrot:4,-1,1\nblinkhsv:1,0.2,1,.5\nblinkhsv:1,0.05,1,3.3\n|\nsnd:PearlReaderNoise\nplay:0\n|\nsnd:PearlReaderNoise\nplay:.25\n|\nsnd:PearlReaderNoise\nplay:.5\n|\nsnd:PearlReaderNoise\nplay:.75\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "drone.txt",
+    "p": "watcher/pearls/drone.txt",
+    "c": "300,300,1100,16\n|\nimg:Futile_White\nrgb:1,0.7,0.35\nlevel:.4\n|\nimg:pearl_3b\nfit:-.2,-.2,1.2,1.2\nblinkhsv:1,0.2,1,.5\nblinkhsv:1,0.05,1,3.3\nrndrot:1,-2,2\nrndmove:.3,.03,.03\nplay:12\n|\nimg:pearl_3b\nfit:.11,.20,.50,.47\nfit:.49,.20,.88,.47,1\nfit:.23,.39,.77,.93,2\nfit:-.2,-.2,1.2,1.2,3,4,1\nblinkhsv:1,0.2,1,.5\nblinkhsv:1,0.05,1,3.3\nrndrot:1,-1,1\nrndmove:.3,.03,.03\nlevel:.7\nlevel:1,3,4\nrgb:0,1,0\nrgb:0.5,1,0,1\nrgb:1,1,1,2\nplay:0,7\n|\nimg:pearl_3a\nfit:-.3,.25,.0,.5\nfit:.3,.25,.6,.5,7,9\nfit:.65,.65,.69,.69,8.7\nfit:-.3,-.3,1.3,1.3,8.7,9.8,3\nblinkhsv:1,0.2,1,.5\nblinkhsv:1,0.05,1,3.3\nrndrot:1,-1,1\nrndmove:.3,.03,.03\nrgb:0.5,1,0,1\nrgb:1,1,1,7,9,3\nplay:7,12\n|\nsnd:PearlReaderNoise\nplay:12\n|\nsnd:PearlReaderNoise\nplay:7\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "hi.txt",
+    "p": "watcher/pearls/hi.txt",
+    "c": "450,450,1800,7\n|\n#mask1\n|\nglobalscale:0.7\n|\natlas:masks,3,2,6\nfadein:1.04,1.14\nfadeout:1.9,2\nsize:1,1\nsize:.7,.7,1.04,1.14,3\nsize:1,1,1.9,2,3\nplay:1,2,1,0\nmove:.03,-.05\nrndmove:.1,.1,.1,1\nrndrot:.05,-2,2,1\noscrot:-5,5,.1,0,3\n|\natlas:masks,3,2,6\nfadein:2.04,2.14\nfadeout:2.9,3\nsize:1,1\nsize:.7,.7,2.04,2.14,3\nsize:1,1,2.9,3,3\nplay:2,3,1,1\nmove:.03,-.05\nrndmove:.1,.1,.1,2\nrndrot:.05,-2,2,2\noscrot:-5,5,.1,0,3\n|\natlas:masks,3,2,6\nfadein:3.04,3.14\nfadeout:3.9,4\nsize:1,1\nsize:.7,.7,3.04,3.14,3\nsize:1,1,3.9,4,3\nplay:3,4,1,2\nmove:.03,-.05\nrndmove:.1,.1,.1,3\nrndrot:.05,-2,2,3\noscrot:-5,5,.1,0,3\n|\natlas:masks,3,2,6\nfadein:4.04,4.14\nfadeout:4.9,5\nsize:1,1\nsize:.7,.7,4.04,4.14,3\nsize:1,1,4.9,5,3\nplay:4,5,1,3\nmove:.03,-.05\nrndmove:.1,.1,.1,4\nrndrot:.05,-2,2,4\noscrot:-5,5,.1,0,3\n|\natlas:masks,3,2,6\nfadein:5.04,5.14\nfadeout:5.9,6\nsize:1,1\nsize:.7,.7,5.04,5.14,3\nsize:1,1,5.9,6,3\nplay:5,6,1,4\nmove:.03,-.05\nrndmove:.1,.1,.1,5\nrndrot:.05,-2,2,5\noscrot:-5,5,.1,0,3\n|\natlas:eggs,3,4,12\nsize:1.5,1.5\nlevel:.3\nlevel:.2,0,1\nlevel:.3,6.2,7\nloop:0,.1,3,6\n|\nimg:Futile_White\nsize:2,2\nrgb:0,0,0\nlevel:.3\nblink:.4,.3\nblink:.7,.2\n|\natlas:masks_bg_text2,1,5,5\nfadein:1.045,1.145\nfadeout:1.9,2\nsize:1,1\nsize:.7,.7,1.045,1.145,3\nsize:1,1,1.9,2,3\nplay:1,2,1,0\nmove:.45,-.41\nrndmove:.1,.06,.06,1\nrndrot:.05,-2,2,1\n|\natlas:masks_bg_text1,1,5,5\nfadein:1.045,1.145\nfadeout:1.9,2\nsize:1,1\nsize:.9,.9,1.045,1.145,3\nsize:1,1,1.9,2,3\nplay:1,2,1,0\nmove:0,.35\nrndmove:.1,.06,.06,1\nrndrot:.05,-2,2,1\n|\natlas:masks_bg_elements,3,5,15\nfadein:1,1.1\nfadeout:1.9,2\nsize:2,2\nsize:1.3,1.3,1,1.1,3\nsize:2,2,1.9,2,3\nplay:1,2,1,2\nrndmove:.1,.05,.05,1\nrndrot:.05,-2,2,1\n|\natlas:masks_bg_elements,3,5,15\nfadein:1,1.1\nfadeout:1.9,2\nsize:2,2\nsize:1.3,1.3,1,1.1,3\nsize:2,2,1.9,2,3\nplay:1,2,1,1\nrndmove:.1,.03,.03,1\nrndrot:.05,-2,2,1\n|\natlas:masks_bg_elements,3,5,15\nfadein:1,1.1\nfadeout:1.9,2\nsize:2,2\nsize:1.3,1.3,1,1.1,3\nsize:2,2,1.9,2,3\nplay:1,2,1,0\nrndmove:.1,.02,.02,1\nrndrot:.05,-2,2,1\n|\n#mask2\n|\natlas:masks_bg_text2,1,5,5\nfadein:2.045,2.145\nfadeout:2.9,3\nsize:1,1\nsize:.7,.7,2.045,2.145,3\nsize:1,1,2.9,3,3\nplay:2,3,1,1\nmove:.13,-.41\nrndmove:.1,.06,.06,2\nrndrot:.05,-2,2,2\n|\natlas:masks_bg_text1,1,5,5\nfadein:2.045,2.145\nfadeout:2.9,3\nsize:1,1\nsize:.9,.9,2.045,2.145,3\nsize:1,1,2.9,3,3\nplay:2,3,1,1\nmove:0,.35\nrndmove:.1,.06,.06,2 \nrndrot:.05,-2,2,2 \n|\natlas:masks_bg_elements,3,5,15\nfadein:2,2.1\nfadeout:2.9,3\nsize:2,2\nsize:1.3,1.3,2,2.1,3\nsize:2,2,2.9,3,3\nplay:2,3,1,5\nrndmove:.1,.05,.05,2\nrndrot:.05,-2,2,2\n|\natlas:masks_bg_elements,3,5,15\nfadein:2,2.1\nfadeout:2.9,3\nsize:2,2\nsize:1.3,1.3,2,2.1,3\nsize:2,2,2.9,3,3\nplay:2,3,1,4\nrndmove:.1,.03,.03,2\nrndrot:.05,-2,2,2\n|\natlas:masks_bg_elements,3,5,15\nfadein:2,2.1\nfadeout:2.9,3\nsize:2,2\nsize:1.3,1.3,2,2.1,3\nsize:2,2,2.9,3,3\nplay:2,3,1,3\nrndmove:.1,.02,.02,2\nrndrot:.05,-2,2,2\n|\n#mask3\n|\natlas:masks_bg_text2,1,5,5\nfadein:3.045,3.145\nfadeout:3.9,4\nsize:1,1\nsize:.7,.7,3.045,3.145,3\nsize:1,1,3.9,4,3\nplay:3,4,1,2\nmove:-.115,-.41\nrndmove:.1,.06,.06,3\nrndrot:.05,-2,2,3\n|\natlas:masks_bg_text1,1,5,5\nfadein:3.045,3.145\nfadeout:3.9,4\nsize:1,1\nsize:.9,.9,3.045,3.145,3\nsize:1,1,3.9,4,3\nplay:3,4,1,2\nmove:0,.35\nrndmove:.1,.06,.06,3\nrndrot:.05,-2,2,3\n|\natlas:masks_bg_elements,3,5,15\nfadein:3,3.1\nfadeout:3.9,4\nsize:2,2\nsize:1.3,1.3,3,3.1,3\nsize:2,2,3.9,4,3\nplay:3,4,1,8\nrndmove:.1,.05,.05,3\nrndrot:.05,-2,2,3\n|\natlas:masks_bg_elements,3,5,15\nfadein:3,3.1\nfadeout:3.9,4\nsize:2,2\nsize:1.3,1.3,3,3.1,3\nsize:2,2,3.9,4,3\nplay:3,4,1,7\nrndmove:.1,.03,.03,3\nrndrot:.05,-2,2,3\n|\natlas:masks_bg_elements,3,5,15\nfadein:3,3.1\nfadeout:3.9,4\nsize:2,2\nsize:1.3,1.3,3,3.1,3\nsize:2,2,3.9,4,3\nplay:3,4,1,6\nrndmove:.1,.02,.02,3\nrndrot:.05,-2,2,3\n|\n#mask4\n|\natlas:masks_bg_text2,1,5,5\nfadein:4.045,4.145\nfadeout:4.9,5\nsize:1,1\nsize:.7,.7,4.045,4.145,3\nsize:1,1,4.9,5,3\nplay:4,5,1,3\nmove:.027,-.41\nrndmove:.1,.06,.06,4\nrndrot:.05,-2,2,4\n|\natlas:masks_bg_text1,1,5,5\nfadein:4.045,4.145\nfadeout:4.9,5\nsize:1,1\nsize:.9,.9,4.045,4.145,3\nsize:1,1,4.9,5,3\nplay:4,5,1,3\nmove:0,.35\nrndmove:.1,.06,.06,4\nrndrot:.05,-2,2,4\n|\natlas:masks_bg_elements,3,5,15\nfadein:4,4.1\nfadeout:4.9,5\nsize:2,2\nsize:1.3,1.3,4,4.1,3\nsize:2,2,4.9,5,3\nplay:4,5,1,11\nrndmove:.1,.05,.05,4\nrndrot:.05,-2,2,4\n|\natlas:masks_bg_elements,3,5,15\nfadein:4,4.1\nfadeout:4.9,5\nsize:2,2\nsize:1.3,1.3,4,4.1,3\nsize:2,2,4.9,5,3\nplay:4,5,1,10\nrndmove:.1,.03,.03,4\nrndrot:.05,-2,2,4\n|\natlas:masks_bg_elements,3,5,15\nfadein:4,4.1\nfadeout:4.9,5\nsize:2,2\nsize:1.3,1.3,4,4.1,3\nsize:2,2,4.9,5,3\nplay:4,5,1,9\nrndmove:.1,.02,.02,4\nrndrot:.05,-2,2,4\n|\n#mask5\n|\natlas:masks_bg_text2,1,5,5\nfadein:5.045,5.145\nfadeout:5.9,6\nsize:1,1\nsize:.7,.7,5.045,5.145,3\nsize:1,1,5.9,6,3\nplay:5,6,1,4\nmove:.28,-.41\nrndmove:.1,.06,.06,5\nrndrot:.05,-2,2,5\n|\natlas:masks_bg_text1,1,5,5\nfadein:5.045,5.145\nfadeout:5.9,6\nsize:1,1\nsize:.9,.9,5.045,5.145,3\nsize:1,1,5.9,6,3\nplay:5,6,1,4\nmove:0,.35\nrndmove:.1,.06,.06,5\nrndrot:.05,-2,2,5\n|\natlas:masks_bg_elements,3,5,15\nfadein:5,5.1\nfadeout:5.9,6\nsize:2,2\nsize:1.3,1.3,5,5.1,3\nsize:2,2,5.9,6,3\nplay:5,6,1,14\nrndmove:.1,.05,.05,5\nrndrot:.05,-2,2,5\n|\natlas:masks_bg_elements,3,5,15\nfadein:5,5.1\nfadeout:5.9,6\nsize:2,2\nsize:1.3,1.3,5,5.1,3\nsize:2,2,5.9,6,3\nplay:5,6,1,13\nrndmove:.1,.03,.03,5\nrndrot:.05,-2,2,5\n|\natlas:masks_bg_elements,3,5,15\nfadein:5,5.1\nfadeout:5.9,6\nsize:2,2\nsize:1.3,1.3,5,5.1,3\nsize:2,2,5.9,6,3\nplay:5,6,1,12\nrndmove:.1,.02,.02,5\nrndrot:.05,-2,2,5\n|\nimg:masks_bg_pattern\nsize:2,2\nsize:1.3,1.3,0,1,3,2\nsize:2,2,6.2,7,3,1\nrot:-90\nrot:90,0,1,2\nrot:-90,6.2,7,1\nlevel:0\nlevel:.8,0,1,2\nblink:.2,.75\nlevel:0,6.2,7,1\n|\nsnd:PearlReaderNoise\nplay:5.13\n|\nsnd:PearlReaderNoise\nplay:4.13\n|\nsnd:PearlReaderNoise\nplay:3.13\n|\nsnd:PearlReaderNoise\nplay:2.13\n|\nsnd:PearlReaderNoise\nplay:1.13\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "ripplevisions.txt",
+    "p": "watcher/pearls/ripplevisions.txt",
+    "c": "600, 600, 1600\n|\nshader:RippleVisions\n|\nfadetime:5\n|\nnoglow\n|\ncontainer:Bloom\n|\nimage:FaceA0\nsize:.02\nfadein:0,.002\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,0\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,10\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,20\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,30\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,40\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,50\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,60\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,70\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,80\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,90\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,100\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,110\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,120\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,130\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,140\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,1,1,150\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,.5,.5,160\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,.5,.5,170\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,.5,.5,180\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,.5,.5,190\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,.5,.5,200\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,.5,.5,210\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,.5,.5,220\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,.5,.5,230\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,.5,.5,240\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n|\nimage:FaceA0\nrndmove:0,.5,.5,250\nsize:.02\nfadein:0,.02\nfadeout:.98,1\n"
+  },
+  {
+    "n": "su.txt",
+    "p": "watcher/pearls/su.txt",
+    "c": "600,600,800\n|\nimg:repeatingmantra_a\nrndmove:2,.2,.2\nsize:.6,.6\nrndrot:8,-1,1\nlevel:.3\nlevel:0,0,.6\n|\nimg:repeatingmantra_a\nrndmove:2,.2,.2\nsize:.6,.6\nmove:.6,0\nlevel:.3\n|\nimg:repeatingmantra_a\nrndmove:2,.2,.2\nsize:.6,.6\nmove:-.6,0\nlevel:.3\n|\nimg:repeatingmantra_a\nrndmove:2,.2,.2\nsize:.6,.6\nmove:0,-.6\nlevel:.3\n|\nimg:repeatingmantra_a\nrndmove:2,.2,.2\nsize:.6,.6\nmove:0,.6\nlevel:.3\n|\nimg:repeatingmantra_a\nrndmove:2,.2,.2\nsize:.6,.6\nmove:.6,.6\nlevel:.3\n|\nimg:repeatingmantra_a\nrndmove:2,.2,.2\nsize:.6,.6\nmove:-.6,.6\nlevel:.3\n|\nimg:repeatingmantra_a\nrndmove:2,.2,.2\nsize:.6,.6\nmove:-.6,-.6\nlevel:.3\n|\nimg:repeatingmantra_b\nrndmove:2,.2,.2\nsize:.6,.6\nrndrot:8,-1,1\nlevel:0\nlevel:.3,0,.5\n|\nimg:repeatingmantra_a\nrndmove:2,.2,.2\nsize:.6,.6\nmove:.6,-.6\nlevel:.3\nlevel:0,0,.5\n|\nimg:Futile_White\nrndmove:2,.2,.2\nrgb:.5,.5,.5\nsize:2,2\nrndrot:8,-1,1\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "text_audio_talkshow.txt",
+    "p": "watcher/pearls/text_audio_talkshow.txt",
+    "c": "300,300,2000,50\n|\nholdpoint:50\n|\nconvo:240,0\nplay:1.5\n|\nconvo:240,1\nplay:6\n|\nconvo:240,2\nplay:8.5\n|\nconvo:240,3\nplay:14.5\n|\nconvo:240,4\nplay:19.6\n|\nconvo:240,5\nplay:22.23\n|\nconvo:240,6\nplay:23.6\n|\nconvo:240,7\nplay:24.5\n|\nconvo:240,8\nplay:34.5\n|\nconvo:240,9\nplay:36.5\n|\nconvo:240,10\nplay:42.1\n|\nsndvis:Pearl_ATalkShow\nsize:.7,1\nalpha:.5\n|\nimg:listDivider\nrect:0,0,1,1\nalpha:.4\nrot:90\nrgb:0,1,.5\nrgb:0,1,1,6\nrgb:0,1,.5,8.5\nrgb:0,1,1,14.5\nrgb:0,1,.5,19.6\nrgb:0,1,1,22.23\nrgb:0,1,.5,23.6\nrgb:0,1,1,24.5\nrgb:0,1,.5,34.5\nrgb:0,1,1,36.5\nrgb:0,1,.5,42.1\n"
+  },
+  {
+    "n": "text_contempt.txt",
+    "p": "watcher/pearls/text_contempt.txt",
+    "c": "300,400,200\n|\nholdpoint:.5\n|\nconvo:238\nplay:0.3\n|\nsnd:PearlReaderText_LOOP\n|\nsnd:PearlReaderNoise\n|\n#generic_text_visuals\n|\nimg:Futile_White\nhsv:0.1,.5,.5\nlevel:.3\n|\ntext:20,1\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.50,.68\nmove:-1,0\nmove:1,0,0.00,0.10,2\nmove:1,0,0.68,0.78,3\n|\ntext:20,1,0,1\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.505,.68\nmove:-1,-.06\nmove:1,0,0.02,0.12,2\nmove:1,0,0.7,0.8,3\n|\ntext:20,1,0,2\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.51,.68\nmove:-1,-.12\nmove:1,0,0.04,0.14,2\nmove:1,0,0.72,0.82,3\n|\ntext:20,1,0,3\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.515,.68\nmove:-1,-.18\nmove:1,0,0.06,0.16,2\nmove:1,0,0.74,0.84,3\n|\ntext:20,1,0,4\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.52,.68\nmove:-1,-.24\nmove:1,0,0.08,0.18,2\nmove:1,0,0.76,0.86,3\n|\ntext:20,1,0,5\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.525,.68\nmove:-1,-.30\nmove:1,0,0.10,0.20,2\nmove:1,0,0.78,0.88,3\n|\ntext:20,1,0,6\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.53,.68\nmove:-1,-.36\nmove:1,0,0.12,0.22,2\nmove:1,0,0.8,0.9,3\n|\ntext:20,1,0,7\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.535,.68\nmove:-1,-.42\nmove:1,0,0.14,0.24,2\nmove:1,0,0.82,0.92,3\n|\ntext:20,1,0,8\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.54,.68\nmove:-1,-.48\nmove:1,0,0.16,0.26,2\nmove:1,0,0.84,0.94,3\n|\ntext:20,1,0,9\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.545,.68\nmove:-1,-.54\nmove:1,0,0.18,0.28,2\nmove:1,0,0.86,0.96,3\n|\ntext:20,1,0,10\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.55,.68\nmove:-1,-.60\nmove:1,0,0.20,0.30,2\nmove:1,0,0.88,0.98,3\n|\ntext:20,1,0,11\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.555,.68\nmove:-1,-.66\nmove:1,0,0.22,0.32,2\nmove:1,0,0.9,1.0,3\n"
+  },
+  {
+    "n": "text_kitesday.txt",
+    "p": "watcher/pearls/text_kitesday.txt",
+    "c": "300,400,200\n|\nholdpoint:.5\n|\nconvo:241\nplay:0.3\n|\nsnd:PearlReaderText_LOOP\n|\nsnd:PearlReaderNoise\n|\n#generic_text_visuals\n|\nimg:Futile_White\nhsv:0.2,.5,.5\nlevel:.3\n|\ntext:20,1\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.50,.68\nmove:-1,0\nmove:1,0,0.00,0.10,2\nmove:1,0,0.68,0.78,3\n|\ntext:20,1,0,1\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.505,.68\nmove:-1,-.06\nmove:1,0,0.02,0.12,2\nmove:1,0,0.7,0.8,3\n|\ntext:20,1,0,2\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.51,.68\nmove:-1,-.12\nmove:1,0,0.04,0.14,2\nmove:1,0,0.72,0.82,3\n|\ntext:20,1,0,3\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.515,.68\nmove:-1,-.18\nmove:1,0,0.06,0.16,2\nmove:1,0,0.74,0.84,3\n|\ntext:20,1,0,4\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.52,.68\nmove:-1,-.24\nmove:1,0,0.08,0.18,2\nmove:1,0,0.76,0.86,3\n|\ntext:20,1,0,5\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.525,.68\nmove:-1,-.30\nmove:1,0,0.10,0.20,2\nmove:1,0,0.78,0.88,3\n|\ntext:20,1,0,6\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.53,.68\nmove:-1,-.36\nmove:1,0,0.12,0.22,2\nmove:1,0,0.8,0.9,3\n|\ntext:20,1,0,7\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.535,.68\nmove:-1,-.42\nmove:1,0,0.14,0.24,2\nmove:1,0,0.82,0.92,3\n|\ntext:20,1,0,8\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.54,.68\nmove:-1,-.48\nmove:1,0,0.16,0.26,2\nmove:1,0,0.84,0.94,3\n|\ntext:20,1,0,9\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.545,.68\nmove:-1,-.54\nmove:1,0,0.18,0.28,2\nmove:1,0,0.86,0.96,3\n|\ntext:20,1,0,10\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.55,.68\nmove:-1,-.60\nmove:1,0,0.20,0.30,2\nmove:1,0,0.88,0.98,3\n|\ntext:20,1,0,11\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.555,.68\nmove:-1,-.66\nmove:1,0,0.22,0.32,2\nmove:1,0,0.9,1.0,3\n"
+  },
+  {
+    "n": "text_notionofself.txt",
+    "p": "watcher/pearls/text_notionofself.txt",
+    "c": "300,400,200\n|\nholdpoint:.5\n|\nconvo:236\nplay:0.3\n|\nsnd:PearlReaderText_LOOP\n|\nsnd:PearlReaderNoise\n|\n#generic_text_visuals\n|\nimg:Futile_White\nhsv:0.3,.5,.5\nlevel:.3\n|\ntext:20,1\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.50,.68\nmove:-1,0\nmove:1,0,0.00,0.10,2\nmove:1,0,0.68,0.78,3\n|\ntext:20,1,0,1\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.505,.68\nmove:-1,-.06\nmove:1,0,0.02,0.12,2\nmove:1,0,0.7,0.8,3\n|\ntext:20,1,0,2\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.51,.68\nmove:-1,-.12\nmove:1,0,0.04,0.14,2\nmove:1,0,0.72,0.82,3\n|\ntext:20,1,0,3\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.515,.68\nmove:-1,-.18\nmove:1,0,0.06,0.16,2\nmove:1,0,0.74,0.84,3\n|\ntext:20,1,0,4\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.52,.68\nmove:-1,-.24\nmove:1,0,0.08,0.18,2\nmove:1,0,0.76,0.86,3\n|\ntext:20,1,0,5\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.525,.68\nmove:-1,-.30\nmove:1,0,0.10,0.20,2\nmove:1,0,0.78,0.88,3\n|\ntext:20,1,0,6\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.53,.68\nmove:-1,-.36\nmove:1,0,0.12,0.22,2\nmove:1,0,0.8,0.9,3\n|\ntext:20,1,0,7\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.535,.68\nmove:-1,-.42\nmove:1,0,0.14,0.24,2\nmove:1,0,0.82,0.92,3\n|\ntext:20,1,0,8\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.54,.68\nmove:-1,-.48\nmove:1,0,0.16,0.26,2\nmove:1,0,0.84,0.94,3\n|\ntext:20,1,0,9\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.545,.68\nmove:-1,-.54\nmove:1,0,0.18,0.28,2\nmove:1,0,0.86,0.96,3\n|\ntext:20,1,0,10\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.55,.68\nmove:-1,-.60\nmove:1,0,0.20,0.30,2\nmove:1,0,0.88,0.98,3\n|\ntext:20,1,0,11\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.555,.68\nmove:-1,-.66\nmove:1,0,0.22,0.32,2\nmove:1,0,0.9,1.0,3\n"
+  },
+  {
+    "n": "text_secret.txt",
+    "p": "watcher/pearls/text_secret.txt",
+    "c": "300,400,200\n|\nholdpoint:.5\n|\nconvo:237\nplay:0.3\n|\nsnd:PearlReaderText_LOOP\n|\nsnd:PearlReaderNoise\n|\n#generic_text_visuals\n|\nimg:Futile_White\nhsv:0.4,.5,.5\nlevel:.3\n|\ntext:20,1\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.50,.68\nmove:-1,0\nmove:1,0,0.00,0.10,2\nmove:1,0,0.68,0.78,3\n|\ntext:20,1,0,1\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.505,.68\nmove:-1,-.06\nmove:1,0,0.02,0.12,2\nmove:1,0,0.7,0.8,3\n|\ntext:20,1,0,2\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.51,.68\nmove:-1,-.12\nmove:1,0,0.04,0.14,2\nmove:1,0,0.72,0.82,3\n|\ntext:20,1,0,3\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.515,.68\nmove:-1,-.18\nmove:1,0,0.06,0.16,2\nmove:1,0,0.74,0.84,3\n|\ntext:20,1,0,4\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.52,.68\nmove:-1,-.24\nmove:1,0,0.08,0.18,2\nmove:1,0,0.76,0.86,3\n|\ntext:20,1,0,5\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.525,.68\nmove:-1,-.30\nmove:1,0,0.10,0.20,2\nmove:1,0,0.78,0.88,3\n|\ntext:20,1,0,6\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.53,.68\nmove:-1,-.36\nmove:1,0,0.12,0.22,2\nmove:1,0,0.8,0.9,3\n|\ntext:20,1,0,7\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.535,.68\nmove:-1,-.42\nmove:1,0,0.14,0.24,2\nmove:1,0,0.82,0.92,3\n|\ntext:20,1,0,8\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.54,.68\nmove:-1,-.48\nmove:1,0,0.16,0.26,2\nmove:1,0,0.84,0.94,3\n|\ntext:20,1,0,9\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.545,.68\nmove:-1,-.54\nmove:1,0,0.18,0.28,2\nmove:1,0,0.86,0.96,3\n|\ntext:20,1,0,10\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.55,.68\nmove:-1,-.60\nmove:1,0,0.20,0.30,2\nmove:1,0,0.88,0.98,3\n|\ntext:20,1,0,11\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.555,.68\nmove:-1,-.66\nmove:1,0,0.22,0.32,2\nmove:1,0,0.9,1.0,3\n"
+  },
+  {
+    "n": "text_stardust.txt",
+    "p": "watcher/pearls/text_stardust.txt",
+    "c": "300,400,200\n|\nholdpoint:.5\n|\nconvo:239\nplay:0.3\n|\nsnd:PearlReaderText_LOOP\n|\nsnd:PearlReaderNoise\n|\n#generic_text_visuals\n|\nimg:Futile_White\nhsv:0.6,.5,.5\nlevel:.3\n|\ntext:20,1\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.50,.68\nmove:-1,0\nmove:1,0,0.00,0.10,2\nmove:1,0,0.68,0.78,3\n|\ntext:20,1,0,1\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.505,.68\nmove:-1,-.06\nmove:1,0,0.02,0.12,2\nmove:1,0,0.7,0.8,3\n|\ntext:20,1,0,2\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.51,.68\nmove:-1,-.12\nmove:1,0,0.04,0.14,2\nmove:1,0,0.72,0.82,3\n|\ntext:20,1,0,3\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.515,.68\nmove:-1,-.18\nmove:1,0,0.06,0.16,2\nmove:1,0,0.74,0.84,3\n|\ntext:20,1,0,4\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.52,.68\nmove:-1,-.24\nmove:1,0,0.08,0.18,2\nmove:1,0,0.76,0.86,3\n|\ntext:20,1,0,5\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.525,.68\nmove:-1,-.30\nmove:1,0,0.10,0.20,2\nmove:1,0,0.78,0.88,3\n|\ntext:20,1,0,6\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.53,.68\nmove:-1,-.36\nmove:1,0,0.12,0.22,2\nmove:1,0,0.8,0.9,3\n|\ntext:20,1,0,7\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.535,.68\nmove:-1,-.42\nmove:1,0,0.14,0.24,2\nmove:1,0,0.82,0.92,3\n|\ntext:20,1,0,8\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.54,.68\nmove:-1,-.48\nmove:1,0,0.16,0.26,2\nmove:1,0,0.84,0.94,3\n|\ntext:20,1,0,9\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.545,.68\nmove:-1,-.54\nmove:1,0,0.18,0.28,2\nmove:1,0,0.86,0.96,3\n|\ntext:20,1,0,10\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.55,.68\nmove:-1,-.60\nmove:1,0,0.20,0.30,2\nmove:1,0,0.88,0.98,3\n|\ntext:20,1,0,11\nrect:0,0.8,1,0.85\nlevel:.7\nblink:0.555,.68\nmove:-1,-.66\nmove:1,0,0.22,0.32,2\nmove:1,0,0.9,1.0,3\n"
+  },
+  {
+    "n": "waua.txt",
+    "p": "watcher/pearls/waua.txt",
+    "c": "500, 500, 1500\n|\nopaque\n|\ntext:5,1,0,0\noscrot:-5,5,10,0,3\nrect:0.2,0.2,0.6,0.26\nalpha:0,0.3,0.35\nrndmove:0.3,0.02,0.02\n|\ntext:5,1,0,0\noscrot:-5,5,10,0.1,3\nrect:0.2,0.2,0.6,0.26\nalpha:0,0.3,0.35\nrndmove:0.3,0.01,0.01\nrgb:0,0,0\n|\ntext:12,1,0,0\noscrot:-5,5,9,0,3\nrect:0.2,0.16,0.6,0.2\nalpha:0,0.3,0.35\nrndmove:0.3,0.02,0.02\nrgb:1,0.2,0.2\n|\nimage:pearl2_b_l3\nrect:-0.15,-0.05,1.05,1.15\nalpha:0,0.3,0.35\nrndmove:0.3,0.02,0.02\nosc:0,-.005,0,.005,8.1,5,3\n|\nimage:pearl2_b_l2\nrect:-0.25,-0.2,1.15,1.2\nalpha:0,0.3,0.35\nrndmove:0.3,0.05,0.05\nosc:0,-.005,0,.005,8,0,3\n|\ntext:25,25,0,0\nrect:-0.1,-0.1,1.1,1.1\nalpha:0.1\nalpha:0,0.3,0.35\nrndmove:0.3,0,0\n|\nimage:pearl2_b_l1\nrect:-0.15,-0.05,1.1,1.15\nalpha:0,0.3,0.35\nrndmove:0.3,-0.05,-0.05\n\n|\ntext:5,2,0,0\nrect:0.25,0.75,0.75,0.8\nosc:0,-.005,0,.005,10,0,3\n|\nimage:pearl2_l6\nrect:0,-0.15,1,0.85\nrndmove:1,0.2,0.2\n|\nimage:pearl2_l5\nrect:0,0.1,1,1.1\nrndmove:1,0.1,0.1\n|\nimage:pearl2_l4\nrect:0,0.1,1,1.1\nrndmove:1,0.12,0.12\n|\nimage:pearl2_l3\nrect:0.1,0.2,0.9,0.9\nrndmove:1,0.1,0.1\n|\nimage:pearl2_l2\nrect:0.1,0.2,0.9,0.9\nrndmove:1,0.08,0.08\n|\nimage:pearl2_l1\nrect:0,0,1,1\nrndmove:1,0.03,0.03\n|\nsnd:PearlReaderNoise\nplay:0.3\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "wora.txt",
+    "p": "watcher/pearls/wora.txt",
+    "c": "440, 440, 800\n|\nopaque\n|\ntext:6,1,0,0\nrect:0.4,0.1,0.6,0.16\nblinkrgb:0,1,0,0.5\n|\nimage:pearl1_l7\nrect:-0.3,-0.3,1.3,1.3\nrndmove:1,0.1,0.1\n|\nimage:pearl1_l6\nrect:-0.3,-0.3,1.3,1.3\nrndmove:1,0.3,0.3\n|\nimage:pearl1_l5\nrect:-0.3,-0.3,1.3,1.3\nrndmove:1,0.23,0.23\n|\nimage:pearl1_l4\nrect:-0.3,-0.3,1.3,1.3\nrndmove:1,0.15,0.15\n|\nimage:pearl1_l3\nrect:-0.3,-0.3,1.3,1.3\nrndmove:1,0.13,0.13\n|\nimage:pearl1_l2\nrect:-0.3,-0.3,1.3,1.3\nrndmove:1,0.1,0.1\n|\nimage:pearl1_l1\nrect:-0.1,-0.1,1.1,1.1\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img1.txt",
+    "p": "watcher/pearls/misc/img1.txt",
+    "c": "400,400,1200\n|\ntext:20,1\nsize:2,.1\nloop:0,.2\nmove:-2,-.3\nmove:4,0,0,1\nlevel:.4\n|\ntext:20,1,1\nsize:2,.1\nloop:0.1,.3\nmove:-2,-.3\nmove:4,0,0,1\nlevel:.4\n|\natlas:ec_anim,5,5,25\nsize:0.5,0.5\nrndmove:2.5,.1,.1\nrndzoom:3,1,2\nrndrot:8,-1,1\nloop:0,.05,25,0\n|\nimg:Futile_White\nrgb:0,0,0\nsize:1,.05\nmove:0,-.2\n|\nimg:Futile_White\nrgb:0,0,0\nsize:1,.05\nmove:0,.2\n|\nimg:Futile_White\nrgb:0,0,0\nsize:1,.05\n|\natlas:eggs,3,4,12\nlevel:.5\nsize:1.5,1.5\nloop:0,.05,12,0\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img2.txt",
+    "p": "watcher/pearls/misc/img2.txt",
+    "c": "200,200,800\n|\ntext:1,1,0,9\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.9,.91\nfadeout:.99,1\nplay:.9,1\n|\ntext:1,1,0,8\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.8,.81\nfadeout:.89,.9\nplay:.8,.9\n|\ntext:1,1,0,7\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.7,.71\nfadeout:.79,.8\nplay:.7,.8\n|\ntext:1,1,0,6\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.6,.61\nfadeout:.69,.7\nplay:.6,.7\n|\ntext:1,1,0,5\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.5,.51\nfadeout:.59,.6\nplay:.5,.6\n|\ntext:1,1,0,4\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.4,.41\nfadeout:.49,.5\nplay:.4,.5\n|\ntext:1,1,0,3\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.3,.31\nfadeout:.39,.4\nplay:.3,.4\n|\ntext:1,1,0,2\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.2,.21\nfadeout:.29,.3\nplay:.2,.3\n|\ntext:1,1,0,1\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.1,.11\nfadeout:.19,.2\nplay:.1,.2\n|\ntext:1,1,0,0\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.0,.01\nfadeout:.09,.1\nplay:0,.1\n|\natlas:misc_img_anim1,4,3,12\nsize:.8,-.8\nlevel:.5\nmove:0,.1\nrndmove:2.5,.2,.2\nrndzoom:3,1,1.5\nrndrot:8,-3,3\nloop:0,.05,25,0\n|\natlas:misc_img_anim1,4,3,12\nrndmove:2.5,.5,.5\nrndzoom:3,1,2\nrndrot:8,-3,3\nloop:0,.1,25,0\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img3.txt",
+    "p": "watcher/pearls/misc/img3.txt",
+    "c": "300,300,800\n|\ntext:20,20\nlevel:.05\n|\nimg:Futile_White\nrgb:0,0,0\nlevel:.2\n|\natlas:misc_img_anim2,10,10,100\nrgb:1,.5,1\nrndmove:2.5,.2,.2\nsize:.5,.5\nrndzoom:3,1,4\nrndrot:8,-4,3\nlevel:.5\nrot:-360,0,1\nloop:0,.2,100,0\n|\natlas:misc_img_anim2,10,10,100\nrndmove:2.5,.2,.2\nsize:.8,.8\nrndzoom:3,1,4\nrndrot:8,-4,3\nlevel:.35\nrot:-360,0,1\nloop:0,.2,100,0\n|\natlas:misc_img_anim2,10,10,100\nrndmove:2.5,.2,.2\nsize:1.2,1.2\nrndzoom:3,1,4\nrndrot:8,-4,3\nlevel:.35\nrot:-360,0,1\nloop:0,.2,100,0\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img4.txt",
+    "p": "watcher/pearls/misc/img4.txt",
+    "c": "300,300,800\n|\ntext:20,20\nrgb:0,1,1\nlevel:.2\nrndmove:2.5,.05,.05\n|\natlas:misc_img_anim3,5,5,25\nrgb:0,.5,1\nrndmove:2.5,.05,.05\nsize:.8,.8\nrndrot:8,-1,1\nloop:0,.2,25,0\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img5.txt",
+    "p": "watcher/pearls/misc/img5.txt",
+    "c": "300,300,800\n|\ntext:20,20\nrgb:0,1,1\nlevel:.3\nrndmove:2.5,.05,.05\n|\nimg:misc_img1,2\nrgb:0,.5,1\nrndmove:0,.8,.8\nrndmove:2.5,.1,.1\nrandrot:0,0,360,0\nsize:2,2\nrndrot:8,-2,2\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img6.txt",
+    "p": "watcher/pearls/misc/img6.txt",
+    "c": "300,300,800\n|\ntext:20,20\nrgb:0,1,1\nlevel:.3\nrndmove:2.5,.05,.05\n|\nimg:misc_img2,2\nrgb:0,.5,1\nrndmove:0,.8,.8\nrndmove:2.5,.1,.1\nrandrot:0,0,360,0\nsize:2,2\nrndrot:8,-2,2\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img7.txt",
+    "p": "watcher/pearls/misc/img7.txt",
+    "c": "300,300,800\n|\ntext:20,20\nrgb:1,.6,.3\nlevel:.3\nrndmove:2.5,.05,.05\n|\nimg:misc_img1,2\nrgb:1,.6,.3\nrndmove:0,.8,.8\nrndmove:2.5,.1,.1\nrandrot:0,0,360,0\nsize:2,2\nrndrot:8,-2,2\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img8.txt",
+    "p": "watcher/pearls/misc/img8.txt",
+    "c": "300,300,800\n|\ntext:20,20\nrgb:1,.6,.3\nlevel:.3\nrndmove:2.5,.05,.05\n|\nimg:misc_img2,2\nrgb:1,.6,.3\nrndmove:0,.8,.8\nrndmove:2.5,.1,.1\nrandrot:0,0,360,0\nsize:2,2\nrndrot:8,-2,2\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img9.txt",
+    "p": "watcher/pearls/misc/img9.txt",
+    "c": "200,200,800\n|\ntext:20,20\nrgb:1,.6,.3\nlevel:.23\nrndmove:2.5,.15,.15\n|\nimg:misc_img3\nsize:.6,.6\nmove:0,-.1\nrndmove:2.5,.1,.1\nrndrot:8,-2,2\nrndzoom:3,1,1.5\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "misc1.txt",
+    "p": "watcher/pearls/misc/misc1.txt",
+    "c": "400,400,800\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.01,.01\nrndmove:1,.7,.7,-0.25\noscrgb:1,.7,.36,3,0.0\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.02,.02\nrndmove:1,.7,.7,-0.20\noscrgb:1,.7,.36,3,0.2\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.03,.03\nrndmove:1,.7,.7,-0.15\noscrgb:1,.7,.36,3,0.4\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.04,.04\nrndmove:1,.7,.7,-0.10\noscrgb:1,.7,.36,3,0.6\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,-0.05\noscrgb:1,.7,.36,3,0.8\n|\nimg:smallKarmaNoRing0\nrgb:0.373, 0.11, 0.831\nsize:.1,.1\nrndmove:1,.7,.7,0\noscrgb:1,.7,.36,3,0.10\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.05\noscrgb:1,.7,.36,3,0.12\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.10\noscrgb:1,.7,.36,3,0.14\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.15\noscrgb:1,.7,.36,3,0.16\n|\nimg:smallKarmaNoRing1\nrgb:0.373, 0.11, 0.831\nsize:.1,.1\nrndmove:1,.7,.7,0.20\noscrgb:1,.7,.36,3,0.18\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.25\noscrgb:1,.7,.36,3,0.20\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.30\noscrgb:1,.7,.36,3,0.22\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.35\noscrgb:1,.7,.36,3,0.24\n|\nimg:smallKarmaNoRing2\nrgb:0.373, 0.11, 0.831\nsize:.1,.1\nrndmove:1,.7,.7,0.40\noscrgb:1,.7,.36,3,0.26\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.45\noscrgb:1,.7,.36,3,0.28\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.50\noscrgb:1,.7,.36,3,0.30\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.55\noscrgb:1,.7,.36,3,0.32\n|\nimg:smallKarmaNoRing3\nrgb:0.373, 0.11, 0.831\nsize:.1,.1\nrndmove:1,.7,.7,0.60\noscrgb:1,.7,.36,3,0.34\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.65\noscrgb:1,.7,.36,3,0.36\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.70\noscrgb:1,.7,.36,3,0.38\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.75\noscrgb:1,.7,.36,3,0.40\n|\nimg:smallKarmaNoRing4\nrgb:0.373, 0.11, 0.831\nsize:.1,.1\nrndmove:1,.7,.7,0.80\noscrgb:1,.7,.36,3,0.42\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.85\noscrgb:1,.7,.36,3,0.44\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.04,.04\nrndmove:1,.7,.7,0.90\noscrgb:1,.7,.36,3,0.46\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.03,.03\nrndmove:1,.7,.7,0.95\noscrgb:1,.7,.36,3,0.48\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.02,.02\nrndmove:1,.7,.7,1.00\noscrgb:1,.7,.36,3,0.50\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.01,.01\nrndmove:1,.7,.7,1.05\noscrgb:1,.7,.36,3,0.52\n|\nimg:listDivider\nrect:0,0,1,1\nrgb:1,1,0\nlevel:.12\n|\ntext:15,15\nsize:1.2,1.2\nrndmove:2,.2,.2\nrndrot:8,-1,1\nrgb:0,0,0\nlevel:.8\n|\nimg:Futile_White\nlevel:.32\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "misc2.txt",
+    "p": "watcher/pearls/misc/misc2.txt",
+    "c": "400,400,800\n|\nimg:PomegranateShell2C\nrgb:0,.0,.0\nsize:.8,-.8\nlevel:.0\nlevel:.3,0,1\nrndmove:1,.05,.2,1.7\nrndrot:8,-2,2,1.7\n|\nimg:PomegranateShell2C\nrgb:0,.0,.0\nrot:180\nsize:.8,.8\nlevel:.0\nlevel:.3,0,1\nrndmove:1,.05,.2,1.4\nrndrot:8,-2,2,1.4\n|\nimg:PomegranateShell2C\nrgb:1,.6,.3\nsize:.5,.5\nlevel:.3\nrndmove:1,.2,.05,1\nrndrot:8,-2,2,1\n|\natlas:eggs,3,4,12\nalpha:.1\nalpha:.3,0,.5\nsize:.2,.2\nsize:.8,.8,0,1\nalpha:.1,0,1\nloop:0,.1,3,6\n|\nimg:gateSymbol0\nfit:.3,0,.7,.6\nrgb:0,0,0\nlevel:.2\nrndmove:1,.2,.05\nrndrot:8,-2,2\nblink:1,.5\n|\nimg:LinearGradient200\nrect:0,0,1,1\nlevel:.7\nrgb:1,.6,.3\nloop:0,.1\nrot:360,0,1\n|\nimg:listDivider\nrect:0.2,0,.8,1\nrgb:0,0,1\nlevel:.7\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "misc3.txt",
+    "p": "watcher/pearls/misc/misc3.txt",
+    "c": "200,200,400\n|\nimg:LinearGradient200\nrect:0,0,1,1\nlevel:.7\nrgb:1,.6,.3\nrot:180\nblink:.1,.5\n|\nimg:LinearGradient200\nrect:0,0,1,1\nlevel:.7\nrgb:0,.4,.7\nblink:.1,.5\n|\nimg:Futile_White\nrgb:0,0,0\nlevel:.5\nblink,2,.1\n|\ntext:1,4,0,1\nrgb:0,0,0\nrect:0.53,0.2,0.64,.7\nosc:0,-.03,0,.03,2,0,3\nrndmove:2,.02,.02\nrndrot:8,-1,1\n|\ntext:1,4\nrgb:0,0,0\nrect:0.36,0.2,.47,.7\nosc:0,-.03,0,.03,2,0,3\nrndmove:2,.02,.02\nrndrot:8,-1,1\n|\nimg:karmaRing\nfit:-.1,.5,1.1,1.5\nrndmove:2,.02,.02\nrndrot:8,-1,1\n|\nimg:EelJaw1A\nsize:-.5,.5\nmove:-.1,0\nrndmove:2,.02,.02\nrndrot:8,-1,1\n|\nimg:EelJaw1A\nsize:.5,.5\nmove:.1,0\nrndmove:2,.02,.02\nrndrot:8,-1,1\n|\nimg:Futile_White\nrect:0,0,1,.3\nrndmove:2,.02,.02\nrndrot:8,-1,1\n|\ntext:20,1\nrgb:1,.6,.3\nsize:1,.1\nmove:-1,.05\nmove:2,0,0,1\n|\ntext:40,1,0,1\nrgb:1,.6,.3\nsize:2,.1\nmove:-2,.15\nmove:4,0,0,1\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "misc4.txt",
+    "p": "watcher/pearls/misc/misc4.txt",
+    "c": "300,300,500,1.1\n|\nimg:Futile_White\nrgb:.8,.8,1\nlevel:.43\n|\ntext:6,1\nrgb:1,.6,.3\nrect:.2,.4,.8,.49\nfadein:.6,.7\n|\ntext:6,1,0,1\nrgb:1,.6,.3\nrect:.2,.51,.8,.6\nfadein:.7,.8\n|\nimg:karma4\nrgb:1,.6,.3\nsize:.2,.2\nfadein:.2,.3\nmove:0,-.2,.3,.4,3\n|\nimg:listDivider\nrgb:1,.6,.3\nsize:.7,1\nfadein:.4,.5\n|\nimg:Futile_White\nrect:.25,0,.75,.5\nrgb:0,0,0\nfadein:.4,.5\n|\nimg:LinearGradient200\nmove:0,1\nloop:0,.1\nmove:0,-2.2,0,1\n|\nimg:LinearGradient200\nmove:0.1,1\nloop:0.11,.19\nmove:0,-2.2,0,1\n|\nimg:LinearGradient200\nmove:-0.1,1\nloop:0.21,.43\nmove:0,-2.2,0,1\n|\nimg:LinearGradient200\nmove:0.2,1\nloop:0.7,.89\nmove:0,-2.2,0,1\n|\nimg:LinearGradient200\nmove:-0.2,1\nloop:0.24,.48\nmove:0,-2.2,0,1\n|\nimg:LinearGradient200\nmove:0.3,1\nloop:0.8,.98\nmove:0,-2.2,0,1\n|\nimg:LinearGradient200\nmove:-0.3,1\nloop:0.85,.968\nmove:0,-2.2,0,1\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "misc5.txt",
+    "p": "watcher/pearls/misc/misc5.txt",
+    "c": "400,400,400,1.5\n|\nnoglow\n|\ntext:1,1,0,0\nrgb:1,.6,.3\nmove:0.20,-.12\nsize:.04,.04\nfadein:.8,.9\n|\ntext:1,1,0,1\nrgb:1,.6,.3\nmove:0.15,-.12\nsize:.04,.04\nfadein:.7,.8\n|\ntext:1,1,0,2\nrgb:1,.6,.3\nmove:0.1,-.12\nsize:.04,.04\nfadein:.6,.7\n|\ntext:1,1,0,3\nrgb:1,.6,.3\nmove:0.05,-.12\nsize:.04,.04\nfadein:.5,.6\n|\ntext:1,1,0,4\nrgb:1,.6,.3\nmove:0,-.12\nsize:.04,.04\nfadein:.4,.5\n|\ntext:1,1,0,5\nrgb:1,.6,.3\nmove:-0.05,-.12\nsize:.04,.04\nfadein:.3,.4\n|\ntext:1,1,0,6\nrgb:1,.6,.3\nmove:-0.10,-.12\nsize:.04,.04\nfadein:.2,.3\n|\ntext:1,1,0,7\nrgb:1,.6,.3\nmove:-0.15,-.12\nsize:.04,.04\nfadein:.1,.2\n|\ntext:1,1,0,8\nrgb:1,.6,.3\nmove:-0.20,-.12\nsize:.04,.04\nfadein:.0,.1\n|\nimg:LinearGradient200\nrect:0,0,1,1\nlevel:.5\nrgb:1,.6,.3\nrotate:180\n|\nimg:Futile_White\nrgb:0,0,0\nrect:0,0,1,.4\n|\nimg:Futile_White\nlevel:.3\nmove:0.20,-.2\nsize:.04,0\nsize:.04,1,0.9,1.1,2\nrndscale:0,0,-1,0\noscrgb:0,1,0,-2,1.6,3\n|\nimg:Futile_White\nlevel:.3\nmove:0.15,-.2\nsize:.04,0\nsize:.04,1,0.8,1,2\nrndscale:0,0,-1,1\noscrgb:0,1,0,-2,1.4,3\n|\nimg:Futile_White\nlevel:.3\nmove:0.1,-.2\nsize:.04,0\nsize:.04,1,0.7,.9,2\nrndscale:0,0,-1,2\noscrgb:0,1,0,-2,1.2,3\n|\nimg:Futile_White\nlevel:.3\nmove:0.05,-.2\nsize:.04,0\nsize:.04,1,0.6,.8,2\nrndscale:0,0,-1,3\noscrgb:0,1,0,-2,1.0,3\n|\nimg:Futile_White\nlevel:.3\nmove:0,-.2\nsize:.04,0\nsize:.04,1,0.5,.7,2\nrndscale:0,0,-1,4\noscrgb:0,1,0,-2,0.8,3\n|\nimg:Futile_White\nlevel:.3\nmove:-0.05,-.2\nsize:.04,0\nsize:.04,1,0.4,.6,2\nrndscale:0,0,-1,5\noscrgb:0,1,0,-2,0.6,3\n|\nimg:Futile_White\nlevel:.3\nmove:-0.10,-.2\nsize:.04,0\nsize:.04,1,0.3,.5,2\nrndscale:0,0,-1,6\noscrgb:0,1,0,-2,0.4,3\n|\nimg:Futile_White\nlevel:.3\nmove:-0.15,-.2\nsize:.04,0\nsize:.04,1,0.2,.4,2\nrndscale:0,0,-1,7\noscrgb:0,1,0,-2,0.2,3\n|\nimg:Futile_White\nlevel:.3\nmove:-0.20,-.2\nsize:.04,0\nsize:.04,1,.1,.3,2\nrndscale:0,0,-1,8\noscrgb:0,1,0,-2,0,3\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "text1.txt",
+    "p": "watcher/pearls/misc/text1.txt",
+    "c": "300,300,900,8\n|\ntext:10,10,0\nfit:.25,.25,.5,.5,0,1,3\nfit:.75,.25,1,.5,3,4,3\nfit:0,0,1,1,6,7,3\nrndmove:.15,.4,.2\nlevel:.75\n|\ntext:12,12,0\nfit:.25,.25,.5,.5,0,1,3\nfit:.75,.25,1,.5,3,4,3\nfit:0,0,1,1,6,7,3\nrndmove:.15,.4,.2,.1\nlevel:.5\noscrgb:1,0,0,1\n|\nsnd:PearlReaderNoise_LOOP\n|\nsnd:PearlReaderNoise\n"
+  },
+  {
+    "n": "text2.txt",
+    "p": "watcher/pearls/misc/text2.txt",
+    "c": "300,300,900,8\n|\ntext:10,10,0,111\nfadein:5.5,6\nrgb:0,0,0\nrndmove:5,.01,.01\n|\nimage:Futile_White\nlevel:0\nlevel:.5,0,8\nrgb:1,0,0,5,8\n|\ntext:10,1,0\nsize:1,.1\nmove:0,.2\nmove:2,0,2,2.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:0,.5\n|\ntext:10,1,0,1\nsize:1,.1\nmove:0,.1\nmove:-2,0,2,2.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:0,.5\n|\ntext:10,1,0,2\nsize:1,.1\nmove:2,0,2,2.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:0,.5\n|\ntext:10,1,0,3\nsize:1,.1\nmove:0,-.1\nmove:-2,0,2,2.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:0,.5\n|\ntext:10,1,0,4\nsize:1,.1\nmove:0,-.2\nmove:2,0,2,2.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:0,.5\n|\n#part2\n|\ntext:10,1,0,5\nsize:1,.1\nmove:0,.2\nmove:2,0,5,5.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:2.5,3.0\n|\ntext:10,1,0,6\nsize:1,.1\nmove:0,.1\nmove:-2,0,5,5.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:2.5,3.0\n|\ntext:10,1,0,7\nsize:1,.1\nmove:2,0,5,5.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:2.5,3.0\n|\ntext:10,1,0,8\nsize:1,.1\nmove:0,-.1\nmove:-2,0,5,5.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:2.5,3.0\n|\ntext:10,1,0,9\nsize:1,.1\nmove:0,-.2\nmove:2,0,5,5.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:2.5,3.0\n|\nsnd:PearlReaderNoise\nplay:.5\n|\nsnd:PearlReaderNoise\nplay:2.5\n|\nsnd:PearlReaderNoise\nplay:5.5\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "text3.txt",
+    "p": "watcher/pearls/misc/text3.txt",
+    "c": "300,300,500,1\n|\nimg:Futile_White\nrgb:.8,.8,1\nlevel:.43\n|\ntext:4,1,0,2\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:-.2,0\nplay:.65\n|\ntext:4,1,0,3\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:.2,0\nplay:.60\n|\ntext:4,1,0,4\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:-.2,0.1\nplay:.55\n|\ntext:4,1,0,5\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:.2,0.1\nplay:.50\n|\ntext:4,1,0,6\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:-.2,-0.1\nplay:.45\n|\ntext:4,1,0,7\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:.2,-0.1\nplay:.40\n|\ntext:4,1,0,8\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:-.2,0.2\nplay:.35\n|\ntext:4,1,0,9\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:.2,0.2\nplay:.30\n|\ntext:4,1,0,10\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:-.2,-0.2\nplay:.25\n|\ntext:4,1,0,11\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:.2,-0.2\nplay:.2\n|\ntext:1,20\nrot:90,.95,1\nsize:.1,2\nloop:0,.2\nmove:0,-2\nmove:0,4,0,1\n|\ntext:1,20,1\nsize:.1,2\nloop:0.1,.3\nmove:0,-2\nmove:0,4,0,1\n|\nimg:listDivider2bkg\nrgb:1,0,0\nrect:0,-.2,1,1.2\nrot:90\nlevel:.4\nblink:.5,.3\n|\nsnd:PearlReaderNoise\nplay:.2\n|\nsnd:PearlReaderNoise\nplay:.4\n|\nsnd:PearlReaderNoise\nplay:.6\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "text4.txt",
+    "p": "watcher/pearls/misc/text4.txt",
+    "c": "300,300,1000,6\n|\nimg:Futile_White\nrgb:.8,.8,1\nlevel:.43\n|\ntext:10,10,0,0\nsize:.1,.1\nlevel:.5\nmove:0,.1\nrect:0,0,1,1,5.2,5.3,1\nfadein:5.2,5.3\nfadeout:5.8,6\nrndmove:1,.1,.1\n|\ntext:10,10,0,1\nsize:.1,.1\nlevel:.5\nmove:0,-.1\nrect:0,0,1,1,4.2,4.3,1\nfadein:4.2,4.3\nfadeout:4.8,5\nrndmove:1,.1,.1\n|\ntext:10,10,0,2\nsize:.1,.1\nlevel:.5\nmove:-.2,-.1\nrect:0,0,1,1,3.2,3.3,1\nfadein:3.2,3.3\nfadeout:3.8,4\nrndmove:1,.1,.1\n|\ntext:10,10,0,3\nsize:.1,.1\nlevel:.5\nmove:.2,-.1\nrect:0,0,1,1,2.2,2.3,1\nfadein:2.2,2.3\nfadeout:2.8,3\nrndmove:1,.1,.1\n|\ntext:10,10,0,4\nsize:.1,.1\nlevel:.5\nmove:-.2,.1\nrect:0,0,1,1,1.2,1.3,1\nfadein:1.2,1.3\nfadeout:1.8,2\nrndmove:1,.1,.1\n|\ntext:10,10,0,5\nsize:.1,.1\nlevel:.5\nmove:.2,.1\nrect:0,0,1,1,.2,.3,1\nfadein:.2,.3\nfadeout:.8,1\nrndmove:1,.1,.1\n|\nimg:Futile_White\nrgb:0,0,0\nlevel:0\nlevel:1,.2,.3\nlevel:0,.9,1\nlevel:1,1.2,1.3\nlevel:0,1.9,2\nlevel:1,2.2,2.3\nlevel:0,2.9,3\nlevel:1,3.2,3.3\nlevel:0,3.9,4\nlevel:1,4.2,4.3\nlevel:0,4.9,5\nlevel:1,5.2,5.3\nlevel:0,5.9,6\n|\ntext:1,1,0,0\nrgb:.5,.5,.5\nrgb:1,.6,.3,5.0,5.1\nsize:.1,.1\nmove:0,.1\nfadeout:5.2,5.3\n|\ntext:1,1,0,1\nrgb:.5,.5,.5\nrgb:1,.6,.3,4.0,4.1\nsize:.1,.1\nmove:0,-.1\nfadeout:4.2,4.3\n|\ntext:1,1,0,2\nrgb:.5,.5,.5\nrgb:1,.6,.3,3.0,3.1\nsize:.1,.1\nmove:-.2,-.1\nfadeout:3.2,3.3\n|\ntext:1,1,0,3\nrgb:.5,.5,.5\nrgb:1,.6,.3,2.0,2.1\nsize:.1,.1\nmove:.2,-.1\nfadeout:2.2,2.3\n|\ntext:1,1,0,4\nrgb:.5,.5,.5\nrgb:1,.6,.3,1.0,1.1\nsize:.1,.1\nmove:-.2,.1\nfadeout:1.2,1.3\n|\ntext:1,1,0,5\nrgb:.5,.5,.5\nrgb:1,.6,.3,.0,.1\nsize:.1,.1\nmove:.2,.1\nfadeout:.2,.3\n|\nsnd:PearlReaderNoise\nplay:5.2\n|\nsnd:PearlReaderNoise\nplay:4.2\n|\nsnd:PearlReaderNoise\nplay:3.2\n|\nsnd:PearlReaderNoise\nplay:2.2\n|\nsnd:PearlReaderNoise\nplay:1.2\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "text5.txt",
+    "p": "watcher/pearls/misc/text5.txt",
+    "c": "500,166,400,1.5\n|\nimg:Futile_White\nrect:0,0,1,1\nrgb:1,.6,.3\nlevel:.43\nfadein:.9,1\n|\ntext:6,1,0,1\nrgb:1,.6,.3\nmove:-.2,-.23\nsize:0.15,.1\nrndmove:1,.02,.02\nfadein:.9,1\n|\ntext:8,1,0,2\nrgb:1,.6,.3\nmove:.2,.1\nsize:0.2,.1\nrndmove:1,.02,.02\nfadein:.9,1\n|\ntext:14,1,0,3\nrgb:1,.6,.3\nsize:0.35,.1\nrndmove:1,.02,.02\nfadein:.9,1\n|\nimg:Futile_White\nrect:0,0,1,1\nrgb:0,0,0\nlevel:0\nlevel:1,.9,1\n|\ntext:23,7,0,0\nrgb:.8,.8,1\nlevel:.4\nrect:0.1,0.1,.9,.9\nrndmove:1,.02,.02\n|\nimg:Futile_White\nrgb:0,0,0\nlevel:0\nlevel:1,.5,.6\nmove:-.2,-.23\nsize:.1,.1\nsize:0.6,.1,.6,.8\nrndmove:1,.02,.02\n|\nimg:Futile_White\nrgb:0,0,0\nlevel:0\nlevel:1,.3,.4\nmove:.2,.1\nsize:.1,.1\nsize:0.8,.1,.4,.6\nrndmove:1,.02,.02\n|\nimg:Futile_White\nrgb:0,0,0\nlevel:0\nlevel:1,.1,.2\nsize:.1,.1\nsize:1.4,.1,.2,.4\nrndmove:1,.02,.02\n|\nimg:Futile_White\nrect:0,0,1,1\nrgb:.8,.8,1\nlevel:.5\n|\nsnd:PearlReaderNoise\nplay:1\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "text6.txt",
+    "p": "watcher/pearls/misc/text6.txt",
+    "c": "300,300,300,3\n|\nimg:Futile_White\nrgb:1,.6,.3\nlevel:.43\n|\ntext:2,10,0,0\nrgb:.8,.8,1\nlevel:.5\nrect:.2,.2,.32,.8\nmove:0,1\nmove:0,-1,0,.1\nsize:1,0,2,2.1\nfadeout:2,2.1\nrndmove:1,.02,.02\n|\ntext:2,10,0,1\nrgb:.8,.8,1\nlevel:.5\nrect:.32,.2,.44,.8\nmove:0,1\nmove:0,-1,.1,.2\nsize:1,0,2.1,2.2\nfadeout:2.1,2.2\nrndmove:1,.02,.02\n|\ntext:2,10,0,2\nrgb:.8,.8,1\nlevel:.5\nrect:.44,.2,.56,.8\nmove:0,1\nmove:0,-1,.2,.3\nsize:1,0,2.2,2.3\nfadeout:2.2,2.3\nrndmove:1,.02,.02\n|\ntext:2,10,0,3\nrgb:.8,.8,1\nlevel:.5\nrect:.56,.2,.68,.8\nmove:0,1\nmove:0,-1,.3,.4\nsize:1,0,2.3,2.4\nfadeout:2.3,2.4\nrndmove:1,.02,.02\n|\ntext:2,10,0,4\nrgb:.8,.8,1\nlevel:.5\nrect:.68,.2,.8,.8\nmove:0,1\nmove:0,-1,.4,.5\nsize:1,0,2.4,2.5\nfadeout:2.4,2.5\nrndmove:1,.02,.02\n|\nsnd:PearlReaderNoise\nplay:2\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "text7.txt",
+    "p": "watcher/pearls/misc/text7.txt",
+    "c": "300,300,300,3\n|\nimg:Futile_White\nrgb:0,.4,.7\nlevel:.43\n|\ntext:2,10,0,0\nrgb:.8,.8,1\nlevel:.5\nrect:.2,.2,.32,.8\nmove:0,-1\nmove:0,1,0,.1\nsize:1,0,2,2.1\nfadeout:2,2.1\nrndmove:1,.02,.02\n|\ntext:2,10,0,1\nrgb:.8,.8,1\nlevel:.5\nrect:.32,.2,.44,.8\nmove:0,-1\nmove:0,1,.1,.2\nsize:1,0,2.1,2.2\nfadeout:2.1,2.2\nrndmove:1,.02,.02\n|\ntext:2,10,0,2\nrgb:.8,.8,1\nlevel:.5\nrect:.44,.2,.56,.8\nmove:0,-1\nmove:0,1,.2,.3\nsize:1,0,2.2,2.3\nfadeout:2.2,2.3\nrndmove:1,.02,.02\n|\ntext:2,10,0,3\nrgb:.8,.8,1\nlevel:.5\nrect:.56,.2,.68,.8\nmove:0,-1\nmove:0,1,.3,.4\nsize:1,0,2.3,2.4\nfadeout:2.3,2.4\nrndmove:1,.02,.02\n|\ntext:2,10,0,4\nrgb:.8,.8,1\nlevel:.5\nrect:.68,.2,.8,.8\nmove:0,-1\nmove:0,1,.4,.5\nsize:1,0,2.4,2.5\nfadeout:2.4,2.5\nrndmove:1,.02,.02\n|\nsnd:PearlReaderNoise\nplay:2\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img1.txt",
+    "p": "watcher/pearls/misc - Copy/img1.txt",
+    "c": "400,400,1200\n|\ntext:20,1\nsize:2,.1\nloop:0,.2\nmove:-2,-.3\nmove:4,0,0,1\nlevel:.4\n|\ntext:20,1,1\nsize:2,.1\nloop:0.1,.3\nmove:-2,-.3\nmove:4,0,0,1\nlevel:.4\n|\natlas:ec_anim,5,5,25\nsize:0.5,0.5\nrndmove:2.5,.1,.1\nrndzoom:3,1,2\nrndrot:8,-1,1\nloop:0,.05,25,0\n|\nimg:Futile_White\nrgb:0,0,0\nsize:1,.05\nmove:0,-.2\n|\nimg:Futile_White\nrgb:0,0,0\nsize:1,.05\nmove:0,.2\n|\nimg:Futile_White\nrgb:0,0,0\nsize:1,.05\n|\natlas:eggs,3,4,12\nlevel:.5\nsize:1.5,1.5\nloop:0,.05,12,0\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img2.txt",
+    "p": "watcher/pearls/misc - Copy/img2.txt",
+    "c": "200,200,800\n|\ntext:1,1,0,9\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.9,.91\nfadeout:.99,1\nplay:.9,1\n|\ntext:1,1,0,8\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.8,.81\nfadeout:.89,.9\nplay:.8,.9\n|\ntext:1,1,0,7\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.7,.71\nfadeout:.79,.8\nplay:.7,.8\n|\ntext:1,1,0,6\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.6,.61\nfadeout:.69,.7\nplay:.6,.7\n|\ntext:1,1,0,5\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.5,.51\nfadeout:.59,.6\nplay:.5,.6\n|\ntext:1,1,0,4\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.4,.41\nfadeout:.49,.5\nplay:.4,.5\n|\ntext:1,1,0,3\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.3,.31\nfadeout:.39,.4\nplay:.3,.4\n|\ntext:1,1,0,2\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.2,.21\nfadeout:.29,.3\nplay:.2,.3\n|\ntext:1,1,0,1\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.1,.11\nfadeout:.19,.2\nplay:.1,.2\n|\ntext:1,1,0,0\nrgb:.5,1,.5\nlevel:.8\nrect:.4,.4,.6,.6\nrndmove:2.5,.1,.1\nfadein:.0,.01\nfadeout:.09,.1\nplay:0,.1\n|\natlas:misc_img_anim1,4,3,12\nsize:.8,-.8\nlevel:.5\nmove:0,.1\nrndmove:2.5,.2,.2\nrndzoom:3,1,1.5\nrndrot:8,-3,3\nloop:0,.05,25,0\n|\natlas:misc_img_anim1,4,3,12\nrndmove:2.5,.5,.5\nrndzoom:3,1,2\nrndrot:8,-3,3\nloop:0,.1,25,0\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img3.txt",
+    "p": "watcher/pearls/misc - Copy/img3.txt",
+    "c": "300,300,800\n|\ntext:20,20\nlevel:.05\n|\nimg:Futile_White\nrgb:0,0,0\nlevel:.2\n|\natlas:misc_img_anim2,10,10,100\nrgb:1,.5,1\nrndmove:2.5,.2,.2\nsize:.5,.5\nrndzoom:3,1,4\nrndrot:8,-4,3\nlevel:.5\nrot:-360,0,1\nloop:0,.2,100,0\n|\natlas:misc_img_anim2,10,10,100\nrndmove:2.5,.2,.2\nsize:.8,.8\nrndzoom:3,1,4\nrndrot:8,-4,3\nlevel:.35\nrot:-360,0,1\nloop:0,.2,100,0\n|\natlas:misc_img_anim2,10,10,100\nrndmove:2.5,.2,.2\nsize:1.2,1.2\nrndzoom:3,1,4\nrndrot:8,-4,3\nlevel:.35\nrot:-360,0,1\nloop:0,.2,100,0\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img4.txt",
+    "p": "watcher/pearls/misc - Copy/img4.txt",
+    "c": "300,300,800\n|\ntext:20,20\nrgb:0,1,1\nlevel:.2\nrndmove:2.5,.05,.05\n|\natlas:misc_img_anim3,5,5,25\nrgb:0,.5,1\nrndmove:2.5,.05,.05\nsize:.8,.8\nrndrot:8,-1,1\nloop:0,.2,25,0\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img5.txt",
+    "p": "watcher/pearls/misc - Copy/img5.txt",
+    "c": "300,300,800\n|\ntext:20,20\nrgb:0,1,1\nlevel:.3\nrndmove:2.5,.05,.05\n|\nimg:misc_img1,2\nrgb:0,.5,1\nrndmove:0,.8,.8\nrndmove:2.5,.1,.1\nrandrot:0,0,360,0\nsize:2,2\nrndrot:8,-2,2\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img6.txt",
+    "p": "watcher/pearls/misc - Copy/img6.txt",
+    "c": "300,300,800\n|\ntext:20,20\nrgb:0,1,1\nlevel:.3\nrndmove:2.5,.05,.05\n|\nimg:misc_img2,2\nrgb:0,.5,1\nrndmove:0,.8,.8\nrndmove:2.5,.1,.1\nrandrot:0,0,360,0\nsize:2,2\nrndrot:8,-2,2\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img7.txt",
+    "p": "watcher/pearls/misc - Copy/img7.txt",
+    "c": "300,300,800\n|\ntext:20,20\nrgb:1,.6,.3\nlevel:.3\nrndmove:2.5,.05,.05\n|\nimg:misc_img1,2\nrgb:1,.6,.3\nrndmove:0,.8,.8\nrndmove:2.5,.1,.1\nrandrot:0,0,360,0\nsize:2,2\nrndrot:8,-2,2\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img8.txt",
+    "p": "watcher/pearls/misc - Copy/img8.txt",
+    "c": "300,300,800\n|\ntext:20,20\nrgb:1,.6,.3\nlevel:.3\nrndmove:2.5,.05,.05\n|\nimg:misc_img2,2\nrgb:1,.6,.3\nrndmove:0,.8,.8\nrndmove:2.5,.1,.1\nrandrot:0,0,360,0\nsize:2,2\nrndrot:8,-2,2\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "img9.txt",
+    "p": "watcher/pearls/misc - Copy/img9.txt",
+    "c": "200,200,800\n|\ntext:20,20\nrgb:1,.6,.3\nlevel:.23\nrndmove:2.5,.15,.15\n|\nimg:misc_img3\nsize:.6,.6\nmove:0,-.1\nrndmove:2.5,.1,.1\nrndrot:8,-2,2\nrndzoom:3,1,1.5\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "misc1.txt",
+    "p": "watcher/pearls/misc - Copy/misc1.txt",
+    "c": "400,400,800\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.01,.01\nrndmove:1,.7,.7,-0.25\noscrgb:1,.7,.36,3,0.0\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.02,.02\nrndmove:1,.7,.7,-0.20\noscrgb:1,.7,.36,3,0.2\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.03,.03\nrndmove:1,.7,.7,-0.15\noscrgb:1,.7,.36,3,0.4\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.04,.04\nrndmove:1,.7,.7,-0.10\noscrgb:1,.7,.36,3,0.6\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,-0.05\noscrgb:1,.7,.36,3,0.8\n|\nimg:smallKarmaNoRing0\nrgb:0.373, 0.11, 0.831\nsize:.1,.1\nrndmove:1,.7,.7,0\noscrgb:1,.7,.36,3,0.10\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.05\noscrgb:1,.7,.36,3,0.12\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.10\noscrgb:1,.7,.36,3,0.14\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.15\noscrgb:1,.7,.36,3,0.16\n|\nimg:smallKarmaNoRing1\nrgb:0.373, 0.11, 0.831\nsize:.1,.1\nrndmove:1,.7,.7,0.20\noscrgb:1,.7,.36,3,0.18\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.25\noscrgb:1,.7,.36,3,0.20\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.30\noscrgb:1,.7,.36,3,0.22\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.35\noscrgb:1,.7,.36,3,0.24\n|\nimg:smallKarmaNoRing2\nrgb:0.373, 0.11, 0.831\nsize:.1,.1\nrndmove:1,.7,.7,0.40\noscrgb:1,.7,.36,3,0.26\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.45\noscrgb:1,.7,.36,3,0.28\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.50\noscrgb:1,.7,.36,3,0.30\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.55\noscrgb:1,.7,.36,3,0.32\n|\nimg:smallKarmaNoRing3\nrgb:0.373, 0.11, 0.831\nsize:.1,.1\nrndmove:1,.7,.7,0.60\noscrgb:1,.7,.36,3,0.34\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.65\noscrgb:1,.7,.36,3,0.36\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.70\noscrgb:1,.7,.36,3,0.38\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.75\noscrgb:1,.7,.36,3,0.40\n|\nimg:smallKarmaNoRing4\nrgb:0.373, 0.11, 0.831\nsize:.1,.1\nrndmove:1,.7,.7,0.80\noscrgb:1,.7,.36,3,0.42\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.05,.05\nrndmove:1,.7,.7,0.85\noscrgb:1,.7,.36,3,0.44\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.04,.04\nrndmove:1,.7,.7,0.90\noscrgb:1,.7,.36,3,0.46\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.03,.03\nrndmove:1,.7,.7,0.95\noscrgb:1,.7,.36,3,0.48\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.02,.02\nrndmove:1,.7,.7,1.00\noscrgb:1,.7,.36,3,0.50\n|\nimg:LizardBubble4\nrgb:0.373, 0.11, 0.831\nsize:.01,.01\nrndmove:1,.7,.7,1.05\noscrgb:1,.7,.36,3,0.52\n|\nimg:listDivider\nrect:0,0,1,1\nrgb:1,1,0\nlevel:.12\n|\ntext:15,15\nsize:1.2,1.2\nrndmove:2,.2,.2\nrndrot:8,-1,1\nrgb:0,0,0\nlevel:.8\n|\nimg:Futile_White\nlevel:.32\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "misc2.txt",
+    "p": "watcher/pearls/misc - Copy/misc2.txt",
+    "c": "400,400,800\n|\nimg:PomegranateShell2C\nrgb:0,.0,.0\nsize:.8,-.8\nlevel:.0\nlevel:.3,0,1\nrndmove:1,.05,.2,1.7\nrndrot:8,-2,2,1.7\n|\nimg:PomegranateShell2C\nrgb:0,.0,.0\nrot:180\nsize:.8,.8\nlevel:.0\nlevel:.3,0,1\nrndmove:1,.05,.2,1.4\nrndrot:8,-2,2,1.4\n|\nimg:PomegranateShell2C\nrgb:1,.6,.3\nsize:.5,.5\nlevel:.3\nrndmove:1,.2,.05,1\nrndrot:8,-2,2,1\n|\natlas:eggs,3,4,12\nalpha:.1\nalpha:.3,0,.5\nsize:.2,.2\nsize:.8,.8,0,1\nalpha:.1,0,1\nloop:0,.1,3,6\n|\nimg:gateSymbol0\nfit:.3,0,.7,.6\nrgb:0,0,0\nlevel:.2\nrndmove:1,.2,.05\nrndrot:8,-2,2\nblink:1,.5\n|\nimg:LinearGradient200\nrect:0,0,1,1\nlevel:.7\nrgb:1,.6,.3\nloop:0,.1\nrot:360,0,1\n|\nimg:listDivider\nrect:0.2,0,.8,1\nrgb:0,0,1\nlevel:.7\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "misc3.txt",
+    "p": "watcher/pearls/misc - Copy/misc3.txt",
+    "c": "200,200,400\n|\nimg:LinearGradient200\nrect:0,0,1,1\nlevel:.7\nrgb:1,.6,.3\nrot:180\nblink:.1,.5\n|\nimg:LinearGradient200\nrect:0,0,1,1\nlevel:.7\nrgb:0,.4,.7\nblink:.1,.5\n|\nimg:Futile_White\nrgb:0,0,0\nlevel:.5\nblink,2,.1\n|\ntext:1,4,0,1\nrgb:0,0,0\nrect:0.53,0.2,0.64,.7\nosc:0,-.03,0,.03,2,0,3\nrndmove:2,.02,.02\nrndrot:8,-1,1\n|\ntext:1,4\nrgb:0,0,0\nrect:0.36,0.2,.47,.7\nosc:0,-.03,0,.03,2,0,3\nrndmove:2,.02,.02\nrndrot:8,-1,1\n|\nimg:karmaRing\nfit:-.1,.5,1.1,1.5\nrndmove:2,.02,.02\nrndrot:8,-1,1\n|\nimg:EelJaw1A\nsize:-.5,.5\nmove:-.1,0\nrndmove:2,.02,.02\nrndrot:8,-1,1\n|\nimg:EelJaw1A\nsize:.5,.5\nmove:.1,0\nrndmove:2,.02,.02\nrndrot:8,-1,1\n|\nimg:Futile_White\nrect:0,0,1,.3\nrndmove:2,.02,.02\nrndrot:8,-1,1\n|\ntext:20,1\nrgb:1,.6,.3\nsize:1,.1\nmove:-1,.05\nmove:2,0,0,1\n|\ntext:40,1,0,1\nrgb:1,.6,.3\nsize:2,.1\nmove:-2,.15\nmove:4,0,0,1\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "misc4.txt",
+    "p": "watcher/pearls/misc - Copy/misc4.txt",
+    "c": "300,300,500,1.1\n|\nimg:Futile_White\nrgb:.8,.8,1\nlevel:.43\n|\ntext:6,1\nrgb:1,.6,.3\nrect:.2,.4,.8,.49\nfadein:.6,.7\n|\ntext:6,1,0,1\nrgb:1,.6,.3\nrect:.2,.51,.8,.6\nfadein:.7,.8\n|\nimg:karma4\nrgb:1,.6,.3\nsize:.2,.2\nfadein:.2,.3\nmove:0,-.2,.3,.4,3\n|\nimg:listDivider\nrgb:1,.6,.3\nsize:.7,1\nfadein:.4,.5\n|\nimg:Futile_White\nrect:.25,0,.75,.5\nrgb:0,0,0\nfadein:.4,.5\n|\nimg:LinearGradient200\nmove:0,1\nloop:0,.1\nmove:0,-2.2,0,1\n|\nimg:LinearGradient200\nmove:0.1,1\nloop:0.11,.19\nmove:0,-2.2,0,1\n|\nimg:LinearGradient200\nmove:-0.1,1\nloop:0.21,.43\nmove:0,-2.2,0,1\n|\nimg:LinearGradient200\nmove:0.2,1\nloop:0.7,.89\nmove:0,-2.2,0,1\n|\nimg:LinearGradient200\nmove:-0.2,1\nloop:0.24,.48\nmove:0,-2.2,0,1\n|\nimg:LinearGradient200\nmove:0.3,1\nloop:0.8,.98\nmove:0,-2.2,0,1\n|\nimg:LinearGradient200\nmove:-0.3,1\nloop:0.85,.968\nmove:0,-2.2,0,1\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "misc5.txt",
+    "p": "watcher/pearls/misc - Copy/misc5.txt",
+    "c": "400,400,400,1.5\n|\nnoglow\n|\ntext:1,1,0,0\nrgb:1,.6,.3\nmove:0.20,-.12\nsize:.04,.04\nfadein:.8,.9\n|\ntext:1,1,0,1\nrgb:1,.6,.3\nmove:0.15,-.12\nsize:.04,.04\nfadein:.7,.8\n|\ntext:1,1,0,2\nrgb:1,.6,.3\nmove:0.1,-.12\nsize:.04,.04\nfadein:.6,.7\n|\ntext:1,1,0,3\nrgb:1,.6,.3\nmove:0.05,-.12\nsize:.04,.04\nfadein:.5,.6\n|\ntext:1,1,0,4\nrgb:1,.6,.3\nmove:0,-.12\nsize:.04,.04\nfadein:.4,.5\n|\ntext:1,1,0,5\nrgb:1,.6,.3\nmove:-0.05,-.12\nsize:.04,.04\nfadein:.3,.4\n|\ntext:1,1,0,6\nrgb:1,.6,.3\nmove:-0.10,-.12\nsize:.04,.04\nfadein:.2,.3\n|\ntext:1,1,0,7\nrgb:1,.6,.3\nmove:-0.15,-.12\nsize:.04,.04\nfadein:.1,.2\n|\ntext:1,1,0,8\nrgb:1,.6,.3\nmove:-0.20,-.12\nsize:.04,.04\nfadein:.0,.1\n|\nimg:LinearGradient200\nrect:0,0,1,1\nlevel:.5\nrgb:1,.6,.3\nrotate:180\n|\nimg:Futile_White\nrgb:0,0,0\nrect:0,0,1,.4\n|\nimg:Futile_White\nlevel:.3\nmove:0.20,-.2\nsize:.04,0\nsize:.04,1,0.9,1.1,2\nrndscale:0,0,-1,0\noscrgb:0,1,0,-2,1.6,3\n|\nimg:Futile_White\nlevel:.3\nmove:0.15,-.2\nsize:.04,0\nsize:.04,1,0.8,1,2\nrndscale:0,0,-1,1\noscrgb:0,1,0,-2,1.4,3\n|\nimg:Futile_White\nlevel:.3\nmove:0.1,-.2\nsize:.04,0\nsize:.04,1,0.7,.9,2\nrndscale:0,0,-1,2\noscrgb:0,1,0,-2,1.2,3\n|\nimg:Futile_White\nlevel:.3\nmove:0.05,-.2\nsize:.04,0\nsize:.04,1,0.6,.8,2\nrndscale:0,0,-1,3\noscrgb:0,1,0,-2,1.0,3\n|\nimg:Futile_White\nlevel:.3\nmove:0,-.2\nsize:.04,0\nsize:.04,1,0.5,.7,2\nrndscale:0,0,-1,4\noscrgb:0,1,0,-2,0.8,3\n|\nimg:Futile_White\nlevel:.3\nmove:-0.05,-.2\nsize:.04,0\nsize:.04,1,0.4,.6,2\nrndscale:0,0,-1,5\noscrgb:0,1,0,-2,0.6,3\n|\nimg:Futile_White\nlevel:.3\nmove:-0.10,-.2\nsize:.04,0\nsize:.04,1,0.3,.5,2\nrndscale:0,0,-1,6\noscrgb:0,1,0,-2,0.4,3\n|\nimg:Futile_White\nlevel:.3\nmove:-0.15,-.2\nsize:.04,0\nsize:.04,1,0.2,.4,2\nrndscale:0,0,-1,7\noscrgb:0,1,0,-2,0.2,3\n|\nimg:Futile_White\nlevel:.3\nmove:-0.20,-.2\nsize:.04,0\nsize:.04,1,.1,.3,2\nrndscale:0,0,-1,8\noscrgb:0,1,0,-2,0,3\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "text1.txt",
+    "p": "watcher/pearls/misc - Copy/text1.txt",
+    "c": "300,300,900,8\n|\ntext:10,10,0\nfit:.25,.25,.5,.5,0,1,3\nfit:.75,.25,1,.5,3,4,3\nfit:0,0,1,1,6,7,3\nrndmove:.15,.4,.2\nlevel:.75\n|\ntext:12,12,0\nfit:.25,.25,.5,.5,0,1,3\nfit:.75,.25,1,.5,3,4,3\nfit:0,0,1,1,6,7,3\nrndmove:.15,.4,.2,.1\nlevel:.5\noscrgb:1,0,0,1\n|\nsnd:PearlReaderNoise_LOOP\n|\nsnd:PearlReaderNoise\n"
+  },
+  {
+    "n": "text2.txt",
+    "p": "watcher/pearls/misc - Copy/text2.txt",
+    "c": "300,300,900,8\n|\ntext:10,10,0,111\nfadein:5.5,6\nrgb:0,0,0\nrndmove:5,.01,.01\n|\nimage:Futile_White\nlevel:0\nlevel:.5,0,8\nrgb:1,0,0,5,8\n|\ntext:10,1,0\nsize:1,.1\nmove:0,.2\nmove:2,0,2,2.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:0,.5\n|\ntext:10,1,0,1\nsize:1,.1\nmove:0,.1\nmove:-2,0,2,2.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:0,.5\n|\ntext:10,1,0,2\nsize:1,.1\nmove:2,0,2,2.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:0,.5\n|\ntext:10,1,0,3\nsize:1,.1\nmove:0,-.1\nmove:-2,0,2,2.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:0,.5\n|\ntext:10,1,0,4\nsize:1,.1\nmove:0,-.2\nmove:2,0,2,2.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:0,.5\n|\n#part2\n|\ntext:10,1,0,5\nsize:1,.1\nmove:0,.2\nmove:2,0,5,5.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:2.5,3.0\n|\ntext:10,1,0,6\nsize:1,.1\nmove:0,.1\nmove:-2,0,5,5.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:2.5,3.0\n|\ntext:10,1,0,7\nsize:1,.1\nmove:2,0,5,5.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:2.5,3.0\n|\ntext:10,1,0,8\nsize:1,.1\nmove:0,-.1\nmove:-2,0,5,5.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:2.5,3.0\n|\ntext:10,1,0,9\nsize:1,.1\nmove:0,-.2\nmove:2,0,5,5.5,1\nrndmove:.15,.4,.2\nlevel:.75\nfadein:2.5,3.0\n|\nsnd:PearlReaderNoise\nplay:.5\n|\nsnd:PearlReaderNoise\nplay:2.5\n|\nsnd:PearlReaderNoise\nplay:5.5\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "text3.txt",
+    "p": "watcher/pearls/misc - Copy/text3.txt",
+    "c": "300,300,500,1\n|\nimg:Futile_White\nrgb:.8,.8,1\nlevel:.43\n|\ntext:4,1,0,2\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:-.2,0\nplay:.65\n|\ntext:4,1,0,3\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:.2,0\nplay:.60\n|\ntext:4,1,0,4\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:-.2,0.1\nplay:.55\n|\ntext:4,1,0,5\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:.2,0.1\nplay:.50\n|\ntext:4,1,0,6\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:-.2,-0.1\nplay:.45\n|\ntext:4,1,0,7\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:.2,-0.1\nplay:.40\n|\ntext:4,1,0,8\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:-.2,0.2\nplay:.35\n|\ntext:4,1,0,9\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:.2,0.2\nplay:.30\n|\ntext:4,1,0,10\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:-.2,-0.2\nplay:.25\n|\ntext:4,1,0,11\nrot:90,.95,1\nrgb:1,.6,.3\nsize:.25,.1\nmove:.2,-0.2\nplay:.2\n|\ntext:1,20\nrot:90,.95,1\nsize:.1,2\nloop:0,.2\nmove:0,-2\nmove:0,4,0,1\n|\ntext:1,20,1\nsize:.1,2\nloop:0.1,.3\nmove:0,-2\nmove:0,4,0,1\n|\nimg:listDivider2bkg\nrgb:1,0,0\nrect:0,-.2,1,1.2\nrot:90\nlevel:.4\nblink:.5,.3\n|\nsnd:PearlReaderNoise\nplay:.2\n|\nsnd:PearlReaderNoise\nplay:.4\n|\nsnd:PearlReaderNoise\nplay:.6\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "text4.txt",
+    "p": "watcher/pearls/misc - Copy/text4.txt",
+    "c": "300,300,1000,6\n|\nimg:Futile_White\nrgb:.8,.8,1\nlevel:.43\n|\ntext:10,10,0,0\nsize:.1,.1\nlevel:.5\nmove:0,.1\nrect:0,0,1,1,5.2,5.3,1\nfadein:5.2,5.3\nfadeout:5.8,6\nrndmove:1,.1,.1\n|\ntext:10,10,0,1\nsize:.1,.1\nlevel:.5\nmove:0,-.1\nrect:0,0,1,1,4.2,4.3,1\nfadein:4.2,4.3\nfadeout:4.8,5\nrndmove:1,.1,.1\n|\ntext:10,10,0,2\nsize:.1,.1\nlevel:.5\nmove:-.2,-.1\nrect:0,0,1,1,3.2,3.3,1\nfadein:3.2,3.3\nfadeout:3.8,4\nrndmove:1,.1,.1\n|\ntext:10,10,0,3\nsize:.1,.1\nlevel:.5\nmove:.2,-.1\nrect:0,0,1,1,2.2,2.3,1\nfadein:2.2,2.3\nfadeout:2.8,3\nrndmove:1,.1,.1\n|\ntext:10,10,0,4\nsize:.1,.1\nlevel:.5\nmove:-.2,.1\nrect:0,0,1,1,1.2,1.3,1\nfadein:1.2,1.3\nfadeout:1.8,2\nrndmove:1,.1,.1\n|\ntext:10,10,0,5\nsize:.1,.1\nlevel:.5\nmove:.2,.1\nrect:0,0,1,1,.2,.3,1\nfadein:.2,.3\nfadeout:.8,1\nrndmove:1,.1,.1\n|\nimg:Futile_White\nrgb:0,0,0\nlevel:0\nlevel:1,.2,.3\nlevel:0,.9,1\nlevel:1,1.2,1.3\nlevel:0,1.9,2\nlevel:1,2.2,2.3\nlevel:0,2.9,3\nlevel:1,3.2,3.3\nlevel:0,3.9,4\nlevel:1,4.2,4.3\nlevel:0,4.9,5\nlevel:1,5.2,5.3\nlevel:0,5.9,6\n|\ntext:1,1,0,0\nrgb:.5,.5,.5\nrgb:1,.6,.3,5.0,5.1\nsize:.1,.1\nmove:0,.1\nfadeout:5.2,5.3\n|\ntext:1,1,0,1\nrgb:.5,.5,.5\nrgb:1,.6,.3,4.0,4.1\nsize:.1,.1\nmove:0,-.1\nfadeout:4.2,4.3\n|\ntext:1,1,0,2\nrgb:.5,.5,.5\nrgb:1,.6,.3,3.0,3.1\nsize:.1,.1\nmove:-.2,-.1\nfadeout:3.2,3.3\n|\ntext:1,1,0,3\nrgb:.5,.5,.5\nrgb:1,.6,.3,2.0,2.1\nsize:.1,.1\nmove:.2,-.1\nfadeout:2.2,2.3\n|\ntext:1,1,0,4\nrgb:.5,.5,.5\nrgb:1,.6,.3,1.0,1.1\nsize:.1,.1\nmove:-.2,.1\nfadeout:1.2,1.3\n|\ntext:1,1,0,5\nrgb:.5,.5,.5\nrgb:1,.6,.3,.0,.1\nsize:.1,.1\nmove:.2,.1\nfadeout:.2,.3\n|\nsnd:PearlReaderNoise\nplay:5.2\n|\nsnd:PearlReaderNoise\nplay:4.2\n|\nsnd:PearlReaderNoise\nplay:3.2\n|\nsnd:PearlReaderNoise\nplay:2.2\n|\nsnd:PearlReaderNoise\nplay:1.2\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "text5.txt",
+    "p": "watcher/pearls/misc - Copy/text5.txt",
+    "c": "500,166,400,1.5\n|\nimg:Futile_White\nrect:0,0,1,1\nrgb:1,.6,.3\nlevel:.43\nfadein:.9,1\n|\ntext:6,1,0,1\nrgb:1,.6,.3\nmove:-.2,-.23\nsize:0.15,.1\nrndmove:1,.02,.02\nfadein:.9,1\n|\ntext:8,1,0,2\nrgb:1,.6,.3\nmove:.2,.1\nsize:0.2,.1\nrndmove:1,.02,.02\nfadein:.9,1\n|\ntext:14,1,0,3\nrgb:1,.6,.3\nsize:0.35,.1\nrndmove:1,.02,.02\nfadein:.9,1\n|\nimg:Futile_White\nrect:0,0,1,1\nrgb:0,0,0\nlevel:0\nlevel:1,.9,1\n|\ntext:23,7,0,0\nrgb:.8,.8,1\nlevel:.4\nrect:0.1,0.1,.9,.9\nrndmove:1,.02,.02\n|\nimg:Futile_White\nrgb:0,0,0\nlevel:0\nlevel:1,.5,.6\nmove:-.2,-.23\nsize:.1,.1\nsize:0.6,.1,.6,.8\nrndmove:1,.02,.02\n|\nimg:Futile_White\nrgb:0,0,0\nlevel:0\nlevel:1,.3,.4\nmove:.2,.1\nsize:.1,.1\nsize:0.8,.1,.4,.6\nrndmove:1,.02,.02\n|\nimg:Futile_White\nrgb:0,0,0\nlevel:0\nlevel:1,.1,.2\nsize:.1,.1\nsize:1.4,.1,.2,.4\nrndmove:1,.02,.02\n|\nimg:Futile_White\nrect:0,0,1,1\nrgb:.8,.8,1\nlevel:.5\n|\nsnd:PearlReaderNoise\nplay:1\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "text6.txt",
+    "p": "watcher/pearls/misc - Copy/text6.txt",
+    "c": "300,300,300,3\n|\nimg:Futile_White\nrgb:1,.6,.3\nlevel:.43\n|\ntext:2,10,0,0\nrgb:.8,.8,1\nlevel:.5\nrect:.2,.2,.32,.8\nmove:0,1\nmove:0,-1,0,.1\nsize:1,0,2,2.1\nfadeout:2,2.1\nrndmove:1,.02,.02\n|\ntext:2,10,0,1\nrgb:.8,.8,1\nlevel:.5\nrect:.32,.2,.44,.8\nmove:0,1\nmove:0,-1,.1,.2\nsize:1,0,2.1,2.2\nfadeout:2.1,2.2\nrndmove:1,.02,.02\n|\ntext:2,10,0,2\nrgb:.8,.8,1\nlevel:.5\nrect:.44,.2,.56,.8\nmove:0,1\nmove:0,-1,.2,.3\nsize:1,0,2.2,2.3\nfadeout:2.2,2.3\nrndmove:1,.02,.02\n|\ntext:2,10,0,3\nrgb:.8,.8,1\nlevel:.5\nrect:.56,.2,.68,.8\nmove:0,1\nmove:0,-1,.3,.4\nsize:1,0,2.3,2.4\nfadeout:2.3,2.4\nrndmove:1,.02,.02\n|\ntext:2,10,0,4\nrgb:.8,.8,1\nlevel:.5\nrect:.68,.2,.8,.8\nmove:0,1\nmove:0,-1,.4,.5\nsize:1,0,2.4,2.5\nfadeout:2.4,2.5\nrndmove:1,.02,.02\n|\nsnd:PearlReaderNoise\nplay:2\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
+  },
+  {
+    "n": "text7.txt",
+    "p": "watcher/pearls/misc - Copy/text7.txt",
+    "c": "300,300,300,3\n|\nimg:Futile_White\nrgb:0,.4,.7\nlevel:.43\n|\ntext:2,10,0,0\nrgb:.8,.8,1\nlevel:.5\nrect:.2,.2,.32,.8\nmove:0,-1\nmove:0,1,0,.1\nsize:1,0,2,2.1\nfadeout:2,2.1\nrndmove:1,.02,.02\n|\ntext:2,10,0,1\nrgb:.8,.8,1\nlevel:.5\nrect:.32,.2,.44,.8\nmove:0,-1\nmove:0,1,.1,.2\nsize:1,0,2.1,2.2\nfadeout:2.1,2.2\nrndmove:1,.02,.02\n|\ntext:2,10,0,2\nrgb:.8,.8,1\nlevel:.5\nrect:.44,.2,.56,.8\nmove:0,-1\nmove:0,1,.2,.3\nsize:1,0,2.2,2.3\nfadeout:2.2,2.3\nrndmove:1,.02,.02\n|\ntext:2,10,0,3\nrgb:.8,.8,1\nlevel:.5\nrect:.56,.2,.68,.8\nmove:0,-1\nmove:0,1,.3,.4\nsize:1,0,2.3,2.4\nfadeout:2.3,2.4\nrndmove:1,.02,.02\n|\ntext:2,10,0,4\nrgb:.8,.8,1\nlevel:.5\nrect:.68,.2,.8,.8\nmove:0,-1\nmove:0,1,.4,.5\nsize:1,0,2.4,2.5\nfadeout:2.4,2.5\nrndmove:1,.02,.02\n|\nsnd:PearlReaderNoise\nplay:2\n|\nsnd:PearlReaderNoise\n|\nsnd:PearlReaderNoise_LOOP\n"
   }
 ]
