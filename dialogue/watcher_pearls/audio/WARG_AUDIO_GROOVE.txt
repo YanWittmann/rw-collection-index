@@ -6,4 +6,4 @@ tag: watcher
 map: region=WARG, room=W05, mapSlugcat=watcher
 
 === transcription: PearlReader
-Audio File content
+![PearlReader/AUDIO_GROOVE.mp3]

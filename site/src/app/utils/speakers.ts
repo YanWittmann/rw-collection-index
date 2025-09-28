@@ -106,6 +106,7 @@ export const regionColors: { [key: string]: string } = {
     "WSKB": "#D56E7C",
     "WSSR": "#4A4A4A",
     "WTDB": "#69775E",
+    "WMPA": "#2F176B",
 };
 
 export const transcriberIcons: { [key: string]: string } = {
@@ -217,6 +218,7 @@ export const regionNames: { [key: string]: string } = {
     "WSKB": "Sunlit Port",
     "WSSR": "Unfortunate Evolution",
     "WTDB": "Desolate Tract",
+    "WMPA": "Migration Path",
 }
 
 export function darken(hex: string, amount: number) {

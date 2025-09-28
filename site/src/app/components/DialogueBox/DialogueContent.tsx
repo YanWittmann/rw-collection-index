@@ -111,20 +111,34 @@ const parseAttributes = (text: string) => {
     return attributes;
 }
 
-const parseImageDetails = (text: string) => {
-    const imagePathRegex = /!\[(.*?)]/;
-    const imageMatch = text.match(imagePathRegex);
-    if (!imageMatch) return null;
+const parseMediaDetails = (text: string) => {
+    const mediaPathRegex = /!\[(.*?)]/;
+    const mediaMatch = text.match(mediaPathRegex);
+    if (!mediaMatch) return null;
 
-    const path = imageMatch[1];
-    const restOfString = text.substring(imageMatch[0].length);
+    const path = mediaMatch[1];
+    const restOfString = text.substring(mediaMatch[0].length);
     const attributes = parseAttributes(restOfString);
 
     const alt = attributes.ALT?.toLowerCase() || '';
     const style = attributes.STYLE?.toLowerCase();
 
-    return { path, alt, style };
+    const imageExtensions = ['png', 'jpg', 'jpeg', 'gif', 'webp'];
+    const audioExtensions = ['mp3', 'wav', 'ogg'];
+    const extension = path.split('.').pop()?.toLowerCase();
+
+    let type: 'image' | 'audio' | null = null;
+    if (extension && imageExtensions.includes(extension)) {
+        type = 'image';
+    } else if (extension && audioExtensions.includes(extension)) {
+        type = 'audio';
+    }
+
+    if (!type) return null;
+
+    return { path, alt, style, type };
 };
+
 
 const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attributes?: { [key: string]: string } }) => {
     let [currentIndex, setCurrentIndex] = useState(0);
@@ -155,8 +169,8 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
         setCurrentIndex(frameIndex);
     };
 
-    const details = parseImageDetails(frames[currentIndex].text);
-    if (!details) return null;
+    const details = parseMediaDetails(frames[currentIndex].text);
+    if (!details || details.type !== 'image') return null;
 
     const { path, alt, style } = details;
     let imageElement;
@@ -198,6 +212,19 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
     );
 };
 
+const AudioRenderer = ({ path, alt }: { path: string, alt: string }) => {
+    return (
+        <div className="flex justify-center">
+            <figure className="w-full max-w-xl">
+                <audio controls src={`audio/${path}`} className="w-full">
+                    Your browser does not support the audio element.
+                </audio>
+                {alt && <figcaption className="text-sm text-center text-gray-400 mt-2">{alt}</figcaption>}
+            </figure>
+        </div>
+    );
+};
+
 
 export function DialogueContent({ lines, searchText }: DialogueContentProps) {
     if (lines.length === 0) return null;
@@ -227,11 +254,11 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
             const attributes = parseAttributes(line.text);
             const sequenceFrames: DialogueLine[] = [];
             let j = i + 1;
-            while (j < clonedLines.length && /!\[(.*?)]/.test(clonedLines[j].text)) {
-                const imageDetails = parseImageDetails(clonedLines[j].text);
-                if (imageDetails) {
-                    preloadImagePaths.add(imageDetails.path);
-                }
+            while (j < clonedLines.length) {
+                const mediaDetails = parseMediaDetails(clonedLines[j].text);
+                if (mediaDetails?.type !== 'image') break; // Sequences only support images
+
+                preloadImagePaths.add(mediaDetails.path);
                 sequenceFrames.push(clonedLines[j]);
                 j++;
             }
@@ -242,9 +269,9 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
                 i++;
             }
         } else {
-            const imageDetails = parseImageDetails(line.text);
-            if (imageDetails) {
-                preloadImagePaths.add(imageDetails.path);
+            const mediaDetails = parseMediaDetails(line.text);
+            if (mediaDetails?.type === 'image') {
+                preloadImagePaths.add(mediaDetails.path);
             }
             processedContent.push(line);
             i++;
@@ -264,10 +291,14 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
                 }
 
                 const line = item as DialogueLine;
-                const isImage = /!\[(.*?)]/.test(line.text);
+                const mediaDetails = parseMediaDetails(line.text);
 
-                if (isImage) {
+                if (mediaDetails?.type === 'image') {
                     return <ImageRenderer key={i} frames={[line]}/>;
+                }
+
+                if (mediaDetails?.type === 'audio') {
+                    return <AudioRenderer key={i} path={mediaDetails.path} alt={mediaDetails.alt}/>;
                 }
 
                 return (

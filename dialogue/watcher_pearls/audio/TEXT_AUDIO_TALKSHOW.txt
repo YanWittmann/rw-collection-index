@@ -6,7 +6,7 @@ tag: watcher
 map: region=WAUA, room=D02, mapSlugcat=watcher
 
 === transcription: PearlReader
-Audio File content
+![PearlReader/TEXT_AUDIO_TALKSHOW.mp3]
 
 === transcription: PearlReader
 md-sourceDialogue: 240.txt

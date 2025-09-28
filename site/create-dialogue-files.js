@@ -19,7 +19,10 @@ const excludeSpeakers = [
     "EM", // equipment manifest
     "Five Pebbsi",
     "Behold",
-    "Imagine"
+    "Imagine",
+    "CONSIDER",
+    "NOW",
+    "TO",
 ]
 
 const generalWhiteGrayBroadcasts = [
