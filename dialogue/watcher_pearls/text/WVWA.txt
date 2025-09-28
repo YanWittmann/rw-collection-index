@@ -1,9 +1,12 @@
-internalId: WVWA
+internalId: TEXT_KITESDAY
 color: #F7E32E
 type: pearl
-name: All-Kites Day Specials
+name: Kitesday
 tag: watcher
 map: region=WMPA, room=C06, mapSlugcat=watcher
+
+=== transcription: PearlReader
+![PearlReader/TEXT_KITESDAY.png][STYLE=rounded]
 
 === transcription: PearlReader
 md-sourceDialogue: 241.txt

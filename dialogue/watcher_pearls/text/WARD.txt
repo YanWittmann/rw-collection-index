@@ -1,9 +1,12 @@
-internalId: WARD
+internalId: TEXT_STARDUST
 color: #143225
 type: pearl
-name: Concerns on Star Energies
+name: Stardust
 tag: watcher
 map: region=WARD, room=R02, mapSlugcat=watcher
+
+=== transcription: PearlReader
+![PearlReader/TEXT_STARDUST.png][STYLE=rounded]
 
 === transcription: PearlReader
 md-sourceDialogue: 239.txt

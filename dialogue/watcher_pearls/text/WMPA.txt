@@ -1,9 +1,12 @@
-internalId: WMPA
+internalId: TEXT_NOTIONOFSELF
 color: #3C683E
 type: pearl
-name: K'Arelus of Mart
+name: Notion of Self
 tag: watcher
 map: region=WMPA, room=C06, mapSlugcat=watcher
+
+=== transcription: PearlReader
+![PearlReader/TEXT_NOTIONOFSELF.png][STYLE=rounded]
 
 === transcription: PearlReader
 md-sourceDialogue: 236.txt

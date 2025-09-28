@@ -1,9 +1,12 @@
-internalId: WARB
+internalId: TEXT_SECRET
 color: #350C12
 type: pearl
-name: The Counselor's Consort
+name: Secret
 tag: watcher
 map: region=WARB, room=F10, mapSlugcat=watcher
+
+=== transcription: PearlReader
+![PearlReader/TEXT_SECRET.png][STYLE=rounded]
 
 === transcription: PearlReader
 md-sourceDialogue: 237.txt

@@ -1,9 +1,13 @@
-internalId: WARC
+internalId: TEXT_CONTEMPT
 color: #2A1C1F
 type: pearl
-name: Bonemeal Brick Complaint
+name: Contempt
 tag: watcher
 map: region=WARC, room=C10, mapSlugcat=watcher
+
+=== transcription: PearlReader
+md-name: Projection
+![PearlReader/TEXT_CONTEMPT.png][STYLE=rounded]
 
 === transcription: PearlReader
 md-sourceDialogue: 238.txt
