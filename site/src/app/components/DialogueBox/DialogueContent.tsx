@@ -111,7 +111,10 @@ const parseAttributes = (text: string) => {
     return attributes;
 }
 
-const parseMediaDetails = (text: string) => {
+const parseMediaDetails = (text?: string) => {
+    if (!text) {
+        return undefined;
+    }
     const mediaPathRegex = /!\[(.*?)]/;
     const mediaMatch = text.match(mediaPathRegex);
     if (!mediaMatch) return null;
@@ -141,13 +144,31 @@ const parseMediaDetails = (text: string) => {
 
 
 const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attributes?: { [key: string]: string } }) => {
-    let [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
     const [isHovering, setIsHovering] = useState(false);
+    const [dimensions, setDimensions] = useState<{ width: number, height: number } | null>(null);
 
     if (currentIndex !== 0 && currentIndex >= frames.length) {
-        currentIndex = 0;
         setCurrentIndex(0);
     }
+
+    const currentFrameDetails = parseMediaDetails(frames[currentIndex]?.text);
+
+    useEffect(() => {
+        if (!currentFrameDetails || currentFrameDetails.type !== 'image' || currentFrameDetails.style !== 'rounded') {
+            return;
+        }
+
+        const img = new Image();
+        img.src = `img/${currentFrameDetails.path}`;
+        img.onload = () => {
+            setDimensions({ width: img.naturalWidth, height: img.naturalHeight });
+        };
+        img.onerror = () => {
+            console.error("Failed to load image for dimension calculation:", `img/${currentFrameDetails.path}`);
+            setDimensions(null);
+        };
+    }, [currentFrameDetails]);
 
     useEffect(() => {
         if (frames.length <= 1 || isHovering) return;
@@ -169,18 +190,17 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
         setCurrentIndex(frameIndex);
     };
 
-    const details = parseMediaDetails(frames[currentIndex].text);
-    if (!details || details.type !== 'image') return null;
+    if (!currentFrameDetails || currentFrameDetails.type !== 'image') return null;
 
-    const { path, alt, style } = details;
+    const { path, alt, style } = currentFrameDetails;
     let imageElement;
 
     if (style === 'rounded') {
-        const featherGradient = 'radial-gradient(circle, black 50%, transparent 70%)';
+        const featherGradient = 'radial-gradient(ellipse, black 50%, transparent 70%)';
         const divStyles: React.CSSProperties = {
             width: '100%',
             height: 'auto',
-            aspectRatio: '1 / 1',
+            aspectRatio: dimensions ? `${dimensions.width} / ${dimensions.height}` : '1 / 1',
             backgroundImage: `url(img/${path})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -282,7 +302,7 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
         <div className="space-y-3 pb-6">
             {Array.from(preloadImagePaths).map(path => (
                 <img key={path} src={`img/${path}`} alt="preload"
-                     style={{ position: 'absolute', left: '10px', top: '1200px' }}/>
+                     style={{ display: 'none' }}/>
             ))}
 
             {processedContent.map((item, i) => {
