@@ -1,6 +1,6 @@
 type: pearl
 tag: watcher
-color: {randomPick--#ff7a02--#b3b3b3--#4b4653}
+color: {randomPick--#b3b3b3--#4b4653}
 info: Pearls without explicitly defined projections show a random miscellaneous projection.
 
 === transcription: PearlReader
@@ -163,3 +163,53 @@ SEQUENCE[SPEED=1000]
 ![PearlReader/misc/k/7.png][STYLE=rounded]
 ![PearlReader/misc/k/8.png][STYLE=rounded]
 ![PearlReader/misc/k/9.png][STYLE=rounded]
+
+=== transcription: PearlReader
+md-internalId: l
+md-var-DialogueId: l
+md-name: Misc L
+md-tag: watcher
+SEQUENCE[SPEED=600]
+![PearlReader/misc/l/1.png][STYLE=rounded]
+![PearlReader/misc/l/2.png][STYLE=rounded]
+![PearlReader/misc/l/3.png][STYLE=rounded]
+![PearlReader/misc/l/4.png][STYLE=rounded]
+![PearlReader/misc/l/5.png][STYLE=rounded]
+![PearlReader/misc/l/6.png][STYLE=rounded]
+![PearlReader/misc/l/7.png][STYLE=rounded]
+![PearlReader/misc/l/8.png][STYLE=rounded]
+![PearlReader/misc/l/9.png][STYLE=rounded]
+![PearlReader/misc/l/10.png][STYLE=rounded]
+![PearlReader/misc/l/11.png][STYLE=rounded]
+![PearlReader/misc/l/12.png][STYLE=rounded]
+![PearlReader/misc/l/13.png][STYLE=rounded]
+
+=== transcription: PearlReader
+md-internalId: m
+md-var-DialogueId: m
+md-name: Misc M
+md-sourceDialogue: misc_img_anim2.png
+md-tag: watcher
+SEQUENCE[SPEED=600]
+![PearlReader/misc/m/1.png][STYLE=rounded]
+![PearlReader/misc/m/2.png][STYLE=rounded]
+![PearlReader/misc/m/3.png][STYLE=rounded]
+![PearlReader/misc/m/4.png][STYLE=rounded]
+![PearlReader/misc/m/5.png][STYLE=rounded]
+![PearlReader/misc/m/6.png][STYLE=rounded]
+![PearlReader/misc/m/7.png][STYLE=rounded]
+![PearlReader/misc/m/8.png][STYLE=rounded]
+![PearlReader/misc/m/9.png][STYLE=rounded]
+
+=== transcription: PearlReader
+md-internalId: n
+md-var-DialogueId: n
+md-name: Misc N
+md-tag: watcher
+SEQUENCE[SPEED=1000]
+![PearlReader/misc/n/1.png][STYLE=rounded]
+![PearlReader/misc/n/2.png][STYLE=rounded]
+![PearlReader/misc/n/3.png][STYLE=rounded]
+![PearlReader/misc/n/4.png][STYLE=rounded]
+![PearlReader/misc/n/5.png][STYLE=rounded]
+![PearlReader/misc/n/6.png][STYLE=rounded]

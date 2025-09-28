@@ -195,9 +195,14 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
     const { path, alt, style } = currentFrameDetails;
     let imageElement;
 
+    const imageStyles: React.CSSProperties = {
+        imageRendering: 'pixelated',
+    };
+
     if (style === 'rounded') {
         const featherGradient = 'radial-gradient(ellipse, black 50%, transparent 70%)';
         const divStyles: React.CSSProperties = {
+            ...imageStyles,
             width: '100%',
             height: 'auto',
             aspectRatio: dimensions ? `${dimensions.width} / ${dimensions.height}` : '1 / 1',
@@ -209,7 +214,7 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
         };
         imageElement = <div style={divStyles} role="img" aria-label={alt}></div>;
     } else {
-        imageElement = <img src={`img/${path}`} alt={alt} className="w-full h-auto rounded-md"/>;
+        imageElement = <img src={`img/${path}`} alt={alt} style={imageStyles} className="w-full h-auto rounded-md"/>;
     }
 
     return (
@@ -302,7 +307,7 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
         <div className="space-y-3 pb-6">
             {Array.from(preloadImagePaths).map(path => (
                 <img key={path} src={`img/${path}`} alt="preload"
-                     style={{ display: 'none' }}/>
+                     style={{ position: 'absolute', left: '10px', top: '1200px', opacity: "0%" }}/>
             ))}
 
             {processedContent.map((item, i) => {
