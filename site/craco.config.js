@@ -91,9 +91,9 @@ module.exports = {
             }
 
             // add bundle analyzer in development
-            if (isDevelopment) {
-                webpackConfig.plugins.push(new BundleAnalyzerPlugin());
-            }
+            // if (isDevelopment) {
+            //     webpackConfig.plugins.push(new BundleAnalyzerPlugin());
+            // }
 
             // shadcn-ui uses aliases to import components
             webpackConfig.resolve.alias = {

@@ -134,6 +134,7 @@ Thanks to:
 | candlesign.4539           | Buttons get stuck in the hovered state; replaced framer-motion native logic with custom hover logic.    |
 | capwolfbane / SUNFISH     | Incorrectly "vanilla" tagged elements.                                                                  |
 | capwolfbane               | Merge "FP" and "Five Pebbles" filter entries.                                                           |
+| erickckk                  | Correct TEXT_KITESDAY map location link.                                                                |
 
 Feel like you should be on this list? Let me know!
 

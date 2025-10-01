@@ -3,7 +3,7 @@ color: #F7E32E
 type: pearl
 name: Kitesday
 tag: watcher
-map: region=WMPA, room=C06, mapSlugcat=watcher
+map: region=WVWA, room=F02, mapSlugcat=watcher
 
 === transcription: PearlReader
 ![PearlReader/TEXT_KITESDAY.png][STYLE=rounded]
