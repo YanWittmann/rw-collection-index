@@ -1,7 +1,7 @@
 internalId: WAUA
 color: #350C12
 type: pearl
-name: Construction of a new Iterator
+name: WAUA
 tag: watcher
 map: region=WAUA, room=E02B, mapSlugcat=watcher
 

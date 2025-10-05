@@ -180,6 +180,10 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
         return () => clearInterval(interval);
     }, [frames.length, attributes, isHovering]);
 
+    useEffect(() => {
+        setCurrentIndex(0);
+    }, [frames]);
+
     const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
         if (frames.length <= 1) return;
         const rect = e.currentTarget.getBoundingClientRect();
@@ -194,6 +198,14 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
 
     const { path, alt, style } = currentFrameDetails;
     let imageElement;
+    let captionText = '';
+
+    if (frames.length > 1 && isHovering) {
+        const frameNumber = currentIndex + 1;
+        captionText = alt ? `${alt} (${frameNumber})` : `${frameNumber}`;
+    } else {
+        captionText = alt;
+    }
 
     const imageStyles: React.CSSProperties = {
         imageRendering: 'pixelated',
@@ -230,7 +242,8 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
                     onMouseMove={handleMouseMove}
                 >
                     {imageElement}
-                    {alt && <figcaption className="text-sm text-center text-gray-400 mt-2">{alt}</figcaption>}
+                    {captionText &&
+                        <figcaption className="text-sm text-center text-gray-400 mt-2">{captionText}</figcaption>}
                 </a>
             </figure>
         </div>
