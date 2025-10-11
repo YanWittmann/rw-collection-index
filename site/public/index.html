@@ -14,18 +14,19 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website"/>
     <meta property="og:url" content="https://yanwittmann.github.io/rw-collection-index"/>
-    <meta property="og:title" content="Rain World Lore Collection Index | Pearls, Broadcasts, Downpour & The Watcher DLC"/>
+    <meta property="og:title" content="Rain World Collection Index | Pearls, Broadcasts, Downpour & The Watcher DLC"/>
     <meta property="og:description"
-          content="Complete interactive database of Rain World lore. Browse Pearls, Broadcasts, Five Pebbles Pearls, White Pearls, and more with search and spoiler protection."/>
+          content="Complete interactive database of Rain World lore. Browse Pearls, Broadcasts, Dialogue, and more with search and spoiler protection."/>
     <meta property="og:image"
           content="https://raw.githubusercontent.com/YanWittmann/rw-collection-index/refs/heads/main/doc/rw-collection-index-card-2x.png"/>
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image"/>
     <meta property="twitter:url" content="https://yanwittmann.github.io/rw-collection-index"/>
-    <meta property="twitter:title" content="Rain World Lore Collection Index | Pearls, Broadcasts, Downpour & The Watcher DLC"/>
+    <meta property="twitter:title"
+          content="Rain World Collection Index | Pearls, Broadcasts, Downpour & The Watcher DLC"/>
     <meta property="twitter:description"
-          content="Complete interactive database of Rain World collectibles. Browse Pearls, Broadcasts, Five Pebbles Pearls, White Pearls, and more with search and spoiler protection."/>
+          content="Complete interactive database of Rain World lore. Browse Pearls, Broadcasts, Dialogue, and more with search and spoiler protection."/>
     <meta property="twitter:image"
           content="https://raw.githubusercontent.com/YanWittmann/rw-collection-index/refs/heads/main/doc/rw-collection-index-card-2x.png"/>
 
@@ -77,6 +78,59 @@
             background-color: #101010;
         }
     </style>
+
+    <script>
+        function updateCanonicalTag() {
+            // remove existing canonical tag if present
+            const existingCanonical = document.querySelector('link[rel="canonical"]');
+            if (existingCanonical) {
+                existingCanonical.remove();
+            }
+
+            const params = new URLSearchParams(window.location.search);
+            let canonicalUrl = window.location.origin + window.location.pathname;
+
+            // only include meaningful parameters in canonical URL
+            const meaningfulParams = ['item'];
+            const canonicalParams = {};
+            for (const param of meaningfulParams) {
+                if (params.has(param)) {
+                    canonicalParams[param] = params.get(param);
+                }
+            }
+
+            const canonicalSearchParams = new URLSearchParams();
+            for (const [key, value] of Object.entries(canonicalParams)) {
+                canonicalSearchParams.set(key, value);
+            }
+
+            if (canonicalSearchParams.toString()) {
+                canonicalUrl += '?' + canonicalSearchParams.toString();
+            }
+
+            const canonicalLink = document.createElement('link');
+            canonicalLink.rel = 'canonical';
+            canonicalLink.href = canonicalUrl;
+            document.head.appendChild(canonicalLink);
+        }
+
+        updateCanonicalTag();
+
+        const originalPushState = history.pushState;
+        const originalReplaceState = history.replaceState;
+
+        history.pushState = function () {
+            originalPushState.apply(history, arguments);
+            updateCanonicalTag();
+        };
+
+        history.replaceState = function () {
+            originalReplaceState.apply(history, arguments);
+            updateCanonicalTag();
+        };
+
+        window.addEventListener('popstate', updateCanonicalTag);
+    </script>
 </head>
 <body class="overflow-y-hidden">
 <noscript>You need to enable JavaScript to view the pearls collection.</noscript>

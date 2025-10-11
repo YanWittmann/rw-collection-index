@@ -317,7 +317,7 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
     }
 
     return (
-        <div className="space-y-3 pb-6">
+        <main className="space-y-3 pb-6">
             {Array.from(preloadImagePaths).map(path => (
                 <img key={path} src={`img/${path}`} alt="preload"
                      style={{ position: 'absolute', left: '10px', top: '1200px', opacity: "0%" }}/>
@@ -365,6 +365,6 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
                     </div>
                 );
             })}
-        </div>
+        </main>
     );
 }

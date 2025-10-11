@@ -28,7 +28,16 @@ export type UnlockMode = "all" | "unlock";
 
 export default function DialogueInterface() {
     const [unlockMode, setUnlockMode] = useState<UnlockMode>("all");
-    const { selectedPearl, selectedTranscriber, handleSelectPearl, handleSelectTranscriber, handleKeyNavigation, currentGridPosition, sourceFileDisplay, setSourceFileDisplay } = useDialogue(unlockMode, GRID_DATA);
+    const {
+        selectedPearl,
+        selectedTranscriber,
+        handleSelectPearl,
+        handleSelectTranscriber,
+        handleKeyNavigation,
+        currentGridPosition,
+        sourceFileDisplay,
+        setSourceFileDisplay
+    } = useDialogue(unlockMode, GRID_DATA);
     const { refresh, unlockVersion } = useUnlockState();
     const [hintProgress, setHintProgress] = useState<number>(0);
     const [isAlternateDisplayModeActive, setIsAlternateDisplayModeActive] = useState(false);
@@ -81,13 +90,106 @@ export default function DialogueInterface() {
         urlAccess.getParam("source") && setSourceFileDisplay(urlAccess.getParam("source")!);
     }, []);
 
+    // update meta tags dynamically based on selected pearl
+    useEffect(() => {
+        const existingDescription = document.querySelector('meta[name="description"]');
+        const existingTitle = document.querySelector('title');
+        const existingOgTitle = document.querySelector('meta[property="og:title"]');
+        const existingOgDescription = document.querySelector('meta[property="og:description"]');
+
+        if (existingDescription) existingDescription.remove();
+        if (existingTitle) existingTitle.remove();
+        if (existingOgTitle) existingOgTitle.remove();
+        if (existingOgDescription) existingOgDescription.remove();
+
+        const selectedPearlData = selectedPearl ? GRID_DATA.find(pearl => pearl.id === selectedPearl) ?? null : null;
+
+        if (selectedPearlData) {
+            const firstTranscriber = selectedPearlData.transcribers[0];
+            let dialogueSummary = '';
+            if (firstTranscriber && firstTranscriber.lines) {
+                const normalizedLines = [];
+
+                for (const line of firstTranscriber.lines) {
+                    let text = line.text;
+
+                    if (text === "MONO") continue;
+                    if (text.startsWith('SEQUENCE') || text.startsWith('![')) continue;
+
+                    text = text.replace(/!\[.*?].*/g, '');
+                    text = text.replace(/\[.*?]/g, '');
+                    text = text.trim();
+
+                    if (text) {
+                        if (text.startsWith('/')) {
+                            text = text.substring(1).trim();
+                        } else if (text.startsWith('|')) {
+                            text = text.substring(1).trim();
+                        } else if (text.startsWith('~')) {
+                            text = text.substring(1).trim();
+                        }
+
+                        if (text) {
+                            normalizedLines.push(line.speaker ? `${line.speaker}: ${text}` : text);
+                        }
+                    }
+                }
+
+                dialogueSummary = normalizedLines
+                    .slice(0, 6)
+                    .join(' ')
+                    .substring(0, 200);
+            }
+            const effectiveDialogueSummary = dialogueSummary || `Dialogue content for ${selectedPearlData.metadata.name || 'Lore'} from the Rain World Collection Index.`;
+            const effectiveTitle = (selectedPearlData.metadata.name ? selectedPearlData.metadata.name + " | " : "") + "Rain World Collection Index";
+
+            const descriptionMeta = document.createElement('meta');
+            descriptionMeta.name = 'description';
+            descriptionMeta.content = effectiveDialogueSummary;
+            document.head.appendChild(descriptionMeta);
+
+            const titleElement = document.createElement('title');
+            titleElement.textContent = effectiveTitle;
+            document.head.appendChild(titleElement);
+
+            const ogTitleMeta = document.createElement('meta');
+            ogTitleMeta.setAttribute('property', 'og:title');
+            ogTitleMeta.content = effectiveTitle;
+            document.head.appendChild(ogTitleMeta);
+
+            const ogDescriptionMeta = document.createElement('meta');
+            ogDescriptionMeta.setAttribute('property', 'og:description');
+            ogDescriptionMeta.content = effectiveDialogueSummary;
+            document.head.appendChild(ogDescriptionMeta);
+        } else {
+            const defaultDescriptionMeta = document.createElement('meta');
+            defaultDescriptionMeta.name = 'description';
+            defaultDescriptionMeta.content = 'Explore and track all Pearls, Broadcasts, Downpour and The Watcher DLC content, Iterator dialogues, Echoes and more from the game Rain World in your browser. Full-text search, view interactive map locations and use the spoiler protection functionality.';
+            document.head.appendChild(defaultDescriptionMeta);
+
+            const defaultTitleElement = document.createElement('title');
+            defaultTitleElement.textContent = 'Rain World Collection Index | Pearls, Broadcasts, Downpour & The Watcher DLC';
+            document.head.appendChild(defaultTitleElement);
+
+            const defaultOgTitleMeta = document.createElement('meta');
+            defaultOgTitleMeta.setAttribute('property', 'og:title');
+            defaultOgTitleMeta.content = 'Rain World Collection Index | Pearls, Broadcasts, Downpour & The Watcher DLC';
+            document.head.appendChild(defaultOgTitleMeta);
+
+            const defaultOgDescriptionMeta = document.createElement('meta');
+            defaultOgDescriptionMeta.setAttribute('property', 'og:description');
+            defaultOgDescriptionMeta.content = 'Complete interactive database of Rain World lore. Browse Pearls, Broadcasts, Dialogue, and more with search and spoiler protection.';
+            document.head.appendChild(defaultOgDescriptionMeta);
+        }
+    }, [selectedPearl]);
+
     const handleSelectPearlWithReset = (pearl: string) => {
         handleSelectPearl(GRID_DATA.find(pearlData => pearlData.id === pearl) ?? null);
         setHintProgress(0);
     };
 
     const pearlGridComponent = useMemo(() => (
-        <Suspense fallback={<LoadingSpinner />}>
+        <Suspense fallback={<LoadingSpinner/>}>
             <PearlGrid
                 pearls={GRID_DATA}
                 order={orderPearls}
@@ -106,7 +208,7 @@ export default function DialogueInterface() {
     ), [GRID_DATA, selectedPearl, unlockMode, isAlternateDisplayModeActive, isMobile, handleSelectPearlWithReset, unlockVersion, handleKeyNavigation, currentGridPosition]);
 
     const dialogueBoxComponent = useMemo(() => (
-        <Suspense fallback={<LoadingSpinner />}>
+        <Suspense fallback={<LoadingSpinner/>}>
             <DialogueBox
                 pearl={selectedPearl !== null ? GRID_DATA.find(pearl => pearl.id === selectedPearl) ?? null : null}
                 selectedTranscriber={selectedTranscriber}

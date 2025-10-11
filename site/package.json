@@ -36,7 +36,8 @@
     "create-dialogue-files-lite": "node create-dialogue-files.js",
     "create-dialogue-files": "node create-dialogue-files.js --sourceFiles",
     "start": "craco start",
-    "build": "npm run create-dialogue-files && craco build",
+    "build": "npm run create-dialogue-files && craco build && node generate-sitemap.js",
+    "generate-sitemap": "node generate-sitemap.js",
     "test": "craco test",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
