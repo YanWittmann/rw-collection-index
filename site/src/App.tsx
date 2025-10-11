@@ -1,9 +1,9 @@
 import React from 'react';
-import DialogueInterface from "./app/page";
+import Router from './Router';
 
 function App() {
   return (
-    <DialogueInterface></DialogueInterface>
+    <Router />
   );
 }
 

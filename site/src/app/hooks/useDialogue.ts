@@ -239,34 +239,9 @@ export function useDialogue(unlockMode: UnlockMode, GRID_DATA: PearlData[]) {
         }
     }
 
-    function pearlIdToUrlId(id: string, selectedTranscriber: string | null) {
-        for (let element of GRID_DATA) {
-            if (element.id === id) {
-                if (selectedTranscriber) {
-                    const transcriberIndex = findTranscriberIndex(element, selectedTranscriber);
-                    if (transcriberIndex !== null && transcriberIndex >= 0 && element.transcribers[transcriberIndex]) {
-                        const transcriberInternalId = element.transcribers[transcriberIndex].metadata.internalId;
-                        if (transcriberInternalId) {
-                            return transcriberInternalId;
-                        }
-                    }
-                }
-                if (element.metadata.internalId) {
-                    return element.metadata.internalId;
-                }
-            }
-        }
-        return id;
-    }
-
-    // update url params
+    // update url params - only when pearl changes, let the parent component handle route updates
     useEffect(() => {
         if (unlockMode === "all") {
-            if (selectedPearl) {
-                urlAccess.setParam("item", pearlIdToUrlId(selectedPearl, selectedTranscriber));
-            } else {
-                urlAccess.clearParam("item");
-            }
             if (selectedTranscriber) {
                 urlAccess.setParam("transcriber", selectedTranscriber);
             } else {
@@ -278,12 +253,11 @@ export function useDialogue(unlockMode: UnlockMode, GRID_DATA: PearlData[]) {
                 urlAccess.clearParam("source");
             }
         } else {
-            urlAccess.clearParam("item");
             urlAccess.clearParam("transcriber");
             urlAccess.clearParam("source");
         }
         urlAccess.getParam("pearl") && urlAccess.clearParam("pearl");
-    }, [selectedPearl, selectedTranscriber, sourceFileDisplay, unlockMode]);
+    }, [selectedTranscriber, sourceFileDisplay, unlockMode]);
 
     const handleSelectTranscriber = (transcriber: string | null) => {
         setSourceFileDisplay(null);
