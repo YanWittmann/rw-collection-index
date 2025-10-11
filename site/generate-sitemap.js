@@ -43,9 +43,18 @@ const generateSitemap = (baseUrl, ids) => {
   
   const urls = ids.map(id => {
     const urlEncodedId = encodeURIComponent(id);
+    
+    // XML-escape the final URL for safe inclusion in XML
+    const fullUrl = `${baseUrl}?item=${urlEncodedId}`;
+    const xmlEscapedUrl = fullUrl
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&apos;');
 
     return `  <url>
-    <loc>${baseUrl}?item=${urlEncodedId}</loc>
+    <loc>${xmlEscapedUrl}</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>`;
