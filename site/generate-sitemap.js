@@ -42,8 +42,10 @@ const generateSitemap = (baseUrl, ids) => {
   const urlsetEnd = `</urlset>`;
   
   const urls = ids.map(id => {
+    const urlEncodedId = encodeURIComponent(id);
+
     return `  <url>
-    <loc>${baseUrl}?item=${encodeURIComponent(id)}</loc>
+    <loc>${baseUrl}?item=${urlEncodedId}</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>`;
