@@ -133,7 +133,7 @@ const Controls = ({
             <label className="text-white/80 text-sm block mb-2">Width: {frameWidth}%</label>
             <input
                 type="range"
-                min="50"
+                min="20"
                 max="200"
                 value={frameWidth}
                 onChange={(e) => setFrameWidth(parseInt(e.target.value))}
