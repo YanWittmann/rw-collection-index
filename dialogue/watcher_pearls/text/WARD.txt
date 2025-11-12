@@ -9,6 +9,8 @@ map: region=WARD, room=R02, mapSlugcat=watcher
 ![PearlReader/TEXT_STARDUST.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReaderText
 md-sourceDialogue: 239.txt
 ... and as Thought-Leader of this Most Righteous Congregation of Minds and Souls, it humbly falls to me to present these concerns before you regarding the curious plan for the harvesting of so-called Star Energies.
 The dimming pallor of our own dear star does concern, yes, and some solution must be found. But many say this is simply the result of Dust --yes the most natural of all things!-- which appears to precipitate increasingly these recent cycles.

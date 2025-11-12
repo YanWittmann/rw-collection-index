@@ -10,6 +10,8 @@ md-name: Projection
 ![PearlReader/TEXT_CONTEMPT.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReaderText
 md-sourceDialogue: 238.txt
 TO: Pathel of Twelve Spoked Wheels, Grey House Facility\nFROM: Three-Carafe Nine-Frond, Grand Manufactor, House of Astor Leaves
 TRANSCRIBED

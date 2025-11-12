@@ -44,12 +44,32 @@ const SearchBar = ({ isMobile, unlockMode, onTextInput, onToggleUnlockMode, filt
     filterSections: FilterSection[]
 }) => {
     return (
-        <div className={"flex gap-2 mb-4"}>
-            <RwTextInput
-                className={cn("", isMobile ? "flex-1" : "w-full")}
-                onTextInput={onTextInput}
-                placeholder="Search..."
-            />
+        <div className={"flex gap-2 items-center"}>
+            <div className={cn("relative flex items-center", isMobile ? "flex-1" : "w-full")}>
+                <RwTextInput
+                    value={filters.text || ''}
+                    className="w-full pr-8 bg-gray-950"
+                    onTextInput={onTextInput}
+                    placeholder="Search..."
+                />
+                {(filters.text || '').length > 0 && (
+                    <button
+                        type="button"
+                        onClick={() => onTextInput('')}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-white/60 hover:text-white focus:outline-none transition-colors"
+                        aria-label="Clear search">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth={2}
+                            stroke="currentColor"
+                            className="w-4 h-4">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                )}
+            </div>
             <PearlFilter
                 filters={filters}
                 setFilters={setFilters}
@@ -192,7 +212,7 @@ const useIsScrollable = (ref: React.RefObject<HTMLDivElement | null>) => {
                 // only consider it scrollable if there's actually more content than fits
                 const hasScrollableContent = scrollHeight > clientHeight;
                 setIsScrollable(hasScrollableContent);
-                
+
                 if (hasScrollableContent) {
                     // show gradient if not at bottom
                     const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
@@ -549,7 +569,7 @@ export function PearlGrid({
             if (containerRef.current) {
                 const { scrollHeight, clientHeight, scrollTop } = containerRef.current;
                 const hasScrollableContent = scrollHeight > clientHeight;
-                
+
                 if (hasScrollableContent) {
                     // show gradient if not at bottom
                     const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
@@ -570,20 +590,30 @@ export function PearlGrid({
         )}>
             <div className={cn(
                 "no-scrollbar overflow-y-auto box-border h-full",
-                isMobile ? "p-4" : "p-1"
+                isMobile ? "px-4" : "px-1"
             )} ref={containerRef}>
-                <SearchBar
-                    isMobile={isMobile}
-                    unlockMode={unlockMode}
-                    onTextInput={handleTextInput}
-                    onToggleUnlockMode={toggleUnlockMode}
-                    filters={filters}
-                    setFilters={setFilters}
-                    filterSections={filterSections}
-                />
+                {/* Sticky Header */}
+                <div className={cn(
+                    "sticky top-0 z-20 bg-gray-950/90 backdrop-blur-sm",
+                    isMobile ? "pt-4" : "pt-1",
+                    "mb-4"
+                )}>
+                    <SearchBar
+                        isMobile={isMobile}
+                        unlockMode={unlockMode}
+                        onTextInput={handleTextInput}
+                        onToggleUnlockMode={toggleUnlockMode}
+                        filters={filters}
+                        setFilters={setFilters}
+                        filterSections={filterSections}
+                    />
+                </div>
+
+                {/* Scrollable Content */}
                 <div className={cn(
                     "grid grid-cols-1 gap-4",
                     isMobile ? "" : "px-1",
+                    isMobile ? "pb-4" : "pb-1"
                 )}>
                     {filteredPearls
                         .filter(chapter => chapter.items.length > 0)
@@ -606,11 +636,11 @@ export function PearlGrid({
                         ))}
                 </div>
             </div>
-            <div 
+            <div
                 className={cn(
                     "absolute bottom-0 left-0 right-0 h-8 pointer-events-none bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-white/20 to-transparent transition-opacity duration-300 border-b-2 border-white/50 z-10",
                     isScrollable && showGradient ? "opacity-100" : "opacity-0"
-                )} 
+                )}
             />
         </div>
     );

@@ -6,9 +6,13 @@ tag: watcher
 map: region=WAUA, room=D02, mapSlugcat=watcher
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReaderAudio
 ![PearlReader/TEXT_AUDIO_TALKSHOW.mp3]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReaderText
 md-sourceDialogue: 240.txt
 Host: With us today is Iterator Bell of Gesture.
 Gesture: Yes, greetings. Let us be quick, I have many tasks.

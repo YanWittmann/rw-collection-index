@@ -6,4 +6,6 @@ tag: watcher
 map: region=WARE, room=I13, mapSlugcat=watcher
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReaderAudio
 ![PearlReader/AUDIO_VOICEWIND2.mp3]

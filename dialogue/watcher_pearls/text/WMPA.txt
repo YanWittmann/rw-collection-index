@@ -9,6 +9,8 @@ map: region=WMPA, room=C06, mapSlugcat=watcher
 ![PearlReader/TEXT_NOTIONOFSELF.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReaderText
 md-sourceDialogue: 236.txt
 In the era of K'Arelus of Mart, long before the era of numeration and object idolatry,\nthere were understood to be three, five, and then three again notions of self.
 These were represented in lines as the three waves of the river, and then of the star with five spokes, and then the three of columns vertical.

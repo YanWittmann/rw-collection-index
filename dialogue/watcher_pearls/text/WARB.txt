@@ -9,6 +9,8 @@ map: region=WARB, room=F10, mapSlugcat=watcher
 ![PearlReader/TEXT_SECRET.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReaderText
 md-sourceDialogue: 237.txt
 Ho, the joy to be alone, among the reeds and the dancing yan flies with such a secret!
 The beating of respiration resonates through the very density of my bones, to jangle the golden coins and the wires along my ears, creating a sweet percussion song of thirst and yearning!
