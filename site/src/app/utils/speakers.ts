@@ -1,12 +1,8 @@
-import sourceDecrypted from "../../generated/source-decrypted.json";
-
 export interface SourceDecrypted {
     n: string;
     p: string;
     c?: string;
 }
-
-export const SOURCE_DECRYPTED: SourceDecrypted[] = sourceDecrypted;
 
 export const speakersColors: { [key: string]: string } = {
     "FP": "#66d9bf",
@@ -272,12 +268,12 @@ export function resolveVariables(str: string): string {
     });
 }
 
-export function findSourceDialogue(name: string) {
-    const entry = SOURCE_DECRYPTED.find(entry => entry.n === name)
-        || SOURCE_DECRYPTED.find(entry => entry.p === name)
-        || SOURCE_DECRYPTED.find(entry => entry.p.includes(name))
-        || SOURCE_DECRYPTED.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/") === name)
-        || SOURCE_DECRYPTED.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/").includes(name));
+export function findSourceDialogue(name: string, sourceData: SourceDecrypted[]) {
+    const entry = sourceData.find(entry => entry.n === name)
+        || sourceData.find(entry => entry.p === name)
+        || sourceData.find(entry => entry.p.includes(name))
+        || sourceData.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/") === name)
+        || sourceData.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/").includes(name));
     if (!entry) {
         console.warn(name, 'not found');
     }

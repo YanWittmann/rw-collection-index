@@ -1,11 +1,10 @@
 import { TranscriberSelector } from "./TranscriberSelector";
 import { DialogueContent } from "./DialogueContent";
-import { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types";
+import { Dialogue, DialogueLine, MapInfo } from "../../types/types";
 import { findSourceDialogue, resolveVariables, speakerNames } from "../../utils/speakers";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion"
 import { WelcomeDialogueContent } from "./WelcomeDialogueContent";
-import { UnlockMode } from "../../page";
 import UnlockManager from "../../utils/unlockManager";
 import HintSystemContent from "./HintSystemContent";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
@@ -13,22 +12,8 @@ import { RwIcon } from "../PearlGrid/RwIcon";
 import { renderDialogueLine } from "../../utils/renderDialogueLine";
 import { cn } from "@shadcn/lib/utils";
 import { DialogueActionTabs } from "./DialogueActionTabs";
-
-interface DialogueBoxProps {
-    pearl: PearlData | null
-    selectedTranscriber: string | null
-    onSelectTranscriber: (name: string | null) => void
-    setUnlockMode: (mode: UnlockMode) => void
-    unlockMode: UnlockMode
-    triggerRender: () => void
-    hintProgress: number
-    setHintProgress: (value: (((prevState: number) => number) | number)) => void
-    onSelectPearl: (pearl: PearlData | null) => void
-    isMobile: boolean
-    sourceFileDisplay: string | null
-    setSourceFileDisplay: (value: (((prevState: (string | null)) => (string | null)) | string | null)) => void
-    searchText?: string
-}
+import { useAppContext } from "../../context/AppContext";
+import { findTranscriberIndex } from "../../utils/transcriberUtils";
 
 export function generateMapLinkFromMapInfo(mapInfo: MapInfo | undefined) {
     if (!mapInfo) {
@@ -60,21 +45,19 @@ export function getMapLocations(dialogue: Dialogue): MapInfo[] {
     return [];
 }
 
-export function DialogueBox({
-                                pearl,
-                                selectedTranscriber,
-                                onSelectTranscriber,
-                                setUnlockMode,
-                                unlockMode,
-                                triggerRender,
-                                hintProgress,
-                                setHintProgress,
-                                onSelectPearl,
-                                isMobile,
-                                setSourceFileDisplay,
-                                sourceFileDisplay,
-                                searchText,
-                            }: DialogueBoxProps) {
+export function DialogueBox() {
+    const {
+        selectedPearlData: pearl,
+        selectedTranscriberName,
+        unlockMode,
+        handleSelectPearl,
+        sourceFileDisplay,
+        setSourceFileDisplay,
+        filters,
+        isMobile,
+        sourceData
+    } = useAppContext();
+
     const [hoveredTranscriber, setHoveredTranscriber] = useState<string | null>(null);
     const [lastTranscriberName, setLastTranscriberName] = useState<string | null>(null);
     const [justCopiedInternalId, setJustCopiedInternalId] = useState<boolean>(false);
@@ -127,83 +110,66 @@ export function DialogueBox({
         };
     }, [isMobile, touchStart]);
 
-    const findTranscriberIndex = (transcriberName: string) => {
-        if (!pearl) {
-            return null;
-        }
-        const isMultipleTranscribers = /.+-\d+$/.test(transcriberName);
-        if (isMultipleTranscribers) {
-            return parseInt(transcriberName.replace(/^.+-/, ""));
-        } else {
-            return pearl.transcribers.findIndex(transcriber => transcriber.transcriber === transcriberName);
-        }
-    }
-
     // set up the subtitle with the transcriber's name
-    if (hoveredTranscriber !== null && pearl) {
-        if (hoveredTranscriber.startsWith("plain=")) {
-            const transcriberName = hoveredTranscriber.replace("plain=", "");
-            if (transcriberName !== lastTranscriberName) {
+    useEffect(() => {
+        if (hoveredTranscriber === null) {
+            setLastTranscriberName(null);
+            return;
+        }
+        if (pearl) {
+            if (hoveredTranscriber.startsWith("plain=")) {
+                const transcriberName = hoveredTranscriber.replace("plain=", "");
                 setLastTranscriberName(transcriberName);
-            }
+            } else {
+                const transcriberIndex = findTranscriberIndex(pearl, hoveredTranscriber);
+                if (transcriberIndex !== -1) {
+                    let transcriberName = speakerNames[pearl.transcribers[transcriberIndex].transcriber] ?? "Unknown";
 
-        } else {
-            const transcriberIndex = findTranscriberIndex(hoveredTranscriber);
-            if (transcriberIndex !== null && transcriberIndex !== -1) {
-                let transcriberName = speakerNames[pearl.transcribers[transcriberIndex].transcriber];
-                if (!transcriberName) {
-                    console.error("Unable to find transcriber name", pearl.transcribers[transcriberIndex].transcriber);
-                    transcriberName = "Unknown";
-                }
+                    const parenthesisMatch = transcriberName.match(/(.*) \((.*)\)/);
+                    let parenthesis = "";
+                    if (parenthesisMatch) {
+                        transcriberName = parenthesisMatch[1];
+                        parenthesis = ` (${parenthesisMatch[2]})`;
+                    }
 
-                // extract parentheses from end of the name
-                const parenthesisMatch = transcriberName.match(/(.*) \((.*)\)/);
-                let parenthesis = "";
-                if (parenthesisMatch) {
-                    transcriberName = parenthesisMatch[1];
-                    parenthesis = ` (${parenthesisMatch[2]})`;
-                }
+                    if (transcriberName.endsWith('s')) {
+                        transcriberName = transcriberName.slice(0, -1);
+                    }
 
-                // remove "s" from the end of the name
-                if (transcriberName[transcriberName.length - 1] === 's') {
-                    transcriberName = transcriberName.replace(/s$/, "");
-                }
+                    transcriberName += transcriberName.includes("Pearl Reader")
+                        ? "'s Projection" + parenthesis
+                        : "'s Transcription" + parenthesis;
 
-                if (transcriberName.includes("Pearl Reader")) {
-                    transcriberName += "'s Projection" + parenthesis;
-                } else {
-                    transcriberName += "'s Transcription" + parenthesis;
-                }
-
-                if (transcriberName !== lastTranscriberName) {
                     setLastTranscriberName(transcriberName);
                 }
             }
         }
-    }
+    }, [hoveredTranscriber, pearl]);
+
+
+    const [hintProgress, setHintProgress] = useState(0);
+    // Reset hint progress when pearl changes
+    useEffect(() => setHintProgress(0), [pearl]);
 
     const unlockTranscription = useCallback(() => {
         if (pearl) {
             UnlockManager.unlockPearl(pearl);
-            if (selectedTranscriber) UnlockManager.unlockTranscription(pearl, selectedTranscriber);
-            triggerRender();
+            if (selectedTranscriberName) UnlockManager.unlockTranscription(pearl, selectedTranscriberName);
         }
-    }, [pearl, selectedTranscriber, triggerRender]);
+    }, [pearl, selectedTranscriberName]);
 
     const pearlActiveContent = useMemo(() => {
         if (!pearl) {
             return null;
         }
-        const selectedTranscriberIndex = findTranscriberIndex(selectedTranscriber ?? "");
-        if (selectedTranscriberIndex === null || selectedTranscriberIndex === -1) {
-            console.error("Unable to find transcriber index", selectedTranscriberIndex, selectedTranscriber, pearl)
+        const selectedTranscriberIndex = findTranscriberIndex(pearl, selectedTranscriberName ?? "");
+        if (selectedTranscriberIndex === -1) {
+            console.error("Unable to find transcriber index", selectedTranscriberIndex, selectedTranscriberName, pearl)
             return null;
         }
 
         const dialogue = pearl.transcribers[selectedTranscriberIndex];
-        const multipleSameTranscribers = new Set(pearl.transcribers.map(transcriber => transcriber.transcriber)).size !== pearl.transcribers.length;
-        const effectiveTranscriberName = multipleSameTranscribers ? dialogue.transcriber + '-' + selectedTranscriberIndex : dialogue.transcriber;
-        const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, effectiveTranscriberName);
+        const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, selectedTranscriberName!);
 
         const internalId = dialogue.metadata.internalId || pearl.metadata.internalId;
         let sourceFileDisplayText: string | null;
@@ -244,7 +210,7 @@ export function DialogueBox({
         </Tooltip>;
         const sourceFileElement = sourceFileDisplayText && <Tooltip key={"source-file-tooltip"}>
             <TooltipTrigger
-                onClick={() => sourceFileDisplayTextSelection === sourceFileDisplay ? setSourceFileDisplay(null) : setSourceFileDisplay(sourceFileDisplayTextSelection)}
+                onClick={() => setSourceFileDisplay(sourceFileDisplayTextSelection === sourceFileDisplay ? null : sourceFileDisplayTextSelection)}
             >
                 <span className={"font-mono text-xs text-white/70"}>
                     {sourceFileDisplayText} {dialogue.metadata.sourceDialogue && dialogue.metadata.sourceDialogue.length > 1 && ("(+" + (dialogue.metadata.sourceDialogue.length - 1) + ")")}
@@ -273,7 +239,7 @@ export function DialogueBox({
 
         let displayLines: DialogueLine[];
         if (sourceFileDisplay) {
-            const foundEntry = findSourceDialogue(sourceFileDisplay);
+            const foundEntry = findSourceDialogue(sourceFileDisplay, sourceData);
             if (foundEntry) {
                 if (foundEntry.c) {
                     displayLines = foundEntry.c.replaceAll("\n\n", "\n").replaceAll("<", "&lt;").replaceAll(">", "&gt;").split("\n").map(line => ({ text: line }));
@@ -362,22 +328,14 @@ export function DialogueBox({
 
         return <>
             <DialogueActionTabs
-                isUnlocked={isUnlocked}
                 pearl={pearl}
                 transcriberData={dialogue}
+                isUnlocked={isUnlocked}
+                onSelectPearl={() => handleSelectPearl(null)}
                 selectedTranscriberIndex={selectedTranscriberIndex}
-                onSelectPearl={onSelectPearl}
-                sourceFileDisplay={sourceFileDisplay}
-                setSourceFileDisplay={setSourceFileDisplay}
             />
             <TranscriberSelector
                 pearl={pearl}
-                unlockMode={unlockMode}
-                selectedName={selectedTranscriber}
-                onSelect={(transcriber) => {
-                    onSelectTranscriber(transcriber);
-                    setHintProgress(0);
-                }}
                 onHover={setHoveredTranscriber}
             />
             <div className={cn("overflow-y-auto no-scrollbar", textContainerClass)}>
@@ -385,23 +343,18 @@ export function DialogueBox({
                     {titleElement}
                     <DialogueContent
                         lines={displayLines}
-                        searchText={searchText}
+                        searchText={filters.text}
                     />
                 </> : <HintSystemContent
                     pearl={pearl}
                     transcriberData={dialogue}
-                    selectedTranscriber={selectedTranscriber}
                     unlockTranscription={unlockTranscription}
                     hintProgress={hintProgress}
                     setHintProgress={setHintProgress}
                 />}
             </div>
         </>;
-    }, [pearl, selectedTranscriber, onSelectTranscriber, unlockMode, unlockTranscription, hintProgress, setHintProgress, justCopiedInternalId, sourceFileDisplay, searchText]);
-
-    const toggleUnlockModeCallback = useCallback(() => {
-        setUnlockMode(unlockMode === "all" ? "unlock" : "all");
-    }, [pearl, onSelectTranscriber, unlockMode, setUnlockMode]);
+    }, [pearl, selectedTranscriberName, unlockMode, unlockTranscription, hintProgress, justCopiedInternalId, sourceFileDisplay, filters.text, isMobile, handleSelectPearl, setSourceFileDisplay, sourceData]);
 
     return (
         <div className="flex-1 relative">
@@ -410,12 +363,7 @@ export function DialogueBox({
                      "bg-black border-2 border-white/80 rounded-xl px-12 lg:pl-24 lg:pr-24 text-white text-sm relative shadow-[0_0_10px_rgba(255,255,255,0.1)]",
                      isMobile ? "max-h-[85vh] min-h-[85vh]" : "max-h-[80vh] min-h-[80vh]"
                  )}>
-                {pearl ? pearlActiveContent :
-                    <WelcomeDialogueContent
-                        toggleUnlockModeCallback={toggleUnlockModeCallback}
-                        unlockMode={unlockMode}
-                        triggerRender={triggerRender}
-                    />}
+                {pearl ? pearlActiveContent : <WelcomeDialogueContent/>}
             </div>
             <motion.div
                 key={lastTranscriberName}
@@ -429,7 +377,7 @@ export function DialogueBox({
                         repeatType: "reverse"
                     },
                 }}
-                className="absolute bottom-[-2rem] left-0 right-0 text-center text-white drop-shadow-md"
+                className="absolute bottom-[-2rem] left-0 right-0 text-center text-white drop-shadow-md pointer-events-none"
             >
                 {lastTranscriberName}
             </motion.div>

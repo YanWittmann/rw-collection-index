@@ -1,3 +1,6 @@
+import { Dialogue } from '../types/types';
+import { getEffectiveTranscriberName } from './transcriberUtils';
+
 let lastUpdate = 0;
 let timeout: NodeJS.Timeout | null = null;
 const pendingParams = new Map<string, string | null>(); // null means delete
@@ -53,17 +56,29 @@ const scheduleUpdate = () => {
 };
 
 /**
- * Gets the 'transcriber' param, ensuring it exists in the provided list.
- * If the URL param is missing or not found in the list, it returns the first available transcriber.
+ * Gets the 'transcriber' param, ensuring it exists in the provided list of a pearl's transcribers.
+ * This function understands the indexed naming scheme (e.g., 'transcriber-0').
+ * If the URL param is missing or not found, it returns the effective name of the last available transcriber.
  */
-export const getActiveTranscriber = (availableTranscribers: { transcriber: string }[] = []) => {
+export const getActiveTranscriber = (availableTranscribers: Dialogue[] = []): string | null => {
+    if (!availableTranscribers.length) {
+        return null;
+    }
+
     const currentParam = getParam('transcriber');
 
-    if (currentParam && availableTranscribers.some(t => t.transcriber === currentParam)) {
+    // Generate a list of all valid, effective names for this pearl
+    const effectiveNames = availableTranscribers.map((t, i) =>
+        getEffectiveTranscriberName(availableTranscribers, t.transcriber, i)
+    );
+
+    // If the param from the URL is a valid effective name, use it.
+    if (currentParam && effectiveNames.includes(currentParam)) {
         return currentParam;
     }
 
-    return availableTranscribers[availableTranscribers.length - 1]?.transcriber;
+    // Otherwise, default to the last transcriber in the list.
+    return effectiveNames[effectiveNames.length - 1];
 };
 
 export const urlAccess = {

@@ -19,15 +19,14 @@ import RwShareTextEditor, { preProcessContent } from "../share/RwShareTextEditor
 import { RwIconButton } from "../other/RwIconButton";
 import { renderMonoText } from "./DialogueContent";
 import ReactDOMServer from 'react-dom/server';
-import { getTranscriberIcon } from "./TranscriberSelector";
+import { getTranscriberIcon } from "../../utils/transcriberUtils";
+import { useAppContext } from "../../context/AppContext";
 
 interface DialogueActionTabsProps {
     pearl: PearlData,
     transcriberData: Dialogue,
     isUnlocked: boolean,
     onSelectPearl: (pearl: PearlData | null) => void,
-    setSourceFileDisplay: (value: ((prevState: string | null) => string | null) | string | null) => void,
-    sourceFileDisplay: string | null,
     selectedTranscriberIndex: number
 }
 
@@ -36,10 +35,9 @@ export function DialogueActionTabs({
                                        transcriberData,
                                        isUnlocked,
                                        onSelectPearl,
-                                       setSourceFileDisplay,
-                                       sourceFileDisplay,
                                        selectedTranscriberIndex
                                    }: DialogueActionTabsProps) {
+    const { sourceFileDisplay, setSourceFileDisplay, sourceData } = useAppContext();
     const mapLocations = getMapLocations(transcriberData)
     const hasMultipleLocations = mapLocations.length > 1
 
@@ -66,7 +64,7 @@ export function DialogueActionTabs({
 
     {
         const leftIconType = pearl.metadata.type === 'item' ? (pearl.metadata.subType || 'pearl') : pearl.metadata.type;
-        const multipleSameTranscribers = new Set(pearl.transcribers.map(transcriber => transcriber.transcriber)).size !== pearl.transcribers.length;
+        const multipleSameTranscribers = new Set(pearl.transcribers.map((transcriber: Dialogue) => transcriber.transcriber)).size !== pearl.transcribers.length;
         const {
             iconType: rightIconType,
             color: rightIconColor,
@@ -211,9 +209,9 @@ export function DialogueActionTabs({
                             sideOffset={5}
                         >
                             <RwScrollableList
-                                items={transcriberData.metadata.sourceDialogue.map((sourcePath, index) => {
+                                items={transcriberData.metadata.sourceDialogue.map((sourcePath: string, index: number) => {
                                     const filename = sourcePath.split(/[/\\]/).pop() || `Source File ${index + 1}`
-                                    const foundEntry = findSourceDialogue(sourcePath);
+                                    const foundEntry = findSourceDialogue(sourcePath, sourceData);
 
                                     return {
                                         id: `source-file-${index}`,
@@ -228,11 +226,10 @@ export function DialogueActionTabs({
                 </Popover>,
             )
         } else {
-            const sourceDialogueFilename = transcriberData.metadata.sourceDialogue[0].split(/[/\\]/).pop()
-            if (sourceDialogueFilename) {
-                tabs.push(
-                    <Tooltip key="source-dialogue">
-                        <TooltipTrigger asChild>
+            const sourceDialogueFilename = transcriberData.metadata.sourceDialogue[0]
+            tabs.push(
+                <Tooltip key="source-dialogue">
+                    <TooltipTrigger asChild>
               <span>
                 <RwTabButton
                     aria-label="Source Dialogue"
@@ -241,15 +238,14 @@ export function DialogueActionTabs({
                   <RwIcon type="source"/>
                 </RwTabButton>
               </span>
-                        </TooltipTrigger>
-                        <TooltipContent className="text-center" side="bottom">
-                            Dialogue is stored in encrypted files inside the game's folders.
-                            <br/>
-                            Click here to view this transcription's source file.
-                        </TooltipContent>
-                    </Tooltip>,
-                )
-            }
+                    </TooltipTrigger>
+                    <TooltipContent className="text-center" side="bottom">
+                        Dialogue is stored in encrypted files inside the game's folders.
+                        <br/>
+                        Click here to view this transcription's source file.
+                    </TooltipContent>
+                </Tooltip>,
+            )
         }
     }
 
@@ -369,4 +365,3 @@ export function DialogueActionTabs({
         </div>
     )
 }
-

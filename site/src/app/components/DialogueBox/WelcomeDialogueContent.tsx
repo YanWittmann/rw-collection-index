@@ -1,15 +1,10 @@
 "use client"
 
 import { RwIconButton } from "../other/RwIconButton"
-import type { UnlockMode } from "../../page"
 import UnlockManager from "../../utils/unlockManager"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
-
-export interface WelcomeDialogueContentProps {
-    toggleUnlockModeCallback: () => void
-    unlockMode: UnlockMode
-    triggerRender: () => void
-}
+import { useAppContext } from "../../context/AppContext";
+import { RwIcon } from "../PearlGrid/RwIcon";
 
 interface ControlItem {
     key: string
@@ -24,11 +19,22 @@ const controls: ControlItem[] = [
     { key: "SWIPE", description: "Mobile: Navigate through the pearl grid" },
 ]
 
-export function WelcomeDialogueContent({
-                                           toggleUnlockModeCallback,
-                                           unlockMode,
-                                           triggerRender,
-                                       }: WelcomeDialogueContentProps) {
+export function WelcomeDialogueContent() {
+    const { unlockMode, setUnlockMode, datasetKey } = useAppContext();
+
+    const toggleUnlockModeCallback = () => {
+        setUnlockMode(unlockMode === "all" ? "unlock" : "all");
+    };
+
+    const handleDatasetChange = (newDataset: 'vanilla' | 'modded') => {
+        const currentPath = window.location.pathname;
+        if (newDataset === 'vanilla') {
+            window.location.href = currentPath;
+        } else {
+            window.location.href = `${currentPath}?d=${newDataset}`;
+        }
+    };
+
     return (
         <>
             {/* header with title and description */}
@@ -48,63 +54,66 @@ export function WelcomeDialogueContent({
 
             {/* column layout */}
             <div className="grid grid-cols-2 gap-8 px-8 mb-16 mt-10">
-                {/* unlock mode */}
+                {/* Settings Column */}
                 <div className="flex flex-col space-y-4">
-                    <div className="text-lg font-medium">
-                        {unlockMode === "all" ? "Haven't found all of them yet?" : "You're a real archeologist beast?"}
+                    <div className="text-lg font-medium">Configuration</div>
+
+                    {/* Modded Content Toggle */}
+                    <div className="flex gap-4 items-center">
+                        <RwIconButton
+                            square={true}
+                            onClick={() => handleDatasetChange(datasetKey === 'modded' ? 'vanilla' : 'modded')}
+                            aria-label="Toggle Modded Content"
+                        >
+                            {datasetKey === 'modded' && <RwIcon type="check"/>}
+                        </RwIconButton>
+                        <span>Modded Content</span>
                     </div>
-                    <div className="flex flex-row space-x-3">
-                        {unlockMode === "all" ? (
-                            <TooltipProvider delayDuration={200}>
-                                <Tooltip>
-                                    <TooltipTrigger>
-                                        <RwIconButton square={false} onClick={toggleUnlockModeCallback}
-                                                      aria-label="Unlock Mode">
-                                            Try Unlock Mode
-                                        </RwIconButton>
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                        <div className="text-center">
-                                            All contents will be hidden until you unlock them manually.
-                                            <br/>A progressive hint system will help you find them by yourself.
-                                            <br/>
-                                            URL parameters will not be updated in this mode to prevent spoilers.
-                                        </div>
-                                    </TooltipContent>
-                                </Tooltip>
-                            </TooltipProvider>
-                        ) : (
-                            <RwIconButton square={false} onClick={toggleUnlockModeCallback} className="w-full"
-                                          aria-label="Unlock Mode">
-                                View all pearls
-                            </RwIconButton>
-                        )}
-                        {unlockMode === "unlock" && (
-                            <RwIconButton
-                                square={false}
-                                onClick={() => {
-                                    if (window.confirm("Are you sure you want to reset all unlocks?")) {
-                                        UnlockManager.reset()
-                                        triggerRender()
-                                    }
-                                }}
-                                className="w-full"
-                                aria-label="Reset Unlocks"
-                            >
-                                Reset Unlocks
-                            </RwIconButton>
-                        )}
+
+                    {/* Spoiler Protection Toggle */}
+                    <div className="flex gap-4 items-center">
+                        <TooltipProvider delayDuration={120}>
+                            <Tooltip>
+                                <TooltipTrigger>
+                                    <RwIconButton
+                                        square={true}
+                                        onClick={toggleUnlockModeCallback}
+                                        aria-label="Toggle Spoiler Protection"
+                                    >
+                                        {unlockMode === 'unlock' && <RwIcon type="check"/>}
+                                    </RwIconButton>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <div className="text-center">
+                                        Hides all content until you unlock it manually.<br/>Uses a progressive hint system to help you find items.
+                                    </div>
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                        <span>Spoiler Protection</span>
                     </div>
-                    <div className="text-lg font-medium">
-                        Got any feedback?
-                    </div>
-                    <div className="flex flex-row space-x-3">
+
+                    {/* Other Buttons */}
+                    <div className="flex flex-row space-x-3 pt-2">
                         <RwIconButton square={false}
                                       onClick={() => window.open("https://github.com/YanWittmann/rw-collection-index/issues/new", "_blank")}
                                       aria-label="Open an Issue"
                         >
                             Open an Issue
                         </RwIconButton>
+                        {unlockMode === "unlock" && (
+                            <RwIconButton
+                                square={false}
+                                onClick={() => {
+                                    if (window.confirm("Are you sure you want to reset all unlocks?")) {
+                                        UnlockManager.reset()
+                                    }
+                                }}
+                                aria-label="Reset Unlocks"
+                            >
+                                Reset Unlocks
+                            </RwIconButton>
+                        )}
                     </div>
                 </div>
 
@@ -125,4 +134,3 @@ export function WelcomeDialogueContent({
         </>
     )
 }
-

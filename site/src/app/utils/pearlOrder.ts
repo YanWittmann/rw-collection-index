@@ -175,7 +175,7 @@ export const PEARL_ORDER_CONFIGS: Record<string, PearlChapter[]> = {
     modded: moddedPearlOrder
 };
 
-export const findPearlCategory = (pearl: PearlData, chapters: PearlChapter[] = vanillaPearlOrder): string => {
+export const findPearlCategory = (pearl: PearlData, chapters: PearlChapter[]): string => {
     const search = (currentChapters: PearlChapter[]): string | null => {
         for (const chapter of currentChapters) {
             // Check current chapter IDs
@@ -199,7 +199,7 @@ export const findPearlCategory = (pearl: PearlData, chapters: PearlChapter[] = v
     return search(chapters) || "Other";
 };
 
-export const orderPearls = (pearls: PearlData[], chapters: PearlChapter[] = vanillaPearlOrder): OrderedChapter[] => {
+export const orderPearls = (pearls: PearlData[], chapters: PearlChapter[]): OrderedChapter[] => {
     const pearlsById = pearls.reduce((acc, pearl) => {
         acc[pearl.id] = pearl;
         return acc;

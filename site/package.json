@@ -33,7 +33,7 @@
   },
   "scripts": {
     "watch-dialogue-files": "node create-dialogue-files.js --watch --profile modded",
-    "create-dialogue-files-lite": "node create-dialogue-files.js --profile vanilla",
+    "create-dialogue-files-lite": "node create-dialogue-files.js --profile vanilla && node create-dialogue-files.js --profile modded",
     "create-dialogue-files": "node create-dialogue-files.js --profile modded && node create-dialogue-files.js --profile vanilla --sourceFiles",
     "start": "craco start",
     "build": "npm run create-dialogue-files && craco build && node generate-sitemap.js",
