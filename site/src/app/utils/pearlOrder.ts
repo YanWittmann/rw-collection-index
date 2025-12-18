@@ -6,8 +6,20 @@ export interface PearlSelector {
 
 export interface PearlChapter {
     name: string;
-    ids: (string | PearlSelector)[];
+    ids?: (string | PearlSelector)[];
+    items?: PearlChapter[];
     defaultOpen?: boolean;
+    headerType?: "default" | "banner";
+    icon?: string;
+}
+
+export interface OrderedChapter {
+    name: string;
+    items?: PearlData[];
+    subChapters?: OrderedChapter[];
+    defaultOpen?: boolean;
+    headerType?: "default" | "banner";
+    icon?: string;
 }
 
 export const pearlOrder: PearlChapter[] = [
@@ -147,67 +159,97 @@ export const pearlOrder: PearlChapter[] = [
 ]
 
 export const findPearlCategory = (pearl: PearlData): string => {
-    for (const chapter of pearlOrder) {
-        for (const idOrSelector of chapter.ids) {
-            if (typeof idOrSelector === 'string') {
-                if (idOrSelector === pearl.id) return chapter.name;
-            } else {
-                if (idOrSelector.pattern.test(pearl.id)) return chapter.name;
+    const search = (chapters: PearlChapter[]): string | null => {
+        for (const chapter of chapters) {
+            // Check current chapter IDs
+            if (chapter.ids) {
+                for (const idOrSelector of chapter.ids) {
+                    if (typeof idOrSelector === 'string') {
+                        if (idOrSelector === pearl.id) return chapter.name;
+                    } else {
+                        if (idOrSelector.pattern.test(pearl.id)) return chapter.name;
+                    }
+                }
+            }
+            // Recursively check subchapters
+            if (chapter.items) {
+                const subResult = search(chapter.items);
+                if (subResult) return chapter.name;
             }
         }
+        return null;
     }
-    return "Other";
+    return search(pearlOrder) || "Other";
 };
 
-export const orderPearls = (pearls: PearlData[]): { name: string, items: PearlData[], defaultOpen?: boolean }[] => {
+export const orderPearls = (pearls: PearlData[]): OrderedChapter[] => {
     const pearlsById = pearls.reduce((acc, pearl) => {
         acc[pearl.id] = pearl;
         return acc;
     }, {} as Record<string, PearlData>);
 
-    // Track processed pearls to avoid duplicates
+    // Track processed pearls to avoid duplicates globally
     const processedPearlIds = new Set<string>();
 
-    const orderedPearls = pearlOrder.map(chapter => {
+    const processChapter = (chapter: PearlChapter): OrderedChapter => {
         const chapterItems: PearlData[] = [];
 
-        for (const idOrSelector of chapter.ids) {
-            if (typeof idOrSelector === 'string') {
-                const pearl = pearlsById[idOrSelector];
-                if (pearl && !processedPearlIds.has(pearl.id)) {
-                    chapterItems.push(pearl);
-                    processedPearlIds.add(pearl.id);
-                }
-            } else {
-                const matchingPearls = pearls.filter(pearl =>
-                    !processedPearlIds.has(pearl.id) &&
-                    idOrSelector.pattern.test(pearl.id)
-                );
+        if (chapter.ids) {
+            for (const idOrSelector of chapter.ids) {
+                if (typeof idOrSelector === 'string') {
+                    const pearl = pearlsById[idOrSelector];
+                    if (pearl && !processedPearlIds.has(pearl.id)) {
+                        chapterItems.push(pearl);
+                        processedPearlIds.add(pearl.id);
+                    }
+                } else {
+                    const matchingPearls = pearls.filter(pearl =>
+                        !processedPearlIds.has(pearl.id) &&
+                        idOrSelector.pattern.test(pearl.id)
+                    );
 
-                matchingPearls.forEach(pearl => {
-                    chapterItems.push(pearl);
-                    processedPearlIds.add(pearl.id);
-                });
+                    matchingPearls.forEach(pearl => {
+                        chapterItems.push(pearl);
+                        processedPearlIds.add(pearl.id);
+                    });
+                }
             }
         }
+
+        const subChapters = chapter.items ? chapter.items.map(sub => processChapter(sub)) : undefined;
 
         return {
             name: chapter.name,
             items: chapterItems,
-            defaultOpen: chapter.defaultOpen ?? true
+            subChapters: subChapters,
+            defaultOpen: chapter.defaultOpen ?? true,
+            headerType: chapter.headerType,
+            icon: chapter.icon
         };
-    });
+    };
 
-    for (const chapter of pearlOrder) {
-        for (const idOrSelector of chapter.ids) {
-            if (typeof idOrSelector === 'string' && !pearlsById[idOrSelector]) {
-                console.error(`Pearl with id ${idOrSelector} not found`);
+    const orderedPearls = pearlOrder.map(processChapter);
+
+    // Error checking for missing IDs
+    const checkMissing = (chapters: PearlChapter[]) => {
+        for (const chapter of chapters) {
+            if (chapter.ids) {
+                for (const idOrSelector of chapter.ids) {
+                    if (typeof idOrSelector === 'string' && !pearlsById[idOrSelector]) {
+                        console.error(`Pearl with id ${idOrSelector} not found`);
+                    }
+                }
             }
+            if (chapter.items) checkMissing(chapter.items);
         }
     }
+    checkMissing(pearlOrder);
 
     const uncoveredPearls = pearls.filter(pearl => !processedPearlIds.has(pearl.id));
-    orderedPearls.push({ name: "Other", items: uncoveredPearls, defaultOpen: true });
+    if (uncoveredPearls.length > 0) {
+        orderedPearls.push({ name: "Other", items: uncoveredPearls, defaultOpen: true });
+    }
+
     return orderedPearls;
 }
 

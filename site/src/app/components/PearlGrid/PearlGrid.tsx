@@ -7,12 +7,23 @@ import { cn } from "@shadcn/lib/utils";
 import { RwIconButton } from "../other/RwIconButton";
 import { FilterSection, FilterState, PearlFilter } from "./PearlFilter";
 import { regionColors, regionNames, speakerNames, speakersColors } from "../../utils/speakers";
+import { OrderedChapter } from "../../utils/pearlOrder";
+
+interface FlatChapterItem {
+    id: string;
+    name: string;
+    items: PearlData[];
+    depth: number;
+    hasSubChapters: boolean;
+    isExpanded: boolean;
+    originalChapter: OrderedChapter;
+}
 
 interface PearlGridProps {
     pearls: PearlData[]
     selectedPearl: string | null
     onSelectPearl: (id: string) => void
-    order: (pearls: PearlData[]) => { name: string, items: PearlData[], defaultOpen?: boolean }[]
+    order: (pearls: PearlData[]) => OrderedChapter[]
     unlockMode: UnlockMode
     isAlternateDisplayModeActive: boolean
     isMobile: boolean
@@ -21,6 +32,7 @@ interface PearlGridProps {
     handleKeyNavigation?: (e: KeyboardEvent, pearls: PearlData[][], currentPearlId: string | null) => void
     currentGridPosition?: [number, number]
     onSearchTextChange?: (text: string | undefined) => void
+    datasetKey?: string
 }
 
 interface MemoizedPearlItemProps {
@@ -64,7 +76,7 @@ const SearchBar = ({ isMobile, unlockMode, onTextInput, onToggleUnlockMode, filt
                             strokeWidth={2}
                             stroke="currentColor"
                             className="w-4 h-4">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>
                 )}
@@ -93,7 +105,7 @@ const SearchBar = ({ isMobile, unlockMode, onTextInput, onToggleUnlockMode, filt
 // wrapper component for lazy loading
 const LazyChapterGrid = (
     {
-        chapter,
+        flatChapter,
         chapterIndex,
         isVisible,
         setVisibleChapters,
@@ -105,22 +117,20 @@ const LazyChapterGrid = (
         onSelectPearl,
         isAlternateDisplayModeActive,
         unlockVersion,
-        isExpanded,
         onToggle
     }: {
-        chapter: { name: string, items: PearlData[] }
+        flatChapter: FlatChapterItem
         chapterIndex: number
         isVisible: boolean
         setVisibleChapters: (callback: (prev: Set<number>) => Set<number>) => void
         currentGridPosition?: [number, number]
         selectedPearlRef: React.RefObject<HTMLDivElement | null>
-        getHighlightStyle: (chapterIndex: number, itemIndex: number) => React.CSSProperties
+        getHighlightStyle: (chapterId: string, itemIndex: number) => React.CSSProperties
         unlockMode: UnlockMode
         selectedPearl: string | null
         onSelectPearl: (id: string) => void
         isAlternateDisplayModeActive: boolean
         unlockVersion: number
-        isExpanded: boolean
         onToggle: () => void
     }) => {
     const observerRef = useRef<HTMLDivElement>(null);
@@ -151,45 +161,73 @@ const LazyChapterGrid = (
     return (
         <div ref={observerRef} className="last:mb-4">
             {/* Header / Toggle Button */}
-            {chapter.name && (
-                <button
-                    onClick={onToggle}
-                    className={cn("flex items-center gap-2 w-full text-left group focus:outline-none", isExpanded && "mb-2")}
-                >
-                    <h3 className="text-white text-sm font-medium group-hover:text-white/90">
-                        {chapter.name}
-                    </h3>
-                    <div className={cn(
-                        "text-white/60 group-hover:text-white transition-transform duration-200",
-                        isExpanded ? "rotate-90" : "rotate-0"
-                    )}>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <path d="m9 18 6-6-6-6"/>
-                        </svg>
-                    </div>
-                </button>
+            {flatChapter.name && (
+                flatChapter.originalChapter.headerType === "banner" ? (
+                    <RwIconButton
+                        square={false}
+                        className={cn("w-full", flatChapter.depth > 0 && "mt-2")}
+                        onClick={onToggle}
+                        expandedScaleFactor={0.2}
+                        aria-label={flatChapter.name}
+                        style={{
+                            marginLeft: `${flatChapter.depth * 16}px`,
+                            width: `calc(100% - ${flatChapter.depth * 16}px)`
+                        }}
+                    >
+                        <div className="flex w-full items-center justify-start gap-4">
+                            {flatChapter.originalChapter.icon && (
+                                <img
+                                    src={flatChapter.originalChapter.icon}
+                                    alt=""
+                                    className="h-8 w-8 object-contain opacity-80"
+                                />
+                            )}
+                            <span className={cn("font-medium text-lg tracking-wide", flatChapter.isExpanded ? "text-white" : "text-gray-500")}>
+                                {flatChapter.name}
+                            </span>
+                        </div>
+                    </RwIconButton>
+                ) : (
+                    <button
+                        onClick={onToggle}
+                        className={cn("flex items-center gap-2 w-full text-left group focus:outline-none", flatChapter.isExpanded && flatChapter.items.length > 0 && "mb-2")}
+                        style={{ paddingLeft: `${flatChapter.depth * 16}px` }}
+                    >
+                        <h3 className="text-white text-sm font-medium group-hover:text-white/90">
+                            {flatChapter.name}
+                        </h3>
+                        <div className={cn(
+                            "text-white/60 group-hover:text-white transition-transform duration-200",
+                            flatChapter.isExpanded ? "rotate-90" : "rotate-0"
+                        )}>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            >
+                                <path d="m9 18 6-6-6-6"/>
+                            </svg>
+                        </div>
+                    </button>
+                )
             )}
 
             {/* Content Body */}
-            {isExpanded && (
+            {flatChapter.isExpanded && flatChapter.items.length > 0 && (
                 <>
                     {isVisible ? (
                         <div className="grid grid-cols-5 gap-2 w-fit pl-2">
-                            {chapter.items.map((pearl, pearlIndex) => pearl && pearl.id && (
+                            {flatChapter.items.map((pearl, pearlIndex) => pearl && pearl.id && (
                                 <div
                                     key={`pearl-${pearl.id}`}
-                                    ref={currentGridPosition && getHighlightStyle(chapterIndex, pearlIndex).outline ? selectedPearlRef : undefined}
-                                    style={getHighlightStyle(chapterIndex, pearlIndex)}
+                                    ref={currentGridPosition && getHighlightStyle(flatChapter.id, pearlIndex).outline ? selectedPearlRef : undefined}
+                                    style={getHighlightStyle(flatChapter.id, pearlIndex)}
                                 >
                                     <MemoizedPearlItem
                                         pearl={pearl}
@@ -289,19 +327,20 @@ const useIsScrollable = (ref: React.RefObject<HTMLDivElement | null>) => {
 };
 
 export function PearlGrid({
-    pearls,
-    selectedPearl,
-    onSelectPearl,
-    order,
-    unlockMode,
-    isAlternateDisplayModeActive,
-    isMobile,
-    setUnlockMode,
-    unlockVersion,
-    handleKeyNavigation,
-    currentGridPosition,
-    onSearchTextChange
-}: PearlGridProps) {
+                              pearls,
+                              selectedPearl,
+                              onSelectPearl,
+                              order,
+                              unlockMode,
+                              isAlternateDisplayModeActive,
+                              isMobile,
+                              setUnlockMode,
+                              unlockVersion,
+                              handleKeyNavigation,
+                              currentGridPosition,
+                              onSearchTextChange,
+                              datasetKey
+                          }: PearlGridProps) {
     const [filters, setFilters] = useState<FilterState>({
         text: undefined,
         tags: new Set(),
@@ -488,48 +527,119 @@ export function PearlGrid({
             pearl.transcribers.some(t => t.transcriber.toLowerCase() === searchText);
     }, [filters, unlockMode]);
 
-    const filteredPearls = useMemo(() => {
-        const orderedPearls = order(pearls);
-        const result = orderedPearls.map(chapter => ({
-            name: chapter.name,
-            items: chapter.items.filter(isPearlIncluded),
-            defaultOpen: chapter.defaultOpen
-        }));
+    const filterChapterTree = useCallback((chapters: OrderedChapter[]): OrderedChapter[] => {
+        return chapters.reduce<OrderedChapter[]>((acc, chapter) => {
+            const filteredItems = chapter.items ? chapter.items.filter(isPearlIncluded) : [];
+            const filteredSubChapters = chapter.subChapters ? filterChapterTree(chapter.subChapters) : [];
 
-        if (!isMobile) {
-            const totalCount = result.reduce((acc, chapter) => acc + chapter.items.length, 0);
-            if (totalCount === 1) {
-                const first = result.find(chapter => chapter.items.length > 0);
-                if (first && first.items.length === 1) {
-                    setTimeout(() => {
-                        onSelectPearl(first.items[0].id);
-                    }, 0);
-                }
+            if (filteredItems.length > 0 || filteredSubChapters.length > 0) {
+                acc.push({
+                    ...chapter,
+                    items: filteredItems,
+                    subChapters: filteredSubChapters
+                });
             }
-        }
-        return result;
-    }, [isPearlIncluded, order, pearls]);
+            return acc;
+        }, []);
+    }, [isPearlIncluded]);
 
-    const expandAll = useCallback(() => {
-        const allNames = new Set(filteredPearls.map(c => c.name));
-        setExpandedChapters(allNames);
-    }, [filteredPearls]);
+    const filteredTree = useMemo(() => {
+        const orderedPearls = order(pearls);
+        return filterChapterTree(orderedPearls);
+    }, [order, pearls, filterChapterTree]);
 
-    const expandDefaults = useCallback(() => {
-        const defaultOpenNames = new Set(
-            filteredPearls
-                .filter(c => c.defaultOpen !== false)
-                .map(c => c.name)
-        );
-        setExpandedChapters(defaultOpenNames);
-    }, [filteredPearls]);
+    const { totalItems, firstItem } = useMemo<{ totalItems: number; firstItem: PearlData | null }>(() => {
+        let count = 0;
+        let first: PearlData | null = null;
+
+        const countItems = (chapters: OrderedChapter[]) => {
+            chapters.forEach(c => {
+                if (c.items) {
+                    count += c.items.length;
+                    if (!first && c.items.length > 0) first = c.items[0];
+                }
+                if (c.subChapters) countItems(c.subChapters);
+            });
+        };
+        countItems(filteredTree);
+        return { totalItems: count, firstItem: first };
+    }, [filteredTree]);
+
+    const displayList = useMemo(() => {
+        const list: FlatChapterItem[] = [];
+
+        const flatten = (chapters: OrderedChapter[], depth: number, parentIdPrefix: string) => {
+            chapters.forEach((chapter, index) => {
+                const uniqueId = `${parentIdPrefix}-${chapter.name}`;
+                const hasItems = (chapter.items && chapter.items.length > 0) || false;
+                const hasSub = (chapter.subChapters && chapter.subChapters.length > 0) || false;
+                const isExpanded = expandedChapters.has(chapter.name);
+
+                list.push({
+                    id: uniqueId,
+                    name: chapter.name,
+                    items: chapter.items || [],
+                    depth: depth,
+                    hasSubChapters: hasSub,
+                    isExpanded: isExpanded,
+                    originalChapter: chapter
+                });
+
+                if (isExpanded && hasSub) {
+                    const nextDepth = chapter.headerType === 'banner' ? 0 : depth + 1;
+                    flatten(chapter.subChapters!, nextDepth, uniqueId);
+                }
+            });
+        };
+
+        flatten(filteredTree, 0, 'root');
+        return list;
+    }, [filteredTree, expandedChapters]);
 
     useEffect(() => {
-        if (!hasInitializedExpansion && filteredPearls.length > 0) {
+        if (!isMobile && totalItems === 1 && firstItem && (!selectedPearl || selectedPearl !== firstItem.id)) {
+            const timer = setTimeout(() => {
+                onSelectPearl(firstItem!.id);
+            }, 0);
+            return () => clearTimeout(timer);
+        }
+    }, [totalItems, firstItem, isMobile, onSelectPearl, selectedPearl]);
+
+    const expandAll = useCallback(() => {
+        const allNames = new Set<string>();
+        const traverse = (chapters: OrderedChapter[]) => {
+            chapters.forEach(c => {
+                allNames.add(c.name);
+                if (c.subChapters) traverse(c.subChapters);
+            });
+        };
+        traverse(filteredTree);
+        setExpandedChapters(allNames);
+    }, [filteredTree]);
+
+    const expandDefaults = useCallback(() => {
+        const defaultOpenNames = new Set<string>();
+        const traverse = (chapters: OrderedChapter[]) => {
+            chapters.forEach(c => {
+                if (c.defaultOpen !== false) defaultOpenNames.add(c.name);
+                if (c.subChapters) traverse(c.subChapters);
+            });
+        };
+        const baseTree = order(pearls);
+        traverse(baseTree);
+        setExpandedChapters(defaultOpenNames);
+    }, [order, pearls]);
+
+    useEffect(() => {
+        setHasInitializedExpansion(false);
+    }, [datasetKey]);
+
+    useEffect(() => {
+        if (!hasInitializedExpansion && filteredTree.length > 0) {
             expandDefaults();
             setHasInitializedExpansion(true);
         }
-    }, [filteredPearls, hasInitializedExpansion, expandDefaults]);
+    }, [filteredTree, hasInitializedExpansion, expandDefaults]);
 
     useEffect(() => {
         const hasActiveFilter =
@@ -547,23 +657,38 @@ export function PearlGrid({
     useEffect(() => {
         if (!selectedPearl) return;
 
-        const chapterWithSelection = filteredPearls.find(chapter =>
-            chapter.items.some(p => p.id === selectedPearl)
-        );
+        const path = new Set<string>();
+        const findPath = (chapters: OrderedChapter[]): boolean => {
+            for (const chapter of chapters) {
+                if (chapter.items && chapter.items.some(p => p.id === selectedPearl)) {
+                    path.add(chapter.name);
+                    return true;
+                }
+                if (chapter.subChapters) {
+                    if (findPath(chapter.subChapters)) {
+                        path.add(chapter.name);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
 
-        if (chapterWithSelection) {
+        if (findPath(filteredTree)) {
             setExpandedChapters(prev => {
+                let needsUpdate = false;
+                path.forEach(name => {
+                    if (!prev.has(name)) needsUpdate = true;
+                });
+
+                if (!needsUpdate) return prev;
+
                 const newSet = new Set(prev);
-                newSet.add(chapterWithSelection.name);
+                path.forEach(name => newSet.add(name));
                 return newSet;
             });
-
-            const chapterIndex = filteredPearls.findIndex(c => c.name === chapterWithSelection.name);
-            if (chapterIndex !== -1) {
-                setVisibleChapters(prev => new Set([...Array.from(prev), chapterIndex]));
-            }
         }
-    }, [selectedPearl, filteredPearls]);
+    }, [selectedPearl, filteredTree]);
 
     const toggleChapter = useCallback((chapterName: string) => {
         setExpandedChapters(prev => {
@@ -579,8 +704,8 @@ export function PearlGrid({
 
     const pearlGrid = useMemo(() => {
         const grid: PearlData[][] = [];
-        filteredPearls.forEach(chapter => {
-            if (expandedChapters.has(chapter.name)) {
+        displayList.forEach(chapter => {
+            if (chapter.isExpanded && chapter.items.length > 0) {
                 const items = chapter.items;
                 for (let i = 0; i < items.length; i += 5) {
                     grid.push(items.slice(i, i + 5));
@@ -588,7 +713,7 @@ export function PearlGrid({
             }
         });
         return grid;
-    }, [filteredPearls, expandedChapters]);
+    }, [displayList]);
 
     useEffect(() => {
         if (!handleKeyNavigation) return;
@@ -603,39 +728,36 @@ export function PearlGrid({
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [handleKeyNavigation, pearlGrid, selectedPearl]);
 
-    const getHighlightStyle = useCallback((chapterIndex: number, itemIndex: number) => {
+    const getHighlightStyle = useCallback((chapterId: string, itemIndex: number) => {
         if (!currentGridPosition) return {};
 
         const [targetRow, targetCol] = currentGridPosition;
         let currentRow = 0;
         let found = false;
 
-        for (let i = 0; i < filteredPearls.length && !found; i++) {
-            const chapter = filteredPearls[i];
+        for (let i = 0; i < displayList.length && !found; i++) {
+            const chapter = displayList[i];
 
-            if (!expandedChapters.has(chapter.name)) {
-                continue;
-            }
+            if (chapter.isExpanded && chapter.items.length > 0) {
+                const numRows = Math.ceil(chapter.items.length / 5);
 
-            const numRows = Math.ceil(chapter.items.length / 5);
-
-            if (i === chapterIndex) {
-                const itemRow = Math.floor(itemIndex / 5);
-                const itemCol = itemIndex % 5;
-                if (currentRow + itemRow === targetRow && itemCol === targetCol) {
-                    return {
-                        outline: '2px solid rgba(255, 255, 255, 0.5)',
-                        borderRadius: '0.75rem'
-                    };
+                if (chapter.id === chapterId) {
+                    const itemRow = Math.floor(itemIndex / 5);
+                    const itemCol = itemIndex % 5;
+                    if (currentRow + itemRow === targetRow && itemCol === targetCol) {
+                        return {
+                            outline: '2px solid rgba(255, 255, 255, 0.5)',
+                            borderRadius: '0.75rem'
+                        };
+                    }
+                    found = true;
                 }
-                found = true;
+                currentRow += numRows;
             }
-
-            currentRow += numRows;
         }
 
         return {};
-    }, [currentGridPosition, filteredPearls, expandedChapters]);
+    }, [currentGridPosition, displayList]);
 
     const toggleUnlockMode = useCallback(() => {
         setUnlockMode(unlockMode === "all" ? "unlock" : "all");
@@ -668,16 +790,13 @@ export function PearlGrid({
     const containerRef = useRef<HTMLDivElement>(null);
     const { isScrollable, showGradient, setShowGradient } = useIsScrollable(containerRef);
 
-    // add effect to check scrollable state when content changes
     useEffect(() => {
-        // use a small delay to ensure the DOM has updated
         const timer = setTimeout(() => {
             if (containerRef.current) {
                 const { scrollHeight, clientHeight, scrollTop } = containerRef.current;
                 const hasScrollableContent = scrollHeight > clientHeight;
 
                 if (hasScrollableContent) {
-                    // show gradient if not at bottom
                     const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
                     setShowGradient(!isAtBottom);
                 } else {
@@ -687,7 +806,7 @@ export function PearlGrid({
         }, 0);
 
         return () => clearTimeout(timer);
-    }, [filteredPearls, expandedChapters]);
+    }, [filteredTree, expandedChapters]);
 
     return (
         <div className={cn(
@@ -721,27 +840,24 @@ export function PearlGrid({
                     isMobile ? "" : "px-1",
                     isMobile ? "pb-4" : "pb-1"
                 )}>
-                    {filteredPearls
-                        .filter(chapter => chapter.items.length > 0)
-                        .map((chapter, chapterIndex) => (
-                            <LazyChapterGrid
-                                key={`chapter-${chapter.name}-${chapterIndex}`}
-                                chapter={chapter}
-                                chapterIndex={chapterIndex}
-                                isVisible={visibleChapters.has(chapterIndex)}
-                                setVisibleChapters={setVisibleChapters}
-                                currentGridPosition={currentGridPosition}
-                                selectedPearlRef={selectedPearlRef}
-                                getHighlightStyle={getHighlightStyle}
-                                unlockMode={unlockMode}
-                                selectedPearl={selectedPearl}
-                                onSelectPearl={handleSelectPearl}
-                                isAlternateDisplayModeActive={isAlternateDisplayModeActive}
-                                unlockVersion={unlockVersion}
-                                isExpanded={expandedChapters.has(chapter.name)}
-                                onToggle={() => toggleChapter(chapter.name)}
-                            />
-                        ))}
+                    {displayList.map((flatChapter, index) => (
+                        <LazyChapterGrid
+                            key={flatChapter.id}
+                            flatChapter={flatChapter}
+                            chapterIndex={index}
+                            isVisible={visibleChapters.has(index)}
+                            setVisibleChapters={setVisibleChapters}
+                            currentGridPosition={currentGridPosition}
+                            selectedPearlRef={selectedPearlRef}
+                            getHighlightStyle={getHighlightStyle}
+                            unlockMode={unlockMode}
+                            selectedPearl={selectedPearl}
+                            onSelectPearl={handleSelectPearl}
+                            isAlternateDisplayModeActive={isAlternateDisplayModeActive}
+                            unlockVersion={unlockVersion}
+                            onToggle={() => toggleChapter(flatChapter.name)}
+                        />
+                    ))}
                 </div>
             </div>
             <div

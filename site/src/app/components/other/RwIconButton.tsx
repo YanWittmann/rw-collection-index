@@ -13,6 +13,7 @@ interface RwIconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
     children?: React.ReactNode
     square?: boolean
     padding?: string
+    expandedScaleFactor?: number
     'aria-label': string
 }
 
@@ -25,6 +26,7 @@ export function RwIconButton({
                                  onMouseLeave,
                                  className,
                                  children,
+                                 expandedScaleFactor = 1,
                                  'aria-label': ariaLabel,
                              }: RwIconButtonProps) {
     const [isHovering, setIsHovering] = useState(false)
@@ -54,8 +56,8 @@ export function RwIconButton({
                 className="absolute inset-0 rounded-xl bg-black"
                 variants={{
                     default: { scale: 1 },
-                    hover: { scale: 1.1 },
-                    selected: { scale: 1.1, backgroundColor: "rgb(64, 64, 64)" },
+                    hover: { scale: 1 + 0.1 * expandedScaleFactor },
+                    selected: { scale: 1 + 0.1 * expandedScaleFactor, backgroundColor: "rgb(64, 64, 64)" },
                 }}
                 style={{ originX: 0.5, originY: 0.5 }} // center the scale transformation
             />
@@ -66,11 +68,11 @@ export function RwIconButton({
                 variants={{
                     default: { scale: 1 },
                     hover: {
-                        scale: 1.12,
+                        scale: 1 + 0.12 * expandedScaleFactor,
                         borderColor: "rgba(255, 255, 255, 0.75)",
                     },
                     selected: {
-                        scale: 1.12,
+                        scale: 1 + 0.12 * expandedScaleFactor,
                         borderColor: "rgba(255, 255, 255, 0.9)",
                     },
                 }}

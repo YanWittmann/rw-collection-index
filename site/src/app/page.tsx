@@ -1,8 +1,7 @@
-import parsedData from "../generated/parsed-dialogues.json";
 import { PearlData } from "./types/types";
 import { useDialogue } from "./hooks/useDialogue";
 import { orderPearls } from "./utils/pearlOrder";
-import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { useUnlockState } from "./hooks/useUnlockState";
 import { urlAccess } from "./utils/urlAccess";
 import { useIsMobile } from "./hooks/useIsMobile";
@@ -22,12 +21,20 @@ const preloadComponents = async () => {
     return { pearlGridModule, dialogueBoxModule };
 };
 
-let GRID_DATA: PearlData[] = parsedData as PearlData[];
+const DATASETS: Record<string, () => Promise<{ default: PearlData[] }>> = {
+    vanilla: () => import("../generated/parsed-dialogues.json") as unknown as Promise<{ default: PearlData[] }>,
+};
 
 export type UnlockMode = "all" | "unlock";
 
-export default function DialogueInterface() {
+interface DialogueContentProps {
+    gridData: PearlData[];
+    datasetKey: string;
+}
+
+function DialogueContent({ gridData, datasetKey }: DialogueContentProps) {
     const [unlockMode, setUnlockMode] = useState<UnlockMode>("all");
+
     const {
         selectedPearl,
         selectedTranscriber,
@@ -37,7 +44,8 @@ export default function DialogueInterface() {
         currentGridPosition,
         sourceFileDisplay,
         setSourceFileDisplay
-    } = useDialogue(unlockMode, GRID_DATA);
+    } = useDialogue(unlockMode, gridData);
+
     const { refresh, unlockVersion } = useUnlockState();
     const [hintProgress, setHintProgress] = useState<number>(0);
     const [isAlternateDisplayModeActive, setIsAlternateDisplayModeActive] = useState(false);
@@ -70,9 +78,10 @@ export default function DialogueInterface() {
         };
     }, []);
 
+    // Initial URL Parameter Handling
     useEffect(() => {
         function urlIdToPearlId(id: string) {
-            for (let element of GRID_DATA) {
+            for (let element of gridData) {
                 if (element.metadata.internalId && element.metadata.internalId === id) {
                     return element.id;
                 }
@@ -88,7 +97,7 @@ export default function DialogueInterface() {
 
         if (pearlParam) {
             const pearlId = urlIdToPearlId(pearlParam);
-            const foundPearl = GRID_DATA.find(pearl => pearl.id === pearlId);
+            const foundPearl = gridData.find(pearl => pearl.id === pearlId);
 
             if (foundPearl) {
                 handleSelectPearl(foundPearl);
@@ -100,7 +109,7 @@ export default function DialogueInterface() {
         }
 
         urlAccess.getParam("source") && setSourceFileDisplay(urlAccess.getParam("source")!);
-    }, []);
+    }, []); // Run once on mount (when data is ready)
 
     // update meta tags dynamically based on selected pearl
     useEffect(() => {
@@ -114,7 +123,7 @@ export default function DialogueInterface() {
         if (existingOgTitle) existingOgTitle.remove();
         if (existingOgDescription) existingOgDescription.remove();
 
-        const selectedPearlData = selectedPearl ? GRID_DATA.find(pearl => pearl.id === selectedPearl) ?? null : null;
+        const selectedPearlData = selectedPearl ? gridData.find(pearl => pearl.id === selectedPearl) ?? null : null;
 
         if (selectedPearlData) {
             const firstTranscriber = selectedPearlData.transcribers[0];
@@ -193,17 +202,17 @@ export default function DialogueInterface() {
             defaultOgDescriptionMeta.content = 'Complete interactive database of Rain World lore. Browse Pearls, Broadcasts, Dialogue, and more with search and spoiler protection.';
             document.head.appendChild(defaultOgDescriptionMeta);
         }
-    }, [selectedPearl]);
+    }, [selectedPearl, gridData]);
 
-    const handleSelectPearlWithReset = (pearl: string) => {
-        handleSelectPearl(GRID_DATA.find(pearlData => pearlData.id === pearl) ?? null);
+    const handleSelectPearlWithReset = useCallback((pearl: string) => {
+        handleSelectPearl(gridData.find(pearlData => pearlData.id === pearl) ?? null);
         setHintProgress(0);
-    };
+    }, [gridData, handleSelectPearl]);
 
     const pearlGridComponent = useMemo(() => (
         <Suspense fallback={<LoadingSpinner/>}>
             <PearlGrid
-                pearls={GRID_DATA}
+                pearls={gridData}
                 order={orderPearls}
                 selectedPearl={selectedPearl}
                 onSelectPearl={handleSelectPearlWithReset}
@@ -215,14 +224,15 @@ export default function DialogueInterface() {
                 handleKeyNavigation={handleKeyNavigation}
                 currentGridPosition={currentGridPosition}
                 onSearchTextChange={setSearchText}
+                datasetKey={datasetKey}
             />
         </Suspense>
-    ), [GRID_DATA, selectedPearl, unlockMode, isAlternateDisplayModeActive, isMobile, handleSelectPearlWithReset, unlockVersion, handleKeyNavigation, currentGridPosition]);
+    ), [gridData, selectedPearl, unlockMode, isAlternateDisplayModeActive, isMobile, handleSelectPearlWithReset, unlockVersion, handleKeyNavigation, currentGridPosition, datasetKey]);
 
     const dialogueBoxComponent = useMemo(() => (
         <Suspense fallback={<LoadingSpinner/>}>
             <DialogueBox
-                pearl={selectedPearl !== null ? GRID_DATA.find(pearl => pearl.id === selectedPearl) ?? null : null}
+                pearl={selectedPearl !== null ? gridData.find(pearl => pearl.id === selectedPearl) ?? null : null}
                 selectedTranscriber={selectedTranscriber}
                 onSelectTranscriber={handleSelectTranscriber}
                 sourceFileDisplay={sourceFileDisplay}
@@ -237,7 +247,7 @@ export default function DialogueInterface() {
                 searchText={searchText}
             />
         </Suspense>
-    ), [selectedPearl, selectedTranscriber, unlockMode, hintProgress, refresh, handleSelectPearl, searchText]);
+    ), [selectedPearl, selectedTranscriber, unlockMode, hintProgress, refresh, handleSelectPearl, searchText, gridData]);
 
     return (
         <div
@@ -274,4 +284,48 @@ export default function DialogueInterface() {
             </div>
         </div>
     );
+}
+
+export default function DialogueInterface() {
+    const [datasetKey, setDatasetKey] = useState<string>("vanilla");
+    const [gridData, setGridData] = useState<PearlData[]>([]);
+    const [isLoadingData, setIsLoadingData] = useState(true);
+
+    useEffect(() => {
+        const datasetParam = urlAccess.getParam("dataset");
+        if (datasetParam && DATASETS[datasetParam]) {
+            setDatasetKey(datasetParam);
+        }
+    }, []);
+
+    useEffect(() => {
+        setIsLoadingData(true);
+        const loadData = DATASETS[datasetKey] || DATASETS["vanilla"];
+        loadData().then(module => {
+            setGridData(module.default);
+            setIsLoadingData(false);
+        }).catch(err => {
+            console.error("Failed to load dataset:", err);
+            setIsLoadingData(false);
+        });
+    }, [datasetKey]);
+
+    if (isLoadingData) {
+        return (
+            <div className="min-h-screen w-full flex items-center justify-center bg-[#101010]"
+                 style={{
+                     backgroundImage: `url(img/Pc-main-menu.webp)`,
+                     backgroundSize: "cover",
+                     backgroundPosition: "center",
+                     backgroundAttachment: "fixed",
+                 }}>
+                <div className="absolute inset-0 backdrop-blur-sm bg-black/30"/>
+                <div className="relative z-10">
+                    <LoadingSpinner />
+                </div>
+            </div>
+        );
+    }
+
+    return <DialogueContent gridData={gridData} datasetKey={datasetKey} />;
 }
