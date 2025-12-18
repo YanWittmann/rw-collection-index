@@ -1,6 +1,6 @@
 import { PearlData } from "./types/types";
 import { useDialogue } from "./hooks/useDialogue";
-import { orderPearls } from "./utils/pearlOrder";
+import { orderPearls, PEARL_ORDER_CONFIGS } from "./utils/pearlOrder";
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { useUnlockState } from "./hooks/useUnlockState";
 import { urlAccess } from "./utils/urlAccess";
@@ -21,8 +21,10 @@ const preloadComponents = async () => {
     return { pearlGridModule, dialogueBoxModule };
 };
 
+// Define available datasets with dynamic imports
 const DATASETS: Record<string, () => Promise<{ default: PearlData[] }>> = {
     vanilla: () => import("../generated/parsed-dialogues.json") as unknown as Promise<{ default: PearlData[] }>,
+    modded: () => import("../generated/parsed-dialogues-modded.json") as unknown as Promise<{ default: PearlData[] }>,
 };
 
 export type UnlockMode = "all" | "unlock";
@@ -209,11 +211,16 @@ function DialogueContent({ gridData, datasetKey }: DialogueContentProps) {
         setHintProgress(0);
     }, [gridData, handleSelectPearl]);
 
+    const handleOrder = useCallback((data: PearlData[]) => {
+        const config = PEARL_ORDER_CONFIGS[datasetKey] || PEARL_ORDER_CONFIGS['vanilla'];
+        return orderPearls(data, config);
+    }, [datasetKey]);
+
     const pearlGridComponent = useMemo(() => (
         <Suspense fallback={<LoadingSpinner/>}>
             <PearlGrid
                 pearls={gridData}
-                order={orderPearls}
+                order={handleOrder}
                 selectedPearl={selectedPearl}
                 onSelectPearl={handleSelectPearlWithReset}
                 unlockMode={unlockMode}
@@ -227,7 +234,7 @@ function DialogueContent({ gridData, datasetKey }: DialogueContentProps) {
                 datasetKey={datasetKey}
             />
         </Suspense>
-    ), [gridData, selectedPearl, unlockMode, isAlternateDisplayModeActive, isMobile, handleSelectPearlWithReset, unlockVersion, handleKeyNavigation, currentGridPosition, datasetKey]);
+    ), [gridData, handleOrder, selectedPearl, unlockMode, isAlternateDisplayModeActive, isMobile, handleSelectPearlWithReset, unlockVersion, handleKeyNavigation, currentGridPosition, datasetKey]);
 
     const dialogueBoxComponent = useMemo(() => (
         <Suspense fallback={<LoadingSpinner/>}>
@@ -287,16 +294,15 @@ function DialogueContent({ gridData, datasetKey }: DialogueContentProps) {
 }
 
 export default function DialogueInterface() {
-    const [datasetKey, setDatasetKey] = useState<string>("vanilla");
+    const [datasetKey, setDatasetKey] = useState<string>(() => {
+        const datasetParam = urlAccess.getParam("d");
+        if (datasetParam && DATASETS[datasetParam]) {
+            return datasetParam;
+        }
+        return "vanilla";
+    });
     const [gridData, setGridData] = useState<PearlData[]>([]);
     const [isLoadingData, setIsLoadingData] = useState(true);
-
-    useEffect(() => {
-        const datasetParam = urlAccess.getParam("dataset");
-        if (datasetParam && DATASETS[datasetParam]) {
-            setDatasetKey(datasetParam);
-        }
-    }, []);
 
     useEffect(() => {
         setIsLoadingData(true);

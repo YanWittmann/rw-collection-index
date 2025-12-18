@@ -22,7 +22,7 @@ export interface OrderedChapter {
     icon?: string;
 }
 
-export const pearlOrder: PearlChapter[] = [
+const vanillaPearlOrder: PearlChapter[] = [
     {
         name: "Colored Pearls + Broadcasts",
         ids: [
@@ -158,9 +158,26 @@ export const pearlOrder: PearlChapter[] = [
     },
 ]
 
-export const findPearlCategory = (pearl: PearlData): string => {
-    const search = (chapters: PearlChapter[]): string | null => {
-        for (const chapter of chapters) {
+const moddedPearlOrder: PearlChapter[] = [
+    {
+        name: "Drainage System Plus",
+        headerType: "banner",
+        icon: "img/modded/DSP/DS_plus_thumbnail.png",
+        defaultOpen: false,
+        ids: [
+            "DSP_DrainageSystemPlus"
+        ]
+    }
+];
+
+export const PEARL_ORDER_CONFIGS: Record<string, PearlChapter[]> = {
+    vanilla: vanillaPearlOrder,
+    modded: moddedPearlOrder
+};
+
+export const findPearlCategory = (pearl: PearlData, chapters: PearlChapter[] = vanillaPearlOrder): string => {
+    const search = (currentChapters: PearlChapter[]): string | null => {
+        for (const chapter of currentChapters) {
             // Check current chapter IDs
             if (chapter.ids) {
                 for (const idOrSelector of chapter.ids) {
@@ -179,10 +196,10 @@ export const findPearlCategory = (pearl: PearlData): string => {
         }
         return null;
     }
-    return search(pearlOrder) || "Other";
+    return search(chapters) || "Other";
 };
 
-export const orderPearls = (pearls: PearlData[]): OrderedChapter[] => {
+export const orderPearls = (pearls: PearlData[], chapters: PearlChapter[] = vanillaPearlOrder): OrderedChapter[] => {
     const pearlsById = pearls.reduce((acc, pearl) => {
         acc[pearl.id] = pearl;
         return acc;
@@ -228,11 +245,11 @@ export const orderPearls = (pearls: PearlData[]): OrderedChapter[] => {
         };
     };
 
-    const orderedPearls = pearlOrder.map(processChapter);
+    const orderedPearls = chapters.map(processChapter);
 
     // Error checking for missing IDs
-    const checkMissing = (chapters: PearlChapter[]) => {
-        for (const chapter of chapters) {
+    const checkMissing = (currentChapters: PearlChapter[]) => {
+        for (const chapter of currentChapters) {
             if (chapter.ids) {
                 for (const idOrSelector of chapter.ids) {
                     if (typeof idOrSelector === 'string' && !pearlsById[idOrSelector]) {
@@ -243,7 +260,7 @@ export const orderPearls = (pearls: PearlData[]): OrderedChapter[] => {
             if (chapter.items) checkMissing(chapter.items);
         }
     }
-    checkMissing(pearlOrder);
+    checkMissing(chapters);
 
     const uncoveredPearls = pearls.filter(pearl => !processedPearlIds.has(pearl.id));
     if (uncoveredPearls.length > 0) {

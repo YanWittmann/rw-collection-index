@@ -32,9 +32,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "watch-dialogue-files": "node create-dialogue-files.js --watch",
-    "create-dialogue-files-lite": "node create-dialogue-files.js",
-    "create-dialogue-files": "node create-dialogue-files.js --sourceFiles",
+    "watch-dialogue-files": "node create-dialogue-files.js --watch --profile modded",
+    "create-dialogue-files-lite": "node create-dialogue-files.js --profile vanilla",
+    "create-dialogue-files": "node create-dialogue-files.js --profile modded && node create-dialogue-files.js --profile vanilla --sourceFiles",
     "start": "craco start",
     "build": "npm run create-dialogue-files && craco build && node generate-sitemap.js",
     "generate-sitemap": "node generate-sitemap.js",

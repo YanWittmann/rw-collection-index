@@ -165,7 +165,7 @@ const LazyChapterGrid = (
                 flatChapter.originalChapter.headerType === "banner" ? (
                     <RwIconButton
                         square={false}
-                        className={cn("w-full", flatChapter.depth > 0 && "mt-2")}
+                        className={cn("w-full", flatChapter.depth > 0 && "mt-2", !flatChapter.hasSubChapters && "mb-3")}
                         onClick={onToggle}
                         expandedScaleFactor={0.2}
                         aria-label={flatChapter.name}
@@ -182,7 +182,7 @@ const LazyChapterGrid = (
                                     className="h-8 w-8 object-contain opacity-80"
                                 />
                             )}
-                            <span className={cn("font-medium text-lg tracking-wide", flatChapter.isExpanded ? "text-white" : "text-gray-500")}>
+                            <span className={cn("font-medium text-md tracking-wide", flatChapter.isExpanded ? "text-white" : "text-gray-500")}>
                                 {flatChapter.name}
                             </span>
                         </div>

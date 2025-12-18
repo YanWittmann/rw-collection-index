@@ -3,9 +3,43 @@ const path = require('path');
 const chokidar = require('chokidar');
 const levenshtein = require('fast-levenshtein');
 
-// CONFIGURATION
-const DIALOGUE_DIR = path.join(__dirname, '../dialogue');
-const OUTPUT_FILE = path.join(__dirname, 'src/generated/parsed-dialogues.json');
+const PROFILES = {
+    vanilla: {
+        dialogueDir: path.join(__dirname, '../dialogue'),
+        outputFile: path.join(__dirname, 'src/generated/parsed-dialogues.json'),
+        sourceDecryptedOutputFile: path.join(__dirname, 'src/generated/source-decrypted.json'),
+    },
+    modded: {
+        dialogueDir: path.join(__dirname, '../dialogue-modded'),
+        outputFile: path.join(__dirname, 'src/generated/parsed-dialogues-modded.json'),
+        sourceDecryptedOutputFile: path.join(__dirname, 'src/generated/source-decrypted-modded.json'),
+    },
+};
+
+function getProfileName() {
+    const argIndex = process.argv.indexOf('--profile');
+    if (argIndex > -1 && process.argv[argIndex + 1]) {
+        return process.argv[argIndex + 1];
+    }
+    return 'vanilla';
+}
+
+const profileName = getProfileName();
+const activeProfile = PROFILES[profileName];
+
+if (!activeProfile) {
+    console.error(`Error: Profile "${profileName}" not found.`);
+    console.error(`Available profiles: ${Object.keys(PROFILES).join(', ')}`);
+    process.exit(1);
+}
+
+const { dialogueDir, outputFile, sourceDecryptedOutputFile } = activeProfile;
+
+console.log(`Using profile: "${profileName}"`);
+console.log(`Input Directory: ${dialogueDir}`);
+console.log(`Output File: ${outputFile}`);
+console.log(`Source Decrypted Output File: ${sourceDecryptedOutputFile}`);
+
 const MAX_SPEAKER_LENGTH = 12;
 const PATTERN_REGEX = /\{([^}]+)\}/g;
 
@@ -63,14 +97,14 @@ function parseSourceDecryptedJsonFile(filePath) {
     }
 }
 
-const sourceDecryptedJsonFile = path.join(DIALOGUE_DIR, 'source/decrypted.json');
+const sourceDecryptedJsonFile = path.join(dialogueDir, 'source/decrypted.json');
 const gameFiles = parseSourceDecryptedJsonFile(sourceDecryptedJsonFile);
 
 // copy file to generated folder
-fs.copyFileSync(sourceDecryptedJsonFile, path.join(__dirname, 'src/generated/source-decrypted.json'));
+fs.copyFileSync(sourceDecryptedJsonFile, sourceDecryptedOutputFile);
 
 // SECTION: rain world game source images
-const sourceImgDir = path.join(DIALOGUE_DIR, 'source/img');
+const sourceImgDir = path.join(dialogueDir, 'source/img');
 const publicImgDir = path.join(__dirname, 'public/img/src');
 
 fs.rmSync(publicImgDir, { recursive: true, force: true });
@@ -686,9 +720,9 @@ const getAllFiles = (dir, fileList = []) => {
 };
 
 function writeOutput(result) {
-    fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
-    fs.writeFileSync(OUTPUT_FILE, JSON.stringify(result));
-    console.log(`Successfully parsed ${result.length} files to ${OUTPUT_FILE}`);
+    fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+    fs.writeFileSync(outputFile, JSON.stringify(result));
+    console.log(`Successfully parsed ${result.length} files to ${outputFile}`);
 }
 
 function handleProcessingError(error) {
@@ -698,8 +732,8 @@ function handleProcessingError(error) {
 
 function processDialogueFiles() {
     try {
-        const files = getAllFiles(DIALOGUE_DIR);
-        console.log(`Found ${files.length} files in ${DIALOGUE_DIR} to process`);
+        const files = getAllFiles(dialogueDir);
+        console.log(`Found ${files.length} files in ${dialogueDir} to process`);
 
         const result = files.flatMap(file => {
             if (file.replaceAll("\\\\", "/").replaceAll("\\", "/").includes('source/')) {
@@ -727,7 +761,7 @@ function processDialogueFiles() {
 }
 
 function watchDialogueFiles() {
-    const watcher = chokidar.watch(DIALOGUE_DIR, {
+    const watcher = chokidar.watch(dialogueDir, {
         persistent: true,
         ignoreInitial: true, // ignore initial scan to avoid double-processing
         depth: 99, // watch all subdirectories
@@ -740,7 +774,7 @@ function watchDialogueFiles() {
         }
     });
 
-    console.log(`Watching for changes in ${DIALOGUE_DIR}...`);
+    console.log(`Watching for changes in ${dialogueDir}...`);
 }
 
 if (process.argv.includes('--watch')) {
