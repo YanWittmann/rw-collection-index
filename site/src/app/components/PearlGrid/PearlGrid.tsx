@@ -329,7 +329,6 @@ export function PearlGrid({
                 options: [
                     { id: "vanilla", label: "Vanilla (No DLC)", icon: "vanilla-rw" },
                     { id: "downpour", label: "Downpour", icon: "dlc-dp" },
-                    // TODO: Update icon
                     { id: "watcher", label: "Watcher", icon: "dlc-watcher" },
                 ]
             },

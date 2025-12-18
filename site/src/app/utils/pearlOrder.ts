@@ -59,6 +59,7 @@ export const pearlOrder: PearlChapter[] = [
         name: "Looks to the Moon Various",
         ids: [
             { pattern: /LttM_short_Dialogue_.+/ },
+            "LttM_SAINT_ANY_OTHER"
         ]
     },
     {
@@ -74,35 +75,6 @@ export const pearlOrder: PearlChapter[] = [
             { pattern: /FP_Dialogue_rivulet.+/ },
             { pattern: /FP_Dialogue_saint_.+/ },
             { pattern: /FP_Dialogue_.+/ },
-        ]
-    },
-    {
-        name: "Downpour Addons",
-        ids: [
-            "LttM_SAINT_ANY_OTHER"
-        ]
-    },
-    {
-        name: "The Watcher: Spinning Top",
-        ids: [
-            { pattern: /Watcher_vanillaEncounter_.+/ },
-            { pattern: /Watcher_ST_Echo.+/ },
-            { pattern: /Watcher_ST_Other.+/ },
-        ]
-    },
-    {
-        name: "The Watcher: Rot Prince",
-        ids: [
-            { pattern: /Watcher_Prince_KarmaSigils.+/ },
-            { pattern: /Watcher_Prince_Dialogue.+/ },
-            { pattern: /Watcher_Prince_Events.+/ },
-            { pattern: /Watcher_Prince_Weaver.+/ },
-        ]
-    },
-    {
-        name: "The Watcher: Void Weaver",
-        ids: [
-            { pattern: /Watcher_Weaver.+/ },
         ]
     },
     {
@@ -126,6 +98,30 @@ export const pearlOrder: PearlChapter[] = [
         ids: [
             "WARG_AUDIO_GROOVE", "WTDA_AUDIO_JAM1", "WSKD_AUDIO_JAM2", "WTDB_AUDIO_JAM3", "WRFB_AUDIO_JAM4", "WBLA_AUDIO_VOICEWIND1",
             "WARE_AUDIO_VOICEWIND2",
+        ]
+    },
+    {
+        name: "The Watcher: Spinning Top",
+        ids: [
+            "Watcher_ST_Decisiontree",
+            { pattern: /Watcher_vanillaEncounter_.+/ },
+            { pattern: /Watcher_ST_Echo.+/ },
+            { pattern: /Watcher_ST_Other.+/ },
+        ]
+    },
+    {
+        name: "The Watcher: Rot Prince",
+        ids: [
+            { pattern: /Watcher_Prince_KarmaSigils.+/ },
+            { pattern: /Watcher_Prince_Dialogue.+/ },
+            { pattern: /Watcher_Prince_Events.+/ },
+            { pattern: /Watcher_Prince_Weaver.+/ },
+        ]
+    },
+    {
+        name: "The Watcher: Void Weaver",
+        ids: [
+            { pattern: /Watcher_Weaver.+/ },
         ]
     },
     {

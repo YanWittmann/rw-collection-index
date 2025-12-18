@@ -5,12 +5,13 @@ map: region=CC, room=C12, mapSlugcat=watcher
 map: region=LF, room=B01W, mapSlugcat=watcher
 map: region=SH, room=A08, mapSlugcat=watcher
 mapInfo: Spinning Top can be encountered in any order in the three regions.\nThe region you encounter them last determines the region you are sent to by the warp.
+info: The player Ripple Level is increased by 0.25 on the first two encounters, and by 0.5 on the third.\nThis allows the player to access the remaining encounters.
 
 === transcription: spinning-top
 md-type: pearl
 md-internalId: DieAtSpinningTop1
 md-var-DialogueId: 1
-md-name: Die at Spinning Top
+md-name: Player Death (Encounter 1)
 md-transcriberName: Die at Spinning Top
 md-sourceDialogue: SpinningTop/Update.cs
 md-sourceDialogue: strings.txt
@@ -20,7 +21,7 @@ OAOAOA!! Yes!!! Back into the ground you go!! What an idiot!! OAOAOAOAOAO
 md-type: pearl
 md-internalId: LeaveSpinningTop1
 md-var-DialogueId: 1
-md-name: Leaving early
+md-name: Leaving early (Encounter 1)
 md-transcriberName: Leaving early
 md-sourceDialogue: SpinningTop/Update.cs
 md-sourceDialogue: strings.txt
@@ -30,8 +31,8 @@ OA! Look! It's too stupid to even pay attention! OAOAOAOA!!
 md-type: pearl
 md-internalId: Ghost_ST_V1
 md-var-DialogueId: 1
-md-super-name: First Encounter (Next Max. Ripple Lvl. 0.25)
-md-name: First Encounter (Next Max. Ripple Lvl. 0.25)
+md-super-name: First Encounter, [◎] Max 0.25
+md-name: First Encounter, [◎] Max 0.25
 md-sourceDialogue: 200.txt
 md-sourceDialogue: SpinningTop/VanillaRegionSpinningTopEncounter.cs
 md-sourceDialogue: SpinningTop/StartConversation.cs
@@ -46,7 +47,7 @@ What a waste! What a joke! OAOAOAOAOAOAOAOA!!
 md-type: pearl
 md-internalId: DieAtSpinningTop2
 md-var-DialogueId: 2
-md-name: Die at Spinning Top
+md-name: Player Death (Encounter 2)
 md-transcriberName: Die at Spinning Top
 md-sourceDialogue: SpinningTop/Update.cs
 md-sourceDialogue: strings.txt
@@ -56,7 +57,7 @@ OA!! See!! They get you already! OAOAOAOAOAO
 md-type: pearl
 md-internalId: LeaveSpinningTop2
 md-var-DialogueId: 2
-md-name: Leaving early
+md-name: Leaving early (Encounter 2)
 md-transcriberName: Leaving early
 md-sourceDialogue: SpinningTop/Update.cs
 md-sourceDialogue: strings.txt
@@ -66,8 +67,8 @@ OA!! How rude!! I was going to give it a gift.
 md-internalId: Ghost_ST_V2
 md-type: pearl
 md-var-DialogueId: 2
-md-super-name: Second Encounter (Next Max. Ripple Lvl. 0.5)
-md-name: Second Encounter (Next Max. Ripple Lvl. 0.5)
+md-super-name: Second Encounter, [◎] Max 0.5
+md-name: Second Encounter, [◎] Max 0.5
 md-sourceDialogue: 201.txt
 md-sourceDialogue: SpinningTop/VanillaRegionSpinningTopEncounter.cs
 md-sourceDialogue: SpinningTop/StartConversation.cs
@@ -94,8 +95,8 @@ How boring! Bleh! I will depart.
 md-internalId: Ghost_ST_V3
 md-type: pearl
 md-var-DialogueId: 3
-md-super-name: Third Encounter (Next Max. Ripple Lvl. 1.0)
-md-name: Third Encounter (Next Max. Ripple Lvl. 1.0)
+md-super-name: Third Encounter, [◎] Max 1.0
+md-name: Third Encounter, [◎] Max 1.0
 md-sourceDialogue: 202.txt
 md-sourceDialogue: SpinningTop/VanillaRegionSpinningTopEncounter.cs
 md-sourceDialogue: SpinningTop/StartConversation.cs

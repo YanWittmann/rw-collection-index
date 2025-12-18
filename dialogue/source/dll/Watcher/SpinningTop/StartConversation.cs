@@ -1,4 +1,3 @@
-// Token: 0x06002961 RID: 10593 RVA: 0x0030EF6C File Offset: 0x0030D16C
 protected override void StartConversation()
 {
     Conversation.ID id = Conversation.ID.None;
@@ -47,10 +46,6 @@ protected override void StartConversation()
         {
             id = WatcherEnums.ConversationID.Ghost_ST_N5;
         }
-        else if (y == 3.5f)
-        {
-            id = WatcherEnums.ConversationID.Ghost_ST_N4;
-        }
         else if (y == 4.5f)
         {
             id = WatcherEnums.ConversationID.Ghost_ST_N2;
@@ -66,6 +61,34 @@ protected override void StartConversation()
         else if (x == 5f)
         {
             id = WatcherEnums.ConversationID.Ghost_ST_N7;
+        }
+        int num = 0;
+        bool flag = false;
+        for (int i = 0; i < this.room.game.GetStorySession.saveState.deathPersistentSaveData.spinningTopEncounters.Count; i++)
+        {
+            if (this.room.game.GetStorySession.saveState.deathPersistentSaveData.spinningTopEncounters[i] == num)
+            {
+                flag = true;
+                break;
+            }
+        }
+        if (this.SpecialData != null && this.SpecialData.spawnIdentifier == num && this.room.world.name.ToLowerInvariant() == "wtdb")
+        {
+            if (id != Conversation.ID.None)
+            {
+                this.room.game.GetStorySession.saveState.miscWorldSaveData.hasDeferredSpinningTopConversation = true;
+                this.room.game.GetStorySession.saveState.miscWorldSaveData.deferredSpinningTopConversation = id;
+            }
+            id = WatcherEnums.ConversationID.Ghost_ST_N4;
+        }
+        else if (x == 4.5f && !flag)
+        {
+            id = WatcherEnums.ConversationID.Ghost_ST_N7;
+        }
+        else if (id == Conversation.ID.None && this.room.game.GetStorySession.saveState.miscWorldSaveData.hasDeferredSpinningTopConversation)
+        {
+            id = this.room.game.GetStorySession.saveState.miscWorldSaveData.deferredSpinningTopConversation;
+            this.room.game.GetStorySession.saveState.miscWorldSaveData.hasDeferredSpinningTopConversation = false;
         }
     }
     if (this.room.game.cameras[0].hud.dialogBox == null)

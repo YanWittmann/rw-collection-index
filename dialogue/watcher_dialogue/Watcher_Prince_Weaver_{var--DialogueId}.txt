@@ -6,7 +6,7 @@ tag: watcher
 md-type: pearl
 md-internalId: Prince_Weaver_1
 md-var-DialogueId: Prince_Weaver_1
-md-name: Prince Weaver 1
+md-name: Prince, Weaver Ability Encounter 1
 md-sourceDialogue: 233.txt
 Oh my! You have grown... and you have become!
 The scent...
@@ -21,7 +21,7 @@ Alpha and Omega.
 md-type: pearl
 md-internalId: Prince_Weaver_2
 md-var-DialogueId: Prince_Weaver_2
-md-name: Prince Weaver 2
+md-name: Prince, Weaver Ability Encounter 2
 md-sourceDialogue: 234.txt
 And so we have arrived at the endgame.
 We have each played our hands,
@@ -51,6 +51,7 @@ md-type: pearl
 md-internalId: Prince_Ascension
 md-var-DialogueId: Prince_Ascension
 md-name: Prince Ascension
+md-super-name: Prince Ascension
 md-sourceDialogue: 235.txt
 Ah my friend!
 It has been so long,

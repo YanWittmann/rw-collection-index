@@ -1,0 +1,52 @@
+type: item
+subType: spinning-top
+tag: watcher
+name: Spinning Top Conversation Logic
+transcriberName: Spinning Top Encounter
+
+=== transcription: spinning-top
+md-sourceDialogue: SpinningTop/StartConversation.cs
+MONO
+/ The conversation selected depends on the current room, the region, and the current progression on the "Ripple Level".
+/ If the Spinning Top is in WAUA_BATH (Ancient Urban):
+|  Show Ghost_ST_AU1
+/ If the Spinning Top is in WAUA_TOYS (Ancient Urban):
+|  Show Ghost_ST_AU2
+/ If the region is a "Vanilla Sentient Rot" region:
+|  Show Ghost_ST_ROT1
+/ If region is not WAUA (Ancient Urban): Decide based on the next Ripple Levels (Target Min and Target Max).
+/  If Spinning Top is a "Ripple Warp" object (conversation in WARA [Shattered Terrace]):
+|   Store Ghost_ST_RIP1
+/  Else use Target Maximum Ripple Level:
+/   If Target Max is 0.25 (first vanilla encounter):
+|    Store Ghost_ST_V1
+/   If Target Max is 0.5 (second vanilla encounter):
+|    Store Ghost_ST_V2
+/   If Target Max is 1.0 (third vanilla encounter):
+|    Store Ghost_ST_V3
+/   If Target Max is 1.5:
+|    Store Ghost_ST_N1
+/   If Target Max is 3.0:
+|    Store Ghost_ST_N5
+/   If Target Max is 4.5:
+|    Store Ghost_ST_N2
+/  Else use Target Minimum Ripple Level:
+/   If Target Min is 3.0:
+|    Store Ghost_ST_N3
+/   If Target Min is 4.0:
+|    Store Ghost_ST_N6
+/   If Target Min is 5.0:
+|    Store Ghost_ST_N7
+/  After selection, check specific overrides:
+/   If region is WTDB (Desolate Tract) and encounter is ID=0:
+/    If a conversation was already selected above:
+|     Save conversation for later as "deferred"
+|    Show Ghost_ST_N4
+/   If the Target Min Level is 4.5 and WTDB (Desolate Tract) encounter ID=0 hasn't been met yet:
+|    Show Ghost_ST_N7
+/   If a "deferred" conversation is saved and no ID is currently selected:
+|    Show the deferred conversation
+/   Else:
+|    Show the conversation stored above
+/ If no conversation ID was selected by any of the logic above:
+|  Show Ellipsis ("...")

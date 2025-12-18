@@ -1,5 +1,5 @@
 type: item
-subType: watcher
+subType: spinning-top
 tag: watcher
 map: region=WARB, room=J01, mapSlugcat=watcher
 map: region=WARC, room=F01, mapSlugcat=watcher
@@ -15,16 +15,16 @@ map: region=WRFB, room=A22, mapSlugcat=watcher
 map: region=WSKC, room=A23, mapSlugcat=watcher
 map: region=WSKD, room=B40, mapSlugcat=watcher
 map: region=WTDA, room=Z14, mapSlugcat=watcher
-map: region=WTDB, room=A26, mapSlugcat=watcher
 map: region=WVWA, room=F03, mapSlugcat=watcher
 mapInfo: Spinning Top can be encountered in any order in these regions.\nSeven Encounters are necessary to unlock the Shattered Terrace to Ancient Urban portal.
 info: To determine what dialogue to display for each encounter,\nthe game (mainly) uses the min and max Ripple Level of the player.\nAfter the Vanilla intro, the min/max Ripple Levels are both 1.\nThe max Ripple Level increases by 0.5 for each encounter, with the min Level trailing behind by 2.\nThe Level cap of 5.0 corresponds to the ten Karma levels the player can reach.
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N1
+md-super-subType: watcher-ripple
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N1
-md-name: Next Max. Ripple Lvl. 1.5
+md-name: [◎] Max 1.5
 md-sourceDialogue: 203.txt
 md-sourceDialogue: SpinningTop/StartConversation.cs
 md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
@@ -40,9 +40,10 @@ Never forget that, my little shadow.
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N5
+md-super-subType: watcher-ripple
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N5
-md-name: Next Max. Ripple Lvl. 3
+md-name: [◎] Max 3.0
 md-sourceDialogue: 211.txt
 md-sourceDialogue: SpinningTop/StartConversation.cs
 md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
@@ -53,10 +54,100 @@ HMMMMMM?
 Yes, well I am lost!
 
 === transcription: spinning-top
+md-internalId: Ghost_ST_N2
+md-super-subType: watcher-ripple
+md-type: pearl
+md-var-DialogueId: Ghost_ST_N2
+md-name: [◎] Max 4.5
+md-sourceDialogue: 204.txt
+md-sourceDialogue: SpinningTop/StartConversation.cs
+md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
+Well!
+Well well well!
+It has been many
+numerous
+cycles.
+And yet here you are! You follow again!
+It is NOT normal.
+Hmmm....
+mmmmmm...
+MMMMMMMMM...
+...
+I am VERY likable though! OAOAOAOAOAOA!!
+
+=== transcription: spinning-top
+md-internalId: Ghost_ST_N3
+md-super-subType: watcher-ripple
+md-type: pearl
+md-var-DialogueId: Ghost_ST_N3
+md-name: [◎] Min 3.0
+md-sourceDialogue: 205.txt
+md-sourceDialogue: SpinningTop/StartConversation.cs
+md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
+OA OA, it is my shadow. I have been watching you.
+It is nice to have a companion, after all this time.
+For so long I have drifted. Lost.
+Dispersed in the multitudes of the waves and the ripples.
+But following your thread brings me closer, perhaps, to how I was.
+
+=== transcription: spinning-top
+md-internalId: Ghost_ST_N6
+md-super-subType: watcher-ripple
+md-type: pearl
+md-var-DialogueId: Ghost_ST_N6
+md-name: [◎] Min 4.0
+md-sourceDialogue: 212.txt
+md-sourceDialogue: SpinningTop/StartConversation.cs
+md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
+Ho! Hum! Hi! He!
+A pin for creche!
+A petal for spawn!
+A drop of juice!
+He! Hum! WA! Ho!
+A bowl, a jar, a length of twine!
+...
+I love that song, don't you?
+My nest mothers would sing it to me.
+
+=== transcription: spinning-top
+md-internalId: Ghost_ST_N7
+md-super-subType: watcher-ripple
+md-type: pearl
+md-var-DialogueId: Ghost_ST_N7
+md-name: [◎] Min 5.0 (or 4.5)
+md-sourceDialogue: 213.txt
+md-sourceDialogue: SpinningTop/StartConversation.cs
+md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
+OAOA! How is it then?
+To be an animal.
+Or are you still?
+...
+No. Not after all this time, and distance.
+A small god.
+TINY.
+A godlet!
+But still can be eaten! OAOAOA!
+A tasty little god sausage! OAOAOAOAOAOA!
+
+=== transcription: spinning-top
+md-type: pearl
+md-super-subType: watcher-ripple
+md-var-DialogueId: ellipsis
+md-name: Fallback (...)
+md-info: Displayed when no other more specific condition is met.
+md-sourceDialogue: SpinningTop/StartConversation.cs
+md-sourceDialogue: SpinningTop/PauseConversation.cs
+...
+
+=== transcription: spinning-top
 md-internalId: Ghost_ST_N4
+md-super-subType: wa-region/wtdb
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N4
-md-name: Next Max. Ripple Lvl. 3.5
+md-name: Desolate Tract (Override)
+md-map: none
+md-map: region=WTDB, room=A26, mapSlugcat=watcher
+md-info: Triggers in Desolate Tract (WTDB) (Spawn ID 0).\nThis overrides the what-would-be standard Ripple Level conversation, which is saved as 'deferred' and will be played at the next encounter instead.
 md-sourceDialogue: 206.txt
 md-sourceDialogue: SpinningTop/StartConversation.cs
 md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
@@ -75,83 +166,11 @@ I was so fast! No-one could catch me!
 OAOAOAOAOAOA!!!!
 
 === transcription: spinning-top
-md-internalId: Ghost_ST_N2
-md-type: pearl
-md-var-DialogueId: Ghost_ST_N2
-md-name: Next Max. Ripple Lvl. 4.5
-md-sourceDialogue: 204.txt
-md-sourceDialogue: SpinningTop/StartConversation.cs
-md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
-Well!
-Well well well!
-It has been many
-numerous
-cycles.
-And yet here you are! You follow again!
-It is NOT normal.
-Hmmm....
-mmmmmm...
-MMMMMMMMM...
-...
-I am VERY likable though! OAOAOAOAOAOA!!
-
-=== transcription: watcher
-md-internalId: Ghost_ST_N3
-md-type: pearl
-md-var-DialogueId: Ghost_ST_N3
-md-name: Next Min. Ripple Lvl. 3
-md-sourceDialogue: 205.txt
-md-sourceDialogue: SpinningTop/StartConversation.cs
-md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
-OA OA, it is my shadow. I have been watching you.
-It is nice to have a companion, after all this time.
-For so long I have drifted. Lost.
-Dispersed in the multitudes of the waves and the ripples.
-But following your thread brings me closer, perhaps, to how I was.
-
-=== transcription: watcher
-md-internalId: Ghost_ST_N6
-md-type: pearl
-md-var-DialogueId: Ghost_ST_N6
-md-name: Next Min. Ripple Lvl. 4
-md-sourceDialogue: 212.txt
-md-sourceDialogue: SpinningTop/StartConversation.cs
-md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
-Ho! Hum! Hi! He!
-A pin for creche!
-A petal for spawn!
-A drop of juice!
-He! Hum! WA! Ho!
-A bowl, a jar, a length of twine!
-...
-I love that song, don't you?
-My nest mothers would sing it to me.
-
-=== transcription: spinning-top
-md-internalId: Ghost_ST_N7
-md-type: pearl
-md-var-DialogueId: Ghost_ST_N7
-md-name: Next Min. Ripple Lvl. 5
-md-sourceDialogue: 213.txt
-md-sourceDialogue: SpinningTop/StartConversation.cs
-md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
-OAOA! How is it then?
-To be an animal.
-Or are you still?
-...
-No. Not after all this time, and distance.
-A small god.
-TINY.
-A godlet!
-But still can be eaten! OAOAOA!
-A tasty little god sausage! OAOAOAOAOAOA!
-
-=== transcription: spinning-top
 md-internalId: Ghost_ST_ROT1
 md-super-subType: wa-region/wdsr
 md-var-DialogueId: Ghost_ST_ROT1
-md-name: Encounter in rotten region
-md-info: When Spinning Top is encountered in a region infected by The Rot, the dialogue is replaced by this one.\nThe Ripple Level will not be increased by this.
+md-name: Rot Region (Override)
+md-info: When Spinning Top is encountered in a region infected by The Rot, the dialogue is replaced by this one.\nThe Ripple Level will not be increased by this.\nThis overrides standard ripple level calculations.
 md-sourceDialogue: 208.txt
 md-sourceDialogue: SpinningTop/StartConversation.cs
 md-sourceDialogue: SpinningTop/NextMinMaxRippleLevel.cs
@@ -167,11 +186,3 @@ Glip glop everywhere. Sea of lumps, forever.
 So glad I cannot sniff!
 Spoiled meat, dissolving proteins. Yeeck.
 Let's away.
-
-=== transcription: spinning-top
-md-type: pearl
-md-var-DialogueId: ellipsis
-md-name: No option fitting, Ellipsis
-md-sourceDialogue: SpinningTop/StartConversation.cs
-md-sourceDialogue: SpinningTop/PauseConversation.cs
-...

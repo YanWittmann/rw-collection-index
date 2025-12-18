@@ -84,9 +84,21 @@ export default function DialogueInterface() {
             return id;
         }
 
-        urlAccess.getParam("pearl") && handleSelectPearl(GRID_DATA.find(pearl => pearl.id === urlIdToPearlId(urlAccess.getParam("pearl")!)) ?? null);
-        urlAccess.getParam("item") && handleSelectPearl(GRID_DATA.find(pearl => pearl.id === urlIdToPearlId(urlAccess.getParam("item")!)) ?? null);
-        urlAccess.getParam("transcriber") && handleSelectTranscriber(urlAccess.getParam("transcriber")!);
+        const pearlParam = urlAccess.getParam("pearl") || urlAccess.getParam("item");
+
+        if (pearlParam) {
+            const pearlId = urlIdToPearlId(pearlParam);
+            const foundPearl = GRID_DATA.find(pearl => pearl.id === pearlId);
+
+            if (foundPearl) {
+                handleSelectPearl(foundPearl);
+                const safeTranscriber = urlAccess.getActiveTranscriber(foundPearl.transcribers);
+                if (safeTranscriber) {
+                    handleSelectTranscriber(safeTranscriber);
+                }
+            }
+        }
+
         urlAccess.getParam("source") && setSourceFileDisplay(urlAccess.getParam("source")!);
     }, []);
 

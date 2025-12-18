@@ -208,6 +208,12 @@ function hasVariableTranscriptions(parsedData) {
 }
 
 function createBaseEntry(baseId, parsedData) {
+    // Remove internal flags from transcribers before returning
+    parsedData.transcribers.forEach(t => {
+        if (t.metadata && t.metadata._clearGlobalMap !== undefined) {
+            delete t.metadata._clearGlobalMap;
+        }
+    });
     return { id: baseId, ...parsedData };
 }
 
@@ -273,6 +279,7 @@ function createVariableGroupEntry(baseId, parsedData, group) {
 
     // go through the transcribers and add the superValues to the metadata
     resolvedTranscribers.forEach(transcriber => {
+        delete transcriber.metadata._clearGlobalMap; // Ensure internal flag is removed
         if (transcriber.metadata.superValues) {
             for (const [key, value] of Object.entries(transcriber.metadata.superValues)) {
                 resolvedMetadata[key] = value;
@@ -305,17 +312,28 @@ function resolveTranscriberMetadata(transcriber, variables, baseMetadata) {
         ])
     );
 
+    const shouldClearGlobal = resolvedTransMetadata._clearGlobalMap;
+
+    // Clean up the internal flag
+    if (resolvedTransMetadata._clearGlobalMap !== undefined) {
+        delete resolvedTransMetadata._clearGlobalMap;
+    }
+
+    const mergedMap = shouldClearGlobal
+        ? (resolvedTransMetadata.map || [])
+        : [
+            ...new Set([
+                ...(baseMetadata.map || []),
+                ...(resolvedTransMetadata.map || [])
+            ])
+        ];
+
     return {
         ...transcriber,
         metadata: {
             ...baseMetadata,
             ...resolvedTransMetadata,
-            map: [
-                ...new Set([
-                    ...(baseMetadata.map || []),
-                    ...(resolvedTransMetadata.map || [])
-                ])
-            ],
+            map: mergedMap,
             tags: [
                 ...new Set([
                     ...(baseMetadata.tags || []),
@@ -419,7 +437,12 @@ const sectionHandlers = {
                     const val = line.slice(colonIndex + 1).trim();
 
                     if (key === 'map') {
-                        parseMapEntries(val).forEach(entry => metadata.map.push(entry));
+                        if (val.toLowerCase() === 'none') {
+                            metadata.map = [];
+                            metadata._clearGlobalMap = true;
+                        } else {
+                            parseMapEntries(val).forEach(entry => metadata.map.push(entry));
+                        }
                     } else if (key === 'tag') {
                         const tags = val.split(',').map(t => t.trim());
                         metadata.tags.push(...tags);
@@ -539,13 +562,27 @@ function parseDialogueContent(content) {
                             }
                         }
 
+                        // Check for global map clearing flag
+                        const clearGlobal = sectionData.metadata._clearGlobalMap;
+
                         // Merge map arrays using Set
-                        sectionData.metadata.map = [
-                            ...new Set([
-                                ...(sectionData.metadata.map || []),
-                                ...(metadata.map || [])
-                            ])
-                        ];
+                        if (clearGlobal) {
+                            // If clearing global map, use only section map
+                            // Ensure we handle the case where section map might be undefined/empty after clearing
+                            sectionData.metadata.map = sectionData.metadata.map || [];
+                        } else {
+                            sectionData.metadata.map = [
+                                ...new Set([
+                                    ...(sectionData.metadata.map || []),
+                                    ...(metadata.map || [])
+                                ])
+                            ];
+                        }
+
+                        // Clean up if empty
+                        if (sectionData.metadata.map && sectionData.metadata.map.length === 0) {
+                            delete sectionData.metadata.map;
+                        }
 
                         // Merge tag arrays using Set
                         sectionData.metadata.tags = [
@@ -582,13 +619,25 @@ function parseDialogueContent(content) {
                     }
                 }
 
+                // Check for global map clearing flag
+                const clearGlobal = sectionData.metadata._clearGlobalMap;
+
                 // Merge map arrays using Set
-                sectionData.metadata.map = [
-                    ...new Set([
-                        ...(sectionData.metadata.map || []),
-                        ...(metadata.map || [])
-                    ])
-                ];
+                if (clearGlobal) {
+                    sectionData.metadata.map = sectionData.metadata.map || [];
+                } else {
+                    sectionData.metadata.map = [
+                        ...new Set([
+                            ...(sectionData.metadata.map || []),
+                            ...(metadata.map || [])
+                        ])
+                    ];
+                }
+
+                // Clean up if empty
+                if (sectionData.metadata.map && sectionData.metadata.map.length === 0) {
+                    delete sectionData.metadata.map;
+                }
 
                 // Merge tag arrays using Set
                 sectionData.metadata.tags = [

@@ -52,8 +52,23 @@ const scheduleUpdate = () => {
     }
 };
 
+/**
+ * Gets the 'transcriber' param, ensuring it exists in the provided list.
+ * If the URL param is missing or not found in the list, it returns the first available transcriber.
+ */
+export const getActiveTranscriber = (availableTranscribers: { transcriber: string }[] = []) => {
+    const currentParam = getParam('transcriber');
+
+    if (currentParam && availableTranscribers.some(t => t.transcriber === currentParam)) {
+        return currentParam;
+    }
+
+    return availableTranscribers[availableTranscribers.length - 1]?.transcriber;
+};
+
 export const urlAccess = {
     getParam,
     setParam,
-    clearParam
+    clearParam,
+    getActiveTranscriber
 };
