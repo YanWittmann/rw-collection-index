@@ -7,6 +7,7 @@ export interface PearlSelector {
 export interface PearlChapter {
     name: string;
     ids: (string | PearlSelector)[];
+    defaultOpen?: boolean;
 }
 
 export const pearlOrder: PearlChapter[] = [
@@ -158,7 +159,7 @@ export const findPearlCategory = (pearl: PearlData): string => {
     return "Other";
 };
 
-export const orderPearls = (pearls: PearlData[]): { name: string, items: PearlData[] }[] => {
+export const orderPearls = (pearls: PearlData[]): { name: string, items: PearlData[], defaultOpen?: boolean }[] => {
     const pearlsById = pearls.reduce((acc, pearl) => {
         acc[pearl.id] = pearl;
         return acc;
@@ -192,11 +193,11 @@ export const orderPearls = (pearls: PearlData[]): { name: string, items: PearlDa
 
         return {
             name: chapter.name,
-            items: chapterItems
+            items: chapterItems,
+            defaultOpen: chapter.defaultOpen ?? true
         };
     });
 
-    // Check if any string IDs are not found
     for (const chapter of pearlOrder) {
         for (const idOrSelector of chapter.ids) {
             if (typeof idOrSelector === 'string' && !pearlsById[idOrSelector]) {
@@ -206,7 +207,7 @@ export const orderPearls = (pearls: PearlData[]): { name: string, items: PearlDa
     }
 
     const uncoveredPearls = pearls.filter(pearl => !processedPearlIds.has(pearl.id));
-    orderedPearls.push({ name: "Other", items: uncoveredPearls });
+    orderedPearls.push({ name: "Other", items: uncoveredPearls, defaultOpen: true });
     return orderedPearls;
 }
 
