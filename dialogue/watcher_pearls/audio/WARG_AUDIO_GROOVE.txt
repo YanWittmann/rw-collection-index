@@ -1,5 +1,5 @@
 internalId: AUDIO_GROOVE
-color: #B26889
+color: #ff8095
 type: pearl
 name: Audio: Groove
 tag: watcher

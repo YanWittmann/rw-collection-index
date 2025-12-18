@@ -1,5 +1,5 @@
 internalId: TEXT_NOTIONOFSELF
-color: #3C683E
+color: #66bf66
 type: pearl
 name: Notion of Self
 tag: watcher

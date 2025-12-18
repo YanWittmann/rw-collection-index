@@ -1,6 +1,5 @@
 type: pearl
 tag: watcher
-color: {randomPick--#b3b3b3--#4b4653}
 info: Pearls without explicitly defined projections show a random miscellaneous projection.
 
 === transcription: PearlReader
@@ -9,6 +8,7 @@ md-var-DialogueId: img1
 md-sourceDialogue: img1.txt
 md-name: Misc: Image 1
 md-tag: watcher
+md-color: {randomPick--#ffdba6--#ad8a58}
 SEQUENCE[SPEED=1000]
 ![PearlReader/misc/img1/1.png][STYLE=rounded]
 ![PearlReader/misc/img1/2.png][STYLE=rounded]
@@ -22,6 +22,7 @@ md-var-DialogueId: img2
 md-name: Misc: Image 2
 md-sourceDialogue: img2.txt
 md-tag: watcher
+md-color: {randomPick--#ffdba6--#ad8a58}
 SEQUENCE[SPEED=1000]
 ![PearlReader/misc/img2/1.png][STYLE=rounded]
 ![PearlReader/misc/img2/2.png][STYLE=rounded]
@@ -40,6 +41,7 @@ md-name: Misc: Image 3
 md-sourceDialogue: misc_img_anim2.png
 md-sourceDialogue: img3.txt
 md-tag: watcher
+md-color: {randomPick--#ffdba6--#ad8a58}
 SEQUENCE[SPEED=600]
 ![PearlReader/misc/img3/1.png][STYLE=rounded]
 ![PearlReader/misc/img3/2.png][STYLE=rounded]
@@ -57,6 +59,7 @@ md-var-DialogueId: img4
 md-name: Misc: Image 4
 md-sourceDialogue: img4.txt
 md-tag: watcher
+md-color: {randomPick--#ffdba6--#ad8a58}
 SEQUENCE[SPEED=1000]
 ![PearlReader/misc/img4/1.png][STYLE=rounded]
 ![PearlReader/misc/img4/2.png][STYLE=rounded]
@@ -75,6 +78,7 @@ md-var-DialogueId: img5
 md-name: Misc: Image 5
 md-sourceDialogue: img5.txt
 md-tag: watcher
+md-color: {randomPick--#ffdba6--#ad8a58}
 SEQUENCE[SPEED=1800]
 ![PearlReader/misc/img5/1.png][STYLE=rounded]
 ![PearlReader/misc/img5/2.png][STYLE=rounded]
@@ -85,6 +89,7 @@ md-var-DialogueId: img6
 md-name: Misc: Image 6
 md-sourceDialogue: img6.txt
 md-tag: watcher
+md-color: {randomPick--#ffdba6--#ad8a58}
 SEQUENCE[SPEED=1800]
 ![PearlReader/misc/img6/1.png][STYLE=rounded]
 ![PearlReader/misc/img6/2.png][STYLE=rounded]
@@ -95,6 +100,7 @@ md-var-DialogueId: img7
 md-name: Misc: Image 7
 md-sourceDialogue: img7.txt
 md-tag: watcher
+md-color: {randomPick--#ffdba6--#ad8a58}
 SEQUENCE[SPEED=1800]
 ![PearlReader/misc/img7/1.png][STYLE=rounded]
 ![PearlReader/misc/img7/2.png][STYLE=rounded]
@@ -105,6 +111,7 @@ md-var-DialogueId: img8
 md-name: Misc: Image 8
 md-sourceDialogue: img8.txt
 md-tag: watcher
+md-color: {randomPick--#ffdba6--#ad8a58}
 SEQUENCE[SPEED=1400]
 ![PearlReader/misc/img8/1.png][STYLE=rounded]
 ![PearlReader/misc/img8/2.png][STYLE=rounded]
@@ -117,6 +124,7 @@ md-var-DialogueId: img9
 md-name: Misc: Image 9
 md-sourceDialogue: img9.txt
 md-tag: watcher
+md-color: {randomPick--#ffdba6--#ad8a58}
 SEQUENCE[SPEED=1000]
 ![PearlReader/misc/img9/1.png][STYLE=rounded]
 ![PearlReader/misc/img9/2.png][STYLE=rounded]
@@ -131,6 +139,7 @@ md-var-DialogueId: misc1
 md-name: Misc: Misc 1
 md-sourceDialogue: misc1.txt
 md-tag: watcher
+md-color: {randomPick--#b3b3b3--#4b4653}
 SEQUENCE[SPEED=1000]
 ![PearlReader/misc/misc1/1.png][STYLE=rounded]
 ![PearlReader/misc/misc1/2.png][STYLE=rounded]
@@ -146,6 +155,7 @@ md-var-DialogueId: misc2
 md-name: Misc: Misc 2
 md-sourceDialogue: misc2.txt
 md-tag: watcher
+md-color: {randomPick--#b3b3b3--#4b4653}
 SEQUENCE[SPEED=1000]
 ![PearlReader/misc/misc2/1.png][STYLE=rounded]
 ![PearlReader/misc/misc2/2.png][STYLE=rounded]
@@ -158,6 +168,7 @@ md-var-DialogueId: misc3
 md-name: Misc: Misc 3
 md-sourceDialogue: misc3.txt
 md-tag: watcher
+md-color: {randomPick--#b3b3b3--#4b4653}
 SEQUENCE[SPEED=700]
 ![PearlReader/misc/misc3/1.png][STYLE=rounded]
 ![PearlReader/misc/misc3/2.png][STYLE=rounded]
@@ -173,6 +184,7 @@ md-var-DialogueId: misc4
 md-name: Misc: Misc 4
 md-sourceDialogue: misc4.txt
 md-tag: watcher
+md-color: {randomPick--#b3b3b3--#4b4653}
 SEQUENCE[SPEED=600]
 ![PearlReader/misc/misc4/1.png][STYLE=rounded]
 ![PearlReader/misc/misc4/2.png][STYLE=rounded]
@@ -194,6 +206,7 @@ md-var-DialogueId: misc5
 md-name: Misc: Misc 5
 md-sourceDialogue: misc5.txt
 md-tag: watcher
+md-color: {randomPick--#b3b3b3--#4b4653}
 SEQUENCE[SPEED=1000]
 ![PearlReader/misc/misc5/1.png][STYLE=rounded]
 ![PearlReader/misc/misc5/2.png][STYLE=rounded]
@@ -207,6 +220,7 @@ md-var-DialogueId: text1
 md-name: Misc: Text 1
 md-sourceDialogue: text1.txt
 md-tag: watcher
+md-color: {randomPick--#a6f5ff--#61acc2}
 SEQUENCE[SPEED=800]
 ![PearlReader/misc/text1/1.png][STYLE=rounded]
 ![PearlReader/misc/text1/2.png][STYLE=rounded]
@@ -227,6 +241,7 @@ md-var-DialogueId: text2
 md-name: Misc: Text 2
 md-sourceDialogue: text2.txt
 md-tag: watcher
+md-color: {randomPick--#a6f5ff--#61acc2}
 SEQUENCE[SPEED=1000]
 ![PearlReader/misc/text2/1.png][STYLE=rounded]
 ![PearlReader/misc/text2/2.png][STYLE=rounded]
@@ -248,6 +263,7 @@ md-var-DialogueId: text3
 md-name: Misc: Text 3
 md-sourceDialogue: text3.txt
 md-tag: watcher
+md-color: {randomPick--#a6f5ff--#61acc2}
 SEQUENCE[SPEED=1000]
 ![PearlReader/misc/text3/1.png][STYLE=rounded]
 ![PearlReader/misc/text3/2.png][STYLE=rounded]
@@ -263,6 +279,7 @@ md-var-DialogueId: text4
 md-name: Misc: Text 4
 md-sourceDialogue: text4.txt
 md-tag: watcher
+md-color: {randomPick--#a6f5ff--#61acc2}
 SEQUENCE[SPEED=1000]
 ![PearlReader/misc/text4/1.png][STYLE=rounded]
 ![PearlReader/misc/text4/2.png][STYLE=rounded]
@@ -283,6 +300,7 @@ md-var-DialogueId: text5
 md-name: Misc: Text 5
 md-sourceDialogue: text5.txt
 md-tag: watcher
+md-color: {randomPick--#a6f5ff--#61acc2}
 SEQUENCE[SPEED=1000]
 ![PearlReader/misc/text5/1.png][STYLE=rounded]
 ![PearlReader/misc/text5/2.png][STYLE=rounded]
@@ -298,6 +316,7 @@ md-var-DialogueId: text6
 md-name: Misc: Text 6
 md-sourceDialogue: text6.txt
 md-tag: watcher
+md-color: {randomPick--#a6f5ff--#61acc2}
 SEQUENCE[SPEED=1000]
 ![PearlReader/misc/text6/1.png][STYLE=rounded]
 ![PearlReader/misc/text6/2.png][STYLE=rounded]
@@ -311,6 +330,7 @@ md-var-DialogueId: text7
 md-name: Misc: Text 7
 md-sourceDialogue: text7.txt
 md-tag: watcher
+md-color: {randomPick--#a6f5ff--#61acc2}
 SEQUENCE[SPEED=1000]
 ![PearlReader/misc/text7/1.png][STYLE=rounded]
 ![PearlReader/misc/text7/2.png][STYLE=rounded]

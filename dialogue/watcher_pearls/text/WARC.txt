@@ -1,5 +1,5 @@
 internalId: TEXT_CONTEMPT
-color: #2A1C1F
+color: #bd7a8a
 type: pearl
 name: Contempt
 tag: watcher

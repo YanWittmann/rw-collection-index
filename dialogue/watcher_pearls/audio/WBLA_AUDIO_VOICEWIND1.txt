@@ -1,5 +1,5 @@
 internalId: AUDIO_VOICEWIND1
-color: #320621
+color: #620d3d
 type: pearl
 name: Audio: Voicewind 1
 tag: watcher

@@ -1,5 +1,5 @@
 internalId: TEXT_STARDUST
-color: #143225
+color: #59e6a6
 type: pearl
 name: Stardust
 tag: watcher

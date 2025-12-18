@@ -385,7 +385,11 @@ export function PearlGrid({
 
         // Apply type filters
         if (filters.types.size > 0) {
-            if (!filters.types.has(pearl.metadata.type)) return false;
+            const typeMatches = filters.types.has(pearl.metadata.type);
+            const watcherEcho = filters.types.has("echo") && pearl.transcribers.some(t => t.transcriber === "spinning-top")
+            if (!typeMatches && !watcherEcho) {
+                return false;
+            }
         }
 
         // Apply region filters

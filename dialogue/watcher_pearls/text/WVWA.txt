@@ -1,5 +1,5 @@
 internalId: TEXT_KITESDAY
-color: #F7E32E
+color: #f2a605
 type: pearl
 name: Kitesday
 tag: watcher

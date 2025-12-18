@@ -1,5 +1,5 @@
 internalId: TEXT_AUDIO_TALKSHOW
-color: #39062E
+color: #cc14a6
 type: pearl
 name: Talkshow
 tag: watcher

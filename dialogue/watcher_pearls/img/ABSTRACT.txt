@@ -1,5 +1,5 @@
 internalId: Abstract
-color: #2C7868
+color: #007373
 type: pearl
 name: ABSTRACT
 tag: watcher

@@ -1,5 +1,5 @@
 internalId: TEXT_SECRET
-color: #350C12
+color: #803399
 type: pearl
 name: Secret
 tag: watcher

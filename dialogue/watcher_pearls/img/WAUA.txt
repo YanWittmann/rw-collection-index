@@ -1,5 +1,5 @@
 internalId: WAUA
-color: #350C12
+color: #f2331a
 type: pearl
 name: WAUA
 tag: watcher

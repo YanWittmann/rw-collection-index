@@ -1,5 +1,5 @@
 internalId: AUDIO_JAM3
-color: #0E8F59
+color: #14ff95
 type: pearl
 name: Audio: Jam 3
 tag: watcher

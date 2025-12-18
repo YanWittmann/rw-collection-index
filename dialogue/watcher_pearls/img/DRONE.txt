@@ -1,5 +1,5 @@
 internalId: DRONE
-color: #493828
+color: #e6b380
 type: pearl
 name: Drone
 tag: watcher
