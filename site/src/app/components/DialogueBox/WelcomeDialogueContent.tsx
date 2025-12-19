@@ -5,6 +5,7 @@ import UnlockManager from "../../utils/unlockManager"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
 import { useAppContext } from "../../context/AppContext";
 import { RwIcon } from "../PearlGrid/RwIcon";
+import { RwCheckbox } from "../other/RwCheckbox";
 
 interface ControlItem {
     key: string
@@ -59,39 +60,36 @@ export function WelcomeDialogueContent() {
                     <div className="text-lg font-medium">Configuration</div>
 
                     {/* Modded Content Toggle */}
-                    <div className="flex gap-4 items-center">
-                        <RwIconButton
-                            square={true}
-                            onClick={() => handleDatasetChange(datasetKey === 'modded' ? 'vanilla' : 'modded')}
-                            aria-label="Toggle Modded Content"
-                        >
-                            {datasetKey === 'modded' && <RwIcon type="check"/>}
-                        </RwIconButton>
-                        <span>Modded Content</span>
-                    </div>
+                    <RwCheckbox
+                        checked={datasetKey === 'modded'}
+                        onCheckedChange={(checked) => handleDatasetChange(checked ? 'modded' : 'vanilla')}
+                    >
+                        Modded Content
+                    </RwCheckbox>
 
                     {/* Spoiler Protection Toggle */}
-                    <div className="flex gap-4 items-center">
-                        <TooltipProvider delayDuration={120}>
-                            <Tooltip>
-                                <TooltipTrigger>
-                                    <RwIconButton
-                                        square={true}
-                                        onClick={toggleUnlockModeCallback}
-                                        aria-label="Toggle Spoiler Protection"
+                    <TooltipProvider delayDuration={120}>
+                        <Tooltip>
+                            {/* We wrap in a span/div because TooltipTrigger passes props to its child,
+                                and we want to ensure the layout remains stable */}
+                            <TooltipTrigger asChild>
+                                <span>
+                                    <RwCheckbox
+                                        checked={unlockMode === 'unlock'}
+                                        onCheckedChange={toggleUnlockModeCallback}
                                     >
-                                        {unlockMode === 'unlock' && <RwIcon type="check"/>}
-                                    </RwIconButton>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    <div className="text-center">
-                                        Hides all content until you unlock it manually.<br/>Uses a progressive hint system to help you find items.
-                                    </div>
-                                </TooltipContent>
-                            </Tooltip>
-                        </TooltipProvider>
-                        <span>Spoiler Protection</span>
-                    </div>
+                                        Spoiler Protection
+                                    </RwCheckbox>
+                                </span>
+                            </TooltipTrigger>
+                            <TooltipContent side="left">
+                                <div className="text-center">
+                                    Hides all content until you unlock it manually.<br/>
+                                    Uses a progressive hint system to help you find items.
+                                </div>
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
 
                     {/* Other Buttons */}
                     <div className="flex flex-row space-x-3 pt-2">
