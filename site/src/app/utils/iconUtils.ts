@@ -7,6 +7,7 @@ export const hexToRgba = (hex: string) => {
 
 /**
  * Creates a Canvas element with the tinted icon drawn onto it.
+ * Used by RwShareTextEditor and the Favicon generator.
  */
 export const generateTintedCanvas = async (
     type: string,
@@ -29,7 +30,7 @@ export const generateTintedCanvas = async (
         image.src = `img/${type}.png`;
         image.crossOrigin = "anonymous";
         image.onload = () => resolve(image);
-        image.onerror = () => reject(new Error("Failed to load icon image"));
+        image.onerror = () => reject(new Error("Failed to load icon image: " + type));
     });
 
     // Draw original image
@@ -45,7 +46,6 @@ export const generateTintedCanvas = async (
         const scaleFrom1To255 = (value: number) => value * 255;
 
         for (let i = 0; i < data.length; i += 4) {
-            // Standard Rain World coloring logic: multiply texture value by color value
             if (data[i + 3] > 0) { // If not transparent
                 data[i] = scaleFrom1To255(scaleFrom255To1(rgba.r) * scaleFrom255To1(data[i]));
                 data[i + 1] = scaleFrom1To255(scaleFrom255To1(rgba.g) * scaleFrom255To1(data[i + 1]));

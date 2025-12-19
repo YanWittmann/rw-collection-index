@@ -15,21 +15,23 @@ import { generateTintedImage } from './utils/iconUtils';
 const PearlGrid = React.lazy(() => import('./components/PearlGrid/PearlGrid'));
 const DialogueBox = React.lazy(() => import('./components/DialogueBox/DialogueBox').then(module => ({ default: module.DialogueBox })));
 
+const DEFAULT_FAVICON = 'favicon.svg';
+
 const Content: React.FC<{ orderer: (pearls: PearlData[]) => any }> = ({ orderer }) => {
     const isMobile = useIsMobile();
     const { selectedPearlId, selectedPearlData } = useAppContext();
     useUrlSync();
 
-    // Update meta tags and Favicon dynamically based on selected pearl
     useEffect(() => {
         const updateFavicon = (url: string) => {
-            let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
-            if (!link) {
-                link = document.createElement('link');
-                link.rel = 'icon';
-                document.head.appendChild(link);
-            }
+            const existingLinks = document.querySelectorAll("link[rel*='icon']");
+            existingLinks.forEach(link => link.remove());
+
+            const link = document.createElement('link');
+            link.type = 'image/png';
+            link.rel = 'icon';
             link.href = url;
+            document.head.appendChild(link);
         };
 
         const existingDescription = document.querySelector('meta[name="description"]');
@@ -129,14 +131,15 @@ const Content: React.FC<{ orderer: (pearls: PearlData[]) => any }> = ({ orderer 
                     : selectedPearlData.metadata.type;
                 const iconColor = selectedPearlData.metadata.color || null;
 
+                // Call the composite function with the configuration
                 generateTintedImage(iconType, iconColor)
                     .then(dataUrl => updateFavicon(dataUrl))
                     .catch(err => {
-                        console.warn("Failed to generate favicon", err);
-                        updateFavicon(`img/${iconType}.png`);
+                        console.warn("Failed to generate composite favicon", err);
+                        updateFavicon(DEFAULT_FAVICON);
                     });
             } else {
-                updateFavicon('favicon.ico');
+                updateFavicon(DEFAULT_FAVICON);
             }
         }, 100);
 
