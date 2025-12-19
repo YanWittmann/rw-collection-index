@@ -9,6 +9,7 @@ import { AppProvider, useAppContext } from './context/AppContext';
 import { useUrlSync } from './hooks/useUrlSync';
 import { cn } from '@shadcn/lib/utils';
 import { SourceDecrypted } from './utils/speakers';
+import { generateTintedImage } from './utils/iconUtils';
 
 // Lazy load UI components
 const PearlGrid = React.lazy(() => import('./components/PearlGrid/PearlGrid'));
@@ -16,8 +17,132 @@ const DialogueBox = React.lazy(() => import('./components/DialogueBox/DialogueBo
 
 const Content: React.FC<{ orderer: (pearls: PearlData[]) => any }> = ({ orderer }) => {
     const isMobile = useIsMobile();
-    const { selectedPearlId } = useAppContext();
+    const { selectedPearlId, selectedPearlData } = useAppContext();
     useUrlSync();
+
+    // Update meta tags and Favicon dynamically based on selected pearl
+    useEffect(() => {
+        const updateFavicon = (url: string) => {
+            let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
+            if (!link) {
+                link = document.createElement('link');
+                link.rel = 'icon';
+                document.head.appendChild(link);
+            }
+            link.href = url;
+        };
+
+        const existingDescription = document.querySelector('meta[name="description"]');
+        const existingTitle = document.querySelector('title');
+        const existingOgTitle = document.querySelector('meta[property="og:title"]');
+        const existingOgDescription = document.querySelector('meta[property="og:description"]');
+
+        if (existingDescription) existingDescription.remove();
+        if (existingTitle) existingTitle.remove();
+        if (existingOgTitle) existingOgTitle.remove();
+        if (existingOgDescription) existingOgDescription.remove();
+
+        // 1. Update Title and Meta Tags
+        if (selectedPearlData) {
+            const firstTranscriber = selectedPearlData.transcribers[0];
+            let dialogueSummary = '';
+            if (firstTranscriber && firstTranscriber.lines) {
+                const normalizedLines = [];
+
+                for (const line of firstTranscriber.lines) {
+                    let text = line.text;
+
+                    if (text === "MONO") continue;
+                    if (text.startsWith('SEQUENCE') || text.startsWith('![')) continue;
+
+                    text = text.replace(/!\[.*?].*/g, '');
+                    text = text.replace(/\[.*?]/g, '');
+                    text = text.trim();
+
+                    if (text) {
+                        if (text.startsWith('/')) {
+                            text = text.substring(1).trim();
+                        } else if (text.startsWith('|')) {
+                            text = text.substring(1).trim();
+                        } else if (text.startsWith('~')) {
+                            text = text.substring(1).trim();
+                        }
+
+                        if (text) {
+                            normalizedLines.push(line.speaker ? `${line.speaker}: ${text}` : text);
+                        }
+                    }
+                }
+
+                dialogueSummary = normalizedLines
+                    .slice(0, 6)
+                    .join(' ')
+                    .substring(0, 200);
+            }
+            const effectiveDialogueSummary = dialogueSummary || `Dialogue content for ${selectedPearlData.metadata.name || 'Lore'} from the Rain World Collection Index.`;
+            const effectiveTitle = (selectedPearlData.metadata.name ? selectedPearlData.metadata.name + " | " : "") + "Rain World Collection Index";
+
+            const descriptionMeta = document.createElement('meta');
+            descriptionMeta.name = 'description';
+            descriptionMeta.content = effectiveDialogueSummary;
+            document.head.appendChild(descriptionMeta);
+
+            const titleElement = document.createElement('title');
+            titleElement.textContent = effectiveTitle;
+            document.head.appendChild(titleElement);
+
+            const ogTitleMeta = document.createElement('meta');
+            ogTitleMeta.setAttribute('property', 'og:title');
+            ogTitleMeta.content = effectiveTitle;
+            document.head.appendChild(ogTitleMeta);
+
+            const ogDescriptionMeta = document.createElement('meta');
+            ogDescriptionMeta.setAttribute('property', 'og:description');
+            ogDescriptionMeta.content = effectiveDialogueSummary;
+            document.head.appendChild(ogDescriptionMeta);
+        } else {
+            const defaultDescriptionMeta = document.createElement('meta');
+            defaultDescriptionMeta.name = 'description';
+            defaultDescriptionMeta.content = 'Explore and track all Pearls, Broadcasts, Downpour and The Watcher DLC content, Iterator dialogues, Echoes and more from the game Rain World in your browser. Full-text search, view interactive map locations and use the spoiler protection functionality.';
+            document.head.appendChild(defaultDescriptionMeta);
+
+            const defaultTitleElement = document.createElement('title');
+            defaultTitleElement.textContent = 'Rain World Collection Index | Pearls, Broadcasts, Downpour & The Watcher DLC';
+            document.head.appendChild(defaultTitleElement);
+
+            const defaultOgTitleMeta = document.createElement('meta');
+            defaultOgTitleMeta.setAttribute('property', 'og:title');
+            defaultOgTitleMeta.content = 'Rain World Collection Index | Pearls, Broadcasts, Downpour & The Watcher DLC';
+            document.head.appendChild(defaultOgTitleMeta);
+
+            const defaultOgDescriptionMeta = document.createElement('meta');
+            defaultOgDescriptionMeta.setAttribute('property', 'og:description');
+            defaultOgDescriptionMeta.content = 'Complete interactive database of Rain World lore. Browse Pearls, Broadcasts, Dialogue, and more with search and spoiler protection.';
+            document.head.appendChild(defaultOgDescriptionMeta);
+        }
+
+        // 2. Update Favicon
+        const debounceTimer = setTimeout(() => {
+            if (selectedPearlData) {
+                const iconType = selectedPearlData.metadata.type === 'item'
+                    ? (selectedPearlData.metadata.subType || 'pearl')
+                    : selectedPearlData.metadata.type;
+                const iconColor = selectedPearlData.metadata.color || null;
+
+                generateTintedImage(iconType, iconColor)
+                    .then(dataUrl => updateFavicon(dataUrl))
+                    .catch(err => {
+                        console.warn("Failed to generate favicon", err);
+                        updateFavicon(`img/${iconType}.png`);
+                    });
+            } else {
+                updateFavicon('favicon.ico');
+            }
+        }, 100);
+
+        return () => clearTimeout(debounceTimer);
+
+    }, [selectedPearlData]);
 
     const pearlGridComponent = (
         <Suspense fallback={<LoadingSpinner/>}>
