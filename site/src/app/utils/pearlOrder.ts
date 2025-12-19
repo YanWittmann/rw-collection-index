@@ -11,6 +11,7 @@ export interface PearlChapter {
     defaultOpen?: boolean;
     headerType?: "default" | "banner";
     icon?: string;
+    link?: string;
 }
 
 export interface OrderedChapter {
@@ -20,6 +21,7 @@ export interface OrderedChapter {
     defaultOpen?: boolean;
     headerType?: "default" | "banner";
     icon?: string;
+    link?: string;
 }
 
 const vanillaPearlOrder: PearlChapter[] = [
@@ -163,6 +165,7 @@ const moddedPearlOrder: PearlChapter[] = [
         name: "Drainage System Plus",
         headerType: "banner",
         icon: "img/modded/DSP/DS_plus_thumbnail.png",
+        link: "https://steamcommunity.com/sharedfiles/filedetails/?id=2993225799",
         defaultOpen: false,
         ids: [
             "DSP_DrainageSystemPlus"
@@ -241,7 +244,8 @@ export const orderPearls = (pearls: PearlData[], chapters: PearlChapter[]): Orde
             subChapters: subChapters,
             defaultOpen: chapter.defaultOpen ?? true,
             headerType: chapter.headerType,
-            icon: chapter.icon
+            icon: chapter.icon,
+            link: chapter.link
         };
     };
 

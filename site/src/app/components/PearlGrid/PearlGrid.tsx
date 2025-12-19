@@ -84,11 +84,21 @@ const SearchBar = () => {
             },
             {
                 title: "Regions",
-                options: sortedRegions.map(r => ({ id: r, label: regionNames[r] ?? r, content: r, iconColor: regionColors[r] })),
+                options: sortedRegions.map(r => ({
+                    id: r,
+                    label: regionNames[r] ?? r,
+                    content: r,
+                    iconColor: regionColors[r]
+                })),
             },
             {
                 title: "Speakers",
-                options: sortedSpeakers.map(s => ({ id: s, label: speakerNames[s] ?? s, content: s, iconColor: speakersColors[s] })),
+                options: sortedSpeakers.map(s => ({
+                    id: s,
+                    label: speakerNames[s] ?? s,
+                    content: s,
+                    iconColor: speakersColors[s]
+                })),
             }
         ];
     }, [pearls]);
@@ -108,7 +118,8 @@ const SearchBar = () => {
                         onClick={() => onTextInput('')}
                         className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-white/60 hover:text-white focus:outline-none transition-colors"
                         aria-label="Clear search">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2}
+                             stroke="currentColor" className="w-4 h-4">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>
@@ -116,7 +127,8 @@ const SearchBar = () => {
             </div>
             <PearlFilter filters={filters} setFilters={setFilters} filterSections={filterSections}/>
             {isMobile && (
-                <RwIconButton square={false} onClick={onToggleUnlockMode} className="shrink-0" aria-label="Toggle Unlock Mode">
+                <RwIconButton square={false} onClick={onToggleUnlockMode} className="shrink-0"
+                              aria-label="Toggle Unlock Mode">
                     <span className="text-white">{unlockMode === "all" ? "Spoiler" : "Show All"}</span>
                 </RwIconButton>
             )}
@@ -124,8 +136,88 @@ const SearchBar = () => {
     );
 };
 
+const BannerChapterHeader = React.memo(({ flatChapter, onToggle }: {
+    flatChapter: FlatChapterItem,
+    onToggle: () => void
+}) => {
+    const { originalChapter, depth, hasSubChapters } = flatChapter;
+    const { icon: iconUrl, link: linkUrl } = originalChapter;
+
+    const iconElement = useMemo(() => {
+        if (!iconUrl) return null;
+
+        const ImageContent = (
+            <img src={iconUrl} alt={"Icon for " + flatChapter.name} />
+        );
+
+        if (linkUrl) {
+            return (
+                <a
+                    href={linkUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 block"
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <RwIconButton
+                        square={true}
+                        aria-label="Open Link"
+                    >
+                        {ImageContent}
+                    </RwIconButton>
+                </a>
+            );
+        }
+
+        return (
+            <RwIconButton
+                square={true}
+                className="shrink-0 w-[52px] h-[52px] p-2 cursor-default"
+                aria-label="Chapter Icon"
+            >
+                {ImageContent}
+            </RwIconButton>
+        );
+    }, [iconUrl, linkUrl, flatChapter.name]);
+
+    return (
+        <div
+            className={cn("flex w-full gap-2", depth > 0 && "mt-2", !hasSubChapters && "mb-3")}
+            style={{
+                marginLeft: `${depth * 16}px`,
+                width: `calc(100% - ${depth * 16}px)`
+            }}
+        >
+            <RwIconButton
+                square={false}
+                className="flex-1"
+                onClick={onToggle}
+                expandedScaleFactor={0.2}
+                aria-label={flatChapter.name}
+            >
+                <div className="flex w-full items-center justify-start gap-4">
+                    <span className={cn("font-medium tracking-wide", flatChapter.isExpanded ? "text-white" : "text-gray-500", flatChapter.name.length > 20 ? "text-sm" : "text-md")}>
+                        {flatChapter.name}
+                    </span>
+                </div>
+            </RwIconButton>
+            {iconElement}
+        </div>
+    );
+});
+
 // wrapper component for lazy loading
-const LazyChapterGrid = ({ flatChapter, chapterIndex, isVisible, setVisibleChapters, currentGridPosition, selectedPearlRef, getHighlightStyle, isAlternateDisplayModeActive, onToggle }: {
+const LazyChapterGrid = ({
+                             flatChapter,
+                             chapterIndex,
+                             isVisible,
+                             setVisibleChapters,
+                             currentGridPosition,
+                             selectedPearlRef,
+                             getHighlightStyle,
+                             isAlternateDisplayModeActive,
+                             onToggle
+                         }: {
     flatChapter: FlatChapterItem
     chapterIndex: number
     isVisible: boolean
@@ -156,24 +248,19 @@ const LazyChapterGrid = ({ flatChapter, chapterIndex, isVisible, setVisibleChapt
         <div ref={observerRef} className="last:mb-4">
             {flatChapter.name && (
                 flatChapter.originalChapter.headerType === "banner" ? (
-                    <RwIconButton
-                        square={false}
-                        className={cn("w-full", flatChapter.depth > 0 && "mt-2", !flatChapter.hasSubChapters && "mb-3")}
-                        onClick={onToggle}
-                        expandedScaleFactor={0.2}
-                        aria-label={flatChapter.name}
-                        style={{ marginLeft: `${flatChapter.depth * 16}px`, width: `calc(100% - ${flatChapter.depth * 16}px)` }}
-                    >
-                        <div className="flex w-full items-center justify-start gap-4">
-                            {flatChapter.originalChapter.icon && (<img src={flatChapter.originalChapter.icon} alt="" className="h-8 w-8 object-contain opacity-80" />)}
-                            <span className={cn("font-medium tracking-wide", flatChapter.isExpanded ? "text-white" : "text-gray-500", flatChapter.name.length > 20 ? "text-sm" : "text-md")}>{flatChapter.name}</span>
-                        </div>
-                    </RwIconButton>
+                    <BannerChapterHeader flatChapter={flatChapter} onToggle={onToggle} />
                 ) : (
-                    <button onClick={onToggle} className={cn("flex items-center gap-2 w-full text-left group focus:outline-none", flatChapter.isExpanded && flatChapter.items.length > 0 && "mb-2")} style={{ paddingLeft: `${flatChapter.depth * 16}px` }}>
+                    <button onClick={onToggle}
+                            className={cn("flex items-center gap-2 w-full text-left group focus:outline-none", flatChapter.isExpanded && flatChapter.items.length > 0 && "mb-2")}
+                            style={{ paddingLeft: `${flatChapter.depth * 16}px` }}>
                         <h3 className="text-white text-sm font-medium group-hover:text-white/90">{flatChapter.name}</h3>
-                        <div className={cn("text-white/60 group-hover:text-white transition-transform duration-200", flatChapter.isExpanded ? "rotate-90" : "rotate-0")}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        <div
+                            className={cn("text-white/60 group-hover:text-white transition-transform duration-200", flatChapter.isExpanded ? "rotate-90" : "rotate-0")}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                 fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                                 strokeLinejoin="round">
+                                <path d="m9 18 6-6-6-6"/>
+                            </svg>
                         </div>
                     </button>
                 )
@@ -183,7 +270,9 @@ const LazyChapterGrid = ({ flatChapter, chapterIndex, isVisible, setVisibleChapt
                     {isVisible ? (
                         <div className="grid grid-cols-5 gap-2 w-fit">
                             {flatChapter.items.map((pearl, pearlIndex) => pearl && pearl.id && (
-                                <div key={`pearl-${pearl.id}`} ref={currentGridPosition && getHighlightStyle(flatChapter.id, pearlIndex).outline ? selectedPearlRef : undefined} style={getHighlightStyle(flatChapter.id, pearlIndex)}>
+                                <div key={`pearl-${pearl.id}`}
+                                     ref={currentGridPosition && getHighlightStyle(flatChapter.id, pearlIndex).outline ? selectedPearlRef : undefined}
+                                     style={getHighlightStyle(flatChapter.id, pearlIndex)}>
                                     <MemoizedPearlItem
                                         pearl={pearl}
                                         pearlIndex={pearlIndex}
@@ -202,7 +291,7 @@ const LazyChapterGrid = ({ flatChapter, chapterIndex, isVisible, setVisibleChapt
 };
 
 const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({ pearl, pearlIndex, showTranscriberCount }) => (
-    <PearlItem pearl={pearl} pearlIndex={pearlIndex} showTranscriberCount={showTranscriberCount} />
+    <PearlItem pearl={pearl} pearlIndex={pearlIndex} showTranscriberCount={showTranscriberCount}/>
 ));
 
 const useIsScrollable = (ref: React.RefObject<HTMLDivElement | null>, dependencies: any[]) => {
@@ -351,7 +440,8 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
                     ))}
                 </div>
             </div>
-            <div className={cn("absolute bottom-0 left-0 right-0 h-8 pointer-events-none bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-white/20 to-transparent transition-opacity duration-300 border-b-2 border-white/50 z-10", isScrollable && showGradient ? "opacity-100" : "opacity-0")} />
+            <div
+                className={cn("absolute bottom-0 left-0 right-0 h-8 pointer-events-none bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-white/20 to-transparent transition-opacity duration-300 border-b-2 border-white/50 z-10", isScrollable && showGradient ? "opacity-100" : "opacity-0")}/>
         </div>
     );
 }

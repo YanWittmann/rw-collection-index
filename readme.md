@@ -112,6 +112,12 @@ Then run [decrypt-rw-text.py](site/build-scripts/decrypt-rw-text.py) inside your
 `SteamLibrary\steamapps\common\Rain World\RainWorld_Data\StreamingAssets\decrypt` folder to create the `decrypted.json`
 and move it to the [source](dialogue/source) folder.
 
+There is also a custom script available for decoding entire directories of files, with special case handling in case the
+file was renamed and the salt for the hash differs from the expected
+one: [decrypt-entry.py](site/build-scripts/decrypt-entry.py).
+I sometimes fails though, and I'm not sure why. The success rate is roughly 98%, so for the rest we have to fallback on
+the decryption mod.
+
 ## Contributing
 
 Contributions are welcome! Please open an Issue or Pull Request to discuss changes.
