@@ -6,13 +6,13 @@ const levenshtein = require('fast-levenshtein');
 const PROFILES = {
     vanilla: {
         dialogueDir: path.join(__dirname, '../dialogue'),
-        outputFile: path.join(__dirname, 'src/generated/parsed-dialogues.json'),
-        sourceDecryptedOutputFile: path.join(__dirname, 'src/generated/source-decrypted.json'),
+        outputFile: path.join(__dirname, 'public/data/parsed-dialogues.json'),
+        sourceDecryptedOutputFile: path.join(__dirname, 'public/data/source-decrypted.json'),
     },
     modded: {
         dialogueDir: path.join(__dirname, '../dialogue-modded'),
-        outputFile: path.join(__dirname, 'src/generated/parsed-dialogues-modded.json'),
-        sourceDecryptedOutputFile: path.join(__dirname, 'src/generated/source-decrypted-modded.json'),
+        outputFile: path.join(__dirname, 'public/data/parsed-dialogues-modded.json'),
+        sourceDecryptedOutputFile: path.join(__dirname, 'public/data/source-decrypted-modded.json'),
     },
 };
 
@@ -81,6 +81,29 @@ const mapMetadataTemplates = {
 
 // SECTION: rain world game text source files
 
+const STOP_WORDS = new Set([
+    'the', 'and', 'for', 'that', 'this', 'with', 'you', 'not', 'are', 'but',
+    'from', 'what', 'all', 'were', 'when', 'can', 'said', 'there', 'use',
+    'each', 'which', 'she', 'how', 'their', 'if', 'will', 'up', 'other',
+    'about', 'out', 'many', 'then', 'them', 'these', 'so', 'some', 'her',
+    'would', 'make', 'like', 'him', 'into', 'time', 'has', 'look', 'two',
+    'more', 'write', 'go', 'see', 'number', 'no', 'way', 'could', 'people',
+    'my', 'than', 'first', 'water', 'been', 'call', 'who', 'oil', 'its', 'now',
+    'find', 'long', 'down', 'day', 'did', 'get', 'come', 'made', 'may', 'part'
+]);
+
+function getTokens(text) {
+    if (!text) return new Set();
+    const matches = text.toLowerCase().match(/\w{3,}/g) || [];
+    const tokens = new Set();
+    for (const m of matches) {
+        if (!STOP_WORDS.has(m)) {
+            tokens.add(m);
+        }
+    }
+    return tokens;
+}
+
 function parseSourceDecryptedJsonFile(filePath) {
     try {
         const fileData = fs.readFileSync(filePath, 'utf8');
@@ -89,7 +112,8 @@ function parseSourceDecryptedJsonFile(filePath) {
         return jsonData.filter(entry => entry.c !== undefined).map(entry => ({
             ...entry,
             linesA: entry.c.split(/\n|<LINE>/).map(l => l.replace(/^((\d+|[A-Z]+) : )+/, '').trim()).filter(l => l),
-            linesB: entry.c.split(/\n/).map(l => l.replace(/^((\d+|[A-Z]+) : )+/, '').trim()).filter(l => l)
+            linesB: entry.c.split(/\n/).map(l => l.replace(/^((\d+|[A-Z]+) : )+/, '').trim()).filter(l => l),
+            tokens: getTokens(entry.c)
         }));
     } catch (error) {
         console.error('Error reading or parsing the JSON file:', error);
@@ -99,6 +123,19 @@ function parseSourceDecryptedJsonFile(filePath) {
 
 const sourceDecryptedJsonFile = path.join(dialogueDir, 'source/decrypted.json');
 const gameFiles = parseSourceDecryptedJsonFile(sourceDecryptedJsonFile);
+
+// Build Inverted Index
+const tokenIndex = new Map();
+gameFiles.forEach(entry => {
+    for (const token of entry.tokens) {
+        let list = tokenIndex.get(token);
+        if (!list) {
+            list = [];
+            tokenIndex.set(token, list);
+        }
+        list.push(entry);
+    }
+});
 
 // copy file to generated folder
 fs.copyFileSync(sourceDecryptedJsonFile, sourceDecryptedOutputFile);
@@ -162,10 +199,36 @@ function findBestMatch(lines) {
     lines = lines.flatMap(line => line.split("\\n"));
     lines = lines.filter(line => line.trim().length > 0);
 
+    const inputTokens = getTokens(lines.join(' '));
+    let candidates = gameFiles;
+
+    if (inputTokens.size > 0) {
+        const candidateScores = new Map();
+
+        for (const token of inputTokens) {
+            const matches = tokenIndex.get(token);
+            if (matches) {
+                for (let i = 0; i < matches.length; i++) {
+                    const entry = matches[i];
+                    candidateScores.set(entry, (candidateScores.get(entry) || 0) + 1);
+                }
+            }
+        }
+
+        if (candidateScores.size > 0) {
+            const scoredCandidates = [];
+            for (const [entry, score] of candidateScores.entries()) {
+                scoredCandidates.push({ entry, score });
+            }
+            scoredCandidates.sort((a, b) => b.score - a.score);
+            candidates = scoredCandidates.slice(0, 25).map(c => c.entry);
+        }
+    }
+
     let bestMatch = null;
     let bestScore = -1;
 
-    gameFiles.forEach(entry => {
+    candidates.forEach(entry => {
         let { matchPercentage, totalScore } = checkLinesMatch(lines, entry.linesA);
         if (matchPercentage < 80) {
             const resultB = checkLinesMatch(lines, entry.linesB);

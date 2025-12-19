@@ -5,13 +5,6 @@ import { useUnlockState } from '../hooks/useUnlockState';
 import { getEffectiveTranscriberName } from "../utils/transcriberUtils";
 import { urlAccess } from '../utils/urlAccess';
 import { SourceDecrypted } from '../utils/speakers';
-import vanillaSource from '../../generated/source-decrypted.json';
-import moddedSource from '../../generated/source-decrypted-modded.json';
-
-const ALL_SOURCES: Record<string, SourceDecrypted[]> = {
-    vanilla: vanillaSource as SourceDecrypted[],
-    modded: moddedSource as SourceDecrypted[],
-};
 
 export type UnlockMode = "unlock" | "all";
 
@@ -40,9 +33,10 @@ const AppContext = createContext<AppContextState | undefined>(undefined);
 export const AppProvider: React.FC<{
     children: React.ReactNode;
     pearls: PearlData[];
+    sourceData: SourceDecrypted[];
     datasetKey: string;
     isMobile: boolean;
-}> = ({ children, pearls, datasetKey, isMobile }) => {
+}> = ({ children, pearls, sourceData, datasetKey, isMobile }) => {
     const [selectedPearlId, setSelectedPearlId] = useState<string | null>(null);
     const [selectedTranscriberName, setSelectedTranscriberName] = useState<string | null>(null);
     const [sourceFileDisplay, setSourceFileDisplay] = useState<string | null>(null);
@@ -55,8 +49,6 @@ export const AppProvider: React.FC<{
         speakers: new Set()
     });
     const { unlockVersion } = useUnlockState();
-
-    const activeSourceData = ALL_SOURCES[datasetKey] || ALL_SOURCES['vanilla'];
 
     const selectedPearlData = useMemo(() => {
         if (!selectedPearlId) return null;
@@ -79,7 +71,6 @@ export const AppProvider: React.FC<{
             return;
         }
 
-        // Always select the last available transcriber by default
         const lastTranscriber = pearl.transcribers[pearl.transcribers.length - 1];
         const lastIndex = pearl.transcribers.length - 1;
         const effectiveName = getEffectiveTranscriberName(pearl.transcribers, lastTranscriber.transcriber, lastIndex);
@@ -91,7 +82,6 @@ export const AppProvider: React.FC<{
         setSelectedTranscriberName(name);
     }, []);
 
-    // Effect to load state from URL on initial mount
     useEffect(() => {
         if (unlockMode !== 'all' || !pearls.length) return;
 
@@ -115,7 +105,6 @@ export const AppProvider: React.FC<{
             if (pearlToSelect) {
                 setSelectedPearlId(pearlToSelect.id);
 
-                // Use the robust getActiveTranscriber function to handle URL params and defaults
                 const transcriberToSelect = urlAccess.getActiveTranscriber(pearlToSelect.transcribers);
                 setSelectedTranscriberName(transcriberToSelect);
 
@@ -125,12 +114,11 @@ export const AppProvider: React.FC<{
                 }
             }
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [unlockMode, pearls]); // This should only run when pearls are loaded or unlock mode is toggled.
+    }, [unlockMode, pearls]);
 
     const value: AppContextState = {
         pearls,
-        sourceData: activeSourceData,
+        sourceData: sourceData || [],
         selectedPearlId,
         selectedPearlData,
         selectedTranscriberName,

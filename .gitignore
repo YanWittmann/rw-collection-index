@@ -4,3 +4,7 @@ site/src/generated/parsed-dialogues.json
 site/src/generated/parsed-dialogues-modded.json
 site/src/generated/source-decrypted.json
 site/src/generated/source-decrypted-modded.json
+site/public/data/parsed-dialogues.json
+site/public/data/parsed-dialogues-modded.json
+site/public/data/source-decrypted.json
+site/public/data/source-decrypted-modded.json

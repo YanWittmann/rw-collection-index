@@ -181,7 +181,7 @@ const LazyChapterGrid = ({ flatChapter, chapterIndex, isVisible, setVisibleChapt
             {flatChapter.isExpanded && flatChapter.items.length > 0 && (
                 <>
                     {isVisible ? (
-                        <div className="grid grid-cols-5 gap-2 w-fit pl-2">
+                        <div className="grid grid-cols-5 gap-2 w-fit">
                             {flatChapter.items.map((pearl, pearlIndex) => pearl && pearl.id && (
                                 <div key={`pearl-${pearl.id}`} ref={currentGridPosition && getHighlightStyle(flatChapter.id, pearlIndex).outline ? selectedPearlRef : undefined} style={getHighlightStyle(flatChapter.id, pearlIndex)}>
                                     <MemoizedPearlItem

@@ -4,7 +4,6 @@ import React, { ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import RwShareTextSnippet from "./RwShareTextSnippet";
 import { Button } from "@shadcn/components/ui/button";
-import html2canvas from "html2canvas";
 
 interface RwShareTextEditorProps {
     children: ReactNode;
@@ -80,7 +79,7 @@ const renderIconToCanvas = async (
     return canvas;
 };
 
-// Helper function to convert hex to RGB
+// Helper function to convert hex to RGBA
 const hexToRgba = (hex: string) => {
     const r = parseInt(hex.slice(1, 3), 16);
     const g = parseInt(hex.slice(3, 5), 16);
@@ -206,6 +205,8 @@ export default function RwShareTextEditor({
         const snippetElement = document.querySelector(".rw-share-text-snippet") as HTMLElement;
 
         if (snippetElement) {
+            const html2canvas = (await import("html2canvas")).default;
+
             // Replace icons with canvas elements
             await replaceIconsWithCanvas(snippetElement);
 
