@@ -4,6 +4,12 @@ export interface PearlSelector {
     pattern: RegExp;
 }
 
+export interface LinkItem {
+    title: string;
+    url: string;
+    subtitle?: string;
+}
+
 export interface PearlChapter {
     name: string;
     ids?: (string | PearlSelector)[];
@@ -11,7 +17,7 @@ export interface PearlChapter {
     defaultOpen?: boolean;
     headerType?: "default" | "banner";
     icon?: string;
-    link?: string;
+    link?: string | LinkItem[];
 }
 
 export interface OrderedChapter {
@@ -21,7 +27,7 @@ export interface OrderedChapter {
     defaultOpen?: boolean;
     headerType?: "default" | "banner";
     icon?: string;
-    link?: string;
+    link?: string | LinkItem[];
 }
 
 const vanillaPearlOrder: PearlChapter[] = [
@@ -164,13 +170,17 @@ const moddedPearlOrder: PearlChapter[] = [
     {
         name: "Drainage System Plus",
         headerType: "banner",
-        icon: "img/modded/DSP/DS_plus_thumbnail.png",
-        link: "https://steamcommunity.com/sharedfiles/filedetails/?id=2993225799",
+        icon: "img/modded/DSP/thumb.png",
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Drainage_System_Plus" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=2993225799" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#2993225799" },
+        ],
         defaultOpen: false,
         ids: [
             "DSP_DrainageSystemPlus"
         ]
-    }
+    },
 ];
 
 export const PEARL_ORDER_CONFIGS: Record<string, PearlChapter[]> = {

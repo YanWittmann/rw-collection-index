@@ -11,6 +11,8 @@ import { useAppContext } from "../../context/AppContext";
 import { useFilteredPearls } from "../../hooks/useFilteredPearls";
 import { useChapterExpansion } from "../../hooks/useChapterExpansion";
 import { useKeyboardNavigation } from "../../hooks/useKeyboardNavigation";
+import { Popover, PopoverContent, PopoverTrigger } from "@shadcn/components/ui/popover";
+import { RwScrollableList, RwScrollableListItem } from "../other/RwScrollableList";
 
 interface FlatChapterItem {
     id: string;
@@ -141,19 +143,20 @@ const BannerChapterHeader = React.memo(({ flatChapter, onToggle }: {
     onToggle: () => void
 }) => {
     const { originalChapter, depth, hasSubChapters } = flatChapter;
-    const { icon: iconUrl, link: linkUrl } = originalChapter;
+    const { icon: iconUrl, link: linkData } = originalChapter;
+    const [isLinkPopoverOpen, setIsLinkPopoverOpen] = useState(false);
 
     const iconElement = useMemo(() => {
         if (!iconUrl) return null;
 
         const ImageContent = (
-            <img src={iconUrl} alt={"Icon for " + flatChapter.name} />
+            <img src={iconUrl} alt={"Icon for " + flatChapter.name}/>
         );
 
-        if (linkUrl) {
+        if (typeof linkData === 'string') {
             return (
                 <a
-                    href={linkUrl}
+                    href={linkData}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="shrink-0 block"
@@ -169,6 +172,42 @@ const BannerChapterHeader = React.memo(({ flatChapter, onToggle }: {
             );
         }
 
+        if (Array.isArray(linkData) && linkData.length > 0) {
+            const listItems: RwScrollableListItem[] = linkData.map((link, index) => ({
+                id: `link-${index}`,
+                title: link.title,
+                subtitle: link.subtitle ?? link.url,
+                onClick: () => {
+                    window.open(link.url, "_blank");
+                    setIsLinkPopoverOpen(false);
+                },
+            }));
+
+            return (
+                <Popover open={isLinkPopoverOpen} onOpenChange={setIsLinkPopoverOpen}>
+                    <PopoverTrigger asChild>
+                        <div onClick={(e) => e.stopPropagation()}>
+                            <RwIconButton
+                                square={true}
+                                aria-label="Open Links"
+                                padding="p-2"
+                            >
+                                {ImageContent}
+                            </RwIconButton>
+                        </div>
+                    </PopoverTrigger>
+                    <PopoverContent
+                        className="w-64 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg text-white"
+                        align="end"
+                        sideOffset={5}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <RwScrollableList items={listItems} breakSubtitle={false}/>
+                    </PopoverContent>
+                </Popover>
+            );
+        }
+
         return (
             <RwIconButton
                 square={true}
@@ -178,11 +217,11 @@ const BannerChapterHeader = React.memo(({ flatChapter, onToggle }: {
                 {ImageContent}
             </RwIconButton>
         );
-    }, [iconUrl, linkUrl, flatChapter.name]);
+    }, [iconUrl, linkData, flatChapter.name, isLinkPopoverOpen]);
 
     return (
         <div
-            className={cn("flex w-full gap-2", depth > 0 && "mt-2", !hasSubChapters && "mb-3")}
+            className={cn("flex w-full gap-2", depth > 0 && "mt-2", flatChapter.isExpanded && "mb-3")}
             style={{
                 marginLeft: `${depth * 16}px`,
                 width: `calc(100% - ${depth * 16}px)`

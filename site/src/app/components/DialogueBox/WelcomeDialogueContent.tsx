@@ -16,7 +16,6 @@ interface ControlItem {
 const controls: ControlItem[] = [
     { key: "WASD or ← ↑ → ↓", description: "Navigate through the pearl grid" },
     { key: "Q/E", description: "Switch between transcribers" },
-    { key: "SHIFT", description: "Show number of transcribers" },
     { key: "SWIPE", description: "Mobile: Navigate through the pearl grid" },
 ]
 
