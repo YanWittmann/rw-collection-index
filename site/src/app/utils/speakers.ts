@@ -225,6 +225,9 @@ export const regionNames: { [key: string]: string } = {
     "WSSR": "Unfortunate Evolution",
     "WTDB": "Desolate Tract",
     "WMPA": "Migration Path",
+    // modded
+    "GH": "Hanging Gardens",
+    "PQ": "Corroded Passage",
 }
 
 export function darken(hex: string, amount: number) {

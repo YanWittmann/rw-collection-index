@@ -3,6 +3,7 @@ color: #38b6f1
 secondaryColor: #44BEF7
 type: pearl
 name: Passage 1
+map: region=PQ, room=C04, mapSlugcat=white, impl=none
 
 === transcription: FP-artificer
 md-sourceDialogue: CorrodedPassage/PQPASSAGE1-Artificer.txt

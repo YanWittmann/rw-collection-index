@@ -184,6 +184,20 @@ const moddedPearlOrder: PearlChapter[] = [
         ]
     },
     {
+        name: "Hanging Gardens",
+        headerType: "banner",
+        icon: "img/modded/HangingGardens/thumb.webp",
+        defaultOpen: false,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Hanging_Gardens" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3022284148" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3022284148" },
+        ],
+        ids: [
+            "GH_Pearl"
+        ]
+    },
+    {
         name: "Drainage System Plus",
         headerType: "banner",
         icon: "img/modded/DrainageSystemPlus/thumb.webp",
