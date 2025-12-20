@@ -1,5 +1,5 @@
 import { Dialogue, PearlData } from '../types/types';
-import { speakerNames, transcriberIcons, transcribersColors } from './speakers';
+import { speakerNames, transcriberIcons, transcribersColors, transcribersImages } from './speakers';
 
 export function getEffectiveTranscriberName(transcribers: Dialogue[], transcriberName: string, index: number): string {
     const duplicateCount = transcribers.filter(t => t.transcriber === transcriberName).length;
@@ -33,6 +33,9 @@ export function getTranscriberIcon(transcriber: Dialogue, index?: number) {
     } else if (transcriber.metadata.type === 'item' && transcriber.metadata.subType) {
         color = transcribersColors[transcriber.transcriber];
         iconType = transcriber.metadata.subType;
+    } else if (transcribersImages[transcriber.transcriber] !== undefined) {
+        color = transcribersColors[transcriber.transcriber];
+        iconType = transcribersImages[transcriber.transcriber] ?? transcriber.transcriber;
     } else {
         color = transcribersColors[transcriber.transcriber];
         iconType = transcriberIcons[transcriber.transcriber] ?? transcriber.transcriber;

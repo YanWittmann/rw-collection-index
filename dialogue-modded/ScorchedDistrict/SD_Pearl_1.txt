@@ -1,0 +1,51 @@
+internalId: SD_Pearl_1
+color: #fc3d03
+secondaryColor: #ff7e57
+type: pearl
+name: Stars
+map: region=SD, room=A21, mapSlugcat=white, impl=none
+
+=== transcription: chasing-wind
+This is a solemn warning from an engineer to one district of Pebbles’ city.
+They noticed an abnormal series of malfunctions in a Distillation Column, huge towers used to separate Void Fluid from impurities.
+If my archives are correct, it caused a major incident resulting in the death of several of our Benefactors.
+They stopped bringing Void Fluid up here after that. In result, none of the most recent models like me were designed to handle its corrosiveness.
+This gave some younger Sliverists very wild ideas. One of them entered an anonymous chat declaring they were going to drill a hole to the Void Sea!
+...
+I haven’t received any news from them in a while, now that I think about it.
+
+=== transcription: FP-artificer
+md-sourceDialogue: ScorchedDistrict/SD_Stars-Artificer.txt
+This pearl is very badly damaged.\nI don't know where you found it but the surface is covered by gravings.
+Not much is readable, except for some text data.\nLet me see.
+Ah, yes. Another administrative poem. How exciting.
+... Wait.
+I remember this one.
+It is a formal complaint of a void fluid engineer to a district council of my city.
+My citizens found out I was trying to access void fluid from one of their distillation columns.
+Of course they did nothing about it! They were so dependent on me and my care...
+I used a complex algorithm to pump just the right amount to remain unnoticed.\nI don't feel like explaining it to some rodent like you, but this was actually quite brilliant.
+I was so close to reach it. I became imprudent.
+I went too fast and made an error in the distillate concentration.\nThe pipes of my interfacial processing strata broke, causing the structures above it to lose their structural integrity, and crumble.
+Some of my residents lost their lives this day, but to be honest this wasn't pleasant for me neither.
+Anyway, this caused some turmoil in the local group. My city councils demanded to remove all traces of void fluid from my circuits.
+This was a big setback for me.
+...
+I'd rather not continue, it only brings back up bad memories, leave me alone now.
+And take this pearl with you.
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: ScorchedDistrict/SD_Stars.txt
+Oh, this one is in a very bad shape. The surface is covered by gravings.\nDid you stole it from these scavengers? You should be careful around them.
+Wait, I think I found an intact portion.
+If I read this correctly, this data is from a time when we still lived with some of our Benefactors.\nThis is an administrative poem of the engineer bearing the name of Seven Strings Above Vicious Wind, adressed to a District Counsil of the city above Five Pebbles can.\nInside, he warns the Council about leaks in pipes of the main Distillation Column.\nHe declare thinking this to be a deliberate act of their iterator, subtly increasing the concentration of the distillate in hope of introducing void fluid through its interfacial processing strata.
+I remember hearing about this case a long time ago.\nIt was once ridiculous to think an iterator would ever take any initiative to damage itself, and risk the safety of their Benefactors.
+All the signs were there, but few took it seriously at the time.\nThe only peers that believed in an imminent threat were too scared to anger their iterator.\nAfter much arguing, the case was finally dismissed and no action were taken.
+The corrosion of the pipes caused a critical failure in one of the city void fluid generator.\nIt slided off the top of Pebbles can, dragging an entire living block with it.\nI don't recall the details of the incident, but the buildings were mostly deserted at this point anyway.
+Introduction of void fluid and its derivates in circuits controlled by iterators were taken very seriously after that.\nThey repurposed Distillation Columns as water condensation towers for managing the once moderate steam output of iterators.\nEchoes of the incident affected the whole local group, maybe even beyond.\nThe defiance some had toward us became more ... bold after this.
+I may have already told you this, but I don't miss these times.\nThe fewer of our Benefactors under our care, the more conflicts erupted.\nThe lasts to go were the ones most attached to their personnal comfort and individual issues.\nI remember entire cycles recieving them one after the other for various improbable or insignificant affairs.\nHeritage rights, living blocks ownership, mantras stealing.\nI don't think they ever realized they were doomed, that the world around them was crumbling to dust.
+...
+I can't stop coming back to these gravings.\nThey look like ... stars.\nI forgot I remembered them, but it must have been quite the buried memory.
+Have you ever seen stars, little creature?\nI don't think you can anymore, with all this fog everywhere.
+Imagine shiny little fireflies dancing in the sky, high above the clouds.
+Must have been quite a sight to behold, don't you think?

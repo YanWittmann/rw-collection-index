@@ -198,6 +198,20 @@ const moddedPearlOrder: PearlChapter[] = [
         ]
     },
     {
+        name: "Scorched District",
+        headerType: "banner",
+        icon: "img/modded/ScorchedDistrict/thumb.webp",
+        defaultOpen: false,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Scorched_District" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=2987764922" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#2987764922" },
+        ],
+        ids: [
+            "SD_Pearl_1", "ScorchedDistrict_echo"
+        ]
+    },
+    {
         name: "Drainage System Plus",
         headerType: "banner",
         icon: "img/modded/DrainageSystemPlus/thumb.webp",

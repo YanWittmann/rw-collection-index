@@ -118,7 +118,6 @@ export function DialogueBox() {
     // set up the subtitle with the transcriber's name
     useEffect(() => {
         if (hoveredTranscriber === null) {
-            setLastTranscriberName(null);
             return;
         }
         if (pearl) {

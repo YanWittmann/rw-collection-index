@@ -53,6 +53,13 @@ export const transcribersColors: { [key: string]: string } = {
     "saint": "#aaf156",
     "base-slugcats": "#ffffff",
     "artificer": "#70233c",
+    // modded
+    "chasing-wind": "#66d9bf",
+};
+
+export const transcribersImages: { [key: string]: string } = {
+    // modded
+    "chasing-wind": "modded/chasing-wind",
 };
 
 export const regionColors: { [key: string]: string } = {
@@ -170,6 +177,7 @@ export const speakerNames: { [key: string]: string } = {
     "NSCP-FPB": "Fourteen Polar Bones",
     "NSCP-UD": "Unstable Daydream",
     "NSCP-TSA": "Twelve Stars Above",
+    "chasing-wind": "Chasing Wind",
 }
 
 export const regionNames: { [key: string]: string } = {
@@ -228,6 +236,7 @@ export const regionNames: { [key: string]: string } = {
     // modded
     "GH": "Hanging Gardens",
     "PQ": "Corroded Passage",
+    "SD": "Scorched District",
 }
 
 export function darken(hex: string, amount: number) {

@@ -45,7 +45,7 @@ export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelector
                             <RwIconButton
                                 onClick={() => handleSelectTranscriber(effectiveName)}
                                 selected={effectiveName === selectedTranscriberName}
-                                onMouseEnter={() => onHover(displayTranscriberName)}
+                                onMouseEnter={() => onHover(effectiveName)}
                                 onMouseLeave={() => onHover(null)}
                                 aria-label={displayTranscriberName}
                             >
