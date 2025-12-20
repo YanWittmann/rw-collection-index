@@ -3,6 +3,7 @@ color: #247d45
 type: broadcast
 name: Dark Green
 map: region=DS, room=A19, mapSlugcat=spear
+tag: downpour
 
 === transcription: broadcast
 [LIVE BROADCAST] EQUIPMENT MANIFEST

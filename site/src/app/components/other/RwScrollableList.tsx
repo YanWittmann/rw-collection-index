@@ -57,7 +57,7 @@ export function RwScrollableList({ items, className, itemClassName, breakSubtitl
                     ) : (
                         <button
                             key={item.id}
-                            className={cn("w-full text-left px-4 py-1 relative group text-white/90 hover:underline", itemClassName)}
+                            className={cn("w-full text-left px-4 py-1 relative group text-white/90 hover:underline", itemClassName, !item.onClick && "cursor-not-allowed")}
                             onClick={item.onClick}
                         >
                             <div className="font-medium">{item.title}</div>

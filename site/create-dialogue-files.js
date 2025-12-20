@@ -481,17 +481,34 @@ function parseLine(line) {
     }
 
     const speakerPart = line.slice(0, colonIndex).trim();
+
     // Only recognize as speaker if it's not metadata, not in excludeSpeakers array, and within length limit
     if (!speakerPart.startsWith('md-') &&
         !speakerPart.startsWith('|') &&
         !speakerPart.startsWith('/') &&
         !speakerPart.startsWith('~') &&
-        !excludeSpeakers.includes(speakerPart) &&
         speakerPart.length <= MAX_SPEAKER_LENGTH) {
-        return {
-            speaker: speakerPart,
-            text: line.slice(colonIndex + 1).trim()
-        };
+
+        let actualSpeaker = speakerPart;
+        let namespace = undefined;
+        const hyphenIndex = speakerPart.indexOf('-');
+
+        // Namespace extraction logic: NS-prefix check, valid index > 2, content after hyphen
+        if (speakerPart.startsWith('NS') && hyphenIndex > 2 && hyphenIndex < speakerPart.length - 1) {
+            namespace = speakerPart.slice(0, hyphenIndex);
+            actualSpeaker = speakerPart.slice(hyphenIndex + 1);
+        }
+
+        if (!excludeSpeakers.includes(actualSpeaker)) {
+            const result = {
+                speaker: actualSpeaker,
+                text: line.slice(colonIndex + 1).trim()
+            };
+            if (namespace !== undefined) {
+                result.namespace = namespace;
+            }
+            return result;
+        }
     }
 
     return { text: line };
@@ -563,8 +580,8 @@ const sectionHandlers = {
                 "LttM-saint", "LttM-rivulet", "LttM-pre-collapse", "LttM-gourmand",
                 "FP-artificer",
                 "LttM-FP-saint",
-                "broadcast-pre-FP", "broadcast-post-FP", "broadcast",
-                "saint", "rivulet", "artificer",
+                "broadcast-pre-FP", "broadcast-post-FP",
+                "saint", "rivulet", "artificer", "spearmaster",
             ],
         }
         for (const [tag, transcribers] of Object.entries(tagAddons)) {

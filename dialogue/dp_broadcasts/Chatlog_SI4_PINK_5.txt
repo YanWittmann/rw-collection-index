@@ -3,6 +3,7 @@ color: #e8597f
 type: broadcast
 name: Pink 5
 map: region=SI, room=D05, mapSlugcat=spear
+tag: downpour
 
 === transcription: broadcast
 [LIVE BROADCAST] - PUBLIC GROUP [REFUGEUPONTHREEJEWELS] all participants anonymous

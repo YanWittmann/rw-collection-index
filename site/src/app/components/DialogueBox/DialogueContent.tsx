@@ -1,4 +1,4 @@
-import { speakerNames, speakersColors } from "../../utils/speakers"
+import { getSpeakerInfo } from "../../utils/speakers"
 import type { DialogueLine } from "../../types/types"
 import { renderDialogueLine, sanitizeHtmlSafe } from "../../utils/renderDialogueLine"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
@@ -339,17 +339,23 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
                     return <AudioRenderer key={i} path={mediaDetails.path} alt={mediaDetails.alt}/>;
                 }
 
+                // Resolve speaker info with namespace support
+                const rawSpeakerKey = line.namespace ? `${line.namespace}-${line.speaker}` : line.speaker;
+                const speakerInfo = line.speaker
+                    ? getSpeakerInfo(rawSpeakerKey || "", line.speaker, line.namespace)
+                    : { displayName: undefined, color: undefined };
+
                 return (
                     <div key={i} className={displayType === "centered" ? "text-center" : "mt-0"}>
                         {line.speaker ? (
-                            <span style={{ color: speakersColors[line.speaker] }}>
+                            <span style={{ color: speakerInfo.color }}>
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger className="text-selectable">
                                             {line.speaker}
                                         </TooltipTrigger>
                                         <TooltipContent>
-                                            {speakerNames[line.speaker]} ({speakersColors[line.speaker]})
+                                            {speakerInfo.displayName} ({speakerInfo.color})
                                         </TooltipContent>
                                     </Tooltip>
                                 </TooltipProvider>

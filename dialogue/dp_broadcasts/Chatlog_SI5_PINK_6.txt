@@ -3,6 +3,7 @@ color: #e8597f
 type: broadcast
 name: Pink 6
 map: region=SI, room=B12, mapSlugcat=spear
+tag: downpour
 
 === transcription: broadcast
 [LIVE BROADCAST] - PUBLIC GROUP [OMENSGATE] all participants anonymous

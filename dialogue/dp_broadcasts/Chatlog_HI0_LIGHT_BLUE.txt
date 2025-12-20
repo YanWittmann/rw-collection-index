@@ -3,6 +3,7 @@ color: #667ad1
 type: broadcast
 name: Light Blue
 map: region=HI, room=A18, mapSlugcat=spear
+tag: downpour
 
 === transcription: broadcast
 [LIVE BROADCAST] - PRIVATE Gazing Stars, Secluded Instinct

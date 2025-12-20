@@ -3,6 +3,7 @@ color: #cce370
 type: broadcast
 name: Light Green 2
 map: region=GW, room=E02_PAST, mapSlugcat=spear
+tag: downpour
 
 === transcription: broadcast
 [[LOST HEADER INFORMATION]] - BROADCAST unknown group(NULL) No Significant Harassment, Big Sis Moon

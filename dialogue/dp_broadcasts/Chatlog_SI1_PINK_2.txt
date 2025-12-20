@@ -3,6 +3,7 @@ color: #e8597f
 type: broadcast
 name: Pink 2
 map: region=SI, room=A07, mapSlugcat=spear
+tag: downpour
 
 === transcription: broadcast
 [INCOMING REQUEST] COMMUNICATIONS MANIFEST

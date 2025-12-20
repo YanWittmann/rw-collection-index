@@ -3,6 +3,7 @@ color: #cce370
 type: broadcast
 name: Light Green 3
 map: region=GW, room=C04_PAST, mapSlugcat=spear
+tag: downpour
 
 === transcription: broadcast
 [LIVE BROADCAST] - PUBLIC GROUP [OMENSCAGE] Wandering Omen, Pleading Intellect

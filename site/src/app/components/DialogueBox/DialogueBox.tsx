@@ -23,8 +23,11 @@ export function generateMapLinkFromMapInfo(mapInfo: MapInfo | undefined) {
     // https://rain-world-downpour-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
     // https://rw-watchermap.github.io/map.html?slugcat=white&region=SU&room=SU_B05
     // https://alduris.github.io/watcher-map/map.html?slugcat=white&region=SU&room=SU_B05
-    const { region, room, mapSlugcat } = mapInfo;
+    const { region, room, mapSlugcat, impl } = mapInfo;
     if (!region || !room || !mapSlugcat) {
+        return null;
+    }
+    if (impl === "none") {
         return null;
     }
     if (mapSlugcat === 'watcher') {
@@ -63,6 +66,8 @@ export function DialogueBox() {
     const [justCopiedInternalId, setJustCopiedInternalId] = useState<boolean>(false);
     const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null);
     const selfRef = useRef<HTMLDivElement>(null);
+
+    const [unlockUpdateTrigger, setUnlockUpdateTrigger] = useState(0);
 
     useEffect(() => {
         // touch event handler for swipe gestures
@@ -155,6 +160,7 @@ export function DialogueBox() {
         if (pearl) {
             UnlockManager.unlockPearl(pearl);
             if (selectedTranscriberName) UnlockManager.unlockTranscription(pearl, selectedTranscriberName);
+            setUnlockUpdateTrigger(prev => prev + 1); // Trigger re-render to update isUnlocked status
         }
     }, [pearl, selectedTranscriberName]);
 
@@ -203,8 +209,8 @@ export function DialogueBox() {
                 </div>
             </TooltipTrigger>
             <TooltipContent className="text-center">
-                The above-listed name is a community-given.<br/>
-                The game references this pearl using this internal ID.<br/>
+                The above-listed name is likely community-given.<br/>
+                The game references this data entry using this internal ID.<br/>
                 Click to copy the internal ID to your clipboard.
             </TooltipContent>
         </Tooltip>;
@@ -354,7 +360,7 @@ export function DialogueBox() {
                 />}
             </div>
         </>;
-    }, [pearl, selectedTranscriberName, unlockMode, unlockTranscription, hintProgress, justCopiedInternalId, sourceFileDisplay, filters.text, isMobile, handleSelectPearl, setSourceFileDisplay, sourceData]);
+    }, [pearl, selectedTranscriberName, unlockMode, unlockTranscription, hintProgress, justCopiedInternalId, sourceFileDisplay, filters.text, isMobile, handleSelectPearl, setSourceFileDisplay, sourceData, unlockUpdateTrigger]);
 
     return (
         <div className="flex-1 relative">

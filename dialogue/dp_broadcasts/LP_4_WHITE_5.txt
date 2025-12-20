@@ -5,6 +5,7 @@ name: Attachment (White 5)
 map: MAP-WHITE-BROADCASTS
 mapInfo: ${MAP-LP-PRE-PEB}
 info: ${LP-PRE-PEB}
+tag: downpour
 
 === transcription: broadcast-pre-FP
 [LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment

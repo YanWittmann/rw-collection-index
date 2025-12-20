@@ -79,6 +79,11 @@ export default function HintSystemContent({
                 name: "Map link",
                 lines: [mapLink ?? "No map link available"]
             });
+        } else {
+            effectiveHints.push({
+                name: "Region and Room",
+                lines: ["Found in " + (regionNames[transcriberData.metadata.map[0].region ?? ''] ?? 'Unknown') + " (" + transcriberData.metadata.map[0].region + ") in room " + (transcriberData.metadata.map[0].room ?? 'Unknown')]
+            });
         }
     }
 

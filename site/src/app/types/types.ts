@@ -2,6 +2,7 @@ export type PearlType = "pearl" | "broadcast" | "echo" | "item";
 
 export interface DialogueLine {
     speaker?: string;
+    namespace?: string;
     text: string;
 }
 
@@ -9,6 +10,7 @@ export interface MapInfo {
     region: string;
     room: string;
     mapSlugcat: string;
+    impl?: string;
 }
 
 export interface Dialogue {

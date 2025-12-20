@@ -1,0 +1,15 @@
+internalId: PQ_SEB
+color: #7E7B52
+type: broadcast
+name: Seb 1
+
+=== transcription: broadcast
+md-sourceDialogue: CorrodedPassage/SEBPQ.txt
+[INCOMING REQUEST] COMMUNICATIONS MANIFEST
+[[FILTER]] Message Blocked - All incoming sources are currently disabled.
+MESSAGE CONTENTS:
+NSCP-PS: Pebbles, your behavior has become worrying.
+NSCP-PS: Rumors of Moon's condition are running around, along with your own state.
+NSCP-PS: You made a mistake, but please. Let us help. You don't have to do this alone.
+NSCP-PS: You have to stop before you damage her beyond repair.
+NSCP-PS: Please.

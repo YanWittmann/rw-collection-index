@@ -168,17 +168,33 @@ const vanillaPearlOrder: PearlChapter[] = [
 
 const moddedPearlOrder: PearlChapter[] = [
     {
+        name: "Corroded Passage",
+        headerType: "banner",
+        icon: "img/modded/CorrodedPassage/thumb.webp",
+        defaultOpen: false,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Corroded_Passage" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3222863079" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3222863079" },
+        ],
+        ids: [
+            "PQ_P1", "PQ_P2",
+            "MARPQ", "PUPPQ", "PUPPQ1", "PUPPQ2", "PUPPQ3", "SEBPQ", "SMOLDPQ",
+            "CorrodedPassage_echo"
+        ]
+    },
+    {
         name: "Drainage System Plus",
         headerType: "banner",
-        icon: "img/modded/DSP/thumb.png",
+        icon: "img/modded/DrainageSystemPlus/thumb.webp",
+        defaultOpen: false,
         link: [
             { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Drainage_System_Plus" },
             { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=2993225799" },
             { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#2993225799" },
         ],
-        defaultOpen: false,
         ids: [
-            "DSP_DrainageSystemPlus"
+            "DrainageSystemPlus"
         ]
     },
 ];
@@ -278,6 +294,7 @@ export const orderPearls = (pearls: PearlData[], chapters: PearlChapter[]): Orde
 
     const uncoveredPearls = pearls.filter(pearl => !processedPearlIds.has(pearl.id));
     if (uncoveredPearls.length > 0) {
+        console.log(uncoveredPearls.map(p => p.id))
         orderedPearls.push({ name: "Other", items: uncoveredPearls, defaultOpen: true });
     }
 

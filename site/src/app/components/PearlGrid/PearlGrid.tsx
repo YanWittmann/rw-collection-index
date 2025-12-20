@@ -5,7 +5,7 @@ import PearlItem from "./PearlItem";
 import { cn } from "@shadcn/lib/utils";
 import { RwIconButton } from "../other/RwIconButton";
 import { FilterSection, PearlFilter } from "./PearlFilter";
-import { regionColors, regionNames, speakerNames, speakersColors } from "../../utils/speakers";
+import { getSpeakerInfo, regionColors, regionNames, speakerNames } from "../../utils/speakers";
 import { OrderedChapter } from "../../utils/pearlOrder";
 import { useAppContext } from "../../context/AppContext";
 import { useFilteredPearls } from "../../hooks/useFilteredPearls";
@@ -52,8 +52,13 @@ const SearchBar = () => {
     const filterSections: FilterSection[] = useMemo(() => {
         const uniqueRegions = new Set<string>();
         pearls.forEach(p => p.transcribers.forEach(t => t.metadata.map?.forEach(m => m.region && uniqueRegions.add(m.region))));
+
         const uniqueSpeakers = new Set<string>();
-        pearls.forEach(p => p.transcribers.forEach(t => t.lines.forEach(l => l.speaker && uniqueSpeakers.add(l.speaker))));
+        pearls.forEach(p => p.transcribers.forEach(t => t.lines.forEach(l => {
+            if (l.speaker) {
+                uniqueSpeakers.add((l.namespace ? l.namespace + "-" : "") + l.speaker);
+            }
+        })));
         uniqueSpeakers.delete("Five Pebbles");
 
         const sortedRegions = Array.from(uniqueRegions).sort();
@@ -95,12 +100,26 @@ const SearchBar = () => {
             },
             {
                 title: "Speakers",
-                options: sortedSpeakers.map(s => ({
-                    id: s,
-                    label: speakerNames[s] ?? s,
-                    content: s,
-                    iconColor: speakersColors[s]
-                })),
+                options: sortedSpeakers.map(s => {
+                    // s is the full key (e.g. NSCP-FPB or just FPB)
+                    // We need to parse it back to lookup info, or assume s is the 'rawSpeaker'
+                    let actualSpeaker = s;
+                    let namespace = undefined;
+                    const hyphenIndex = s.indexOf('-');
+                    if (s.startsWith('NS') && hyphenIndex > 2 && hyphenIndex < s.length - 1) {
+                        namespace = s.slice(0, hyphenIndex);
+                        actualSpeaker = s.slice(hyphenIndex + 1);
+                    }
+
+                    const info = getSpeakerInfo(s, actualSpeaker, namespace);
+
+                    return {
+                        id: s,
+                        label: info.displayName,
+                        content: actualSpeaker,
+                        iconColor: info.color
+                    };
+                }),
             }
         ];
     }, [pearls]);
@@ -235,7 +254,8 @@ const BannerChapterHeader = React.memo(({ flatChapter, onToggle }: {
                 aria-label={flatChapter.name}
             >
                 <div className="flex w-full items-center justify-start gap-4">
-                    <span className={cn("font-medium tracking-wide", flatChapter.isExpanded ? "text-white" : "text-gray-500", flatChapter.name.length > 20 ? "text-sm" : "text-md")}>
+                    <span
+                        className={cn("font-medium tracking-wide", flatChapter.isExpanded ? "text-white" : "text-gray-500", flatChapter.name.length > 20 ? "text-sm" : "text-md")}>
                         {flatChapter.name}
                     </span>
                 </div>
@@ -287,7 +307,7 @@ const LazyChapterGrid = ({
         <div ref={observerRef} className="last:mb-4">
             {flatChapter.name && (
                 flatChapter.originalChapter.headerType === "banner" ? (
-                    <BannerChapterHeader flatChapter={flatChapter} onToggle={onToggle} />
+                    <BannerChapterHeader flatChapter={flatChapter} onToggle={onToggle}/>
                 ) : (
                     <button onClick={onToggle}
                             className={cn("flex items-center gap-2 w-full text-left group focus:outline-none", flatChapter.isExpanded && flatChapter.items.length > 0 && "mb-2")}
@@ -458,9 +478,11 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
 
     return (
         <div className={cn("relative", isMobile ? "w-full max-h-[98svh] h-[98svh]" : "w-[18rem] max-h-[80svh]")}>
-            <div className={cn("no-scrollbar overflow-y-auto box-border h-full", isMobile ? "px-4" : "px-1")} ref={containerRef}>
-                <div className={cn("sticky top-0 z-20 bg-gray-950/90 backdrop-blur-sm", isMobile ? "pt-4" : "pt-1", "mb-4")}>
-                    <SearchBar />
+            <div className={cn("no-scrollbar overflow-y-auto box-border h-full", isMobile ? "px-4" : "px-1")}
+                 ref={containerRef}>
+                <div
+                    className={cn("sticky top-0 z-20 bg-gray-950/90 backdrop-blur-sm", isMobile ? "pt-4" : "pt-1", "mb-4")}>
+                    <SearchBar/>
                 </div>
                 <div className={cn("grid grid-cols-1 gap-4", isMobile ? "" : "px-1", isMobile ? "pb-4" : "pb-1")}>
                     {displayList.map((flatChapter, index) => (

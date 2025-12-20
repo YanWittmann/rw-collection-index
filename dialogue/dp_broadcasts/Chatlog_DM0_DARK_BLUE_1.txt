@@ -3,6 +3,7 @@ color: #194fe7
 type: broadcast
 name: Dark Blue 1
 map: region=DM, room=WALL06, mapSlugcat=spear
+tag: downpour
 
 === transcription: broadcast
 [OUTGOING REQUEST] COMMUNICATIONS MANIFEST

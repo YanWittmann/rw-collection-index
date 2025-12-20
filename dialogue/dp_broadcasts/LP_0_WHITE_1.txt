@@ -5,6 +5,7 @@ name: They Already Have (White 1)
 map: MAP-WHITE-BROADCASTS
 mapInfo: ${MAP-LP-PRE-PEB}
 info: ${LP-PRE-PEB}
+tag: downpour
 
 === transcription: broadcast-pre-FP
 [LIVE BROADCAST] - PRIVATE Seven Red Suns, No Significant Harassment

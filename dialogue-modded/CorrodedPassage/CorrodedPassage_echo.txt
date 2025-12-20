@@ -1,0 +1,40 @@
+name: Echo
+type: echo
+
+=== transcription: saint
+In the end, I truly had no meaning.
+The world won't remember me. Everything that made what\nwe know up is now gone. Lost to time.
+And yet... That truly is everything.
+We are nothing. We are\ntiny specks in this great endless cycle.
+But we are alive! And as long as we live,\nwe will forever turn nothing into something!
+In the end, I truly had no meaning!\nI was free to do as I pleased!
+Embrace the nothingness, little one!\nFor you are everything!
+
+=== transcription: artificer
+You hold a purpose.
+And yet... Does it make you feel any better?
+Raw anger, a cruel lust for violence.
+Does the world make you angry, too?\nI always hoped that the world would change.
+I was foolish, of course, for it is an unstoppable machine.\nNever changing, never ending. It existed long before us, and\nit will outlive us far into a future we won't comprehend.
+We aren't born for a reason. Our existance is meaningless,\nand in the big cycle of the world, we are nothing.
+So do whatever you please. Break free from your mortal bindings, my friend.\nGo after the goal that fuels your heart.
+
+=== transcription: spearmaster
+You hold a purpose.
+You weren't made out of nothing.\nEvery part of your organism was designed with a goal in mind.
+There were no random factors involved in your creation.\nYou exist for a reason.
+And yet... Does it make you feel any better?
+We come into this world wrapped in flesh and bones.\nWe come empty handed, and so we leave too.
+We aren't born for a reason. Our existance is meaningless,\nand in the big cycle of the world, we are nothing.
+Why does anything matter, then? What are we\nsupposed to do within our mortality?
+You cannot talk. And yet I know...
+I... understand, little creature. Thank you.
+
+=== transcription: base-slugcats
+Why are you here, little one?
+What holds you tethered to this world?\nIs it the comfort of your own flesh? Or the fear of letting go of it?
+I was once just like you. A creature stuck inside my own mortality.
+But I was meant to be great! I was celebrated! I created marvelous things,\ngreater than myself! My name was known across the land!
+And look at me now. Sitting cycle after cycle in this place.
+Forgotten, meaningless.\nJust another sacrifice in it's path.
+Nothing mattered in the end.

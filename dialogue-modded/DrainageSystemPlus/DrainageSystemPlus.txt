@@ -1,0 +1,14 @@
+internalId: DrainageSystemPlus
+color: #5CD4A1
+type: pearl
+name: Jungle Green
+map: region=DS, room=C08, mapSlugcat=white, impl=none
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: DS_C08p.txt
+Oh this is interesting, you got this pearl from that old drainage system, didn't you?\nI assumed those rusty tunnels would have collapsed by now.
+This pearl details plans to renovate the pipes and general structure to more modern standards.\nIt must have been written before or early in the iterator project.
+You see little creature, this torrential downpour which affects all life wasnt always like this.\nOriginally it was way more manageable and let's say... non lethal.
+But as we iterators grew in number, the rain intensity became a threat to all living beings, pouring quantities of water which far exceeded the capabilities of any primitive pipe system.
+So our creators deemed living on the ground to be impossible and decided to move their settlements over the clouds atop their fellow iterators.\nThis of course meant the renovation plans were abandoned along with the life on the ground.
+Under the current rain conditions its just a matter of time for those old tunnels to decay and get overtaken by nature.\nIf they haven't succumbed already...

@@ -32,6 +32,11 @@ export const speakersColors: { [key: string]: string } = {
     "Cappin": "#0061d6",
     "Host": "#ffffff",
     "Gesture": "#ffffff",
+    // namespace specific colors
+    "NSCP-PS": "#a3d9c2",
+    "NSCP-FPB": "#d4d1b8",
+    "NSCP-UD": "#69b378",
+    "NSCP-TSA": "#fadb99",
 };
 
 export const transcribersColors: { [key: string]: string } = {
@@ -160,6 +165,11 @@ export const speakerNames: { [key: string]: string } = {
     "PearlReader": "Pearl Reader",
     "Host": "Host",
     "Gesture": "Bell of Gesture",
+    // namespace specific names
+    "NSCP-PS": "Pilgrimaged Summit",
+    "NSCP-FPB": "Fourteen Polar Bones",
+    "NSCP-UD": "Unstable Daydream",
+    "NSCP-TSA": "Twelve Stars Above",
 }
 
 export const regionNames: { [key: string]: string } = {
@@ -278,4 +288,38 @@ export function findSourceDialogue(name: string, sourceData: SourceDecrypted[]) 
         console.warn(name, 'not found');
     }
     return entry;
+}
+
+/**
+ * Looks up the display name and color for a speaker, prioritizing namespace-specific data.
+ * @param {string} rawSpeaker The full speaker part (e.g., "NSCP-FPB").
+ * @param {string} actualSpeaker The speaker identifier (e.g., "FPB").
+ * @param {string | undefined} namespace The namespace identifier (e.g., "NSCP").
+ * @returns {{ displayName: string, color: string | undefined }}
+ */
+export function getSpeakerInfo(rawSpeaker: string, actualSpeaker: string, namespace?: string) {
+    let displayName = actualSpeaker;
+    let color = speakersColors[actualSpeaker] || undefined;
+
+    // 1. Check if the full raw speaker (e.g., NSCP-FPB) is defined in speakerNames
+    if (speakerNames[rawSpeaker]) {
+        displayName = speakerNames[rawSpeaker];
+    } else if (speakerNames[actualSpeaker]) {
+        // 2. Fallback to the actual speaker name lookup
+        displayName = speakerNames[actualSpeaker];
+    }
+
+    // 3. Check for color using raw speaker first
+    if (speakersColors[rawSpeaker]) {
+        color = speakersColors[rawSpeaker];
+    }
+    // 4. Fallback to actual speaker color
+    else if (speakersColors[actualSpeaker]) {
+        color = speakersColors[actualSpeaker];
+    }
+
+    return {
+        displayName: displayName,
+        color: color
+    };
 }

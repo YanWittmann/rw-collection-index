@@ -1,11 +1,6 @@
 import { RwIcon } from "../PearlGrid/RwIcon"
 import type { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types"
-import {
-    findSourceDialogue,
-    regionNames,
-    resolveVariables,
-    speakersColors
-} from "../../utils/speakers"
+import { findSourceDialogue, regionNames, resolveVariables, speakersColors } from "../../utils/speakers"
 import { renderDialogueLine } from "../../utils/renderDialogueLine"
 import { hasTag } from "../../utils/pearlOrder"
 import { RwScrollableList } from "../other/RwScrollableList"
@@ -21,6 +16,7 @@ import { renderMonoText } from "./DialogueContent";
 import ReactDOMServer from 'react-dom/server';
 import { getTranscriberIcon } from "../../utils/transcriberUtils";
 import { useAppContext } from "../../context/AppContext";
+import { cn } from "@shadcn/lib/utils";
 
 interface DialogueActionTabsProps {
     pearl: PearlData,
@@ -285,10 +281,10 @@ export function DialogueActionTabs({
                                     id: `${location.region}_${location.room}_${index}`,
                                     title: `${regionNames[location.region] || "Unknown"} (${location.region})`,
                                     subtitle: `Room: ${location.room}`,
-                                    onClick: () => {
-                                        const link = generateMapLinkFromMapInfo(location)
+                                    onClick: location.impl !== "none" ? (() => {
+                                        const link = generateMapLinkFromMapInfo(location);
                                         if (link) window.open(link, "_blank")
-                                    },
+                                    }) : undefined,
                                 }))}
                             />
                         </PopoverContent>
@@ -298,32 +294,31 @@ export function DialogueActionTabs({
         } else if (transcriberData.metadata.map && transcriberData.metadata.map.length > 0) {
             const selectedMap = transcriberData.metadata.map[0]
             const mapLink = generateMapLinkFromMapInfo(selectedMap)
-            if (mapLink) {
-                tabs.push(
-                    <Tooltip key="open-rain-world-map">
-                        <TooltipTrigger asChild>
+            tabs.push(
+                <Tooltip key="open-rain-world-map">
+                    <TooltipTrigger asChild>
               <span>
                 <RwTabButton
-                    onClick={() => window.open(mapLink, "_blank")}
+                    onClick={mapLink ? () => window.open(mapLink, "_blank") : undefined}
                     aria-label="Open Rain World Map"
+                    className={cn(!mapLink && "cursor-not-allowed")}
                 >
                   <RwIcon type="pin"/>
                 </RwTabButton>
               </span>
-                        </TooltipTrigger>
-                        <TooltipContent className="text-center" side="bottom">
-                            {regionNames[selectedMap.region] || "Unknown"} ({selectedMap.region}) / {selectedMap.room}
-                            {transcriberData.metadata.mapInfo && (
-                                <span
-                                    dangerouslySetInnerHTML={{
-                                        __html: renderDialogueLine(resolveVariables("\n" + transcriberData.metadata.mapInfo)),
-                                    }}
-                                />
-                            )}
-                        </TooltipContent>
-                    </Tooltip>,
-                )
-            }
+                    </TooltipTrigger>
+                    <TooltipContent className="text-center" side="bottom">
+                        {regionNames[selectedMap.region] || "Unknown"} ({selectedMap.region}) / {selectedMap.room}
+                        {transcriberData.metadata.mapInfo && (
+                            <span
+                                dangerouslySetInnerHTML={{
+                                    __html: renderDialogueLine(resolveVariables("\n" + transcriberData.metadata.mapInfo)),
+                                }}
+                            />
+                        )}
+                    </TooltipContent>
+                </Tooltip>,
+            )
         }
     }
 

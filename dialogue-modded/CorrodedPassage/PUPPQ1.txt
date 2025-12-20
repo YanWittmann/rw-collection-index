@@ -1,0 +1,17 @@
+internalId: PQ_PUP
+color: #5CD4A1
+type: broadcast
+name: Pup 2
+info: PUPPQ1, PUPPQ2 and PUPPQ3 are part of a sequence (PQ_PUP).\nThe broadcast locations can be viewed in any order and the sequence will play in the same way.
+
+=== transcription: broadcast
+md-sourceDialogue: CorrodedPassage/PUPPQ1.txt
+[LIVE BROADCAST] - PRIVATE Unstable Daydream, Twelve Stars Above
+NSCP-TSA: I am worried.
+NSCP-TSA: My facility grounds keep worsening the more time passes.
+NSCP-TSA: Some parts are barely recognizable anymore...
+NSCP-UD: That is our fate.
+NSCP-UD: We have seen the world be reborn, and we must see it die, too.
+NSCP-UD: My communications arrays have been getting particularly abused by the rise in rainfall that wasn't expected.
+NSCP-TSA: How do you keep your calm?
+NSCP-UD: I don't.

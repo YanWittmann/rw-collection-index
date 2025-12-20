@@ -1,0 +1,34 @@
+internalId: PQ_P2
+color: #438150
+secondaryColor: #5abf6f
+type: pearl
+name: Passage 2
+
+=== transcription: FP-artificer
+md-sourceDialogue: CorrodedPassage/PQ_PASSAGE2-Artificer.txt
+How interesting. This pearl is truly a piece of art as a whole,\nsuch details, such art engraved onto one single pearl...
+The ancestors to our creators, who once populated this\ndance are known across us iterators for their affinity at building with\nsuch detail and thought, preparing their creations\nfor a future thousands of cycles beyond their own.
+Even in the era where the clouds obscured the ground, and cities above giant metal cans\nwere now populated, the appreciation for creating things was never lost.
+This pearl even seems to contain an old version of what was a\nsong revered in my own city. A tune that... Now almost seems nostalgic.
+Thank you, I will keep this in my archives.
+
+=== transcription: LttM-pre-collapse
+md-sourceDialogue: CorrodedPassage/PQ_PASSAGE2-Spear.txt
+This pearl has an intricate design, most likely meant\nto be an ornament or a piece of art on it's own.
+There seems to be a series of musical pieces written down on it.\nMusic! This compositions and details seem quite old... Perhaps older than anything you've seen, including me.
+I wonder, do you understand what music is?
+A series of sounds that together sound pleasant to your mind, I wonder\nif other organisms were capable of such expression, too!
+My creators, or rather, my creators ancestors, had a good taste\nfor creating wonders such like this!
+Conversation groups have revolved around the conservation and appreciation\nof now lost and irreplaceable pieces of art and history, made in a different\nera with different intent, yet, some of it having being kept through time.
+I wish I could share this pearl with the local group! I'm sure someone would appreciate it.
+I sadly can't translate this into audible, understandable noise. Such\ntreasures lost in the troubles of translation and communication...
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: CorrodedPassage/PQPASSAGE2.txt
+This pearl has an intricate design, most likely meant\nto be an ornament or a piece of art on it's own.
+Upon reading it, there seems to be a series of musical pieces written down on it.\nMusic! This compositions and details seem quite old... Perhaps older than anything you've seen, including me.
+I wonder, do you understand what music is?
+A series of sounds that together sound pleasant to your mind, I wonder\nif other organisms were capable of such expression, too!
+My creators, or rather, my creators ancestors, had a good taste\nfor creating wonders such like this! Back when...\nWhen I was... There was a time where...
+I am... sorry, I seem to have lost my thoughts.
+I sadly can't translate this into audible, understandable noise. Such\ntreasures lost in the troubles of translation and communication...
