@@ -212,6 +212,21 @@ const moddedPearlOrder: PearlChapter[] = [
         ]
     },
     {
+        name: "Far Shore",
+        headerType: "banner",
+        icon: "img/modded/FarShore/thumb.webp",
+        defaultOpen: false,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Far_Shore" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3026723782" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3026723782" },
+        ],
+        ids: [
+            "FR_Pearl_1", "FR_Pearl_2", "FR_Pearl_3",
+            "FarShore_echo"
+        ]
+    },
+    {
         name: "Drainage System Plus",
         headerType: "banner",
         icon: "img/modded/DrainageSystemPlus/thumb.webp",

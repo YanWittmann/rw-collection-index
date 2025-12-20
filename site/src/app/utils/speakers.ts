@@ -119,6 +119,7 @@ export const regionColors: { [key: string]: string } = {
     "GH": "#68a842",
     "PQ": "#34573a",
     "SD": "#bb6926",
+    "FR": "#c4c79e",
 };
 
 export const transcriberIcons: { [key: string]: string } = {
@@ -241,6 +242,7 @@ export const regionNames: { [key: string]: string } = {
     "GH": "Hanging Gardens",
     "PQ": "Corroded Passage",
     "SD": "Scorched District",
+    "FR": "Far Shore",
 }
 
 export function darken(hex: string, amount: number) {
