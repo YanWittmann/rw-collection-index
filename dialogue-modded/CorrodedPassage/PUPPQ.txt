@@ -2,7 +2,7 @@ internalId: PUPPQ
 color: #5CD4A1
 type: broadcast
 name: Pup 1
-info: PUPPQ is not part of the sequence PQ_PUP and plays independently of them.
+info: PUPPQ is not part of the sequence PQ_PUP.\nIt appears to be currently unused.
 
 === transcription: broadcast
 md-sourceDialogue: CorrodedPassage/PUPPQ.txt

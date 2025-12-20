@@ -1,5 +1,6 @@
 name: Seven Strings Above Vicious Wind
 type: echo
+map: region=SD, room=A14, mapSlugcat=white
 
 === transcription: base-slugcats
 Oh, what have we here?

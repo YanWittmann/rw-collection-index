@@ -2,6 +2,7 @@ internalId: PQ_SMOLD
 color: #E55137
 type: broadcast
 name: Smold 1
+map: impl=none, region=PQ, room=A11, mapSlugcat=spear
 
 === transcription: broadcast
 md-sourceDialogue: CorrodedPassage/SMOLDPQ.txt

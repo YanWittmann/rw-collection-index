@@ -3,6 +3,11 @@ color: #5CD4A1
 type: broadcast
 name: Pup 2
 info: PUPPQ1, PUPPQ2 and PUPPQ3 are part of a sequence (PQ_PUP).\nThe broadcast locations can be viewed in any order and the sequence will play in the same way.
+map: impl=none, region=PQ, room=C14, mapSlugcat=spear
+map: impl=none, region=PQ, room=D03, mapSlugcat=spear
+map: impl=none, region=PQ, room=F01, mapSlugcat=spear
+map: impl=none, region=PQ, room=F04, mapSlugcat=spear
+
 
 === transcription: broadcast
 md-sourceDialogue: CorrodedPassage/PUPPQ1.txt

@@ -15,14 +15,27 @@ import { DialogueActionTabs } from "./DialogueActionTabs";
 import { useAppContext } from "../../context/AppContext";
 import { findTranscriberIndex } from "../../utils/transcriberUtils";
 
+const MAP_URL_PATTERNS: { [key: string]: string } = {
+    "default": "https://rain-world-downpour-map.github.io/map.html",
+    "alduris-mod-map": "https://alduris.github.io/mod-map/map.html",
+    "watcher": "https://alduris.github.io/watcher-map/map.html",
+};
+
+const regionMaps: { [key: string]: string[] } = {
+    "alduris-mod-map": [
+        "SD", "GH"
+    ],
+}
+
+// https://rain-world-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
+// https://rain-world-downpour-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
+// https://rw-watchermap.github.io/map.html?slugcat=white&region=SU&room=SU_B05
+// https://alduris.github.io/watcher-map/map.html?slugcat=white&region=SU&room=SU_B05
+// https://alduris.github.io/mod-map/map.html?slugcat=white&region=SD
 export function generateMapLinkFromMapInfo(mapInfo: MapInfo | undefined) {
     if (!mapInfo) {
         return null;
     }
-    // https://rain-world-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
-    // https://rain-world-downpour-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
-    // https://rw-watchermap.github.io/map.html?slugcat=white&region=SU&room=SU_B05
-    // https://alduris.github.io/watcher-map/map.html?slugcat=white&region=SU&room=SU_B05
     const { region, room, mapSlugcat, impl } = mapInfo;
     if (!region || !room || !mapSlugcat) {
         return null;
@@ -30,10 +43,22 @@ export function generateMapLinkFromMapInfo(mapInfo: MapInfo | undefined) {
     if (impl === "none") {
         return null;
     }
-    if (mapSlugcat === 'watcher') {
-        return `https://alduris.github.io/watcher-map/map.html?slugcat=${mapSlugcat}&region=${region}&room=${region}_${room}`;
+
+    let baseUrl = MAP_URL_PATTERNS["default"];
+
+    if (impl && MAP_URL_PATTERNS[impl]) {
+        baseUrl = MAP_URL_PATTERNS[impl];
+    } else if (mapSlugcat === 'watcher') {
+        baseUrl = MAP_URL_PATTERNS["watcher"];
+    } else {
+        for (let mapKey in regionMaps) {
+            if (regionMaps[mapKey].includes(region)) {
+                baseUrl = MAP_URL_PATTERNS[mapKey];
+            }
+        }
     }
-    return `https://rain-world-downpour-map.github.io/map.html?slugcat=${mapSlugcat}&region=${region}&room=${region}_${room}`;
+
+    return `${baseUrl}?slugcat=${mapSlugcat}&region=${region}&room=${region}_${room}`;
 }
 
 export function hasMapLocations(dialogue: Dialogue): boolean {

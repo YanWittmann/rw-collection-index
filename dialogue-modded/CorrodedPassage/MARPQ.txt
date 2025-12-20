@@ -2,6 +2,7 @@ internalId: PQ_MAR
 color: #DE4C8A
 type: broadcast
 name: Mar 1
+map: impl=none, region=PQ, room=G07, mapSlugcat=spear
 
 === transcription: broadcast
 md-sourceDialogue: CorrodedPassage/MARPQ.txt

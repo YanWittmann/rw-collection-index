@@ -3,7 +3,7 @@ color: #12431d
 secondaryColor: #b1e888
 type: pearl
 name: Greenhouse
-map: region=GH, room=D02, mapSlugcat=white, impl=none
+map: region=GH, room=D02, mapSlugcat=white
 
 === transcription: LttM-post-collapse
 md-sourceDialogue: HangingGardens/GH_Greenhouse.txt

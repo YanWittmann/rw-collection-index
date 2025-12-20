@@ -1,4 +1,4 @@
-name: Echo
+name: Soot covered Bones, Twice Reflected
 type: echo
 
 === transcription: saint

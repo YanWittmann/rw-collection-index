@@ -3,7 +3,7 @@ color: #fc3d03
 secondaryColor: #ff7e57
 type: pearl
 name: Stars
-map: region=SD, room=A21, mapSlugcat=white, impl=none
+map: region=SD, room=A21, mapSlugcat=white
 
 === transcription: chasing-wind
 This is a solemn warning from an engineer to one district of Pebbles’ city.

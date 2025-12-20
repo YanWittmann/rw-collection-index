@@ -115,6 +115,10 @@ export const regionColors: { [key: string]: string } = {
     "WSSR": "#4A4A4A",
     "WTDB": "#69775E",
     "WMPA": "#2F176B",
+    // modded
+    "GH": "#68a842",
+    "PQ": "#34573a",
+    "SD": "#bb6926",
 };
 
 export const transcriberIcons: { [key: string]: string } = {
