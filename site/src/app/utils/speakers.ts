@@ -55,11 +55,13 @@ export const transcribersColors: { [key: string]: string } = {
     "artificer": "#70233c",
     // modded
     "chasing-wind": "#66d9bf",
+    "seer": "#b8cfa6",
 };
 
 export const transcribersImages: { [key: string]: string } = {
     // modded
     "chasing-wind": "modded/chasing-wind",
+    "seer": "modded/seer",
 };
 
 export const regionColors: { [key: string]: string } = {
@@ -124,6 +126,7 @@ export const regionColors: { [key: string]: string } = {
     "EU": "#1c3d4e",
     "CW": "#66d9bf",
     "GU": "#5f6065",
+    "NP": "#b14309",
 };
 
 export const transcriberIcons: { [key: string]: string } = {
@@ -187,6 +190,7 @@ export const speakerNames: { [key: string]: string } = {
     "NSCP-UD": "Unstable Daydream",
     "NSCP-TSA": "Twelve Stars Above",
     "chasing-wind": "Chasing Wind",
+    "seer": "Seer",
 }
 
 export const regionNames: { [key: string]: string } = {
@@ -251,6 +255,7 @@ export const regionNames: { [key: string]: string } = {
     "EU": "Luminous Cove",
     "CW": "Chasing Wind",
     "GU": "Gray Urban",
+    "NP": "Necropolis",
 }
 
 export function darken(hex: string, amount: number) {

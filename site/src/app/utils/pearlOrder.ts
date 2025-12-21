@@ -327,6 +327,21 @@ const moddedPearlOrder: PearlChapter[] = [
         ]
     },
     {
+        name: "Necropolis",
+        headerType: "banner",
+        icon: "img/modded/Necropolis/thumb.webp",
+        defaultOpen: false,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Necropolis" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3393902748" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3393902748" },
+        ],
+        ids: [
+            "NP_Pearl_1",
+            "Necropolis_echo"
+        ]
+    },
+    {
         name: "Moss Fields",
         headerType: "banner",
         icon: "img/modded/MossFields/thumb.webp",
