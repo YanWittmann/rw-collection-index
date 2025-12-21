@@ -392,9 +392,19 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
     const { baseTree, filteredTree, totalItems, firstItem } = useFilteredPearls(pearls, order);
     const { expandedChapters, toggleChapter } = useChapterExpansion(filteredTree, baseTree);
 
+    const isTogglingRef = useRef(false);
     const [visibleChapters, setVisibleChapters] = useState(new Set([0]));
     const selectedPearlRef = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
+
+    const handleToggleChapter = useCallback((name: string) => {
+        isTogglingRef.current = true;
+        toggleChapter(name);
+        // Reset the flag after enough time for the re-render and effect execution to pass
+        setTimeout(() => {
+            isTogglingRef.current = false;
+        }, 100);
+    }, [toggleChapter]);
 
     // Automatically select the first item if only one is filtered and on desktop
     useEffect(() => {
@@ -465,6 +475,7 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
 
     // Scroll selected item into view
     useEffect(() => {
+        if (isTogglingRef.current) return;
         if (!selectedPearlRef.current) return;
         const scrollContainer = selectedPearlRef.current.closest('.no-scrollbar');
         if (!scrollContainer) return;
@@ -498,7 +509,7 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
                             selectedPearlRef={selectedPearlRef}
                             getHighlightStyle={getHighlightStyle}
                             isAlternateDisplayModeActive={isAlternateDisplayModeActive}
-                            onToggle={() => toggleChapter(flatChapter.name)}
+                            onToggle={() => handleToggleChapter(flatChapter.name)}
                         />
                     ))}
                 </div>
