@@ -3,6 +3,7 @@ color: #9c5933
 type: broadcast
 name: Dark Brown
 map: region=SB, room=F03, mapSlugcat=spear
+tag: downpour
 
 === transcription: broadcast
 [RECORDED BROADCAST : 1681.662] - PRIVATE Seven Red Suns, Chasing Wind

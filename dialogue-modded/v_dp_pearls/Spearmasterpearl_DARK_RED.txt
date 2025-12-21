@@ -1,0 +1,37 @@
+inherit: Spearmasterpearl_DARK_RED
+
+=== transcription: chasing-wind
+md-name: Dark Red (Spearmaster) - Before sending Broadcast
+md-transcriberName: Before sending Broadcast
+md-sourceDialogue: ChasingWind/CW_CWSpearPearlAfterMoon.txt
+...
+This is a message bearing the broadcast keys of Moon. It is addressed to the local group.
+...
+It is of the highest priority that you bring this pearl to a communications array.
+Unfortunately, there isn't such structure on my island.
+You will have to track back to Pebbles grounds.
+Your safest bet is probably climbing one of those tall antennas.
+What I'm asking you is not a small feat, but I'm currently unable to send data packages in such a broad way.
+Good luck, brave messenger.
+
+=== transcription: chasing-wind
+md-name: Dark Red (Spearmaster) - After sending Broadcast
+md-transcriberName: After sending Broadcast
+md-sourceDialogue: ChasingWind/CW_Moon_Spearmaster_Pearl.txt
+Oh... this pearl is very familiar to me.
+This is a private message from Seven Red Suns, destined for Five Pebbles' chamber.
+We were once quite close to one another, before deciding to follow our own paths.
+We could not agree on the best way to resolve the Great Task.
+Seven Red Suns and I spoke about the content of this pearl in great detail before ultimately sending it.
+Despite our differences, we agreed that it was quite important to find the right words...
+If you stand here in my chamber with this pearl in your hands, then it must have already reached its recipient.
+I really hope for all our sakes that he understood the intent of it.
+You must understand that you have delivered an extremely important message; the eyes of the entire local group are on you at the moment.
+...
+I will contact your creator as soon as delays allow; my communication modules haven't been the most reliable.
+...
+I previously told you of a way to put an end to your struggles for good, though I have another request first.
+Could you make one more journey and check the status of Looks to the Moon for me?
+Many iterators are more than worried about her wellbeing, myself included.
+...
+Thank you, brave messenger.

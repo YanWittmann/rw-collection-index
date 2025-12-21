@@ -1,5 +1,6 @@
 const path = require('path');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 const isProduction = process.env.NODE_ENV === 'production';
@@ -18,11 +19,14 @@ module.exports = {
                     ...webpackConfig.optimization,
                     splitChunks: {
                         chunks: 'all',
-                        minSize: 20000,
-                        maxSize: 244000,
+                        // avoid too many tiny files (HTTP/1.1 bottleneck)
+                        minSize: 100000,
+                        // allow larger chunks (better compression)
+                        // maxSize: 244000,
                         minChunks: 1,
-                        maxAsyncRequests: 30,
-                        maxInitialRequests: 30,
+                        // Reduce concurrent requests to avoid queueing
+                        maxAsyncRequests: 10,
+                        maxInitialRequests: 10,
                         cacheGroups: {
                             defaultVendors: {
                                 test: /[\\/]node_modules[\\/]/,
@@ -34,60 +38,39 @@ module.exports = {
                                 priority: -20,
                                 reuseExistingChunk: true,
                             },
-                            // Specific vendor chunks
-                            framerMotion: {
-                                test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
-                                name: 'framer-motion',
-                                chunks: 'all',
-                            },
-                            radixUI: {
-                                test: /[\\/]node_modules[\\/]@radix-ui[\\/]/,
-                                name: 'radix-ui',
-                                chunks: 'all',
-                            },
-                            sanitizeHtml: {
-                                test: /[\\/]node_modules[\\/]sanitize-html[\\/]/,
-                                name: 'sanitize-html',
-                                chunks: 'all',
-                            },
-                            // add more specific chunks for large dependencies
+                            // Keep huge libs separate, but combine smaller ones
                             react: {
                                 test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
                                 name: 'react',
                                 chunks: 'all',
                             },
-                            // add chunks for specific features
-                            features: {
-                                test: /[\\/]src[\\/]app[\\/]components[\\/]/,
-                                name(module) {
-                                    // Extract component name from the path
-                                    const match = module.context.match(/[\\/]components[\\/]([^\\/]+)[\\/]/);
-                                    return match ? `feature-${match[1]}` : 'feature-common';
-                                },
-                                chunks: 'all',
-                            },
                         },
                     },
-                    // enable tree shaking
                     usedExports: true,
                     minimize: true,
-                    // add runtime chunk
                     runtimeChunk: 'single',
-                    // enable module concatenation
                     concatenateModules: true,
-                    // enable side effects optimization
                     sideEffects: true,
                 };
 
-                // add performance hints
+                // add compression plugin
+                if (!webpackConfig.plugins) webpackConfig.plugins = [];
+                webpackConfig.plugins.push(
+                    new CompressionPlugin({
+                        algorithm: 'gzip',
+                        test: /\.(js|css|html|svg)$/,
+                        threshold: 8192,
+                        minRatio: 0.8,
+                    })
+                );
+
                 webpackConfig.performance = {
                     hints: process.env.CI ? false : 'warning',
                     maxEntrypointSize: process.env.CI ? 1024000 : 512000,
                     maxAssetSize: process.env.CI ? 1024000 : 512000,
                 };
 
-                // enable source maps for debugging
-                webpackConfig.devtool = 'source-map';
+                webpackConfig.devtool = false;
             }
 
             // add bundle analyzer in development

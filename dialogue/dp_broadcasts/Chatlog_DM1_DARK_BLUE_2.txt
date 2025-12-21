@@ -3,6 +3,7 @@ color: #194fe7
 type: broadcast
 name: Dark Blue 2
 map: region=DM, room=U07, mapSlugcat=spear
+tag: downpour
 
 === transcription: broadcast
 [LIVE BROADCAST] EQUIPMENT MANIFEST

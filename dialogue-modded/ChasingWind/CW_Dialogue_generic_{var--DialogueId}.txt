@@ -1,0 +1,174 @@
+type: item
+subType: survivor
+tag: downpour
+map: region=CW, room=AI, mapSlugcat=white
+
+=== transcription: chasing-wind
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-super-name: First encounter: Closing words
+md-name: First encounter: Closing words: With Big creature
+md-transcriberName: Closing words: With Big creature
+md-sourceDialogue: ChasingWind/CW_FirstEncounter_BestLuckWithBigCreature.txt
+Best of luck, for you and your little friend.
+How did this... thing get there?!
+
+=== transcription: chasing-wind
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-super-name: First encounter: Closing words
+md-name: First encounter: Closing words: With Creature
+md-transcriberName: Closing words: With Creature
+md-sourceDialogue: ChasingWind/CW_FirstEncounter_BestLuckWithCreature.txt
+Best of luck, for you and your little friend.
+
+=== transcription: chasing-wind
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-super-name: First encounter: Closing words
+md-name: First encounter: Closing words: With Slugpup
+md-transcriberName: Closing words: With Slugpup
+md-sourceDialogue: ChasingWind/CW_FirstEncounter_BestLuckWithFamily.txt
+Best of luck, take care of your progeny.
+
+=== transcription: chasing-wind
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-super-name: First encounter: Closing words
+md-name: First encounter: Closing words: Alone
+md-transcriberName: Closing words: Alone
+md-sourceDialogue: ChasingWind/CW_FirstEncounter_BestLuck.txt
+Good luck, little one.
+
+
+=== transcription: chasing-wind
+md-type: pearl
+md-var-DialogueId: SlugcatEnterRoomReaction
+md-super-name: Following encounters
+md-name: Following encounters
+md-transcriberName: Following encounters
+md-sourceDialogue: ChasingWind/CW_TextOnly_SlugcatEnterRoomReaction.txt
+MONO
+/ One of the following options is selected randomly:
+| Welcome back!
+| Hello again, little one.
+| Oh, it's you again!
+
+
+=== transcription: chasing-wind
+md-type: pearl
+md-var-DialogueId: Pearl
+md-name: Already discussed Item
+md-transcriberName: Already discussed Item
+md-sourceDialogue: ChasingWind/CW_TextOnly_AlreadyDiscussedItem.txt
+MONO
+/ One of the following options is selected randomly:
+| I remember already telling you about this one.
+| You already showed me this, little one.
+
+=== transcription: chasing-wind
+md-type: pearl
+md-var-DialogueId: Pearl
+md-name: Already discussed Pearl
+md-transcriberName: Already discussed Pearl
+md-sourceDialogue: ChasingWind/CW_TextOnly_AlreadyDiscussedPearl.txt
+MONO
+/ One of the following options is selected randomly:
+| I remember already telling you about this one.
+| Again? I already read it to you.
+| You already showed me this, little one.
+
+
+=== transcription: chasing-wind
+md-type: pearl
+md-super-type: pearl
+md-var-DialogueId: Pearl
+md-super-name: Pearl Interactions
+md-name: Leaving while reading
+md-transcriberName: Leaving while reading
+md-sourceDialogue: ChasingWind/CW_TextOnly_InterruptPearlMessagePlayerLeaving.txt
+MONO
+/ One of the following options is selected randomly:
+| Oh, you want it back?
+| Hey! I was speaking!
+| You can have it back if you want.
+| Never mind, I guess.
+| Well, as you wish.
+
+=== transcription: chasing-wind
+md-type: pearl
+md-var-DialogueId: Pearl
+md-name: Resuming paused pearl conversation
+md-transcriberName: Resuming paused pearl conversation
+md-sourceDialogue: ChasingWind/CW_TextOnly_ResumePausedPearlConversation.txt
+MONO
+/ One of the following options is selected randomly:
+| As I was saying...
+| Where was I? Ah yes!
+| As I was trying to say...
+| Will you please listen? So, I was saying...
+| Can you stay still while I read this? So...
+
+=== transcription: chasing-wind
+md-type: pearl
+md-var-DialogueId: Pearl
+md-name: Taking a pearl while reading
+md-transcriberName: Taking a pearl while reading
+md-sourceDialogue: ChasingWind/CW_TextOnly_PearlPickupReaction.txt
+Hey, I was reading that!
+
+=== transcription: chasing-wind
+md-type: pearl
+md-var-DialogueId: Pearl
+md-name: Pearl Intro
+md-transcriberName: Pearl Intro
+md-sourceDialogue: ChasingWind/CW_TextOnly_PearlIntro.txt
+MONO
+/ One of the following options is selected randomly:
+/ a:
+|  Oh? You would like me to read this?
+|  Alright, let me see...
+/ b:
+|  Oh, you brought me a pearl?
+|  Let me read it to you.
+/ c:
+|  Oh, this data is encrypted.
+|  Let me decipher it for you.
+/ d:
+|  It's covered in scratches!
+|  Right, I'll try to read it.
+/ e:
+|  Where did you find this?
+|  Let me see...
+/ fq:
+|  A data pearl!
+|  Let me take a look...
+
+
+=== transcription: chasing-wind
+md-subType: item/Spear_icon
+md-super-subType: item/Spear_icon
+md-var-DialogueId: ReactToHitWeapon
+md-super-name: Hitting with Weapon
+md-name: Hitting with Weapon while talking
+md-transcriberName: Hitting with Weapon while talking
+md-sourceDialogue: ChasingWind/CW_TextOnly_ReactToHitWeaponWhileTalking.txt
+MONO
+/ One of the following options is selected randomly:
+| Stop that now!
+| No! Stop it!
+
+=== transcription: chasing-wind
+md-subType: item/Spear_icon
+md-var-DialogueId: ReactToHitWeapon
+md-super-name: Hitting with Weapon
+md-name: Hitting with Weapon
+md-transcriberName: Hitting with Weapon
+md-sourceDialogue: ChasingWind/CW_TextOnly_ReactToHitWeapon.txt
+MONO
+/ One of the following options is selected randomly:
+| Stop that now!
+| No! Stop it!
+
+
+

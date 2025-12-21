@@ -4,7 +4,7 @@ import React, { ReactNode, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import RwShareTextSnippet from "./RwShareTextSnippet";
 import { Button } from "@shadcn/components/ui/button";
-import html2canvas from "html2canvas";
+import { generateTintedCanvas } from "../../utils/iconUtils";
 
 interface RwShareTextEditorProps {
     children: ReactNode;
@@ -25,69 +25,6 @@ export const preProcessContent = (text: string) => {
     return "<span class=\"flex gap-1 flex-col\"><span>" + text.replaceAll("\n", "</span><span>") + "</span></span>";
 };
 
-const renderIconToCanvas = async (
-    type: string,
-    color: string | null,
-    width: number,
-    height: number
-): Promise<HTMLCanvasElement> => {
-    const canvas = document.createElement("canvas");
-    canvas.width = width;
-    canvas.height = height;
-    const ctx = canvas.getContext("2d", { willReadFrequently: true });
-
-    if (!ctx) throw new Error("Could not get canvas context");
-
-    ctx.imageSmoothingEnabled = false;
-
-    // Load the icon image
-    const img = await new Promise<HTMLImageElement>((resolve, reject) => {
-        const image = new Image();
-        image.src = `img/${type}.png`;
-        image.crossOrigin = "anonymous";
-        image.onload = () => resolve(image);
-        image.onerror = () => reject(new Error("Failed to load icon image"));
-    });
-
-    // Draw the original image onto the canvas
-    ctx.drawImage(img, 0, 0, width, height);
-
-    if (color) {
-        // Get the image data (to manipulate pixels)
-        const imageData = ctx.getImageData(0, 0, width, height);
-        const data = imageData.data;
-
-        // Convert color from hex to RGBA
-        const rgba = hexToRgba(color);
-
-        const scaleFrom255To1 = (value: number) => value / 255;
-        const scaleFrom1To255 = (value: number) => value * 255;
-
-        // Apply the color overlay by replacing non-transparent pixels with the color
-        for (let i = 0; i < data.length; i += 4) {
-            if (data[i + 3] > 0) { // Check if pixel is not fully transparent
-                data[i] = scaleFrom1To255(scaleFrom255To1(rgba.r) * scaleFrom255To1(data[i]));
-                data[i + 1] = scaleFrom1To255(scaleFrom255To1(rgba.g) * scaleFrom255To1(data[i + 1]));
-                data[i + 2] = scaleFrom1To255(scaleFrom255To1(rgba.b) * scaleFrom255To1(data[i + 2]));
-                // Maintain the alpha channel (transparency)
-            }
-        }
-
-        // Put the modified pixel data back to the canvas
-        ctx.putImageData(imageData, 0, 0);
-    }
-
-    return canvas;
-};
-
-// Helper function to convert hex to RGB
-const hexToRgba = (hex: string) => {
-    const r = parseInt(hex.slice(1, 3), 16);
-    const g = parseInt(hex.slice(3, 5), 16);
-    const b = parseInt(hex.slice(5, 7), 16);
-    return { r, g, b, a: 255 };
-};
-
 const replaceIconsWithCanvas = async (container: HTMLElement) => {
     const iconElements = container.querySelectorAll(".rw-icon-container");
 
@@ -98,7 +35,8 @@ const replaceIconsWithCanvas = async (container: HTMLElement) => {
         const height = iconElement.clientHeight;
 
         if (type && width && height) {
-            const canvas = await renderIconToCanvas(type, color, width, height);
+            const canvas = await generateTintedCanvas(type, color, width, height);
+
             iconElement.innerHTML = ""; // Clear the icon content
 
             // Ensure the canvas matches the original icon's size and position
@@ -206,6 +144,8 @@ export default function RwShareTextEditor({
         const snippetElement = document.querySelector(".rw-share-text-snippet") as HTMLElement;
 
         if (snippetElement) {
+            const html2canvas = (await import("html2canvas")).default;
+
             // Replace icons with canvas elements
             await replaceIconsWithCanvas(snippetElement);
 

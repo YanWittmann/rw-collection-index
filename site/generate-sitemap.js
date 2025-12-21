@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Read the parsed dialogues JSON file
-const dialogueDataPath = path.join(__dirname, 'src/generated/parsed-dialogues.json');
+const dialogueDataPath = path.join(__dirname, 'public/data/parsed-dialogues.json');
 const dialogueData = JSON.parse(fs.readFileSync(dialogueDataPath, 'utf8'));
 
 // Extract IDs following the same logic as the application's pearlIdToUrlId function

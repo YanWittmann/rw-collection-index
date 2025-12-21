@@ -1,0 +1,33 @@
+internalId: FR_Pearl_2
+color: #ff5733
+secondaryColor: #ffc300
+type: pearl
+name: Scavenger
+map: region=FR, room=A27, mapSlugcat=white
+
+=== transcription: chasing-wind
+md-sourceDialogue: FarShore/CW_FR_Pearl_2.txt
+Oh no...
+You must have found this near Pebbles' retaining wall I presume?
+This is not your typical pearl.
+These are used to mark the borders of a scavenger tribe's territory.
+Since the shallow waters in front of the wall are the only access to the mainland, the scavengers of my island attempted to expand that way.
+Unfortunately Pebbles' grounds are occupied by another, hostile tribe.
+This led to a gruesome war between the two.
+It finished in a stalemate, with the retaining wall becoming a demarcation zone.
+You should put it back where you found this. I don't want to see another conflict tearing through my scavenger population.
+
+=== transcription: FP-artificer
+md-sourceDialogue: FarShore/FR_Scav-Artificer.txt
+...
+This pearl is completely unreadable.
+It is covered by paint and damaged by engravings.
+This is probably worthless.
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: FarShore/FR_Scav.txt
+Oh, this one is covered in engravings! It also seems to be meticulously painted in orange...
+I know the culprits! Scavengers like to place them in contested parts of their territory.
+Although the only ones I have seen until now were blue...
+You should maybe place it back where you found it, they might get angry!
+I certainly hope you didn't start a tribal war...

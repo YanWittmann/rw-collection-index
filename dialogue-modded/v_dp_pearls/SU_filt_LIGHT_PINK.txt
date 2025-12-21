@@ -1,0 +1,10 @@
+inherit: SU_filt_LIGHT_PINK
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_SU_filt.txt
+It's an asset management log containing the historic structural health of various pieces of framework over the span of many hundreds of cycles.
+What is very interesting about these logs is that all the machinery is still intact!
+You see, most standing architecture has been infused with microbes with self-regenerating properties.\nThis is of utmost importance due to the sheer intensity of the weather now.
+There were a lot more buildings on my island before, but rain washed them away and erosion did the rest of the work.
+The urban settlement west of me is an exception though. A true feat of engineering.\nHigh towers with strong, waterproof foundations. A complex drainage system. An underground stormwater storage... The list goes on.
+It is still standing, even after all its residents gone.

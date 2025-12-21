@@ -3,6 +3,7 @@ color: #d48573
 type: broadcast
 name: Light Brown
 map: region=CC, room=C11, mapSlugcat=spear
+tag: downpour
 
 === transcription: broadcast
 [LIVE BROADCAST] - CLOSED GROUP [SLIVEROFOCEAN] all participants anonymous

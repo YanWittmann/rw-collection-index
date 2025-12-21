@@ -1,0 +1,58 @@
+internalId: MF_Pearl_1
+color: #008fff
+secondaryColor: #abdaff
+type: pearl
+name: Moss
+map: region=MF, room=H01, mapSlugcat=white
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_MF_Pearl_1.txt
+Where did you get that pearl? Did you rummage through my superstructure to find this?
+Oh never mind, it was probably stolen by scavengers. They often come here to find pearls with fresh lattices.
+Their raids are sometimes annoying but... who I am to stop the blossoming of a whole civilization?
+Anyway, back on the subject.
+This is an encrypted discussion between one of my peers and me.
+I trust you not to spread the word around, but I have some Sliverist... tendencies.
+Our little group believes breaking the taboo of self-destruction is the solution to the Great Problem.
+But you see, curious creature, not every iterator has the same view on what happened to our dear Sliver of Straw.
+The pearl you brought me is an extract of the log of an anonymous chat. Why hide, you ask?
+Well, these discussions should not be spread around carelessly. There are some dangerous ideas here I hope are never put in practice.
+But some Sliverists I spoke with are particularly... stubborn. They will do anything to achieve their goal.
+Now that I think about it, archiving such conversations was probably a bad idea.
+Could you get rid of it for me, please?
+
+=== transcription: LttM-pre-collapse
+md-sourceDialogue: MossFields/MF_Moss-Spear.txt
+This is a poorly encrypted conversation log between two iterators from the local group, disguised as a shipment poem and using a now extinct dialect.\nThey are using alias, Erratic Pulse and Halved Forest.
+This was initially posted in a private sliverist group, but someone must have archived it.
+...
+The content is rather troubling.
+They are arguing about ways to defy the self-destruction taboo. Some of them are very gruesome.
+...
+I feel like I shouldn't be reading this. You can keep it.
+
+=== transcription: FP-artificer
+md-sourceDialogue: MossFields/MF_Moss-Artificer.txt
+Interesting. This pearl is not quite what it appears to be.
+The first part is a key to decrypt the second, disguised as a banal administrative poem of a pre-iterator period.
+But the structure of the pearl reveal it to be much more recent.
+I only know of one entity capable of such a comedy.
+...
+Oh.
+This is an old archived conversation between a ... mysterious Erratic Pulse and one of my neighbors, Chasing Wind.
+...
+I would rather not reveal the subject of this conversation.
+Leave me, now.
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: MossFields/MF_Moss.txt
+Oh, this pearl is very special! A major portion of it is encrypted, but it also contains sections of plain text.
+The language used in it is very different from the ones generally used in the group...
+It looks like it's written in the dialect of a pre-iterator settlement; particularly a community secluded on an island that was south-east of my complex.
+This is a surprising find. The language was thought to be extinct!\nFor all we're both concerned, this might as well be the last trace of their dialect.
+Let me try and translate it for you.
+...
+Ah. These are the usual thanks and prayers accompanying deliveries from an agricultural site to a residential center.\nIn this case it was an inventory of moss infusions, heading to the island's capital.
+These infusions were used as an alternative to herbal tea, for ritualistic starvation.
+I don't really understand why you would need to encrypt this kind of data.
+Unfortunately, I do not have the computational power to unlock the rest of the pearl content. I'm sorry, little one.

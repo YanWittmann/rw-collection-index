@@ -1,109 +1,39 @@
-import parsedData from "../generated/parsed-dialogues.json";
+"use client"
+
+import React, { Suspense, useEffect, useMemo, useState } from 'react';
 import { PearlData } from "./types/types";
-import { useDialogue } from "./hooks/useDialogue";
-import { orderPearls } from "./utils/pearlOrder";
-import { lazy, Suspense, useEffect, useMemo, useState } from "react";
-import { useUnlockState } from "./hooks/useUnlockState";
-import { urlAccess } from "./utils/urlAccess";
-import { useIsMobile } from "./hooks/useIsMobile";
-import { cn } from "@shadcn/lib/utils";
-import { LoadingSpinner } from "./components/LoadingSpinner";
+import { useIsMobile } from './hooks/useIsMobile';
+import { orderPearls, PEARL_ORDER_CONFIGS } from './utils/pearlOrder';
+import { LoadingSpinner } from './components/LoadingSpinner';
+import { AppProvider, useAppContext } from './context/AppContext';
+import { useUrlSync } from './hooks/useUrlSync';
+import { cn } from '@shadcn/lib/utils';
+import { SourceDecrypted } from './utils/speakers';
+import { generateTintedImage } from './utils/iconUtils';
 
-// lazy load components with preloading
-const PearlGrid = lazy(() => import("./components/PearlGrid/PearlGrid").then(module => ({ default: module.PearlGrid })));
-const DialogueBox = lazy(() => import("./components/DialogueBox/DialogueBox").then(module => ({ default: module.DialogueBox })));
+// Lazy load UI components
+const PearlGrid = React.lazy(() => import('./components/PearlGrid/PearlGrid'));
+const DialogueBox = React.lazy(() => import('./components/DialogueBox/DialogueBox').then(module => ({ default: module.DialogueBox })));
 
-// preload critical components
-const preloadComponents = async () => {
-    const [pearlGridModule, dialogueBoxModule] = await Promise.all([
-        import("./components/PearlGrid/PearlGrid"),
-        import("./components/DialogueBox/DialogueBox")
-    ]);
-    return { pearlGridModule, dialogueBoxModule };
-};
+const DEFAULT_FAVICON = 'favicon.svg';
 
-let GRID_DATA: PearlData[] = parsedData as PearlData[];
-
-export type UnlockMode = "all" | "unlock";
-
-export default function DialogueInterface() {
-    const [unlockMode, setUnlockMode] = useState<UnlockMode>("all");
-    const {
-        selectedPearl,
-        selectedTranscriber,
-        handleSelectPearl,
-        handleSelectTranscriber,
-        handleKeyNavigation,
-        currentGridPosition,
-        sourceFileDisplay,
-        setSourceFileDisplay
-    } = useDialogue(unlockMode, GRID_DATA);
-    const { refresh, unlockVersion } = useUnlockState();
-    const [hintProgress, setHintProgress] = useState<number>(0);
-    const [isAlternateDisplayModeActive, setIsAlternateDisplayModeActive] = useState(false);
-    const [searchText, setSearchText] = useState<string | undefined>(undefined);
+const Content: React.FC<{ orderer: (pearls: PearlData[]) => any }> = ({ orderer }) => {
     const isMobile = useIsMobile();
+    const { selectedPearlId, selectedPearlData } = useAppContext();
+    useUrlSync();
 
     useEffect(() => {
-        preloadComponents();
-    }, []);
+        const updateFavicon = (url: string) => {
+            const existingLinks = document.querySelectorAll("link[rel*='icon']");
+            existingLinks.forEach(link => link.remove());
 
-    useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === 'Shift') {
-                setIsAlternateDisplayModeActive(true);
-            }
+            const link = document.createElement('link');
+            link.type = 'image/png';
+            link.rel = 'icon';
+            link.href = url;
+            document.head.appendChild(link);
         };
 
-        const handleKeyUp = (e: KeyboardEvent) => {
-            if (e.key === 'Shift') {
-                setIsAlternateDisplayModeActive(false);
-            }
-        };
-
-        window.addEventListener('keydown', handleKeyDown);
-        window.addEventListener('keyup', handleKeyUp);
-
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-            window.removeEventListener('keyup', handleKeyUp);
-        };
-    }, []);
-
-    useEffect(() => {
-        function urlIdToPearlId(id: string) {
-            for (let element of GRID_DATA) {
-                if (element.metadata.internalId && element.metadata.internalId === id) {
-                    return element.id;
-                }
-                const transcriberMatch = element.transcribers.find(transcriber => transcriber.metadata.internalId === id);
-                if (transcriberMatch) {
-                    return element.id;
-                }
-            }
-            return id;
-        }
-
-        const pearlParam = urlAccess.getParam("pearl") || urlAccess.getParam("item");
-
-        if (pearlParam) {
-            const pearlId = urlIdToPearlId(pearlParam);
-            const foundPearl = GRID_DATA.find(pearl => pearl.id === pearlId);
-
-            if (foundPearl) {
-                handleSelectPearl(foundPearl);
-                const safeTranscriber = urlAccess.getActiveTranscriber(foundPearl.transcribers);
-                if (safeTranscriber) {
-                    handleSelectTranscriber(safeTranscriber);
-                }
-            }
-        }
-
-        urlAccess.getParam("source") && setSourceFileDisplay(urlAccess.getParam("source")!);
-    }, []);
-
-    // update meta tags dynamically based on selected pearl
-    useEffect(() => {
         const existingDescription = document.querySelector('meta[name="description"]');
         const existingTitle = document.querySelector('title');
         const existingOgTitle = document.querySelector('meta[property="og:title"]');
@@ -114,8 +44,7 @@ export default function DialogueInterface() {
         if (existingOgTitle) existingOgTitle.remove();
         if (existingOgDescription) existingOgDescription.remove();
 
-        const selectedPearlData = selectedPearl ? GRID_DATA.find(pearl => pearl.id === selectedPearl) ?? null : null;
-
+        // 1. Update Title and Meta Tags
         if (selectedPearlData) {
             const firstTranscriber = selectedPearlData.transcribers[0];
             let dialogueSummary = '';
@@ -193,51 +122,111 @@ export default function DialogueInterface() {
             defaultOgDescriptionMeta.content = 'Complete interactive database of Rain World lore. Browse Pearls, Broadcasts, Dialogue, and more with search and spoiler protection.';
             document.head.appendChild(defaultOgDescriptionMeta);
         }
-    }, [selectedPearl]);
 
-    const handleSelectPearlWithReset = (pearl: string) => {
-        handleSelectPearl(GRID_DATA.find(pearlData => pearlData.id === pearl) ?? null);
-        setHintProgress(0);
-    };
+        // 2. Update Favicon
+        const debounceTimer = setTimeout(() => {
+            if (selectedPearlData) {
+                const iconType = selectedPearlData.metadata.type === 'item'
+                    ? (selectedPearlData.metadata.subType || 'pearl')
+                    : selectedPearlData.metadata.type;
+                const iconColor = selectedPearlData.metadata.color || null;
 
-    const pearlGridComponent = useMemo(() => (
+                // Call the composite function with the configuration
+                generateTintedImage(iconType, iconColor)
+                    .then(dataUrl => updateFavicon(dataUrl))
+                    .catch(err => {
+                        console.warn("Failed to generate composite favicon", err);
+                        updateFavicon(DEFAULT_FAVICON);
+                    });
+            } else {
+                updateFavicon(DEFAULT_FAVICON);
+            }
+        }, 100);
+
+        return () => clearTimeout(debounceTimer);
+
+    }, [selectedPearlData]);
+
+    const pearlGridComponent = (
         <Suspense fallback={<LoadingSpinner/>}>
-            <PearlGrid
-                pearls={GRID_DATA}
-                order={orderPearls}
-                selectedPearl={selectedPearl}
-                onSelectPearl={handleSelectPearlWithReset}
-                unlockMode={unlockMode}
-                isAlternateDisplayModeActive={isAlternateDisplayModeActive}
-                isMobile={isMobile}
-                setUnlockMode={setUnlockMode}
-                unlockVersion={unlockVersion}
-                handleKeyNavigation={handleKeyNavigation}
-                currentGridPosition={currentGridPosition}
-                onSearchTextChange={setSearchText}
-            />
+            <PearlGrid order={orderer}/>
         </Suspense>
-    ), [GRID_DATA, selectedPearl, unlockMode, isAlternateDisplayModeActive, isMobile, handleSelectPearlWithReset, unlockVersion, handleKeyNavigation, currentGridPosition]);
+    );
 
-    const dialogueBoxComponent = useMemo(() => (
+    const dialogueBoxComponent = (
         <Suspense fallback={<LoadingSpinner/>}>
-            <DialogueBox
-                pearl={selectedPearl !== null ? GRID_DATA.find(pearl => pearl.id === selectedPearl) ?? null : null}
-                selectedTranscriber={selectedTranscriber}
-                onSelectTranscriber={handleSelectTranscriber}
-                sourceFileDisplay={sourceFileDisplay}
-                setSourceFileDisplay={setSourceFileDisplay}
-                setUnlockMode={setUnlockMode}
-                unlockMode={unlockMode}
-                triggerRender={refresh}
-                hintProgress={hintProgress}
-                setHintProgress={setHintProgress}
-                onSelectPearl={handleSelectPearl}
-                isMobile={isMobile}
-                searchText={searchText}
-            />
+            <DialogueBox/>
         </Suspense>
-    ), [selectedPearl, selectedTranscriber, unlockMode, hintProgress, refresh, handleSelectPearl, searchText]);
+    );
+
+    if (isMobile) {
+        return (
+            <>
+                <div className="w-full h-full" style={selectedPearlId ? { display: "none" } : {}}>
+                    {pearlGridComponent}
+                </div>
+                {selectedPearlId && (
+                    <div className="w-full h-full">
+                        {dialogueBoxComponent}
+                    </div>
+                )}
+            </>
+        );
+    }
+
+    return (
+        <div className="flex flex-row gap-5 h-full w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
+            {pearlGridComponent}
+            {dialogueBoxComponent}
+        </div>
+    );
+};
+
+export default function DialogueInterface() {
+    const isMobile = useIsMobile();
+    const [datasetKey, setDatasetKey] = useState<string>('vanilla');
+    const [pearls, setPearls] = useState<PearlData[] | null>(null);
+    const [sourceData, setSourceData] = useState<SourceDecrypted[]>([]);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        // Data is preloaded in index.html and exposed via window.__RW_DATA__
+        if (typeof window !== 'undefined' && window.__RW_DATA__) {
+            const dataPromises = window.__RW_DATA__;
+
+            // Set the key used by the preloader
+            setDatasetKey(window.__RW_DATA_KEY__ || 'vanilla');
+
+            // 1. Pearls (Critical)
+            dataPromises.pearls
+                .then((data: PearlData[]) => {
+                    setPearls(data);
+                })
+                .catch((err: any) => {
+                    console.error("Critical: Failed to load pearls", err);
+                    setError("Failed to load application data.");
+                });
+
+            // 2. Source (Background)
+            dataPromises.source
+                .then((data: SourceDecrypted[]) => {
+                    setSourceData(data);
+                })
+                .catch((err: any) => {
+                    console.warn("Non-critical: Failed to load source", err);
+                });
+        } else {
+            // Fallback if script didn't run (unlikely)
+            setError("Data loader not initialized.");
+        }
+    }, []);
+
+    const configuredOrderPearls = useMemo(() => {
+        const activeOrderConfig = PEARL_ORDER_CONFIGS[datasetKey] || PEARL_ORDER_CONFIGS['vanilla'];
+        return (pearls: PearlData[]) => orderPearls(pearls, activeOrderConfig);
+    }, [datasetKey]);
+
+    const isLoading = !pearls;
 
     return (
         <div
@@ -255,21 +244,22 @@ export default function DialogueInterface() {
         >
             <div className="absolute inset-0 backdrop-blur-sm bg-black/30"/>
 
-            <div className={cn("relative z-10 w-full max-w-[1400px]")}>
-                {isMobile ? (
-                    <>
-                        <div className="w-full pb-4" style={selectedPearl ? { display: "none" } : {}}>
-                            {pearlGridComponent}
+            <div className={cn("relative z-10 w-full max-w-[1400px] h-full", isMobile ? "" : "h-auto")}>
+                {error ? (
+                    <div className="flex items-center justify-center h-full min-h-[50vh]">
+                        <div className="text-center text-white p-6 bg-black/50 rounded-xl border border-white/20">
+                            <h2 className="text-xl font-bold mb-2 text-red-400">Error Loading Data</h2>
+                            <p>{error}</p>
                         </div>
-                        {selectedPearl && <div className={cn("w-full", isMobile ? " p-4" : "")}>
-                            {dialogueBoxComponent}
-                        </div>}
-                    </>
-                ) : (
-                    <div className="flex flex-row gap-5">
-                        {pearlGridComponent}
-                        {dialogueBoxComponent}
                     </div>
+                ) : isLoading ? (
+                    <div className="flex items-center justify-center h-full min-h-[50vh]">
+                        <LoadingSpinner/>
+                    </div>
+                ) : (
+                    <AppProvider pearls={pearls} sourceData={sourceData} datasetKey={datasetKey} isMobile={isMobile}>
+                        <Content orderer={configuredOrderPearls}/>
+                    </AppProvider>
                 )}
             </div>
         </div>

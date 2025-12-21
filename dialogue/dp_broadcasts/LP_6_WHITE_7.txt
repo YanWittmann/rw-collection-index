@@ -5,6 +5,7 @@ name: World Warmth (White 7)
 map: MAP-WHITE-BROADCASTS
 mapInfo: ${MAP-LP-PRE-PEB}
 info: ${LP-PRE-PEB}
+tag: downpour
 
 === transcription: broadcast-pre-FP
 [LIVE BROADCAST] - PUBLIC GROUP [REFUGEUPONTHRELIEWELS] all participants anonymous

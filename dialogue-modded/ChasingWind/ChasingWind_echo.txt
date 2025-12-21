@@ -1,0 +1,23 @@
+name: One Twig upon a Silver Spindle
+type: echo
+map: region=CW, room=C15, mapSlugcat=white
+
+=== transcription: saint
+md-sourceDialogue: ChasingWind/eu/echoConv.txt
+Finally we meet.
+I am honored by your presence, little one.
+Tell me, what do you seek here?
+For there is nothing left to see. I was wrong.
+The unknown is elsewhere, beyond the wretched remains of this world.
+You come from a place so vast. I envy you.
+Go now, for there is nothing left to say.
+
+=== transcription: base-slugcats
+md-sourceDialogue: ChasingWind/eu/echoConv.txt
+Greetings, fellow traveller!
+Take a moment and admire these vistas of uncharted lands, isn't it a sight to behold?
+How could we have the will to explore its inner self when the call of the wild expanses is so thunderous?
+I pity monks and scholars, deaf to the great song of the outdoors. I followed them, but at what end?
+This was a late lesson, but I learned my place was here, forever lingering for adventure.
+My existence will always be one of a fierce explorer, in search for a splinter of their glorious ambition.
+I hope you'll find the peace I relinquished, little creature.

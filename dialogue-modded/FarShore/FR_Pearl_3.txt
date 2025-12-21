@@ -1,0 +1,30 @@
+internalId: FR_Pearl_3
+color: #074d34
+secondaryColor: #e3fff5
+type: pearl
+name: Woven
+map: region=FR, room=D06, mapSlugcat=white
+
+=== transcription: chasing-wind
+md-sourceDialogue: FarShore/CW_FR_Pearl_3.txt
+This is a description of the various processes of a textile factory.
+Or rather, let me tell you a short story about them.
+Textile factories were massive, mostly autonomous, and filled with purposed organisms, and none were more infamous than the silk-producing aquatic threader worm.
+Long before such organisms became the norm, artisans relied on what they could find in nature.
+They cultivated cactus-like plants, extracting their sap and spinning it into thread.
+These threads were then woven into tapestries detailing the life of the weaver and their family, a meticulous craft that could take generations.
+Then came the threader worm, and its efficient, resistant, waterproof silk. Tradition stood no chance.
+Angered, the cactus weavers disrupted factories, staging desperate protests. But as their numbers dwindled, so did their legacy.
+In the end, such was the fate of many things.
+...
+The moral of the story?
+I'm not sure.
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: FarShore/FR_Woven.txt
+This describes the process of a textile industry plant.
+Threader worms are bred in gigantic vats. When they reach maturity, they are segregated into small water-filled cubic boxes.
+Here, they excrete thin silk threads for the rest of their lives.
+The threads are then woven into fabric and dyed by various other purposed organisms, without much worker involvement.
+The resulting fabric was of such high quality that it rarely frayed. It had many applications, from fashion to sky sail making.
+Did you know it was also used for making iterator garments? We don't really need those, but I guess it made us more... relatable.

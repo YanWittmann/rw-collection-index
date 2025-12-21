@@ -5,6 +5,7 @@ name: Future Messenger (Gray 9)
 map: MAP-GRAY-BROADCASTS
 mapInfo: ${MAP-LP-POST-PEB}
 info: ${LP-POST-PEB}
+tag: downpour
 
 === transcription: broadcast-pre-FP
 [LIVE BROADCAST] PRIVATE Seven Red Suns, No Significant Harassment

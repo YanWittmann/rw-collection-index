@@ -1,0 +1,45 @@
+internalId: NP_Pearl_1
+color: #6900b7
+secondaryColor: #cfbadf
+type: pearl
+name: Gilded
+map: impl=none, region=NP, room=seed, mapSlugcat=white
+
+=== transcription: chasing-wind
+md-sourceDialogue: Necropolis/CW_NP_Pearl_1.txt
+Amazing! This pearl contains notes on a civilization preceding that of the benefactors of my island.<LINE>These are archaeological writings about ancient ruins found under an urban area.
+The authors describe their findings and the various artifacts they managed to unearth.<LINE>One passage describes how the lower layers of these ruins were flooded by void fluid.
+They explain this anomaly by the proximity of a local rise of living rock.<LINE>According to them, the spirituality of the place would have succeeded in purifying this mixture! Strange postulate...
+There is another passage telling how a team would have ventured deeper and found... ruins suspended in the sky!
+Believe me, little creature, I have been researching my predecessors for countless cycles, but I have never read anything like this.
+...
+Some thinkers from the time when we still lived with our creators wrote a lot on the possibility of "layers of existence".<LINE>They would be connected to each other by the void sea and the firmament.
+It would theoretically be possible to pass from one of these "layers" to another, by convoluted means that are rarely described in literature.
+Have these archaeologists found one of these passages? It would be a revolution in the way of seeing our world!
+There was a time when this type of discovery would have been seen as heretical, though. Be careful who you share this with!
+
+=== transcription: FP-artificer
+md-sourceDialogue: Necropolis/NP_Gilded-Artificer.txt
+What is this? Oh, an archaeological report from a region outside my facility.<LINE>The authors describe the junk they have unearthed there.
+Only the last chapter seems to be of any interest to me.<LINE>A team claims to have found floating ruins in the sky in the lowest parts of the construction site.
+It is very interesting.
+This discovery joins forbidden theories on the functioning of our world, considered heretical.
+According to some courageous thinkers, the world would be divided into layers of existence linked together.
+The matter dissolved in the void sea would pour into the next layer in the form of dust falling from the firmament.
+It would be possible for places particularly imbued with a karmic imbalance to resist this transformation...
+From there to imagining that individuals could suffer the same fate, there is only one step.
+A step that no one dared to take.
+This subject was considered a great taboo.<LINE>Some believed that crossing the boundary between the layers of existence could lead to eternal life!
+You can imagine that for a society obsessed with breaking the cycle of life, this was seen as an abominable heresy.
+Thanks for bringing me this pearl, it will give me food for thought.
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: Necropolis/NP_Gilded.txt
+These are archaeological notes describing the excavation of ruins discovered during the underground expansion of an urban area.<LINE>The author describes various artifacts with unknown functions and reliefs with incomprehensible symbols.
+The history of our world has never really fascinated our benefactors. Versed in spirituality but too full of themselves to look back...
+This was surely already the case for their predecessors. And the predecessors of these predecessors!
+...
+Let's get back to the notes.
+There is a strange paragraph describing floating ruins in the sky, discovered at the bend of a corridor in the deepest areas.
+There is no context, and there are no more notes after this one. Perhaps an addition by a joker?
+That said, things tend to get strange near the void sea.

@@ -1,0 +1,16 @@
+internalId: GH_Pearl
+color: #12431d
+secondaryColor: #b1e888
+type: pearl
+name: Greenhouse
+map: region=GH, room=D02, mapSlugcat=white
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: HangingGardens/GH_Greenhouse.txt
+It's a catalogue of various lizard breeds available for auction. There are a few kinds that you would recognize,\nbut most of these are far more exotic, probably having been bred specifically for this catalogue.
+Have you ever wondered why lizards are so prolific in the ecosystem?\nCompared to most other fauna you see nowadays, lizards have quite the history.
+You see, lizards were a very special kind of purposed organism, to the point that it’s debatable to even classify them as such.\nIn the days long before the industrialization of civilization, the great, great ancestors of my creators had a strong connection with nature,\nand interactions with other creatures were far less systematic than they eventually became.
+The lizards were the first species they formed a strong mutual bond with.\nThe ancients nurtured and bred them for all kinds of purposes, from sturdy hunting beasts to small personal pets.
+The specific details of this time were often argued by scholars since it occured so long ago, but the lasting sentiment toward lizards that resulted was apparent.\nA few more lavish persons even built entire sanctuaries where lizards could live carefree lives in relative safety.
+Well, "carefree" might be a strong word here. Some of the lizards in this catalogue seem completely unfit for basic functioning.\nLike this one, which has a shrunken head, no teeth, and frills longer than its entire body! These breeds would have vanished as soon as the ancients did.
+Though countless cycles have passed since the original bonds were made, many aspects of the modern lizards remain seemingly unchanged.\nPerhaps a clever little creature such as yourself could tap into that forgotten loyalty.

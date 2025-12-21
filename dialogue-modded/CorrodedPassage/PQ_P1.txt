@@ -1,0 +1,36 @@
+internalId: PQ_P1
+color: #38b6f1
+secondaryColor: #44BEF7
+type: pearl
+name: Passage 1
+map: region=PQ, room=C04, mapSlugcat=white, impl=none
+
+=== transcription: FP-artificer
+md-sourceDialogue: CorrodedPassage/PQPASSAGE1-Artificer.txt
+Where did you find this? This seems to be older than my own structure.
+This pearl has plain text written on it. Allow me to read it to you.
+"I too, like a ripe fruit, fall, fall, fall to the ground beneath.\nI feel its embrace, hugging my skin, my flesh, my bones with its warmth.\nI fall into my slumber. I lose myself, more, more, and more each time. \nI see the light once more, but my skin, my flesh, my bones, they are left behind.
+I am not the same, but I remain. Changed, renewed, not quite the same.
+I look behind me, and I see my remains. I look ahead of me, and I see my own self looking back at me from above."
+Quite an interesting read. It talks about the unstoppable change that comes with time itself. A cycle, in it's own way.
+This will help me endure the passage of time a little better. Thank you.
+
+=== transcription: LttM-pre-collapse
+md-sourceDialogue: CorrodedPassage/PQPASSAGE1-Spear.txt
+Where did you find this little creature? This seems to be quite old, perhaps as old as my own structure.
+This pearl contains a single poem. I doubt you would find it's\nactual writing interesting, little creature, so allow me to summarize!~
+This text talks about the inevitable change\nall things have, and will, go through. It makes a comparison between the writer and a fruit,\ntalking about the recurring cycle that they will go through.
+They will go back to the ground, and from the ground, they will come back once more, but not quite the same.
+After hundreds of cycles, there is barely any resemblance left of\nwhat originally existed.
+I suppose it may be hard to grasp just how much things change.\nThe world around you is a mountain of change after change. You live in the remains of my creator's creations.
+I, too, will go back to the ground one day.
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: CorrodedPassage/PQPASSAGE1.txt
+Where did you find this little creature? This seems to be quite old.
+This pearl contains a single poem. I doubt you would find it's\nactual content useful, little creature, so allow me to summarize!~
+This text talks about the inevitable change\nall things have, and will, go through. It makes a comparison between the writer and a fruit,\ntalking about the recurring cycle that they will go through.
+They will go back to the ground, and from the ground, they will come back once more, but not quite the same.
+After hundreds of cycles, there is barely any resemblance left of\nwhat originally existed. 
+I suppose it may be hard to grasp just how much things change.\nThe world around you is a mountain of change after change, little creature! You live in the remains of a long gone past. 
+...\nI, too, live in the remains of my past.

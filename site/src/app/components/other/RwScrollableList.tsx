@@ -1,4 +1,6 @@
 "use client"
+
+import type React from "react"
 import { cn } from "@shadcn/lib/utils"
 
 export interface RwScrollableListItem {
@@ -13,9 +15,33 @@ interface RwScrollableListProps {
     items: RwScrollableListItem[]
     className?: string
     itemClassName?: string
+    breakSubtitle?: boolean
 }
 
-export function RwScrollableList({ items, className, itemClassName }: RwScrollableListProps) {
+const TAIL_LENGTH = 16;
+
+const ItemSubtitle = ({ text, breakText }: { text: string; breakText: boolean }) => {
+    if (breakText) {
+        return <div className="text-sm opacity-80 break-words">{text}</div>;
+    }
+
+    text = text.replace("https://", "")
+
+    const shouldTruncateMiddle = text.length > TAIL_LENGTH + 5;
+    const firstPart = shouldTruncateMiddle ? text.slice(0, -TAIL_LENGTH) : text;
+    const secondPart = shouldTruncateMiddle ? text.slice(-TAIL_LENGTH) : "";
+
+    return (
+        <div className="flex text-sm opacity-80 min-w-0" title={text}>
+            <span className="truncate">{firstPart}</span>
+            {secondPart && (
+                <span className="flex-shrink-0 whitespace-nowrap">{secondPart}</span>
+            )}
+        </div>
+    );
+};
+
+export function RwScrollableList({ items, className, itemClassName, breakSubtitle = true }: RwScrollableListProps) {
     return (
         <div className={cn("relative rounded-xl overflow-hidden", className)}>
             {/* Inner border */}
@@ -31,11 +57,13 @@ export function RwScrollableList({ items, className, itemClassName }: RwScrollab
                     ) : (
                         <button
                             key={item.id}
-                            className={cn("w-full text-left px-4 py-1 relative group text-white/90 hover:underline", itemClassName)}
+                            className={cn("w-full text-left px-4 py-1 relative group text-white/90 hover:underline", itemClassName, !item.onClick && "cursor-not-allowed")}
                             onClick={item.onClick}
                         >
                             <div className="font-medium">{item.title}</div>
-                            {item.subtitle && <div className="text-sm opacity-80">{item.subtitle}</div>}
+                            {item.subtitle && (
+                                <ItemSubtitle text={item.subtitle} breakText={breakSubtitle} />
+                            )}
                         </button>
                     )
                 ))}

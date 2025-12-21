@@ -1,0 +1,9 @@
+inherit: DS_BRIGHT_GREEN
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_DS.txt
+It's an old text. The verses are not familiar to me; it is not written in the same language as the one my benefactors used. It is very old and intricate.
+Let me try to translate it... The first verse says something about a... rug? It then says that the world is an unfortunate mess.\nI fail to link these two concepts together.
+It then continues with the world transforming into a... furry animal hide? Ok, this is getting weird.\nOh nevermind, the hide just transformed into a fishing net!
+A new character! This part speaks about a jellyfish. The author seems to emphasize on trying to be like the jellyfish, because... the jellyfish doesn't try?\nThis doesn't sound like good advice to me.
+I'm sorry little one, this language is giving me a hard time. I feel like I missed the point.

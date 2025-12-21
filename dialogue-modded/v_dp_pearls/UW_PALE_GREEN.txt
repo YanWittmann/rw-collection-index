@@ -1,0 +1,12 @@
+inherit: UW_PALE_GREEN
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_UW.txt
+This one is plain text. And is very long.
+It looks like a solemn dispute between two great houses of the city above Pebbles. Not much to learn here.
+This reminds me of my own benefactors. They divided themself into castes.
+They had a distinct way to build, very vertical... reaching for the sky. The more prestigious your caste was, the higher you would live.
+When they built me, only the most respectable had access to the area above my roof. The other still lived in the nearby urban area.
+After a while, weather changed to become as you know it now. The towers high above the clouds were left untouched, while lower districts often flooded from the torrential rain...
+It only worsened social disparities, even during the events of the Great Ascension. The richest were able to dissolve in pure Void Fluid distillate, while the rest were left to burn in Living Rock.
+They still all disappeared eventually. I must admit I kind of miss their presence.

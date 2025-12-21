@@ -3,6 +3,7 @@ color: #30bab2
 type: broadcast
 name: Cyan 1
 map: region=LM, room=TOWER02, mapSlugcat=spear
+tag: downpour
 
 === transcription: broadcast
 [DIRECT BROADCAST] PRIVATE - Five Pebbles, Big Sister Moon

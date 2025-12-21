@@ -3,9 +3,44 @@ const path = require('path');
 const chokidar = require('chokidar');
 const levenshtein = require('fast-levenshtein');
 
-// CONFIGURATION
-const DIALOGUE_DIR = path.join(__dirname, '../dialogue');
-const OUTPUT_FILE = path.join(__dirname, 'src/generated/parsed-dialogues.json');
+const PROFILES = {
+    vanilla: {
+        dialogueDir: path.join(__dirname, '../dialogue'),
+        outputFile: path.join(__dirname, 'public/data/parsed-dialogues.json'),
+        sourceDecryptedOutputFile: path.join(__dirname, 'public/data/source-decrypted.json'),
+    },
+    modded: {
+        dialogueDir: path.join(__dirname, '../dialogue-modded'),
+        outputFile: path.join(__dirname, 'public/data/parsed-dialogues-modded.json'),
+        sourceDecryptedOutputFile: path.join(__dirname, 'public/data/source-decrypted-modded.json'),
+        inheritanceSources: ['vanilla'],
+    },
+};
+
+function getProfileName() {
+    const argIndex = process.argv.indexOf('--profile');
+    if (argIndex > -1 && process.argv[argIndex + 1]) {
+        return process.argv[argIndex + 1];
+    }
+    return 'vanilla';
+}
+
+const profileName = getProfileName();
+const activeProfile = PROFILES[profileName];
+
+if (!activeProfile) {
+    console.error(`Error: Profile "${profileName}" not found.`);
+    console.error(`Available profiles: ${Object.keys(PROFILES).join(', ')}`);
+    process.exit(1);
+}
+
+const { dialogueDir, outputFile, sourceDecryptedOutputFile } = activeProfile;
+
+console.log(`Using profile: "${profileName}"`);
+console.log(`Input Directory: ${dialogueDir}`);
+console.log(`Output File: ${outputFile}`);
+console.log(`Source Decrypted Output File: ${sourceDecryptedOutputFile}`);
+
 const MAX_SPEAKER_LENGTH = 12;
 const PATTERN_REGEX = /\{([^}]+)\}/g;
 
@@ -23,6 +58,7 @@ const excludeSpeakers = [
     "CONSIDER",
     "NOW",
     "TO",
+    "SPECIAL"
 ]
 
 const generalWhiteGrayBroadcasts = [
@@ -47,6 +83,29 @@ const mapMetadataTemplates = {
 
 // SECTION: rain world game text source files
 
+const STOP_WORDS = new Set([
+    'the', 'and', 'for', 'that', 'this', 'with', 'you', 'not', 'are', 'but',
+    'from', 'what', 'all', 'were', 'when', 'can', 'said', 'there', 'use',
+    'each', 'which', 'she', 'how', 'their', 'if', 'will', 'up', 'other',
+    'about', 'out', 'many', 'then', 'them', 'these', 'so', 'some', 'her',
+    'would', 'make', 'like', 'him', 'into', 'time', 'has', 'look', 'two',
+    'more', 'write', 'go', 'see', 'number', 'no', 'way', 'could', 'people',
+    'my', 'than', 'first', 'water', 'been', 'call', 'who', 'oil', 'its', 'now',
+    'find', 'long', 'down', 'day', 'did', 'get', 'come', 'made', 'may', 'part'
+]);
+
+function getTokens(text) {
+    if (!text) return new Set();
+    const matches = text.toLowerCase().match(/\w{3,}/g) || [];
+    const tokens = new Set();
+    for (const m of matches) {
+        if (!STOP_WORDS.has(m)) {
+            tokens.add(m);
+        }
+    }
+    return tokens;
+}
+
 function parseSourceDecryptedJsonFile(filePath) {
     try {
         const fileData = fs.readFileSync(filePath, 'utf8');
@@ -55,7 +114,8 @@ function parseSourceDecryptedJsonFile(filePath) {
         return jsonData.filter(entry => entry.c !== undefined).map(entry => ({
             ...entry,
             linesA: entry.c.split(/\n|<LINE>/).map(l => l.replace(/^((\d+|[A-Z]+) : )+/, '').trim()).filter(l => l),
-            linesB: entry.c.split(/\n/).map(l => l.replace(/^((\d+|[A-Z]+) : )+/, '').trim()).filter(l => l)
+            linesB: entry.c.split(/\n/).map(l => l.replace(/^((\d+|[A-Z]+) : )+/, '').trim()).filter(l => l),
+            tokens: getTokens(entry.c)
         }));
     } catch (error) {
         console.error('Error reading or parsing the JSON file:', error);
@@ -63,14 +123,27 @@ function parseSourceDecryptedJsonFile(filePath) {
     }
 }
 
-const sourceDecryptedJsonFile = path.join(DIALOGUE_DIR, 'source/decrypted.json');
+const sourceDecryptedJsonFile = path.join(dialogueDir, 'source/decrypted.json');
 const gameFiles = parseSourceDecryptedJsonFile(sourceDecryptedJsonFile);
 
+// Build Inverted Index
+const tokenIndex = new Map();
+gameFiles.forEach(entry => {
+    for (const token of entry.tokens) {
+        let list = tokenIndex.get(token);
+        if (!list) {
+            list = [];
+            tokenIndex.set(token, list);
+        }
+        list.push(entry);
+    }
+});
+
 // copy file to generated folder
-fs.copyFileSync(sourceDecryptedJsonFile, path.join(__dirname, 'src/generated/source-decrypted.json'));
+fs.copyFileSync(sourceDecryptedJsonFile, sourceDecryptedOutputFile);
 
 // SECTION: rain world game source images
-const sourceImgDir = path.join(DIALOGUE_DIR, 'source/img');
+const sourceImgDir = path.join(dialogueDir, 'source/img');
 const publicImgDir = path.join(__dirname, 'public/img/src');
 
 fs.rmSync(publicImgDir, { recursive: true, force: true });
@@ -128,10 +201,36 @@ function findBestMatch(lines) {
     lines = lines.flatMap(line => line.split("\\n"));
     lines = lines.filter(line => line.trim().length > 0);
 
+    const inputTokens = getTokens(lines.join(' '));
+    let candidates = gameFiles;
+
+    if (inputTokens.size > 0) {
+        const candidateScores = new Map();
+
+        for (const token of inputTokens) {
+            const matches = tokenIndex.get(token);
+            if (matches) {
+                for (let i = 0; i < matches.length; i++) {
+                    const entry = matches[i];
+                    candidateScores.set(entry, (candidateScores.get(entry) || 0) + 1);
+                }
+            }
+        }
+
+        if (candidateScores.size > 0) {
+            const scoredCandidates = [];
+            for (const [entry, score] of candidateScores.entries()) {
+                scoredCandidates.push({ entry, score });
+            }
+            scoredCandidates.sort((a, b) => b.score - a.score);
+            candidates = scoredCandidates.slice(0, 25).map(c => c.entry);
+        }
+    }
+
     let bestMatch = null;
     let bestScore = -1;
 
-    gameFiles.forEach(entry => {
+    candidates.forEach(entry => {
         let { matchPercentage, totalScore } = checkLinesMatch(lines, entry.linesA);
         if (matchPercentage < 80) {
             const resultB = checkLinesMatch(lines, entry.linesB);
@@ -384,17 +483,34 @@ function parseLine(line) {
     }
 
     const speakerPart = line.slice(0, colonIndex).trim();
+
     // Only recognize as speaker if it's not metadata, not in excludeSpeakers array, and within length limit
     if (!speakerPart.startsWith('md-') &&
         !speakerPart.startsWith('|') &&
         !speakerPart.startsWith('/') &&
         !speakerPart.startsWith('~') &&
-        !excludeSpeakers.includes(speakerPart) &&
         speakerPart.length <= MAX_SPEAKER_LENGTH) {
-        return {
-            speaker: speakerPart,
-            text: line.slice(colonIndex + 1).trim()
-        };
+
+        let actualSpeaker = speakerPart;
+        let namespace = undefined;
+        const hyphenIndex = speakerPart.indexOf('-');
+
+        // Namespace extraction logic: NS-prefix check, valid index > 2, content after hyphen
+        if (speakerPart.startsWith('NS') && hyphenIndex > 2 && hyphenIndex < speakerPart.length - 1) {
+            namespace = speakerPart.slice(0, hyphenIndex);
+            actualSpeaker = speakerPart.slice(hyphenIndex + 1);
+        }
+
+        if (!excludeSpeakers.includes(actualSpeaker)) {
+            const result = {
+                speaker: actualSpeaker,
+                text: line.slice(colonIndex + 1).trim()
+            };
+            if (namespace !== undefined) {
+                result.namespace = namespace;
+            }
+            return result;
+        }
     }
 
     return { text: line };
@@ -466,8 +582,8 @@ const sectionHandlers = {
                 "LttM-saint", "LttM-rivulet", "LttM-pre-collapse", "LttM-gourmand",
                 "FP-artificer",
                 "LttM-FP-saint",
-                "broadcast-pre-FP", "broadcast-post-FP", "broadcast",
-                "saint", "rivulet", "artificer",
+                "broadcast-pre-FP", "broadcast-post-FP",
+                "saint", "rivulet", "artificer", "spearmaster",
             ],
         }
         for (const [tag, transcribers] of Object.entries(tagAddons)) {
@@ -503,7 +619,7 @@ const sectionHandlers = {
     })
 };
 
-function parseDialogueContent(content) {
+function parseDialogueContent(content, inheritanceDB = null, metadataOnly = false) {
     const lines = content.split('\n').map(l => l.trim()).filter(l => l);
 
     // Parse global metadata
@@ -533,9 +649,36 @@ function parseDialogueContent(content) {
         sectionStartIndex++;
     }
 
+    if (metadata.inherit && inheritanceDB) {
+        const parent = inheritanceDB.get(metadata.inherit);
+        if (parent) {
+            for (const [key, value] of Object.entries(parent)) {
+                if (key === 'map' || key === 'tags') continue;
+                if (metadata[key] === undefined) {
+                    metadata[key] = value;
+                }
+            }
+
+            if (parent.map) {
+                metadata.map = [...parent.map, ...metadata.map];
+            }
+
+            if (parent.tags) {
+                metadata.tags = [...new Set([...(parent.tags || []), ...metadata.tags])];
+            }
+        } else {
+            console.warn(`Warning: Parent ${metadata.inherit} not found in inheritance sources.`);
+        }
+        delete metadata.inherit;
+    }
+
     // Clean up empty arrays
     if (metadata.map.length === 0) delete metadata.map;
     if (metadata.tags.length === 0) delete metadata.tags;
+
+    if (metadataOnly) {
+        return { metadata };
+    }
 
     // Parse sections
     const result = {
@@ -686,9 +829,9 @@ const getAllFiles = (dir, fileList = []) => {
 };
 
 function writeOutput(result) {
-    fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
-    fs.writeFileSync(OUTPUT_FILE, JSON.stringify(result));
-    console.log(`Successfully parsed ${result.length} files to ${OUTPUT_FILE}`);
+    fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+    fs.writeFileSync(outputFile, JSON.stringify(result));
+    console.log(`Successfully parsed ${result.length} files to ${outputFile}`);
 }
 
 function handleProcessingError(error) {
@@ -698,8 +841,27 @@ function handleProcessingError(error) {
 
 function processDialogueFiles() {
     try {
-        const files = getAllFiles(DIALOGUE_DIR);
-        console.log(`Found ${files.length} files in ${DIALOGUE_DIR} to process`);
+        const inheritanceDB = new Map();
+        if (activeProfile.inheritanceSources) {
+            console.log("Building inheritance database...");
+            activeProfile.inheritanceSources.forEach(sourceName => {
+                const sourceProfile = PROFILES[sourceName];
+                if (sourceProfile) {
+                    const sourceFiles = getAllFiles(sourceProfile.dialogueDir);
+                    sourceFiles.forEach(file => {
+                        if (file.replaceAll("\\\\", "/").replaceAll("\\", "/").includes('source/')) return;
+                        const content = fs.readFileSync(file, 'utf-8');
+                        const baseId = path.basename(file, '.txt');
+                        const { metadata } = parseDialogueContent(content, null, true);
+                        inheritanceDB.set(baseId, metadata);
+                    });
+                }
+            });
+            console.log(`Inheritance database built with ${inheritanceDB.size} entries.`);
+        }
+
+        const files = getAllFiles(dialogueDir);
+        console.log(`Found ${files.length} files in ${dialogueDir} to process`);
 
         const result = files.flatMap(file => {
             if (file.replaceAll("\\\\", "/").replaceAll("\\", "/").includes('source/')) {
@@ -708,7 +870,7 @@ function processDialogueFiles() {
 
             const content = fs.readFileSync(file, 'utf-8');
             const baseId = path.basename(file, '.txt');
-            const parsed = parseDialogueContent(content);
+            const parsed = parseDialogueContent(content, inheritanceDB);
 
             if (!hasVariableTranscriptions(parsed)) {
                 return [createBaseEntry(baseId, parsed)];
@@ -727,7 +889,7 @@ function processDialogueFiles() {
 }
 
 function watchDialogueFiles() {
-    const watcher = chokidar.watch(DIALOGUE_DIR, {
+    const watcher = chokidar.watch(dialogueDir, {
         persistent: true,
         ignoreInitial: true, // ignore initial scan to avoid double-processing
         depth: 99, // watch all subdirectories
@@ -740,7 +902,7 @@ function watchDialogueFiles() {
         }
     });
 
-    console.log(`Watching for changes in ${DIALOGUE_DIR}...`);
+    console.log(`Watching for changes in ${dialogueDir}...`);
 }
 
 if (process.argv.includes('--watch')) {

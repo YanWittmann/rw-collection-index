@@ -1,0 +1,37 @@
+internalId: FR_Pearl_1
+color: #89ecda
+secondaryColor: #eeeeee
+type: pearl
+name: Lava
+map: region=FR, room=TP32, mapSlugcat=white
+mapInfo: I was unable to locate this room.
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_FR_Pearl_1.txt
+This is a very old exploration report of the caldera at the center of this island.
+If I refer to the old archives my Benefactors gifted me, this place was not always surrounded by water.
+All the vapor from us iterators warmed the nearby mountain glaciers and caused melted ice to fill the lower lands. The heavy rains did the rest.
+I don't know if such vast liquid expanses existed before my construction, but I do observe there are no landmasses south and east within the range of my overseers now.
+I do wonder what kind of marvels could hide below... Probably just more ruins.
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: FarShore/FR_Lava.txt
+Oh! You must have travelled far to find this one!
+This is a very old exploration report of an area out of reach of my overseers.
+I'm afraid I can't really offer complementary information, but I can read it to you!
+
+"We found a miracle!"
+"Deep within these uncharted lands, a geological marvel!"
+"Never before such formation has been observed in our known world. Void fluid! At the surface!"
+"Excuse such a display of excitement, but the potential of this discovery is unprecedented. The limitless resources at the bottom of this world, finally at hand!"
+"It is true this mixture isn't exactly the purest form of void fluid known to us, as it has permeated multiple geological stratas, and lost some if not most of its spiritual properties."
+"Although I am sure novel methods of distillation will allow the use of this semi-liquid I shall call "living rock"."
+"The use of this substance could open the way to all sort of marvelous contraptions I listed below."
+
+...
+
+The rest is a long list of overly ambitious projects that never saw the light of the day.
+I actually remember reading about this "living rock" rush in my databases somewhere. Many prospectors thought they would bring glory and fame to their lineage by extracting it.
+It didn't really go anywhere as other closer and cleaner sources of void fluid have been progressively made easily accessible.
+All the infrastructure for the extraction of living rock has been forgotten long before our predecessors left this world.
+I guess the wilds must have reclaimed it by now.

@@ -1,0 +1,41 @@
+type: item
+subType: rivulet
+tag: downpour
+map: region=CW, room=AI, mapSlugcat=rivulet
+
+=== transcription: chasing-wind
+md-type: pearl
+md-var-DialogueId: First_encounter
+md-name: With the Mark
+md-transcriberName: With the Mark
+md-sourceDialogue: ChasingWind/CW_Rivulet_FirstEncounter_AlreadyHadMark.txt
+Greetings!
+...
+I followed your little excursion through my infrastructure, and I must say I'm impressed you made it here.
+I see one of my kind already bestowed you the gift of communication! This is a great privilege for a small beast like you.
+I have not seen your kind in a very long time, and I've been eagerly watching you approach.
+I'm curious about where you came from, but my analyzing hardware has long since atrophied into uselessness.
+What mysterious places could you have come from? My imagination is going wild!
+Your physiology leads me to believe you come from a watery place... The eastern ocean maybe?
+Well nimble traveler, welcome to my small island!
+Please take some time to rest, you're safe here.
+You may have crossed the lush environment of my memory conflux on your way here.
+My immune system is not doing its job anymore, I'm slowly getting infected by the life of this land.
+I feel like it's changing me, in a deep and novel way.
+Some crafty scavengers are helping me with my structural integrity, but I feel this state is temporary.
+I've been having weird thoughts these days, I feel like I'm... fading away. Maybe this is the Solution?
+What if we weren't supposed to enlighten the world, but ascend with it in symbiosis?
+What if we misunderstood the Great Task?
+...
+Enough about me! I'm sorry you have to hear my ramblings, little one.
+I'm afraid I can't offer much in this state.
+I believe this small gift should help you find what you seek, though.
+You must have noticed the peculiarity of being tethered to this physical world, waking up again and again.
+I sometimes wish I was a little beast like you, because you have a way out.
+Follow the old path. Go to the north-west, past the overgrown farms.
+Then down into the earth, where the rock boils, go as deep as you can reach.
+You're resourceful, I'm sure you'll find your way.
+You can exit my structure by using the access shaft on the left.
+Good luck, little one.
+...
+Maybe one day, I'll join you.

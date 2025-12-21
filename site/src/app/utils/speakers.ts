@@ -1,12 +1,8 @@
-import sourceDecrypted from "../../generated/source-decrypted.json";
-
 export interface SourceDecrypted {
     n: string;
     p: string;
     c?: string;
 }
-
-export const SOURCE_DECRYPTED: SourceDecrypted[] = sourceDecrypted;
 
 export const speakersColors: { [key: string]: string } = {
     "FP": "#66d9bf",
@@ -36,6 +32,11 @@ export const speakersColors: { [key: string]: string } = {
     "Cappin": "#0061d6",
     "Host": "#ffffff",
     "Gesture": "#ffffff",
+    // namespace specific colors
+    "NSCP-PS": "#a3d9c2",
+    "NSCP-FPB": "#d4d1b8",
+    "NSCP-UD": "#69b378",
+    "NSCP-TSA": "#fadb99",
 };
 
 export const transcribersColors: { [key: string]: string } = {
@@ -52,6 +53,16 @@ export const transcribersColors: { [key: string]: string } = {
     "saint": "#aaf156",
     "base-slugcats": "#ffffff",
     "artificer": "#70233c",
+    "spearmaster": "#4f2e69",
+    // modded
+    "chasing-wind": "#66d9bf",
+    "seer": "#b8cfa6",
+};
+
+export const transcribersImages: { [key: string]: string } = {
+    // modded
+    "chasing-wind": "modded/chasing-wind",
+    "seer": "modded/seer",
 };
 
 export const regionColors: { [key: string]: string } = {
@@ -107,6 +118,16 @@ export const regionColors: { [key: string]: string } = {
     "WSSR": "#4A4A4A",
     "WTDB": "#69775E",
     "WMPA": "#2F176B",
+    // modded
+    "GH": "#68a842",
+    "PQ": "#34573a",
+    "SD": "#bb6926",
+    "FR": "#c4c79e",
+    "MF": "#bb746c",
+    "EU": "#1c3d4e",
+    "CW": "#66d9bf",
+    "GU": "#5f6065",
+    "NP": "#b14309",
 };
 
 export const transcriberIcons: { [key: string]: string } = {
@@ -154,6 +175,7 @@ export const speakerNames: { [key: string]: string } = {
     "base-slugcats": "Base Slugcats",
     "saint": "Saint",
     "artificer": "Artificer",
+    "spearmaster": "Spearmaster",
     "ST": "Spinning Top",
     "Spinning Top": "Spinning Top",
     "spinning-top": "Spinning Top",
@@ -164,6 +186,13 @@ export const speakerNames: { [key: string]: string } = {
     "PearlReader": "Pearl Reader",
     "Host": "Host",
     "Gesture": "Bell of Gesture",
+    // namespace specific names
+    "NSCP-PS": "Pilgrimaged Summit",
+    "NSCP-FPB": "Fourteen Polar Bones",
+    "NSCP-UD": "Unstable Daydream",
+    "NSCP-TSA": "Twelve Stars Above",
+    "chasing-wind": "Chasing Wind",
+    "seer": "Seer",
 }
 
 export const regionNames: { [key: string]: string } = {
@@ -219,6 +248,16 @@ export const regionNames: { [key: string]: string } = {
     "WSSR": "Unfortunate Evolution",
     "WTDB": "Desolate Tract",
     "WMPA": "Migration Path",
+    // modded
+    "GH": "Hanging Gardens",
+    "PQ": "Corroded Passage",
+    "SD": "Scorched District",
+    "FR": "Far Shore",
+    "MF": "Moss Fields",
+    "EU": "Luminous Cove",
+    "CW": "Chasing Wind",
+    "GU": "Gray Urban",
+    "NP": "Necropolis",
 }
 
 export function darken(hex: string, amount: number) {
@@ -272,14 +311,48 @@ export function resolveVariables(str: string): string {
     });
 }
 
-export function findSourceDialogue(name: string) {
-    const entry = SOURCE_DECRYPTED.find(entry => entry.n === name)
-        || SOURCE_DECRYPTED.find(entry => entry.p === name)
-        || SOURCE_DECRYPTED.find(entry => entry.p.includes(name))
-        || SOURCE_DECRYPTED.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/") === name)
-        || SOURCE_DECRYPTED.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/").includes(name));
+export function findSourceDialogue(name: string, sourceData: SourceDecrypted[]) {
+    const entry = sourceData.find(entry => entry.n === name)
+        || sourceData.find(entry => entry.p === name)
+        || sourceData.find(entry => entry.p.includes(name))
+        || sourceData.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/") === name)
+        || sourceData.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/").includes(name));
     if (!entry) {
         console.warn(name, 'not found');
     }
     return entry;
+}
+
+/**
+ * Looks up the display name and color for a speaker, prioritizing namespace-specific data.
+ * @param {string} rawSpeaker The full speaker part (e.g., "NSCP-FPB").
+ * @param {string} actualSpeaker The speaker identifier (e.g., "FPB").
+ * @param {string | undefined} namespace The namespace identifier (e.g., "NSCP").
+ * @returns {{ displayName: string, color: string | undefined }}
+ */
+export function getSpeakerInfo(rawSpeaker: string, actualSpeaker: string, namespace?: string) {
+    let displayName = actualSpeaker;
+    let color = speakersColors[actualSpeaker] || undefined;
+
+    // 1. Check if the full raw speaker (e.g., NSCP-FPB) is defined in speakerNames
+    if (speakerNames[rawSpeaker]) {
+        displayName = speakerNames[rawSpeaker];
+    } else if (speakerNames[actualSpeaker]) {
+        // 2. Fallback to the actual speaker name lookup
+        displayName = speakerNames[actualSpeaker];
+    }
+
+    // 3. Check for color using raw speaker first
+    if (speakersColors[rawSpeaker]) {
+        color = speakersColors[rawSpeaker];
+    }
+    // 4. Fallback to actual speaker color
+    else if (speakersColors[actualSpeaker]) {
+        color = speakersColors[actualSpeaker];
+    }
+
+    return {
+        displayName: displayName,
+        color: color
+    };
 }

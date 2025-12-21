@@ -1,0 +1,10 @@
+inherit: SL_bridge_BRIGHT_PURPLE
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_SL_bridge.txt
+It's about the aquifer Pebbles and Moon were built on. Iterators are generally built on top of these sources of water.
+I admit I was quite jealous of it, as mine is way smaller and contaminated by sulfur from the local Living Rock wellspring.
+Running deeper algorithms was hard at first, especially when you're dealing with sulfur-eating microbial colonies saturating your memory conflux!
+But eventually, water vapor became so common it wasn't an issue anymore.
+And concerning the microbes, I have come to make peace with them. They come and go periodically.
+They still have a tendency to affect my mood, but I have no idea why.

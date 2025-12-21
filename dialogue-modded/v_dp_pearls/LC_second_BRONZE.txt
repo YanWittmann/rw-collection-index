@@ -1,0 +1,8 @@
+inherit: LC_second_BRONZE
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_LC_second.txt
+Where did you find this, little creature? It's a blueprint for a type of large immobile purposed organism.\nThis one seems to be specifically for the cities built on top of one of our structures.
+Have you been to one before? I'm sure it would not be an easy task! Older models had more traditional constructions, but newer designs like me began to use a mass-produced cellular build called living blocks.\nEach cell in these blocks has a different shell reflecting their purpose.
+I have some living blocks on my roof, but not as many as other members in the local group.\nI didn't have fewer citizens, but they mostly lived together in their waterproof city next to me.
+Only the most prestigious were able to afford living above the rain.

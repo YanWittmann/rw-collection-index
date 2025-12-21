@@ -1,11 +1,6 @@
 import { RwIcon } from "../PearlGrid/RwIcon"
 import type { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types"
-import {
-    findSourceDialogue,
-    regionNames,
-    resolveVariables,
-    speakersColors
-} from "../../utils/speakers"
+import { findSourceDialogue, regionNames, resolveVariables, speakersColors } from "../../utils/speakers"
 import { renderDialogueLine } from "../../utils/renderDialogueLine"
 import { hasTag } from "../../utils/pearlOrder"
 import { RwScrollableList } from "../other/RwScrollableList"
@@ -19,15 +14,15 @@ import RwShareTextEditor, { preProcessContent } from "../share/RwShareTextEditor
 import { RwIconButton } from "../other/RwIconButton";
 import { renderMonoText } from "./DialogueContent";
 import ReactDOMServer from 'react-dom/server';
-import { getTranscriberIcon } from "./TranscriberSelector";
+import { getTranscriberIcon } from "../../utils/transcriberUtils";
+import { useAppContext } from "../../context/AppContext";
+import { cn } from "@shadcn/lib/utils";
 
 interface DialogueActionTabsProps {
     pearl: PearlData,
     transcriberData: Dialogue,
     isUnlocked: boolean,
     onSelectPearl: (pearl: PearlData | null) => void,
-    setSourceFileDisplay: (value: ((prevState: string | null) => string | null) | string | null) => void,
-    sourceFileDisplay: string | null,
     selectedTranscriberIndex: number
 }
 
@@ -36,10 +31,9 @@ export function DialogueActionTabs({
                                        transcriberData,
                                        isUnlocked,
                                        onSelectPearl,
-                                       setSourceFileDisplay,
-                                       sourceFileDisplay,
                                        selectedTranscriberIndex
                                    }: DialogueActionTabsProps) {
+    const { sourceFileDisplay, setSourceFileDisplay, sourceData } = useAppContext();
     const mapLocations = getMapLocations(transcriberData)
     const hasMultipleLocations = mapLocations.length > 1
 
@@ -66,7 +60,7 @@ export function DialogueActionTabs({
 
     {
         const leftIconType = pearl.metadata.type === 'item' ? (pearl.metadata.subType || 'pearl') : pearl.metadata.type;
-        const multipleSameTranscribers = new Set(pearl.transcribers.map(transcriber => transcriber.transcriber)).size !== pearl.transcribers.length;
+        const multipleSameTranscribers = new Set(pearl.transcribers.map((transcriber: Dialogue) => transcriber.transcriber)).size !== pearl.transcribers.length;
         const {
             iconType: rightIconType,
             color: rightIconColor,
@@ -211,9 +205,9 @@ export function DialogueActionTabs({
                             sideOffset={5}
                         >
                             <RwScrollableList
-                                items={transcriberData.metadata.sourceDialogue.map((sourcePath, index) => {
+                                items={transcriberData.metadata.sourceDialogue.map((sourcePath: string, index: number) => {
                                     const filename = sourcePath.split(/[/\\]/).pop() || `Source File ${index + 1}`
-                                    const foundEntry = findSourceDialogue(sourcePath);
+                                    const foundEntry = findSourceDialogue(sourcePath, sourceData);
 
                                     return {
                                         id: `source-file-${index}`,
@@ -228,11 +222,10 @@ export function DialogueActionTabs({
                 </Popover>,
             )
         } else {
-            const sourceDialogueFilename = transcriberData.metadata.sourceDialogue[0].split(/[/\\]/).pop()
-            if (sourceDialogueFilename) {
-                tabs.push(
-                    <Tooltip key="source-dialogue">
-                        <TooltipTrigger asChild>
+            const sourceDialogueFilename = transcriberData.metadata.sourceDialogue[0]
+            tabs.push(
+                <Tooltip key="source-dialogue">
+                    <TooltipTrigger asChild>
               <span>
                 <RwTabButton
                     aria-label="Source Dialogue"
@@ -241,15 +234,14 @@ export function DialogueActionTabs({
                   <RwIcon type="source"/>
                 </RwTabButton>
               </span>
-                        </TooltipTrigger>
-                        <TooltipContent className="text-center" side="bottom">
-                            Dialogue is stored in encrypted files inside the game's folders.
-                            <br/>
-                            Click here to view this transcription's source file.
-                        </TooltipContent>
-                    </Tooltip>,
-                )
-            }
+                    </TooltipTrigger>
+                    <TooltipContent className="text-center" side="bottom">
+                        Dialogue is stored in encrypted files inside the game's folders.
+                        <br/>
+                        Click here to view this transcription's source file.
+                    </TooltipContent>
+                </Tooltip>,
+            )
         }
     }
 
@@ -289,10 +281,10 @@ export function DialogueActionTabs({
                                     id: `${location.region}_${location.room}_${index}`,
                                     title: `${regionNames[location.region] || "Unknown"} (${location.region})`,
                                     subtitle: `Room: ${location.room}`,
-                                    onClick: () => {
-                                        const link = generateMapLinkFromMapInfo(location)
+                                    onClick: location.impl !== "none" ? (() => {
+                                        const link = generateMapLinkFromMapInfo(location);
                                         if (link) window.open(link, "_blank")
-                                    },
+                                    }) : undefined,
                                 }))}
                             />
                         </PopoverContent>
@@ -302,32 +294,31 @@ export function DialogueActionTabs({
         } else if (transcriberData.metadata.map && transcriberData.metadata.map.length > 0) {
             const selectedMap = transcriberData.metadata.map[0]
             const mapLink = generateMapLinkFromMapInfo(selectedMap)
-            if (mapLink) {
-                tabs.push(
-                    <Tooltip key="open-rain-world-map">
-                        <TooltipTrigger asChild>
+            tabs.push(
+                <Tooltip key="open-rain-world-map">
+                    <TooltipTrigger asChild>
               <span>
                 <RwTabButton
-                    onClick={() => window.open(mapLink, "_blank")}
+                    onClick={mapLink ? () => window.open(mapLink, "_blank") : undefined}
                     aria-label="Open Rain World Map"
+                    className={cn(!mapLink && "cursor-not-allowed")}
                 >
                   <RwIcon type="pin"/>
                 </RwTabButton>
               </span>
-                        </TooltipTrigger>
-                        <TooltipContent className="text-center" side="bottom">
-                            {regionNames[selectedMap.region] || "Unknown"} ({selectedMap.region}) / {selectedMap.room}
-                            {transcriberData.metadata.mapInfo && (
-                                <span
-                                    dangerouslySetInnerHTML={{
-                                        __html: renderDialogueLine(resolveVariables("\n" + transcriberData.metadata.mapInfo)),
-                                    }}
-                                />
-                            )}
-                        </TooltipContent>
-                    </Tooltip>,
-                )
-            }
+                    </TooltipTrigger>
+                    <TooltipContent className="text-center" side="bottom">
+                        {regionNames[selectedMap.region] || "Unknown"} ({selectedMap.region}) / {selectedMap.room}
+                        {transcriberData.metadata.mapInfo && (
+                            <span
+                                dangerouslySetInnerHTML={{
+                                    __html: renderDialogueLine(resolveVariables("\n" + transcriberData.metadata.mapInfo)),
+                                }}
+                            />
+                        )}
+                    </TooltipContent>
+                </Tooltip>,
+            )
         }
     }
 
@@ -369,4 +360,3 @@ export function DialogueActionTabs({
         </div>
     )
 }
-

@@ -1,0 +1,14 @@
+inherit: SI_chat4_OLIVE_GREEN
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_SI_chat4.txt
+Oh? What is this? A public announcement to the local group...
+"1654.110 - PUBLIC
+Big Sis Moon to Local Group
+BSM: Two cycles ago, my neighbor Five Pebbles drastically increased his water consumption to four times the normal amount.\nHe has been unresponsive for a period of time longer than that. The two of us share groundwater, and I have been without water for almost a cycle.
+BSM: Any attempts at communication have been met with complete silence, and my situation is becoming increasingly dangerous.
+BSM: I ask the local group for information about when you were last able to contact him, and to try to use those same communication channels again, repeatedly until you get a response.\nI will be clear on this - if he is not persuaded to stop whatever it is he's doing, I will die.
+BSM: Before that happens, I will utilize my seniority privilege and use forced communications, hoping to shake him out of it.\nForced communications in the network will be unpleasant for all, and I will wait as long as possible before I turn to that option."
+...
+This is the first time I read this. This is highly concerning. No wonder I can't contact her.
+I'll see what I can do. Thanks for showing me this, little one.

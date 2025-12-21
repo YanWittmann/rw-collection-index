@@ -1,0 +1,17 @@
+inherit: CC_GOLD
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_CC.txt
+Interesting... This one could have been written by me, but it's not mine.
+There are some dangerous ideas in here.
+You see, we Sliverists are obviously fascinated by the disapperance of our dear Sliver of Straw. But not everyone dares to challenge the taboos we were born with.
+Some of us are just... morbidly curious. Others, like me, think it is still possible to find a triple affirmative while working within the frame of taboos.
+I believe there might be more subtle solutions to self-destruction aside from the ones most other Sliverists might consider. What if we had to die... in a certain way?
+If we did something wrong, would we just be brought back here? Maybe in a different form?
+This terrifies me.
+But that is not what this pearl contains. This was written by Seven Red Suns for one of their friends.
+It was a promising way to circumvent several taboos. I'll spare you the details, but it uses genetic alteration to pinpoint taboo loci and overwrite them.
+The process has its advantages, but it has a major flaw Suns was unable to recognize when they shared this.
+It is non replicable. Iterator genomes can be wildly different, and this diversity is simply impossible to predict. I don't even think we all share the same taboos, as we can't speak about them.
+Of course, it could work if an individual were to alter their genome independently, but the processing toll would just be too heavy.
+You would incapacitate yourself before finding how to even rewrite a single locus. And that's without even talking about managing the Rot.

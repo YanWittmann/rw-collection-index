@@ -1,0 +1,21 @@
+internalId: PQ_PUP
+color: #5CD4A1
+type: broadcast
+name: Pup 4
+info: PUPPQ1, PUPPQ2 and PUPPQ3 are part of a sequence (PQ_PUP).\nThe broadcast locations can be viewed in any order and the sequence will play in the same way.
+
+=== transcription: broadcast
+md-sourceDialogue: CorrodedPassage/PUPPQ3.txt
+[LIVE BROADCAST] - PUBLIC GROUP [PUPCATSTONE] Pilgrimaged Summit, Unstable Daydream
+NSCP-PS: Did they set us up for failure?
+NSCP-PS: It is probably selfish of me to ask. But I doubt we will ever find a solution.
+NSCP-PS: As controversial as it is, I think Sliver of Straw was an exception to the rule.
+NSCP-PS: Or perhaps, her solution will come to us all simply with time.
+NSCP-UD: I think so. I know they heard the call from he void coming deep within the earth.
+NSCP-UD: We only have to wait for our bodies to reach such thing.
+NSCP-UD: Although, does it even really matter?
+NSCP-PS: We wouldn't know...
+NSCP-PS: ...
+NSCP-PS: I'll use my time wisely from now on. There is no solution I have to find.
+NSCP-PS: To exist, to have the pleasure to observe this world - few things as beautiful as it.
+NSCP-UD: I'll send my overseers to take a look! Make sure no extinctions happen while we wait for it to get there!

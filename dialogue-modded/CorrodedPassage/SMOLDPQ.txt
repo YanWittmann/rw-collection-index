@@ -1,0 +1,16 @@
+internalId: PQ_SMOLD
+color: #E55137
+type: broadcast
+name: Smold 1
+map: impl=none, region=PQ, room=A11, mapSlugcat=spear
+
+=== transcription: broadcast
+md-sourceDialogue: CorrodedPassage/SMOLDPQ.txt
+[RECORDED BROADCAST : 1653.549] - PRIVATE Unstable Daydream, Big Sister Moon
+BSM: I have been worried, I have to admit.
+BSM: Pebbles has been really distant as of lately, even for him.
+NSCP-UD: I have noticed... Does Red Suns know about this?
+BSM: I suppose so. No Significant Harassment has told me to not worry as much as I am.
+BSM: I am worried he will do something reckless...
+NSCP-UD: There isn't a problem without a solution.
+NSCP-UD: We will figure this out, I promise.

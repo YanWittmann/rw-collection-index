@@ -2,139 +2,97 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadc
 import { RwIcon } from "./RwIcon";
 import { RwIconButton } from "../other/RwIconButton";
 import UnlockManager from "../../utils/unlockManager";
-import { MapInfo, PearlData } from "../../types/types";
-import { UnlockMode } from "../../page";
+import { PearlData } from "../../types/types";
 import React, { useCallback, useMemo } from "react";
+import { useAppContext } from "../../context/AppContext";
 
 interface PearlItemProps {
     pearl: PearlData
     pearlIndex: number
-    selectedPearl: string | null
-    onSelectPearl: (id: string) => void
-    unlockMode: UnlockMode
     showTranscriberCount: boolean
-    unlockVersion: number
 }
 
-const PearlItem: React.FC<PearlItemProps> = ({
-                                                 pearl,
-                                                 pearlIndex,
-                                                 selectedPearl,
-                                                 onSelectPearl,
-                                                 unlockMode,
-                                                 showTranscriberCount,
-                                                 unlockVersion
-                                             }) => {
-    const isSelected = pearl.id === selectedPearl;
+const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, showTranscriberCount }) => {
+    const { selectedPearlId, handleSelectPearl, unlockMode, unlockVersion } = useAppContext();
+    const isSelected = pearl.id === selectedPearlId;
 
     const isUnlocked = useMemo(() => {
+        // Depend on unlockVersion to force re-evaluation when unlocks change globally
         return unlockMode === 'all' || UnlockManager.isPearlUnlocked(pearl);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pearl, unlockMode, unlockVersion]);
 
     const handleClick = useCallback(() => {
-        onSelectPearl(pearl.id);
-    }, [onSelectPearl, pearl.id]);
+        handleSelectPearl(pearl);
+    }, [handleSelectPearl, pearl]);
 
-    const generateTooltipText = useMemo(() => {
-        // collect all metadata from the dialogue transcriptions
+    const tooltipText = useMemo(() => {
         let mainText = pearl.metadata.name ?? 'Unknown';
         const internalId = pearl.metadata.internalId;
+        const allMapInfos = pearl.transcribers.flatMap(t => t.metadata.map || []);
 
-        const metadatas = pearl.transcribers.map(transcriber => transcriber.metadata);
-        const mapInfos: MapInfo[] = metadatas.filter(metadata => metadata.map && metadata.map.length > 0).map(metadata => metadata.map as any as MapInfo).flat();
+        const uniqueLocations = new Set<string>();
+        allMapInfos.forEach(info => uniqueLocations.add(`${info.region} (${info.room})`));
 
-        let regionCollector = new Set<string>();
-        for (const mapInfo of mapInfos) {
-            const checkKey = mapInfo.region + ' (' + mapInfo.room + ')';
-            if (regionCollector.has(checkKey)) continue;
-            regionCollector.add(checkKey);
-        }
-
-        if (regionCollector.size > 3) {
-            mainText += ' / ' + mapInfos.length + ' locations';
+        if (uniqueLocations.size > 3) {
+            mainText += ` / ${allMapInfos.length} locations`;
         } else {
-            regionCollector.forEach(region => mainText += ' / ' + region);
+            uniqueLocations.forEach(loc => mainText += ` / ${loc}`);
         }
         return { mainText, internalId };
     }, [pearl]);
 
-    return useMemo(() => {
-        if (!isUnlocked) {
-            return (
-                <RwIconButton onClick={handleClick} selected={isSelected} aria-label="Locked pearl">
-                    <RwIcon color={pearl.metadata.color} type="questionmark"/>
-                </RwIconButton>
-            );
-        }
-
-        const iconType = pearl.metadata.type === 'item' ? (pearl.metadata.subType || 'pearl') : pearl.metadata.type;
-        // const sourceFileCount = max(pearl.transcribers.map(p => p.metadata.sourceDialogue?.length)) || 0;
-
+    if (!isUnlocked) {
         return (
-            <TooltipProvider delayDuration={120}>
-                <Tooltip>
-                    <TooltipTrigger>
-                        <RwIconButton
-                            onClick={handleClick}
-                            selected={isSelected}
-                            aria-label={`${pearl.metadata.name || 'Unknown pearl'} - ${pearl.transcribers.length} transcription${pearl.transcribers.length !== 1 ? 's' : ''}`}
-                        >
-                            <RwIcon color={pearl.metadata.color} type={iconType}/>
-                            {showTranscriberCount && (
-                                <span
-                                    className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-6 h-4 text-xs flex items-center justify-center">
-                                    {pearl.transcribers.length}{/*sourceFileCount > 0 ? `~${sourceFileCount}` : ''*/}
-                                </span>
-                            )}
-                        </RwIconButton>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                        <div className="text-center">
-                            <div>{generateTooltipText.mainText}</div>
-                            {generateTooltipText.internalId && (
-                                <div className="text-xs text-muted-foreground">{generateTooltipText.internalId}</div>
-                            )}
-                        </div>
-                    </TooltipContent>
-                </Tooltip>
-            </TooltipProvider>
+            <RwIconButton onClick={handleClick} selected={isSelected} aria-label="Locked pearl">
+                <RwIcon color={pearl.metadata.color} type="questionmark"/>
+            </RwIconButton>
         );
-    }, [
-        isUnlocked,
-        handleClick,
-        isSelected,
-        pearl.metadata.color,
-        pearl.metadata.type,
-        showTranscriberCount,
-        pearl.transcribers.length,
-        generateTooltipText
-    ]);
-};
-
-const arePropsEqual = (prevProps: PearlItemProps, nextProps: PearlItemProps) => {
-    // the most important check: has the selection state of THIS item changed?
-    const wasSelected = prevProps.pearl.id === prevProps.selectedPearl;
-    const isSelected = nextProps.pearl.id === nextProps.selectedPearl;
-    const selectionChanged = wasSelected !== isSelected;
-
-    const wasUnlocked = UnlockManager.isPearlUnlocked(prevProps.pearl);
-    const isUnlocked = UnlockManager.isPearlUnlocked(nextProps.pearl);
-    const unlockChanged = wasUnlocked !== isUnlocked;
-
-    if (selectionChanged || unlockChanged) {
-        return false;
     }
 
-    // otherwise, only re-render if these specific props change
+    const iconType = pearl.metadata.type === 'item' ? (pearl.metadata.subType || 'pearl') : pearl.metadata.type;
+
     return (
-        prevProps.unlockMode === nextProps.unlockMode &&
-        prevProps.showTranscriberCount === nextProps.showTranscriberCount &&
-        prevProps.pearl.metadata.color === nextProps.pearl.metadata.color &&
-        prevProps.pearl.metadata.type === nextProps.pearl.metadata.type &&
-        prevProps.pearl.transcribers.length === nextProps.pearl.transcribers.length &&
-        prevProps.unlockVersion === nextProps.unlockVersion
+        <TooltipProvider delayDuration={120}>
+            <Tooltip>
+                <TooltipTrigger>
+                    <RwIconButton
+                        onClick={handleClick}
+                        selected={isSelected}
+                        aria-label={`${pearl.metadata.name || 'Unknown pearl'} - ${pearl.transcribers.length} transcription${pearl.transcribers.length !== 1 ? 's' : ''}`}
+                    >
+                        <RwIcon color={pearl.metadata.color} type={iconType}/>
+                        {showTranscriberCount && (
+                            <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-6 h-4 text-xs flex items-center justify-center">
+                                {pearl.transcribers.length}
+                            </span>
+                        )}
+                    </RwIconButton>
+                </TooltipTrigger>
+                <TooltipContent>
+                    <div className="text-center">
+                        <div>{tooltipText.mainText}</div>
+                        {tooltipText.internalId && (
+                            <div className="text-xs text-muted-foreground">{tooltipText.internalId}</div>
+                        )}
+                    </div>
+                </TooltipContent>
+            </Tooltip>
+        </TooltipProvider>
     );
 };
 
-// custom comparison function to prevent re-renders
+const arePropsEqual = (prevProps: PearlItemProps, nextProps: PearlItemProps) => {
+    // This custom comparison is now much simpler because global state changes
+    // are handled by the context and `unlockVersion`. We only need to compare
+    // the pearl data itself and presentation props.
+    return (
+        prevProps.pearl.id === nextProps.pearl.id &&
+        prevProps.showTranscriberCount === nextProps.showTranscriberCount &&
+        prevProps.pearl.metadata.color === nextProps.pearl.metadata.color &&
+        prevProps.pearl.metadata.type === nextProps.pearl.metadata.type &&
+        prevProps.pearl.transcribers.length === nextProps.pearl.transcribers.length
+    );
+};
+
 export default React.memo(PearlItem, arePropsEqual);

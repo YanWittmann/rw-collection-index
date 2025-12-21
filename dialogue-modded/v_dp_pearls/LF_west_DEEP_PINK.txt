@@ -1,0 +1,10 @@
+inherit: LF_west_DEEP_PINK
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_LF_west.txt
+This one is just plain text. It's a confirmation to an automated farming plot that a shipment of beverages has arrived.
+I've heard my island was covered by these farming plots, a long time before my birth.
+The fields of moss that you perhaps crossed on your way here are all that's left now.
+My benefactors couldn't afford to build a fancy retaining wall around my superstructure so most of the ruins have been lost to erosion and wilderness.
+There are likely still some locations of interest for you to visit if you wish!
+But I think you have more pressing matters before you decide to take the tour...

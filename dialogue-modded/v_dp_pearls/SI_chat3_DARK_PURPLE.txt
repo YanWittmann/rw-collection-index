@@ -1,0 +1,16 @@
+inherit: SI_chat3_DARK_PURPLE
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_SI_chat3.txt
+It's an old conversation log. I remember this one...
+"1650.800 - PRIVATE
+Five Pebbles, Chasing Wind, Big Sis Moon, No Significant Harassment
+CW: this is in confidence, but apparently a pseudonym "Erratic Pulse" has appeared on a nearby Sliverist conversation with ideas about personal ascension. Someone here in our vicinity is trying to cross themselves out.
+FP: Where did you hear this?
+NSH: I wish them super good luck in that endeavor. How is it going to happen? Have the overseers gnaw through bedrock until their entire can crashes down in the void sea?
+BSM: Please be respectful when speaking of the Void Sea. Grey Wind, where did you hear this?
+CW: I really shouldn't say. He's going to attempt some sort of breeding program. Thought you might want to know.
+NSH: Haha with the slimers, lizards and etceteras? Surely the answer was in a lizard skull all along!
+CW: Well, he's not looking for the same thing as we anymore, he's changed his task, so who knows really.
+BSM: I will try to find him and talk to him. Please don't spread this around!
+NSH: Moon will go get them! Long live the inquisition!"

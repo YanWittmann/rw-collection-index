@@ -2,12 +2,11 @@ import { Dialogue, Hint, PearlData } from "../../types/types";
 import { RwIconButton } from "../other/RwIconButton";
 import { regionNames } from "../../utils/speakers";
 import { generateMapLinkFromMapInfo } from "./DialogueBox";
-import { findPearlCategory } from "../../utils/pearlOrder";
-
+import { findPearlCategory, PEARL_ORDER_CONFIGS } from "../../utils/pearlOrder";
+import { useAppContext } from "../../context/AppContext";
 
 interface HintSystemContentProps {
     pearl: PearlData,
-    selectedTranscriber: string | null,
     unlockTranscription: () => void,
     hintProgress: number,
     setHintProgress: (value: (((prevState: number) => number) | number)) => void,
@@ -16,17 +15,18 @@ interface HintSystemContentProps {
 
 export default function HintSystemContent({
                                               pearl,
-                                              selectedTranscriber,
                                               unlockTranscription,
                                               hintProgress,
                                               setHintProgress,
                                               transcriberData
                                           }: HintSystemContentProps) {
+    const { datasetKey } = useAppContext();
     const effectiveHints: Hint[] = [];
+    const activeOrderConfig = PEARL_ORDER_CONFIGS[datasetKey] || PEARL_ORDER_CONFIGS['vanilla'];
 
     if (pearl.metadata.type === "broadcast" && pearl.metadata.name) {
-        const pearlCategory = findPearlCategory(pearl);
-        if (pearlCategory === "Vanilla / Downpour") {
+        const pearlCategory = findPearlCategory(pearl, activeOrderConfig);
+        if (pearlCategory === "Colored Pearls + Broadcasts") {
             effectiveHints.push({
                 name: "Slugcats",
                 lines: [
@@ -78,6 +78,11 @@ export default function HintSystemContent({
             effectiveHints.push({
                 name: "Map link",
                 lines: [mapLink ?? "No map link available"]
+            });
+        } else {
+            effectiveHints.push({
+                name: "Region and Room",
+                lines: ["Found in " + (regionNames[transcriberData.metadata.map[0].region ?? ''] ?? 'Unknown') + " (" + transcriberData.metadata.map[0].region + ") in room " + (transcriberData.metadata.map[0].room ?? 'Unknown')]
             });
         }
     }

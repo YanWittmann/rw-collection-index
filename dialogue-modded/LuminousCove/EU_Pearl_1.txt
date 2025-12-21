@@ -1,0 +1,34 @@
+internalId: EU_Pearl_1
+color: #fac100
+secondaryColor: #c9b983
+type: pearl
+name: Inauguration
+map: region=EU, room=B12, mapSlugcat=white, impl=none
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_EU_Pearl_1.txt
+This is an invitation to a light show, a way to inaugurate the end of my construction!
+The event took place under my structure, in a large committee composed of the most influential citizens of the island, and numerous delegations from abroad.
+Some had expressed the whim to attend aboard their luxury watercrafts.
+A canal was then dug to allow them privileged access from the ocean.
+The party was memorable and it is said that the celebrations were visible from everywhere in the local group.
+The canal, poorly constructed, slowly eroded and transformed into a cove.
+And since the bioluminescence has now become omnipresent in the shadow of my structure,<LINE>I get to remember my first moments every time I want to observe local life.
+
+=== transcription: FP-artificer
+md-sourceDialogue: LuminousCove/EU_Inauguration-Artificer.txt
+Oh yes, it is an invitation to the commissioning of Chasing Wind.
+I remember this frivolity. Light shows. It illuminated the entire local group for many cycles.
+What a strange decision for people who prided themselves on their austerity and spirituality.
+Many made the trip despite this, coming from far and wide. But some simply refused to send any delegation.
+It is hard to blame them. Such lavish festivities clearly show a total denigration of their roots.
+That said, I remember feeling pleased at the thought of having an additional correspondent with whom to share my theories.
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: LuminousCove/EU_Inauguration.txt
+This is a cordial message inviting anyone who reads it to the inauguration of Chasing Wind.
+It was a very popular event among our benefactors, even compared to previous inaugurations.
+It must be said that the organizers had a sense of spectacle!\nNothing had been spared to please the delegations.
+It seems that some who made the trip came from across the ocean.\nPerhaps citizens of a completely different group of iterators?
+Although many shared a certain spirituality, you must understand that our benefactors were a diverse group with many cultures and divergent opinions.
+Succeeding in bringing them together in such a way was deemed impossible by many!

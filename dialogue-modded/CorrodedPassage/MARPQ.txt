@@ -1,0 +1,19 @@
+internalId: PQ_MAR
+color: #DE4C8A
+type: broadcast
+name: Mar 1
+map: impl=none, region=PQ, room=G07, mapSlugcat=spear
+
+=== transcription: broadcast
+md-sourceDialogue: CorrodedPassage/MARPQ.txt
+[LIVE BROADCAST] - PUBLIC GROUP [PUPCATSTONE] Pilgrimaged Summit, Fourteen Polar Bones, Unstable Daydream
+NSCP-FPB: Like I was saying, it's been harder to come across study material nowadays.
+NSCP-FPB: Supplies for my projects... I've learned the hard way to truly be as efficient as possible.\nDespite our creators preparing us for their absence, the effect has been noticiable rather... quickly.
+NSCP-UD: That's what happens when you don't plan accordingly!~
+NSCP-PS: I share that feeling. How hard is it nowadays to work on new projects!
+NSCP-PS: Have you heard about No Significant Harassment's little project?
+NSCP-UD: The purposed organism? I find it quite interesting.
+NSCP-PS: Likewise. I suppose it is a good way to deal with our own inevitable decay.
+NSCP-UD: We could send Bones something to work on! I can think of a few things~
+NSCP-FPB: Oh please!
+NSCP-FPB: I... Like the idea. I wouldn't want to lose contact when we get rusty.

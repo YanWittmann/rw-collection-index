@@ -1,0 +1,17 @@
+internalId: PQ_PUP
+color: #5CD4A1
+type: broadcast
+name: Pup 3
+info: PUPPQ1, PUPPQ2 and PUPPQ3 are part of a sequence (PQ_PUP).\nThe broadcast locations can be viewed in any order and the sequence will play in the same way.
+
+=== transcription: broadcast
+md-sourceDialogue: CorrodedPassage/PUPPQ2.txt
+[LIVE BROADCAST] - PRIVATE Unstable Daydream, Twelve Stars Above
+NSCP-TSA: So No Significant Harassment is right.
+NSCP-TSA: We have to find another way to communicate. One that lasts longer than our rusty metal spires.
+NSCP-UD: I think so.
+NSCP-UD: we have to accept it. We are getting old. If we don't find a way, we will spend most of our cycles left thinking about the past.
+NSCP-UD: And we can't ever go back to that, my friend.
+NSCP-TSA: We cannot go back to our past. We can simply move forward.
+NSCP-UD: At least we'll have each other.
+NSCP-UD: We won't be alone - we don't have to be.

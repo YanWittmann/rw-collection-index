@@ -1,0 +1,12 @@
+inherit: OE_LIGHT_PURPLE
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_OE.txt
+These are the final operating logs of a transit control tower.\nThey regulated the inbound and outbound traffic of shipments to and from Pebbles and Moon's facilities.
+The terrain around their facility became treacherous after water vapor spread everywhere, so most transit exited their retaining wall though a series of aerial railways.
+I don't know if many of these trains are working anymore. Maybe that's how you got here?
+Though the surroundings outside their wall may be mostly composed of mud and ruins, this is not true of places farther away from here.
+I've heard of tall mountains in the north, covered in snow at their peaks.
+There is not much to the south or the east from here, only a vast expanse of water.
+West is where No Significant Harassment and Seven Red Suns stand.
+That's pretty much all I know of the world, my overseers don't reach very far.

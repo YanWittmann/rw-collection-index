@@ -3,6 +3,7 @@ color: #593699
 type: broadcast
 name: Purple
 map: region=SH, room=E05, mapSlugcat=spear
+tag: downpour
 
 === transcription: broadcast
 [[LOST HEADER INFORMATION]] - BROADCAST unknown group(NULL) No Significant Harassment, Big Sis Moon

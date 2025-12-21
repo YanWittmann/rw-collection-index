@@ -2,6 +2,29 @@
 <html lang="en" class="rw-text-font">
 <head>
     <meta charset="utf-8"/>
+
+    <script>
+        (function() {
+            let params = new URLSearchParams(window.location.search);
+            let isModded = params.get('d') === 'modded';
+            let suffix = isModded ? '-modded' : '';
+            let baseUrl = '%PUBLIC_URL%';
+            if (baseUrl.endsWith('/')) baseUrl = baseUrl.slice(0, -1);
+
+            window.__RW_DATA_KEY__ = isModded ? 'modded' : 'vanilla';
+            window.__RW_DATA__ = {
+                pearls: fetch(baseUrl + '/data/parsed-dialogues' + suffix + '.json').then(function(r) {
+                    if (!r.ok) throw new Error(r.statusText);
+                    return r.json();
+                }),
+                source: fetch(baseUrl + '/data/source-decrypted' + suffix + '.json').then(function(r) {
+                    if (!r.ok) throw new Error(r.statusText);
+                    return r.json();
+                })
+            };
+        })();
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="theme-color" content="#000000"/>
     <meta

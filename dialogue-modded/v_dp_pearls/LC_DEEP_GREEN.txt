@@ -1,0 +1,12 @@
+inherit: LC_DEEP_GREEN
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_LC.txt
+Where did you find this, little one? It is quite old, around the time of Pebbles' construction.
+It's a large collection of architectural notes from his facility, during its initial construction.\nMost prominently the two transfer bridges between Pebbles and Moon.
+These two bridges were truly an anomaly in the local group, as no other iterators were built so close to each other.
+Moon is one of the older models of iterators, and the concept of one was still fairly new at the time of her construction.\nKnowledge of the technology, and more importantly its limits, had not quite reached maturity.
+As a result, certain oversights were made in the long term scalability and sustainability of some of her functions.\nAfter some time her facility could no longer keep up with the supply demands necessitated for the life of her city's inhabitants.
+So they built Pebbles next to her, leading to... well, the actual situation.
+These errors were not repeated, but the deed was done.
+

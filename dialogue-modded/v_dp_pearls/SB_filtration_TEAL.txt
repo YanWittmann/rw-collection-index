@@ -1,0 +1,11 @@
+inherit: SB_filtration_TEAL
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_SB_filtration.txt
+It's the blueprint for a Void Fluid filtration system. Do you know what Void Fluid is? You seem to be a very curious traveler, maybe you've visited the nearby caldera.
+Well what you might have seen here is Living Rock, an impure solution of Void Fluid and melted rock.
+Void Fluid in its purest natural form is found deep beneath the crust, below the oldest ruins.
+Some thought the Living Rock wellspring at the center of the island could lead to what is called the Void Sea.
+But none returned to tell the tale, so the extraction was limited to the surface level of the caldera.
+Railways were built to transport Living Rock for distillation. This was before Void Fluid filtration systems were discovered and made Living Rock obsolete.
+Pure Void Fluid was then available pretty much everywhere, and Living Rock became a mere curiosity.
