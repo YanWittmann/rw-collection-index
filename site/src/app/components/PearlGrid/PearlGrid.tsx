@@ -169,7 +169,7 @@ const BannerChapterHeader = React.memo(({ flatChapter, onToggle }: {
         if (!iconUrl) return null;
 
         const ImageContent = (
-            <img src={iconUrl} alt={"Icon for " + flatChapter.name}/>
+            <img src={iconUrl} alt={"Icon for " + flatChapter.name} className="rounded-md"/>
         );
 
         if (typeof linkData === 'string') {
@@ -184,6 +184,7 @@ const BannerChapterHeader = React.memo(({ flatChapter, onToggle }: {
                     <RwIconButton
                         square={true}
                         aria-label="Open Link"
+                        padding="p-2"
                     >
                         {ImageContent}
                     </RwIconButton>
@@ -230,8 +231,9 @@ const BannerChapterHeader = React.memo(({ flatChapter, onToggle }: {
         return (
             <RwIconButton
                 square={true}
-                className="shrink-0 w-[52px] h-[52px] p-2 cursor-default"
+                className="cursor-default"
                 aria-label="Chapter Icon"
+                padding="p-2"
             >
                 {ImageContent}
             </RwIconButton>
@@ -240,7 +242,7 @@ const BannerChapterHeader = React.memo(({ flatChapter, onToggle }: {
 
     return (
         <div
-            className={cn("flex w-full gap-2", depth > 0 && "mt-2", flatChapter.isExpanded && "mb-3")}
+            className={cn("flex w-full gap-2", depth > 0 && "mt-2", flatChapter.isExpanded && ((!flatChapter.originalChapter.subChapters || flatChapter.originalChapter.subChapters.length === 0) || (flatChapter.originalChapter.subChapters && flatChapter.originalChapter.subChapters?.length > 0 && flatChapter.originalChapter.subChapters[0].headerType === "banner")) && "mb-3")}
             style={{
                 marginLeft: `${depth * 16}px`,
                 width: `calc(100% - ${depth * 16}px)`

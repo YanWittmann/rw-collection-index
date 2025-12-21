@@ -1,0 +1,7 @@
+inherit: SL_chimney_BRIGHT_MAGENTA
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_SL_chimney.txt
+It is the genome of a purposed organism, some kind of slug designed to clean the inside of pipes.
+You see, little one, I have been here for a long time. And nothing has been more entertaining that seeing purposed organisms slowly reclaiming their place in the ecosystem.
+Maybe one day I'll myself become feral?\nImagining my superstructure frolicking around is quite an amusing image.

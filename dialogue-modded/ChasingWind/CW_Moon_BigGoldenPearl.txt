@@ -1,0 +1,22 @@
+internalId: BigGoldenPearl
+color: #f2cc19
+type: pearl
+name: Big Golden Pearl
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_BigGoldenPearl.txt
+This is a larger variant of the standard data pearls you may have seen around, meant for more direct interfacing.
+Those are very rare in these times. I wonder where you found this?
+The data stored on this shows a trade route traversing the celestial underlayer.
+Our creators were ever so wary of any slips in the firmament.
+Besides that, this includes the departure and docking log for some kind of ship.
+Curiously, it records docking in a location near my superstructure.
+...
+I can't pinpoint this location, I have no idea why.
+...
+Let me try again...
+...
+No result...
+...
+Could this be... some kind of taboo? The data is here before my eyes, but I can't read it.
+This confuses me greatly, little one. You can have this back.

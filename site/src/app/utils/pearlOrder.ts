@@ -168,6 +168,77 @@ const vanillaPearlOrder: PearlChapter[] = [
 
 const moddedPearlOrder: PearlChapter[] = [
     {
+        name: "Vanilla",
+        headerType: "banner",
+        icon: "img/modded/vanilla-thumb.webp",
+        defaultOpen: false,
+        items: [
+            {
+                name: "Colored Pearls",
+                ids: [
+                    "SL_moon_PALE_YELLOW", "DS_BRIGHT_GREEN", "Red_stomach_AQUAMARINE",
+                    "SL_bridge_BRIGHT_PURPLE", "SH_DEEP_MAGENTA", "DM_LIGHT_YELLOW",
+                    "SL_chimney_BRIGHT_MAGENTA", "CC_GOLD", "Spearmasterpearl_DARK_RED",
+                    "SI_top_DARK_GREEN", "VS_DEEP_PURPLE", "Rivulet_stomach_CELADON",
+                    "SI_west_DARK_BLUE", "UW_PALE_GREEN",
+                    "SI_chat3_DARK_PURPLE", "LF_bottom_BRIGHT_RED",
+                    "SI_chat4_OLIVE_GREEN", "LF_west_DEEP_PINK",
+                    "SI_chat5_DARK_MAGENTA", "SB_filtration_TEAL",
+                    "SB_ravine_DARK_MAGENTA", "SU_filt_LIGHT_PINK",
+                    "SU_LIGHT_BLUE", "OE_LIGHT_PURPLE",
+                    "HI_BRIGHT_BLUE", "LC_DEEP_GREEN",
+                    "GW_VIRIDIAN", "LC_second_BRONZE",
+                    "RM_MUSIC",
+                ]
+            },
+        ]
+    },
+    {
+        name: "Chasing Wind",
+        headerType: "banner",
+        icon: "img/modded/ChasingWind/thumb.webp",
+        defaultOpen: false,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Chasing_Wind_(region)" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3232063592" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3232063592" },
+        ],
+        items: [
+            {
+                name: "Slugcat Interactions",
+                ids: [
+                    { pattern: /CW_Dialogue_survivor_.+/ },
+                    { pattern: /CW_Dialogue_survivor_drone_.+/ },
+                    { pattern: /CW_Dialogue_monk_.+/ },
+                    { pattern: /CW_Dialogue_hunter_.+/ },
+                    { pattern: /CW_Dialogue_spear_.+/ },
+                    { pattern: /CW_Dialogue_gourmand_.+/ },
+                    { pattern: /CW_Dialogue_artificer_.+/ },
+                    { pattern: /CW_Dialogue_rivulet_.+/ },
+                    { pattern: /CW_Dialogue_generic_.+/ },
+                ]
+            },
+            {
+                name: "Colored Pearls",
+                ids: [
+                    "CW_Moon_BigGoldenPearl",
+                ]
+            },
+            {
+                name: "Echos",
+                ids: [
+                    "ChasingWind_echo",
+                ]
+            },
+            {
+                name: "White Pearls (Misc)",
+                ids: [
+                    { pattern: /Misc_CW_WHITE_PEARLS_\d+/ },
+                ]
+            },
+        ]
+    },
+    {
         name: "Corroded Passage",
         headerType: "banner",
         icon: "img/modded/CorrodedPassage/thumb.webp",

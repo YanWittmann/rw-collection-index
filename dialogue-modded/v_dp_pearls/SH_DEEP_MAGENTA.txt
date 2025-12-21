@@ -1,0 +1,10 @@
+inherit: SH_DEEP_MAGENTA
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_SH.txt
+Oh no, not one of these. This is a pompous list of memories, at the low number of six hundred and twenty. I won't go through the hassle of reading them all to you.
+You probably found it in some memory crypts? Did you visit mine?
+Oh wait!
+I found an interesting one! I'll read it to you...
+"...Witnessing a Living Rock eruption from the top of the retaining wall(Old age)..."
+This must have happened while I was built, I didn't even know those were possible!

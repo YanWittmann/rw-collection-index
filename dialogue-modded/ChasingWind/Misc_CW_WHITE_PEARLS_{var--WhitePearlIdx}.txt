@@ -1,0 +1,100 @@
+color: {randomPick--#b3b3b3--#dbdbdb--#878787--#8e8e8e}
+type: pearl
+name: White Pearl {var--WhitePearlIdx} (Misc)
+info: ${WhitePearl-MISC-INFO}
+
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 1
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+This is a short timelapse of Moss Fields crops maturing and changing colors. A long time ago, this was a season of celebrations.
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 2
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+This is a blueprint for an ambitious railway system linking me to Pebbles and Moon.
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 3
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+This pearl contains a catalog of flora and fauna endemic to my island! Most of them are extinct now...
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 4
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+These are logs from prospectors exploring the Caldera of my island. These writings are older than me!
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 5
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+It's an old census sheet of the population of the urban district next to my superstructure. You can see it dwindling, cycle after cycle.
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 6
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+Those are the readings from a condensing facility, massive amounts of pollutants were processed here. Unfortunately, they don't work anymore.
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 7
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+These are instructions for an overseer modification, some hologram functionality upgrades... I'm confused, why was this authorized by me? Cause I don't remember ever making this.
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 8
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+It's a complex weave of primal emotions, perhaps a small creature recording their thoughts? Strange, I am not aware of any organics who can manipulate our medium like this...
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 9
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+Very unusual; this pearl shows past signs of significant physical deformation, as if it were drawn out then reformed - I wonder who could've done this, and why?
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 10
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+It seems to be a checklist of requested deliveries to supply into different train lines. This is weird, the last request seems recent but is full of errors I've never seen before...
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 11
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+It appears to be a detailed geographic map around the northwest of Pebbles' grounds, far from my island.
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 12
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+A hand-delivered message catching up on life in the ZEGO zone. What is the ZEGO zone? I have no idea. Probably a far away location.
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 13
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+A genome for sulfur-processing microbes. If only you had shown up with this sooner.
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 14
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+Ah. A pearl image inside a pearl inside a pearl. But it's not a loop, it's a spiral. How comedic.
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 15
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+Ah, this looks to be a schematic of some sorts, it’s quite old, but it details the structure of Mechanical Cells. I presume you’ve seen some in your travels?\nThey’re an old burial method, modeled after the ancient stone heads, but very different in function. One’s deceased body was placed inside, and underwent a process of mummification.\nThen the roots below it would… seep their spiritual energy into the ground I suppose?\nOnly the wealthy could afford these, the less fortunate would simply be stuffed into smaller boxes.
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 16
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+It’s an imprint of sorts, showing a design for an organism found in many of the old industrial-religious sites.\nTo be frank with you, I cannot remember the name of these things, but I remember their function.\nThe stone layer on the exterior is simply a shell covering a complex structure of fungal neural connections.\nThey were tasked with mundane jobs in the industrial sites, calculating the production costs and output and such.\nBelieve it or not, they were once one of the most complex purposed organisms at the time, nowadays one might mistake them for decoration though.
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 17
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+Oh… this one is quite controversial. It’s an illustration of a Nutrient Processing Terminal.\nYou see many of these in the vast farm arrays throughout our facilities, but it wasn’t always like this.\nDuring the Tan Hegemonic Dynasty, the Grandmaster of Cabinet passed a decree that these processing terminals were to replace the old methods of farming.\nSomething about, “maintaining the transferal of growth and innovation into the next era.”\nThey are largely self contained farming systems that absorb nutrients and condense them with the use of artificial microbes, allowing for faster production.\nThough there was alot of pushback after they were fully installed, so much so that the following Grandmaster of Cabinet tried reversing it and returning the farms to their original state.\nClearly it wasn’t very effective, so those fields will remain dirt forever I suppose. 
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 18
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+Its a genome for a purposed organism meant for translating thoughts into text.\nIt’s made from a thin bio-luminescent membrane, and is able to conjoin with others if connected to the thoughts of someone else.\nThe concept itself is not new, the holographic versions were used even in the newest iterator models, but they were experimenting with these new biological versions as planning for a more, “integrated” iterator.\nOf course, the global ascension made it so that it never came to fruition, so I suppose they just float aimlessly in those labs.
+
+=== transcription: chasing-wind
+md-var-WhitePearlIdx: 19
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Misc.txt
+Its a model for a drill press, maybe you’ve  seen them in the drill sites far West of here?\nThis one showcases a newer model, when they had a sufficient output of void fluid and the revolution was reaching its zenith.\nThey utilized a mix of organic muscle strands and typical press machinery, this allowed for a system that would decay much slower while keeping at an adequate pace compared to the old hydraulic systems.\nWhoever made this pearl seems to have largely forgotten the venting tubes, which is a crucial part of their design, I can only hope this was noticed.

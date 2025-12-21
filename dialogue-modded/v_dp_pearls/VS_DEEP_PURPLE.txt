@@ -1,0 +1,10 @@
+inherit: VS_DEEP_PURPLE
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_VS.txt
+This is from an old drill site located on Pebbles' grounds. There are similar ones here, quite ancient machinery.
+When you drill deep under the earth, you never really know what you'll find.\nOf course, you'll always end up in the Void Sea.
+But the strata between the surface and the deepest depths are full of surprise.\nThis world is but a stack of ancient civilizations eager to leave their mark.
+I have very good reasons to believe my island is simply a giant tumulus of ageless remains.
+...
+What a charming thought...

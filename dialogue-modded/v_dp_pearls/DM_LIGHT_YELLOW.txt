@@ -1,0 +1,11 @@
+inherit: DM_LIGHT_YELLOW
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_DM.txt
+It's a large batch of personal notes and research. Very typical for what you would find in someone's memory conflux.
+But this data is not familiar to me. It's about standard karmic inversion loops and other stuff.\nI have long since forsaken this lead.
+I think spiral-based algorithmic simulations much more interesting.\nYou see, such methods allow for the vectorization of discrete karmic fields into...
+Into...
+...
+Alright, I understand this might not be of the greatest interest to you.
+You should probably put it back where you find it, it is of no use to me.

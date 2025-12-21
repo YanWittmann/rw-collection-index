@@ -1,0 +1,10 @@
+inherit: LF_bottom_BRIGHT_RED
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_LF_bottom.txt
+It's a Small Plate, a little text of spiritual guidance. It was written by a monk called Four Cabinets, Eleven Hatchets. It's pretty old, several ages before the Living Rock rush and the Void Fluid revolution.
+Like most writing from this time it’s quite shrouded in analogies, but the subject is how to shed one of the five natural urges which tie a creature to life. Namely number four, gluttony.
+It is basically an instruction on how to starve yourself on herbal tea and gravel, but disguised as a poem. On this island, herbal tea was replaced by moss infusions. Moss here was widely known for the distinct pink coloration it gave to the beverage.
+Eventually Void Fluid was discovered and those methods, along with many more, were proven obsolete. Even the painful baths of Living Rock were considered a better alternative to some of these traditions. It was just faster, and more definitive.
+But some were afraid of not entirely "crossing the river" and getting stuck in this plane of existence.
+So gravel, herbal tea and moss infusions stayed popular for a long time.

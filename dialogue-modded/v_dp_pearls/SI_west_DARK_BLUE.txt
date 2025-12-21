@@ -1,0 +1,20 @@
+inherit: SI_west_DARK_BLUE
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_SI_west.txt
+This one is all plain text. It's an excerpt from an sliverist conversation group.
+"1650.787 - CLOSED GROUP [SLIVEROFOCEAN]
+SliverOfOcean group, all participants anonymous
+UU: Hah! I wouldn't necessarily disagree!
+NGI: SLIVER OF STRAW WAS A TRAITOR TO THE CAUSE
+NGI: SLIVER OF STRAW BROKE THE SELF-DESTRUCTION TABOO
+UU: How did this idiot get in here? Kick them out ~
+NGI: <Forcefully removed from group>
+EP: I think they had a point.
+UU: Hahaha really? Elaborate!
+EP: It was definitely coming from an idiotic state of mind, but there is something to it.\nWhy is it, that even in a closed sliverist group, the self-destruction taboo is held so high - while Sliver of Straw herself *evidently* is not among us anymore?
+HF: Wait now...
+EP: I'm just saying that for all the research we are doing, all the theories we have, it's strange that we leave this path untrod.
+EP: It is not a new idea, but it needs to be vented occasionally.\nWhat if there is no universal solution? What if perception is in fact existence, and when Sliver of Straw sent the triple positive it was *not* a mistake?\nWhat if crossing oneself out, or even just death, is the way? We need to consider the possibility."
+...
+I don't share Five Pebbles vision on death being the solution, but I'd be lying if I said it didn't shake up my preconceptions.

@@ -1,0 +1,12 @@
+inherit: SL_moon_PALE_YELLOW
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_SL_moon.txt
+Interesting, this one is written by Big Sister Moon! I haven't heard of her in a long time.
+Oh, it is an essay about our dear Sliver of Straw. Strange choice of subject for such a fierce opponent of Sliverism!
+There are some interesting ideas in her thesis, but to ask us to let her "rest in peace" is a blunt underestimation of the stakes at play.
+The final solution to the Great Problem! The triple affirmative!
+...
+Sorry, little one. This must be really boring to you.
+Just know that the local group has never been the same since the incident.
+Triangulators, Sliverists, Animists, Peripherists, you never know which one you will meet next!

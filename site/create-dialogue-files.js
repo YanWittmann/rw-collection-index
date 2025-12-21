@@ -13,6 +13,7 @@ const PROFILES = {
         dialogueDir: path.join(__dirname, '../dialogue-modded'),
         outputFile: path.join(__dirname, 'public/data/parsed-dialogues-modded.json'),
         sourceDecryptedOutputFile: path.join(__dirname, 'public/data/source-decrypted-modded.json'),
+        inheritanceSources: ['vanilla'],
     },
 };
 
@@ -57,6 +58,7 @@ const excludeSpeakers = [
     "CONSIDER",
     "NOW",
     "TO",
+    "SPECIAL"
 ]
 
 const generalWhiteGrayBroadcasts = [
@@ -617,7 +619,7 @@ const sectionHandlers = {
     })
 };
 
-function parseDialogueContent(content) {
+function parseDialogueContent(content, inheritanceDB = null, metadataOnly = false) {
     const lines = content.split('\n').map(l => l.trim()).filter(l => l);
 
     // Parse global metadata
@@ -647,9 +649,36 @@ function parseDialogueContent(content) {
         sectionStartIndex++;
     }
 
+    if (metadata.inherit && inheritanceDB) {
+        const parent = inheritanceDB.get(metadata.inherit);
+        if (parent) {
+            for (const [key, value] of Object.entries(parent)) {
+                if (key === 'map' || key === 'tags') continue;
+                if (metadata[key] === undefined) {
+                    metadata[key] = value;
+                }
+            }
+
+            if (parent.map) {
+                metadata.map = [...parent.map, ...metadata.map];
+            }
+
+            if (parent.tags) {
+                metadata.tags = [...new Set([...(parent.tags || []), ...metadata.tags])];
+            }
+        } else {
+            console.warn(`Warning: Parent ${metadata.inherit} not found in inheritance sources.`);
+        }
+        delete metadata.inherit;
+    }
+
     // Clean up empty arrays
     if (metadata.map.length === 0) delete metadata.map;
     if (metadata.tags.length === 0) delete metadata.tags;
+
+    if (metadataOnly) {
+        return { metadata };
+    }
 
     // Parse sections
     const result = {
@@ -812,6 +841,25 @@ function handleProcessingError(error) {
 
 function processDialogueFiles() {
     try {
+        const inheritanceDB = new Map();
+        if (activeProfile.inheritanceSources) {
+            console.log("Building inheritance database...");
+            activeProfile.inheritanceSources.forEach(sourceName => {
+                const sourceProfile = PROFILES[sourceName];
+                if (sourceProfile) {
+                    const sourceFiles = getAllFiles(sourceProfile.dialogueDir);
+                    sourceFiles.forEach(file => {
+                        if (file.replaceAll("\\\\", "/").replaceAll("\\", "/").includes('source/')) return;
+                        const content = fs.readFileSync(file, 'utf-8');
+                        const baseId = path.basename(file, '.txt');
+                        const { metadata } = parseDialogueContent(content, null, true);
+                        inheritanceDB.set(baseId, metadata);
+                    });
+                }
+            });
+            console.log(`Inheritance database built with ${inheritanceDB.size} entries.`);
+        }
+
         const files = getAllFiles(dialogueDir);
         console.log(`Found ${files.length} files in ${dialogueDir} to process`);
 
@@ -822,7 +870,7 @@ function processDialogueFiles() {
 
             const content = fs.readFileSync(file, 'utf-8');
             const baseId = path.basename(file, '.txt');
-            const parsed = parseDialogueContent(content);
+            const parsed = parseDialogueContent(content, inheritanceDB);
 
             if (!hasVariableTranscriptions(parsed)) {
                 return [createBaseEntry(baseId, parsed)];

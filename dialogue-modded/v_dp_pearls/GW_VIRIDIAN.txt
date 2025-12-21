@@ -1,0 +1,9 @@
+inherit: GW_VIRIDIAN
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_GW.txt
+This is one of Pebbles pearls, I recognize his style of writing. He tried to encrypt the data then scramble it, but he did it poorly.
+It would be hard for you to understand the content, even with context. Or maybe I'm underestimating your capacities, little one.
+We studied some of these concepts together. But I never thought he would dig the subject further.
+This is an interesting but worrying glimpse of his current state of mind.\nHe is still as stubborn as I remember him.
+Be careful approaching him. Mobile cysts are no joke.

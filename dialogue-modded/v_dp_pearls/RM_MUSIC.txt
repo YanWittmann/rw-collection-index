@@ -1,0 +1,11 @@
+inherit: RM_MUSIC
+
+=== transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_Moon_Pearl_RM.txt
+The lattices in this pearl have been accessed very recently.
+This is fascinating. The data here consists of a singular audio track.
+I have found myself collecting and archiving ancient artefacts of the time my benefactors were still roaming this land.
+This would be a great asset in my collection, there is a lot to uncover here!
+...
+I have a deep feeling this memory was dear to someone, though.
+I hate to say this, but you should probably bring it back where you found it.
