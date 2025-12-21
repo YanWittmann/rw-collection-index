@@ -1,0 +1,12 @@
+name: Eleven Bone Splinters, Buried Rivers
+type: echo
+map: impl=none, region=GU, room=OD04, mapSlugcat=artificer
+
+=== transcription: base-slugcats
+What a hollow place...
+It was not always as such. Once, so long ago, every crevice bustled with life.
+Even as the tides of civilization rose and fell, some of us clung to what we knew.
+Not I. My misgivings led me deeper, and deeper, spiraling endlessly down and down.
+Perhaps I was naive to believe such a fate as mine was avoidable, with all that dragged behind me, like snagging debris amongst fronds.
+And now, I am all that is left here, aside from the shivering gusts and errant raindrops that dwell within these walls.
+And small, damp beasts such as yourself, of course.

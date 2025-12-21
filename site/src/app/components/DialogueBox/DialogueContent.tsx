@@ -272,7 +272,7 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
     const isMonoMode = firstLine.text === "MONO";
     const isSourceCode = clonedLines.some(line =>
         line.text.includes("public void") || line.text.includes("if (") ||
-        line.text.includes("class ") || line.text.includes("namespace ")
+        line.text.includes("namespace ")
     );
 
     const displayType = isMonoMode ? "mono" : isSourceCode ? "source-code" : "centered";

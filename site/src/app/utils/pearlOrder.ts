@@ -270,6 +270,21 @@ const moddedPearlOrder: PearlChapter[] = [
         ]
     },
     {
+        name: "Gray Urban",
+        headerType: "banner",
+        icon: "img/modded/GrayUrban/thumb.webp",
+        defaultOpen: false,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Gray_Urban" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3393900034" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3393900034" },
+        ],
+        ids: [
+            "GU_Pearl_1", "GU_Pearl_2",
+            "GrayUrban_echo"
+        ]
+    },
+    {
         name: "Scorched District",
         headerType: "banner",
         icon: "img/modded/ScorchedDistrict/thumb.webp",

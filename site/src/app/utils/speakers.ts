@@ -123,6 +123,7 @@ export const regionColors: { [key: string]: string } = {
     "MF": "#bb746c",
     "EU": "#1c3d4e",
     "CW": "#66d9bf",
+    "GU": "#5f6065",
 };
 
 export const transcriberIcons: { [key: string]: string } = {
@@ -249,6 +250,7 @@ export const regionNames: { [key: string]: string } = {
     "MF": "Moss Fields",
     "EU": "Luminous Cove",
     "CW": "Chasing Wind",
+    "GU": "Gray Urban",
 }
 
 export function darken(hex: string, amount: number) {

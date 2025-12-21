@@ -356,6 +356,8 @@ export function DialogueBox() {
                 </div>
         }
 
+        console.log(pearl);
+
         return <>
             <DialogueActionTabs
                 pearl={pearl}

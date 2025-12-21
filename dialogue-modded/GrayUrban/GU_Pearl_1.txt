@@ -1,0 +1,25 @@
+internalId: GU_Pearl_1
+color: #6fd100
+secondaryColor: #daf7a6
+type: pearl
+name: Joust
+map: impl=none, region=GU, room=IB09, mapSlugcat=white
+
+=== transcription: chasing-wind
+md-sourceDialogue: GrayUrban/CW_GU_Pearl_1.txt
+An interesting find! This is an assembly manifest for a growing pod.
+What is a growing pod, you might ask? Well, they are small, partially organic capsules, designed to simulate developmental conditions\nwithout the need for an independent organism. Many organisms of the past were produced using these methods, due to how much more\nefficient they are when compared to standard reproductive processes.
+To put it simply, growth pods are probably where your ancestors were born!
+But the ones described in these plans aren't exactly designed to breed your kind.\nThis is a large model, for aerial organisms living in urban environments.
+My citizens used them frequently as pest control. I hope they're not around to catch you anymore!
+...
+No offense meant, of course.
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: GrayUrban/GU_Joust.txt
+This appears to be a cross-section assembly manifest for a mounted growing pod. Do you know what a growing pod is? Likely not.
+My creators used specially purposed organisms for a variety of functions.\nThe individual organism's features were tailored to their function - most were simplistic organs mounted in boxes, while others were far more sophisticated.
+Originally, these more complex creations were replicated similarly to natural fauna.\nAssembling anything more than a simple processing organism required many of the nuances of a standard reproductive cycles, which was difficult to simulate accurately at the time.
+However, technological breakthroughs lead to the development of autonomous growing pods, which mimicked the conditions of natural development while allowing for more rapid turnaround.\nThese systems were omnipresent by the time of my priming - we iterators contain countless of them.
+This particular manifest contains the body plan for a small winged organism, intended to eliminate pests in urban areas.
+I would be careful, wherever you got this pearl - if any of this creature's descendants are still out there, they certainly would not take kindly to you!

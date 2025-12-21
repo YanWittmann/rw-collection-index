@@ -1,0 +1,46 @@
+internalId: GU_Pearl_2
+color: #e80e0e
+secondaryColor: #e02d2d
+type: pearl
+name: Poem
+map: impl=none, region=GU, room=IC01, mapSlugcat=white
+
+=== transcription: chasing-wind
+md-sourceDialogue: GrayUrban/CW_FR_Pearl_2.txt
+Oh, at first glance this is just a common poem like the sorts written by those up until my creators' departure, but there are some things about it that stand out to me and make it clear it's much more than just that! 
+You see, my inhabitants had a stratified living caste, with some living in or below the towering concrete housing blocks directly next to myself, and the richer folks living atop the roof of my structure.\nThough their civilization was hardly ever prone to violent conflict, this rather unusual situation led to the occasional protest or even rebellious crime. 
+When I came into existence, most of the individuals I had contact with were among the affluent houses. 
+I was sometimes tasked with assisting them in cracking down into this sort of criminal activity.\nI had no choice but to screen the many pieces of literature commonly traded amongst citizens to uncover hidden meanings within seemingly innocent poems.\nI believe this is one of such pearls used to coordinate rebel activity, hidden in plain sight. 
+Here, let me break it down for you:
+"With wings, ever-so Brilliant,\nwe soar, Soar yet ever-higher,\nTwelve, Eight, Thirty-Seven leagues above,\nClouds below, Unfathomably distant,"
+The numbers mentioned here is likely some sort of address, and Clouds Below, Unfathomably Distant could be someone's pseudonym.\nIt seems they went to the luxurious rooftop settlements with whatever these 'brilliant wings' are, but I'm not sure what they exactly mean.
+"Even higher, Grazing the stars,\npicking glistening blossoms forth,\nfrom the Heavenly Garden above,\nAnd One, by One, we glide Back down to brew,\npriceless wines from starlight fruit,"
+This seems to rather blatantly reference a structure far above my structure, higher than even the most noble citizens' living places, a very special garden of sorts.\nIt's clear now that this pearl is a plan to steal something that was growing there, though it's honestly perplexing to me as to why it's so obvious here.\nI'm sure anyone could tell even without bringing it to me for higher-level analysis!
+"To embibe and laugh as we watch,\nthe Gilded Wings we once flew upon,\nScatter into countless Stars and Feathers,"
+Oh, if I'm understanding this right, the final line could actually imply something much more than just stealing fruits.\nWait, it's all making sense now! 
+In this situation, the roof-dwellers affluence was also to the benefit of the lower-class inhabitants, ironically.
+I've mentioned before what Void Fluid is, right? For a while only the mightest could afford to ascend and leave this world behind.\nAnd as the cycles went on, the population decline was much sharper upon the higher class than the inhabitants of the waterlogged residential structures below.
+The confidence of whoever wrote this pearl to be much more mask-off with their message would make sense, if it was written at a time when those below far outnumbered whoever remained above the clouds.\nEven if they found out, what could a few nobles do against the many people who were getting increasingly more fed up with their social disparity? 
+But in the end, this plan to sabotage the Garden never bore fruit,\nas eventually advancements in Void Fluid technology meant even the poorest laborers could afford to ascend in the same comfort the prestigious houses once bathed in.\nWhat an interesting find, little explorer!
+
+=== transcription: LttM-pre-collapse
+md-sourceDialogue: GrayUrban/GU_Poem-Spear.txt
+This pearl appears to contain a simple poem of sorts, likely traded amongst the inhabitants of a city up until the mass ascension.\nI don't recognize it or the importance to its meaning, but I'll still read it out to you nevertheless:
+"With wings, ever-so Brilliant,\nwe soar, Soar yet ever-higher,\nTwelve, Eight, Thirty-Seven leagues above,\nClouds below, Unfathomably distant,\nEven higher, Grazing the stars,\npicking glistening blossoms forth,\nfrom the Heavenly Garden above,\nAnd One, by One, we glide Back down to brew,\npriceless wines from starlight fruit,\nTo embibe and laugh as we watch,\nthe Gilded Wings we once flew upon,\nScatter into countless Stars and Feathers,"
+Thank you, I guess, little messenger.\nNormally reading these poems from my creators would be a chore, but in this dire situation, it does bring a weird sense of comfort.
+
+=== transcription: FP-artificer
+md-sourceDialogue: GrayUrban/GU_Poem-Artificer.txt
+It's a poem, with short stanzas and complex yet vague descriptors commonly seen in modern literature up until the Mass Ascension.
+The poem seems to describe an aeronautical excursion reaching the star-like heights, taking something important from above, to then abandon their vessel up there as they return and rejoice.
+Despite the long and proven history of the Void Sea and the countless uses of Void Fluid, there was a small group of contrarians who believed the answer to the Great Problem lied in the heavens above rather than deep below.
+Although the terminology doesn't quite line up, perhaps this poem here was written by such star-searchers,\nand whatever they supposedly found up there and used for their benefit was some sort of analog to the Void Fluid they used to power their great civilization.
+I must admit this is a rather amusing find.
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: GrayUrban/GU_Poem-Spear.txt
+This pearl appears to contain some sort of poem, but I have no clue to its meaning.\nDon't worry, I can still read it out to you:
+"With wings, ever-so Brilliant,\nwe soar, Soar yet ever-higher,\nTwelve, Eight, Thirty-Seven leagues above,\nClouds below, Unfathomably distant,\nEven higher, Grazing the stars,\npicking glistening blossoms forth,\nfrom the Heavenly Garden above,\nAnd One, by One, we glide Back down to brew,\npriceless wines from starlight fruit,\nTo embibe and laugh as we watch,\nthe Gilded Wings we once flew upon,\nScatter into countless Stars and Feathers,"
+I'm sorry I can't offer more insight on this specific poem, I don't recognize it in the slightest!\nBut given its rather modern jargon and little weathering, I reckon it was written by the inhabitants of some city, and traded amongst them.
+When they weren't trying to find a better way to leave this world behind, people would do all sorts of strange activities to pass the time, with poetry being quite popular into many social circles.\nOften times they would even ask for inspiration or assistance with writing their lines, or just to practice reciting them before important reading ceremonies.
+While it certaintly became annoying after the thousandth cycle, I can't blame them for finding interest in such literature!
