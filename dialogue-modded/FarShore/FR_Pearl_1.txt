@@ -7,6 +7,7 @@ map: region=FR, room=TP32, mapSlugcat=white
 mapInfo: I was unable to locate this room.
 
 === transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_FR_Pearl_1.txt
 This is a very old exploration report of the caldera at the center of this island.
 If I refer to the old archives my Benefactors gifted me, this place was not always surrounded by water.
 All the vapor from us iterators warmed the nearby mountain glaciers and caused melted ice to fill the lower lands. The heavy rains did the rest.

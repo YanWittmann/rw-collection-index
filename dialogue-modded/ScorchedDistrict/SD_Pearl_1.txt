@@ -6,6 +6,7 @@ name: Stars
 map: region=SD, room=A21, mapSlugcat=white
 
 === transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_SD_Pearl_1.txt
 This is a solemn warning from an engineer to one district of Pebbles’ city.
 They noticed an abnormal series of malfunctions in a Distillation Column, huge towers used to separate Void Fluid from impurities.
 If my archives are correct, it caused a major incident resulting in the death of several of our Benefactors.

@@ -213,6 +213,20 @@ const moddedPearlOrder: PearlChapter[] = [
         ]
     },
     {
+        name: "Luminous Cove",
+        headerType: "banner",
+        icon: "img/modded/LuminousCove/thumb.webp",
+        defaultOpen: false,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Luminous_Cove" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3232063592" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3232063592" },
+        ],
+        ids: [
+            "EU_Pearl_1", "LuminousCove_echo"
+        ]
+    },
+    {
         name: "Hanging Gardens",
         headerType: "banner",
         icon: "img/modded/HangingGardens/thumb.webp",

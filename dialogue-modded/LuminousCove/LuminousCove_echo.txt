@@ -1,0 +1,12 @@
+name: Echo
+type: echo
+map: region=EU, room=A04, mapSlugcat=saint, impl=none
+
+=== transcription: base-slugcats
+md-sourceDialogue: LuminousCove/eu_echoConv.txt
+How sad! How tragic!
+An island of bones and debris, and we refused to add our own?
+Why reject everything that saw us born and prosper.
+We should have shown deeper humility and guided our descendants.
+This sudden departure doomed this world.
+Look at you, still suffering the cycles one after the other. We failed.

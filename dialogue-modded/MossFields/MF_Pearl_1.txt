@@ -6,6 +6,7 @@ name: Moss
 map: region=MF, room=H01, mapSlugcat=white
 
 === transcription: chasing-wind
+md-sourceDialogue: ChasingWind/CW_MF_Pearl_1.txt
 Where did you get that pearl? Did you rummage through my superstructure to find this?
 Oh never mind, it was probably stolen by scavengers. They often come here to find pearls with fresh lattices.
 Their raids are sometimes annoying but... who I am to stop the blossoming of a whole civilization?
