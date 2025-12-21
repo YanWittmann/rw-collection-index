@@ -48,7 +48,14 @@ export function WelcomeDialogueContent() {
                     />
                 </div>
                 <h1 className="relative text-5xl rw-title-font">Rain World</h1>
-                <h1 className="relative text-[2rem] rw-title-font mt-4 mb-8">Collection Index</h1>
+                <div className="relative inline-block mt-4 mb-8">
+                    <h1 className="text-[2rem] rw-title-font">Collection Index</h1>
+                    {datasetKey === 'modded' && (
+                        <div className="rw-title-font absolute -bottom-5 -right-10 transform -rotate-[0.25rad] text-yellow-500 font-bold text-xl shadow-lg animate-pulse">
+                            Modded!
+                        </div>
+                    )}
+                </div>
                 <div className="relative mb-12 text-xl">Select any pearl or broadcast to view its content.</div>
             </div>
 

@@ -13,6 +13,7 @@ import { useChapterExpansion } from "../../hooks/useChapterExpansion";
 import { useKeyboardNavigation } from "../../hooks/useKeyboardNavigation";
 import { Popover, PopoverContent, PopoverTrigger } from "@shadcn/components/ui/popover";
 import { RwScrollableList, RwScrollableListItem } from "../other/RwScrollableList";
+import { RwIcon } from "./RwIcon";
 
 interface FlatChapterItem {
     id: string;
@@ -37,14 +38,39 @@ interface MemoizedPearlItemProps {
 
 const SearchBar = () => {
     const { isMobile, unlockMode, setUnlockMode, filters, setFilters } = useAppContext();
-
-    const onToggleUnlockMode = useCallback(() => {
-        setUnlockMode(unlockMode === "all" ? "unlock" : "all");
-    }, [unlockMode, setUnlockMode]);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const onTextInput = useCallback((text: string) => {
         setFilters(prev => ({ ...prev, text: text === '' ? undefined : text }));
     }, [setFilters]);
+
+    const isModded = (window as any).__RW_DATA_KEY__ === 'modded';
+
+    const menuItems: RwScrollableListItem[] = useMemo(() => [
+        {
+            id: 'spoiler',
+            title: unlockMode === "all" ? "Hide Spoilers" : "Show All Content",
+            subtitle: unlockMode === "all" ? "Spoiler protection is OFF" : "Spoiler protection is ON",
+            onClick: () => {
+                setUnlockMode(unlockMode === "all" ? "unlock" : "all");
+                setIsMenuOpen(false);
+            }
+        },
+        {
+            id: 'data-switch',
+            title: isModded ? "Show Vanilla Content" : "Show Modded Content",
+            subtitle: isModded ? "Load official content" : "Load community mods",
+            onClick: () => {
+                const url = new URL(window.location.href);
+                if (isModded) {
+                    url.searchParams.delete('d');
+                } else {
+                    url.searchParams.set('d', 'modded');
+                }
+                window.location.href = url.toString();
+            }
+        }
+    ], [unlockMode, isModded, setUnlockMode]);
 
     // This data should ideally not be recalculated here.
     // For a future refactor, this could be derived once and stored in context.
@@ -148,10 +174,20 @@ const SearchBar = () => {
             </div>
             <PearlFilter filters={filters} setFilters={setFilters} filterSections={filterSections}/>
             {isMobile && (
-                <RwIconButton square={false} onClick={onToggleUnlockMode} className="shrink-0"
-                              aria-label="Toggle Unlock Mode">
-                    <span className="text-white">{unlockMode === "all" ? "Spoiler" : "Show All"}</span>
-                </RwIconButton>
+                <Popover open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+                    <PopoverTrigger asChild>
+                        <div onClick={(e) => e.stopPropagation()} className="shrink-0">
+                            <RwIconButton square={true} aria-label="Menu" padding="p-2">
+                                <RwIcon type="The_Scholar_Square"/>
+                            </RwIconButton>
+                        </div>
+                    </PopoverTrigger>
+                    <PopoverContent
+                        className="w-64 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg text-white"
+                        align="end" sideOffset={5}>
+                        <RwScrollableList items={menuItems} breakSubtitle={true}/>
+                    </PopoverContent>
+                </Popover>
             )}
         </div>
     );
