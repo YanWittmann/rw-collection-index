@@ -481,7 +481,7 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
             <div className={cn("no-scrollbar overflow-y-auto box-border h-full", isMobile ? "px-4" : "px-1")}
                  ref={containerRef}>
                 <div
-                    className={cn("sticky top-0 z-20 bg-gray-950/90 backdrop-blur-sm", isMobile ? "pt-4" : "pt-1", "mb-4")}>
+                    className={cn("sticky top-0 z-20", isMobile ? "pt-4" : "pt-1", "mb-4")}>
                     <SearchBar/>
                 </div>
                 <div className={cn("grid grid-cols-1 gap-4", isMobile ? "" : "px-1", isMobile ? "pb-4" : "pb-1")}>

@@ -184,17 +184,18 @@ const moddedPearlOrder: PearlChapter[] = [
         ]
     },
     {
-        name: "Hanging Gardens",
+        name: "Far Shore",
         headerType: "banner",
-        icon: "img/modded/HangingGardens/thumb.webp",
+        icon: "img/modded/FarShore/thumb.webp",
         defaultOpen: false,
         link: [
-            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Hanging_Gardens" },
-            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3022284148" },
-            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3022284148" },
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Far_Shore" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3026723782" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3026723782" },
         ],
         ids: [
-            "GH_Pearl"
+            "FR_Pearl_1", "FR_Pearl_2", "FR_Pearl_3",
+            "FarShore_echo"
         ]
     },
     {
@@ -212,18 +213,31 @@ const moddedPearlOrder: PearlChapter[] = [
         ]
     },
     {
-        name: "Far Shore",
+        name: "Hanging Gardens",
         headerType: "banner",
-        icon: "img/modded/FarShore/thumb.webp",
+        icon: "img/modded/HangingGardens/thumb.webp",
         defaultOpen: false,
         link: [
-            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Far_Shore" },
-            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3026723782" },
-            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3026723782" },
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Hanging_Gardens" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3022284148" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3022284148" },
         ],
         ids: [
-            "FR_Pearl_1", "FR_Pearl_2", "FR_Pearl_3",
-            "FarShore_echo"
+            "GH_Pearl"
+        ]
+    },
+    {
+        name: "Moss Fields",
+        headerType: "banner",
+        icon: "img/modded/MossFields/thumb.webp",
+        defaultOpen: false,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Moss_Fields" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3147907848" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3147907848" },
+        ],
+        ids: [
+            "MF_Pearl_1"
         ]
     },
     {
