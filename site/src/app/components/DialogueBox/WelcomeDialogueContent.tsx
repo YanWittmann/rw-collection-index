@@ -4,7 +4,6 @@ import { RwIconButton } from "../other/RwIconButton"
 import UnlockManager from "../../utils/unlockManager"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
 import { useAppContext } from "../../context/AppContext";
-import { RwIcon } from "../PearlGrid/RwIcon";
 import { RwCheckbox } from "../other/RwCheckbox";
 
 interface ControlItem {

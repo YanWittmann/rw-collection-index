@@ -197,7 +197,7 @@ const BannerChapterHeader = React.memo(({ flatChapter, onToggle }: {
     flatChapter: FlatChapterItem,
     onToggle: () => void
 }) => {
-    const { originalChapter, depth, hasSubChapters } = flatChapter;
+    const { originalChapter, depth } = flatChapter;
     const { icon: iconUrl, link: linkData } = originalChapter;
     const [isLinkPopoverOpen, setIsLinkPopoverOpen] = useState(false);
 
