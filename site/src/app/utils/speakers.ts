@@ -53,6 +53,7 @@ export const transcribersColors: { [key: string]: string } = {
     "saint": "#aaf156",
     "base-slugcats": "#ffffff",
     "artificer": "#70233c",
+    "spearmaster": "#4f2e69",
     // modded
     "chasing-wind": "#66d9bf",
     "seer": "#b8cfa6",
@@ -174,6 +175,7 @@ export const speakerNames: { [key: string]: string } = {
     "base-slugcats": "Base Slugcats",
     "saint": "Saint",
     "artificer": "Artificer",
+    "spearmaster": "Spearmaster",
     "ST": "Spinning Top",
     "Spinning Top": "Spinning Top",
     "spinning-top": "Spinning Top",

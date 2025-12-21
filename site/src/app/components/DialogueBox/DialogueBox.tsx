@@ -165,9 +165,14 @@ export function DialogueBox() {
                         transcriberName = transcriberName.slice(0, -1);
                     }
 
-                    transcriberName += transcriberName.includes("Pearl Reader")
-                        ? "'s Projection" + parenthesis
-                        : "'s Transcription" + parenthesis;
+                    if (pearl.transcribers[transcriberIndex]?.metadata?.type === "echo") {
+                        transcriberName += "'s Encounter";
+                    } else {
+                        transcriberName += transcriberName.includes("Pearl Reader")
+                            ? "'s Projection" + parenthesis
+                            : "'s Transcription" + parenthesis;
+
+                    }
 
                     setLastTranscriberName(transcriberName);
                 }
@@ -413,6 +418,12 @@ export function DialogueBox() {
             >
                 {lastTranscriberName}
             </motion.div>
+            {pearl === null && window.__RW_DATA_KEY__ === "modded" ?
+                <div className="absolute bottom-[2.5rem] left-0 right-0 px-2 text-center text-gray-400 text-sm">
+                    <p>Unofficial Mod Index. All dialogue belongs to the respective mod authors.</p>
+                    <p>As mods update frequently, this index may not reflect the latest versions.
+                        Please support the creators by playing their mods.</p>
+                </div> : null}
             {pearl === null ?
                 <div className="absolute bottom-[1rem] left-0 right-0 px-2 text-center text-white text-sm">
                     Code on <a href="https://github.com/YanWittmann/rw-collection-index" target="_blank"
