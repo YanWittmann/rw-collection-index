@@ -161,18 +161,21 @@
 </body>
 <script>
     if (window.location.hostname !== 'localhost' && !window.location.hostname.startsWith('127.0.0')) {
-        const lastAccessKey = 'lastAccessTime';
+        const isModded = window.__RW_DATA_KEY__ === "modded";
+        const lastAccessKey = isModded ? 'lastAccessTime-modded' : 'lastAccessTime';
 
         const lastAccessTime = localStorage.getItem(lastAccessKey);
         const currentTime = Date.now();
+        const isSession = lastAccessTime && (currentTime - lastAccessTime < 10 * 60 * 1000);
 
-        const baseKey = lastAccessTime && (currentTime - lastAccessTime < 10 * 60 * 1000) ? 'access-iden' : 'access';
-        const keyToUse = window.__RW_DATA_KEY__ === "modded" ? `${baseKey}-modded` : baseKey;
+        const keyParts = ['access'];
+        if (isModded) keyParts.push('modded');
+        if (isSession) keyParts.push('iden');
 
         localStorage.setItem(lastAccessKey, currentTime);
 
         setTimeout(() => {
-            fetch(`https://yanwittmann.de/projects/countapi/increment.php?namespace=rwci&key=${keyToUse}`, { method: 'GET' })
+            fetch(`https://yanwittmann.de/projects/countapi/increment.php?namespace=rwci&key=${keyParts.join('-')}`, { method: 'GET' })
                 .catch(error => console.error('Error tracking page view:', error));
         }, 1000);
     }
