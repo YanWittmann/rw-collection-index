@@ -169,8 +169,8 @@
         const isSession = lastAccessTime && (currentTime - lastAccessTime < 10 * 60 * 1000);
 
         const keyParts = ['access'];
-        if (isModded) keyParts.push('modded');
         if (isSession) keyParts.push('iden');
+        if (isModded) keyParts.push('modded');
 
         localStorage.setItem(lastAccessKey, currentTime);
 
