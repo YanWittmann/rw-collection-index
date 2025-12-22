@@ -20,6 +20,10 @@ export function useChapterExpansion(filteredTree: OrderedChapter[], baseTree: Or
         setExpandedChapters(allNames);
     }, [filteredTree]);
 
+    const collapseAll = useCallback(() => {
+        setExpandedChapters(new Set());
+    }, []);
+
     const expandDefaults = useCallback(() => {
         const defaultOpenNames = new Set<string>();
         const traverse = (chapters: OrderedChapter[]) => {
@@ -121,5 +125,5 @@ export function useChapterExpansion(filteredTree: OrderedChapter[], baseTree: Or
         });
     }, []);
 
-    return { expandedChapters, toggleChapter };
+    return { expandedChapters, toggleChapter, expandAll, collapseAll };
 }

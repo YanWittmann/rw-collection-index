@@ -394,6 +394,7 @@ const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({ pearl, pearlInde
 const useIsScrollable = (ref: React.RefObject<HTMLDivElement | null>, dependencies: any[]) => {
     const [isScrollable, setIsScrollable] = useState(false);
     const [showGradient, setShowGradient] = useState(false);
+    const [isAtTop, setIsAtTop] = useState(true);
 
     useEffect(() => {
         const checkScroll = () => {
@@ -401,6 +402,7 @@ const useIsScrollable = (ref: React.RefObject<HTMLDivElement | null>, dependenci
                 const { scrollHeight, clientHeight, scrollTop } = ref.current;
                 const hasScrollableContent = scrollHeight > clientHeight;
                 setIsScrollable(hasScrollableContent);
+                setIsAtTop(scrollTop < 10);
                 if (hasScrollableContent) {
                     setShowGradient(scrollTop + clientHeight < scrollHeight - 1);
                 } else {
@@ -420,18 +422,19 @@ const useIsScrollable = (ref: React.RefObject<HTMLDivElement | null>, dependenci
         };
     }, [ref, ...dependencies]);
 
-    return { isScrollable, showGradient };
+    return { isScrollable, showGradient, isAtTop };
 };
 
 export function PearlGrid({ order, isAlternateDisplayModeActive = false }: PearlGridProps) {
     const { pearls, handleSelectPearl, selectedPearlId, isMobile } = useAppContext();
     const { baseTree, filteredTree, totalItems, firstItem } = useFilteredPearls(pearls, order);
-    const { expandedChapters, toggleChapter } = useChapterExpansion(filteredTree, baseTree);
+    const { expandedChapters, toggleChapter, expandAll, collapseAll } = useChapterExpansion(filteredTree, baseTree);
 
     const isTogglingRef = useRef(false);
     const [visibleChapters, setVisibleChapters] = useState(new Set([0]));
     const selectedPearlRef = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
+    const desktopToggleRef = useRef<HTMLDivElement>(null);
 
     const handleToggleChapter = useCallback((name: string) => {
         isTogglingRef.current = true;
@@ -449,6 +452,42 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
             return () => clearTimeout(timer);
         }
     }, [totalItems, firstItem, isMobile, handleSelectPearl, selectedPearlId]);
+
+    // Proximity logic for desktop toggle button
+    useEffect(() => {
+        if (isMobile) return;
+
+        const handleMouseMove = (e: MouseEvent) => {
+            const btn = desktopToggleRef.current;
+            if (!btn) return;
+
+            const rect = btn.getBoundingClientRect();
+            // Calculate center of button
+            const btnX = rect.left + rect.width / 2;
+            const btnY = rect.top + rect.height / 2;
+
+            // Euclidean distance
+            const dist = Math.sqrt(Math.pow(e.clientX - btnX, 2) + Math.pow(e.clientY - btnY, 2));
+            const threshold = 90; // pixels range
+
+            let opacity = 0;
+            if (dist < threshold) {
+                const linear = 1 - (dist / threshold);
+                opacity = Math.sin(linear * (Math.PI / 2));
+            }
+
+            // Ensure opacity is exactly 0 or 1 at extremes to prevent glitches
+            if (opacity < 0.01) opacity = 0;
+            if (opacity > 0.99) opacity = 1;
+
+            btn.style.opacity = opacity.toFixed(2);
+            // Prevent blocking clicks on underlying elements when "invisible"
+            btn.style.pointerEvents = opacity > 0.1 ? 'auto' : 'none';
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, [isMobile]);
 
     const displayList = useMemo(() => {
         const list: FlatChapterItem[] = [];
@@ -523,15 +562,45 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
         }
     }, [currentGridPosition]);
 
-    const { isScrollable, showGradient } = useIsScrollable(containerRef, [displayList]);
+    const { isScrollable, showGradient, isAtTop } = useIsScrollable(containerRef, [displayList]);
+
+    const isAnyExpanded = expandedChapters.size > 0;
+    const handleExpandToggle = useCallback(() => {
+        if (isAnyExpanded) {
+            collapseAll();
+        } else {
+            expandAll();
+        }
+    }, [isAnyExpanded, collapseAll, expandAll]);
 
     return (
         <div className={cn("relative", isMobile ? "w-full max-h-[98svh] h-[98svh]" : "w-[18rem] max-h-[80svh]")}>
             <div className={cn("no-scrollbar overflow-y-auto box-border h-full", isMobile ? "px-4" : "px-1")}
                  ref={containerRef}>
-                <div
-                    className={cn("sticky top-0 z-20", isMobile ? "pt-4" : "pt-1", "mb-4")}>
+                <div className={cn("sticky top-0 z-20", isMobile ? "pt-4" : "pt-1", "mb-4")}>
                     <SearchBar/>
+                    {isMobile && (
+                        <div
+                            className={cn("overflow-hidden transition-all duration-300 ease-in-out", isAtTop ? "max-h-8 opacity-100" : "max-h-0 opacity-0")}>
+                            <div className="flex justify-start gap-2 px-1 mt-1">
+                                <button
+                                    onClick={expandAll}
+                                    className="text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-1 font-medium"
+                                >
+                                    <span>Expand</span>
+                                </button>
+                                <span
+                                    className="text-[10px] uppercase tracking-widest text-white/40 font-medium"
+                                >/</span>
+                                <button
+                                    onClick={collapseAll}
+                                    className="text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-1 font-medium"
+                                >
+                                    <span>Collapse All</span>
+                                </button>
+                            </div>
+                        </div>
+                    )}
                 </div>
                 <div className={cn("grid grid-cols-1 gap-4", isMobile ? "" : "px-1", isMobile ? "pb-4" : "pb-1")}>
                     {displayList.map((flatChapter, index) => (
@@ -550,6 +619,29 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
                     ))}
                 </div>
             </div>
+
+            {!isMobile && (
+                <div
+                    ref={desktopToggleRef}
+                    className="absolute -left-7 top-[3.75rem] z-50 cursor-pointer text-white/40 hover:text-white transition-colors p-2"
+                    onClick={handleExpandToggle}
+                    title={isAnyExpanded ? "Collapse All" : "Expand All"}
+                    style={{ opacity: 0, pointerEvents: 'none' }}
+                >
+                    {isAnyExpanded ? (
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="m18 4-6 6-6-6"/>
+                            <path d="m6 20 6-6 6 6"/>
+                        </svg>
+                    ) : (
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="m18 10-6-6-6 6"/>
+                            <path d="m6 14 6 6 6-6"/>
+                        </svg>
+                    )}
+                </div>
+            )}
+
             <div
                 className={cn("absolute bottom-0 left-0 right-0 h-8 pointer-events-none bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-white/20 to-transparent transition-opacity duration-300 border-b-2 border-white/50 z-10", isScrollable && showGradient ? "opacity-100" : "opacity-0")}/>
         </div>

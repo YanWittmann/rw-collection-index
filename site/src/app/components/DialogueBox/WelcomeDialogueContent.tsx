@@ -50,7 +50,7 @@ export function WelcomeDialogueContent() {
                 <div className="relative inline-block mt-4 mb-8">
                     <h1 className="text-[2rem] rw-title-font">Collection Index</h1>
                     {datasetKey === 'modded' && (
-                        <div className="rw-title-font absolute -bottom-5 -right-10 transform -rotate-[0.25rad] text-yellow-500 font-bold text-xl shadow-lg animate-pulse">
+                        <div className="rw-title-font absolute -bottom-5 -right-10 transform -rotate-[0.25rad] text-yellow-500 font-bold text-xl shadow-lg animate-modded-pulse">
                             Modded!
                         </div>
                     )}

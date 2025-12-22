@@ -166,7 +166,8 @@
         const lastAccessTime = localStorage.getItem(lastAccessKey);
         const currentTime = Date.now();
 
-        const keyToUse = lastAccessTime && (currentTime - lastAccessTime < 10 * 60 * 1000) ? 'access-iden' : 'access';
+        const baseKey = lastAccessTime && (currentTime - lastAccessTime < 10 * 60 * 1000) ? 'access-iden' : 'access';
+        const keyToUse = window.__RW_DATA_KEY__ === "modded" ? `${baseKey}-modded` : baseKey;
 
         localStorage.setItem(lastAccessKey, currentTime);
 

@@ -171,7 +171,7 @@ const moddedPearlOrder: PearlChapter[] = [
         name: "Vanilla",
         headerType: "banner",
         icon: "img/modded/vanilla-thumb.webp",
-        defaultOpen: false,
+        defaultOpen: true,
         items: [
             {
                 name: "Colored Pearls",
@@ -192,12 +192,57 @@ const moddedPearlOrder: PearlChapter[] = [
                 ]
             },
         ]
+    }, {
+        name: "Corroded Passage",
+        headerType: "banner",
+        icon: "img/modded/CorrodedPassage/thumb.webp",
+        defaultOpen: true,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Corroded_Passage" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3222863079" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3222863079" },
+        ],
+        ids: [
+            "PQ_P1", "PQ_P2",
+            "MARPQ", "PUPPQ", "PUPPQ1", "PUPPQ2", "PUPPQ3", "SEBPQ", "SMOLDPQ",
+            "CorrodedPassage_echo"
+        ]
+    },
+    {
+        name: "Far Shore",
+        headerType: "banner",
+        icon: "img/modded/FarShore/thumb.webp",
+        defaultOpen: true,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Far_Shore" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3026723782" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3026723782" },
+        ],
+        ids: [
+            "FR_Pearl_1", "FR_Pearl_2", "FR_Pearl_3",
+            "FarShore_echo"
+        ]
+    },
+    {
+        name: "Gray Urban",
+        headerType: "banner",
+        icon: "img/modded/GrayUrban/thumb.webp",
+        defaultOpen: true,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Gray_Urban" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3393900034" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3393900034" },
+        ],
+        ids: [
+            "GU_Pearl_1", "GU_Pearl_2",
+            "GrayUrban_echo"
+        ]
     },
     {
         name: "Chasing Wind",
         headerType: "banner",
         icon: "img/modded/ChasingWind/thumb.webp",
-        defaultOpen: false,
+        defaultOpen: true,
         link: [
             { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Chasing_Wind_(region)" },
             { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3232063592" },
@@ -232,6 +277,7 @@ const moddedPearlOrder: PearlChapter[] = [
             },
             {
                 name: "White Pearls (Misc)",
+                defaultOpen: false,
                 ids: [
                     { pattern: /Misc_CW_WHITE_PEARLS_\d+/ },
                 ]
@@ -239,56 +285,10 @@ const moddedPearlOrder: PearlChapter[] = [
         ]
     },
     {
-        name: "Corroded Passage",
-        headerType: "banner",
-        icon: "img/modded/CorrodedPassage/thumb.webp",
-        defaultOpen: false,
-        link: [
-            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Corroded_Passage" },
-            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3222863079" },
-            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3222863079" },
-        ],
-        ids: [
-            "PQ_P1", "PQ_P2",
-            "MARPQ", "PUPPQ", "PUPPQ1", "PUPPQ2", "PUPPQ3", "SEBPQ", "SMOLDPQ",
-            "CorrodedPassage_echo"
-        ]
-    },
-    {
-        name: "Far Shore",
-        headerType: "banner",
-        icon: "img/modded/FarShore/thumb.webp",
-        defaultOpen: false,
-        link: [
-            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Far_Shore" },
-            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3026723782" },
-            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3026723782" },
-        ],
-        ids: [
-            "FR_Pearl_1", "FR_Pearl_2", "FR_Pearl_3",
-            "FarShore_echo"
-        ]
-    },
-    {
-        name: "Gray Urban",
-        headerType: "banner",
-        icon: "img/modded/GrayUrban/thumb.webp",
-        defaultOpen: false,
-        link: [
-            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Gray_Urban" },
-            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3393900034" },
-            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3393900034" },
-        ],
-        ids: [
-            "GU_Pearl_1", "GU_Pearl_2",
-            "GrayUrban_echo"
-        ]
-    },
-    {
         name: "Scorched District",
         headerType: "banner",
         icon: "img/modded/ScorchedDistrict/thumb.webp",
-        defaultOpen: false,
+        defaultOpen: true,
         link: [
             { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Scorched_District" },
             { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=2987764922" },
@@ -302,7 +302,7 @@ const moddedPearlOrder: PearlChapter[] = [
         name: "Luminous Cove",
         headerType: "banner",
         icon: "img/modded/LuminousCove/thumb.webp",
-        defaultOpen: false,
+        defaultOpen: true,
         link: [
             { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Luminous_Cove" },
             { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3232063592" },
@@ -316,7 +316,7 @@ const moddedPearlOrder: PearlChapter[] = [
         name: "Hanging Gardens",
         headerType: "banner",
         icon: "img/modded/HangingGardens/thumb.webp",
-        defaultOpen: false,
+        defaultOpen: true,
         link: [
             { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Hanging_Gardens" },
             { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3022284148" },
@@ -330,7 +330,7 @@ const moddedPearlOrder: PearlChapter[] = [
         name: "Necropolis",
         headerType: "banner",
         icon: "img/modded/Necropolis/thumb.webp",
-        defaultOpen: false,
+        defaultOpen: true,
         link: [
             { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Necropolis" },
             { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3393902748" },
@@ -345,7 +345,7 @@ const moddedPearlOrder: PearlChapter[] = [
         name: "Moss Fields",
         headerType: "banner",
         icon: "img/modded/MossFields/thumb.webp",
-        defaultOpen: false,
+        defaultOpen: true,
         link: [
             { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Moss_Fields" },
             { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3147907848" },
@@ -359,7 +359,7 @@ const moddedPearlOrder: PearlChapter[] = [
         name: "Drainage System Plus",
         headerType: "banner",
         icon: "img/modded/DrainageSystemPlus/thumb.webp",
-        defaultOpen: false,
+        defaultOpen: true,
         link: [
             { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Drainage_System_Plus" },
             { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=2993225799" },
