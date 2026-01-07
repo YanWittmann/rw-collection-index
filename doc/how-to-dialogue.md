@@ -173,7 +173,7 @@ It uses special line prefixes:
 - `/`: A comment or descriptive action, which is often rendered in italics.
 - `|`: A line that is part of a randomly chosen set of dialogue options.
 
-Example from [`Iterator_Dialogue_Items_Receiving_an_object.txt`](../dialogue/v_dp_iterators/Iterator_Dialogue_Items_Receiving_an_object.txt):
+Example from [`LttM_short_Dialogue_{var--DialogueId}.txt`](../dialogue/v_dp_iterators/LttM/LttM_short_Dialogue_%7Bvar--DialogueId%7D.txt):
 
 ```text
 === transcription: LttM-post-collapse
