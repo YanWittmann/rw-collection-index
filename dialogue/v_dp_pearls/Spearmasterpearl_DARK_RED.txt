@@ -3,13 +3,6 @@ color: #7e020a
 type: pearl
 name: Dark Red (Spearmaster)
 
-=== transcription: LttM-post-collapse
-md-name: Broadcast Pearl 24
-md-info: In campaigns other than Spearmaster, this Broadcast can be found as one of the random\nBroadcast Pearls, which can be brought to Looks to the Moon to receive this dialogue.
-md-sourceDialogue: 132.txt
-"This will be my final broadcast to the local group. Within several cycles-,"
-and the rest is corrupted. It's an old broadcast node's final recording. Unfortunately these were not made for long term storage, so the rest of the message has been lost to decay.
-
 === transcription: LttM-pre-collapse
 md-sourceDialogue: chatlog_si9.txt
 [LIVE BROADCAST] - (ANNOUNCEMENT) Big Sis Moon to Local Group
