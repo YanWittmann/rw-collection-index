@@ -32,7 +32,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "watch-dialogue-files": "node create-dialogue-files.js --watch --profile modded",
+    "watch-dialogue-files": "node create-dialogue-files.js --watch --profile vanilla",
     "create-dialogue-files-lite": "node create-dialogue-files.js --profile vanilla && node create-dialogue-files.js --profile modded",
     "create-dialogue-files": "node create-dialogue-files.js --profile modded && node create-dialogue-files.js --profile vanilla --sourceFiles",
     "start": "craco start",

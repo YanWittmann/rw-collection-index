@@ -430,7 +430,7 @@ export function DialogueBox() {
                     Code on <a href="https://github.com/YanWittmann/rw-collection-index" target="_blank"
                                className="underline">GitHub</a> | Created by Yan Wittmann | <a
                     href="https://store.steampowered.com/app/312520/Rain_World" target="_blank" className="underline">Rain
-                    World</a> is property of <a href="https://twitter.com/VideocultMedia" target="_blank"
+                    World</a> is property of <a href="https://videocultmedia.com" target="_blank"
                                                 className="underline">Videocult</a> | <a
                     href="https://github.com/YanWittmann/rw-collection-index/blob/main/privacy.md" target="_blank"
                     className="underline">Privacy Policy</a>

@@ -101,7 +101,7 @@ const vanillaPearlOrder: PearlChapter[] = [
     {
         name: "The Watcher: Projections",
         ids: [
-            "WAUA", "WORA", "ABSTRACT", "DRONE",
+            "WAUA", "WORA", "DRONE", "ABSTRACT",
             { pattern: /Watcher_Pearl_Text_Projection.+/ },
             { pattern: /Watcher_Pearl_Misc_Projection.+/ }
         ]
