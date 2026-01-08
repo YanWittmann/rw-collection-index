@@ -1,4 +1,4 @@
-# Rain World Collection Index
+<!-- # Rain World Collection Index -->
 
 <img alt="Rain World Collection Index Hero" src="doc/rw-collection-index-card-hero.png" width="1280"/>
 
@@ -128,18 +128,17 @@ The dataset spans the entire known history of the Ancients and Iterators.
   <tr>
     <td valign="top" style="padding: 10px;">
       <strong><img src="site/public/img/pin.png" width="20" valign="middle"/> Interactive Map Links</strong>
-      <p>Most entries are linked directly to the <a href="https://rain-world-map.github.io/">Rain World Interactive Map</a> or related maps. Click the pin icon to see exactly where a Pearl or Broadcast is located in the game world.</p>
+      <p>Most entries are linked directly to the <a href="https://rain-world-map.github.io/">Rain World Interactive Map</a> and related maps. Click the pin icon to see exactly where a Pearl or Broadcast is located in the game world.</p>
     </td>
     <td valign="top" style="padding: 10px;">
-      <strong><img src="site/public/img/share.png" width="20" valign="middle"/> Deep Linking</strong>
-      <p>Share specific lore entries easily. The URL updates as you browse, storing the selected item and the specific transcriber.</p>
-      <code>?item=SI_chat3</code> &nbsp; <code>?transcriber=LttM-pre-collapse</code>
+      <strong><img src="site/public/img/share.png" width="20" valign="middle"/> Sharing and Exporting</strong>
+      <p>Share specific lore entries easily. The URL updates as you browse, storing the selected item and the specific transcriber. Export specific transcriptions as high-resolution PNG files to share quotes.</p>
     </td>
   </tr>
   <tr>
     <td valign="top" style="padding: 10px;">
       <strong><img src="site/public/img/source.png" width="20" valign="middle"/> Source Data View</strong>
-      <p>Toggle "Source View" to see the original game file identifiers, internal IDs, and raw text strings and source code on selected entries alongside the formatted transcription.</p>
+      <p>Toggle "Source View" to see the original game file identifiers, internal IDs, raw text strings and source code on selected entries alongside the formatted transcription.</p>
     </td>
     <td valign="top" style="padding: 10px;">
       <strong><img src="site/public/img/PearlReader.png" width="20" valign="middle"/> All Transcriptions</strong>
@@ -152,40 +151,90 @@ The dataset spans the entire known history of the Ancients and Iterators.
 
 ## Installation and Setup
 
-### Clone the Repository / Install Dependencies
-
 ```bash
+# clone the repository / install dependencies
 git clone https://github.com/YanWittmann/rw-collection-index
 cd rw-collection-index/site
 npm install
-```
 
-### Run the Application
-
-```bash
+# dev server
 npm run start
-```
 
-### Build the Application
-
-```bash
+# build application bundles
 npm run build
 ```
 
-## Data Preparation
+## Contributing
+
+Contributions are welcome! Please open an Issue or Pull Request to discuss changes.
+
+<table>
+  <tr>
+    <td align="center" width="120">
+      <a href="doc/how-to-dialogue.md">
+        <img src="site/public/img/source.png" width="64" style="image-rendering: -moz-crisp-edges; image-rendering: -webkit-crisp-edges; image-rendering: crisp-edges; image-rendering: pixelated;" />
+      </a>
+    </td>
+    <td>
+      <strong><a href="doc/how-to-dialogue.md">Dialogue Contribution Guide</a></strong>
+      <p>
+        A complete walkthrough for adding missing vanilla lore or support for new mods.
+        Learn how to create <code>.txt</code> transcription files, format metadata, and register new entries in the application.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="120">
+      <a href="https://github.com/YanWittmann/rw-collection-index/issues">
+        <img src="site/public/img/spinning-top.png" width="72" style="image-rendering: -moz-crisp-edges; image-rendering: -webkit-crisp-edges; image-rendering: crisp-edges; image-rendering: pixelated;" />
+      </a>
+    </td>
+    <td>
+      <strong><a href="https://github.com/YanWittmann/rw-collection-index/issues">Report Bugs & Suggestions</a></strong>
+      <p>
+        Found a typo, incorrect map location, or missing content?
+        Open an issue to report bugs, suggest changes, or discuss new feature ideas.
+      </p>
+    </td>
+  </tr>
+</table>
+
+Do you want your modded dialogue to be added to the [modded version of the collection](https://yanwittmann.github.io/rw-collection-index/?d=modded)?
+Please let me know, or follow the guide above to add it by yourself!
+
+Look at these epic people that supported this project:
+
+| User                  | Contributions                                                                                                                                                                                                                                                                                                                                 |
+|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Space Dwarf           | <img src="site/public/img/item/Neuron_Fly_icon.png" width="16"/> "Colored Pearls + Broadcasts" category rename.<br/><img src="site/public/img/item/Grenade_icon.png" width="16"/> DLC Tag for DLC content.<br/><img src="site/public/img/item/Grenade_icon.png" width="16"/> Fixed incorrect map locations.                                   |
+| bug leaving room      | <img src="site/public/img/item/Neuron_Fly_icon.png" width="16"/> Info that certain text color only exists in DP<br/><img src="site/public/img/item/Neuron_Fly_icon.png" width="16"/> Show Pearl's internal identifiers.<br/><img src="site/public/img/item/Grenade_icon.png" width="16"/> Use up-to-date interactive map links                |
+| Hmoorkin              | <img src="site/public/img/item/Grenade_icon.png" width="16"/> Broadcast icons are too similar in color.                                                                                                                                                                                                                                       |
+| yukithedestroyer      | <img src="site/public/img/item/Grenade_icon.png" width="16"/> If there are multiple identical transcribers on an entry, they do not unlock correctly in spoiler mode.                                                                                                                                                                         |
+| candlesign.4539       | <img src="site/public/img/item/Neuron_Fly_icon.png" width="16"/> Keyboard navigation.                                                                                                                                                                                                                                                         |
+| scir                  | <img src="site/public/img/item/King_Vulture_icon.png" width="16"/> Created new Icon set.                                                                                                                                                                                                                                                      |
+| ShockMicro            | <img src="site/public/img/item/Grenade_icon.png" width="16"/> Some DP items were not marked as such.                                                                                                                                                                                                                                          |
+| candlesign.4539       | <img src="site/public/img/item/Grenade_icon.png" width="16"/> Buttons get stuck in the hovered state.                                                                                                                                                                                                                                         |
+| capwolfbane & SUNFISH | <img src="site/public/img/item/Grenade_icon.png" width="16"/> Incorrectly "vanilla" tagged elements.                                                                                                                                                                                                                                          |
+| capwolfbane           | <img src="site/public/img/item/Neuron_Fly_icon.png" width="16"/> Merge "FP" and "Five Pebbles" filter entries.                                                                                                                                                                                                                                |
+| erickckk              | <img src="site/public/img/item/Grenade_icon.png" width="16"/> Correct `TEXT_KITESDAY` map location link.                                                                                                                                                                                                                                      |
+| artustan              | <img src="site/public/img/item/Neuron_Fly_icon.png" width="16"/> #6 remove `BroadcastMisc` entry from `Spearmasterpearl`.                                                                                                                                                                                                                     |
+|                       | <img src="site/public/img/item/Neuron_Fly_icon.png" width="16"/> Idea&nbsp;&nbsp;○&nbsp;&nbsp;<img src="site/public/img/item/Grenade_icon.png" width="16"/> Issue&nbsp;&nbsp;○&nbsp;&nbsp;<img src="site/public/img/item/King_Vulture_icon.png" width="16"/> Contribution<br/><sub>_Feel like you should be on this list? Let me know!_</sub> |
+
+## Game Text extraction
 
 If you feel like replicating the dataset yourself, well, here you go.
-
-### Game Text extraction
-
 To populate the application with the latest text, you need to extract the strings from the game files.
+
+The scripts are found in [`site/build-scripts`](site/build-scripts).
 
 #### Method 1: Mod Extraction
 
 1. Install and run the [Text Extractor Mod](https://steamcommunity.com/sharedfiles/filedetails/?id=2933241596) from the Steam Workshop. The mod will write the extracted files into the following directory:
    `Rain World/RainWorld_Data/StreamingAssets/decrypt`
 2. In the `decrypt` directory, rename the language folders from `[lang]` to `text_[lang]` (e.g. `Eng` becomes `text_eng`).
-3. Certain hard-coded strings have been extracted from `Rain World/RainWorld_Data/Managed/Assembly-CSharp.dll` using [dnSpy](https://github.com/dnSpy/dnSpy). These files are already included in this repository at `[dialogue/source/dll](dialogue/source/dll)`. Copy this `dll` directory into your `decrypt` folder alongside the `text_...` folders.
+3. Certain hard-coded strings have been extracted from `Rain World/RainWorld_Data/Managed/Assembly-CSharp.dll` using [dnSpy](https://github.com/dnSpy/dnSpy).
+   Selected files are already included in this repository at [`dialogue/source/dll`](dialogue/source/dll).
+   Copy desired `dll`-File extractions into your `decrypt` folder alongside the `text_...` folders.
 4. Run the main decryption script inside your `.../StreamingAssets/decrypt` folder: `python path/to/repo/site/build-scripts/decrypt-rw-text.py`.  
    This will process all text files and the `dll` sources into a single JSON file.
 5. Move the resulting `decrypted.json` file to the [dialogue/source](dialogue/source) directory in this repository.
@@ -205,34 +254,8 @@ Copy the `decrypted.json` file into the [source](dialogue/source) folder.
 
 </details>
 
-Note:
 There is also a custom script available for decoding entire directories of files, with special case handling in case the file was renamed and the salt for the hash differs from the expected one: [decrypt-entry.py](site/build-scripts/decrypt-entry.py).
 It sometimes fails, however; its success rate is roughly 98%, so for the rest we have to fallback on the decryption mod.
-
-## Contributing
-
-Contributions are welcome! Please open an Issue or Pull Request to discuss changes.  
-View [how-to-dialogue.md](doc/how-to-dialogue.md) to learn how to contribute your own dialogue or modify existing ones.
-
-Do you want your modded dialogue to be added to the [modded version of the collection](https://yanwittmann.github.io/rw-collection-index/?d=modded)?
-Please let me know, or follow the guide above to add it by yourself!
-
-| User                      | Contributions                                                                                                            |
-|---------------------------|--------------------------------------------------------------------------------------------------------------------------|
-| Space Dwarf               | "Colored Pearls + Broadcasts" category rename; DLC Tag for DLC content; Some incorrect map locations.                    |
-| bug leaving room          | Use up-to-date interactive map links; Info that certain text color only exists in DP; Show Pearl's internal identifiers. |
-| Hmoorkin                  | Broadcast icons are too similar in color.                                                                                |
-| yukithedestroyer          | If there are multiple identical transcribers on an entry, they do not unlock correctly in spoiler mode.                  |
-| candlesign.4539 / skyball | Keyboard navigation.                                                                                                     |
-| scir                      | Created new Icon set.                                                                                                    |
-| ShockMicro                | Some DP items were not marked as such.                                                                                   |
-| candlesign.4539           | Buttons get stuck in the hovered state; replaced framer-motion native logic with custom hover logic.                     |
-| capwolfbane / SUNFISH     | Incorrectly "vanilla" tagged elements.                                                                                   |
-| capwolfbane               | Merge "FP" and "Five Pebbles" filter entries.                                                                            |
-| erickckk                  | Correct TEXT_KITESDAY map location link.                                                                                 |
-| artustan                  | #6 remove `BroadcastMisc` entry from `Spearmasterpearl`.                                                                 |
-
-Feel like you should be on this list? Let me know!
 
 ---
 
