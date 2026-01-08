@@ -170,8 +170,8 @@ For more complex dialogue scenarios or to embed media, the parser recognizes sev
 The `MONO` keyword on its own line indicates that the following text is not standard dialogue but rather a block of descriptive text or scripted events where indentation via single spaces matters.
 It uses special line prefixes:
 
-- `/`: A comment or descriptive action, which is often rendered in italics.
-- `|`: A line that is part of a randomly chosen set of dialogue options.
+- `/`: A comment or descriptive action, rendered in gray.
+- `|`: A dialogue or action taken by the game, rendered in white.
 
 Example from [`LttM_short_Dialogue_{var--DialogueId}.txt`](../dialogue/v_dp_iterators/LttM/LttM_short_Dialogue_%7Bvar--DialogueId%7D.txt):
 
