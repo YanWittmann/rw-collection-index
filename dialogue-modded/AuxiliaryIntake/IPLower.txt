@@ -1,0 +1,14 @@
+internalId: IPLower
+color: #1eae97
+type: pearl
+name: Intake
+map: impl=none, region=IP, room=CHIMNEY03, mapSlugcat=white
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: AshenBow/IPLower.txt
+It's a family photo, and an old one at that.
+From their elaborate attire, it seems like they were high caste aristocrats, not that anyone is\naround to care about that stuff anymore. This family was also very small – containing only\ntwo children – but this was common among the higher castes, who usually forwent typical\ncreche systems.
+More interesting however, is the scenery. The photo was taken not too far from here! Rather than\nthe industrial landscape you inhabit today, this area was once renowned for its lakes, plant life, and\nrock formations. The rich nature and plentiful water made it a common spot for all sorts of\ntravellers and pilgrims - but also the perfect location for the construction of an iterator.
+My construction brought with it a whole host of necessary infrastructure. By the time I was finished,\nthe natural beauty of the area was nothing but a memory. I often feel remorseful of this... we were\nmeant to be a gift to the world, but our very construction required bringing it to ruin!
+And yet, the circumstances of existence are often out of our control, aren't they?\nWe can't regret the things we don't get to decide.
+Wouldn't you agree, little creature?

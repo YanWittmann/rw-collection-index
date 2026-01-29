@@ -11,7 +11,6 @@ But we are alive! And as long as we live,\nwe will forever turn nothing into som
 In the end, I truly had no meaning!\nI was free to do as I pleased!
 Embrace the nothingness, little one!\nFor you are everything!
 
-
 === transcription: base-slugcats
 md-map: region=TM, room=A06, mapSlugcat=white
 I sense a presence before me.

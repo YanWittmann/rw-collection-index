@@ -1,0 +1,16 @@
+internalId: IPUpper
+color: #710e29
+type: pearl
+name: Photo
+map: impl=none, region=IP, room=CHIMNEY03, mapSlugcat=white
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: AshenBow/IPUpper.txt
+This pearl is from the communication array within a section of Five Pebbles's intake system.\nBut I'm sure you knew that already, since you must have been the one to find it!
+Its contents are mostly a log of water influx rates, beginning with a ceremonial header. \nCuriously, this header is encrypted.
+Encrypting a pearl like this is very unusual. Unfortunately, I lack the processing power in my current\nstate to decode it. I'll see what I can glean from the data itself however, give me a second.
+. . .
+Interesting! This section of his intake system has seen intermittent use throughout his lifetime, it\nmust be one of his auxiliary systems. For most of our kind, water is collected through piping within\nour support columns. For Pebbles, however, his construction on a shared groundwater source posed\nunique challenges, requiring the construction of extra systems - such as the one you recently explored.
+This solution worked, but the location of this structure allowed Pebbles\nto tap into my portion of the available groundwater with ease.\nThis oversight proved most disastrous...
+Curiously, as of late, the use of this system has become nearly constant.\nI can only assume this is part of some attempt by Five Pebbles to fix his own worsening condition.
+I'm very impressed by your ability to reach such an isolated\narea, but the inside of Pebbles is becoming increasingly dangerous.\nI would advise against further incursions.

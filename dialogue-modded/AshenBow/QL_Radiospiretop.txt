@@ -1,0 +1,15 @@
+internalId: QL_Ashen_Pearl_1
+color: #54ad4b
+secondaryColor: #6ced5f
+type: pearl
+name: Radio Spire Top
+map: impl=none, region=QL, room=spire, mapSlugcat=white
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: AshenBow/QL_Radiospiretop.txt
+It’s a report on the state of the world’s weather and general observations around how the land is\nchanging, including predictions for the future.
+It’s a long read and seems to be partially automated.\nThe data on this pearl seems to have been requested by a small group of Iterators in the far north.
+From what I can glean from the layout of the data, its only part of a larger array of information.\nIt was likely gathered by satellite and sent down to this pearl, where it was then poorly written due to damage.
+It’s very outdated, but the entry essentially states that temperatures are to drop steadily over time.
+While I do know that there are many of us out there, and that we provided many different services before\nbecoming what we are now, I had never heard of an Iterator group dedicated to a secondary major cause other than the great problem.
+I wonder if they still carry out their duties today?\nI wouldn't blame them if they didn't.

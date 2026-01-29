@@ -1,0 +1,15 @@
+internalId: QL_Ashen_Pearl_4
+color: #aac8ff
+secondaryColor: #f8bfff
+type: pearl
+name: Radio Spire Top
+map: impl=none, region=QL, room=grove, mapSlugcat=white
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: AshenBow/QL_Spinebridge.txt
+It’s a plan that discusses the construction of a large launch track.\nHave you seen it? You may have, as you most likely found it there.
+The plan goes into detail on how the track would be constructed and mentions\ntechniques for launching satellites along it. It’s highly detailed. 
+“The Spine” was able to be built due to the unique layout of the land. It begins in a ravine\nand then moves upwards to the water where it bridges across, before finally reaching up to the sky in the shape of an arc.\nI can only imagine all the logistical issues it would have caused, as it seems\nto have been built just before they had us to rely on.
+If the void below us never counteracted our endless journey upwards, would they ever have needed this?
+They achieved so much, even managing to touch the sky.
+And yet they still yearned for the depths.

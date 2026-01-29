@@ -396,6 +396,35 @@ const moddedPearlOrder: PearlChapter[] = [
         ]
     },
     {
+        name: "Ashen Bow",
+        headerType: "banner",
+        icon: "img/modded/AshenBow/thumb.webp",
+        defaultOpen: true,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Ashen_Bow" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3474041462" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3474041462" },
+        ],
+        ids: [
+            "QL_Radiospiretop", "QL_Radioconnector", "QL_Glacialcore", "QL_Spinebridge",
+            "AshenBow_echo"
+        ]
+    },
+    {
+        name: "Auxiliary Intake",
+        headerType: "banner",
+        icon: "img/modded/AuxiliaryIntake/thumb.webp",
+        defaultOpen: true,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Auxiliary_Intake" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3457887314" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3457887314" },
+        ],
+        ids: [
+            "IPLower", "IPUpper"
+        ]
+    },
+    {
         name: "Drainage System Plus",
         headerType: "banner",
         icon: "img/modded/DrainageSystemPlus/thumb.webp",

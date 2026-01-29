@@ -1,0 +1,19 @@
+name: Echo
+type: echo
+
+=== transcription: saint
+md-map: impl=none, region=QL, room=spire, mapSlugcat=saint
+Ah, the irony is not lost on me, creature.
+I wished to grasp the stars.\nYet still, I attempted to dive downwards.
+The very proof of my longing is what you see before you.
+Were the symphonies of the stars drowned out by our cries?\nPerhaps a great silence was necessary for us to finally see.
+How unfortunate it only occurred after we left.
+You might understand.\nYou too appear bound to this world.
+
+=== transcription: base-slugcats
+md-map: impl=none, region=QL, room=spire, mapSlugcat=white
+Ah, the irony is not lost on me, creature.
+I wished to grasp the stars.\nYet still, I attempted to dive downwards.
+The very proof of my longing is what you see before you.
+Were the symphonies of the stars drowned out by our cries?\nPerhaps a great silence was necessary for us to finally see.
+How unfortunate it only occurred after we left.

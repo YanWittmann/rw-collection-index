@@ -1,0 +1,14 @@
+internalId: QL_Ashen_Pearl_3
+color: #2762ff
+secondaryColor: #83a5ff
+type: pearl
+name: Radio Spire Top
+map: impl=none, region=QL, room=core, mapSlugcat=white
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: AshenBow/QL_Glacialcore.txt
+It seems to hold information concerning the operations and status of a coolant system.
+If I am not mistaken, could this be from the small satellite base within the perimeter walls?
+Over time, it seems that the containers that kept the coolant secure have eroded,\nthereby exposing the coolant to the air and rapidly freezing the local area over.
+Luckily, the amount of frost shouldn’t be enough to massively disrupt the local fauna.\nI’m sure given the circumstances and from what I have observed over the countless cycles, that both\nthe flora and fauna will adapt to the colder climate in due course. Perhaps they have already.
+I would imagine that the temperature change is at least survivable for the time being.\nYou certainly seem okay!

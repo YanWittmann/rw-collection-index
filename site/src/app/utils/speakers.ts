@@ -141,6 +141,8 @@ export const regionColors: { [key: string]: string } = {
     "XM": "#41657a",
     "OA": "#04a7ef",
     "KF": "#cfa579",
+    "QL": "#88b0a5",
+    "IP": "#137253",
 };
 
 export const transcriberIcons: { [key: string]: string } = {
@@ -282,6 +284,8 @@ export const regionNames: { [key: string]: string } = {
     "XM": "Ashen Monolith",
     "OA": "Aqueducts",
     "KF": "Archaic Facility",
+    "QL": "Ashen Bow",
+    "IP": "Auxiliary Intake",
 }
 
 export function darken(hex: string, amount: number) {

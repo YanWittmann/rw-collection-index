@@ -1,0 +1,26 @@
+internalId: QL_Ashen_Pearl_2
+color: #ff5050
+secondaryColor: #ac8c8c
+type: pearl
+name: Radio Spire Top
+map: impl=none, region=QL, room=receiverfields2, mapSlugcat=white
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: AshenBow/QL_Radioconnector.txt
+This appears to be a conversation log between two Iterators. I do not recognise their names, and the\norigin of the data is from a place far, far away from here.
+Let me read it out for you!
+"7498.091 - PRIVATE\nNorthern Streams Subsiding, Fluctuations Above
+FA: Recently, I’ve been having different thoughts.
+NSS: Enlighten me.
+FA: I’ve been contemplating how long there is left.
+NSS: Can you be more specific?
+FA: How long we have. How long until we no longer exist in this world. 
+NSS: That is an extremely difficult question. It all depends on perspective.
+FA: Could you elaborate?
+NSS: Of course. You could argue that it’s when we eventually lose our functionality and become\nunable of processing. But I suspect that’s not what you are looking for?
+FA: You would be correct.
+NSS: You may argue it’s when the great problem is solved. Offering a complete way out.
+FA: I worry that may not happen before time catches us. It’s a race that never\nends but only stagnates. Dwindling into a fading future.
+NSS: That brings up my last perspective. Even if we are rendered utterly inoperable\nand ‘gone’, our existence will warp this world. The essence of our being\nwould live on. Nothing may know of it. But it would exist nonetheless.
+FA: I don’t know how to feel about that.
+NSS: It’s okay. We have a long time to contemplate.\nI’ve become an expert at staving off boredom.”
