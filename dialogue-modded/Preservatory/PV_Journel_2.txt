@@ -1,0 +1,13 @@
+internalId: PV2
+color: #91fb95
+type: broadcast
+name: Journal 2
+
+=== transcription: broadcast
+md-sourceDialogue: Preservatory/PV_Journel_2.txt
+I have devoted my life to the study of the creatures whom we share this plane of existence with.
+As a society, we are unique in our mastery over the composition of life. Yet in spite of this,<LINE>we seek to escape from the plane, to leave our far flung siblings and progeny behind.
+Do the others not see the shackles we have made for ourselves? That, in our aimless pursuit of an idealized escape,<LINE>we have corrupted our land, poisoned our waters, and left our creations to howl and rot in the debris!
+And yet this previous behavior somehow wasn't ENOUGH of an obscenity, and we continued on to sully the landscape with UNHOLY BEACONS of concrete and steel,<LINE>to automate the DESTRUCTION of our SACRED PLANE and forever contemplate a problem on an UNFOUNDED BASIS, ALL SO THAT WE MAY SPEND THE REST OF OUR DAYS<LINE>BICKERING UNTIL OUR TERMINATION WHILE OUR CHILDREN TOIL IN OUR DETRITUS AND OUR GHOSTS MOURN THE IRREVERSIBLY SCARRED CANVAS OF WHAT COULD HAVE BEEN!!!
+...
+No matter what I might do, I can tell that my allotted time here is drawing to an end.<LINE>If only there was a way to diminish the scars on this world in my absence.

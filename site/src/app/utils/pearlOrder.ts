@@ -411,6 +411,21 @@ const moddedPearlOrder: PearlChapter[] = [
         ]
     },
     {
+        name: "Preservatory",
+        headerType: "banner",
+        icon: "img/modded/Preservatory/thumb.webp",
+        defaultOpen: true,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Preservatory" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3357751340" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3357751340" },
+        ],
+        ids: [
+            "PV_Mural",
+            "PV_Journel_1", "PV_Journel_2", "PV_Journel_3"
+        ]
+    },
+    {
         name: "Auxiliary Intake",
         headerType: "banner",
         icon: "img/modded/AuxiliaryIntake/thumb.webp",

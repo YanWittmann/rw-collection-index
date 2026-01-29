@@ -1,0 +1,12 @@
+internalId: PV1
+color: #91fb95
+type: broadcast
+name: Journal 1
+
+=== transcription: broadcast
+md-sourceDialogue: Preservatory/PV_Journel_1.txt
+I would insist it was a dream if i could not recall it so vividly
+An unnatural chill engulfed the city block, and from amidst the blanket of silence, a haunting melody emanated.
+In my mind I heard a whisper, one which rose into a cacophony filled with the anguish and regret of all existence.
+I have previously known of the rumors, but to see it with my own eyes, FEEL it within the core of my being…
+The departure we so haphazardly fling ourselves toward is no true escape.

@@ -1,0 +1,14 @@
+internalId: PV3
+color: #91fb95
+type: broadcast
+name: Journal 3
+
+=== transcription: broadcast
+md-sourceDialogue: Preservatory/PV_Journel_3.txt
+This shall be my final record here.
+I laid my life's work out to the world. A solution to the problem of which their constructs toiled away, an alternate freedom, without the consequences they so willingly ignore…
+And they SHUNNED it! Declared it treason to the virtues we all live by.
+This was a possibility I had foreseen, and I had made the necessary measures to hide my association to my discovery.<LINE>Still, I fear it is only a matter of time before the veil is uncovered, and my work is burned to the ground.
+It was my intention to, in my final days, immerse myself in my creation, surrounded by the creatures I had lovingly raised and tended to.<LINE>But now, I shall give the conformists what they want, and submit to the departure I for so long avoided.
+I can only hope that whoever finds this note will continue this path that I paved for the world.
+- Seven Ripples within Still Dew -

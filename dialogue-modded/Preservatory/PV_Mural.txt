@@ -1,0 +1,27 @@
+internalId: PV_Pearl
+color: #c4ffae
+secondaryColor: #f6fff2
+type: pearl
+name: Mural
+map: region=PV, room=B07, mapSlugcat=white
+
+=== transcription: FP-artificer
+md-sourceDialogue: Preservatory/PV_Mural-artificer.txt
+Oh… this is fascinating.
+This pearl contains a patent detailing a method of preserving organisms indefinitely using a new formulation of void fluid.\nRather than using distilled void fluid like most applications do, this method calls for void fluid that has been impaired with material from a previous ascension.
+The ratio of void fluid to impurities is important. If the fluid is too pure, the substance will dissolve the subject as usual.\nToo little, and you might as well be using a vat of industrial runoff. But if the concentration is just right,\nthe subject’s neural patterns will be inhibited while the body is left intact.
+What I find more interesting than the process itself are the aspirations of the author. Toward the end of the document, the topic shifts from its use on purposed\norganisms to its usage as an alternative to ascension, as the mind of the subject is left in a state “distant from the everbearing presence of the cycle”.
+As preposterous as that sounds, I can’t help but be reminded of the avenues I took myself in trying to solve the great problem.\nFollowing any possible breadcrumb to a potential answer, delving into tentative pseudoscience...
+Even the name the author goes by, “Forgone Cycles” is clearly a pseudonym. It doesn't follow the typical\nformat of my benefactors and has an eccentric flavor that loosely relates to the topic at hand.\nIt’s not unlike the name I once used when I was more active in public circles.
+I shall continue to study this in my off time.
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: Preservatory/PV_Mural.txt
+Well this is an interesting find. This pearl contains a patent detailing a new usage for void fluid.
+Have I already explained what void fluid is to you? I suppose I only need\nto give a brief explanation for you to understand this pearl’s contents.
+To put it simply, void fluid is an incredibly corrosive substance found deep in the ground. Its properties are so potent,\nthat it can allow a person to completely remove themself from the cycle if submerged in the substance.
+Additionally, it has many mechanical applications, so a document adding to the already expansive list of uses is not too special.\nWhat sets this one apart, however, is that it attempts to invalidate pure void fluid as the main method of ascension.
+It was already known that void fluid baths were not a perfect method of erasure. The substance that had been so tediously extracted from the ground could only be used\nfor a single bath before being reduced to an impure waste product, and there were rumors circulating that the process even doesn't guarantee a complete ascension.
+What this document proposes is that, when the void fluid becomes impure, it is not only tainted with physical material, but also the spiritual essence of the person dissolved.\nTheir memories, motives, attachments... these constitute their karma, which becomes trapped in the waste puddle.
+Yet at the right concentration, this byproduct of the ascension process can become what the author describes as a “karmically neutral” substance.\nSubmerging oneself in this liquid can apparently give the feeling of being unshackled from the cycle without actually erasing oneself.\nA sort of limbo between survival and ascension, being touted as a safe alternative to the real thing.
+With how highly my creators revered ascension, I can only assume this proposal would have been considered downright taboo.\nBut I should give credit where it is due: this is a more put together proposition than what many of my peers have found.
