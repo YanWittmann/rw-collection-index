@@ -1,0 +1,17 @@
+internalId: TM_Broadcast1
+color: #b0a166
+type: broadcast
+name: Broadcast 1
+
+=== transcription: broadcast
+md-sourceDialogue: TheMast/TM_Broadcast1.txt
+[RECORDED BROADCAST (LONGRANGE):1541.219] - PUBLIC GROUP [SHARDSOFMELDEDGLASS] all participants anonymous
+NSTM-GM: You don't suppose they were onto something?
+NSTM-DSS: Not in the slightest.
+NSTM-GM: But if you really consider it...
+NSTM-DSS: I find the mere suggestion absurd. To even think that our very creators set us up with a task they never believed we would finish...
+NSTM-GM: But look at us! All this time toiling away, doing menial experiment after redundant repetition.
+NSTM-GM: We're no closer to an answer than we were a thousand cycles ago, or a thousand before that.
+NSTM-DSS: It is called the Great Problem for a reason. If a solution could be found so readily, it would have been. Have some patience, child.
+NSTM-GM: You're only a few cycles older than I am, you know.
+NSTM-DSS: It certainly doesn't feel that way sometimes.

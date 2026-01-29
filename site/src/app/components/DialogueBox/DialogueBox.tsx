@@ -23,7 +23,7 @@ const MAP_URL_PATTERNS: { [key: string]: string } = {
 
 const regionMaps: { [key: string]: string[] } = {
     "alduris-mod-map": [
-        "SD", "GH", "FR", "MF", "CW"
+        "SD", "GH", "FR", "MF", "CW", "TM", "XM"
     ],
 }
 

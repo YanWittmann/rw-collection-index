@@ -1,0 +1,19 @@
+internalId: TM_Broadcast2
+color: #b0a166
+type: broadcast
+name: Broadcast 2
+
+=== transcription: broadcast
+md-sourceDialogue: TheMast/TM_Broadcast2.txt
+[RECORDED BROADCAST (LONGRANGE):1652.672] - PUBLIC GROUP [VALOROUSPEAKS] Epoch of Clouds, Winding Current (LR)
+EOC: Greetings from afar!
+NSTM-WC: Ah, Epoch! A pleasure to hear from your side of the valleys once again.
+EOC: Likewise! 
+EOC: It has been some time, hasn't it... this network certainly isn't what it used to be.
+NSTM-WC: Used to be? I seem to recall the primary node network coming into this world with all the grace of a wounded beast!
+EOC: You certainly aren't wrong. I do feel that degradation is slowly worsening the problems, though. It can barely hold a connection! 
+EOC: The amount of times I had to flush the... hold on. I'm seeeing sommeee'
+---
+FATAL EXCEPTION: DISTENDED CLOSING BRACE ELEMENT
+FATAL EXCEPTION: INVALID SYMBOL IN METADATA, ENTRY 578.48>>>>
+== CONNECTION TERMINATED ==

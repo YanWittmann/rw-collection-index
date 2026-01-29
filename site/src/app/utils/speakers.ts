@@ -37,6 +37,11 @@ export const speakersColors: { [key: string]: string } = {
     "NSCP-FPB": "#d4d1b8",
     "NSCP-UD": "#69b378",
     "NSCP-TSA": "#fadb99",
+    "NSTM-GM": "#d9d9b3",
+    "NSTM-DSS": "#408c66",
+    "NSTM-WC": "#b38cff",
+    "NSTM-AA": "#ffccb8",
+    "NSTM-QR": "#80ccb8",
 };
 
 export const transcribersColors: { [key: string]: string } = {
@@ -128,6 +133,8 @@ export const regionColors: { [key: string]: string } = {
     "CW": "#66d9bf",
     "GU": "#5f6065",
     "NP": "#b14309",
+    "TM": "#44ef7b",
+    "XM": "#41657a",
 };
 
 export const transcriberIcons: { [key: string]: string } = {
@@ -193,6 +200,11 @@ export const speakerNames: { [key: string]: string } = {
     "NSCP-TSA": "Twelve Stars Above",
     "chasing-wind": "Chasing Wind",
     "seer": "Seer",
+    "NSTM-GM": "GM",
+    "NSTM-DSS": "DSS",
+    "NSTM-WC": "Winding Current",
+    "NSTM-AA": "AA",
+    "NSTM-QR": "QR",
 }
 
 export const regionNames: { [key: string]: string } = {
@@ -258,6 +270,8 @@ export const regionNames: { [key: string]: string } = {
     "CW": "Chasing Wind",
     "GU": "Gray Urban",
     "NP": "Necropolis",
+    "TM": "The Mast",
+    "XM": "Ashen Monolith",
 }
 
 export function darken(hex: string, amount: number) {

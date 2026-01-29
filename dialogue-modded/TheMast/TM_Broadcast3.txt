@@ -1,0 +1,19 @@
+internalId: TM_Broadcast3
+color: #b0a166
+type: broadcast
+name: Broadcast 3
+
+=== transcription: broadcast
+md-sourceDialogue: TheMast/TM_Broadcast3.txt
+[RECORDED BROADCAST (LONGRANGE):1298.67] - PUBLIC GROUP [WANDERINGQUADRANTS] all participants anonymous
+NSTM-AA: Have you seen any movements in the expanse lately?
+NSTM-QR: Movements in what sense?
+NSTM-AA: I've seen some kind of large structure piercing the cloud layer here and there, far from any cans.
+NSTM-AA: It appears to be moving at quite a pace! It managed to encircle half of the western plateau in just a few cycles.
+NSTM-QR: How curious! Is it releasing any transmissions?
+NSTM-AA: I've not detected any signals from it, and it's too distant for my overseers to make out much visual detail...
+NSTM-AA: But unless I'm misaken, this image I captured seems to be none other than a Yellow monasterial cupola!
+NSTM-QR: Indeed it is! I'd recognise that design anywhere. What an odd place to see one!
+NSTM-QR: My guess would be a semi-functional translation column, or perhaps a construction drone, but most were decommissioned long ago.
+NSTM-QR: And that certainly doesn't explain the monasterial architecture...
+NSTM-QR: Unless... are you at all familiar with the Abacus?

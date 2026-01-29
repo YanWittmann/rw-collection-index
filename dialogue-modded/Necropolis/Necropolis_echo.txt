@@ -1,7 +1,7 @@
 name: Echo
 type: echo
 map: impl=none, region=NP, room=dustgarden, mapSlugcat=artificer
-info: The Echo in Necropolis is only available to Seer, has contains no dialogue as Seer is unable to have the mark at the time of visiting.
+info: The Echo in Necropolis is only available to Seer, has no dialogue as Seer is unable to have the mark at the time of visiting.
 
 === transcription: seer
 MONO

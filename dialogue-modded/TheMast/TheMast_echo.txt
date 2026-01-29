@@ -1,0 +1,23 @@
+name: Eight Shells, Swaying Fronds
+type: echo
+
+=== transcription: saint
+md-map: region=XM, room=X01, mapSlugcat=saint
+In the end, I truly had no meaning.
+The world won't remember me. Everything that made what\nwe know up is now gone. Lost to time.
+And yet... That truly is everything.
+We are nothing. We are\ntiny specks in this great endless cycle.
+But we are alive! And as long as we live,\nwe will forever turn nothing into something!
+In the end, I truly had no meaning!\nI was free to do as I pleased!
+Embrace the nothingness, little one!\nFor you are everything!
+
+
+=== transcription: base-slugcats
+md-map: region=TM, room=A06, mapSlugcat=white
+I sense a presence before me.
+A small creature, one of countless. An insignificant speck against the infinite.
+What does it seek, atop this ruined monolith? This grand feat of mechanical ingenuity, this monument to the virtuosity of our kind..!
+...now nothing more than a shard of rubble upon this decaying memory of a landscape...
+Does it feel that same carnal urge that I once possessed? The desire to be free of the shackles that bind us to this plane, to travel beyond?
+Indeed, there is a way, little one. But here...
+I'm afraid you are searching in entirely the wrong place.

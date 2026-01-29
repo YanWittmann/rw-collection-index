@@ -1,0 +1,23 @@
+internalId: TM_Broadcast4
+color: #b0a166
+type: broadcast
+name: Broadcast 4
+
+=== transcription: broadcast
+md-sourceDialogue: TheMast/TM_Broadcast4.txt
+[INCOMING REQUEST] - EQUIPMENT MANIFEST ? unknown group(NULL) all participants anonymous
+[[ DIAGNOSTICS REPORT AND ERROR LOG 0400x8.1 ]]
+Looks to the Moon.
+Enclosed within this broadcast are a series of access strains and an override permit to this complex's shared aquifer pump system.
+It contains every signage from the oversight councils, and is capable of a full shutdown of Five Pebbles' intakes.
+I had hoped it would not come to this.
+I can only hope that the embedded guiding probes bypass his blockades without him noticing, and this package crawls its way to you.
+Sincerely, a friend.
+[[ END DIAGNOSTICS REPORT AND ERROR LOG ]]
+---
+ATTEMPTING LOCAL TRANSFER...
+SPECIFIED BURROWING JOINT IS UNREADABLE. ATTEMPTING REPATHING...
+ATTEMPTING SECOND-ORDER REPATHING...
+ATTEMPTING ALTERNATE SEEDING...
+TRANSFER FAILED. ACCESS IS DENIED. 
+== LOCAL STASHING MANIFOLDS AT (2%...) ==

@@ -1,0 +1,19 @@
+internalId: TM_Broadcast2C
+color: #b0a166
+type: broadcast
+name: Broadcast 2C
+
+=== transcription: broadcast
+md-sourceDialogue: TheMast/TM_Broadcast2C.txt
+[RECORDED BROADCAST (LONGRANGE):1684.457] - PUBLIC GROUP [WINDINGEXPANSE] Epoch of Clouds, Winding Current (LR)
+== BROADCAST PARTIALLY DAMAGED, TAIL RECONSTRUCTED ==
+NSTM-WC: ...and what of Looks to the Moon?
+EOC: She has been completely unavailable for quite some time. Some of us are getting quite concerned.
+NSTM-WC: And you've tried other ways of establishing contact?
+EOC: Countless times, every functional array in the facility grounds. It's either in total lockdown, or intentionally being blocked. 
+EOC: We've tried the substrats, the lower bands, even this node, but all incoming requests are instantly denied. 
+EOC: There's nothing we can do. 
+NSTM-WC: You've tried. You've all tried very hard, and that's all you can do.
+EOC: It's strange, to feel so helpless.
+EOC: We were built for the sole purpose of assisting other lifeforms... yet we cannot even help our own kind.
+NSTM-WC: I hope for their safety...

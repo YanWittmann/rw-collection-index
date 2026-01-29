@@ -1,0 +1,22 @@
+internalId: TM_Bridge
+color: #caf567
+secondaryColor: #e7ffa6
+type: pearl
+name: Spire
+map: region=TM, room=SD01, mapSlugcat=white
+
+=== transcription: FP-artificer
+md-sourceDialogue: TheMast/TM_Bridge-Artificer.txt
+An order of various palms and fronds for the Benevolent Communion... to be transported\nvia the western rail grid to my import dock. Nothing particularly interesting in here. 
+This rail grid was quite a late construction, installed some time after I was created. The rainfall's erosion of facility regions\ncaused a number of cave-ins in the subterranean lines, and this raised network was installed to make up for the decreased efficiency.\nThe system had to account for the elevation transfer though, which led to this new network's traffic being substantially higher than...
+...
+Personally, I find explaining these logistics rather dull, and I doubt they mean\nanything to you. And regardless, I have far more important matters to attend to.
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: TheMast/TM_Bridge.txt
+This one is part of a stock list for a shipment of various goods, from a western growing plant.\nIt's written to be read by a sorting automaton, so most of it won't make much sense to you.
+This pearl specifically documents an order of various ferns and palm leaves, which were to be ground up and distributed\namongst the "Benevolent Communion of Ceaseless Virtuosity and Splendor" for some kind of spiritual practice.
+Underneath that, rather haphazardly slotted in, there's a passage from an old religious plate. It describes\nhow the ferns were once hand-picked on the eve of moonrise from sacred grounds, coated in some sort of paste,\nand left out on a carved board to dry before use.
+Many of the spiritual methodologies described in the old texts involved gathering materials in this way. This act of\nforaging for resources was a method of abstraction of the self. They said that by first drawing oneself close to the\nanimalistic natures that bind us to this plane, one could then more effectively transcend beyond them.
+As industry advanced and void fluid became a commodity, though, these methods were all but abandoned by most.\nSome still kept to the traditions, but by the time the iterator projects began, it was near impossible for them\nto do so - the vast majority of harvesting grounds had either been replaced with automated growing plots for\nincreased efficiency, or were contaminated beyond repair.
+These ferns were artificially grown and harvested, of course. I suppose the\ninclusion of this text was intended to make up for that.

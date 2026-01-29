@@ -209,6 +209,23 @@ const moddedPearlOrder: PearlChapter[] = [
         ]
     },
     {
+        name: "The Mast",
+        headerType: "banner",
+        icon: "img/modded/TheMast/thumb.webp",
+        defaultOpen: true,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/The_Mast" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3034151966" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3034151966" },
+            { title: "GitHub", url: "https://github.com/snoodledev/themast" },
+        ],
+        ids: [
+            "TM_Spire", "TM_Bridge",
+            "TM_Broadcast1", "TM_Broadcast2", "TM_Broadcast2B", "TM_Broadcast2C", "TM_Broadcast3", "TM_Broadcast4",
+            "TheMast_echo"
+        ]
+    },
+    {
         name: "Far Shore",
         headerType: "banner",
         icon: "img/modded/FarShore/thumb.webp",
@@ -264,14 +281,9 @@ const moddedPearlOrder: PearlChapter[] = [
                 ]
             },
             {
-                name: "Colored Pearls",
+                name: "Other",
                 ids: [
                     "CW_Moon_BigGoldenPearl",
-                ]
-            },
-            {
-                name: "Echos",
-                ids: [
                     "ChasingWind_echo",
                 ]
             },
