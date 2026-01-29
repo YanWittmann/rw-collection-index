@@ -1,0 +1,12 @@
+internalId: OA_centiporl
+color: #bf0d00
+secondaryColor: #b36660
+type: pearl
+name: Centipede
+map: impl=none, region=OA, room=A15, mapSlugcat=white
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: ScorchedDistrict/centi.txt
+The contents appear to be some form of automatic assembly blueprint for a very small organism.\n According to a description its a small tube that, upon receiving a specific electrical signal, becomes highly conductive.
+It was most likely used as a small part in more advanced circuits.
+According to an automatic log, this pearl was disconnected from an on-site manufacturing machine some time ago, its possible that the scavengers roaming this place tore it out!\nHold on to it and give it to any scavengers you find and they might give you something in return.

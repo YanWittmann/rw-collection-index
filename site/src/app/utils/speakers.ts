@@ -61,12 +61,16 @@ export const transcribersColors: { [key: string]: string } = {
     "spearmaster": "#4f2e69",
     // modded
     "chasing-wind": "#66d9bf",
+    "chasing-wind-spearmaster": "#66d9bf",
+    "chasing-wind-gourmand": "#66d9bf",
     "seer": "#b8cfa6",
 };
 
 export const transcribersImages: { [key: string]: string } = {
     // modded
     "chasing-wind": "modded/chasing-wind",
+    "chasing-wind-spearmaster": "modded/chasing-wind-spearmaster",
+    "chasing-wind-gourmand": "modded/chasing-wind-gourmand",
     "seer": "modded/seer",
 };
 
@@ -135,6 +139,8 @@ export const regionColors: { [key: string]: string } = {
     "NP": "#b14309",
     "TM": "#44ef7b",
     "XM": "#41657a",
+    "OA": "#04a7ef",
+    "KF": "#cfa579",
 };
 
 export const transcriberIcons: { [key: string]: string } = {
@@ -199,6 +205,8 @@ export const speakerNames: { [key: string]: string } = {
     "NSCP-UD": "Unstable Daydream",
     "NSCP-TSA": "Twelve Stars Above",
     "chasing-wind": "Chasing Wind",
+    "chasing-wind-spearmaster": "Chasing Wind (Spearmaster)",
+    "chasing-wind-gourmand": "Chasing Wind (Gourmand)",
     "seer": "Seer",
     "NSTM-GM": "GM",
     "NSTM-DSS": "DSS",
@@ -272,6 +280,8 @@ export const regionNames: { [key: string]: string } = {
     "NP": "Necropolis",
     "TM": "The Mast",
     "XM": "Ashen Monolith",
+    "OA": "Aqueducts",
+    "KF": "Archaic Facility",
 }
 
 export function darken(hex: string, amount: number) {

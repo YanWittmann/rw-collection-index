@@ -1,0 +1,82 @@
+internalId: KF_Pearl_1
+color: #a72020
+secondaryColor: #cfb5b5
+type: pearl
+name: Gutter
+map: impl=none, region=KF, room=struts08, mapSlugcat=white
+
+=== transcription: chasing-wind-spearmaster
+md-sourceDialogue: ArchaicFacility/CW/KF_Pearl_1-Spearmaster.txt
+Oh, wow. I'm astonished you got this here.\nYou came from the Shrine of the Laborers' karma gate, I imagine.
+I can't imagine that railway still remains in very good condition.
+Anyways, this pearl logs the ailments of Moon's benefactors in reaching the shrine in later years.\nI faced similar complaints during my early years.
+The shrine was once of great importance.\nMoon, Pebbles and myself know it well.
+Long ago, our creators tread the earth between here and the coasts of Moon and Pebbles.\nEven after Moon's construction, some settlements persisted here on the island outside the reach of her rain.
+The shrine was important enough to them to build the first railway connecting the island to their facility.\nThey used pilgrimage as a means of enticing them off of the surface.
+But ultimately her population got to a point where that wasn't feasible.\nPebbles' activation spread the rain to the island and my construction was inevitable.
+A few of my citizens still treated the site as a point of pilgrimage.\nBut the infrastructure had become perilous at that point.
+With better railways to Pebbles and Moon, it made less sense to maintain the direct connection to the shrine.\nThe cavernous underground made construction sites prone to constant flooding.
+The railways connected to my port were much easier to maintain.\nAnd those who made pilgrimages to the shrine generally were some of the earlier ascensions.
+The shrine railway became insignificant in the end.\nI never had to worry too much about complaints.
+Thank you for sharing this pearl with me.\nIt's nice to have the chance to appreciate my history with the local group.
+
+=== transcription: chasing-wind
+md-sourceDialogue: ArchaicFacility/CW/KF_Pearl_1.txt
+Oh, wow. I'm astonished you found this intact.\nYou got this from the Shrine of the Laborers, I imagine.
+Or what's left of it. That shrine completely disappeared in the rubble left behind from Moon's collapse.
+Really a terrible thing what happened to such a beautiful place.\n...oh, right.
+This pearl logs the ailments of Moon's benefactors in reaching the shrine in later years.\nI faced similar complaints during my early years.
+The shrine was once of great importance.\nMoon, Pebbles and myself know it well.
+Long ago, our creators tread the earth between here and the coasts of Moon and Pebbles.\nEven after Moon's construction, some settlements persisted here on the island outside the reach of her rain.
+The shrine was important enough to them to build the first railway connecting the island to Moon's facility.\nThey used pilgrimage as a means of enticing them off of the surface.
+But ultimately her population got to a point where that wasn't feasible.\nPebbles' activation spread the rain to the island and my construction was inevitable.
+A few of my citizens still treated the site as a point of pilgrimage.\nBut the infrastructure had become perilous at that point.
+With better railways to Pebbles and Moon, it made less sense to maintain the direct connection to the shrine.\nThe cavernous underground made construction sites prone to constant flooding.
+The railways connected to my port were much easier to maintain.\nAnd those who made pilgrimages to the shrine generally were some of the earlier ascensions.
+The shrine railway became insignificant in the end.\nI never had to worry too much about complaints.
+Thank you for sharing this pearl with me.\nIt's nice to have the chance to appreciate my history with the local group.
+
+=== transcription: FP-artificer
+md-sourceDialogue: ArchaicFacility/KF_Pearl_1-Artificer.txt
+Oh. This takes me back.\nYou got this from near Moon, I assume? I remember this place well.
+The Shrine of the Laborers was, in the grand scheme of things, a very small site.
+But it had some monumental importance to many of Moon and I's citizens.
+The shrine was built on an ancient factory that represented the pinnacle of pre-Void fluid engineering.\nAt least within facility grounds.
+It served as a way to honor the lives spent before the Void Fluid Revolution.
+A decent amount of work had went into keeping the ruins intact. Modern architectural innovations were implemented such as organic compounds.\nBut it's an old, old structure, and those who cared for it grew few in number.
+But when I was constructed, the True Annoited Citadel became shaded in my wake.\nUltimately becoming quite dangerous.
+So that small, unassuming shrine dedicated to the early builders before the Void Fluid Revolution?
+It served as one of the few decent alternatives to pilgrimmage to the Citadel.\nSo maintaining our bridges and railways was important.
+As with many things with our citizens, especially pertaining to accessibility to places below the rainfall...
+They were never really satisfied with what we could give them.
+This pearl is proof of that. Inside is little more than a simple compilation of text data transcribing their issues with reaching the shrine.
+Anyways, I can't imagine the place is doing too well now.\nMy overseers saw a lot of the devastation that transpired.
+Moon's crash sunk the site into the floodplains around it.\nPretty impressive this managed to survive.
+Well, thanks for recovering this. It's a nice look back on the past.
+
+=== transcription: LTTM-pre-collapse
+md-sourceDialogue: ArchaicFacility/KF_Pearl_1-Spearmaster.txt
+...Really.
+It's pretty funny, actually.
+Of all the pearls for you to scrounge up...\nThis is what you found.
+I didn't think the Shrine of the Laborers would be something I'd have to think about at all in my final cycles.
+Of all the things my citizens loved to pester me endlessly about...
+I'll fill you in a little bit. When Pebbles was built, the holiest site in the facility grounds became dangerous.
+Too dangerous for most of our citizens to make pilgrimmage to.
+So the little shrine dedicated to their lives before the Void Fluid Revolution became their new destination.
+This tiny site, with very little meaningful infrastructure, at constant risk of sinking into floodplains...\nbecame some all-important site that needed to be carefully maintained.
+I would receive countless complaints about the breakdown of infrastructure. And here they are, compiled into this nice pearl.
+Now with my struts finally failing, it seems like their precious infrastructure is finally going to be destroyed for good.
+The only thing that gives me solace about this pearl is knowing it will one day meet the Void Sea.
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: ArchaicFacility/KF_Pearl_1.txt
+This pearl is pretty old, and there's not much left on it.\nI'll see what I can get from it.
+...
+Oh. Well, it's not that interesting.\nJust a log compiling complaints of my citizens.
+I don't think you'd get much out of it.\nI don't even remember this place, honestly.
+They were complaining about accessibility to a shrine near my facility.\nIt must have been on the ocean, constantly flooding under rain.
+I can't imagine my accident really helped keep it afloat either. Everything sunk with me.
+I would be surprised if you even found this pearl close to where it used to be.
+Regardless, I can't imagine the shrine was all too important in the grand scheme of things.
+Thanks for sharing, either way. I guess it's a part of my past.

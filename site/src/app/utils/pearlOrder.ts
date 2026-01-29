@@ -311,6 +311,20 @@ const moddedPearlOrder: PearlChapter[] = [
         ]
     },
     {
+        name: "Aqueducts",
+        headerType: "banner",
+        icon: "img/modded/Aqueducts/thumb.webp",
+        defaultOpen: true,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Aqueducts" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3122525868" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3122525868" },
+        ],
+        ids: [
+            "OA_centiporl", "OA_deepporl", "OA_highporl"
+        ]
+    },
+    {
         name: "Luminous Cove",
         headerType: "banner",
         icon: "img/modded/LuminousCove/thumb.webp",
@@ -365,6 +379,20 @@ const moddedPearlOrder: PearlChapter[] = [
         ],
         ids: [
             "MF_Pearl_1"
+        ]
+    },
+    {
+        name: "Archaic Facility",
+        headerType: "banner",
+        icon: "img/modded/ArchaicFacility/thumb.webp",
+        defaultOpen: true,
+        link: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Archaic_Facility" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3272297488" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3272297488" },
+        ],
+        ids: [
+            "KF_Pearl_1", "KF_Pearl_2"
         ]
     },
     {

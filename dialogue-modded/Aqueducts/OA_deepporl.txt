@@ -1,0 +1,16 @@
+internalId: OA_deepporl
+color: #14112b
+secondaryColor: #5648c2
+type: pearl
+name: Deep
+map: impl=none, region=OA, room=A74, mapSlugcat=white
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: ScorchedDistrict/deep.txt
+Its covered in a thick layer of dirt and some kind of organic grease, let me wipe it off.
+...\nThere we go.
+This pearl appears to be covered in gnashes and some strange kind of bite marks\na repeating pattern of 4 different rows of numerous sharp and tiny teeth, must be at least 200 teeth per row.\nPerhaps this pearl was eaten and swallowed whole by something.\nHowever the apparent teeth pattern is not possessed by any beast i know of.
+With the variety and diversity of the ecosystem outside my walls it almost surprises me no creature has yet evolved to eat theese things.
+The actual content on the pearl is rather mundane.\nI can just about make out the details of a painting or a photo.
+It depicts an ancient wearing a large golden bone mask with red ribbons and bone chains.\nThe chains are connected to the mask from multiple angles and appear to be suspending it in the air.\nPerhaps some kind of ritual practice.
+I do wonder where you found this pearl though.\nIf only i could understand you, im sure you would have such interesting things to say.\nOh well, i assume you will be wanting this back now.

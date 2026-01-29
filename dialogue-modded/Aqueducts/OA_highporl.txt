@@ -1,0 +1,13 @@
+internalId: OA_highporl
+color: #2dbd2d
+secondaryColor: #99bf99
+type: pearl
+name: High
+map: impl=none, region=OA, room=A45, mapSlugcat=white
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: ScorchedDistrict/high.txt
+I can see a simplified diagram of a water purification plant.\n Two large constructions connected by a bridge of some sort.
+One large leg aswell as four smaller legs support the structure in the sky.
+It all appears to be quite standard stuff.\n The only thing of note is that it was constructed high in the air.\n Probably a flamboyant way to show off architectural skills, or for a religious purpose perhaps.
+A small description details its name as "bright facility"

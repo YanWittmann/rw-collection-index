@@ -1,0 +1,38 @@
+internalId: KF_Pearl_2
+color: #16d1db
+secondaryColor: #0c7075
+type: pearl
+name: Weaver
+map: impl=none, region=KF, room=mossycoast03, mapSlugcat=white
+
+=== transcription: chasing-wind-gourmand
+md-sourceDialogue: ArchaicFacility/CW/KF_Pearl_2-Gourmand.txt
+Fascinating, this pearl definitely seems newer than those from my benefactors' era.
+Let's see...\n Oh! Seems like someone else has been keeping on eye on these feisty ladies.
+Let me fill you in.
+This pearl documents an iterator's findings about a fairly new species of arachnid.\nI've watched their exploits across the seas myself.
+They make bubbles that they can float and breathe underwater.\nThey do this to swiftly travel along the seafloor.
+But they also will use it to float along the tides, which I'm sure is how they get so far across the ocean so easily.
+My overseers have caught footage of their recent arrival on nearby shores.\nMy overseers haven't seen them entering the neighboring facility yet...
+But it won't be long before they're in waterways all across the mainland.
+You should definitely be careful around them.\nThose things can punch quite above their weight!
+Though who knows, maybe you'll be fine.
+
+=== transcription: chasing-wind
+md-sourceDialogue: ArchaicFacility/CW/KF_Pearl_2.txt
+Fascinating, this pearl definitely seems newer than those from my benefactors' era.
+Let's see...\n Oh! Seems like someone else has been keeping on eye on these fiesty ladies.
+Let me fill you in.
+This pearl documents an iterator's findings about a fairly new species of arachnid.\nThey've been making quite a ruckus lately on western shores.
+They make bubbles that they can float and breathe underwater.\nThey do this to swiftly travel along the seafloor.
+But they also will use it to float along the tides, which I'm sure is how they get so far across the ocean so easily.
+My overseers have caught footage of them doing this often. We don't know their origin.\nI think they came from the east or south, so they must be global now.
+They travel frequently from Moon and Pebbles' shores, so I imagine they have become common.\nAt least wherever it's wet enough.
+You should definitely be careful around them.\nThose things can punch quite above their weight!
+And I think they weigh more than you.
+
+=== transcription: LttM-post-collapse
+md-sourceDialogue: ArchaicFacility/KF_Pearl_2.txt
+The contents appear to be some form of automatic assembly blueprint for a very small organism.\n According to a description its a small tube that, upon receiving a specific electrical signal, becomes highly conductive.
+It was most likely used as a small part in more advanced circuits.
+According to an automatic log, this pearl was disconnected from an on-site manufacturing machine some time ago, its possible that the scavengers roaming this place tore it out!\nHold on to it and give it to any scavengers you find and they might give you something in return.
