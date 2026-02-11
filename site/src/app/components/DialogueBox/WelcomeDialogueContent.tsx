@@ -43,7 +43,7 @@ export function WelcomeDialogueContent() {
                     <img
                         src="img/The_Scholar.png"
                         alt="The Scholar"
-                        className="w-1/2 max-w-[20rem] h-auto opacity-20 mb-14"
+                        className="w-1/2 max-w-[20rem] h-auto opacity-20 -mb-4"
                         style={{ imageRendering: "pixelated" }}
                     />
                 </div>
@@ -63,7 +63,7 @@ export function WelcomeDialogueContent() {
             </div>
 
             {/* column layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-8 mt-8">
                 {/* Settings Column */}
                 <div className="flex flex-col space-y-4">
                     <div className="text-lg font-medium">Configuration</div>
