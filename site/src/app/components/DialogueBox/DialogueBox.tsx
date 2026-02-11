@@ -398,7 +398,7 @@ export function DialogueBox() {
             <div ref={selfRef}
                  className={cn(
                      "bg-black border-2 border-white/80 rounded-xl px-12 lg:pl-24 lg:pr-24 text-white text-sm relative shadow-[0_0_10px_rgba(255,255,255,0.1)]",
-                     isMobile ? "max-h-[85vh] min-h-[85vh]" : "max-h-[80vh] min-h-[80vh]"
+                     isMobile ? "max-h-[85dvh] min-h-[85dvh]" : "max-h-[80dvh] min-h-[80dvh]"
                  )}>
                 {pearl ? pearlActiveContent : <WelcomeDialogueContent/>}
             </div>
