@@ -397,7 +397,7 @@ export function DialogueBox() {
         <div className="flex-1 relative">
             <div ref={selfRef}
                  className={cn(
-                     "bg-black border-2 border-white/80 rounded-xl px-12 lg:pl-24 lg:pr-24 text-white text-sm relative shadow-[0_0_10px_rgba(255,255,255,0.1)]",
+                     "flex flex-col bg-black border-2 border-white/80 rounded-xl px-12 lg:pl-24 lg:pr-24 text-white text-sm relative shadow-[0_0_10px_rgba(255,255,255,0.1)]",
                      isMobile ? "max-h-[85dvh] min-h-[85dvh]" : "max-h-[80dvh] min-h-[80dvh]"
                  )}>
                 {pearl ? pearlActiveContent : <WelcomeDialogueContent/>}
@@ -426,7 +426,7 @@ export function DialogueBox() {
                     <p>As mods update frequently, this index may not reflect the latest versions.</p>
                 </div> : null}
             {pearl === null ?
-                <div className="absolute bottom-[1rem] left-0 right-0 px-2 text-center text-white text-sm">
+                <div className="absolute bottom-[1rem] left-0 right-0 mx-2 text-center text-white text-sm bg-black/80 rounded">
                     Code on <a href="https://github.com/YanWittmann/rw-collection-index" target="_blank"
                                className="underline">GitHub</a> | Created by Yan Wittmann | <a
                     href="https://store.steampowered.com/app/312520/Rain_World" target="_blank" className="underline">Rain

@@ -35,10 +35,11 @@ export function WelcomeDialogueContent() {
     };
 
     return (
-        <>
+        <div className="w-full h-full overflow-y-auto no-scrollbar pb-24">
             {/* header with title and description */}
-            <div className="relative text-center mt-20 pb-6">
-                <div className="absolute inset-0 flex items-center justify-center">
+            <div className="grid grid-cols-1 grid-rows-1 place-items-center text-center mt-10 pb-6">
+                {/* Background Image Layer */}
+                <div className="col-start-1 row-start-1 flex items-center justify-center w-full select-none pointer-events-none">
                     <img
                         src="img/The_Scholar.png"
                         alt="The Scholar"
@@ -46,20 +47,23 @@ export function WelcomeDialogueContent() {
                         style={{ imageRendering: "pixelated" }}
                     />
                 </div>
-                <h1 className="relative text-5xl rw-title-font">Rain World</h1>
-                <div className="relative inline-block mt-4 mb-8">
-                    <h1 className="text-[2rem] rw-title-font">Collection Index</h1>
-                    {datasetKey === 'modded' && (
-                        <div className="rw-title-font absolute -bottom-5 -right-10 transform -rotate-[0.25rad] text-yellow-500 font-bold text-xl shadow-lg animate-modded-pulse">
-                            Modded!
-                        </div>
-                    )}
+                {/* Foreground Text Layer */}
+                <div className="col-start-1 row-start-1 z-10 flex flex-col items-center">
+                    <h1 className="text-5xl rw-title-font">Rain World</h1>
+                    <div className="relative inline-block mt-4 mb-8">
+                        <h1 className="text-[2rem] rw-title-font">Collection Index</h1>
+                        {datasetKey === 'modded' && (
+                            <div className="rw-title-font absolute -bottom-5 -right-10 transform -rotate-[0.25rad] text-yellow-500 font-bold text-xl shadow-lg animate-modded-pulse">
+                                Modded!
+                            </div>
+                        )}
+                    </div>
+                    <div className="text-xl">Select any pearl or broadcast to view its content.</div>
                 </div>
-                <div className="relative mb-12 text-xl">Select any pearl or broadcast to view its content.</div>
             </div>
 
             {/* column layout */}
-            <div className="grid grid-cols-2 gap-8 px-8 mb-16 mt-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
                 {/* Settings Column */}
                 <div className="flex flex-col space-y-4">
                     <div className="text-lg font-medium">Configuration</div>
@@ -134,6 +138,6 @@ export function WelcomeDialogueContent() {
                     ))}
                 </div>
             </div>
-        </>
+        </div>
     )
 }
