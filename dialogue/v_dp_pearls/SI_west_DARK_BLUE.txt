@@ -2,7 +2,7 @@ internalId: SI_west
 color: #0d2d42
 type: pearl
 name: Dark Blue (SI-2)
-map: region=SI, room=A07, mapSlugcat=white
+map: region=SI, room=B12, mapSlugcat=white
 info: ${SI-CHAT}
 
 === transcription: FP-artificer
