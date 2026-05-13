@@ -89,6 +89,12 @@ if (move_uploaded_file($tempPath, $savePath)) {
     $metaContent .= "size: " . $_FILES['savefile']['size'] . " bytes\n";
     $metaContent .= "user_agent: " . ($_SERVER['HTTP_USER_AGENT'] ?? 'unknown') . "\n";
 
+    $rawNote = $_POST['note'] ?? '';
+    $note = trim(strip_tags(mb_substr($rawNote, 0, 400)));
+    if ($note !== '') {
+        $metaContent .= "note: " . $note . "\n";
+    }
+
     file_put_contents($metaPath, $metaContent);
     http_response_code(200);
 } else {

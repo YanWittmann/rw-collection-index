@@ -97,8 +97,8 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
         <Popover>
             <TooltipProvider delayDuration={120}>
                 <Tooltip>
-                    <PopoverTrigger>
-                        <TooltipTrigger>
+                    <TooltipTrigger asChild>
+                        <PopoverTrigger asChild>
                             <RwIconButton
                                 className="shrink-0"
                                 aria-label="Filter Options"
@@ -111,9 +111,9 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
                                     </span>
                                 )}
                             </RwIconButton>
-                        </TooltipTrigger>
-                        <TooltipContent>Filter Options</TooltipContent>
-                    </PopoverTrigger>
+                        </PopoverTrigger>
+                    </TooltipTrigger>
+                    <TooltipContent>Filter Options</TooltipContent>
                     <PopoverContent
                         className="w-60 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg"
                         align="start"
@@ -135,7 +135,7 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
                                         <div className="flex flex-wrap gap-1">
                                             {section.options.map(option => (
                                                 <Tooltip key={option.id}>
-                                                    <TooltipTrigger>
+                                                    <TooltipTrigger asChild>
                                                         <RwIconButton
                                                             key={option.id}
                                                             onClick={() => toggleFilter(section.title.toLowerCase(), option.id)}

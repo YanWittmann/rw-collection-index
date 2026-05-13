@@ -60,7 +60,7 @@ const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, showTranscribe
     return (
         <TooltipProvider delayDuration={120}>
             <Tooltip>
-                <TooltipTrigger>
+                <TooltipTrigger asChild>
                     <RwIconButton
                         onClick={handleClick}
                         selected={isSelected}

@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react";
 import { RwIconButton } from "../other/RwIconButton"
 import UnlockManager from "../../utils/unlockManager"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
@@ -19,88 +20,109 @@ const controls: ControlItem[] = [
     { key: "SWIPE", description: "Mobile: Navigate through the pearl grid" },
 ]
 
+async function buildIssueUrl(data: Map<string, Set<string>>): Promise<string> {
+    const groupPrefixes = [
+        'Watcher_Pearl_Misc_Projection_',
+        'Misc_WHITE_PEARLS_',
+        'PebblesPearl_',
+        'BroadcastMisc_',
+        'DevComm_'
+    ];
+
+    const normalEntries: string[] = [];
+    const groupedMap = new Map<string, string[]>();
+
+    const sortedData = Array.from(data.entries())
+        .sort(([idA], [idB]) => idA.localeCompare(idB));
+
+    for (const [id, transcribers] of sortedData) {
+        const transcriberText = transcribers.size > 1
+            ? ` [${Array.from(transcribers).join(', ')}]`
+            : '';
+        const matchingPrefix = groupPrefixes.find(prefix => id.startsWith(prefix));
+        if (matchingPrefix) {
+            if (!groupedMap.has(matchingPrefix)) groupedMap.set(matchingPrefix, []);
+            groupedMap.get(matchingPrefix)!.push(id.slice(matchingPrefix.length) + transcriberText);
+        } else {
+            normalEntries.push(id + transcriberText);
+        }
+    }
+
+    const finalLines = [...normalEntries];
+    // Swapped to .forEach() to avoid TS2802
+    groupedMap.forEach((suffixes, prefix) => {
+        finalLines.push(`${prefix}* (${suffixes.length}): ${suffixes.join(', ')}`);
+    });
+    finalLines.sort((a, b) => a.localeCompare(b));
+    const entriesText = finalLines.join('\n');
+
+    const bodyParts = [
+        '### Expected behavior', '', '',
+        '### Actual behavior', '', '',
+        '---', '',
+        '### Save File', '',
+        '_Please drag your `sav` file here._', '',
+        '### Additional Details', '', '',
+        '---', '',
+    ];
+
+    const plainDetails = [
+        '<details>',
+        `<summary><b>Parsed Entries (${data.size} total)</b></summary>`,
+        '', '```text', entriesText, '```', '',
+        '</details>'
+    ].join('\n');
+
+    let details: string;
+    if ([...bodyParts, plainDetails].join('\n').length > 6000) {
+        const encoded = new TextEncoder().encode(entriesText);
+        const cs = new CompressionStream('gzip');
+        const writer = cs.writable.getWriter();
+        writer.write(encoded);
+        writer.close();
+        const chunks: Uint8Array[] = [];
+        const reader = cs.readable.getReader();
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            chunks.push(value);
+        }
+        const combined = new Uint8Array(chunks.reduce((n, c) => n + c.length, 0));
+        let offset = 0;
+        for (const chunk of chunks) { combined.set(chunk, offset); offset += chunk.length; }
+        const binaryString = Array.from(combined, b => String.fromCharCode(b)).join('');
+        // base64(gzip(text)) goes in CyberChef input box; btoa again for the input= URL param
+        const inputParam = btoa(btoa(binaryString));
+        const recipe = `From_Base64('A-Za-z0-9%2B/%3D',true,false)Gunzip()`;
+        const cyberChefUrl = `https://gchq.github.io/CyberChef/#recipe=${recipe}&input=${inputParam}`;
+        details = `_Parsed Entries (${data.size} total) compressed due to size. [View in CyberChef](${cyberChefUrl})_`;
+    } else {
+        details = plainDetails;
+    }
+
+    const params = new URLSearchParams({
+        title: 'Save File Parsing: ',
+        labels: 'bug,save-file',
+        body: [...bodyParts, details].join('\n')
+    });
+    return `https://github.com/YanWittmann/rw-collection-index/issues/new?${params.toString()}`;
+}
+
 export function WelcomeDialogueContent() {
     const { unlockMode, setUnlockMode, datasetKey, saveFound } = useAppContext();
+    const [issueUrl, setIssueUrl] = useState<string | null>(null);
+    const [issueUrlFailed, setIssueUrlFailed] = useState(false);
 
-    const buildIssueUrl = (data: Map<string, Set<string>>) => {
-        const groupPrefixes = [
-            'Watcher_Pearl_Misc_Projection_',
-            'Misc_WHITE_PEARLS_',
-            'PebblesPearl_',
-            'BroadcastMisc_',
-            'DevComm_'
-        ];
-
-        const normalEntries: string[] = [];
-        const groupedMap = new Map<string, string[]>();
-
-        const sortedData = Array.from(data.entries())
-            .sort(([idA], [idB]) => idA.localeCompare(idB));
-
-        for (const [id, transcribers] of sortedData) {
-            const transcriberText = transcribers.size > 1
-                ? ` [${Array.from(transcribers).join(', ')}]`
-                : '';
-
-            const matchingPrefix = groupPrefixes.find(prefix => id.startsWith(prefix));
-
-            if (matchingPrefix) {
-                if (!groupedMap.has(matchingPrefix)) {
-                    groupedMap.set(matchingPrefix, []);
-                }
-                const suffix = id.slice(matchingPrefix.length);
-                groupedMap.get(matchingPrefix)!.push(suffix + transcriberText);
-            } else {
-                normalEntries.push(id + transcriberText);
-            }
-        }
-
-        const finalLines = [...normalEntries];
-
-        // Swapped to .forEach() to avoid TS2802
-        groupedMap.forEach((suffixes, prefix) => {
-            finalLines.push(`${prefix}* (${suffixes.length}): ${suffixes.join(', ')}`);
-        });
-
-        finalLines.sort((a, b) => a.localeCompare(b));
-        const entriesText = finalLines.join('\n');
-
-        const body = [
-            '### Expected behavior',
-            '',
-            '',
-            '### Actual behavior',
-            '',
-            '',
-            '---',
-            '',
-            '### Save File',
-            '',
-            '_Please drag your `.sav` file here._',
-            '',
-            '### Additional Details',
-            '',
-            '',
-            '---',
-            '',
-            '<details>',
-            `<summary><b>Parsed Entries (${data.size} total)</b></summary>`,
-            '',
-            '```text',
-            entriesText,
-            '```',
-            '',
-            '</details>'
-        ].join('\n');
-
-        const params = new URLSearchParams({
-            title: 'Save File Parsing: ',
-            labels: 'bug',
-            body
-        });
-
-        return `https://github.com/YanWittmann/rw-collection-index/issues/new?${params.toString()}`;
-    };
+    useEffect(() => {
+        if (saveFound.size === 0) return;
+        setIssueUrl(null);
+        setIssueUrlFailed(false);
+        let cancelled = false;
+        buildIssueUrl(saveFound)
+            .then(url => { if (!cancelled) setIssueUrl(url); })
+            .catch(() => { if (!cancelled) setIssueUrlFailed(true); });
+        return () => { cancelled = true; };
+    }, [saveFound]);
 
     const isModded = datasetKey === 'modded';
 
@@ -202,12 +224,18 @@ export function WelcomeDialogueContent() {
                         {!isModded && saveFound.size > 0 && (
                             <p className="text-yellow-400/80 text-xs">
                                 Found {saveFound.size} unlocks,&nbsp;
-                                <a
-                                    href={buildIssueUrl(saveFound)}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="underline hover:text-yellow-400/60 transition-colors"
-                                >report an issue</a>
+                                {issueUrlFailed ? (
+                                    <span className="opacity-50 cursor-not-allowed">report an issue (unavailable)</span>
+                                ) : issueUrl === null ? (
+                                    <span className="opacity-50">preparing report…</span>
+                                ) : (
+                                    <a
+                                        href={issueUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="underline hover:text-yellow-400/60 transition-colors"
+                                    >report an issue</a>
+                                )}
                             </p>
                         )}
                     </div>

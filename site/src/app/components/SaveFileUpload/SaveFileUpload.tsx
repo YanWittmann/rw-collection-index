@@ -4,7 +4,7 @@ import React, { useCallback, useState } from 'react';
 import { RwIconButton } from '../other/RwIconButton';
 import { useAppContext } from '../../context/AppContext';
 import { loadWasm, parseSaveFile } from '../../utils/wasmLoader';
-import { applyCollectibles, extractCollectibles } from '../../utils/saveCollectibles';
+import { applyCollectibles, extractCollectibles, SaveCollectibles, SaveMatchSummary } from '../../utils/saveCollectibles';
 import { SaveFileInfoDialog } from './SaveFileInfoDialog';
 import { count } from '../../utils/track';
 
@@ -14,6 +14,11 @@ export function SaveFileUpload() {
     const { pearls, setSaveFound, saveFound, setFilters } = useAppContext();
     const [state, setState] = useState<UploadState>('idle');
     const [showDialog, setShowDialog] = useState(false);
+    const [dialogPhase, setDialogPhase] = useState<'upload' | 'confirm'>('upload');
+    const [errorMessage, setErrorMessage] = useState<React.ReactNode | null>(null);
+    const [pendingCollectibles, setPendingCollectibles] = useState<SaveCollectibles | null>(null);
+    const [pendingFile, setPendingFile] = useState<File | null>(null);
+    const [matchSummary, setMatchSummary] = useState<SaveMatchSummary | null>(null);
 
     const hasSaveData = saveFound.size > 0;
     const isLoading = state === 'loading-wasm' || state === 'reading' || state === 'parsing';
@@ -22,19 +27,11 @@ export function SaveFileUpload() {
         state === 'loading-wasm' ? 'Loading...' :
         state === 'reading' ? 'Reading...' : 'Parsing...';
 
-    const processFile = useCallback(async (file: File, donate: boolean) => {
-        setShowDialog(false);
-        if (donate) {
-            const formData = new FormData();
-            formData.append('savefile', file);
-            fetch('https://yanwittmann.de/projects/collection-index/api/submit_save.php', {
-                method: 'POST',
-                body: formData,
-            }).catch(() => {});
-        }
+    const processFile = useCallback(async (file: File) => {
+        setErrorMessage(null);
         setState('loading-wasm');
         try { await loadWasm(); } catch {
-            alert('Failed to load save file parser');
+            setErrorMessage('Failed to load save file parser.');
             setState('error');
             return;
         }
@@ -48,7 +45,7 @@ export function SaveFileUpload() {
                 reader.readAsText(file, 'latin1');
             });
         } catch {
-            alert('Failed to read file');
+            setErrorMessage('Failed to read file.');
             setState('error');
             return;
         }
@@ -56,15 +53,81 @@ export function SaveFileUpload() {
         try {
             const parsed = await parseSaveFile(xml);
             const collectibles = extractCollectibles(parsed);
-            const { foundData } = applyCollectibles(pearls, collectibles, 'unlock');
-            setSaveFound(foundData);
+            const { summary } = applyCollectibles(pearls, collectibles, 'preview');
+            setPendingCollectibles(collectibles);
+            setPendingFile(file);
+            setMatchSummary(summary);
             setState('done');
             count('upload-save');
+            setDialogPhase('confirm');
         } catch {
-            alert('Invalid save file format');
+            const issueBody = [
+                '### Save File',
+                '',
+                '_Please drag your `sav` file here._',
+                '',
+                '### Additional Details',
+                '',
+                '',
+            ].join('\n');
+            const issueUrl = `https://github.com/YanWittmann/rw-collection-index/issues/new?${new URLSearchParams({
+                title: 'Save File Parsing: could not parse save file',
+                labels: 'bug,save-file',
+                body: issueBody,
+            }).toString()}`;
+            setErrorMessage(
+                <span>
+                    Could not parse save file.<br/>Please&nbsp;
+                    <a href={issueUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-red-300 transition-colors">
+                        report an issue
+                    </a>
+                    {' '}and attach your save file.
+                </span>
+            );
             setState('error');
         }
-    }, [pearls, setSaveFound]);
+    }, [pearls]);
+
+    const applyFile = useCallback((donate: boolean, note: string) => {
+        if (!pendingCollectibles) return;
+        const { foundData } = applyCollectibles(pearls, pendingCollectibles, 'unlock');
+        setSaveFound(foundData);
+        if (donate && pendingFile) {
+            const formData = new FormData();
+            formData.append('savefile', pendingFile);
+            if (note.trim()) formData.append('note', note.trim());
+            fetch('https://yanwittmann.de/projects/collection-index/api/submit_save.php', {
+                method: 'POST',
+                body: formData,
+            }).catch(() => {});
+        }
+        setShowDialog(false);
+        setDialogPhase('upload');
+        setPendingCollectibles(null);
+        setPendingFile(null);
+        setMatchSummary(null);
+        setState('done');
+    }, [pendingCollectibles, pendingFile, pearls, setSaveFound]);
+
+    const handleCancel = useCallback(() => {
+        setShowDialog(false);
+        setDialogPhase('upload');
+        setPendingCollectibles(null);
+        setPendingFile(null);
+        setMatchSummary(null);
+        setErrorMessage(null);
+        setState('idle');
+    }, []);
+
+    const handleClose = useCallback(() => {
+        if (dialogPhase === 'confirm') {
+            handleCancel();
+        } else {
+            setShowDialog(false);
+            setErrorMessage(null);
+            setState('idle');
+        }
+    }, [dialogPhase, handleCancel]);
 
     const handleClear = useCallback(() => {
         setSaveFound(new Map());
@@ -76,8 +139,14 @@ export function SaveFileUpload() {
         <>
             {showDialog && (
                 <SaveFileInfoDialog
+                    phase={dialogPhase}
+                    uploadState={state}
+                    errorMessage={errorMessage}
+                    matchSummary={matchSummary}
                     onFile={processFile}
-                    onClose={() => setShowDialog(false)}
+                    onConfirm={applyFile}
+                    onCancel={handleCancel}
+                    onClose={handleClose}
                 />
             )}
             <RwIconButton
