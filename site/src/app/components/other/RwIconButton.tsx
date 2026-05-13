@@ -48,7 +48,7 @@ export function RwIconButton({
                 className,
                 square
                     ? size === 'small' ? "aspect-square h-8 w-8" : "aspect-square h-12 w-12"
-                    : "h-12 min-w-[3rem]",
+                    : size === 'small' ? "h-8 min-w-[2rem]" : "h-12 min-w-[3rem]",
             )}
             initial="default"
             animate={selected ? "selected" : isHovering ? "hover" : "default"}
@@ -78,7 +78,7 @@ export function RwIconButton({
             <motion.div
                 className={cn(
                     "absolute inset-0 rounded-xl border-2",
-                    variant === 'gold' ? "border-[rgba(255,200,0,0.9)]" : "border-white/50"
+                    variant === 'gold' ? "border-rw-gold/90" : "border-white/50"
                 )}
                 variants={{
                     default: { scale: 1, borderColor: borderDefault },
@@ -119,7 +119,7 @@ export function RwIconButton({
             <div
                 className={cn(
                     "relative z-10 flex items-center justify-center",
-                    square ? "w-full h-full " + resolvedPadding : "px-4 py-3",
+                    square ? "w-full h-full " + resolvedPadding : size === 'small' ? "px-3 py-1.5" : "px-4 py-3",
                 )}
             >
                 {children}

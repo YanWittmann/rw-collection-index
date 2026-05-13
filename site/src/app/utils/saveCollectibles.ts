@@ -43,7 +43,7 @@ export interface SaveCollectibles {
     echoGhostIds: Set<string>;
     itemTypesDescribed: Set<string>;
     // Proxy-detected iterator pearl types (Misc, BroadcastMisc, PebblesPearl) that leave no
-    // footprint in significantPearls — keys are internalIds, values are the transcriber context
+    // footprint in significantPearls, keys are internalIds, values are the transcriber context
     // names unlocked based on room visit evidence.
     iteratorPearlTranscribers: Map<string, Set<string>>;
     // True when all 70 arena challenges are marked complete; used to unlock dev commentary.
@@ -391,17 +391,17 @@ const COLLECTIBLE_RULES: CollectibleRule[] = [
     { ids: ['Iterator_Dialogue_Items_Vulture_Mask', 'Iterator_Dialogue_Items_Chieftain_Scavenger_Mask', 'Iterator_Dialogue_Items_Elite_Scavenger_Mask'], unlocked: hasItem('VultureMask') },
     { ids: ['Iterator_Dialogue_Items_Slugpup'],          unlocked: hasItem('SlugNPC', 'Slugpup') },
 
-    // Watcher — Spinning Top encounters (vanilla series)
+    // Watcher, Spinning Top encounters (vanilla series)
     { ids: ['Watcher_ST_Decisiontree', 'Watcher_vanillaEncounter_1'], unlocked: watcherMaxRipple(0.25) },
     { ids: ['Watcher_vanillaEncounter_2'],                            unlocked: watcherMaxRipple(0.5) },
     { ids: ['Watcher_vanillaEncounter_3'],                            unlocked: watcherMaxRipple(1.0) },
 
-    // Watcher — Spinning Top N-series (maxRippleLevel-gated)
+    // Watcher, Spinning Top N-series (maxRippleLevel-gated)
     { ids: ['Watcher_ST_Echo_Ghost_ST_N1'], unlocked: watcherMaxRipple(1.5) },
     { ids: ['Watcher_ST_Echo_Ghost_ST_N5'], unlocked: watcherMaxRipple(3.0) },
     { ids: ['Watcher_ST_Echo_Ghost_ST_N2'], unlocked: watcherMaxRipple(4.5) },
 
-    // Watcher — Spinning Top N-series (minRippleLevel-gated)
+    // Watcher, Spinning Top N-series (minRippleLevel-gated)
     { ids: ['Watcher_ST_Echo_Ghost_ST_N3'], unlocked: watcherMinRipple(3.0) },
     { ids: ['Watcher_ST_Echo_Ghost_ST_N6'], unlocked: watcherMinRipple(4.0) },
     {
@@ -411,18 +411,18 @@ const COLLECTIBLE_RULES: CollectibleRule[] = [
         ) || (c.watcherState?.minRippleLevel ?? 0) >= 5.0,
     },
 
-    // Watcher — Spinning Top special encounters
+    // Watcher, Spinning Top special encounters
     { ids: ['Watcher_ST_Echo_Ghost_ST_ROT1'],  unlocked: watcherSpinningTopRot },
     { ids: ['Watcher_ST_Other_WAUA'],          unlocked: watcherVisitBath },
     { ids: ['Watcher_ST_Other_WARA'],          unlocked: and(watcherMaxRipple(1.0), watcherSTCount(4)) },
     { ids: ['Watcher_ST_Echo_Ghost_ST_N4'],    unlocked: watcherSTIncludes(0) },
     { ids: ['Watcher_ST_Other_toys'],          unlocked: watcherMaxRipple(4.5) },
 
-    // Watcher — Prince: Karma Sigil conversations (pre-awakening)
+    // Watcher, Prince: Karma Sigil conversations (pre-awakening)
     { ids: ['Watcher_Prince_KarmaSigils_Prince_KS_1'],   unlocked: watcherPrinceSeen(214) },
     { ids: ['Watcher_Prince_KarmaSigils_Prince_KS_2'],   unlocked: watcherPrinceSeen(218) },
 
-    // Watcher — Prince: awakened chamber dialogues
+    // Watcher, Prince: awakened chamber dialogues
     { ids: ['Watcher_Prince_Dialogue_Prince_1_2'],       unlocked: watcherPrinceSeen(222) },
     { ids: ['Watcher_Prince_Dialogue_Prince_3'],         unlocked: watcherPrinceSeen(224) },
     { ids: ['Watcher_Prince_Dialogue_Prince_4'],         unlocked: watcherPrinceSeen(225) },
@@ -430,7 +430,7 @@ const COLLECTIBLE_RULES: CollectibleRule[] = [
     { ids: ['Watcher_Prince_Dialogue_Prince_6'],         unlocked: watcherPrinceSeen(227) },
     { ids: ['Watcher_Prince_Dialogue_Prince_7'],         unlocked: watcherPrinceSeen(228) },
 
-    // Watcher — Prince: runtime events (best available proxy)
+    // Watcher, Prince: runtime events (best available proxy)
     {
         ids: [
             'Watcher_Prince_Events_AcknowledgePlayerGift',
@@ -441,13 +441,13 @@ const COLLECTIBLE_RULES: CollectibleRule[] = [
         unlocked: watcherPrinceEncounters(1),
     },
 
-    // Watcher — Void Weaver encounters
+    // Watcher, Void Weaver encounters
     { ids: ['Watcher_Weaver_Dialogue_Weaver_1'], unlocked: watcherWeaverEncounters(1) },
     { ids: ['Watcher_Weaver_Dialogue_Weaver_2'], unlocked: watcherWeaverEncounters(2) },
     { ids: ['Watcher_Weaver_Dialogue_Weaver_3'], unlocked: watcherWeaverEncounters(3) },
     { ids: ['Watcher_Weaver_Dialogue_Weaver_4'], unlocked: watcherWeaverEncounters(4) },
 
-    // Watcher — Prince × Weaver arc
+    // Watcher, Prince × Weaver arc
     { ids: ['Watcher_Prince_Weaver_Prince_Weaver_1'],  unlocked: watcherPrinceWeaverAck },
     { ids: ['Watcher_Prince_Weaver_Prince_Weaver_2'],  unlocked: watcherPrinceWeaverProg(1) },
     { ids: ['Watcher_Prince_Weaver_Prince_Ascension'], unlocked: watcherAscensionEnding },

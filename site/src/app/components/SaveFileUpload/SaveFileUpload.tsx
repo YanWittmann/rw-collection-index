@@ -151,15 +151,20 @@ export function SaveFileUpload() {
             )}
             <RwIconButton
                 square={false}
-                className="w-32 leading-[1.2]"
-                aria-label={hasSaveData ? 'Clear save data' : 'Upload Save'}
+                variant={hasSaveData ? 'gold' : 'default'}
+                aria-label={hasSaveData ? 'Clear save data' : 'Sync from save file'}
                 onClick={() => {
                     if (isLoading) return;
                     if (hasSaveData) handleClear();
                     else setShowDialog(true);
                 }}
             >
-                {isLoading ? loadingLabel : hasSaveData ? 'Clear Save' : 'Sync from Save File'}
+                {isLoading ? loadingLabel : !hasSaveData ? 'Sync from Save' : (
+                    <div className="flex flex-col items-center gap-0.5 leading-none">
+                        <div>Clear Save Data</div>
+                        <div className="text-[10px] opacity-60">{saveFound.size} entries</div>
+                    </div>
+                )}
             </RwIconButton>
         </>
     );

@@ -22,5 +22,5 @@ Retention: Development data is periodically reviewed and manually deleted once i
 ---
 
 If you have any questions about this, please [open an issue](https://github.com/YanWittmann/rw-collection-index/issues/new).
-I understand that this kind of tracking is already enough for some people to no longer want to use a service, yet I hope you can relate to me wanting to know how many people actually use a webpage I've spent months of my life on, for free to use.
+I understand that this kind of tracking is already enough for some people to no longer want to use a service, yet I hope you can relate to me wanting to know how many people actually use a webpage I've spent months of my life and a few hundreds of Euros on, for free to use.
 You can always build this software yourself and host it locally to view the data without of this nonsense.
