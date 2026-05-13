@@ -17,6 +17,8 @@ interface AppContextState {
     sourceFileDisplay: string | null;
     unlockMode: UnlockMode;
     unlockVersion: number;
+    saveFound: Map<string, Set<string>>;
+    saveFoundVersion: number;
     filters: FilterState;
     datasetKey: string;
     isMobile: boolean;
@@ -26,6 +28,7 @@ interface AppContextState {
     setSourceFileDisplay: (value: string | null) => void;
     setUnlockMode: (mode: UnlockMode) => void;
     setFilters: React.Dispatch<React.SetStateAction<FilterState>>;
+    setSaveFound: (data: Map<string, Set<string>>) => void;
 }
 
 const AppContext = createContext<AppContextState | undefined>(undefined);
@@ -46,9 +49,17 @@ export const AppProvider: React.FC<{
         tags: new Set(),
         types: new Set(),
         regions: new Set(),
-        speakers: new Set()
+        speakers: new Set(),
+        saveFound: false,
     });
+    const [saveFound, setSaveFoundRaw] = useState<Map<string, Set<string>>>(new Map());
+    const [saveFoundVersion, setSaveFoundVersion] = useState(0);
     const { unlockVersion } = useUnlockState();
+
+    const setSaveFound = useCallback((data: Map<string, Set<string>>) => {
+        setSaveFoundRaw(data);
+        setSaveFoundVersion(v => v + 1);
+    }, []);
 
     const selectedPearlData = useMemo(() => {
         if (!selectedPearlId) return null;
@@ -125,6 +136,8 @@ export const AppProvider: React.FC<{
         sourceFileDisplay,
         unlockMode,
         unlockVersion,
+        saveFound,
+        saveFoundVersion,
         filters,
         datasetKey,
         isMobile,
@@ -133,6 +146,7 @@ export const AppProvider: React.FC<{
         setSourceFileDisplay,
         setUnlockMode,
         setFilters,
+        setSaveFound,
     };
 
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

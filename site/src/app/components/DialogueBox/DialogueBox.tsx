@@ -95,6 +95,12 @@ export function DialogueBox() {
     const [unlockUpdateTrigger, setUnlockUpdateTrigger] = useState(0);
 
     useEffect(() => {
+        const handler = () => setUnlockUpdateTrigger(prev => prev + 1);
+        window.addEventListener('unlock-state-changed', handler);
+        return () => window.removeEventListener('unlock-state-changed', handler);
+    }, []);
+
+    useEffect(() => {
         // touch event handler for swipe gestures
         if (!isMobile) return;
 

@@ -5,6 +5,7 @@ import UnlockManager from "../../utils/unlockManager"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
 import { useAppContext } from "../../context/AppContext";
 import { RwCheckbox } from "../other/RwCheckbox";
+import { SaveFileUpload } from "../SaveFileUpload/SaveFileUpload";
 
 interface ControlItem {
     key: string
@@ -19,7 +20,89 @@ const controls: ControlItem[] = [
 ]
 
 export function WelcomeDialogueContent() {
-    const { unlockMode, setUnlockMode, datasetKey } = useAppContext();
+    const { unlockMode, setUnlockMode, datasetKey, saveFound } = useAppContext();
+
+    const buildIssueUrl = (data: Map<string, Set<string>>) => {
+        const groupPrefixes = [
+            'Watcher_Pearl_Misc_Projection_',
+            'Misc_WHITE_PEARLS_',
+            'PebblesPearl_',
+            'BroadcastMisc_',
+            'DevComm_'
+        ];
+
+        const normalEntries: string[] = [];
+        const groupedMap = new Map<string, string[]>();
+
+        const sortedData = Array.from(data.entries())
+            .sort(([idA], [idB]) => idA.localeCompare(idB));
+
+        for (const [id, transcribers] of sortedData) {
+            const transcriberText = transcribers.size > 1
+                ? ` [${Array.from(transcribers).join(', ')}]`
+                : '';
+
+            const matchingPrefix = groupPrefixes.find(prefix => id.startsWith(prefix));
+
+            if (matchingPrefix) {
+                if (!groupedMap.has(matchingPrefix)) {
+                    groupedMap.set(matchingPrefix, []);
+                }
+                const suffix = id.slice(matchingPrefix.length);
+                groupedMap.get(matchingPrefix)!.push(suffix + transcriberText);
+            } else {
+                normalEntries.push(id + transcriberText);
+            }
+        }
+
+        const finalLines = [...normalEntries];
+
+        // Swapped to .forEach() to avoid TS2802
+        groupedMap.forEach((suffixes, prefix) => {
+            finalLines.push(`${prefix}* (${suffixes.length}): ${suffixes.join(', ')}`);
+        });
+
+        finalLines.sort((a, b) => a.localeCompare(b));
+        const entriesText = finalLines.join('\n');
+
+        const body = [
+            '### Expected behavior',
+            '',
+            '',
+            '### Actual behavior',
+            '',
+            '',
+            '---',
+            '',
+            '### Save File',
+            '',
+            '_Please drag your `.sav` file here._',
+            '',
+            '### Additional Details',
+            '',
+            '',
+            '---',
+            '',
+            '<details>',
+            `<summary><b>Parsed Entries (${data.size} total)</b></summary>`,
+            '',
+            '```text',
+            entriesText,
+            '```',
+            '',
+            '</details>'
+        ].join('\n');
+
+        const params = new URLSearchParams({
+            title: 'Save File Parsing: ',
+            labels: 'bug',
+            body
+        });
+
+        return `https://github.com/YanWittmann/rw-collection-index/issues/new?${params.toString()}`;
+    };
+
+    const isModded = datasetKey === 'modded';
 
     const toggleUnlockModeCallback = () => {
         setUnlockMode(unlockMode === "all" ? "unlock" : "all");
@@ -79,8 +162,6 @@ export function WelcomeDialogueContent() {
                     {/* Spoiler Protection Toggle */}
                     <TooltipProvider delayDuration={120}>
                         <Tooltip>
-                            {/* We wrap in a span/div because TooltipTrigger passes props to its child,
-                                and we want to ensure the layout remains stable */}
                             <TooltipTrigger asChild>
                                 <span>
                                     <RwCheckbox
@@ -100,26 +181,34 @@ export function WelcomeDialogueContent() {
                         </Tooltip>
                     </TooltipProvider>
 
-                    {/* Other Buttons */}
-                    <div className="flex flex-row space-x-3 pt-2">
-                        <RwIconButton square={false}
-                                      onClick={() => window.open("https://github.com/YanWittmann/rw-collection-index/issues/new", "_blank")}
-                                      aria-label="Open an Issue"
-                        >
-                            Open an Issue
-                        </RwIconButton>
-                        {unlockMode === "unlock" && (
-                            <RwIconButton
-                                square={false}
-                                onClick={() => {
-                                    if (window.confirm("Are you sure you want to reset all unlocks?")) {
-                                        UnlockManager.reset()
-                                    }
-                                }}
-                                aria-label="Reset Unlocks"
-                            >
-                                Reset Unlocks
-                            </RwIconButton>
+                    {/* Buttons */}
+                    <div className="flex flex-col gap-1.5 pt-2">
+                        <div className="flex flex-row gap-3 justify-start">
+                            {!isModded && <SaveFileUpload/>}
+                            {unlockMode === "unlock" && (
+                                <RwIconButton
+                                    square={false}
+                                    onClick={() => {
+                                        if (window.confirm("Are you sure you want to reset all unlocks?")) {
+                                            UnlockManager.reset()
+                                        }
+                                    }}
+                                    aria-label="Reset Unlocks"
+                                >
+                                    Reset Unlocks
+                                </RwIconButton>
+                            )}
+                        </div>
+                        {!isModded && saveFound.size > 0 && (
+                            <p className="text-yellow-400/80 text-xs">
+                                Found {saveFound.size} unlocks,&nbsp;
+                                <a
+                                    href={buildIssueUrl(saveFound)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="underline hover:text-yellow-400/60 transition-colors"
+                                >report an issue</a>
+                            </p>
                         )}
                     </div>
                 </div>

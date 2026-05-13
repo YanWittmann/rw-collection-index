@@ -4,7 +4,7 @@ import { OrderedChapter } from '../utils/pearlOrder';
 import { useAppContext } from '../context/AppContext';
 
 export function useFilteredPearls(allPearls: PearlData[], order: (pearls: PearlData[]) => OrderedChapter[]) {
-    const { filters } = useAppContext();
+    const { filters, saveFound, saveFoundVersion } = useAppContext();
 
     const isPearlIncluded = useCallback((pearl: PearlData) => {
         // Apply tag filters
@@ -61,6 +61,9 @@ export function useFilteredPearls(allPearls: PearlData[], order: (pearls: PearlD
             if (!found) return false;
         }
 
+        // Apply save found filter
+        if (filters.saveFound && !saveFound.has(pearl.id)) return false;
+
         // Apply text filter
         if (!filters.text) return true;
 
@@ -83,7 +86,8 @@ export function useFilteredPearls(allPearls: PearlData[], order: (pearls: PearlD
                 (line.speaker + ": " + line.text).toLowerCase().includes(searchText)
             )) ||
             pearl.transcribers.some(t => t.transcriber.toLowerCase() === searchText);
-    }, [filters]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [filters, saveFound, saveFoundVersion]);
 
     const filterChapterTree = useCallback((chapters: OrderedChapter[]): OrderedChapter[] => {
         return chapters.reduce<OrderedChapter[]>((acc, chapter) => {

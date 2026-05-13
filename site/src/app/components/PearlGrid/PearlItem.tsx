@@ -10,17 +10,22 @@ interface PearlItemProps {
     pearl: PearlData
     pearlIndex: number
     showTranscriberCount: boolean
+    collectionVersion: number
 }
 
 const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, showTranscriberCount }) => {
-    const { selectedPearlId, handleSelectPearl, unlockMode, unlockVersion } = useAppContext();
+    const { selectedPearlId, handleSelectPearl, unlockMode, unlockVersion, saveFound, saveFoundVersion } = useAppContext();
     const isSelected = pearl.id === selectedPearlId;
 
     const isUnlocked = useMemo(() => {
-        // Depend on unlockVersion to force re-evaluation when unlocks change globally
         return unlockMode === 'all' || UnlockManager.isPearlUnlocked(pearl);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pearl, unlockMode, unlockVersion]);
+
+    const isFoundInSave = useMemo(() => {
+        return saveFound.has(pearl.id);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pearl.id, saveFoundVersion]);
 
     const handleClick = useCallback(() => {
         handleSelectPearl(pearl);
@@ -44,7 +49,7 @@ const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, showTranscribe
 
     if (!isUnlocked) {
         return (
-            <RwIconButton onClick={handleClick} selected={isSelected} aria-label="Locked pearl">
+            <RwIconButton onClick={handleClick} selected={isSelected} variant={isFoundInSave ? 'gold' : 'default'} aria-label="Locked pearl">
                 <RwIcon color={pearl.metadata.color} type="questionmark"/>
             </RwIconButton>
         );
@@ -59,14 +64,15 @@ const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, showTranscribe
                     <RwIconButton
                         onClick={handleClick}
                         selected={isSelected}
+                        variant={isFoundInSave ? 'gold' : 'default'}
                         aria-label={`${pearl.metadata.name || 'Unknown pearl'} - ${pearl.transcribers.length} transcription${pearl.transcribers.length !== 1 ? 's' : ''}`}
                     >
-                        <RwIcon color={pearl.metadata.color} type={iconType}/>
-                        {showTranscriberCount && (
-                            <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-6 h-4 text-xs flex items-center justify-center">
-                                {pearl.transcribers.length}
-                            </span>
-                        )}
+                            <RwIcon color={pearl.metadata.color} type={iconType}/>
+                            {showTranscriberCount && (
+                                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-6 h-4 text-xs flex items-center justify-center">
+                                    {pearl.transcribers.length}
+                                </span>
+                            )}
                     </RwIconButton>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -83,15 +89,13 @@ const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, showTranscribe
 };
 
 const arePropsEqual = (prevProps: PearlItemProps, nextProps: PearlItemProps) => {
-    // This custom comparison is now much simpler because global state changes
-    // are handled by the context and `unlockVersion`. We only need to compare
-    // the pearl data itself and presentation props.
     return (
         prevProps.pearl.id === nextProps.pearl.id &&
         prevProps.showTranscriberCount === nextProps.showTranscriberCount &&
         prevProps.pearl.metadata.color === nextProps.pearl.metadata.color &&
         prevProps.pearl.metadata.type === nextProps.pearl.metadata.type &&
-        prevProps.pearl.transcribers.length === nextProps.pearl.transcribers.length
+        prevProps.pearl.transcribers.length === nextProps.pearl.transcribers.length &&
+        prevProps.collectionVersion === nextProps.collectionVersion
     );
 };
 

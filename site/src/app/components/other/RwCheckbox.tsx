@@ -11,6 +11,7 @@ interface RwCheckboxProps {
     children: React.ReactNode
     className?: string
     disabled?: boolean
+    size?: 'default' | 'small'
 }
 
 export function RwCheckbox({
@@ -18,7 +19,8 @@ export function RwCheckbox({
                                onCheckedChange,
                                children,
                                className,
-                               disabled = false
+                               disabled = false,
+                               size = 'default',
                            }: RwCheckboxProps) {
 
     const handleToggle = () => {
@@ -30,7 +32,8 @@ export function RwCheckbox({
     return (
         <div
             className={cn(
-                "flex gap-4 items-center group select-none",
+                "flex items-center group select-none",
+                size === 'small' ? "gap-3" : "gap-4",
                 disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer",
                 className
             )}
@@ -39,6 +42,7 @@ export function RwCheckbox({
             <div className={cn("transition-transform", !disabled && "group-hover:scale-105")}>
                 <RwIconButton
                     square={true}
+                    size={size}
                     selected={false}
                     onClick={() => {
                         handleToggle()

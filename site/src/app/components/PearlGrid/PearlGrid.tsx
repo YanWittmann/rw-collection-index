@@ -34,10 +34,11 @@ interface MemoizedPearlItemProps {
     pearl: PearlData;
     pearlIndex: number;
     showTranscriberCount: boolean;
+    collectionVersion: number;
 }
 
 const SearchBar = () => {
-    const { isMobile, unlockMode, setUnlockMode, filters, setFilters } = useAppContext();
+    const { isMobile, unlockMode, setUnlockMode, filters, setFilters, saveFound } = useAppContext();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const onTextInput = useCallback((text: string) => {
@@ -97,7 +98,7 @@ const SearchBar = () => {
             return a.localeCompare(b);
         });
 
-        return [
+        const sections: FilterSection[] = [
             {
                 title: "Tags",
                 options: [
@@ -127,8 +128,6 @@ const SearchBar = () => {
             {
                 title: "Speakers",
                 options: sortedSpeakers.map(s => {
-                    // s is the full key (e.g. NSCP-FPB or just FPB)
-                    // We need to parse it back to lookup info, or assume s is the 'rawSpeaker'
                     let actualSpeaker = s;
                     let namespace = undefined;
                     const hyphenIndex = s.indexOf('-');
@@ -148,7 +147,16 @@ const SearchBar = () => {
                 }),
             }
         ];
-    }, [pearls]);
+
+        if (saveFound.size > 0) {
+            sections.push({
+                title: "Save",
+                options: [{ id: "saveFound", label: "Found in Save", icon: "pearl", iconColor: '#FFD700' }]
+            });
+        }
+
+        return sections;
+    }, [pearls, saveFound.size]);
 
     return (
         <div className={"flex gap-2 items-center"}>
@@ -183,7 +191,7 @@ const SearchBar = () => {
                         </div>
                     </PopoverTrigger>
                     <PopoverContent
-                        className="w-64 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg text-white"
+                        className="w-72 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg text-white"
                         align="end" sideOffset={5}>
                         <RwScrollableList items={menuItems} breakSubtitle={true}/>
                     </PopoverContent>
@@ -313,6 +321,7 @@ const LazyChapterGrid = ({
                              selectedPearlRef,
                              getHighlightStyle,
                              isAlternateDisplayModeActive,
+                             collectionVersion,
                              onToggle
                          }: {
     flatChapter: FlatChapterItem
@@ -323,6 +332,7 @@ const LazyChapterGrid = ({
     selectedPearlRef: React.RefObject<HTMLDivElement | null>
     getHighlightStyle: (chapterId: string, itemIndex: number) => React.CSSProperties
     isAlternateDisplayModeActive: boolean
+    collectionVersion: number
     onToggle: () => void
 }) => {
     const observerRef = useRef<HTMLDivElement>(null);
@@ -337,7 +347,7 @@ const LazyChapterGrid = ({
 
         if (currentRef) observer.observe(currentRef);
         return () => {
-            if (currentRef) observer.unobserve(currentRef);
+            observer.disconnect();
         };
     }, [chapterIndex, setVisibleChapters]);
 
@@ -374,6 +384,7 @@ const LazyChapterGrid = ({
                                         pearl={pearl}
                                         pearlIndex={pearlIndex}
                                         showTranscriberCount={isAlternateDisplayModeActive}
+                                        collectionVersion={collectionVersion}
                                     />
                                 </div>
                             ))}
@@ -387,8 +398,8 @@ const LazyChapterGrid = ({
     );
 };
 
-const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({ pearl, pearlIndex, showTranscriberCount }) => (
-    <PearlItem pearl={pearl} pearlIndex={pearlIndex} showTranscriberCount={showTranscriberCount}/>
+const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({ pearl, pearlIndex, showTranscriberCount, collectionVersion }) => (
+    <PearlItem pearl={pearl} pearlIndex={pearlIndex} showTranscriberCount={showTranscriberCount} collectionVersion={collectionVersion}/>
 ));
 
 const useIsScrollable = (ref: React.RefObject<HTMLDivElement | null>, dependencies: any[]) => {
@@ -397,9 +408,11 @@ const useIsScrollable = (ref: React.RefObject<HTMLDivElement | null>, dependenci
     const [isAtTop, setIsAtTop] = useState(true);
 
     useEffect(() => {
+        const el = ref.current;
+
         const checkScroll = () => {
-            if (ref.current) {
-                const { scrollHeight, clientHeight, scrollTop } = ref.current;
+            if (el) {
+                const { scrollHeight, clientHeight, scrollTop } = el;
                 const hasScrollableContent = scrollHeight > clientHeight;
                 setIsScrollable(hasScrollableContent);
                 setIsAtTop(scrollTop < 10);
@@ -413,20 +426,22 @@ const useIsScrollable = (ref: React.RefObject<HTMLDivElement | null>, dependenci
 
         const timer = setTimeout(checkScroll, 0); // Check after render
         window.addEventListener('resize', checkScroll);
-        ref.current?.addEventListener('scroll', checkScroll);
+        el?.addEventListener('scroll', checkScroll);
 
         return () => {
             clearTimeout(timer);
             window.removeEventListener('resize', checkScroll);
-            ref.current?.removeEventListener('scroll', checkScroll);
+            el?.removeEventListener('scroll', checkScroll);
         };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ref, ...dependencies]);
 
     return { isScrollable, showGradient, isAtTop };
 };
 
 export function PearlGrid({ order, isAlternateDisplayModeActive = false }: PearlGridProps) {
-    const { pearls, handleSelectPearl, selectedPearlId, isMobile } = useAppContext();
+    const { pearls, handleSelectPearl, selectedPearlId, isMobile, saveFoundVersion, unlockVersion } = useAppContext();
+    const collectionVersion = saveFoundVersion + unlockVersion;
     const { baseTree, filteredTree, totalItems, firstItem } = useFilteredPearls(pearls, order);
     const { expandedChapters, toggleChapter, expandAll, collapseAll } = useChapterExpansion(filteredTree, baseTree);
 
@@ -457,36 +472,43 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
     useEffect(() => {
         if (isMobile) return;
 
+        let rafId: number | null = null;
+
         const handleMouseMove = (e: MouseEvent) => {
-            const btn = desktopToggleRef.current;
-            if (!btn) return;
+            if (rafId !== null) return;
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            rafId = requestAnimationFrame(() => {
+                rafId = null;
+                const btn = desktopToggleRef.current;
+                if (!btn) return;
 
-            const rect = btn.getBoundingClientRect();
-            // Calculate center of button
-            const btnX = rect.left + rect.width / 2;
-            const btnY = rect.top + rect.height / 2;
+                const rect = btn.getBoundingClientRect();
+                const btnX = rect.left + rect.width / 2;
+                const btnY = rect.top + rect.height / 2;
 
-            // Euclidean distance
-            const dist = Math.sqrt(Math.pow(e.clientX - btnX, 2) + Math.pow(e.clientY - btnY, 2));
-            const threshold = 90; // pixels range
+                const dist = Math.sqrt(Math.pow(mouseX - btnX, 2) + Math.pow(mouseY - btnY, 2));
+                const threshold = 90;
 
-            let opacity = 0;
-            if (dist < threshold) {
-                const linear = 1 - (dist / threshold);
-                opacity = Math.sin(linear * (Math.PI / 2));
-            }
+                let opacity = 0;
+                if (dist < threshold) {
+                    const linear = 1 - (dist / threshold);
+                    opacity = Math.sin(linear * (Math.PI / 2));
+                }
 
-            // Ensure opacity is exactly 0 or 1 at extremes to prevent glitches
-            if (opacity < 0.01) opacity = 0;
-            if (opacity > 0.99) opacity = 1;
+                if (opacity < 0.01) opacity = 0;
+                if (opacity > 0.99) opacity = 1;
 
-            btn.style.opacity = opacity.toFixed(2);
-            // Prevent blocking clicks on underlying elements when "invisible"
-            btn.style.pointerEvents = opacity > 0.1 ? 'auto' : 'none';
+                btn.style.opacity = opacity.toFixed(2);
+                btn.style.pointerEvents = opacity > 0.1 ? 'auto' : 'none';
+            });
         };
 
         window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            if (rafId !== null) cancelAnimationFrame(rafId);
+        };
     }, [isMobile]);
 
     const displayList = useMemo(() => {
@@ -614,6 +636,7 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
                             selectedPearlRef={selectedPearlRef}
                             getHighlightStyle={getHighlightStyle}
                             isAlternateDisplayModeActive={isAlternateDisplayModeActive}
+                            collectionVersion={collectionVersion}
                             onToggle={() => handleToggleChapter(flatChapter.name)}
                         />
                     ))}

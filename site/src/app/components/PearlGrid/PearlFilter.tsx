@@ -11,6 +11,7 @@ export interface FilterState {
     types: Set<string>;
     regions: Set<string>;
     speakers: Set<string>;
+    saveFound: boolean;
 }
 
 export interface FilterOption {
@@ -69,42 +70,28 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
             const newFilters = { ...prev };
             if (section === 'tags') {
                 const newTags = new Set(prev.tags);
-                if (newTags.has(optionId)) {
-                    newTags.delete(optionId);
-                } else {
-                    newTags.add(optionId);
-                }
+                if (newTags.has(optionId)) newTags.delete(optionId); else newTags.add(optionId);
                 newFilters.tags = newTags;
             } else if (section === 'types') {
                 const newTypes = new Set(prev.types);
-                if (newTypes.has(optionId)) {
-                    newTypes.delete(optionId);
-                } else {
-                    newTypes.add(optionId);
-                }
+                if (newTypes.has(optionId)) newTypes.delete(optionId); else newTypes.add(optionId);
                 newFilters.types = newTypes;
             } else if (section === 'regions') {
                 const newRegions = new Set(prev.regions);
-                if (newRegions.has(optionId)) {
-                    newRegions.delete(optionId);
-                } else {
-                    newRegions.add(optionId);
-                }
+                if (newRegions.has(optionId)) newRegions.delete(optionId); else newRegions.add(optionId);
                 newFilters.regions = newRegions;
             } else if (section === 'speakers') {
                 const newSpeakers = new Set(prev.speakers);
-                if (newSpeakers.has(optionId)) {
-                    newSpeakers.delete(optionId);
-                } else {
-                    newSpeakers.add(optionId);
-                }
+                if (newSpeakers.has(optionId)) newSpeakers.delete(optionId); else newSpeakers.add(optionId);
                 newFilters.speakers = newSpeakers;
+            } else if (section === 'save') {
+                newFilters.saveFound = !prev.saveFound;
             }
             return newFilters;
         });
     };
 
-    const activeFilterCount = filters.tags.size + filters.types.size + filters.regions.size + filters.speakers.size;
+    const activeFilterCount = filters.tags.size + filters.types.size + filters.regions.size + filters.speakers.size + (filters.saveFound ? 1 : 0);
 
     return (
         <Popover>
@@ -158,7 +145,9 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
                                                                     ? filters.types.has(option.id)
                                                                     : section.title.toLowerCase() === 'regions'
                                                                         ? filters.regions.has(option.id)
-                                                                        : filters.speakers.has(option.id)
+                                                                        : section.title.toLowerCase() === 'save'
+                                                                            ? filters.saveFound
+                                                                            : filters.speakers.has(option.id)
                                                             }
                                                             aria-label={option.label}
                                                         >
