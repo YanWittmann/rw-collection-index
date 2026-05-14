@@ -17,6 +17,8 @@ const DialogueBox = React.lazy(() => import('./components/DialogueBox/DialogueBo
 
 const DEFAULT_FAVICON = 'favicon.svg';
 
+const faviconCache = new Map<string, string>();
+
 const Content: React.FC<{ orderer: (pearls: PearlData[]) => any }> = ({ orderer }) => {
     const isMobile = useIsMobile();
     const { selectedPearlId, selectedPearlData } = useAppContext();
@@ -131,17 +133,25 @@ const Content: React.FC<{ orderer: (pearls: PearlData[]) => any }> = ({ orderer 
                     : selectedPearlData.metadata.type;
                 const iconColor = selectedPearlData.metadata.color || null;
 
-                // Call the composite function with the configuration
-                generateTintedImage(iconType, iconColor)
-                    .then(dataUrl => updateFavicon(dataUrl))
-                    .catch(err => {
-                        console.warn("Failed to generate composite favicon", err);
-                        updateFavicon(DEFAULT_FAVICON);
-                    });
+                const cacheKey = `${iconType}:${iconColor}`;
+                const cached = faviconCache.get(cacheKey);
+                if (cached) {
+                    updateFavicon(cached);
+                } else {
+                    generateTintedImage(iconType, iconColor)
+                        .then(dataUrl => {
+                            faviconCache.set(cacheKey, dataUrl);
+                            updateFavicon(dataUrl);
+                        })
+                        .catch(err => {
+                            console.warn("Failed to generate composite favicon", err);
+                            updateFavicon(DEFAULT_FAVICON);
+                        });
+                }
             } else {
                 updateFavicon(DEFAULT_FAVICON);
             }
-        }, 100);
+        }, 300);
 
         return () => clearTimeout(debounceTimer);
 

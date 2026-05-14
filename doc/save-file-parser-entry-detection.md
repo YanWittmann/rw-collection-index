@@ -4,7 +4,7 @@ This document describes how every category of entry in the collection index is d
 
 The implementation lives in `site/src/app/utils/saveCollectibles.ts`. This document is the authoritative reference for the logic in that file and should be kept in sync with it.
 
-Last updated: 2026-05-13
+Last updated: 2026-05-14
 
 ---
 
@@ -68,27 +68,56 @@ At the top level of the `SaveStateRecord` state object, `swallowedItems`, `playe
 
 ## Transcriber Unlocking
 
-When a save match is found, the system must also determine which dialogue transcribers to unlock. For named pearls, the answer depends on which lorePearls list the pearl was found in.
+When a save match is found, the system determines which transcribers to unlock by evaluating per-transcriber `md-save-unlock` DSL conditions on each transcriber. Only transcribers whose condition evaluates to true are unlocked. If a transcriber has no `md-save-unlock`, all transcribers of that entry are unlocked (fallback).
 
-Named pearls found in `lorePearls` (base source): unlock transcribers `LttM-post-collapse`, `LttM-gourmand`, `LttM-rivulet`, `FP`.
+Named pearl transcriber conditions use source-specific DSL global accessors:
 
-Named pearls found in `lorePearlsArtificer`: unlock `FP-artificer`, `artificer`.
+| DSL accessor | Meaning |
+|---|---|
+| `global { pearlBase.X }` | Pearl X is in `lorePearls` (base route) |
+| `global { pearlArtificer.X }` | Pearl X is in `lorePearlsArtificer` |
+| `global { pearlSpearmaster.X }` | Pearl X is in `lorePearlsSpearmaster` |
+| `global { pearlSaint.X }` | Pearl X is in `lorePearlsSaint` |
 
-Named pearls found in `lorePearlsSpearmaster`: unlock `LttM-post-collapse`, `broadcast-pre-FP`.
+The transcriber-to-accessor mapping used across the named pearl files:
 
-Named pearls found in `lorePearlsSaint`: unlock `LttM-pre-collapse`, `LttM-saint`, `LttM-FP-saint`.
+| Transcriber | DSL accessor used |
+|---|---|
+| `LttM-post-collapse` | `pearlBase` |
+| `LttM-gourmand` | `pearlBase` |
+| `LttM-rivulet` | `pearlBase` |
+| `FP` | `pearlBase` |
+| `FP-artificer` | `pearlArtificer` |
+| `broadcast-pre-FP` | `pearlSpearmaster` |
+| `LttM-pre-collapse` | `pearlSaint` (general); `pearlSpearmaster` for MS and Spearmasterpearl |
+| `LttM-saint` | `pearlSaint` |
+| `LttM-FP-saint` | `pearlSaint` |
+| `PearlReader` | `watcher { projector and physicalPearl.X }` |
 
-A pearl found in multiple lists gets the union of all applicable transcribers.
+Echo transcribers use the named-scope `echo` accessor (`slugcatEchoIds` per-slugcat). The `base-slugcats` transcriber explicitly lists all non-special slugcats: `White { echo.X } or Yellow { echo.X } or Red { echo.X } or Gourmand { echo.X } or Rivulet { echo.X } or Inv { echo.X } or Spear { echo.X }`. The `saint` transcriber uses `Saint { echo.X }`. The `artificer` transcriber uses `Artificer { echo.X }`.
 
-For everything else (broadcasts, LP broadcasts, echoes, oracle dialogues, iterator dialogue items, and all rule-based entries), all transcribers of the matched entry are unlocked, since no per-transcriber save data exists for those categories.
+For proxy pearl types (Misc, BroadcastMisc, PebblesPearl), transcribers use per-transcriber `md-save-unlock` conditions. See the section on iterator pearl proxies below for details.
 
-For the proxy-detected pearl types (Misc, BroadcastMisc, PebblesPearl), only transcribers whose context names appear in the inferred set are unlocked. See the section on iterator pearl proxies below for details.
+---
+
+## Summary Categorization
+
+After matching, every detected entry is counted into one of four buckets for the save-file summary display. The bucket is determined by the entry's `type` metadata field.
+
+| Bucket | `type` value | Examples |
+|---|---|---|
+| Transcriptions | `pearl` | Named pearls, Misc, BroadcastMisc, PebblesPearl, echo-type entries |
+| Broadcasts | `broadcast` | Region chatlogs, LP story broadcasts, dev commentary |
+| Echoes | `echo` | Ghost echo monologues |
+| Various | anything else (`item`) | Oracle dialogues (FP/LttM), iterator item dialogues, Watcher encounters |
+
+The implementation is in the `applyCollectibles` function in `saveCollectibles.ts`.
 
 ---
 
 ## Named Data Pearls
 
-30 items. Detected by matching `pearl.metadata.internalId` against the union of all four lorePearls lists.
+30 items. Detected via per-transcriber `md-save-unlock` DSL conditions in each pearl's txt file using the `pearlBase`, `pearlArtificer`, `pearlSpearmaster`, and `pearlSaint` global accessors. An entry is matched if any transcriber's condition evaluates to true.
 
 The 30 internalIds and their corresponding collection index IDs:
 
@@ -133,7 +162,7 @@ Notes:
 
 ## Region Chatlog Broadcasts
 
-18 items. Detected by matching `pearl.metadata.internalId` against a set accumulated from:
+18 items. Each broadcast txt file carries `save-unlock: global { broadcast.X }` where X is its internalId. The `broadcast` accessor checks the `broadcastInternalIds` set, which is accumulated from:
 - `MiscProgRecord.broadcasts` (Watcher's region broadcasts)
 - All `chatLogs` arrays across every SaveStateRecord
 - All `prePebChatLogs` arrays across every SaveStateRecord
@@ -184,11 +213,13 @@ There are only 7 white broadcast dialogue files (LP_0 through LP_6). Gray broadc
 
 ## Echoes
 
-10 items. Detected via `deathPersistentData.ghosts`, which is a list of `{ ghostId, count }` entries swept across all SaveStateRecords. An echo is considered found when `count >= 1`. A count of exactly 0 means the player approached the echo but did not complete a conversation.
+10 items. Detected via per-transcriber `md-save-unlock` DSL conditions using the named-scope `echo` accessor, which checks `slugcatEchoIds` (a per-slugcat Map built from `deathPersistentData.ghosts`). An echo is considered found for a slugcat when its `count >= 1`. A count of exactly 0 means the player approached the echo but did not complete a conversation.
 
 The ghost region code matches the last underscore-separated segment of the collection index ID: `Echo_Monologue_CC` uses ghostId `CC`.
 
 Ghost IDs: `CC`, `SH`, `SI`, `LF`, `UW`, `SB`, `MS`, `UG`, `SL`, `LC`.
+
+Transcriber conditions: `saint` → `Saint { echo.X }`. `artificer` → `Artificer { echo.X }`. `base-slugcats` → explicit list: `White { echo.X } or Yellow { echo.X } or Red { echo.X } or Gourmand { echo.X } or Rivulet { echo.X } or Inv { echo.X } or Spear { echo.X }`. Note: MS, UG, and SL only have a `saint` transcriber (Saint-exclusive regions). SH only has `base-slugcats`.
 
 Note: `MS` is also the internalId of the `GW_DULL_YELLOW` data pearl. These are matched through entirely separate code paths and do not conflict.
 
@@ -250,11 +281,21 @@ Several entries have more precise conditions:
 
 `LttM_Dialogue_spearmaster_Ending_Broadcast`: fires when Spearmaster completes the alt ending at the Farm Arrays communications array, triggering chatlog `Chatlog_SI9`. Detection: `Chatlog_SI9` present in the global broadcast ID set. Confidence: exact.
 
-`LttM_Dialogue_saint_Rubicon`: fires during Saint's Rubicon ascension of Moon. Detection: `deathPersistentData.looksToTheDoom == true` for `Saint`. The `looksToTheDoom` field (save key `LOOKSTOTHEDOOM`, game name `ripMoon`) is set during the encounter, before ascension completes. Confidence: exact.
+`LttM_Dialogue_saint_Rubicon` and `FP_Dialogue_saint_Rubicon`: both entries contain three transcribers representing the three Rubicon scenarios. Each transcriber has its own per-transcriber `md-save-unlock` condition based on `looksToTheDoom` (Moon killed by Saint's ascension burst, save key `LOOKSTOTHEDOOM`) and `zeroPebbles` (FP killed, save key `ZEROPEBBLES`) for the `Saint` slugcat scope.
 
-Note on Rubicon variant detection: three dialogue variants exist in source (file 133: Moon only, file 134: FP only, file 135: both). File 135 is the typical case where both are ascended. The respective flags `looksToTheDoom` and `zeroPebbles` identify which fired.
+| Transcriber | Condition | Scenario |
+|---|---|---|
+| `LttM-FP-saint` | `zeroPebbles and looksToTheDoom` | Both killed |
+| `FP` | `zeroPebbles and !looksToTheDoom` | Only FP killed |
+| `LttM-saint` | `looksToTheDoom and !zeroPebbles` | Only Moon killed |
 
-`LttM_short_Dialogue_*` (11 items): generic short reaction dialogues not specific to any slugcat. Detection: any slugcat has `playerEncounters > 0`. Confidence: approximate.
+Both files use identical conditions; they represent the same scenarios and are detected together.
+
+`LttM_short_Dialogue_Receiving_Neuron_Fly`: fires when Moon receives a neuron swarmer. Detection: `slaiState.integersArray[4]` (`totNeuronsGiven`) >= 1 for the relevant slugcat. The `LttM-rivulet` transcriber checks `Rivulet`; the `LttM-post-collapse` transcriber checks any slugcat. Confidence: exact.
+
+`LttM_short_Dialogue_Seeing_Slugcat_bringing_a_Neuron_Fly`: fires when Moon sees the player approaching with a neuron. Detection: any slugcat has `playerEncounters > 0`. Confidence: approximate (fires on Moon visit; player may not have had a neuron).
+
+`LttM_short_Dialogue_*` (remaining 9 items): generic short reaction dialogues. Detection: any slugcat has `playerEncounters > 0`. Confidence: approximate.
 
 `LttM_SAINT_ANY_OTHER`: matched by `Saint` with `playerEncounters > 0`.
 
@@ -342,15 +383,19 @@ Confidence: approximate.
 
 ### BroadcastMisc
 
-Broadcast node relic pearls, readable by Moon. These are cream-colored DataPearls placed as physical objects in room settings files at every LP broadcast node location, approximately 25 rooms across the game world: `UW_J01`, `SS_D08`, `SU_A17`, `SH_B03`, `SB_C07`, `HI_B02`, `LF_D01`, `DS_A11`, `GW_E02`, `GW_D01`, `GW_C04`, `SI_A07`, `SI_B02`, `SI_B12`, `SI_C07`, `SI_D05`, `SH_E05`, `HI_A18`, `DS_A19`, `CC_C04`, `CC_C11`, `SL_B04`, `SL_EDGE02`, `VS_A05`, `RM_D08`.
+Broadcast node relic pearls, readable by Moon or FP (Artificer only). Each room settings file carries a slugcat Filter controlling which campaigns see the pearl. Per-slugcat availability is documented in `doc/research/broadcast-misc-locations.md`.
 
-Each pearl has a companion Filter PlacedObject specifying which slugcats cannot see it. Artificer and Spearmaster are excluded at almost all locations (they triggered the broadcasts rather than receiving them). Some rooms additionally exclude Hunter and Gourmand.
+Detection uses two pre-computed boolean flags (`broadcastMiscLttM`, `broadcastMiscFP`) derived at parse time from `slugcatVisitedRooms`. For each slugcat in the table, the check is: did they visit any of their available BroadcastMisc rooms AND their oracle room?
 
-`LttM-post-collapse` context: any slugcat except `Spear` and `Artificer` that has visited `SL_AI`.
+`LttM-post-collapse` context (`broadcastMiscLttM`): White, Yellow, Red, Gourmand, Rivulet, Saint, or Inv visited at least one of their campaign-specific BroadcastMisc rooms AND visited `SL_AI`. Spearmaster has no BroadcastMisc rooms. Watcher is excluded (does not interact with Moon via this dialogue path).
 
-BroadcastMisc pearls have no individual tracking. The 32 collection index entries all share internalId `BroadcastMisc` and cannot be individually distinguished. They are all unlocked or locked together based on the room visit proxy.
+`FP-artificer` context (`broadcastMiscFP`): Artificer visited `SI_A07` (their only BroadcastMisc room) AND visited `SS_AI` (FP's chamber, where they read the pearl).
 
-Confidence: approximate.
+The conditions are expressed in the dialogue file as `global { broadcastMiscLttM }` and `global { broadcastMiscFP }` on each transcriber. The `BROADCAST_MISC_SLUGCATS` table in `saveCollectibles.ts` is the authoritative per-slugcat room mapping.
+
+BroadcastMisc pearls have no individual tracking. All entries share internalId `BroadcastMisc` and are unlocked together.
+
+Confidence: approximate (room visit is necessary but not sufficient).
 
 ### Note on BroadcastMisc and arena challenges
 
@@ -487,7 +532,7 @@ Physical item scan: DataPearl items persist across cycle boundaries if the playe
 
 Fixed-location projections (WAUA, WORA, DRONE, ABSTRACT): these are world-placed pearls with fixed positions. They may appear in the physical scan if the player picked them up, but can also be read in-place without ever being carried. For these entries, the gate condition is `WAUA_PEARL` visit alone. Confidence: approximate.
 
-Misc projections (`Watcher_Pearl_Misc_Projection_*`): image or audio sequences with no carry mechanic. Gate condition: `WAUA_PEARL` visit. Confidence: approximate.
+Misc projections (`Watcher_Pearl_Misc_Projection_*`): image or audio sequences with no carry mechanic. These include the audio pearl files in `watcher_pearls/audio/`. Each carries `save-unlock: watcher { projector and physicalPearl.ID }` where `projector` checks `WAUA_PEARL` visit and `physicalPearl.ID` checks the physical item scan. Confidence: approximate.
 
 ---
 
@@ -561,6 +606,7 @@ Note on dev commentary: the `allChallengesCompleted` proxy (all 70 `challengesCo
 |--------------------------------|------------------------|----------------------------------------------------------------|
 | `slaiState.integersArray[0]`   | (SLAISTATE index 0)    | playerEncounters; LttM detection                               |
 | `slaiState.integersArray[1]`   | (SLAISTATE index 1)    | encountersWithMark; Hunter 2nd visit, Rivulet ending precision |
+| `slaiState.integersArray[4]`   | (SLAISTATE index 4)    | totNeuronsGiven; neuron fly receiving dialogue detection        |
 | `slaiState.miscItemsDescribed` |                        | Iterator item dialogue detection                               |
 | `ssaiConversationsHad`         | `SSaiConversationsHad` | FP dialogue detection                                          |
 | `moonRevived`                  | `MOONHEART`            | Rivulet/Saint ending state                                     |
@@ -578,6 +624,27 @@ Note on dev commentary: the `allChallengesCompleted` proxy (all 70 `challengesCo
 
 | Field                                                         | Used for                                                    |
 |---------------------------------------------------------------|-------------------------------------------------------------|
-| `regionStates[*].roomsVisited`                                | Room visit proxies: `SS_AI`, `SL_AI`, `RM_AI`, `WAUA_PEARL` |
+| `regionStates[*].roomsVisited`                                | Room visit proxies: `SS_AI`, `SL_AI`, `RM_AI`, `WAUA_PEARL`, BroadcastMisc rooms |
 | `regionStates[*].objects`                                     | Physical pearl scan (Watcher named pearls)                  |
 | `swallowedItems`, `playerGrasps`, `objectTrackers`, `objects` | Physical pearl scan                                         |
+
+### DSL global set accessors (named pearl sources)
+
+These accessors take a pearl internalId as the key and check the corresponding `pearlSources` Map entry.
+
+| DSL accessor | Meaning |
+|---|---|
+| `global { pearl.X }` | Pearl X was found via any source |
+| `global { pearlBase.X }` | Pearl X is in `lorePearls` (base route) |
+| `global { pearlArtificer.X }` | Pearl X is in `lorePearlsArtificer` |
+| `global { pearlSpearmaster.X }` | Pearl X is in `lorePearlsSpearmaster` |
+| `global { pearlSaint.X }` | Pearl X is in `lorePearlsSaint` |
+
+### Precomputed flags (not raw save fields)
+
+These are derived from save data in `extractCollectibles` and exposed as DSL globals.
+
+| Flag | DSL accessor | Derivation |
+|---|---|---|
+| `broadcastMiscLttM` | `global { broadcastMiscLttM }` | Any LttM-eligible slugcat visited a campaign-specific BroadcastMisc room AND `SL_AI`. Source table: `BROADCAST_MISC_SLUGCATS` in `saveCollectibles.ts`. |
+| `broadcastMiscFP` | `global { broadcastMiscFP }` | Artificer visited `SI_A07` AND `SS_AI`. |

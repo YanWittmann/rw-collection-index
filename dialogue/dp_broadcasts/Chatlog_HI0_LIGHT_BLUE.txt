@@ -1,6 +1,7 @@
 internalId: Chatlog_HI0
 color: #667ad1
 type: broadcast
+saveUnlock: global { broadcast.Chatlog_HI0 }
 name: Light Blue
 map: region=HI, room=A18, mapSlugcat=spear
 tag: downpour

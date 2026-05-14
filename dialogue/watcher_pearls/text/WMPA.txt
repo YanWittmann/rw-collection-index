@@ -3,6 +3,7 @@ color: #66bf66
 type: pearl
 name: Notion of Self
 tag: watcher
+saveUnlock: watcher { projector and physicalPearl.TEXT_NOTIONOFSELF }
 map: region=WMPA, room=C06, mapSlugcat=watcher
 
 === transcription: PearlReader

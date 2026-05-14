@@ -8,7 +8,7 @@ import { generateMapLinkFromMapInfo, getMapLocations, hasMapLocations } from "./
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
 import { Popover, PopoverContent, PopoverTrigger } from "@shadcn/components/ui/popover"
 import { RwTabButton } from "../other/RwTabButton"
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import copy from 'copy-to-clipboard';
 import RwShareTextEditor, { preProcessContent } from "../share/RwShareTextEditor";
 import { RwIconButton } from "../other/RwIconButton";
@@ -34,8 +34,60 @@ export function DialogueActionTabs({
                                        selectedTranscriberIndex
                                    }: DialogueActionTabsProps) {
     const { sourceFileDisplay, setSourceFileDisplay, sourceData } = useAppContext();
-    const mapLocations = getMapLocations(transcriberData)
+    const mapLocations = useMemo(() => getMapLocations(transcriberData), [transcriberData]);
     const hasMultipleLocations = mapLocations.length > 1
+
+    const shareDefaultText = useMemo(() => {
+        if (transcriberData.lines.length === 0) return "";
+        let lines: DialogueLine[] = JSON.parse(JSON.stringify(transcriberData.lines));
+        const firstLine = lines[0];
+        const displayType = firstLine.text === "MONO" ? "mono" : "centered"
+        if (displayType === "mono") {
+            lines = lines.slice(1);
+            return lines.map(d => {
+                return ReactDOMServer.renderToStaticMarkup(renderMonoText(d.text.replace("\n\n", "\n"), undefined));
+            }).join("\n");
+        } else {
+            return lines.map(d => {
+                let speakerPrefix = "";
+                let speakerSuffix = "";
+                const speakerColor = speakersColors[d.speaker ?? ""];
+                if (d.speaker) {
+                    if (speakerColor) {
+                        speakerPrefix = `<span style="color: ${speakerColor};">${d.speaker}: `;
+                        speakerSuffix = "</span>";
+                    } else {
+                        speakerPrefix = `${d.speaker}: `;
+                    }
+                }
+                return speakerPrefix + renderDialogueLine(d.text) + speakerSuffix;
+            }).join("\n");
+        }
+    }, [transcriberData]);
+
+    const sourceDialogueItems = useMemo(() => {
+        if (!transcriberData.metadata.sourceDialogue) return [];
+        return transcriberData.metadata.sourceDialogue.map((sourcePath: string, index: number) => {
+            const filename = sourcePath.split(/[/\\]/).pop() || `Source File ${index + 1}`;
+            const foundEntry = findSourceDialogue(sourcePath, sourceData);
+            return {
+                id: `source-file-${index}`,
+                title: filename,
+                subtitle: foundEntry ? foundEntry.p.replaceAll("\\", "/") : "Entry unavailable. Likely an error.",
+                onClick: () => setSourceFileDisplay(sourcePath),
+            };
+        });
+    }, [transcriberData, sourceData, setSourceFileDisplay]);
+
+    const mapLocationItems = useMemo(() => mapLocations.map((location: MapInfo, index: number) => ({
+        id: `${location.region}_${location.room}_${index}`,
+        title: `${regionNames[location.region] || "Unknown"} (${location.region})`,
+        subtitle: `Room: ${location.room}`,
+        onClick: location.impl !== "none" ? (() => {
+            const link = generateMapLinkFromMapInfo(location);
+            if (link) window.open(link, "_blank")
+        }) : undefined,
+    })), [mapLocations]);
 
     const tabs = []
 
@@ -102,33 +154,7 @@ export function DialogueActionTabs({
                                     title: "Export as image",
                                     subtitle: "Share the transcription text",
                                     customElement: <RwShareTextEditor
-                                        defaultText={(() => {
-                                            if (transcriberData.lines.length === 0) return "";
-                                            let lines: DialogueLine[] = JSON.parse(JSON.stringify(transcriberData.lines));
-                                            const firstLine = lines[0];
-                                            const displayType = firstLine.text === "MONO" ? "mono" : "centered"
-                                            if (displayType === "mono") {
-                                                lines = lines.slice(1);
-                                                return lines.map(d => {
-                                                    return ReactDOMServer.renderToStaticMarkup(renderMonoText(d.text.replace("\n\n", "\n"), undefined));
-                                                }).join("\n");
-                                            } else {
-                                                return lines.map(d => {
-                                                    let speakerPrefix = "";
-                                                    let speakerSuffix = "";
-                                                    const speakerColor = speakersColors[d.speaker ?? ""];
-                                                    if (d.speaker) {
-                                                        if (speakerColor) {
-                                                            speakerPrefix = `<span style="color: ${speakerColor};">${d.speaker}: `;
-                                                            speakerSuffix = "</span>";
-                                                        } else {
-                                                            speakerPrefix = `${d.speaker}: `;
-                                                        }
-                                                    }
-                                                    return speakerPrefix + renderDialogueLine(d.text) + speakerSuffix;
-                                                }).join("\n");
-                                            }
-                                        })()}
+                                        defaultText={shareDefaultText}
                                         preProcessContent={preProcessContent}
                                         onExport={() => console.log("export")}
                                         closeIcon={
@@ -205,17 +231,7 @@ export function DialogueActionTabs({
                             sideOffset={5}
                         >
                             <RwScrollableList
-                                items={transcriberData.metadata.sourceDialogue.map((sourcePath: string, index: number) => {
-                                    const filename = sourcePath.split(/[/\\]/).pop() || `Source File ${index + 1}`
-                                    const foundEntry = findSourceDialogue(sourcePath, sourceData);
-
-                                    return {
-                                        id: `source-file-${index}`,
-                                        title: filename,
-                                        subtitle: foundEntry ? foundEntry.p.replaceAll("\\", "/") : "Entry unavailable. Likely an error.",
-                                        onClick: () => setSourceFileDisplay(sourcePath),
-                                    }
-                                })}
+                                items={sourceDialogueItems}
                             />
                         </PopoverContent>
                     </Tooltip>
@@ -277,15 +293,7 @@ export function DialogueActionTabs({
                             sideOffset={5}
                         >
                             <RwScrollableList
-                                items={mapLocations.map((location: MapInfo, index: number) => ({
-                                    id: `${location.region}_${location.room}_${index}`,
-                                    title: `${regionNames[location.region] || "Unknown"} (${location.region})`,
-                                    subtitle: `Room: ${location.room}`,
-                                    onClick: location.impl !== "none" ? (() => {
-                                        const link = generateMapLinkFromMapInfo(location);
-                                        if (link) window.open(link, "_blank")
-                                    }) : undefined,
-                                }))}
+                                items={mapLocationItems}
                             />
                         </PopoverContent>
                     </Tooltip>

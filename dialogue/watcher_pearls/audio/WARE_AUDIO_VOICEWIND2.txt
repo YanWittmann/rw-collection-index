@@ -1,6 +1,7 @@
 internalId: AUDIO_VOICEWIND2
 color: #6a471a
 type: pearl
+saveUnlock: watcher { projector and physicalPearl.AUDIO_VOICEWIND2 }
 name: Audio: Voicewind 2
 tag: watcher
 map: region=WARE, room=I13, mapSlugcat=watcher

@@ -1,6 +1,7 @@
 type: item
 subType: spearmaster
 tag: downpour
+saveUnlock: Spear { fp }
 
 === transcription: FP
 md-type: pearl

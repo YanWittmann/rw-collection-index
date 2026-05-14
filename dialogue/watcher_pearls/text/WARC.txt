@@ -3,6 +3,7 @@ color: #bd7a8a
 type: pearl
 name: Contempt
 tag: watcher
+saveUnlock: watcher { projector and physicalPearl.TEXT_CONTEMPT }
 map: region=WARC, room=C10, mapSlugcat=watcher
 
 === transcription: PearlReader

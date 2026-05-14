@@ -1,5 +1,6 @@
 type: item
 subType: survivor
+saveUnlock: White { fp }
 
 === transcription: FP
 md-type: pearl

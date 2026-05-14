@@ -27,6 +27,7 @@ export interface Dialogue {
         mapInfo?: string;
         map?: MapInfo[];
         sourceDialogue?: string[];
+        saveUnlock?: string;
     }
     lines: DialogueLine[];
 }
@@ -49,6 +50,7 @@ export interface PearlData {
         mapInfo?: string;
         map?: MapInfo[];
         sourceDialogue?: string[];
+        saveUnlock?: string[];
     };
     transcribers: Dialogue[];
     hints: Hint[];

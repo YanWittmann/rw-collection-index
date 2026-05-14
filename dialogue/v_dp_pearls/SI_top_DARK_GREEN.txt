@@ -6,6 +6,7 @@ map: region=SI, room=A07, mapSlugcat=white
 info: ${SI-CHAT}
 
 === transcription: FP-artificer
+md-saveUnlock: global { pearlArtificer.SI_top }
 md-sourceDialogue: 20-artificer.txt
 This is an old conversation between myself and a close friend who I considered a mentor.
 We have... Not spoken for a long time now. I can't bring myself to do so. Not after what happened between us.
@@ -15,6 +16,7 @@ I can't go back now. All I can try to do is recover and try again.
 I have to.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { pearlBase.SI_top }
 md-sourceDialogue: 20.txt
 This one is an old conversation between Five Pebbles and a friend of his. I'll read it to you.
 "1591.290 - PRIVATE\nFive Pebbles, Seven Red Suns

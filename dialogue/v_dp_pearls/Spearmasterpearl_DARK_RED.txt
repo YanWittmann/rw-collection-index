@@ -4,6 +4,7 @@ type: pearl
 name: Dark Red (Spearmaster)
 
 === transcription: LttM-pre-collapse
+md-saveUnlock: global { pearlSpearmaster.Spearmasterpearl }
 md-sourceDialogue: chatlog_si9.txt
 [LIVE BROADCAST] - (ANNOUNCEMENT) Big Sis Moon to Local Group
 BSM: This will be my final broadcast to the local group.

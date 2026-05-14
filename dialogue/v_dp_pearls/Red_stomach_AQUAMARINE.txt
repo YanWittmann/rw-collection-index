@@ -5,6 +5,7 @@ name: Aquamarine (Hunter)
 md-sourceDialogue:
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { pearlBase.Red_stomach }
 md-sourceDialogue: 51.txt
 "Triple affirmative! Triple affirmative!
 In all seriousness though, noticed barely any rain from your can so figured a little support might be in order.

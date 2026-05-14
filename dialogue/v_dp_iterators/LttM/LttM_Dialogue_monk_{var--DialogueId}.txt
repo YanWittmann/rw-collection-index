@@ -1,5 +1,6 @@
 type: item
 subType: monk
+saveUnlock: Yellow { lttm }
 
 === transcription: LttM-post-collapse
 md-type: pearl

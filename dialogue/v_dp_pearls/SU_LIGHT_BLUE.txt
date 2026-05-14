@@ -5,17 +5,20 @@ name: Light Blue
 map: region=SU, room=B05, mapSlugcat=white
 
 === transcription: PearlReader
+md-saveUnlock: watcher { projector and physicalPearl.SU }
 md-sourceDialogue: repeatingmantra_a.png
 md-sourceDialogue: repeatingmantra_b.png
 md-tag: watcher
 ![PearlReader/SU.png][STYLE=rounded]
 
 === transcription: FP-artificer
+md-saveUnlock: global { pearlArtificer.SU }
 md-sourceDialogue: 41-artificer.txt
 This pearl is an amulet of repeating mantras, followed by a termination verse. Likely a small decoration lost from some garment. I cannot imagine it has much significance.
 Pearls like these were worn simply as beads, some in sets of hundreds. I am sure the scavengers would have more use for this than I would.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { pearlBase.SU }
 md-sourceDialogue: 41.txt
 Its entire memory is filled with a mantra repeated... 5061 times - and then a termination verse. It was worn as an amulet, probably together with many identical others forming a pattern on some garment.
 The repeating mantra is important because it symbolizes the cyclical nature of life and death, and the termination verse is a symbol for ascension above and beyond it. I don't know how familiar you are with the nature of life and death, but I imagine like all living creatures you have some intuitive knowledge?

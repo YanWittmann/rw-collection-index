@@ -3,6 +3,7 @@ color: #e6b380
 type: pearl
 name: Drone
 tag: watcher
+saveUnlock: watcher { projector and physicalPearl.DRONE }
 map: region=WPTA, room=D01, mapSlugcat=watcher
 
 === transcription: PearlReader

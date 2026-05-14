@@ -5,6 +5,7 @@ map: region=WORA, room=AI, mapSlugcat=watcher
 mapInfo: The Prince can only be encountered once the four portals in the Throne have been created.
 
 === transcription: rot-prince
+md-saveUnlock: watcher { prince >= 222 }
 md-internalId: Prince_2
 md-var-DialogueId: Prince_1_2
 md-name: First Encounter (Second Paragraph)
@@ -15,6 +16,7 @@ Much time has passed since your last visit, and my kingdom grows.
 Oh the things I have seen and tasted!
 
 === transcription: rot-prince
+md-saveUnlock: watcher { prince >= 222 }
 md-internalId: Prince_1
 md-var-DialogueId: Prince_1_2
 md-super-name: First Encounter
@@ -27,6 +29,7 @@ Greetings, friend! Oh you have come!
 Please, be comfortable.
 
 === transcription: rot-prince
+md-saveUnlock: watcher { prince >= 224 }
 md-internalId: Prince_3
 md-var-DialogueId: Prince_3
 md-name: 5+ Infected Regions
@@ -40,6 +43,7 @@ But I am not wholly them, and not blind to the folly of their forbearers.
 I am... something new.
 
 === transcription: rot-prince
+md-saveUnlock: watcher { prince >= 225 }
 md-internalId: Prince_4
 md-var-DialogueId: Prince_4
 md-name: 7+ Infected Regions
@@ -53,6 +57,7 @@ I have tasted and I have become.
 It is my true purpose I believe. Perhaps the only purpose!
 
 === transcription: rot-prince
+md-saveUnlock: watcher { prince >= 226 }
 md-internalId: Prince_5
 md-var-DialogueId: Prince_5
 md-name: 9+ Infected Regions
@@ -70,6 +75,7 @@ A TRUE end to the pattern.
 That is my vision.
 
 === transcription: rot-prince
+md-saveUnlock: watcher { prince >= 227 }
 md-internalId: Prince_6
 md-var-DialogueId: Prince_6
 md-name: 11+ Infected Regions
@@ -83,6 +89,7 @@ The paths close and change.
 I can almost feel... a will... at odds with my own.
 
 === transcription: rot-prince
+md-saveUnlock: watcher { prince >= 228 }
 md-internalId: Prince_7
 md-var-DialogueId: Prince_7
 md-name: 13+ Infected Regions

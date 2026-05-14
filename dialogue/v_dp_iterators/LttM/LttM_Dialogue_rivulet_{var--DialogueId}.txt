@@ -1,5 +1,6 @@
 type: item
 subType: rivulet
+saveUnlock: Rivulet { lttm }
 
 === transcription: LttM-rivulet
 md-type: pearl
@@ -28,6 +29,7 @@ I hope you understand, my little friend. I don't mean to be discourteous... I am
 
 === transcription: LttM-rivulet
 md-type: pearl
+md-saveUnlock: Rivulet { energyRailOff }
 md-var-DialogueId: Returning_after_taking_the_Rarefaction_Cell
 md-name: Returning after taking the Rarefaction Cell
 Hello little friend!
@@ -38,6 +40,7 @@ However as long as the microbes in my processing strata continue to function, I'
 
 === transcription: LttM-rivulet
 md-type: pearl
+md-saveUnlock: Rivulet { altEnding and moonMark >= 5 }
 md-var-DialogueId: Returning_after_placing_the_Rarefaction_Cell
 md-name: Returning after placing the Rarefaction Cell
 md-sourceDialogue: 154.txt
@@ -62,6 +65,7 @@ MONO
 
 === transcription: broadcast
 md-type: broadcast
+md-saveUnlock: global { broadcast.Chatlog_LM7 }
 md-var-DialogueId: Ending_Broadcast
 md-name: Ending Broadcast
 md-sourceDialogue: chatlog_lm7.txt
@@ -90,6 +94,7 @@ BSM: I'm sorry, Five Pebbles. I'll always be here if you need someone to talk to
 
 === transcription: LttM-rivulet
 md-type: pearl
+md-saveUnlock: Rivulet { altEnding and moonMark >= 6 }
 md-var-DialogueId: Returning_after_ending
 md-name:  Returning after ending
 Ruffles, don't fall asleep here, it's not safe!

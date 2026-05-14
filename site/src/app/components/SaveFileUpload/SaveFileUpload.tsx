@@ -5,6 +5,7 @@ import { RwIconButton } from '../other/RwIconButton';
 import { useAppContext } from '../../context/AppContext';
 import { loadWasm, parseSaveFile } from '../../utils/wasmLoader';
 import { applyCollectibles, extractCollectibles, SaveCollectibles, SaveMatchSummary } from '../../utils/saveCollectibles';
+import { loadSaveUnlockEvaluator, SaveUnlockEval } from '../../utils/saveUnlockLoader';
 import { SaveFileInfoDialog } from './SaveFileInfoDialog';
 import { count } from '../../utils/track';
 
@@ -17,6 +18,7 @@ export function SaveFileUpload() {
     const [dialogPhase, setDialogPhase] = useState<'upload' | 'confirm'>('upload');
     const [errorMessage, setErrorMessage] = useState<React.ReactNode | null>(null);
     const [pendingCollectibles, setPendingCollectibles] = useState<SaveCollectibles | null>(null);
+    const [pendingEvaluator, setPendingEvaluator] = useState<SaveUnlockEval | null>(null);
     const [pendingFile, setPendingFile] = useState<File | null>(null);
     const [matchSummary, setMatchSummary] = useState<SaveMatchSummary | null>(null);
 
@@ -30,7 +32,10 @@ export function SaveFileUpload() {
     const processFile = useCallback(async (file: File) => {
         setErrorMessage(null);
         setState('loading-wasm');
-        try { await loadWasm(); } catch {
+        let evaluator: SaveUnlockEval;
+        try {
+            [, evaluator] = await Promise.all([loadWasm(), loadSaveUnlockEvaluator()]);
+        } catch {
             setErrorMessage('Failed to load save file parser.');
             setState('error');
             return;
@@ -53,8 +58,9 @@ export function SaveFileUpload() {
         try {
             const parsed = await parseSaveFile(xml);
             const collectibles = extractCollectibles(parsed);
-            const { summary } = applyCollectibles(pearls, collectibles, 'preview');
+            const { summary } = applyCollectibles(pearls, collectibles, 'preview', evaluator);
             setPendingCollectibles(collectibles);
+            setPendingEvaluator(evaluator);
             setPendingFile(file);
             setMatchSummary(summary);
             setState('done');
@@ -89,8 +95,8 @@ export function SaveFileUpload() {
     }, [pearls]);
 
     const applyFile = useCallback((donate: boolean, note: string) => {
-        if (!pendingCollectibles) return;
-        const { foundData } = applyCollectibles(pearls, pendingCollectibles, 'unlock');
+        if (!pendingCollectibles || !pendingEvaluator) return;
+        const { foundData } = applyCollectibles(pearls, pendingCollectibles, 'unlock', pendingEvaluator);
         setSaveFound(foundData);
         if (donate && pendingFile) {
             const formData = new FormData();
@@ -104,15 +110,17 @@ export function SaveFileUpload() {
         setShowDialog(false);
         setDialogPhase('upload');
         setPendingCollectibles(null);
+        setPendingEvaluator(null);
         setPendingFile(null);
         setMatchSummary(null);
         setState('done');
-    }, [pendingCollectibles, pendingFile, pearls, setSaveFound]);
+    }, [pendingCollectibles, pendingEvaluator, pendingFile, pearls, setSaveFound]);
 
     const handleCancel = useCallback(() => {
         setShowDialog(false);
         setDialogPhase('upload');
         setPendingCollectibles(null);
+        setPendingEvaluator(null);
         setPendingFile(null);
         setMatchSummary(null);
         setErrorMessage(null);

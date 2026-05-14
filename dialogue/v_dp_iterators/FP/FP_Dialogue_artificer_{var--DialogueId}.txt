@@ -1,5 +1,6 @@
 type: item
 subType: artificer
+saveUnlock: Artificer { fp }
 
 === transcription: FP-artificer
 md-type: pearl
@@ -37,6 +38,7 @@ I'm returning to my work. Unless you have anything productive for me, I have not
 
 === transcription: FP-artificer
 md-type: pearl
+md-saveUnlock: Artificer { fp >= 3 }
 md-var-DialogueId: Visiting_Multiple_Times
 md-name: Visiting Multiple Times
 md-sourceDialogue: none
@@ -56,6 +58,7 @@ MONO
 
 === transcription: FP-artificer
 md-type: pearl
+md-saveUnlock: global { pearlSource.artificer }
 md-var-DialogueId: Pebbles_Pearl
 md-name: Leaving as Pebbles reads
 MONO
@@ -67,6 +70,7 @@ MONO
 
 === transcription: FP-artificer
 md-type: pearl
+md-saveUnlock: global { pearlSource.artificer }
 md-var-DialogueId: Pebbles_Pearl
 md-name: Giving a Pearl
 MONO
@@ -92,6 +96,7 @@ MONO
 
 === transcription: FP-artificer
 md-type: pearl
+md-saveUnlock: Artificer { altEnding }
 md-var-DialogueId: Killing_Chieftain_Scavenger
 md-name: Returning after killing the Chieftain Scavenger
  Ah, you've returned. You know that I care very little for the creatures that wander through my facility.

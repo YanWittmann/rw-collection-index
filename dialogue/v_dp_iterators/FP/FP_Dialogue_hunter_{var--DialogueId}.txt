@@ -1,8 +1,10 @@
 type: item
 subType: hunter
+saveUnlock: Red { fp }
 
 === transcription: FP
 md-subType: item/Neuron_Fly_Hunter_icon
+md-saveUnlock: Red { fp and pebblesHelped }
 md-var-DialogueId: With_Green_Neuron
 md-name: With Green Neuron
 md-sourceDialogue: 46.txt
@@ -28,6 +30,7 @@ As I mentioned you do not have unlimited time.
 
 === transcription: FP
 md-type: pearl
+md-saveUnlock: Red { fp and !pebblesHelped }
 md-var-DialogueId: Without_Green_Neuron
 md-name: Without Green Neuron
 md-sourceDialogue: 47.txt

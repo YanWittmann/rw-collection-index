@@ -3,6 +3,7 @@ color: #007373
 type: pearl
 name: ABSTRACT
 tag: watcher
+saveUnlock: watcher { projector and physicalPearl.Abstract }
 map: region=WSKC, room=A30, mapSlugcat=watcher
 
 === transcription: PearlReader

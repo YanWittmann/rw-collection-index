@@ -1,6 +1,7 @@
 type: pearl
 tag: watcher
 info: Pearls without explicitly defined projections show a random miscellaneous projection.
+saveUnlock: watcher { projector }
 
 === transcription: PearlReader
 md-internalId: img1

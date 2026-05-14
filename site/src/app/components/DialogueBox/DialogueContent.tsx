@@ -2,7 +2,7 @@ import { getSpeakerInfo } from "../../utils/speakers"
 import type { DialogueLine } from "../../types/types"
 import { renderDialogueLine, sanitizeHtmlSafe } from "../../utils/renderDialogueLine"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 
 interface DialogueContentProps {
     lines: DialogueLine[]
@@ -16,32 +16,29 @@ const highlightText = (text: string, searchText?: string) => {
     return text.replace(regex, '<mark class="bg-yellow-500/50 text-yellow-200">$1</mark>')
 }
 
+const CSHARP_KEYWORDS = [
+    "abstract", "as", "base", "bool", "break", "byte", "case", "catch",
+    "char", "checked", "class", "const", "continue", "decimal", "default",
+    "delegate", "do", "double", "else", "enum", "event", "explicit", "extern",
+    "false", "finally", "fixed", "float", "for", "foreach", "goto", "if",
+    "implicit", "in", "int", "interface", "internal", "is", "lock", "long",
+    "namespace", "new", "null", "object", "operator", "out", "override", "params",
+    "private", "protected", "public", "readonly", "ref", "return", "sbyte", "sealed",
+    "short", "sizeof", "stackalloc", "static", "string", "struct", "switch",
+    "throw", "true", "try", "typeof", "uint", "ulong", "unchecked", "unsafe", "ushort",
+    "using", "virtual", "void", "volatile", "while"
+];
+const CSHARP_SPECIAL_KEYWORDS = ["new", "var", "typeof", "nameof", "this"];
+const CSHARP_SYNTAX_REGEX = new RegExp(
+    `(\\/\\/.*|\\/\\*[\\s\\S]*?\\*\\/)|(".*?(?<!\\\\)")|(\\b\\d+\\.?\\d*\\b)|` +
+    `\\b([A-Z]\\w*)(?=\\s*\\()|\\b(${CSHARP_SPECIAL_KEYWORDS.join('|')})\\b|(\\b(?:${CSHARP_KEYWORDS.join('|')})\\b)`,
+    'g'
+);
+
 const highlightCSharp = (code: string) => {
     const sanitized = sanitizeHtmlSafe(code);
-    const keywords = [
-        "abstract", "as", "base", "bool", "break", "byte", "case", "catch",
-        "char", "checked", "class", "const", "continue", "decimal", "default",
-        "delegate", "do", "double", "else", "enum", "event", "explicit", "extern",
-        "false", "finally", "fixed", "float", "for", "foreach", "goto", "if",
-        "implicit", "in", "int", "interface", "internal", "is", "lock", "long",
-        "namespace", "new", "null", "object", "operator", "out", "override", "params",
-        "private", "protected", "public", "readonly", "ref", "return", "sbyte", "sealed",
-        "short", "sizeof", "stackalloc", "static", "string", "struct", "switch",
-        "throw", "true", "try", "typeof", "uint", "ulong", "unchecked", "unsafe", "ushort",
-        "using", "virtual", "void", "volatile", "while"
-    ];
 
-    const specialKeywords = ["new", "var", "typeof", "nameof", "this"];
-    const keywordPattern = keywords.join('|');
-    const specialPattern = specialKeywords.join('|');
-
-    const syntaxRegex = new RegExp(
-        `(\\/\\/.*|\\/\\*[\\s\\S]*?\\*\\/)|(".*?(?<!\\\\)")|(\\b\\d+\\.?\\d*\\b)|` +
-        `\\b([A-Z]\\w*)(?=\\s*\\()|\\b(${specialPattern})\\b|(\\b(?:${keywordPattern})\\b)`,
-        'g'
-    );
-
-    return sanitized.replace(syntaxRegex, (...matches) => {
+    return sanitized.replace(CSHARP_SYNTAX_REGEX, (...matches) => {
         const [, comment, string, number, method, specialKeyword, keyword] = matches;
         if (comment) return `<span class="text-gray-400">${comment}</span>`;
         if (string) return `<span class="text-green-400">${string}</span>`;
@@ -265,56 +262,64 @@ const AudioRenderer = ({ path, alt }: { path: string, alt: string }) => {
 
 
 export function DialogueContent({ lines, searchText }: DialogueContentProps) {
-    if (lines.length === 0) return null;
+    const { processedContent, preloadImagePaths, displayType } = useMemo(() => {
+        if (lines.length === 0) {
+            return { processedContent: [], preloadImagePaths: new Set<string>(), displayType: "centered" as const };
+        }
 
-    const clonedLines = JSON.parse(JSON.stringify(lines)) as DialogueLine[];
-    const firstLine = clonedLines[0];
-    const isMonoMode = firstLine.text === "MONO";
-    const isSourceCode = clonedLines.some(line =>
-        line.text.includes("public void") || line.text.includes("if (") ||
-        line.text.includes("namespace ")
-    );
+        const clonedLines = JSON.parse(JSON.stringify(lines)) as DialogueLine[];
+        const firstLine = clonedLines[0];
+        const isMonoMode = firstLine.text === "MONO";
+        const isSourceCode = clonedLines.some(line =>
+            line.text.includes("public void") || line.text.includes("if (") ||
+            line.text.includes("namespace ")
+        );
 
-    const displayType = isMonoMode ? "mono" : isSourceCode ? "source-code" : "centered";
-    if (isMonoMode) clonedLines.shift();
+        const displayType = isMonoMode ? "mono" : isSourceCode ? "source-code" : "centered";
+        if (isMonoMode) clonedLines.shift();
 
-    const processedContent: (DialogueLine | {
-        type: 'sequence';
-        frames: DialogueLine[];
-        attributes: { [key: string]: string }
-    })[] = [];
-    const preloadImagePaths = new Set<string>();
+        const processedContent: (DialogueLine | {
+            type: 'sequence';
+            frames: DialogueLine[];
+            attributes: { [key: string]: string }
+        })[] = [];
+        const preloadImagePaths = new Set<string>();
 
-    let i = 0;
-    while (i < clonedLines.length) {
-        const line = clonedLines[i];
-        if (line.text.trim().startsWith('SEQUENCE')) {
-            const attributes = parseAttributes(line.text);
-            const sequenceFrames: DialogueLine[] = [];
-            let j = i + 1;
-            while (j < clonedLines.length) {
-                const mediaDetails = parseMediaDetails(clonedLines[j].text);
-                if (mediaDetails?.type !== 'image') break; // Sequences only support images
+        let i = 0;
+        while (i < clonedLines.length) {
+            const line = clonedLines[i];
+            if (line.text.trim().startsWith('SEQUENCE')) {
+                const attributes = parseAttributes(line.text);
+                const sequenceFrames: DialogueLine[] = [];
+                let j = i + 1;
+                while (j < clonedLines.length) {
+                    const mediaDetails = parseMediaDetails(clonedLines[j].text);
+                    if (mediaDetails?.type !== 'image') break; // Sequences only support images
 
-                preloadImagePaths.add(mediaDetails.path);
-                sequenceFrames.push(clonedLines[j]);
-                j++;
-            }
-            if (sequenceFrames.length > 0) {
-                processedContent.push({ type: 'sequence', frames: sequenceFrames, attributes });
-                i = j;
+                    preloadImagePaths.add(mediaDetails.path);
+                    sequenceFrames.push(clonedLines[j]);
+                    j++;
+                }
+                if (sequenceFrames.length > 0) {
+                    processedContent.push({ type: 'sequence', frames: sequenceFrames, attributes });
+                    i = j;
+                } else {
+                    i++;
+                }
             } else {
+                const mediaDetails = parseMediaDetails(line.text);
+                if (mediaDetails?.type === 'image') {
+                    preloadImagePaths.add(mediaDetails.path);
+                }
+                processedContent.push(line);
                 i++;
             }
-        } else {
-            const mediaDetails = parseMediaDetails(line.text);
-            if (mediaDetails?.type === 'image') {
-                preloadImagePaths.add(mediaDetails.path);
-            }
-            processedContent.push(line);
-            i++;
         }
-    }
+
+        return { processedContent, preloadImagePaths, displayType };
+    }, [lines, searchText]);
+
+    if (lines.length === 0) return null;
 
     return (
         <main className="space-y-3 pb-6">

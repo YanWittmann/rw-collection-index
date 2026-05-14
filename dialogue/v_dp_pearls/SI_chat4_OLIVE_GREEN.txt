@@ -6,6 +6,7 @@ map: region=SI, room=C08, mapSlugcat=white
 info: ${SI-CHAT}
 
 === transcription: FP-artificer
+md-saveUnlock: global { pearlArtificer.SI_chat4 }
 md-sourceDialogue: 23-artificer.txt
 This is a warning to the local group, from my senior and neighbor Looks to the Moon, about incoming forced communications over the network. She was not aware of my activities, and was being starved of water, as I was running a very sensitive process.
 The distance between one iterator to another is traditionally much larger than I am to her, and because of this we share many resources. The most important of which is our groundwater. I did not want her to be involved, but our shared resources prevented that from the start.
@@ -13,6 +14,7 @@ There is nothing that can be done now. I cannot forgive her interruption as it d
 We are both doomed if I do not find a way to reverse its effects, but the chances of doing so are slowly vanishing. Please let me get back to work.
 
 === transcription: LttM-pre-collapse
+md-saveUnlock: global { pearlSaint.SI_chat4 }
 md-sourceDialogue: 23-spear.txt
 It's me writing to the local iterator group... of a conversation I wish I could forget.
 "1654.110 - PUBLIC\nBig Sis Moon to Local Group
@@ -23,6 +25,7 @@ BSM: Before that happens, I will utilize my seniority privilege and use forced c
 In the end, I did use my forced communications, many times. If anything, it only made the situation worse.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { pearlBase.SI_chat4 }
 md-sourceDialogue: 23.txt
 It's me writing to the local iterator group. I have no memories of this...
 "1654.110 - PUBLIC\nBig Sis Moon to Local Group

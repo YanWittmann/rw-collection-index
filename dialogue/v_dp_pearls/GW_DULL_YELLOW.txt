@@ -5,6 +5,7 @@ name: Dull Yellow
 info: This pearl can only be obtained as Artificer or Spearmaster.
 
 === transcription: FP-artificer
+md-saveUnlock: global { pearlArtificer.MS }
 md-map: region=GW, room=TOWER07, mapSlugcat=artificer
 md-sourceDialogue: 105-artificer.txt
 This is a microbial log from the waste department.
@@ -13,6 +14,7 @@ There are pieces of myself down there, corrupted and rotting away. I do not advi
 I have not had much luck in that endeavor so far...
 
 === transcription: LttM-pre-collapse
+md-saveUnlock: global { pearlSpearmaster.MS }
 md-sourceDialogue: 105.txt
 md-map: region=GW, room=TOWER07, mapSlugcat=spear
 Ah, did you find this in the waste department? It is a log of microbial levels in a waste digestion tank.

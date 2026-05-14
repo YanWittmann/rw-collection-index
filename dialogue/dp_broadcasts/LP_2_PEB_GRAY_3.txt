@@ -1,6 +1,7 @@
 internalId: LP_2_PEB
 color: #7f7f7f
 type: broadcast
+saveUnlock: global { broadcast.LP_2_PEB }
 name: Sturdy Creature (Gray 3)
 map: MAP-GRAY-BROADCASTS
 mapInfo: ${MAP-LP-POST-PEB}

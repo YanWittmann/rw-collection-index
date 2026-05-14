@@ -1,6 +1,7 @@
 internalId: LP_2
 color: #ffffff
 type: broadcast
+saveUnlock: global { broadcast.LP_2 }
 name: Sending Information (White 3)
 map: MAP-WHITE-BROADCASTS
 mapInfo: ${MAP-LP-PRE-PEB}

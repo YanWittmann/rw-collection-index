@@ -21,6 +21,7 @@ info: To determine what dialogue to display for each encounter,\nthe game (mainl
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N1
+md-saveUnlock: watcher { maxRipple >= 1.5 }
 md-super-subType: watcher-ripple
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N1
@@ -40,6 +41,7 @@ Never forget that, my little shadow.
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N5
+md-saveUnlock: watcher { maxRipple >= 3.0 }
 md-super-subType: watcher-ripple
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N5
@@ -55,6 +57,7 @@ Yes, well I am lost!
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N2
+md-saveUnlock: watcher { maxRipple >= 4.5 }
 md-super-subType: watcher-ripple
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N2
@@ -77,6 +80,7 @@ I am VERY likable though! OAOAOAOAOAOA!!
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N3
+md-saveUnlock: watcher { minRipple >= 3.0 }
 md-super-subType: watcher-ripple
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N3
@@ -92,6 +96,7 @@ But following your thread brings me closer, perhaps, to how I was.
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N6
+md-saveUnlock: watcher { minRipple >= 4.0 }
 md-super-subType: watcher-ripple
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N6
@@ -111,6 +116,7 @@ My nest mothers would sing it to me.
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N7
+md-saveUnlock: watcher { minRipple >= 4.5 and !stSpawn.0 } or watcher { minRipple >= 5.0 }
 md-super-subType: watcher-ripple
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N7
@@ -141,6 +147,7 @@ md-sourceDialogue: SpinningTop/PauseConversation.cs
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N4
+md-saveUnlock: watcher { stSpawn.0 }
 md-super-subType: wa-region/wtdb
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N4
@@ -166,6 +173,7 @@ I was so fast! No-one could catch me!
 OAOAOAOAOAOA!!!!
 
 === transcription: spinning-top
+md-saveUnlock: watcher { rot }
 md-internalId: Ghost_ST_ROT1
 md-super-subType: wa-region/wdsr
 md-var-DialogueId: Ghost_ST_ROT1

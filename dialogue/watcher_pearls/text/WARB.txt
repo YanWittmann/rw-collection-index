@@ -3,6 +3,7 @@ color: #803399
 type: pearl
 name: Secret
 tag: watcher
+saveUnlock: watcher { projector and physicalPearl.TEXT_SECRET }
 map: region=WARB, room=F10, mapSlugcat=watcher
 
 === transcription: PearlReader

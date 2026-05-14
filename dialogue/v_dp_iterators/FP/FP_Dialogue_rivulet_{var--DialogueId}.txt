@@ -1,6 +1,7 @@
 type: item
 subType: rivulet
 tag: downpour
+saveUnlock: Rivulet { fp }
 
 === transcription: FP
 md-type: pearl
@@ -102,6 +103,7 @@ I've made my choice.
 
 === transcription: FP
 md-type: pearl
+md-saveUnlock: Rivulet { altEnding and fp >= 1 }
 md-transcriberName: Returning after restoring power to Looks to the Moon's facility
 md-var-DialogueId: Returning
 md-name: Returning to Five Pebbles
@@ -115,6 +117,7 @@ These ordeals have made me understand what they all tried to tell me.
 ...I don't have to go through this alone.
 
 === transcription: FP
+md-saveUnlock: Rivulet { altEnding and fp >= 2 }
 md-var-DialogueId: Subsequent_meetings
 md-name: Subsequent meetings
 md-tag: downpour

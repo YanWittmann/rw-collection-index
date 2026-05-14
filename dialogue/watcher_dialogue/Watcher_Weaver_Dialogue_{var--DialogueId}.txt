@@ -3,6 +3,7 @@ subType: void-weaver
 tag: watcher
 
 === transcription: void-weaver
+md-saveUnlock: watcher { weaver >= 1 }
 md-internalId: Weaver_1
 md-var-DialogueId: Weaver_1
 md-name: Weaver Encounter 1
@@ -12,6 +13,7 @@ A droplet of rain pierces the still water.
 A ripple, A ring, ever expanding.
 
 === transcription: void-weaver
+md-saveUnlock: watcher { weaver >= 2 }
 md-internalId: Weaver_2
 md-var-DialogueId: Weaver_2
 md-name: Weaver Encounter 2
@@ -21,6 +23,7 @@ Movement along the circumference of a ring.
 From one eye a loop, from one eye a spiral, from one eye the motion of a line.
 
 === transcription: void-weaver
+md-saveUnlock: watcher { weaver >= 3 }
 md-internalId: Weaver_3
 md-var-DialogueId: Weaver_3
 md-name: Weaver Encounter 3
@@ -31,6 +34,7 @@ A multiplex of rings, spirals, interacting in countless ways.
 A froth. A seeth. An effervescence of disruption!
 
 === transcription: void-weaver
+md-saveUnlock: watcher { weaver >= 4 }
 md-internalId: Weaver_4
 md-var-DialogueId: Weaver_4
 md-name: Weaver Encounter 4

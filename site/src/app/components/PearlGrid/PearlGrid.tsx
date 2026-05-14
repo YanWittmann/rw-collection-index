@@ -7,7 +7,7 @@ import { RwIconButton } from "../other/RwIconButton";
 import { FilterSection, PearlFilter } from "./PearlFilter";
 import { getSpeakerInfo, regionColors, regionNames, speakerNames } from "../../utils/speakers";
 import { OrderedChapter } from "../../utils/pearlOrder";
-import { useAppContext } from "../../context/AppContext";
+import { UnlockMode, useAppContext } from "../../context/AppContext";
 import { useFilteredPearls } from "../../hooks/useFilteredPearls";
 import { useChapterExpansion } from "../../hooks/useChapterExpansion";
 import { useKeyboardNavigation } from "../../hooks/useKeyboardNavigation";
@@ -35,6 +35,10 @@ interface MemoizedPearlItemProps {
     pearlIndex: number;
     showTranscriberCount: boolean;
     collectionVersion: number;
+    isSelected: boolean;
+    handleSelectPearl: (pearl: PearlData) => void;
+    isFoundInSave: boolean;
+    unlockMode: UnlockMode;
 }
 
 const SearchBar = () => {
@@ -322,6 +326,10 @@ const LazyChapterGrid = ({
                              getHighlightStyle,
                              isAlternateDisplayModeActive,
                              collectionVersion,
+                             selectedPearlId,
+                             handleSelectPearl,
+                             saveFound,
+                             unlockMode,
                              onToggle
                          }: {
     flatChapter: FlatChapterItem
@@ -333,6 +341,10 @@ const LazyChapterGrid = ({
     getHighlightStyle: (chapterId: string, itemIndex: number) => React.CSSProperties
     isAlternateDisplayModeActive: boolean
     collectionVersion: number
+    selectedPearlId: string | null
+    handleSelectPearl: (pearl: PearlData) => void
+    saveFound: Map<string, Set<string>>
+    unlockMode: UnlockMode
     onToggle: () => void
 }) => {
     const observerRef = useRef<HTMLDivElement>(null);
@@ -385,6 +397,10 @@ const LazyChapterGrid = ({
                                         pearlIndex={pearlIndex}
                                         showTranscriberCount={isAlternateDisplayModeActive}
                                         collectionVersion={collectionVersion}
+                                        isSelected={pearl.id === selectedPearlId}
+                                        handleSelectPearl={handleSelectPearl}
+                                        isFoundInSave={saveFound.has(pearl.id)}
+                                        unlockMode={unlockMode}
                                     />
                                 </div>
                             ))}
@@ -398,8 +414,8 @@ const LazyChapterGrid = ({
     );
 };
 
-const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({ pearl, pearlIndex, showTranscriberCount, collectionVersion }) => (
-    <PearlItem pearl={pearl} pearlIndex={pearlIndex} showTranscriberCount={showTranscriberCount} collectionVersion={collectionVersion}/>
+const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({ pearl, pearlIndex, showTranscriberCount, collectionVersion, isSelected, handleSelectPearl, isFoundInSave, unlockMode }) => (
+    <PearlItem pearl={pearl} pearlIndex={pearlIndex} showTranscriberCount={showTranscriberCount} collectionVersion={collectionVersion} isSelected={isSelected} handleSelectPearl={handleSelectPearl} isFoundInSave={isFoundInSave} unlockMode={unlockMode}/>
 ));
 
 const useIsScrollable = (ref: React.RefObject<HTMLDivElement | null>, dependencies: any[]) => {
@@ -440,7 +456,7 @@ const useIsScrollable = (ref: React.RefObject<HTMLDivElement | null>, dependenci
 };
 
 export function PearlGrid({ order, isAlternateDisplayModeActive = false }: PearlGridProps) {
-    const { pearls, handleSelectPearl, selectedPearlId, isMobile, saveFoundVersion, unlockVersion } = useAppContext();
+    const { pearls, handleSelectPearl, selectedPearlId, isMobile, saveFoundVersion, unlockVersion, saveFound, unlockMode } = useAppContext();
     const collectionVersion = saveFoundVersion + unlockVersion;
     const { baseTree, filteredTree, totalItems, firstItem } = useFilteredPearls(pearls, order);
     const { expandedChapters, toggleChapter, expandAll, collapseAll } = useChapterExpansion(filteredTree, baseTree);
@@ -637,6 +653,10 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
                             getHighlightStyle={getHighlightStyle}
                             isAlternateDisplayModeActive={isAlternateDisplayModeActive}
                             collectionVersion={collectionVersion}
+                            selectedPearlId={selectedPearlId}
+                            handleSelectPearl={handleSelectPearl}
+                            saveFound={saveFound}
+                            unlockMode={unlockMode}
                             onToggle={() => handleToggleChapter(flatChapter.name)}
                         />
                     ))}

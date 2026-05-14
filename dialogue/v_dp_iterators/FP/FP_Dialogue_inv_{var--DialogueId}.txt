@@ -1,6 +1,7 @@
 type: item
 subType: inv
 map: region=SS, room=L01, mapSlugcat=inv
+saveUnlock: Inv { fp }
 tag: downpour
 
 === transcription: FP

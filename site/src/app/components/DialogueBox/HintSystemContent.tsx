@@ -4,22 +4,20 @@ import { regionNames } from "../../utils/speakers";
 import { generateMapLinkFromMapInfo } from "./DialogueBox";
 import { findPearlCategory, PEARL_ORDER_CONFIGS } from "../../utils/pearlOrder";
 import { useAppContext } from "../../context/AppContext";
+import { useState } from "react";
 
 interface HintSystemContentProps {
     pearl: PearlData,
     unlockTranscription: () => void,
-    hintProgress: number,
-    setHintProgress: (value: (((prevState: number) => number) | number)) => void,
     transcriberData: Dialogue
 }
 
 export default function HintSystemContent({
                                               pearl,
                                               unlockTranscription,
-                                              hintProgress,
-                                              setHintProgress,
                                               transcriberData
                                           }: HintSystemContentProps) {
+    const [hintProgress, setHintProgress] = useState(0);
     const { datasetKey } = useAppContext();
     const effectiveHints: Hint[] = [];
     const activeOrderConfig = PEARL_ORDER_CONFIGS[datasetKey] || PEARL_ORDER_CONFIGS['vanilla'];
@@ -121,8 +119,8 @@ export default function HintSystemContent({
 
     return (
         <div className="text-center mt-20 pb-6">
-            <div className="relative mb-5 text-xl">
-                <img src="img/lock.png" alt="Lock" className="w-6 h-6 inline"/> Transcription not yet found
+            <div className="relative mb-5 text-xl space-x-3">
+                <img src="img/lock.png" alt="Lock" className="w-6 h-6 inline -mt-1"/><span>Transcription not yet found</span>
             </div>
             <div className="relative flex flex-col items-center justify-center h-full space-y-3">
                 <div className="flex flex-row space-x-3 mb-8">

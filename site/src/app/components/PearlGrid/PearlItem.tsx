@@ -4,28 +4,27 @@ import { RwIconButton } from "../other/RwIconButton";
 import UnlockManager from "../../utils/unlockManager";
 import { PearlData } from "../../types/types";
 import React, { useCallback, useMemo } from "react";
-import { useAppContext } from "../../context/AppContext";
+import { UnlockMode } from "../../context/AppContext";
 
 interface PearlItemProps {
     pearl: PearlData
     pearlIndex: number
     showTranscriberCount: boolean
     collectionVersion: number
+    isSelected: boolean
+    handleSelectPearl: (pearl: PearlData) => void
+    isFoundInSave: boolean
+    unlockMode: UnlockMode
 }
 
-const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, showTranscriberCount }) => {
-    const { selectedPearlId, handleSelectPearl, unlockMode, unlockVersion, saveFound, saveFoundVersion } = useAppContext();
-    const isSelected = pearl.id === selectedPearlId;
-
+const PearlItem: React.FC<PearlItemProps> = ({
+    pearl, pearlIndex, showTranscriberCount, collectionVersion,
+    isSelected, handleSelectPearl, isFoundInSave, unlockMode
+}) => {
     const isUnlocked = useMemo(() => {
         return unlockMode === 'all' || UnlockManager.isPearlUnlocked(pearl);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pearl, unlockMode, unlockVersion]);
-
-    const isFoundInSave = useMemo(() => {
-        return saveFound.has(pearl.id);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pearl.id, saveFoundVersion]);
+    }, [pearl, unlockMode, collectionVersion]);
 
     const handleClick = useCallback(() => {
         handleSelectPearl(pearl);
@@ -95,7 +94,10 @@ const arePropsEqual = (prevProps: PearlItemProps, nextProps: PearlItemProps) => 
         prevProps.pearl.metadata.color === nextProps.pearl.metadata.color &&
         prevProps.pearl.metadata.type === nextProps.pearl.metadata.type &&
         prevProps.pearl.transcribers.length === nextProps.pearl.transcribers.length &&
-        prevProps.collectionVersion === nextProps.collectionVersion
+        prevProps.collectionVersion === nextProps.collectionVersion &&
+        prevProps.isSelected === nextProps.isSelected &&
+        prevProps.isFoundInSave === nextProps.isFoundInSave &&
+        prevProps.unlockMode === nextProps.unlockMode
     );
 };
 

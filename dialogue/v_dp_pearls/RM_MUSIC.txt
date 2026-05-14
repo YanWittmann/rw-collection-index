@@ -5,6 +5,7 @@ name: Music
 info: When the audio is visualised, a Mandala can be seen at the end of the segment.
 
 === transcription: LttM-saint
+md-saveUnlock: global { pearlSaint.RM }
 md-map: region=CL, room=AI, mapSlugcat=saint
 md-tag: downpour
 md-sourceDialogue: 106-saint.txt
@@ -16,6 +17,7 @@ That was a long time ago. The old world and its relics should be allowed to fina
 A new cycle is unfolding. One we need not be a part of.
 
 === transcription: FP-artificer
+md-saveUnlock: global { pearlArtificer.RM }
 md-map: region=RM, room=AI, mapSlugcat=rivulet
 md-tag: downpour
 md-sourceDialogue: 120.txt
@@ -24,6 +26,7 @@ It is a small comfort that helps drown out the solemn ambiance of the surroundin
 It's not much, but I don't have a lot to occupy my time with anymore...
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { pearlBase.RM }
 md-sourceDialogue: 106.txt
 md-map: region=RM, room=AI, mapSlugcat=rivulet
 md-tag: downpour

@@ -6,6 +6,7 @@ map: region=OE, room=OE_SPIRE, mapSlugcat=gourmand
 tag: downpour
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { pearlBase.OE }
 md-sourceDialogue: 104.txt
 Did you find this beyond the retaining wall? I can't imagine another place you might.
 These are the final operating logs of a transit control tower. They regulated the inbound and outbound traffic of shipments to and from of our facility. This log shows the point at which the caravans suspended their final shipments, and became frozen in time as they remain now.

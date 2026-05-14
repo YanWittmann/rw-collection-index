@@ -1,6 +1,7 @@
 internalId: AUDIO_JAM3
 color: #14ff95
 type: pearl
+saveUnlock: watcher { projector and physicalPearl.AUDIO_JAM3 }
 name: Audio: Jam 3
 tag: watcher
 map: region=WTDB, room=A15, mapSlugcat=watcher

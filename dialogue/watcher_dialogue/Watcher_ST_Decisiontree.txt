@@ -3,6 +3,7 @@ subType: spinning-top
 tag: watcher
 name: Spinning Top Conversation Logic
 transcriberName: Spinning Top Encounter
+saveUnlock: watcher { maxRipple >= 0.25 }
 
 === transcription: spinning-top
 md-sourceDialogue: SpinningTop/StartConversation.cs

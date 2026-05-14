@@ -1,6 +1,7 @@
 internalId: TEXT_AUDIO_TALKSHOW
 color: #cc14a6
 type: pearl
+saveUnlock: watcher { projector and physicalPearl.TEXT_AUDIO_TALKSHOW }
 name: Talkshow
 tag: watcher
 map: region=WAUA, room=D02, mapSlugcat=watcher

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PearlData } from '../types/types';
 import { useAppContext } from '../context/AppContext';
 
@@ -51,19 +51,41 @@ export function useKeyboardNavigation(pearlGrid: PearlData[][]) {
     } = useAppContext();
     const [currentGridPosition, setCurrentGridPosition] = useState<[number, number]>([0, 0]);
 
-    const handleTranscriberSelection = (direction: 'next' | 'prev') => {
-        if (!selectedPearlData || !selectedPearlData.transcribers.length) return;
+    // Refs to hold latest values so the keydown handler can be stable
+    const pearlGridRef = useRef(pearlGrid);
+    const currentGridPositionRef = useRef(currentGridPosition);
+    const selectedPearlIdRef = useRef(selectedPearlId);
+    const selectedTranscriberNameRef = useRef(selectedTranscriberName);
+    const selectedPearlDataRef = useRef(selectedPearlData);
+    const handleSelectPearlRef = useRef(handleSelectPearl);
+    const handleSelectTranscriberRef = useRef(handleSelectTranscriber);
 
-        const transcribers = selectedPearlData.transcribers;
+    // Keep refs in sync with latest values on every render
+    useEffect(() => {
+        pearlGridRef.current = pearlGrid;
+        currentGridPositionRef.current = currentGridPosition;
+        selectedPearlIdRef.current = selectedPearlId;
+        selectedTranscriberNameRef.current = selectedTranscriberName;
+        selectedPearlDataRef.current = selectedPearlData;
+        handleSelectPearlRef.current = handleSelectPearl;
+        handleSelectTranscriberRef.current = handleSelectTranscriber;
+    });
+
+    const handleTranscriberSelection = (direction: 'next' | 'prev') => {
+        const currentSelectedPearlData = selectedPearlDataRef.current;
+        const currentSelectedTranscriberName = selectedTranscriberNameRef.current;
+        if (!currentSelectedPearlData || !currentSelectedPearlData.transcribers.length) return;
+
+        const transcribers = currentSelectedPearlData.transcribers;
         let currentIndex = -1;
 
-        if (selectedTranscriberName) {
-            const isIndexed = /.+-\d+$/.test(selectedTranscriberName);
+        if (currentSelectedTranscriberName) {
+            const isIndexed = /.+-\d+$/.test(currentSelectedTranscriberName);
             if (isIndexed) {
-                const index = parseInt(selectedTranscriberName.split('-').pop()!);
+                const index = parseInt(currentSelectedTranscriberName.split('-').pop()!);
                 currentIndex = index;
             } else {
-                currentIndex = transcribers.findIndex(t => t.transcriber === selectedTranscriberName);
+                currentIndex = transcribers.findIndex(t => t.transcriber === currentSelectedTranscriberName);
             }
         }
 
@@ -82,11 +104,14 @@ export function useKeyboardNavigation(pearlGrid: PearlData[][]) {
             ? `${newTranscriber.transcriber}-${newIndex}`
             : newTranscriber.transcriber;
 
-        handleSelectTranscriber(newName);
+        handleSelectTranscriberRef.current(newName);
     };
 
     const handleKeyNavigation = (e: KeyboardEvent) => {
-        if (!pearlGrid.length) return;
+        const currentPearlGrid = pearlGridRef.current;
+        const currentSelectedPearlId = selectedPearlIdRef.current;
+
+        if (!currentPearlGrid.length) return;
         if (e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
 
         const activeElement = document.activeElement;
@@ -98,11 +123,11 @@ export function useKeyboardNavigation(pearlGrid: PearlData[][]) {
             return;
         }
 
-        const maxRows = pearlGrid.length;
-        let [row, col] = currentGridPosition;
+        const maxRows = currentPearlGrid.length;
+        let [row, col] = currentGridPositionRef.current;
 
-        if (selectedPearlId) {
-            const pearlPos = findPearlPosition(selectedPearlId, pearlGrid);
+        if (currentSelectedPearlId) {
+            const pearlPos = findPearlPosition(currentSelectedPearlId, currentPearlGrid);
             if (pearlPos) {
                 [row, col] = pearlPos;
             }
@@ -114,7 +139,7 @@ export function useKeyboardNavigation(pearlGrid: PearlData[][]) {
             case 'arrowup':
             case 'w':
                 for (let r = row - 1; r >= 0; r--) {
-                    if (pearlGrid[r] && pearlGrid[r][col]) {
+                    if (currentPearlGrid[r] && currentPearlGrid[r][col]) {
                         row = r;
                         break;
                     }
@@ -123,7 +148,7 @@ export function useKeyboardNavigation(pearlGrid: PearlData[][]) {
             case 'arrowdown':
             case 's':
                 for (let r = row + 1; r < maxRows; r++) {
-                    if (pearlGrid[r] && pearlGrid[r][col]) {
+                    if (currentPearlGrid[r] && currentPearlGrid[r][col]) {
                         row = r;
                         break;
                     }
@@ -131,19 +156,19 @@ export function useKeyboardNavigation(pearlGrid: PearlData[][]) {
                 break;
             case 'arrowleft':
             case 'a': {
-                const newPos = findNextValidPosition(row, col - 1, pearlGrid, 'left');
+                const newPos = findNextValidPosition(row, col - 1, currentPearlGrid, 'left');
                 if (newPos) [row, col] = newPos;
                 break;
             }
             case 'arrowright':
             case 'd': {
-                const newPos = findNextValidPosition(row, col + 1, pearlGrid, 'right');
+                const newPos = findNextValidPosition(row, col + 1, currentPearlGrid, 'right');
                 if (newPos) [row, col] = newPos;
                 break;
             }
             case 'q':
             case 'e':
-                if (selectedPearlId) {
+                if (currentSelectedPearlId) {
                     handleTranscriberSelection(e.key.toLowerCase() === 'e' ? 'next' : 'prev');
                     e.preventDefault();
                     return;
@@ -154,16 +179,16 @@ export function useKeyboardNavigation(pearlGrid: PearlData[][]) {
                 handled = false;
         }
 
-        if (handled && (pearlGrid[row]?.[col] || findNextValidPosition(row, col, pearlGrid, 'right'))) {
+        if (handled && (currentPearlGrid[row]?.[col] || findNextValidPosition(row, col, currentPearlGrid, 'right'))) {
             e.preventDefault();
-            if (!pearlGrid[row]?.[col]) {
-                const newPos = findNextValidPosition(row, col, pearlGrid, 'right');
+            if (!currentPearlGrid[row]?.[col]) {
+                const newPos = findNextValidPosition(row, col, currentPearlGrid, 'right');
                 if (newPos) [row, col] = newPos;
             }
             setCurrentGridPosition([row, col]);
 
-            if (pearlGrid[row]?.[col]) {
-                handleSelectPearl(pearlGrid[row][col]);
+            if (currentPearlGrid[row]?.[col]) {
+                handleSelectPearlRef.current(currentPearlGrid[row][col]);
             }
         }
     };
@@ -181,7 +206,7 @@ export function useKeyboardNavigation(pearlGrid: PearlData[][]) {
         const handleKeyDown = (e: KeyboardEvent) => handleKeyNavigation(e);
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [pearlGrid, currentGridPosition, selectedPearlId, selectedTranscriberName]);
+    }, []); // stable — reads from refs
 
     return { currentGridPosition };
 }

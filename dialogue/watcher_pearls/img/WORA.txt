@@ -3,6 +3,7 @@ color: #8fd647
 type: pearl
 name: WORA
 tag: watcher
+saveUnlock: watcher { projector and physicalPearl.WORA }
 map: region=WORA, room=STARCATCHER04, mapSlugcat=watcher
 
 === transcription: PearlReader

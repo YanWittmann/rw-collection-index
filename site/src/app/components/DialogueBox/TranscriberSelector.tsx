@@ -4,7 +4,7 @@ import { Dialogue, PearlData } from "../../types/types";
 import UnlockManager from "../../utils/unlockManager";
 import { darken } from "../../utils/speakers";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
-import React from "react";
+import React, { useMemo } from "react";
 import { getEffectiveTranscriberName, getTranscriberIcon } from "../../utils/transcriberUtils";
 import { useAppContext } from "../../context/AppContext";
 
@@ -16,7 +16,10 @@ interface TranscriberSelectorProps {
 
 export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelectorProps) {
     const { unlockMode, selectedTranscriberName, handleSelectTranscriber } = useAppContext();
-    const multipleSameTranscribers = new Set(pearl.transcribers.map(t => t.transcriber)).size !== pearl.transcribers.length;
+    const multipleSameTranscribers = useMemo(
+        () => new Set(pearl.transcribers.map(t => t.transcriber)).size !== pearl.transcribers.length,
+        [pearl.transcribers]
+    );
 
     const renderTranscriber = (transcriber: Dialogue, index: number) => {
         const { iconType, color, overwriteColor, displayTranscriberName } =
@@ -39,37 +42,37 @@ export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelector
             );
         } else {
             return (
-                <TooltipProvider delayDuration={200} key={'select-' + pearl.id + '-' + index}>
-                    <Tooltip>
-                        <TooltipTrigger>
-                            <RwIconButton
-                                onClick={() => handleSelectTranscriber(effectiveName)}
-                                selected={effectiveName === selectedTranscriberName}
-                                onMouseEnter={() => onHover(effectiveName)}
-                                onMouseLeave={() => onHover(null)}
-                                aria-label={displayTranscriberName}
-                            >
-                                {overwriteColor ?
-                                    <RwIcon type={iconType} color={overwriteColor}/> :
-                                    <RwIcon type={iconType}/>
-                                }
-                            </RwIconButton>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                            {displayTranscriberName.startsWith("plain=")
-                                ? displayTranscriberName.replace("plain=", "")
-                                : displayTranscriberName
+                <Tooltip key={'select-' + pearl.id + '-' + index}>
+                    <TooltipTrigger>
+                        <RwIconButton
+                            onClick={() => handleSelectTranscriber(effectiveName)}
+                            selected={effectiveName === selectedTranscriberName}
+                            onMouseEnter={() => onHover(effectiveName)}
+                            onMouseLeave={() => onHover(null)}
+                            aria-label={displayTranscriberName}
+                        >
+                            {overwriteColor ?
+                                <RwIcon type={iconType} color={overwriteColor}/> :
+                                <RwIcon type={iconType}/>
                             }
-                        </TooltipContent>
-                    </Tooltip>
-                </TooltipProvider>
+                        </RwIconButton>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        {displayTranscriberName.startsWith("plain=")
+                            ? displayTranscriberName.replace("plain=", "")
+                            : displayTranscriberName
+                        }
+                    </TooltipContent>
+                </Tooltip>
             );
         }
     };
 
     return (
-        <div className="absolute top-2 right-2 flex gap-2 p-2" ref={ref}>
-            {pearl.transcribers.map((transcriber, index) => renderTranscriber(transcriber, index))}
-        </div>
+        <TooltipProvider delayDuration={200}>
+            <div className="absolute top-2 right-2 flex gap-2 p-2" ref={ref}>
+                {pearl.transcribers.map((transcriber, index) => renderTranscriber(transcriber, index))}
+            </div>
+        </TooltipProvider>
     );
 }

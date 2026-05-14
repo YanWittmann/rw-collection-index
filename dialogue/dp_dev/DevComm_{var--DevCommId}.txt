@@ -1,4 +1,5 @@
 type: broadcast
+saveUnlock: global { challenges }
 
 === transcription: broadcast
 md-map: region=CC, room=CLOG, mapSlugcat=white

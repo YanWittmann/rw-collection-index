@@ -1,6 +1,7 @@
 internalId: AUDIO_GROOVE
 color: #ff8095
 type: pearl
+saveUnlock: watcher { projector and physicalPearl.AUDIO_GROOVE }
 name: Audio: Groove
 tag: watcher
 map: region=WARG, room=W05, mapSlugcat=watcher

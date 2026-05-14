@@ -1,5 +1,6 @@
 type: item
 subType: survivor
+saveUnlock: White { lttm }
 
 === transcription: LttM-post-collapse
 md-type: pearl

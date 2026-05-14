@@ -15,6 +15,28 @@ import { DialogueActionTabs } from "./DialogueActionTabs";
 import { useAppContext } from "../../context/AppContext";
 import { findTranscriberIndex } from "../../utils/transcriberUtils";
 
+const CopyIdButton = ({ internalId }: { internalId: string }) => {
+    const [copied, setCopied] = useState(false);
+    return (
+        <Tooltip key="internal-id-tooltip">
+            <TooltipTrigger onClick={() => {
+                navigator.clipboard.writeText(internalId);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 1000);
+            }}>
+                <div className="font-mono text-xs text-white/70 cursor-pointer">
+                    {copied ? "Copied!" : internalId}
+                </div>
+            </TooltipTrigger>
+            <TooltipContent className="text-center">
+                The above-listed name is likely community-given.<br/>
+                The game references this data entry using this internal ID.<br/>
+                Click to copy the internal ID to your clipboard.
+            </TooltipContent>
+        </Tooltip>
+    );
+};
+
 const MAP_URL_PATTERNS: { [key: string]: string } = {
     "default": "https://rain-world-downpour-map.github.io/map.html",
     "alduris-mod-map": "https://alduris.github.io/mod-map/map.html",
@@ -88,9 +110,9 @@ export function DialogueBox() {
 
     const [hoveredTranscriber, setHoveredTranscriber] = useState<string | null>(null);
     const [lastTranscriberName, setLastTranscriberName] = useState<string | null>(null);
-    const [justCopiedInternalId, setJustCopiedInternalId] = useState<boolean>(false);
     const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null);
     const selfRef = useRef<HTMLDivElement>(null);
+    const [containerWidth, setContainerWidth] = useState(0);
 
     const [unlockUpdateTrigger, setUnlockUpdateTrigger] = useState(0);
 
@@ -98,6 +120,16 @@ export function DialogueBox() {
         const handler = () => setUnlockUpdateTrigger(prev => prev + 1);
         window.addEventListener('unlock-state-changed', handler);
         return () => window.removeEventListener('unlock-state-changed', handler);
+    }, []);
+
+    useEffect(() => {
+        const el = selfRef.current;
+        if (!el) return;
+        const observer = new ResizeObserver(entries => {
+            setContainerWidth(entries[0].contentRect.width);
+        });
+        observer.observe(el);
+        return () => observer.disconnect();
     }, []);
 
     useEffect(() => {
@@ -187,10 +219,6 @@ export function DialogueBox() {
     }, [hoveredTranscriber, pearl]);
 
 
-    const [hintProgress, setHintProgress] = useState(0);
-    // Reset hint progress when pearl changes
-    useEffect(() => setHintProgress(0), [pearl]);
-
     const unlockTranscription = useCallback(() => {
         if (pearl) {
             UnlockManager.unlockPearl(pearl);
@@ -204,12 +232,12 @@ export function DialogueBox() {
             return null;
         }
         const selectedTranscriberIndex = findTranscriberIndex(pearl, selectedTranscriberName ?? "");
-        if (selectedTranscriberIndex === -1) {
-            console.error("Unable to find transcriber index", selectedTranscriberIndex, selectedTranscriberName, pearl)
-            return null;
-        }
+        const effectiveIndex = selectedTranscriberIndex === -1
+            ? pearl.transcribers.length - 1
+            : selectedTranscriberIndex;
+        if (effectiveIndex < 0) return null;
 
-        const dialogue = pearl.transcribers[selectedTranscriberIndex];
+        const dialogue = pearl.transcribers[effectiveIndex];
         const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, selectedTranscriberName!);
 
         const internalId = dialogue.metadata.internalId || pearl.metadata.internalId;
@@ -233,22 +261,7 @@ export function DialogueBox() {
             sourceFileDisplayText = null;
             sourceFileDisplayTextSelection = null;
         }
-        const internalIdElement = internalId && <Tooltip key={"internal-id-tooltip"}>
-            <TooltipTrigger onClick={() => {
-                navigator.clipboard.writeText(internalId);
-                setJustCopiedInternalId(true);
-                setTimeout(() => setJustCopiedInternalId(false), 1000);
-            }}>
-                <div className="font-mono text-xs text-white/70 cursor-pointer">
-                    {justCopiedInternalId ? "Copied!" : internalId}
-                </div>
-            </TooltipTrigger>
-            <TooltipContent className="text-center">
-                The above-listed name is likely community-given.<br/>
-                The game references this data entry using this internal ID.<br/>
-                Click to copy the internal ID to your clipboard.
-            </TooltipContent>
-        </Tooltip>;
+        const internalIdElement = internalId && <CopyIdButton internalId={internalId}/>;
         const sourceFileElement = sourceFileDisplayText && <Tooltip key={"source-file-tooltip"}>
             <TooltipTrigger
                 onClick={() => setSourceFileDisplay(sourceFileDisplayTextSelection === sourceFileDisplay ? null : sourceFileDisplayTextSelection)}
@@ -304,18 +317,17 @@ export function DialogueBox() {
             textContainerClass = "max-h-[calc(85vh-2px)] pt-16";
         } else {
             let moveDown: boolean;
-            if (selfRef.current) {
-                let remainingSpaceHalf = (selfRef.current!.clientWidth / 2)
+            if (containerWidth > 0) {
+                let remainingSpaceHalf = (containerWidth / 2)
                     - ((name.length + (dialogue.metadata.info ? 4 : 0)) * 9.5) / 2
                     - pearl.transcribers.length * 54;
-                let remainingSpaceFull = selfRef.current!.clientWidth
+                let remainingSpaceFull = containerWidth
                     - ((name.length + (dialogue.metadata.info ? 4 : 0)) * 9.5)
                     - pearl.transcribers.length * 54;
 
                 moveDown = remainingSpaceFull < 110;
                 moveTitleLeft = !moveDown && remainingSpaceHalf < 30;
             } else {
-                // fallback in case of the first render
                 const textFactor: number = window.innerWidth - (name.length + (dialogue.metadata.info ? 4 : 0)) * 5;
                 moveDown = textFactor < 850;
             }
@@ -367,7 +379,7 @@ export function DialogueBox() {
                 </div>
         }
 
-        console.log(pearl);
+        console.log(pearl.id, '-', pearl.metadata.type, '-', pearl.metadata.subType ?? pearl.metadata.color);
 
         return <>
             <DialogueActionTabs
@@ -375,7 +387,7 @@ export function DialogueBox() {
                 transcriberData={dialogue}
                 isUnlocked={isUnlocked}
                 onSelectPearl={() => handleSelectPearl(null)}
-                selectedTranscriberIndex={selectedTranscriberIndex}
+                selectedTranscriberIndex={effectiveIndex}
             />
             <TranscriberSelector
                 pearl={pearl}
@@ -389,15 +401,14 @@ export function DialogueBox() {
                         searchText={filters.text}
                     />
                 </> : <HintSystemContent
+                    key={pearl.id + '-' + effectiveIndex}
                     pearl={pearl}
                     transcriberData={dialogue}
                     unlockTranscription={unlockTranscription}
-                    hintProgress={hintProgress}
-                    setHintProgress={setHintProgress}
                 />}
             </div>
         </>;
-    }, [pearl, selectedTranscriberName, unlockMode, unlockTranscription, hintProgress, justCopiedInternalId, sourceFileDisplay, filters.text, isMobile, handleSelectPearl, setSourceFileDisplay, sourceData, unlockUpdateTrigger]);
+    }, [pearl, selectedTranscriberName, unlockMode, unlockTranscription, sourceFileDisplay, filters.text, isMobile, handleSelectPearl, setSourceFileDisplay, sourceData, unlockUpdateTrigger, containerWidth]);
 
     return (
         <div className="flex-1 relative">
@@ -425,7 +436,8 @@ export function DialogueBox() {
                 {lastTranscriberName}
             </motion.div>
             {pearl === null ?
-                <div className="absolute bottom-[1rem] left-0 right-0 mx-2 text-center text-white text-sm bg-black/80 rounded">
+                <div
+                    className="absolute bottom-[1rem] left-0 right-0 mx-2 text-center text-white text-sm bg-black/80 rounded">
                     Code on <a href="https://github.com/YanWittmann/rw-collection-index" target="_blank"
                                className="underline">GitHub</a> | Created by Yan Wittmann | <a
                     href="https://store.steampowered.com/app/312520/Rain_World" target="_blank" className="underline">Rain

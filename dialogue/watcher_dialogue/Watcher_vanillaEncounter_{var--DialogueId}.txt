@@ -8,6 +8,7 @@ mapInfo: Spinning Top can be encountered in any order in the three regions.\nThe
 info: The player Ripple Level is increased by 0.25 on the first two encounters, and by 0.5 on the third.\nThis allows the player to access the remaining encounters.
 
 === transcription: spinning-top
+md-saveUnlock: watcher { maxRipple >= 0.25 }
 md-type: pearl
 md-internalId: DieAtSpinningTop1
 md-var-DialogueId: 1
@@ -18,6 +19,7 @@ md-sourceDialogue: strings.txt
 OAOAOA!! Yes!!! Back into the ground you go!! What an idiot!! OAOAOAOAOAO
 
 === transcription: spinning-top
+md-saveUnlock: watcher { maxRipple >= 0.25 }
 md-type: pearl
 md-internalId: LeaveSpinningTop1
 md-var-DialogueId: 1
@@ -28,6 +30,7 @@ md-sourceDialogue: strings.txt
 OA! Look! It's too stupid to even pay attention! OAOAOAOA!!
 
 === transcription: spinning-top
+md-saveUnlock: watcher { maxRipple >= 0.25 }
 md-type: pearl
 md-internalId: Ghost_ST_V1
 md-var-DialogueId: 1
@@ -44,6 +47,7 @@ What a waste! What a joke! OAOAOAOAOAOAOAOA!!
 
 
 === transcription: spinning-top
+md-saveUnlock: watcher { maxRipple >= 0.5 }
 md-type: pearl
 md-internalId: DieAtSpinningTop2
 md-var-DialogueId: 2
@@ -54,6 +58,7 @@ md-sourceDialogue: strings.txt
 OA!! See!! They get you already! OAOAOAOAOAO
 
 === transcription: spinning-top
+md-saveUnlock: watcher { maxRipple >= 0.5 }
 md-type: pearl
 md-internalId: LeaveSpinningTop2
 md-var-DialogueId: 2
@@ -64,6 +69,7 @@ md-sourceDialogue: strings.txt
 OA!! How rude!! I was going to give it a gift.
 
 === transcription: spinning-top
+md-saveUnlock: watcher { maxRipple >= 0.5 }
 md-internalId: Ghost_ST_V2
 md-type: pearl
 md-var-DialogueId: 2
@@ -81,6 +87,7 @@ Here, I will give you a gift.
 
 
 === transcription: spinning-top
+md-saveUnlock: watcher { maxRipple >= 1.0 }
 md-type: pearl
 md-internalId: DieAtSpinningTop3
 md-var-DialogueId: 3
@@ -92,6 +99,7 @@ OAOAOAOAOA!! And here too it seems?? Too dumb to live, too base to die.
 How boring! Bleh! I will depart.
 
 === transcription: spinning-top
+md-saveUnlock: watcher { maxRipple >= 1.0 }
 md-internalId: Ghost_ST_V3
 md-type: pearl
 md-var-DialogueId: 3

@@ -1,6 +1,7 @@
 type: item
 subType: saint
 tag: downpour
+saveUnlock: Saint { fp }
 
 === transcription: FP
 md-type: pearl
@@ -82,6 +83,7 @@ MONO
 
 === transcription: LttM-FP-saint
 md-type: pearl
+md-saveUnlock: Saint { zeroPebbles and looksToTheDoom }
 md-transcriberName: Ascending both Looks to the Moon and Five Pebbles
 md-var-DialogueId: Rubicon
 md-name: Encountering in Rubicon
@@ -97,6 +99,7 @@ FP: Perhaps that is why you need to wake up, little visitor.
 
 === transcription: FP
 md-type: pearl
+md-saveUnlock: Saint { zeroPebbles and !looksToTheDoom }
 md-transcriberName: Ascending only Five Pebbles
 md-var-DialogueId: Rubicon
 md-name: Encountering in Rubicon
@@ -109,6 +112,7 @@ What a horrifying destiny you've found.
 
 === transcription: LttM-saint
 md-type: pearl
+md-saveUnlock: Saint { looksToTheDoom and !zeroPebbles }
 md-transcriberName: Ascending only Looks to the Moon
 md-var-DialogueId: Rubicon
 md-name: Encountering in Rubicon

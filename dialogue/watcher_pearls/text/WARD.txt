@@ -3,6 +3,7 @@ color: #59e6a6
 type: pearl
 name: Stardust
 tag: watcher
+saveUnlock: watcher { projector and physicalPearl.TEXT_STARDUST }
 map: region=WARD, room=R02, mapSlugcat=watcher
 
 === transcription: PearlReader

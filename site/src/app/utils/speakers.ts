@@ -341,12 +341,41 @@ export function resolveVariables(str: string): string {
     });
 }
 
+interface SourceIndex {
+    byN: Map<string, SourceDecrypted>;
+    byP: Map<string, SourceDecrypted>;
+    byNormP: Map<string, SourceDecrypted>;
+    normalized: Array<{ norm: string; entry: SourceDecrypted }>;
+}
+
+const sourceIndexCache = new WeakMap<SourceDecrypted[], SourceIndex>();
+
+function getSourceIndex(sourceData: SourceDecrypted[]): SourceIndex {
+    const cached = sourceIndexCache.get(sourceData);
+    if (cached) return cached;
+    const byN = new Map<string, SourceDecrypted>();
+    const byP = new Map<string, SourceDecrypted>();
+    const byNormP = new Map<string, SourceDecrypted>();
+    const normalized: Array<{ norm: string; entry: SourceDecrypted }> = [];
+    for (const entry of sourceData) {
+        if (!byN.has(entry.n)) byN.set(entry.n, entry);
+        if (!byP.has(entry.p)) byP.set(entry.p, entry);
+        const norm = entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/");
+        if (!byNormP.has(norm)) byNormP.set(norm, entry);
+        normalized.push({ norm, entry });
+    }
+    const index = { byN, byP, byNormP, normalized };
+    sourceIndexCache.set(sourceData, index);
+    return index;
+}
+
 export function findSourceDialogue(name: string, sourceData: SourceDecrypted[]) {
-    const entry = sourceData.find(entry => entry.n === name)
-        || sourceData.find(entry => entry.p === name)
-        || sourceData.find(entry => entry.p.includes(name))
-        || sourceData.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/") === name)
-        || sourceData.find(entry => entry.p.replaceAll("\\\\", "/").replaceAll("\\", "/").includes(name));
+    const idx = getSourceIndex(sourceData);
+    const entry = idx.byN.get(name)
+        ?? idx.byP.get(name)
+        ?? idx.normalized.find(e => e.entry.p.includes(name))?.entry
+        ?? idx.byNormP.get(name)
+        ?? idx.normalized.find(e => e.norm.includes(name))?.entry;
     if (!entry) {
         console.warn(name, 'not found');
     }

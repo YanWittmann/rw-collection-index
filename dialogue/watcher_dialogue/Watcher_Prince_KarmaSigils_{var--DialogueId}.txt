@@ -3,6 +3,7 @@ subType: rot-prince-pre
 tag: watcher
 
 === transcription: rot-prince-pre
+md-saveUnlock: watcher { prince >= 214 }
 md-internalId: Prince_KS_1_4
 md-var-DialogueId: Prince_KS_1
 md-name: First Encounter, Fourth Karma Sigil
@@ -14,6 +15,7 @@ Oh the joy!
 The incomparable JOY!
 
 === transcription: rot-prince-pre
+md-saveUnlock: watcher { prince >= 214 }
 md-internalId: Prince_KS_1_3
 md-var-DialogueId: Prince_KS_1
 md-name: First Encounter, Third Karma Sigil
@@ -28,6 +30,7 @@ And...
 an OTHER.
 
 === transcription: rot-prince-pre
+md-saveUnlock: watcher { prince >= 214 }
 md-internalId: Prince_KS_1_2
 md-var-DialogueId: Prince_KS_1
 md-name: First Encounter, Second Karma Sigil
@@ -40,6 +43,7 @@ STARVING, pressing, grinding,
 SQUEEZING
 
 === transcription: rot-prince-pre
+md-saveUnlock: watcher { prince >= 214 }
 md-internalId: Prince_KS_1_1
 md-var-DialogueId: Prince_KS_1
 md-super-name: Karma Sigils, First Encounter
@@ -53,6 +57,7 @@ To move!
 To breathe free!
 
 === transcription: rot-prince-pre
+md-saveUnlock: watcher { prince >= 218 }
 md-internalId: Prince_KS_2_4
 md-var-DialogueId: Prince_KS_2
 md-name: Second Encounter, Fourth Karma Sigil
@@ -65,6 +70,7 @@ Familiar.
 So familiar.
 
 === transcription: rot-prince-pre
+md-saveUnlock: watcher { prince >= 218 }
 md-internalId: Prince_KS_2_3
 md-var-DialogueId: Prince_KS_2
 md-name: Second Encounter, Third Karma Sigil
@@ -78,6 +84,7 @@ To freedom!
 How beautiful, FREEDOM!
 
 === transcription: rot-prince-pre
+md-saveUnlock: watcher { prince >= 218 }
 md-internalId: Prince_KS_2_2
 md-var-DialogueId: Prince_KS_2
 md-name: Second Encounter, Second Karma Sigil
@@ -92,6 +99,7 @@ And then...
 a presence!
 
 === transcription: rot-prince-pre
+md-saveUnlock: watcher { prince >= 218 }
 md-internalId: Prince_KS_2_1
 md-var-DialogueId: Prince_KS_2
 md-super-name: Karma Sigils, Second Encounter

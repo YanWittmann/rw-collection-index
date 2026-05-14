@@ -1,5 +1,6 @@
 type: item
 subType: monk
+saveUnlock: Yellow { fp }
 
 === transcription: FP
 md-type: pearl

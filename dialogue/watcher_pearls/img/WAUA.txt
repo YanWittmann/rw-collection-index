@@ -3,6 +3,7 @@ color: #f2331a
 type: pearl
 name: WAUA
 tag: watcher
+saveUnlock: watcher { projector and physicalPearl.WAUA }
 map: region=WAUA, room=E02B, mapSlugcat=watcher
 
 === transcription: PearlReader

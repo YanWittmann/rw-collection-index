@@ -1,5 +1,7 @@
 type: item
 subType: survivor_monk
+saveUnlock: White { moonMark >= 1 }
+saveUnlock: Yellow { moonMark >= 1 }
 
 === transcription: LttM-post-collapse
 md-type: pearl

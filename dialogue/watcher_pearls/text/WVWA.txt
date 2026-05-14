@@ -3,6 +3,7 @@ color: #f2a605
 type: pearl
 name: Kitesday
 tag: watcher
+saveUnlock: watcher { projector and physicalPearl.TEXT_KITESDAY }
 map: region=WVWA, room=F02, mapSlugcat=watcher
 
 === transcription: PearlReader
