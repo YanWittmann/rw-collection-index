@@ -5,6 +5,8 @@ name: Bright Blue
 map: region=HI, room=B08, mapSlugcat=white
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-saveUnlock: watcher { projector and physicalPearl.HI }
 md-sourceDialogue: masks.png
 md-sourceDialogue: masks_bg_elements.png

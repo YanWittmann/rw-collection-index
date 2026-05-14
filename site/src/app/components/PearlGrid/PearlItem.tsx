@@ -2,6 +2,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadc
 import { RwIcon } from "./RwIcon";
 import { RwIconButton } from "../other/RwIconButton";
 import UnlockManager from "../../utils/unlockManager";
+import { getLockedColor } from "../../utils/transcriberUtils";
 import { PearlData } from "../../types/types";
 import React, { useCallback, useMemo } from "react";
 import { UnlockMode } from "../../context/AppContext";
@@ -16,6 +17,7 @@ interface PearlItemProps {
     isFoundInSave: boolean
     unlockMode: UnlockMode
 }
+
 
 const PearlItem: React.FC<PearlItemProps> = ({
     pearl, pearlIndex, showTranscriberCount, collectionVersion,
@@ -47,9 +49,10 @@ const PearlItem: React.FC<PearlItemProps> = ({
     }, [pearl]);
 
     if (!isUnlocked) {
+        const lockedColor = getLockedColor(pearl);
         return (
             <RwIconButton onClick={handleClick} selected={isSelected} variant={isFoundInSave ? 'gold' : 'default'} aria-label="Locked pearl">
-                <RwIcon color={pearl.metadata.color} type="questionmark"/>
+                <RwIcon color={lockedColor} type="questionmark"/>
             </RwIconButton>
         );
     }

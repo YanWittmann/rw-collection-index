@@ -2,7 +2,7 @@ import { getSpeakerInfo } from "../../utils/speakers"
 import type { DialogueLine } from "../../types/types"
 import { renderDialogueLine, sanitizeHtmlSafe } from "../../utils/renderDialogueLine"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 
 interface DialogueContentProps {
     lines: DialogueLine[]
@@ -143,29 +143,17 @@ const parseMediaDetails = (text?: string) => {
 const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attributes?: { [key: string]: string } }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHovering, setIsHovering] = useState(false);
-    const [dimensions, setDimensions] = useState<{ width: number, height: number } | null>(null);
+    const rafRef = useRef<number | null>(null);
 
     if (currentIndex !== 0 && currentIndex >= frames.length) {
         setCurrentIndex(0);
     }
 
-    const currentFrameDetails = parseMediaDetails(frames[currentIndex]?.text);
+    const currentFrameDetails = useMemo(
+        () => parseMediaDetails(frames[currentIndex]?.text),
+        [frames, currentIndex]
+    );
 
-    useEffect(() => {
-        if (!currentFrameDetails || currentFrameDetails.type !== 'image' || currentFrameDetails.style !== 'rounded') {
-            return;
-        }
-
-        const img = new Image();
-        img.src = `img/${currentFrameDetails.path}`;
-        img.onload = () => {
-            setDimensions({ width: img.naturalWidth, height: img.naturalHeight });
-        };
-        img.onerror = () => {
-            console.error("Failed to load image for dimension calculation:", `img/${currentFrameDetails.path}`);
-            setDimensions(null);
-        };
-    }, [currentFrameDetails]);
 
     useEffect(() => {
         if (frames.length <= 1 || isHovering) return;
@@ -183,12 +171,16 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
 
     const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
         if (frames.length <= 1) return;
+        if (rafRef.current !== null) return;
+        const clientX = e.clientX;
         const rect = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const width = rect.width;
-        const percent = Math.max(0, Math.min(1, x / width));
-        const frameIndex = Math.min(frames.length - 1, Math.floor(percent * frames.length));
-        setCurrentIndex(frameIndex);
+        rafRef.current = requestAnimationFrame(() => {
+            rafRef.current = null;
+            const x = clientX - rect.left;
+            const percent = Math.max(0, Math.min(1, x / rect.width));
+            const frameIndex = Math.min(frames.length - 1, Math.floor(percent * frames.length));
+            setCurrentIndex(frameIndex);
+        });
     };
 
     if (!currentFrameDetails || currentFrameDetails.type !== 'image') return null;
@@ -199,7 +191,8 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
 
     if (frames.length > 1 && isHovering) {
         const frameNumber = currentIndex + 1;
-        captionText = alt ? `${alt} (${frameNumber})` : `${frameNumber}`;
+        const frameLabel = `${frameNumber} / ${frames.length}`;
+        captionText = alt ? `${alt} (${frameLabel})` : frameLabel;
     } else {
         captionText = alt;
     }
@@ -210,18 +203,15 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
 
     if (style === 'rounded') {
         const featherGradient = 'radial-gradient(ellipse, black 50%, transparent 70%)';
-        const divStyles: React.CSSProperties = {
+        const imgStyles: React.CSSProperties = {
             ...imageStyles,
             width: '100%',
             height: 'auto',
-            aspectRatio: dimensions ? `${dimensions.width} / ${dimensions.height}` : '1 / 1',
-            backgroundImage: `url(img/${path})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
             maskImage: featherGradient,
             WebkitMaskImage: featherGradient,
+            willChange: 'mask-image',
         };
-        imageElement = <div style={divStyles} role="img" aria-label={alt}></div>;
+        imageElement = <img src={`img/${path}`} alt={alt} style={imgStyles}/>;
     } else {
         imageElement = <img src={`img/${path}`} alt={alt} style={imageStyles} className="w-full h-auto rounded-md"/>;
     }

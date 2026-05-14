@@ -7,6 +7,8 @@ saveUnlock: watcher { projector and physicalPearl.WAUA }
 map: region=WAUA, room=E02B, mapSlugcat=watcher
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-sourceDialogue: pearl2_b_l1.png
 md-sourceDialogue: pearl2_b_l2.png
 md-sourceDialogue: pearl2_b_l3.png
@@ -19,3 +21,9 @@ md-sourceDialogue: pearl2_l6.png
 SEQUENCE[SPEED=2500]
 ![PearlReader/WAUA_1.png][STYLE=rounded]
 ![PearlReader/WAUA_2.png][STYLE=rounded]
+
+=== hint: Pearl Reader
+The Watcher has no character to read their pearls to.
+
+=== hint: Pearl Reader
+It's not a character, it's a device. Specifically, it's found in Ancient Urban.

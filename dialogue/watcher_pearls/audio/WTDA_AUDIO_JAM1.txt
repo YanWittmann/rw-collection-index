@@ -10,3 +10,9 @@ map: region=WTDA, room=Z09, mapSlugcat=watcher
 md-type: item
 md-subType: PearlReaderAudio
 ![PearlReader/AUDIO_JAM1.mp3]
+
+=== hint: Pearl Reader
+The Watcher has no character to read their pearls to.
+
+=== hint: Pearl Reader
+It's not a character, it's a device. Specifically, it's found in Ancient Urban.

@@ -7,6 +7,8 @@ saveUnlock: watcher { projector and physicalPearl.DRONE }
 map: region=WPTA, room=D01, mapSlugcat=watcher
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-sourceDialogue: pearl_3a.png
 md-sourceDialogue: pearl_3b.png
 SEQUENCE
@@ -17,3 +19,9 @@ SEQUENCE
 ![PearlReader/DRONE_5.png][STYLE=rounded]
 ![PearlReader/DRONE_6.png][STYLE=rounded]
 ![PearlReader/DRONE_7.png][STYLE=rounded]
+
+=== hint: Pearl Reader
+The Watcher has no character to read their pearls to.
+
+=== hint: Pearl Reader
+It's not a character, it's a device. Specifically, it's found in Ancient Urban.

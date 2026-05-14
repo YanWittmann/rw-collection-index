@@ -23,13 +23,12 @@ export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelector
 
     const renderTranscriber = (transcriber: Dialogue, index: number) => {
         const { iconType, color, overwriteColor, displayTranscriberName } =
-            getTranscriberIcon(transcriber, multipleSameTranscribers ? index : undefined);
+            getTranscriberIcon(transcriber, pearl, multipleSameTranscribers ? index : undefined);
 
         const effectiveName = getEffectiveTranscriberName(pearl.transcribers, transcriber.transcriber, index);
         const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, effectiveName);
 
         if (!isUnlocked) {
-            if (!color) console.warn(`No color found for transcriber ${transcriber.transcriber}`);
             return (
                 <RwIconButton
                     key={'select-' + pearl.id + '-' + index}
@@ -37,7 +36,7 @@ export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelector
                     selected={effectiveName === selectedTranscriberName}
                     aria-label={"Locked transcriber"}
                 >
-                    <RwIcon type={"questionmark"} color={darken(color, 20) ?? 'white'}/>
+                    <RwIcon type={"questionmark"} color={darken(color, 20)}/>
                 </RwIconButton>
             );
         } else {

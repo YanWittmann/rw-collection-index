@@ -117,7 +117,7 @@ export function DialogueActionTabs({
             iconType: rightIconType,
             color: rightIconColor,
             overwriteColor: overwriteRightColor,
-        } = getTranscriberIcon(transcriberData, multipleSameTranscribers ? selectedTranscriberIndex : undefined);
+        } = getTranscriberIcon(transcriberData, pearl, multipleSameTranscribers ? selectedTranscriberIndex : undefined);
 
         tabs.push(
             <Popover key="source-dialogue-selector" open={isSharePopoverOpen} onOpenChange={setIsSharePopoverOpen}>

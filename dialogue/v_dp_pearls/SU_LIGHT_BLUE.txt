@@ -5,6 +5,8 @@ name: Light Blue
 map: region=SU, room=B05, mapSlugcat=white
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-saveUnlock: watcher { projector and physicalPearl.SU }
 md-sourceDialogue: repeatingmantra_a.png
 md-sourceDialogue: repeatingmantra_b.png

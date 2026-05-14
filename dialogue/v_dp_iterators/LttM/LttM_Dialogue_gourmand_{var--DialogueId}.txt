@@ -8,6 +8,7 @@ md-type: pearl
 md-var-DialogueId: First_encounter
 md-name: If one Neuron remains
 md-transcriberName: If one Neuron remains
+md-super-name: If X neurons remain
 md-sourceDialogue: strings.txt
 md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Gourmand_First_Conversation.cs
 ...

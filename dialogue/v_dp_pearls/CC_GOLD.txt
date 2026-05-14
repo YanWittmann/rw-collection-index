@@ -5,6 +5,8 @@ name: Gold
 map: region=CC, room=A10, mapSlugcat=white
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-saveUnlock: watcher { projector and physicalPearl.CC }
 md-sourceDialogue: informationisillegal.png
 md-tag: watcher

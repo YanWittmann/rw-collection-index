@@ -7,6 +7,8 @@ saveUnlock: watcher { projector and physicalPearl.TEXT_STARDUST }
 map: region=WARD, room=R02, mapSlugcat=watcher
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 ![PearlReader/TEXT_STARDUST.png][STYLE=rounded]
 
 === transcription: PearlReader
@@ -18,3 +20,9 @@ The dimming pallor of our own dear star does concern, yes, and some solution mus
 To trust our Blessed Future to esoteric Energies and Fields and yet again more inscrutable Calculations and Resonances seems reckless! Do we even know wherefore this energy comes? And what Else may come with it?
 Further datum is needed before such drastic measures are taken! Many even say the falling Dust may yet decrease on its own!
 I, One Glass Cylinder, Perpetual Servant Elect of Knowledge and Resources, propose to form a committee to study...
+
+=== hint: Pearl Reader
+The Watcher has no character to read their pearls to.
+
+=== hint: Pearl Reader
+It's not a character, it's a device. Specifically, it's found in Ancient Urban.

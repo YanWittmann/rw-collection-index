@@ -1,5 +1,21 @@
 import { Dialogue, PearlData } from '../types/types';
-import { speakerNames, transcriberIcons, transcribersColors, transcribersImages } from './speakers';
+import { itemIconColors, speakerNames, transcriberIcons, transcribersColors, transcribersImages } from './speakers';
+
+export function getLockedColor(pearl: PearlData, transcriber?: Dialogue): string {
+    const type = transcriber?.metadata.type ?? pearl.metadata.type;
+    const subType = transcriber?.metadata.subType ?? pearl.metadata.subType;
+    const baseColor = transcriber?.metadata.color ?? pearl.metadata.color;
+
+    switch (type) {
+        case 'echo':
+            return '#f3c159';
+        case 'item':
+            if (subType) return itemIconColors[`${subType}.png`] ?? itemIconColors[`${subType}.png`] ?? baseColor;
+            return baseColor;
+        default:
+            return baseColor;
+    }
+}
 
 export function getEffectiveTranscriberName(transcribers: Dialogue[], transcriberName: string, index: number): string {
     const duplicateCount = transcribers.filter(t => t.transcriber === transcriberName).length;
@@ -17,7 +33,7 @@ export function findTranscriberIndex(pearl: PearlData, transcriberName: string):
     }
 }
 
-export function getTranscriberIcon(transcriber: Dialogue, index?: number) {
+export function getTranscriberIcon(transcriber: Dialogue, pearl: PearlData, index?: number) {
     const effectiveTranscriberName = index !== undefined
         ? transcriber.transcriber + '-' + index
         : transcriber.transcriber;
@@ -26,18 +42,18 @@ export function getTranscriberIcon(transcriber: Dialogue, index?: number) {
     let color: string;
 
     if (effectiveTranscriberName.includes("broadcast")) {
-        color = transcribersColors[transcriber.transcriber] ??
-            transcriber.metadata.color ??
-            '#ffffff';
+        color = transcribersColors[transcriber.transcriber]
+            ?? transcriber.metadata.color
+            ?? '#ffffff';
         iconType = "broadcast";
     } else if (transcriber.metadata.type === 'item' && transcriber.metadata.subType) {
-        color = transcribersColors[transcriber.transcriber];
+        color = transcribersColors[transcriber.transcriber] ?? getLockedColor(pearl, transcriber);
         iconType = transcriber.metadata.subType;
     } else if (transcribersImages[transcriber.transcriber] !== undefined) {
-        color = transcribersColors[transcriber.transcriber];
+        color = transcribersColors[transcriber.transcriber] ?? getLockedColor(pearl, transcriber);
         iconType = transcribersImages[transcriber.transcriber] ?? transcriber.transcriber;
     } else {
-        color = transcribersColors[transcriber.transcriber];
+        color = transcribersColors[transcriber.transcriber] ?? getLockedColor(pearl, transcriber);
         iconType = transcriberIcons[transcriber.transcriber] ?? transcriber.transcriber;
     }
 
