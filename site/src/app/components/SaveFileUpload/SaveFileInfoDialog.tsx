@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom';
 import { RwIconButton } from '../other/RwIconButton';
 import { RwIcon } from '../PearlGrid/RwIcon';
+import { randomColor } from '../../utils/colorUtils';
 import { RwCheckbox } from '../other/RwCheckbox';
 import { useAppContext } from '../../context/AppContext';
 import { SaveMatchSummary } from '../../utils/saveCollectibles';
@@ -23,12 +24,6 @@ interface SaveFileInfoDialogProps {
 
 const pick = <T,>(arr: T[]): T | undefined => arr.length ? arr[Math.floor(Math.random() * arr.length)] : undefined;
 
-const randomColor = () => {
-    const h = Math.floor(Math.random() * 360);
-    const s = 55 + Math.floor(Math.random() * 30);
-    const l = 55 + Math.floor(Math.random() * 15);
-    return `hsl(${h}, ${s}%, ${l}%)`;
-};
 
 function getSavePath(): string | null {
     const ua = navigator.userAgent;
@@ -130,7 +125,7 @@ export function SaveFileInfoDialog({ phase, uploadState, errorMessage, matchSumm
                     <h2 className="text-white font-medium">
                         {phase === 'confirm' ? 'Save file loaded' : 'Sync save file unlocks'}
                     </h2>
-                    <div className="cursor-pointer text-white hover:bg-white/10 p-1 rounded" onClick={onClose}>
+                    <div className="cursor-pointer w-8 h-8 flex items-center justify-center text-white/60 hover:text-white transition-colors" onClick={onClose}>
                         ✕
                     </div>
                 </div>

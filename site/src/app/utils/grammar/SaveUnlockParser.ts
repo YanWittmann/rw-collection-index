@@ -11,7 +11,7 @@ import {
 	Token, TokenStream,
 	Interval, IntervalSet
 } from 'antlr4';
-import SaveUnlockVisitor from "./SaveUnlockVisitor";
+import SaveUnlockVisitor from "./SaveUnlockVisitor.js";
 
 // for running tests with parameters, TODO: discuss strategy for typed parameters in CI
 // eslint-disable-next-line no-unused-vars
@@ -26,9 +26,8 @@ export default class SaveUnlockParser extends Parser {
 	public static readonly T__5 = 6;
 	public static readonly OP = 7;
 	public static readonly IDENTIFIER = 8;
-	public static readonly INT = 9;
-	public static readonly NUMBER = 10;
-	public static readonly WS = 11;
+	public static readonly NUMBER = 9;
+	public static readonly WS = 10;
 	public static override readonly EOF = Token.EOF;
 	public static readonly RULE_expression = 0;
 	public static readonly RULE_block = 1;
@@ -44,8 +43,7 @@ export default class SaveUnlockParser extends Parser {
                                                              null, null, 
                                                              null, "OP", 
                                                              "IDENTIFIER", 
-                                                             "INT", "NUMBER", 
-                                                             "WS" ];
+                                                             "NUMBER", "WS" ];
 	// tslint:disable:no-trailing-whitespace
 	public static readonly ruleNames: string[] = [
 		"expression", "block", "conditions", "condition", "logicOp",
@@ -283,7 +281,7 @@ export default class SaveUnlockParser extends Parser {
 		return localctx;
 	}
 
-	public static readonly _serializedATN: number[] = [4,1,11,46,2,0,7,0,2,
+	public static readonly _serializedATN: number[] = [4,1,10,46,2,0,7,0,2,
 	1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,1,0,1,0,1,0,1,0,5,0,15,8,0,10,0,12,0,18,9,
 	0,1,1,1,1,1,1,1,1,1,1,1,2,1,2,1,2,5,2,28,8,2,10,2,12,2,31,9,2,1,3,1,3,1,
 	3,1,3,1,3,1,3,1,3,1,3,1,3,3,3,42,8,3,1,4,1,4,1,4,0,0,5,0,2,4,6,8,0,2,1,
@@ -293,10 +291,10 @@ export default class SaveUnlockParser extends Parser {
 	16,1,0,0,0,19,20,5,8,0,0,20,21,5,1,0,0,21,22,3,4,2,0,22,23,5,2,0,0,23,3,
 	1,0,0,0,24,29,3,6,3,0,25,26,5,3,0,0,26,28,3,6,3,0,27,25,1,0,0,0,28,31,1,
 	0,0,0,29,27,1,0,0,0,29,30,1,0,0,0,30,5,1,0,0,0,31,29,1,0,0,0,32,33,5,4,
-	0,0,33,42,3,6,3,0,34,35,5,8,0,0,35,36,5,7,0,0,36,42,5,10,0,0,37,38,5,8,
-	0,0,38,39,5,5,0,0,39,42,7,0,0,0,40,42,5,8,0,0,41,32,1,0,0,0,41,34,1,0,0,
-	0,41,37,1,0,0,0,41,40,1,0,0,0,42,7,1,0,0,0,43,44,7,1,0,0,44,9,1,0,0,0,3,
-	16,29,41];
+	0,0,33,42,3,6,3,0,34,35,5,8,0,0,35,36,5,7,0,0,36,42,5,9,0,0,37,38,5,8,0,
+	0,38,39,5,5,0,0,39,42,7,0,0,0,40,42,5,8,0,0,41,32,1,0,0,0,41,34,1,0,0,0,
+	41,37,1,0,0,0,41,40,1,0,0,0,42,7,1,0,0,0,43,44,7,1,0,0,44,9,1,0,0,0,3,16,
+	29,41];
 
 	private static __ATN: ATN;
 	public static get _ATN(): ATN {
@@ -412,9 +410,6 @@ export class ConditionContext extends ParserRuleContext {
 	}
 	public NUMBER(): TerminalNode {
 		return this.getToken(SaveUnlockParser.NUMBER, 0);
-	}
-	public INT(): TerminalNode {
-		return this.getToken(SaveUnlockParser.INT, 0);
 	}
     public get ruleIndex(): number {
     	return SaveUnlockParser.RULE_condition;

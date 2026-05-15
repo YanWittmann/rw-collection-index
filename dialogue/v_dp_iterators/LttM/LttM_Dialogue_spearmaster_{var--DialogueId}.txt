@@ -1,10 +1,10 @@
 type: item
 subType: spearmaster
-saveUnlock: Spear { lttm }
 
 === transcription: LttM-pre-collapse
 md-type: pearl
 md-transcriberName: If Spearmaster has already delivered their message
+md-saveUnlock: Spear { lttm >= 1 and smPearlTagged }
 md-var-DialogueId: First_encounter
 md-name: First encounter
 md-sourceDialogue: 139.txt
@@ -23,6 +23,7 @@ There is not much I can do. At least you can make yourself at home.
 === transcription: LttM-pre-collapse
 md-type: pearl
 md-transcriberName: If Spearmaster has not delivered their message
+md-saveUnlock: Spear { lttm >= 1 and !smPearlTagged }
 md-var-DialogueId: First_encounter
 md-name: First encounter
 Brave messenger… What are you?
@@ -37,6 +38,7 @@ Hurry little messenger!
 
 === transcription: LttM-pre-collapse
 md-type: pearl
+md-saveUnlock: Spear { lttm >= 1 }
 md-var-DialogueId: Second_encounter
 md-name: Second encounter
 md-sourceDialogue: none
@@ -44,6 +46,7 @@ I have nothing for you, poor thing. Please, I don't have long.
 
 === transcription: LttM-pre-collapse
 md-type: pearl
+md-saveUnlock: Spear { lttm >= 1 }
 md-var-DialogueId: Following_encounters
 md-name: Following encounters
 MONO

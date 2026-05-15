@@ -1,9 +1,9 @@
 type: item
 subType: saint
-saveUnlock: Saint { lttm }
 
 === transcription: LttM-saint
 md-type: pearl
+md-saveUnlock: Saint { lttmMark >= 1 } or Saint { visited.SL_AI } or Saint { echo.SL }
 md-var-DialogueId: First_encounter
 md-name: First encounter
 You feel it too, don't you, strange one?
@@ -12,6 +12,7 @@ Go on, our cycles will meet again.
 
 === transcription: LttM-saint
 md-type: pearl
+md-saveUnlock: Saint { lttmMark >= 1 }
 md-var-DialogueId: Second_Encounter
 md-name: Second Encounter
 Hello. You can understand me, can’t you?
@@ -23,6 +24,7 @@ Hopefully you can find an escape to your suffering.
 
 === transcription: LttM-saint
 md-type: pearl
+md-saveUnlock: Saint { lttmMark >= 2 }
 md-var-DialogueId: Third_Encounter
 md-name: Third Encounter
 md-sourceDialogue: none
@@ -35,6 +37,7 @@ This chamber is not very well insulated from the cold.
 
 === transcription: LttM-saint
 md-type: pearl
+md-saveUnlock: Saint { lttmMark >= 1 }
 md-var-DialogueId: Blizzard_approaching
 md-name: Blizzard approaching
 md-tag: downpour

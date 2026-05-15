@@ -453,7 +453,7 @@ You might be able to find an access shaft into my lower structure nearby, but I 
 Please be careful.
 
 === transcription: LttM-rivulet
-md-saveUnlock: any { lttm }
+md-saveUnlock: any { lttm and hasMark }
 md-type: pearl
 md-subType: item/King_Vulture_icon
 md-var-DialogueId: Joke_Creatures

@@ -4,8 +4,9 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import PearlItem from "./PearlItem";
 import { cn } from "@shadcn/lib/utils";
 import { RwIconButton } from "../other/RwIconButton";
-import { FilterSection, PearlFilter } from "./PearlFilter";
+import { FilterOption, FilterSection, PearlFilter } from "./PearlFilter";
 import { getSpeakerInfo, regionColors, regionNames, speakerNames } from "../../utils/speakers";
+import { randomColor } from "../../utils/colorUtils";
 import { OrderedChapter } from "../../utils/pearlOrder";
 import { UnlockMode, useAppContext } from "../../context/AppContext";
 import { useFilteredPearls } from "../../hooks/useFilteredPearls";
@@ -27,18 +28,7 @@ interface FlatChapterItem {
 
 interface PearlGridProps {
     order: (pearls: PearlData[]) => OrderedChapter[];
-    isAlternateDisplayModeActive?: boolean; // This could become global state too
-}
-
-interface MemoizedPearlItemProps {
-    pearl: PearlData;
-    pearlIndex: number;
-    showTranscriberCount: boolean;
-    collectionVersion: number;
-    isSelected: boolean;
-    handleSelectPearl: (pearl: PearlData) => void;
-    isFoundInSave: boolean;
-    unlockMode: UnlockMode;
+    isAlternateDisplayModeActive?: boolean;
 }
 
 const SearchBar = () => {
@@ -77,9 +67,9 @@ const SearchBar = () => {
         }
     ], [unlockMode, isModded, setUnlockMode]);
 
-    // This data should ideally not be recalculated here.
-    // For a future refactor, this could be derived once and stored in context.
     const { pearls } = useAppContext();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const typeFilterColors = useMemo(() => ({ pearl: randomColor(), broadcast: randomColor() }), []);
     const filterSections: FilterSection[] = useMemo(() => {
         const uniqueRegions = new Set<string>();
         pearls.forEach(p => p.transcribers.forEach(t => t.metadata.map?.forEach(m => m.region && uniqueRegions.add(m.region))));
@@ -91,8 +81,16 @@ const SearchBar = () => {
             }
         })));
         uniqueSpeakers.delete("Five Pebbles");
+        uniqueSpeakers.delete("EP"); // merged into FP
 
-        const sortedRegions = Array.from(uniqueRegions).sort();
+        const sortedRegions = Array.from(uniqueRegions).sort((a, b) => {
+            const indexA = Object.keys(regionNames).indexOf(a);
+            const indexB = Object.keys(regionNames).indexOf(b);
+            if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+            if (indexA !== -1) return -1;
+            if (indexB !== -1) return 1;
+            return a.localeCompare(b);
+        });
         const sortedSpeakers = Array.from(uniqueSpeakers).sort((a, b) => {
             const indexA = Object.keys(speakerNames).indexOf(a);
             const indexB = Object.keys(speakerNames).indexOf(b);
@@ -102,20 +100,23 @@ const SearchBar = () => {
             return a.localeCompare(b);
         });
 
+        const tagOptions: FilterOption[] = [
+            { id: "vanilla", label: "Vanilla (No DLC)", icon: "vanilla-rw" },
+            { id: "downpour", label: "Downpour", icon: "dlc-dp" },
+            { id: "watcher", label: "Watcher", icon: "dlc-watcher" },
+            { id: "saveFound", label: "Found in Save", icon: "pearl", iconColor: '#FFD700' },
+        ];
+
         const sections: FilterSection[] = [
             {
                 title: "Tags",
-                options: [
-                    { id: "vanilla", label: "Vanilla (No DLC)", icon: "vanilla-rw" },
-                    { id: "downpour", label: "Downpour", icon: "dlc-dp" },
-                    { id: "watcher", label: "Watcher", icon: "dlc-watcher" },
-                ]
+                options: tagOptions,
             },
             {
                 title: "Types",
                 options: [
-                    { id: "pearl", label: "Pearl", icon: "pearl", iconColor: '#A0A0A0' },
-                    { id: "broadcast", label: "Broadcast", icon: "broadcast", iconColor: '#FFFFFF' },
+                    { id: "pearl", label: "Pearl", icon: "pearl", iconColor: typeFilterColors.pearl },
+                    { id: "broadcast", label: "Broadcast", icon: "broadcast", iconColor: typeFilterColors.broadcast },
                     { id: "echo", label: "Echo", icon: "echo" },
                     { id: "item", label: "Other", icon: "item/Bubble_Weed_icon" }
                 ]
@@ -125,7 +126,7 @@ const SearchBar = () => {
                 options: sortedRegions.map(r => ({
                     id: r,
                     label: regionNames[r] ?? r,
-                    content: r,
+                    regionId: r,
                     iconColor: regionColors[r]
                 })),
             },
@@ -144,20 +145,13 @@ const SearchBar = () => {
 
                     return {
                         id: s,
-                        label: info.displayName,
-                        content: actualSpeaker,
-                        iconColor: info.color
+                        label: info.displayName === '(Unknown)' ? s : info.displayName.split(' / ')[0],
+                        icon: info.icon,
+                        iconColor: info.iconColor
                     };
                 }),
             }
         ];
-
-        if (saveFound.size > 0) {
-            sections.push({
-                title: "Save",
-                options: [{ id: "saveFound", label: "Found in Save", icon: "pearl", iconColor: '#FFD700' }]
-            });
-        }
 
         return sections;
     }, [pearls, saveFound.size]);
@@ -205,10 +199,11 @@ const SearchBar = () => {
     );
 };
 
-const BannerChapterHeader = React.memo(({ flatChapter, onToggle }: {
+// Receives a stable toggleChapter ref so React.memo can bail out when chapter content hasn't changed
+const BannerChapterHeader = React.memo(function BannerChapterHeader({ flatChapter, toggleChapter }: {
     flatChapter: FlatChapterItem,
-    onToggle: () => void
-}) => {
+    toggleChapter: (name: string) => void
+}) {
     const { originalChapter, depth } = flatChapter;
     const { icon: iconUrl, link: linkData } = originalChapter;
     const [isLinkPopoverOpen, setIsLinkPopoverOpen] = useState(false);
@@ -299,7 +294,7 @@ const BannerChapterHeader = React.memo(({ flatChapter, onToggle }: {
             <RwIconButton
                 square={false}
                 className="flex-1"
-                onClick={onToggle}
+                onClick={() => toggleChapter(flatChapter.name)}
                 expandedScaleFactor={0.2}
                 aria-label={flatChapter.name}
             >
@@ -315,61 +310,62 @@ const BannerChapterHeader = React.memo(({ flatChapter, onToggle }: {
     );
 });
 
-// wrapper component for lazy loading
-const LazyChapterGrid = ({
-                             flatChapter,
-                             chapterIndex,
-                             isVisible,
-                             setVisibleChapters,
-                             currentGridPosition,
-                             selectedPearlRef,
-                             getHighlightStyle,
-                             isAlternateDisplayModeActive,
-                             collectionVersion,
-                             selectedPearlId,
-                             handleSelectPearl,
-                             saveFound,
-                             unlockMode,
-                             onToggle
-                         }: {
+const LazyChapterGrid = React.memo(function LazyChapterGrid({
+    flatChapter,
+    chapterIndex,
+    isVisible,
+    setVisibleChapters,
+    selectedPearlRef,
+    highlightMap,
+    isAlternateDisplayModeActive,
+    collectionVersion,
+    selectedPearlId,
+    handleSelectPearl,
+    saveFound,
+    unlockMode,
+    toggleChapter,
+}: {
     flatChapter: FlatChapterItem
     chapterIndex: number
     isVisible: boolean
     setVisibleChapters: (callback: (prev: Set<number>) => Set<number>) => void
-    currentGridPosition?: [number, number]
     selectedPearlRef: React.RefObject<HTMLDivElement | null>
-    getHighlightStyle: (chapterId: string, itemIndex: number) => React.CSSProperties
+    highlightMap: Map<string, React.CSSProperties>
     isAlternateDisplayModeActive: boolean
     collectionVersion: number
     selectedPearlId: string | null
     handleSelectPearl: (pearl: PearlData) => void
     saveFound: Map<string, Set<string>>
     unlockMode: UnlockMode
-    onToggle: () => void
-}) => {
+    toggleChapter: (name: string) => void
+}) {
     const observerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const currentRef = observerRef.current;
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
-                setVisibleChapters(prev => new Set([...Array.from(prev), chapterIndex]));
+                // Guard: only update state if this chapter isn't already marked visible
+                setVisibleChapters(prev => {
+                    if (prev.has(chapterIndex)) return prev;
+                    const next = new Set(prev);
+                    next.add(chapterIndex);
+                    return next;
+                });
             }
         }, { rootMargin: '200px' });
 
         if (currentRef) observer.observe(currentRef);
-        return () => {
-            observer.disconnect();
-        };
+        return () => { observer.disconnect(); };
     }, [chapterIndex, setVisibleChapters]);
 
     return (
         <div ref={observerRef} className="last:mb-4">
             {flatChapter.name && (
                 flatChapter.originalChapter.headerType === "banner" ? (
-                    <BannerChapterHeader flatChapter={flatChapter} onToggle={onToggle}/>
+                    <BannerChapterHeader flatChapter={flatChapter} toggleChapter={toggleChapter}/>
                 ) : (
-                    <button onClick={onToggle}
+                    <button onClick={() => toggleChapter(flatChapter.name)}
                             className={cn("flex items-center gap-2 w-full text-left group focus:outline-none", flatChapter.isExpanded && flatChapter.items.length > 0 && "mb-2")}
                             style={{ paddingLeft: `${flatChapter.depth * 16}px` }}>
                         <h3 className="text-white text-sm font-medium group-hover:text-white/90">{flatChapter.name}</h3>
@@ -390,9 +386,9 @@ const LazyChapterGrid = ({
                         <div className="grid grid-cols-5 gap-2 w-fit">
                             {flatChapter.items.map((pearl, pearlIndex) => pearl && pearl.id && (
                                 <div key={`pearl-${pearl.id}`}
-                                     ref={currentGridPosition && getHighlightStyle(flatChapter.id, pearlIndex).outline ? selectedPearlRef : undefined}
-                                     style={getHighlightStyle(flatChapter.id, pearlIndex)}>
-                                    <MemoizedPearlItem
+                                     ref={highlightMap.has(`${flatChapter.id}-${pearlIndex}`) ? selectedPearlRef : undefined}
+                                     style={highlightMap.get(`${flatChapter.id}-${pearlIndex}`) ?? {}}>
+                                    <PearlItem
                                         pearl={pearl}
                                         pearlIndex={pearlIndex}
                                         showTranscriberCount={isAlternateDisplayModeActive}
@@ -412,48 +408,7 @@ const LazyChapterGrid = ({
             )}
         </div>
     );
-};
-
-const MemoizedPearlItem = React.memo<MemoizedPearlItemProps>(({ pearl, pearlIndex, showTranscriberCount, collectionVersion, isSelected, handleSelectPearl, isFoundInSave, unlockMode }) => (
-    <PearlItem pearl={pearl} pearlIndex={pearlIndex} showTranscriberCount={showTranscriberCount} collectionVersion={collectionVersion} isSelected={isSelected} handleSelectPearl={handleSelectPearl} isFoundInSave={isFoundInSave} unlockMode={unlockMode}/>
-));
-
-const useIsScrollable = (ref: React.RefObject<HTMLDivElement | null>, dependencies: any[]) => {
-    const [isScrollable, setIsScrollable] = useState(false);
-    const [showGradient, setShowGradient] = useState(false);
-    const [isAtTop, setIsAtTop] = useState(true);
-
-    useEffect(() => {
-        const el = ref.current;
-
-        const checkScroll = () => {
-            if (el) {
-                const { scrollHeight, clientHeight, scrollTop } = el;
-                const hasScrollableContent = scrollHeight > clientHeight;
-                setIsScrollable(hasScrollableContent);
-                setIsAtTop(scrollTop < 10);
-                if (hasScrollableContent) {
-                    setShowGradient(scrollTop + clientHeight < scrollHeight - 1);
-                } else {
-                    setShowGradient(false);
-                }
-            }
-        };
-
-        const timer = setTimeout(checkScroll, 0); // Check after render
-        window.addEventListener('resize', checkScroll);
-        el?.addEventListener('scroll', checkScroll);
-
-        return () => {
-            clearTimeout(timer);
-            window.removeEventListener('resize', checkScroll);
-            el?.removeEventListener('scroll', checkScroll);
-        };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [ref, ...dependencies]);
-
-    return { isScrollable, showGradient, isAtTop };
-};
+});
 
 export function PearlGrid({ order, isAlternateDisplayModeActive = false }: PearlGridProps) {
     const { pearls, handleSelectPearl, selectedPearlId, isMobile, saveFoundVersion, unlockVersion, saveFound, unlockMode } = useAppContext();
@@ -466,14 +421,13 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
     const selectedPearlRef = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const desktopToggleRef = useRef<HTMLDivElement>(null);
+    const gradientRef = useRef<HTMLDivElement>(null);
+    const expandButtonsRef = useRef<HTMLDivElement>(null);
 
     const handleToggleChapter = useCallback((name: string) => {
         isTogglingRef.current = true;
         toggleChapter(name);
-        // Reset the flag after enough time for the re-render and effect execution to pass
-        setTimeout(() => {
-            isTogglingRef.current = false;
-        }, 100);
+        setTimeout(() => { isTogglingRef.current = false; }, 100);
     }, [toggleChapter]);
 
     // Automatically select the first item if only one is filtered and on desktop
@@ -552,6 +506,37 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
         return list;
     }, [filteredTree, expandedChapters]);
 
+    // Scroll-driven DOM updates: no React state means scrolling never triggers re-renders
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+
+        const checkScroll = () => {
+            const { scrollHeight, clientHeight, scrollTop } = el;
+            const hasScrollableContent = scrollHeight > clientHeight;
+            const atTop = scrollTop < 10;
+            const showGrad = hasScrollableContent && (scrollTop + clientHeight < scrollHeight - 1);
+
+            if (gradientRef.current) {
+                gradientRef.current.style.opacity = showGrad ? '1' : '0';
+            }
+            if (expandButtonsRef.current) {
+                expandButtonsRef.current.style.maxHeight = atTop ? '2rem' : '0px';
+                expandButtonsRef.current.style.opacity = atTop ? '1' : '0';
+            }
+        };
+
+        const timer = setTimeout(checkScroll, 0);
+        window.addEventListener('resize', checkScroll);
+        el.addEventListener('scroll', checkScroll);
+
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener('resize', checkScroll);
+            el.removeEventListener('scroll', checkScroll);
+        };
+    }, [displayList]);
+
     const pearlGrid = useMemo(() => {
         const grid: PearlData[][] = [];
         displayList.forEach(chapter => {
@@ -566,24 +551,30 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
 
     const { currentGridPosition } = useKeyboardNavigation(pearlGrid);
 
-    const getHighlightStyle = useCallback((chapterId: string, itemIndex: number) => {
-        if (!currentGridPosition) return {};
+    // Precompute highlight styles once per keyboard-navigation change (O(chapters)) rather than per pearl (O(N×chapters))
+    const highlightMap = useMemo<Map<string, React.CSSProperties>>(() => {
+        const map = new Map<string, React.CSSProperties>();
+        if (!currentGridPosition) return map;
+
         const [targetRow, targetCol] = currentGridPosition;
         let currentRow = 0;
 
         for (const chapter of displayList) {
             if (chapter.isExpanded && chapter.items.length > 0) {
-                if (chapter.id === chapterId) {
-                    const itemRow = Math.floor(itemIndex / 5);
-                    const itemCol = itemIndex % 5;
-                    if (currentRow + itemRow === targetRow && itemCol === targetCol) {
-                        return { outline: '2px solid rgba(255, 255, 255, 0.5)', borderRadius: '0.75rem' };
+                const relativeRow = targetRow - currentRow;
+                if (relativeRow >= 0 && relativeRow < Math.ceil(chapter.items.length / 5)) {
+                    const itemIndex = relativeRow * 5 + targetCol;
+                    if (itemIndex < chapter.items.length) {
+                        map.set(`${chapter.id}-${itemIndex}`, {
+                            outline: '2px solid rgba(255, 255, 255, 0.5)',
+                            borderRadius: '0.75rem'
+                        });
                     }
                 }
                 currentRow += Math.ceil(chapter.items.length / 5);
             }
         }
-        return {};
+        return map;
     }, [currentGridPosition, displayList]);
 
     // Scroll selected item into view
@@ -600,8 +591,6 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
         }
     }, [currentGridPosition]);
 
-    const { isScrollable, showGradient, isAtTop } = useIsScrollable(containerRef, [displayList]);
-
     const isAnyExpanded = expandedChapters.size > 0;
     const handleExpandToggle = useCallback(() => {
         if (isAnyExpanded) {
@@ -613,81 +602,86 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
 
     return (
         <div className={cn("relative", isMobile ? "w-full max-h-[98svh] h-[98svh]" : "w-[18rem] max-h-[80svh]")}>
-            <div className={cn("no-scrollbar overflow-y-auto box-border h-full", isMobile ? "px-4" : "px-1")}
-                 ref={containerRef}>
-                <div className={cn("sticky top-0 z-20", isMobile ? "pt-4" : "pt-1", "mb-4")}>
-                    <SearchBar/>
-                    {isMobile && (
-                        <div
-                            className={cn("overflow-hidden transition-all duration-300 ease-in-out", isAtTop ? "max-h-8 opacity-100" : "max-h-0 opacity-0")}>
-                            <div className="flex justify-start gap-2 px-1 mt-1">
-                                <button
-                                    onClick={expandAll}
-                                    className="text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-1 font-medium"
-                                >
-                                    <span>Expand</span>
-                                </button>
-                                <span
-                                    className="text-[10px] uppercase tracking-widest text-white/40 font-medium"
-                                >/</span>
-                                <button
-                                    onClick={collapseAll}
-                                    className="text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-1 font-medium"
-                                >
-                                    <span>Collapse All</span>
-                                </button>
+                <div className={cn("no-scrollbar overflow-y-auto box-border h-full", isMobile ? "px-4" : "px-1")}
+                     ref={containerRef}>
+                    <div className={cn("sticky top-0 z-20", isMobile ? "pt-4" : "pt-1", "mb-4")}>
+                        <SearchBar/>
+                        {isMobile && (
+                            <div
+                                ref={expandButtonsRef}
+                                className="overflow-hidden transition-all duration-300 ease-in-out"
+                                style={{ maxHeight: '2rem', opacity: 1 }}
+                            >
+                                <div className="flex justify-start gap-2 px-1 mt-1">
+                                    <button
+                                        onClick={expandAll}
+                                        className="text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-1 font-medium"
+                                    >
+                                        <span>Expand</span>
+                                    </button>
+                                    <span
+                                        className="text-[10px] uppercase tracking-widest text-white/40 font-medium"
+                                    >/</span>
+                                    <button
+                                        onClick={collapseAll}
+                                        className="text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-1 font-medium"
+                                    >
+                                        <span>Collapse All</span>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                    )}
+                        )}
+                    </div>
+                    <div className={cn("grid grid-cols-1 gap-4", isMobile ? "" : "px-1", isMobile ? "pb-4" : "pb-1")}>
+                        {displayList.map((flatChapter, index) => (
+                            <LazyChapterGrid
+                                key={flatChapter.id}
+                                flatChapter={flatChapter}
+                                chapterIndex={index}
+                                isVisible={visibleChapters.has(index)}
+                                setVisibleChapters={setVisibleChapters}
+                                selectedPearlRef={selectedPearlRef}
+                                highlightMap={highlightMap}
+                                isAlternateDisplayModeActive={isAlternateDisplayModeActive}
+                                collectionVersion={collectionVersion}
+                                selectedPearlId={selectedPearlId}
+                                handleSelectPearl={handleSelectPearl}
+                                saveFound={saveFound}
+                                unlockMode={unlockMode}
+                                toggleChapter={handleToggleChapter}
+                            />
+                        ))}
+                    </div>
                 </div>
-                <div className={cn("grid grid-cols-1 gap-4", isMobile ? "" : "px-1", isMobile ? "pb-4" : "pb-1")}>
-                    {displayList.map((flatChapter, index) => (
-                        <LazyChapterGrid
-                            key={flatChapter.id}
-                            flatChapter={flatChapter}
-                            chapterIndex={index}
-                            isVisible={visibleChapters.has(index)}
-                            setVisibleChapters={setVisibleChapters}
-                            currentGridPosition={currentGridPosition}
-                            selectedPearlRef={selectedPearlRef}
-                            getHighlightStyle={getHighlightStyle}
-                            isAlternateDisplayModeActive={isAlternateDisplayModeActive}
-                            collectionVersion={collectionVersion}
-                            selectedPearlId={selectedPearlId}
-                            handleSelectPearl={handleSelectPearl}
-                            saveFound={saveFound}
-                            unlockMode={unlockMode}
-                            onToggle={() => handleToggleChapter(flatChapter.name)}
-                        />
-                    ))}
-                </div>
-            </div>
 
-            {!isMobile && (
+                {!isMobile && (
+                    <div
+                        ref={desktopToggleRef}
+                        className="absolute -left-7 top-[3.75rem] z-50 cursor-pointer text-white/40 hover:text-white transition-colors p-2"
+                        onClick={handleExpandToggle}
+                        title={isAnyExpanded ? "Collapse All" : "Expand All"}
+                        style={{ opacity: 0, pointerEvents: 'none' }}
+                    >
+                        {isAnyExpanded ? (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="m18 4-6 6-6-6"/>
+                                <path d="m6 20 6-6 6 6"/>
+                            </svg>
+                        ) : (
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="m18 10-6-6-6 6"/>
+                                <path d="m6 14 6 6 6-6"/>
+                            </svg>
+                        )}
+                    </div>
+                )}
+
                 <div
-                    ref={desktopToggleRef}
-                    className="absolute -left-7 top-[3.75rem] z-50 cursor-pointer text-white/40 hover:text-white transition-colors p-2"
-                    onClick={handleExpandToggle}
-                    title={isAnyExpanded ? "Collapse All" : "Expand All"}
-                    style={{ opacity: 0, pointerEvents: 'none' }}
-                >
-                    {isAnyExpanded ? (
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="m18 4-6 6-6-6"/>
-                            <path d="m6 20 6-6 6 6"/>
-                        </svg>
-                    ) : (
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="m18 10-6-6-6 6"/>
-                            <path d="m6 14 6 6 6-6"/>
-                        </svg>
-                    )}
-                </div>
-            )}
-
-            <div
-                className={cn("absolute bottom-0 left-0 right-0 h-8 pointer-events-none bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-white/20 to-transparent transition-opacity duration-300 border-b-2 border-white/50 z-10", isScrollable && showGradient ? "opacity-100" : "opacity-0")}/>
-        </div>
+                    ref={gradientRef}
+                    className="absolute bottom-0 left-0 right-0 h-8 pointer-events-none bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-white/20 to-transparent transition-opacity duration-300 border-b-2 border-white/50 z-10"
+                    style={{ opacity: 0 }}
+                />
+            </div>
     );
 }
 

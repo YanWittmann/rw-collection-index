@@ -1,10 +1,10 @@
 type: item
 subType: rivulet
-saveUnlock: Rivulet { lttm }
 
 === transcription: LttM-rivulet
 md-type: pearl
 md-transcriberName: If Rivulet has already taken the Rarefaction Cell
+md-saveUnlock: Rivulet { lttmMark >= 1 and energyRailOff }
 md-var-DialogueId: First_encounter
 md-name: First encounter
 Oh. Hello there!
@@ -18,6 +18,7 @@ However, as long as the microbes in my processing strata continue to function, I
 === transcription: LttM-rivulet
 md-type: pearl
 md-transcriberName: If Rivulet has not taken the Rarefaction Cell
+md-saveUnlock: Rivulet { lttmMark >= 1 and !energyRailOff and !altEnding }
 md-var-DialogueId: First_encounter
 md-name: First encounter
 Oh. Hello there!
@@ -40,7 +41,7 @@ However as long as the microbes in my processing strata continue to function, I'
 
 === transcription: LttM-rivulet
 md-type: pearl
-md-saveUnlock: Rivulet { altEnding and moonMark >= 5 }
+md-saveUnlock: Rivulet { altEnding and lttmMark >= 5 }
 md-var-DialogueId: Returning_after_placing_the_Rarefaction_Cell
 md-name: Returning after placing the Rarefaction Cell
 md-sourceDialogue: 154.txt
@@ -94,7 +95,7 @@ BSM: I'm sorry, Five Pebbles. I'll always be here if you need someone to talk to
 
 === transcription: LttM-rivulet
 md-type: pearl
-md-saveUnlock: Rivulet { altEnding and moonMark >= 6 }
+md-saveUnlock: Rivulet { altEnding and lttmMark >= 6 }
 md-var-DialogueId: Returning_after_ending
 md-name:  Returning after ending
 Ruffles, don't fall asleep here, it's not safe!
@@ -106,6 +107,7 @@ For now, though, I still have a lot of information to catch up on.
 === transcription: LttM-rivulet
 md-subType: item/Neuron_Fly_icon
 md-transcriberName: Eating a Neuron Fly
+md-saveUnlock: Rivulet { lttmMark >= 1 }
 md-var-DialogueId: Interruptions
 md-name: Interruptions
 MONO
@@ -126,6 +128,7 @@ MONO
 === transcription: LttM-rivulet
 md-subType: item/Neuron_Fly_icon
 md-transcriberName: Taking a Neuron Fly
+md-saveUnlock: Rivulet { lttmMark >= 1 }
 md-var-DialogueId: Interruptions
 md-name: Interruptions
 md-sourceDialogue: none
@@ -163,6 +166,7 @@ MONO
 === transcription: LttM-rivulet
 md-type: pearl
 md-transcriberName: Attacking
+md-saveUnlock: Rivulet { lttmMark >= 1 }
 md-var-DialogueId: Interruptions
 md-name: Interruptions
 MONO

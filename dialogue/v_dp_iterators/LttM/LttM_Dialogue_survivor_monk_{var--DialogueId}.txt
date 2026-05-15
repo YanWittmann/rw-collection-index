@@ -1,11 +1,10 @@
 type: item
 subType: survivor_monk
-saveUnlock: White { moonMark >= 1 }
-saveUnlock: Yellow { moonMark >= 1 }
 
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: If Looks to the Moon has 1 neuron left
+md-saveUnlock: White { lttmMark >= 2 and lttmNeuronsLeft == 1 } or Yellow { lttmMark >= 2 and lttmNeuronsLeft == 1 }
 md-var-DialogueId: Second_encounter
 md-name: Second encounter
 ...
@@ -13,6 +12,7 @@ md-name: Second encounter
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: If Looks to the Moon has 2 neurons left
+md-saveUnlock: White { lttmMark >= 2 and lttmNeuronsLeft == 2 } or Yellow { lttmMark >= 2 and lttmNeuronsLeft == 2 }
 md-var-DialogueId: Second_encounter
 md-name: Second encounter
 ...leave...
@@ -20,6 +20,7 @@ md-name: Second encounter
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: If Looks to the Moon has 3 neurons left
+md-saveUnlock: White { lttmMark >= 2 and lttmNeuronsLeft == 3 } or Yellow { lttmMark >= 2 and lttmNeuronsLeft == 3 }
 md-var-DialogueId: Second_encounter
 md-name: Second encounter
 You...
@@ -28,6 +29,7 @@ Please don’t... take... more from me... Go.
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: If Looks to the Moon has 4 neurons left
+md-saveUnlock: White { lttmMark >= 2 and lttmNeuronsLeft == 4 } or Yellow { lttmMark >= 2 and lttmNeuronsLeft == 4 }
 md-var-DialogueId: Second_encounter
 md-name: Second encounter
 MONO
@@ -44,6 +46,7 @@ MONO
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: If Looks to the Moon has 5 neurons left
+md-saveUnlock: White { lttmMark >= 2 and lttmNeuronsLeft >= 5 } or Yellow { lttmMark >= 2 and lttmNeuronsLeft >= 5 }
 md-var-DialogueId: Second_encounter
 md-name: Second encounter
 MONO

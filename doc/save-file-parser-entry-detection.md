@@ -4,7 +4,7 @@ This document describes how every category of entry in the collection index is d
 
 The implementation lives in `site/src/app/utils/saveCollectibles.ts`. This document is the authoritative reference for the logic in that file and should be kept in sync with it.
 
-Last updated: 2026-05-14
+Last updated: 2026-05-15 (revised)
 
 ---
 
@@ -68,7 +68,9 @@ At the top level of the `SaveStateRecord` state object, `swallowedItems`, `playe
 
 ## Transcriber Unlocking
 
-When a save match is found, the system determines which transcribers to unlock by evaluating per-transcriber `md-save-unlock` DSL conditions on each transcriber. Only transcribers whose condition evaluates to true are unlocked. If a transcriber has no `md-save-unlock`, all transcribers of that entry are unlocked (fallback).
+When a save match is found, the system determines which transcribers to unlock by evaluating per-transcriber `md-saveUnlock` DSL conditions on each transcriber. Only transcribers whose condition evaluates to true are unlocked. If a transcriber has no `md-saveUnlock`, all transcribers of that entry are unlocked (fallback).
+
+A file is in **per-transcriber mode** when at least one transcriber carries `md-saveUnlock`. In this mode the entry-level `saveUnlock:` header field is ignored entirely by the evaluator. Files where every transcriber has `md-saveUnlock` must therefore not carry a top-level `saveUnlock:` line — it would be dead code that silently misleads. The 13 iterator dialogue files that are fully in per-transcriber mode carry no entry-level `saveUnlock:`: `LttM_Dialogue_survivor`, `LttM_Dialogue_survivor_monk`, `LttM_Dialogue_gourmand`, `LttM_Dialogue_hunter`, `LttM_Dialogue_rivulet`, `LttM_Dialogue_spearmaster`, `LttM_Dialogue_saint`, `LttM_short_Dialogue`, `FP_Dialogue_hunter`, `FP_Dialogue_artificer`, `FP_Dialogue_rivulet`, `FP_Dialogue_saint`, `FP_Dialogue_survivor`. The remaining files (`FP_Dialogue_monk`, `FP_Dialogue_gourmand`, `FP_Dialogue_spearmaster`, `FP_Dialogue_inv`, `FP_Dialogue_other`, `LttM_Dialogue_monk`) are not in per-transcriber mode and retain their entry-level `saveUnlock:`.
 
 Named pearl transcriber conditions use source-specific DSL global accessors:
 
@@ -253,17 +255,49 @@ Several entries have more precise conditions:
 
 `FP_Dialogue_other_Throwing_Singularity_Bomb`: fires when any slugcat detonates a singularity bomb in FP's chamber. Detection: any slugcat has `ssaiConversationsHad > 0`. Confidence: approximate (FP being present is confirmed; the specific bomb event is runtime-only).
 
-All remaining FP entries use the coarse condition: the relevant slugcat's `ssaiConversationsHad > 0`.
+Several FP files are in per-transcriber mode; every transcriber in those files carries its own `md-saveUnlock`. For entries where no finer save signal exists (lingering, runtime interrupts, death, blizzard, weapon hits), the per-transcriber condition is the coarse `SlugcatName { fp }`, which is equivalent to the entry-level fallback. The specific conditions are listed below and in `doc/research/iterator-unlock-audit.md`.
+
+`FP_Dialogue_hunter_Lingering`: frame-counter event; undetectable. Detection: `Red { fp }`. Confidence: approximate.
+
+`FP_Dialogue_artificer_First_encounter`: Detection: `Artificer { fp }`. Confidence: exact.
+`FP_Dialogue_artificer_Lingering_Too_Long`: frame-counter event. Detection: `Artificer { fp }`. Confidence: approximate.
+`FP_Dialogue_artificer_Hitting_with_a_rock_or_spear`: runtime weapon event. Detection: `Artificer { fp }`. Confidence: approximate.
+
+`FP_Dialogue_rivulet_First_encounter`: five save-distinguishable variants exist. "Delivered RC to Moon before visiting FP": `Rivulet { fp and altEnding }`. "Has RC but not yet delivered" (three mechanically identical variants): `Rivulet { fp and !altEnding and energyRailOff }`. "Does not have RC": `Rivulet { fp and !altEnding and !energyRailOff }`. The three "has RC" variants are save-indistinguishable from each other. Confidence: exact per group.
+`FP_Dialogue_rivulet_Neuron` and `FP_Dialogue_rivulet_Proto_Long_Legs_Death`: runtime events. Detection: `Rivulet { fp }`. Confidence: approximate.
+
+`FP_Dialogue_rivulet_Music` (×2): two transcribers with different conditions. The first is a runtime event with no precise save field; Detection: `Rivulet { fp }`. Confidence: approximate. The second transcriber detects Artificer having brought the RM music pearl to FP: Detection: `global { pearlArtificer.RM }`. Confidence: exact for that specific interaction.
+
+`FP_Dialogue_saint_First_encounter` and `FP_Dialogue_saint_Following_encounters`: Detection: `Saint { fp }`. Confidence: exact.
+`FP_Dialogue_saint_Interrupts` (all four: Saint's death, Attacked, Stealing Music Pearl, Blizzard): runtime events. Detection: `Saint { fp }`. Confidence: approximate.
 
 ---
 
 ## Looks to the Moon Dialogues
 
-35 items. Detected coarsely via `slaiState.integersArray[0]` (`playerEncounters`). If `playerEncounters > 0`, all LttM dialogues for that slugcat are considered found by default.
+35 items. All LttM dialogue entries are now in per-transcriber mode; every transcriber carries its own `md-saveUnlock` condition using `lttmMark` rather than `lttm`.
 
-Several entries have more precise conditions:
+**`lttmMark` vs `lttm`:** `lttm` = `playerEncounters > 0` = any Moon chamber visit including pre-mark visits handled by `SLOracleBehaviorNoMark`. `lttmMark` = `playerEncountersWithMark` = visits where `SLOracleBehaviorHasMark` was the active class. `SLOracleBehaviorHasMark` is instantiated only when `theMark == true` or the story character is Saint (`Oracle.cs` lines 173-175). Pre-mark visits never increment `playerEncountersWithMark`. `lttmMark` is therefore the reliable post-mark gate; `lttm` is not used for LttM unlock conditions.
 
-`LttM_Dialogue_rivulet_First_encounter` and `LttM_Dialogue_rivulet_Interruptions`: these fire on Rivulet's earliest Moon visits, before the Rarefaction Cell is placed. Detection: `playerEncounters > 0` for `Rivulet` alone, with no `moonRevived` requirement. Confidence: exact. (Other Rivulet LttM entries do require further state, see below.)
+**Counter increment is post-dialogue.** `playerEncountersWithMark` is incremented at `SLOracleBehaviorHasMark.cs` line 205, after `InitiateConversation()` returns at line 197. The routing logic therefore reads the pre-increment (saved) value when selecting which conversation file to load. The mapping from save value to dialogue event is:
+
+| moonMark value in save before visit | Dialogue that fires during that visit | moonMark value saved after visit |
+|---|---|---|
+| 0 | First post-mark conversation (MoonFirstPostMarkConversation or slugcat equivalent) | 1 |
+| 1 | Second post-mark conversation | 2 |
+| >= 2 | ThirdAndUpGreeting (Following_Encounters) | increments by 1 |
+
+Detection thresholds therefore follow: `lttmMark >= 1` detects first conversation happened; `lttmMark >= 2` detects second conversation happened; `lttmMark >= 3` detects ThirdAndUpGreeting has fired at least once.
+
+**Hunter special case.** `SLOracleWakeUpProcedure.cs` line 300 resets `playerEncountersWithMark = 0` during the GetMark phase before the wake-up completes. Normal dialogue routing then fires `Moon_Red_First_Conversation` (file 50.txt) with the counter at 0, saving it as 1. `lttmMark >= 1` correctly detects Hunter's first (wake-up) conversation; `lttmMark >= 2` correctly detects the second.
+
+Several entries have additional precise conditions beyond the moonMark threshold:
+
+`LttM_Dialogue_rivulet_First_encounter`: two save-distinguishable variants exist. "Already taken the Rarefaction Cell" fires when `energyRailOff == true` on first Moon visit; detection: `Rivulet { lttmMark >= 1 and energyRailOff }`. "Not yet taken" is the complement; detection: `Rivulet { lttmMark >= 1 and !energyRailOff and !altEnding }`. Confidence: exact for both.
+
+`LttM_Dialogue_rivulet_Interruptions`: three transcribers (Eating/Taking Neuron Fly, Attacking) are runtime events with no save field. Detection: `Rivulet { lttmMark >= 1 }` for all three. Confidence: approximate.
+
+Note on `LttM_Dialogue_rivulet_Returning_after_taking_the_Rarefaction_Cell`: `pebblesEnergyTaken` (`energyRailOff`) is set when Rivulet grabs the Energy Cell at `RM_CORE`, which is independent of Moon's chamber. Rivulet can have `energyRailOff == true` with `lttmMark == 0` (took the cell before ever visiting Moon). Strictly, `lttmMark >= 2 and energyRailOff` would be exact for "has returned to Moon after taking the cell", since by definition a return visit means at least two visits happened. The current condition `Rivulet { energyRailOff }` is an accepted approximation: any Rivulet save with the cell taken is in the relevant story state, and whether the player has already visited Moon is treated as a non-critical edge case.
 
 `LttM_Dialogue_rivulet_Returning_after_taking_the_Rarefaction_Cell`: fires when Rivulet has removed the cell from FP but not yet placed it at Moon. Two sub-variants exist in source (file 124 for return visits, file 125 for first post-mark visit with cell taken), both covered by this entry. Detection: `miscWorldData.energyRailOff == true` AND `altEnding == false` for `Rivulet`. Confidence: exact.
 
@@ -273,9 +307,15 @@ Several entries have more precise conditions:
 
 `LttM_Dialogue_rivulet_Returning_after_ending`: fires on post-ending Moon visits. The ending cutscene adds exactly 5 to `encountersWithMark`; any value above 5 means at least one additional post-ending visit occurred. Detection: `altEnding == true` AND `encountersWithMark >= 6` for `Rivulet`. Confidence: approximate (relies on the ending's +5 boost being the only non-visit source of increment).
 
-`LttM_Dialogue_hunter_Moon_Red_Second_Conversation`: fires on Hunter's second post-mark Moon visit. The `encountersWithMark` counter is 0-indexed, so the second post-mark visit arrives with value 1. Detection: `encountersWithMark >= 1` for `Red`. Confidence: exact.
+`LttM_Dialogue_hunter_Moon_Red_First_Conversation`: fires on Hunter's first post-mark Moon visit (the wake-up cutscene). The wake-up procedure resets the counter to 0 before routing, so this conversation fires with counter=0 and saves as moonMark=1. Detection: `Red { lttmMark >= 1 }`. Confidence: exact.
 
-`LttM_Dialogue_survivor_monk_Second_encounter`: a shared Survivor/Monk dialogue. Detection: `encountersWithMark >= 1` for either `White` or `Yellow`. Confidence: exact.
+`LttM_Dialogue_hunter_Moon_Red_Second_Conversation`: fires on Hunter's second post-mark Moon visit. The counter is 1 at the start of that visit (set by the first), saves as 2 after. Detection: `Red { lttmMark >= 2 }`. Confidence: exact.
+
+`LttM_Dialogue_survivor_monk_Second_encounter`: fires on the second post-mark Moon visit for Survivor or Monk. Counter is 1 at the start of that visit, saves as 2. Detection: `lttmMark >= 2` for `White` or `Yellow`. Confidence: exact.
+
+`LttM_Dialogue_spearmaster_First_encounter`: two save-distinguishable variants. "Already delivered message": `Spear { lttmMark >= 1 and smPearlTagged }`. "Not yet delivered": `Spear { lttmMark >= 1 and !smPearlTagged }`. Confidence: exact for both.
+`LttM_Dialogue_spearmaster_Second_encounter`: fires on the second post-mark DM oracle visit. Detection: `Spear { lttmMark >= 2 }`. Confidence: exact.
+`LttM_Dialogue_spearmaster_Following_encounters`: fires on the third and subsequent visits. Detection: `Spear { lttmMark >= 3 }`. Confidence: exact.
 
 `LttM_Dialogue_spearmaster_Spearmaster_Pearl`: Moon (operating as the DM oracle at Silent Construct) reads and tags Spearmaster's body pearl. This fires at the DM oracle, not at Moon's Shoreline chamber, despite the collection entry being attributed to Moon's persona. The field `miscWorldData.smPearlTagged` is set exclusively by the `Moon_Spearmaster_Pearl` dialogue completing at the DM oracle, 120 frames after the `"tag"` event fires in the conversation file. Detection: `smPearlTagged == true` for `Spear`. Confidence: exact. Important: `lorePearlsSpearmaster` does NOT contain `Spearmasterpearl`; it contains lore pearl IDs such as `DM` that Moon read. Using `lorePearlsSpearmaster` to detect this entry is incorrect and will never match.
 
@@ -291,13 +331,29 @@ Several entries have more precise conditions:
 
 Both files use identical conditions; they represent the same scenarios and are detected together.
 
+Neuron-count variant transcribers (entries with names like "If 1 neuron left", "If 2 neurons left", etc.): these variants branch on `lttmNeuronsLeft` (`slaiState.integersArray[2]`) at the time of the conversation.
+`lttmNeuronsLeft` reflects Moon's current health state in the save and can both increase (player delivers swarmers to Moon) and decrease (player eats a swarmer, permanently removing it from Moon's pool).
+The DSL field `lttmNeuronsLeft` is available in named-scope conditions (e.g. `White { lttmMark >= 1 and lttmNeuronsLeft == 3 }`), exposing Moon's current neuron count.
+This unlocks the transcriber matching the player's current save state rather than the historically exact first-encounter state, which is unrecoverable.
+Confidence for neuron-count transcribers: approximate (current state, not historical).
+
+`LttM_Dialogue_saint_First_encounter`: first post-mark Moon visit for Saint. Detection: `Saint { lttmMark >= 1 } or Saint { visited.SL_AI } or Saint { echo.SL }`. The two additional OR branches serve as broader proxies — having visited SL_AI or completed the SL echo conversation are plausible proxies for having met Moon. Confidence: approximate due to the extra branches.
+`LttM_Dialogue_saint_Second_Encounter`: Detection: `Saint { lttmMark >= 1 }`. Note: this threshold is intentionally one step lower than the second-visit threshold (which would be `>= 2`) — it unlocks as soon as the first visit is confirmed, treating a second encounter as probable once any visit has occurred. Confidence: approximate.
+`LttM_Dialogue_saint_Third_Encounter`: Detection: `Saint { lttmMark >= 2 }`. Same rationale: threshold is one step below the strict third-visit gate (`>= 3`). Confidence: approximate.
+`LttM_Dialogue_saint_Blizzard_approaching`: runtime weather event; no save field. Detection: `Saint { lttmMark >= 1 }` (best available proxy). Confidence: approximate.
+
+`LttM_short_Dialogue_*`: all blocks are runtime events; conditions are approximate.
+`Receiving_an_object` (both transcribers — speaking terms / not speaking terms): `any { lttmMark >= 1 and lttmDiscussedObject }`.
+`Commenting_already_discussed_object (Other object)`: `any { lttmMark >= 1 and lttmDiscussedObject }`.
+`Commenting_already_discussed_object (Pearl)`: `any { lttmMark >= 1 and lttmReadPearl }`.
+`Take_back_while_commenting`: `any { lttmMark >= 1 and lttmDiscussedObject } or any { lttmMark >= 1 and lttmReadPearl }` — covers both non-pearl and pearl take-backs.
+`Receiving_a_pearl` (Five Pebbles' pearls and Misc/colored): `any { lttmMark >= 1 and lttmReadPearl }`.
+All nine remaining blocks (Seeing_Slugcat_bringing_a_Neuron_Fly, Interruptions ×3, Resuming_conversation_interruption, Annoyed_Jumping, Rain_Coming, Slugcat_Death): `any { lttmMark >= 1 }`.
+The two `Receiving_Neuron_Fly` transcribers retain their precise `lttmNeuronsGiven >= 1` conditions.
+
 `LttM_short_Dialogue_Receiving_Neuron_Fly`: fires when Moon receives a neuron swarmer. Detection: `slaiState.integersArray[4]` (`totNeuronsGiven`) >= 1 for the relevant slugcat. The `LttM-rivulet` transcriber checks `Rivulet`; the `LttM-post-collapse` transcriber checks any slugcat. Confidence: exact.
 
-`LttM_short_Dialogue_Seeing_Slugcat_bringing_a_Neuron_Fly`: fires when Moon sees the player approaching with a neuron. Detection: any slugcat has `playerEncounters > 0`. Confidence: approximate (fires on Moon visit; player may not have had a neuron).
-
-`LttM_short_Dialogue_*` (remaining 9 items): generic short reaction dialogues. Detection: any slugcat has `playerEncounters > 0`. Confidence: approximate.
-
-`LttM_SAINT_ANY_OTHER`: matched by `Saint` with `playerEncounters > 0`.
+`LttM_SAINT_ANY_OTHER`: matched by `Saint { lttm }`. For Saint, `SLOracleBehaviorHasMark` is always active, so `moonEncounters` and `moonEncountersWithMark` increment together and `lttm` is functionally equivalent to `lttmMark >= 1`.
 
 ---
 
@@ -375,9 +431,9 @@ Confidence: approximate (room visits are necessary but not sufficient; the playe
 
 Generic unmarked DataPearls, readable by Moon and by FP for Artificer.
 
-`LttM-post-collapse` context: any slugcat other than `Artificer` that has visited `SL_AI`. Artificer is excluded because room settings filter objects prevent Artificer from seeing white pearl spawns at most locations, and Artificer's equivalent interaction is attributed to FP instead.
+`LttM-post-collapse` context: any slugcat that has visited `SL_AI` AND has the mark of communication (`hasMark`). DSL: `any { visited.SL_AI and hasMark }`. Artificer is excluded in practice because room settings filter objects prevent Artificer from seeing white pearl spawns at most locations; the `any` scope includes all slugcats but Artificer's equivalent interaction is attributed to FP instead.
 
-`FP-artificer` context: `Artificer` has visited `SS_AI`.
+`FP-artificer` context: `Artificer` has visited `SS_AI` AND has the mark. DSL: `Artificer { visited.SS_AI and hasMark }`. In the evaluator, `hasMark` always evaluates to `true` for Saint and Rivulet regardless of the save field; for all other slugcats it reads `deathPersistentData.hasTheMark`.
 
 Confidence: approximate.
 
@@ -385,13 +441,13 @@ Confidence: approximate.
 
 Broadcast node relic pearls, readable by Moon or FP (Artificer only). Each room settings file carries a slugcat Filter controlling which campaigns see the pearl. Per-slugcat availability is documented in `doc/research/broadcast-misc-locations.md`.
 
-Detection uses two pre-computed boolean flags (`broadcastMiscLttM`, `broadcastMiscFP`) derived at parse time from `slugcatVisitedRooms`. For each slugcat in the table, the check is: did they visit any of their available BroadcastMisc rooms AND their oracle room?
+Detection uses two pre-computed boolean flags (`broadcastMiscLttm`, `broadcastMiscFp`) derived at parse time from `slugcatVisitedRooms`. For each slugcat in the table, the check is: did they visit any of their available BroadcastMisc rooms AND their oracle room?
 
-`LttM-post-collapse` context (`broadcastMiscLttM`): White, Yellow, Red, Gourmand, Rivulet, Saint, or Inv visited at least one of their campaign-specific BroadcastMisc rooms AND visited `SL_AI`. Spearmaster has no BroadcastMisc rooms. Watcher is excluded (does not interact with Moon via this dialogue path).
+`LttM-post-collapse` context (`broadcastMiscLttm`): White, Yellow, Red, Gourmand, Rivulet, Saint, or Inv visited at least one of their campaign-specific BroadcastMisc rooms AND visited `SL_AI`. Spearmaster has no BroadcastMisc rooms. Watcher is excluded (does not interact with Moon via this dialogue path).
 
-`FP-artificer` context (`broadcastMiscFP`): Artificer visited `SI_A07` (their only BroadcastMisc room) AND visited `SS_AI` (FP's chamber, where they read the pearl).
+`FP-artificer` context (`broadcastMiscFp`): Artificer visited `SI_A07` (their only BroadcastMisc room) AND visited `SS_AI` (FP's chamber, where they read the pearl).
 
-The conditions are expressed in the dialogue file as `global { broadcastMiscLttM }` and `global { broadcastMiscFP }` on each transcriber. The `BROADCAST_MISC_SLUGCATS` table in `saveCollectibles.ts` is the authoritative per-slugcat room mapping.
+The conditions are expressed in the dialogue file as `global { broadcastMiscLttm }` and `global { broadcastMiscFp }` on each transcriber. The `BROADCAST_MISC_SLUGCATS` table in `saveCollectibles.ts` is the authoritative per-slugcat room mapping.
 
 BroadcastMisc pearls have no individual tracking. All entries share internalId `BroadcastMisc` and are unlocked together.
 
@@ -524,15 +580,29 @@ Ending detection uses the global `MiscProgRecord.integersWatcher`, not the per-s
 
 The WAUA region contains pearl projector rooms where Watcher can view recorded content. The game's `PearlReader` class is a purely runtime object with no save interaction. There is no `lorePearlsWatcher` field. No save data records which specific projections have been viewed.
 
-The gate condition for all projection entries is whether Watcher has visited the specific projector room. This is detected from `regionStates[*].roomsVisited` by checking for room name `WAUA_PEARL`.
+The common gate condition across all projection entry types is whether Watcher has visited the projector room, detected from `regionStates[*].roomsVisited` by checking for room name `WAUA_PEARL`. This is the `projector` boolean in the DSL watcher scope. Most entry types additionally require a physical item scan confirming the pearl was saved somewhere in the world or inventory.
 
-Named text projections (WARB, WARC, WARD, WMPA, WVWA): these correspond to pearls physically carried from their home regions to the projector. Their collection index internalIds are the same as the pearl type strings: `WARB`, `WARC`, `WARD`, `WMPA`, `WVWA`. Detection requires both conditions: Watcher has visited `WAUA_PEARL`, AND the pearl's type string is found in the physical item scan.
+Physical item scan: DataPearl items persist across cycle boundaries if the player carried them into a shelter or left them in the world. When saved, a DataPearl's type string appears in the `extraFields` array of the saved item. The scan checks five locations within the Watcher `SaveStateRecord`: `swallowedItems` (items in stomach), `playerGrasps` (held items), `objectTrackers` (persistent world objects), top-level `objects`, and `objects` within each `regionStates` entry. A DataPearl with a matching type string confirms the pearl is or was in the player's possession or in the world at save time, but does not confirm the projector was used.
 
-Physical item scan: DataPearl items persist across cycle boundaries if the player carried them into a shelter. When saved, a DataPearl's type string appears in the `extraFields` array of the saved item. The scan checks five locations within the Watcher `SaveStateRecord`: `swallowedItems` (items in stomach), `playerGrasps` (held items), `objectTrackers` (persistent world objects), top-level `objects`, and `objects` within each `regionStates` entry. A DataPearl with a matching type string confirms physical possession. This confirms the pearl is or was in the player's possession but does not confirm the projector was used; the pearl could have been carried through a shelter and the projector never visited.
+**Named data pearl projections**: standard named data pearls from non-Watcher regions (CC, HI, SU, and others) also have a `PearlReader` transcriber for Watcher's projector. These are housed within the named pearl's existing collection entry rather than as standalone entries. Detection: `watcher { projector and physicalPearl.X }` where X is the pearl's internalId (e.g. `physicalPearl.CC` for the CC pearl). Confidence: approximate.
 
-Fixed-location projections (WAUA, WORA, DRONE, ABSTRACT): these are world-placed pearls with fixed positions. They may appear in the physical scan if the player picked them up, but can also be read in-place without ever being carried. For these entries, the gate condition is `WAUA_PEARL` visit alone. Confidence: approximate.
+**Named text projections**: five pearls with text content found in Watcher regions, physically carried to the projector. Detection: `watcher { projector and physicalPearl.X }` where X is the pearl's in-save type string. The type strings differ from the region codes used as file names:
 
-Misc projections (`Watcher_Pearl_Misc_Projection_*`): image or audio sequences with no carry mechanic. These include the audio pearl files in `watcher_pearls/audio/`. Each carries `save-unlock: watcher { projector and physicalPearl.ID }` where `projector` checks `WAUA_PEARL` visit and `physicalPearl.ID` checks the physical item scan. Confidence: approximate.
+| File | internalId | `physicalPearl` key |
+|------|-----------|----------------------|
+| `WARB.txt` | `TEXT_SECRET` | `physicalPearl.TEXT_SECRET` |
+| `WARC.txt` | `TEXT_CONTEMPT` | `physicalPearl.TEXT_CONTEMPT` |
+| `WARD.txt` | `TEXT_STARDUST` | `physicalPearl.TEXT_STARDUST` |
+| `WMPA.txt` | `TEXT_NOTIONOFSELF` | `physicalPearl.TEXT_NOTIONOFSELF` |
+| `WVWA.txt` | `TEXT_KITESDAY` | `physicalPearl.TEXT_KITESDAY` |
+
+Confidence: approximate.
+
+**Fixed-location projections** (WAUA, WORA, DRONE, ABSTRACT): world-placed pearls at fixed positions. Despite being "fixed", detection still uses `watcher { projector and physicalPearl.X }` — the physical scan covers world-placed objects in `regionStates[*].objects`, so a pearl left in its original location is detected as long as it has been saved as a world object. Note: ABSTRACT uses type string `Abstract` (lowercase `a`). Confidence: approximate.
+
+**Audio pearl files** (`watcher_pearls/audio/`): each carries `save-unlock: watcher { projector and physicalPearl.ID }` where ID is the pearl's internalId (e.g. `physicalPearl.AUDIO_JAM1`). Confidence: approximate.
+
+**Misc image projections** (`Watcher_Pearl_Misc_Projection_*`): in-place image sequences with no carry mechanic. The entry-level `save-unlock` is `watcher { projector }` only — no `physicalPearl` check, because these projections are viewed in-place at the projector room and are never physically carried. Confidence: approximate.
 
 ---
 
@@ -552,14 +622,14 @@ The following entries cannot be detected from any save file data. They are eithe
 | `FP_Dialogue_artificer_Lingering_Too_Long`                       | Frame counter not saved between sessions                                            |
 | `FP_Dialogue_rivulet_Proto_Long_Legs_Death`                      | Cause of death not saved                                                            |
 | `FP_Dialogue_rivulet_Neuron`                                     | Item consumption in room not saved                                                  |
-| `FP_Dialogue_rivulet_Music`                                      | Item grab in room not saved                                                         |
+| `FP_Dialogue_rivulet_Music` (first transcriber only)             | Item grab in room not saved; second transcriber IS detectable via `pearlArtificer.RM` |
 | `FP_Dialogue_other_Throwing_Singularity_Bomb`                    | Item use in specific room not saved                                                 |
 | `LttM_Dialogue_saint_Blizzard_approaching`                       | Runtime weather event timing not saved                                              |
 | `BroadcastMisc_1` through `BroadcastMisc_32`                     | All 32 entries share internalId `BroadcastMisc`; individual tracking does not exist |
 | `Misc_WHITE_PEARLS_1` through `Misc_WHITE_PEARLS_73`             | All share internalId `Misc`; generic white pearls have no individual tracking       |
 | `PebblesPearl_1` through `PebblesPearl_18`                       | All share internalId `PebblesPearl`; FP's gray marbles have no individual tracking  |
 | `DevComm_*`                                                      | Developer commentary stored only in `localoptions.txt`, not in the save file        |
-| Watcher log pearl content (WARB, WARC, WARD, WMPA, WVWA as lore) | Viewing a projection leaves no save record; no lorePearlsWatcher field exists       |
+| Watcher projection viewing (text/image/audio pearls)             | Viewing a projection leaves no save record; physicalPearl confirms possession, not viewing |
 
 Note on dev commentary: the `allChallengesCompleted` proxy (all 70 `challengesCompleted` slots set to 1) is used to unlock `DevComm_*` entries as a design choice, since the actual dev commentary state lives in `localoptions.txt` outside the save file. This has no connection to BroadcastMisc pearls.
 
@@ -591,6 +661,7 @@ Note on dev commentary: the `allChallengesCompleted` proxy (all 70 `challengesCo
 | `chatLogs`              |                         | Broadcast ID accumulation, Chatlog_SI9, Chatlog_LM7          |
 | `prePebChatLogs`        |                         | LP pre-FP count (Spearmaster)                                |
 | `ghosts[*].count`       |                         | Echo detection                                               |
+| `hasTheMark`            | `HASTHEMARK`            | `hasMark` DSL boolean; true when the slugcat has the mark of communication |
 | `altEnding`             | `ALTENDING`             | Artificer chieftain, Rivulet cell placed, Spearmaster ending |
 | `looksToTheDoom`        | `LOOKSTOTHEDOOM`        | Saint Rubicon (Moon ascended)                                |
 | `zeroPebbles`           | `ZEROPEBBLES`           | Saint Rubicon (FP ascended)                                  |
@@ -606,8 +677,10 @@ Note on dev commentary: the `allChallengesCompleted` proxy (all 70 `challengesCo
 |--------------------------------|------------------------|----------------------------------------------------------------|
 | `slaiState.integersArray[0]`   | (SLAISTATE index 0)    | playerEncounters; LttM detection                               |
 | `slaiState.integersArray[1]`   | (SLAISTATE index 1)    | encountersWithMark; Hunter 2nd visit, Rivulet ending precision |
+| `slaiState.integersArray[2]`   | (SLAISTATE index 2)    | lttmNeuronsLeft; Moon's current neuron count (health); neuron-count variant detection |
 | `slaiState.integersArray[4]`   | (SLAISTATE index 4)    | totNeuronsGiven; neuron fly receiving dialogue detection        |
-| `slaiState.miscItemsDescribed` |                        | Iterator item dialogue detection                               |
+| `slaiState.significantPearls`  |                        | Named pearls Moon has read; `lttmReadPearl` boolean (length > 0) |
+| `slaiState.miscItemsDescribed` |                        | Non-pearl item types Moon has described; `lttmDiscussedObject` boolean (length > 0) |
 | `ssaiConversationsHad`         | `SSaiConversationsHad` | FP dialogue detection                                          |
 | `moonRevived`                  | `MOONHEART`            | Rivulet/Saint ending state                                     |
 | `pebblesHelped`                | `PEBBLESHELPED`        | Hunter green neuron split                                      |
@@ -639,6 +712,10 @@ These accessors take a pearl internalId as the key and check the corresponding `
 | `global { pearlArtificer.X }` | Pearl X is in `lorePearlsArtificer` |
 | `global { pearlSpearmaster.X }` | Pearl X is in `lorePearlsSpearmaster` |
 | `global { pearlSaint.X }` | Pearl X is in `lorePearlsSaint` |
+| `global { pearlSource.Base }` | Any pearl has been read via the base route |
+| `global { pearlSource.Artificer }` | Any pearl has been read in an Artificer save |
+| `global { pearlSource.Spearmaster }` | Any pearl has been read in a Spearmaster save |
+| `global { pearlSource.Saint }` | Any pearl has been read in a Saint save |
 
 ### Precomputed flags (not raw save fields)
 
@@ -646,5 +723,5 @@ These are derived from save data in `extractCollectibles` and exposed as DSL glo
 
 | Flag | DSL accessor | Derivation |
 |---|---|---|
-| `broadcastMiscLttM` | `global { broadcastMiscLttM }` | Any LttM-eligible slugcat visited a campaign-specific BroadcastMisc room AND `SL_AI`. Source table: `BROADCAST_MISC_SLUGCATS` in `saveCollectibles.ts`. |
-| `broadcastMiscFP` | `global { broadcastMiscFP }` | Artificer visited `SI_A07` AND `SS_AI`. |
+| `broadcastMiscLttm` | `global { broadcastMiscLttm }` | Any LttM-eligible slugcat visited a campaign-specific BroadcastMisc room AND `SL_AI`. Source table: `BROADCAST_MISC_SLUGCATS` in `saveCollectibles.ts`. |
+| `broadcastMiscFp` | `global { broadcastMiscFp }` | Artificer visited `SI_A07` AND `SS_AI`. |

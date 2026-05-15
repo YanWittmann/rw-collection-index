@@ -2,6 +2,7 @@ import os
 import sys
 import re
 import argparse
+import fnmatch
 import numpy as np
 from PIL import Image
 from sklearn.cluster import KMeans
@@ -47,7 +48,10 @@ def get_dominant_color(image_path):
     except Exception:
         return "#000000"
 
-def process_directory(base_dir):
+def process_directory(base_dir, exclude_patterns=None):
+    if exclude_patterns is None:
+        exclude_patterns = []
+
     results = {}
     valid_extensions = {'.png', '.jpg', '.jpeg', '.gif', '.bmp', '.webp'}
 
@@ -56,14 +60,24 @@ def process_directory(base_dir):
         for file in files:
             ext = os.path.splitext(file)[1].lower()
             if ext in valid_extensions:
-                files_to_process.append(os.path.join(root, file))
+                full_path = os.path.join(root, file)
+                rel_path = os.path.relpath(full_path, start=os.path.dirname(base_dir) or '.')
+                posix_rel_path = rel_path.replace(os.sep, '/')
+
+                is_excluded = False
+                for pattern in exclude_patterns:
+                    if (fnmatch.fnmatch(file, pattern) or
+                        fnmatch.fnmatch(posix_rel_path, pattern) or
+                        fnmatch.fnmatch(full_path, pattern)):
+                        is_excluded = True
+                        break
+
+                if not is_excluded:
+                    files_to_process.append((full_path, posix_rel_path))
 
     total_files = len(files_to_process)
 
-    for i, full_path in enumerate(files_to_process, 1):
-        rel_path = os.path.relpath(full_path, start=os.path.dirname(base_dir) or '.')
-        posix_rel_path = rel_path.replace(os.sep, '/')
-
+    for i, (full_path, posix_rel_path) in enumerate(files_to_process, 1):
         sys.stderr.write(f"\rProcessing {i}/{total_files}: {posix_rel_path}".ljust(80)[:80])
         sys.stderr.flush()
 
@@ -105,12 +119,13 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("directory")
     parser.add_argument("--max-length", type=int, default=120)
+    parser.add_argument("--exclude", nargs='*', default=[], help="Paths/filenames to exclude (supports wildcards like *)")
     args = parser.parse_args()
 
     if not os.path.isdir(args.directory):
         sys.exit(1)
 
-    color_data = process_directory(args.directory)
+    color_data = process_directory(args.directory, args.exclude)
     output = format_custom_json(color_data, args.max_length)
     print(output)
 

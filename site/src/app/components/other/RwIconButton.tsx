@@ -1,10 +1,7 @@
 "use client"
 
-import React, { useState, useMemo } from "react"
-import { motion } from "framer-motion"
+import React, { useState } from "react"
 import { cn } from "@shadcn/lib/utils"
-
-const SPRING_TRANSITION = { type: "spring", stiffness: 2000, damping: 26 } as const
 
 type RwIconButtonVariant = 'default' | 'gold'
 
@@ -22,62 +19,59 @@ interface RwIconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
     'aria-label': string
 }
 
+const BORDER_COLORS: Record<RwIconButtonVariant, Record<'default' | 'hover' | 'selected', string>> = {
+    default: {
+        default:  'rgba(255,255,255,0.5)',
+        hover:    'rgba(255,255,255,0.75)',
+        selected: 'rgba(255,255,255,0.9)',
+    },
+    gold: {
+        default:  'rgba(255,200,0,0.9)',
+        hover:    'rgba(255,215,0,1)',
+        selected: 'rgba(255,215,0,1)',
+    },
+}
+
 export const RwIconButton = React.forwardRef<HTMLButtonElement, RwIconButtonProps>(function RwIconButton({
-                                 selected = false,
-                                 square = true,
-                                 size = 'default',
-                                 padding,
-                                 onClick,
-                                 onMouseEnter,
-                                 onMouseLeave,
-                                 className,
-                                 children,
-                                 expandedScaleFactor = 1,
-                                 variant = 'default',
-                                 'aria-label': ariaLabel,
-                                 ...rest
-                             }: RwIconButtonProps, ref) {
+    selected = false,
+    square = true,
+    size = 'default',
+    padding,
+    onClick,
+    onMouseEnter,
+    onMouseLeave,
+    className,
+    children,
+    expandedScaleFactor = 1,
+    variant = 'default',
+    'aria-label': ariaLabel,
+    ...rest
+}: RwIconButtonProps, ref) {
     const resolvedPadding = padding ?? (size === 'small' ? 'p-2' : 'p-3')
-    const borderDefault  = variant === 'gold' ? 'rgba(255,200,0,0.9)'     : 'rgba(255,255,255,0.5)'
-    const borderHover    = variant === 'gold' ? 'rgba(255,215,0,1)'       : 'rgba(255,255,255,0.75)'
-    const borderSelected = variant === 'gold' ? 'rgba(255,215,0,1)'       : 'rgba(255,255,255,0.9)'
     const [isHovering, setIsHovering] = useState(false)
 
-    const { bgVariants, borderVariants, pulseVariants } = useMemo(() => ({
-        bgVariants: {
-            default: { scale: 1 },
-            hover: { scale: 1 + 0.1 * expandedScaleFactor },
-            selected: { scale: 1 + 0.1 * expandedScaleFactor, backgroundColor: "rgb(64, 64, 64)" },
-        },
-        borderVariants: {
-            default: { scale: 1, borderColor: borderDefault },
-            hover: { scale: 1 + 0.12 * expandedScaleFactor, borderColor: borderHover },
-            selected: { scale: 1 + 0.12 * expandedScaleFactor, borderColor: borderSelected },
-        },
-        pulseVariants: {
-            default: { opacity: 0, scale: 0.9 },
-            hover: {
-                scale: 0.95,
-                opacity: [0, 1, 0],
-                transition: {
-                    opacity: {
-                        repeat: Number.POSITIVE_INFINITY,
-                        duration: 0.35,
-                    },
-                },
-            },
-            selected: {
-                scale: 0.95,
-                opacity: 0.8,
-                borderColor: "rgba(255, 255, 255, 1)",
-            },
-        },
-    }), [expandedScaleFactor, borderDefault, borderHover, borderSelected])
+    const animState  = selected ? 'selected' : isHovering ? 'hover' : 'default'
+    const isActive   = animState !== 'default'
+    const bgScale    = isActive ? 1 + 0.10 * expandedScaleFactor : 1
+    const borderScale = isActive ? 1 + 0.12 * expandedScaleFactor : 1
+    const borderColor = BORDER_COLORS[variant][animState]
+    const bgColor     = animState === 'selected' ? 'rgb(64,64,64)' : 'black'
+
+    // Pulse layer: animated via CSS @keyframes rw-pulse (defined in index.css) when hovering.
+    // opacity/transform use CSS transition when not hovering.
+    const pulseOpacity   = animState === 'default' ? 0 : animState === 'selected' ? 0.8 : undefined
+    const pulseScale     = animState === 'default' ? 0.9 : 0.95
+    const pulseBorder    = animState === 'default' ? undefined
+        : variant === 'gold'
+            ? (animState === 'selected' ? 'rgba(255,215,0,1)' : 'rgba(255,200,0,0.6)')
+            : (animState === 'selected' ? 'rgba(255,255,255,1)' : undefined)
+    const pulseAnimation = animState === 'hover' ? 'rw-pulse 0.35s ease-in-out infinite' : 'none'
+    const pulseTransition = animState !== 'hover' ? 'opacity 80ms ease, transform 80ms ease' : 'transform 80ms ease'
 
     return (
-        <motion.button
+        <button
             ref={ref}
-            {...rest as any}
+            {...rest}
             className={cn(
                 "relative p-0 flex items-center justify-center",
                 className,
@@ -85,51 +79,57 @@ export const RwIconButton = React.forwardRef<HTMLButtonElement, RwIconButtonProp
                     ? size === 'small' ? "aspect-square h-8 w-8" : "aspect-square h-12 w-12"
                     : size === 'small' ? "h-8 min-w-[2rem]" : "h-12 min-w-[3rem]",
             )}
-            initial="default"
-            animate={selected ? "selected" : isHovering ? "hover" : "default"}
             onClick={onClick}
-            onMouseEnter={(e) => {
-                setIsHovering(true)
-                onMouseEnter && onMouseEnter()
-            }}
-            onMouseLeave={(e) => {
-                setIsHovering(false)
-                onMouseLeave && onMouseLeave()
-            }}
+            onMouseEnter={() => { setIsHovering(true); onMouseEnter?.() }}
+            onMouseLeave={() => { setIsHovering(false); onMouseLeave?.() }}
             aria-label={ariaLabel}
         >
-            {/* Background Layer */}
-            <motion.div
-                className="absolute inset-0 rounded-xl bg-black"
-                variants={bgVariants}
-                style={{ originX: 0.5, originY: 0.5 }} // center the scale transformation
+            {/* Background layer */}
+            <div
+                className="absolute inset-0 rounded-xl"
+                style={{
+                    transform: `scale(${bgScale})`,
+                    backgroundColor: bgColor,
+                    transformOrigin: 'center',
+                    transition: 'transform 200ms ease, background-color 200ms ease',
+                }}
             />
 
-            {/* Outer Border Layer */}
-            <motion.div
+            {/* Outer border layer */}
+            <div
                 className={cn(
                     "absolute inset-0 rounded-xl border-2",
                     variant === 'gold' ? "border-rw-gold/90" : "border-white/50"
                 )}
-                variants={borderVariants}
-                transition={SPRING_TRANSITION}
+                style={{
+                    transform: `scale(${borderScale})`,
+                    borderColor,
+                    transformOrigin: 'center',
+                    transition: 'transform 80ms cubic-bezier(0.5,0,0.1,1.5), border-color 80ms ease',
+                }}
             />
 
-            {/* Pulsating Inner Border */}
-            <motion.div
+            {/* Pulsating inner border — pure CSS animation, no Framer Motion */}
+            <div
                 className="absolute inset-[3px] rounded-lg border-2 border-white/60"
-                variants={pulseVariants}
+                style={{
+                    opacity: pulseOpacity,
+                    transform: `scale(${pulseScale})`,
+                    borderColor: pulseBorder,
+                    animation: pulseAnimation,
+                    transition: pulseTransition,
+                }}
             />
 
-            {/* Content container */}
+            {/* Content */}
             <div
                 className={cn(
                     "relative z-10 flex items-center justify-center",
-                    square ? "w-full h-full " + resolvedPadding : size === 'small' ? "px-3 py-1.5" : "px-4 py-3",
+                    square ? "w-full h-full " + resolvedPadding : cn(size === 'small' ? "px-3 py-0 h-8" : "px-4 py-0 h-12", "w-full"),
                 )}
             >
                 {children}
             </div>
-        </motion.button>
+        </button>
     )
 })

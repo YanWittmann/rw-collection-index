@@ -1,10 +1,10 @@
 type: item
 subType: survivor
-saveUnlock: White { lttm }
 
 === transcription: LttM-post-collapse
 md-type: pearl
 md-var-DialogueId: Slugcat_Naming_Convention
+md-saveUnlock: White { lttmMark >= 1 }
 md-name: LttM Slugcat Naming Convention
 md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/NameForPlayer.cs
 MONO
@@ -26,6 +26,7 @@ MONO
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: If Looks to the Moon has 1 neuron left
+md-saveUnlock: White { lttmMark >= 1 and lttmNeuronsLeft <= 1 }
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
 md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/MoonFirstPostMarkConversation.cs
@@ -34,6 +35,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/MoonFirstPostMarkConversati
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: If Looks to the Moon has 2 neurons left
+md-saveUnlock: White { lttmMark >= 1 and lttmNeuronsLeft <= 2 }
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
 md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/MoonFirstPostMarkConversation.cs
@@ -43,6 +45,7 @@ Please... this is all I have left.
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: If Looks to the Moon has 3 neurons left
+md-saveUnlock: White { lttmMark >= 1 and lttmNeuronsLeft <= 3 }
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
 md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/MoonFirstPostMarkConversation.cs
@@ -52,6 +55,7 @@ You!
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: If Looks to the Moon has 4 neurons left
+md-saveUnlock: White { lttmMark >= 1 and lttmNeuronsLeft <= 4 }
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
 md-sourceDialogue: 35.txt
@@ -68,6 +72,7 @@ I'm still angry at you, but it is good to have someone to talk to after all this
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: If Looks to the Moon has 5 neurons left
+md-saveUnlock: White { lttmMark >= 1 and lttmNeuronsLeft >= 5 }
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
 md-sourceDialogue: 37.txt
@@ -86,6 +91,7 @@ It is good to have someone to talk to after all this time! The scavengers aren't
 === transcription: LttM-post-collapse
 md-type: pearl
 md-var-DialogueId: Following_Encounters
+md-saveUnlock: White { lttmMark >= 3 }
 md-name: Following encounters
 md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/ThirdAndUpGreeting.cs
 MONO

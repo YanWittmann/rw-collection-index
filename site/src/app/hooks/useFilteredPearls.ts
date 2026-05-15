@@ -47,6 +47,7 @@ export function useFilteredPearls(allPearls: PearlData[], order: (pearls: PearlD
             const clonedSpeakers = new Set(filters.speakers);
             if (clonedSpeakers.has("FP")) {
                 clonedSpeakers.add("Five Pebbles");
+                clonedSpeakers.add("EP");
             }
             const pearlSpeakers = new Set(pearl.transcribers.flatMap(t =>
                 t.lines.filter(line => line !== undefined && line.speaker !== undefined).map(line => (line.namespace ? line.namespace + "-" : "") + line.speaker)

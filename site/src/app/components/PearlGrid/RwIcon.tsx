@@ -26,6 +26,8 @@ export function RwIcon({ color, type = "pearl" }: RwIconProps) {
                             WebkitMaskComposite: "source-in",
                             maskSize: "cover",
                             WebkitMaskSize: "cover",
+                            maskPosition: "center",
+                            WebkitMaskPosition: "center",
                             maskRepeat: "no-repeat",
                             WebkitMaskRepeat: "no-repeat",
                             imageRendering: "pixelated",

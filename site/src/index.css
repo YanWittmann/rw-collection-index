@@ -114,3 +114,8 @@ html.rw-text-font {
   vertical-align: bottom; /* Align to the bottom */
   line-height: 1; /* Prevent extra spacing */
 }
+
+@keyframes rw-pulse {
+  0%, 100% { opacity: 0; }
+  50%       { opacity: 1; }
+}

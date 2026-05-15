@@ -157,11 +157,6 @@ export function DialogueActionTabs({
                                         defaultText={shareDefaultText}
                                         preProcessContent={preProcessContent}
                                         onExport={() => console.log("export")}
-                                        closeIcon={
-                                            <RwIconButton aria-label="Close">
-                                                <RwIcon type="close"/>
-                                            </RwIconButton>
-                                        }
                                         onOpen={() => {
                                         }}
                                         leftIcon={<RwIcon color={pearl.metadata.color} type={leftIconType}/>}

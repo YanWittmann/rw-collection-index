@@ -1,7 +1,7 @@
 import { SaveCollectibles } from './saveCollectibles';
 
 export interface SaveUnlockEval {
-    evaluate(expression: string, ctx: { collectibles: SaveCollectibles }): boolean;
+    evaluate(expression: string, ctx: { collectibles: SaveCollectibles; verbose?: boolean }): boolean;
 }
 
 // Mirrors the pattern of wasmLoader.ts: one cached promise, loaded on demand.

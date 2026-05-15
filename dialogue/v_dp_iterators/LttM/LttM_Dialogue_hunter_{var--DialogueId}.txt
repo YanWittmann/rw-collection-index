@@ -1,10 +1,10 @@
 type: item
 subType: hunter
 map: region=SL, room=AI, mapSlugcat=red
-saveUnlock: Red { lttm }
 
 === transcription: LttM-post-collapse
 md-type: pearl
+md-saveUnlock: Red { lttmMark >= 1 }
 md-var-DialogueId: Moon_Red_First_Conversation
 md-name: First encounter
 md-sourceDialogue: 50.txt
@@ -26,7 +26,7 @@ You will wake right back up again.
 
 === transcription: LttM-post-collapse
 md-type: pearl
-md-saveUnlock: Red { moonMark >= 1 }
+md-saveUnlock: Red { lttmMark >= 2 }
 md-var-DialogueId: Moon_Red_Second_Conversation
 md-name: Second encounter
 md-sourceDialogue: 55.txt

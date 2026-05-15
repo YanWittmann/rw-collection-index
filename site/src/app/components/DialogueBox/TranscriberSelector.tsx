@@ -15,7 +15,7 @@ interface TranscriberSelectorProps {
 }
 
 export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelectorProps) {
-    const { unlockMode, selectedTranscriberName, handleSelectTranscriber } = useAppContext();
+    const { unlockMode, selectedTranscriberName, handleSelectTranscriber, saveFound } = useAppContext();
     const multipleSameTranscribers = useMemo(
         () => new Set(pearl.transcribers.map(t => t.transcriber)).size !== pearl.transcribers.length,
         [pearl.transcribers]
@@ -27,6 +27,7 @@ export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelector
 
         const effectiveName = getEffectiveTranscriberName(pearl.transcribers, transcriber.transcriber, index);
         const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, effectiveName);
+        const isFoundInSave = saveFound.get(pearl.id)?.has(effectiveName) ?? false;
 
         if (!isUnlocked) {
             return (
@@ -34,6 +35,7 @@ export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelector
                     key={'select-' + pearl.id + '-' + index}
                     onClick={() => handleSelectTranscriber(effectiveName)}
                     selected={effectiveName === selectedTranscriberName}
+                    variant={isFoundInSave ? 'gold' : 'default'}
                     aria-label={"Locked transcriber"}
                 >
                     <RwIcon type={"questionmark"} color={darken(color, 20)}/>
@@ -46,6 +48,7 @@ export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelector
                         <RwIconButton
                             onClick={() => handleSelectTranscriber(effectiveName)}
                             selected={effectiveName === selectedTranscriberName}
+                            variant={isFoundInSave ? 'gold' : 'default'}
                             onMouseEnter={() => onHover(effectiveName)}
                             onMouseLeave={() => onHover(null)}
                             aria-label={displayTranscriberName}

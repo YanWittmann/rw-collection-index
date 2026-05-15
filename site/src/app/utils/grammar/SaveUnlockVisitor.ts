@@ -3,11 +3,11 @@
 import {ParseTreeVisitor} from 'antlr4';
 
 
-import { ExpressionContext } from "./SaveUnlockParser";
-import { BlockContext } from "./SaveUnlockParser";
-import { ConditionsContext } from "./SaveUnlockParser";
-import { ConditionContext } from "./SaveUnlockParser";
-import { LogicOpContext } from "./SaveUnlockParser";
+import { ExpressionContext } from "./SaveUnlockParser.js";
+import { BlockContext } from "./SaveUnlockParser.js";
+import { ConditionsContext } from "./SaveUnlockParser.js";
+import { ConditionContext } from "./SaveUnlockParser.js";
+import { LogicOpContext } from "./SaveUnlockParser.js";
 
 
 /**

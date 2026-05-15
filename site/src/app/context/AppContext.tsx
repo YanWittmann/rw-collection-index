@@ -127,7 +127,7 @@ export const AppProvider: React.FC<{
         }
     }, [unlockMode, pearls]);
 
-    const value: AppContextState = {
+    const value = useMemo<AppContextState>(() => ({
         pearls,
         sourceData: sourceData || [],
         selectedPearlId,
@@ -147,7 +147,12 @@ export const AppProvider: React.FC<{
         setUnlockMode,
         setFilters,
         setSaveFound,
-    };
+    }), [
+        pearls, sourceData, selectedPearlId, selectedPearlData, selectedTranscriberName,
+        sourceFileDisplay, unlockMode, unlockVersion, saveFound, saveFoundVersion,
+        filters, datasetKey, isMobile, handleSelectPearl, handleSelectTranscriber,
+        setSourceFileDisplay, setUnlockMode, setFilters, setSaveFound,
+    ]);
 
     return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

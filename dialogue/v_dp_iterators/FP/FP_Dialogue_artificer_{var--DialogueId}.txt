@@ -1,9 +1,9 @@
 type: item
 subType: artificer
-saveUnlock: Artificer { fp }
 
 === transcription: FP-artificer
 md-type: pearl
+md-saveUnlock: Artificer { fp }
 md-var-DialogueId: First_encounter
 md-name: First encounter
 . . .
@@ -26,6 +26,7 @@ But unless you have something interesting to show or to bring to me, it is time 
 
 === transcription: FP-artificer
 md-type: pearl
+md-saveUnlock: Artificer { fp }
 md-var-DialogueId: Lingering_Too_Long
 md-name: Lingering Too Long
 Please leave.
@@ -48,6 +49,7 @@ MONO
 
 === transcription: FP-artificer
 md-type: pearl
+md-saveUnlock: Artificer { fp }
 md-var-DialogueId: Hitting_with_a_rock_or_spear
 md-name: Hitting with a rock or spear
 MONO
@@ -58,7 +60,7 @@ MONO
 
 === transcription: FP-artificer
 md-type: pearl
-md-saveUnlock: global { pearlSource.artificer }
+md-saveUnlock: global { pearlSource.Artificer }
 md-var-DialogueId: Pebbles_Pearl
 md-name: Leaving as Pebbles reads
 MONO
@@ -70,7 +72,7 @@ MONO
 
 === transcription: FP-artificer
 md-type: pearl
-md-saveUnlock: global { pearlSource.artificer }
+md-saveUnlock: global { pearlSource.Artificer }
 md-var-DialogueId: Pebbles_Pearl
 md-name: Giving a Pearl
 MONO

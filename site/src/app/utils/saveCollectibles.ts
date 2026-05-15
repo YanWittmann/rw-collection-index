@@ -4,7 +4,7 @@ import UnlockManager from './unlockManager';
 import { getEffectiveTranscriberName } from './transcriberUtils';
 import { SaveUnlockEval } from './saveUnlockLoader';
 
-type PearlSource = 'base' | 'artificer' | 'spearmaster' | 'saint';
+type PearlSource = 'Base' | 'Artificer' | 'Spearmaster' | 'Saint';
 
 export interface WatcherState {
     maxRippleLevel: number;
@@ -34,7 +34,8 @@ export interface WatcherGlobal {
 export interface OracleState {
     moonEncounters: number;
     moonEncountersWithMark: number;
-    neuronsGiven: number;
+    lttmNeuronsLeft: number;
+    lttmNeuronsGiven: number;
     fpConversations: number;
     moonRevived: boolean;
     altEnding: boolean;
@@ -43,6 +44,9 @@ export interface OracleState {
     looksToTheDoom: boolean;
     zeroPebbles: boolean;
     smPearlTagged: boolean;
+    hasMark: boolean;
+    lttmReadPearl: boolean;
+    lttmDiscussedObject: boolean;
 }
 
 export interface SaveCollectibles {
@@ -54,8 +58,8 @@ export interface SaveCollectibles {
     allChallengesCompleted: boolean;
     oracleStates: Map<string, OracleState>;
     slugcatVisitedRooms: Map<string, Set<string>>;
-    broadcastMiscLttM: boolean;
-    broadcastMiscFP: boolean;
+    broadcastMiscLttm: boolean;
+    broadcastMiscFp: boolean;
     watcherState: WatcherState | null;
     watcherGlobal: WatcherGlobal;
 }
@@ -127,7 +131,8 @@ function buildOracleState(state: SaveStateRecord['state']): OracleState {
     return {
         moonEncounters:         mwd?.slaiState?.integersArray?.[0] ?? 0,
         moonEncountersWithMark: mwd?.slaiState?.integersArray?.[1] ?? 0,
-        neuronsGiven:           mwd?.slaiState?.integersArray?.[4] ?? 0,
+        lttmNeuronsLeft:        mwd?.slaiState?.integersArray?.[2] ?? 0,
+        lttmNeuronsGiven:       mwd?.slaiState?.integersArray?.[4] ?? 0,
         fpConversations:        mwd?.ssaiConversationsHad ?? 0,
         moonRevived:            mwd?.moonRevived ?? false,
         altEnding:              state.deathPersistentData.altEnding ?? false,
@@ -136,6 +141,9 @@ function buildOracleState(state: SaveStateRecord['state']): OracleState {
         looksToTheDoom:         state.deathPersistentData.looksToTheDoom ?? false,
         zeroPebbles:            state.deathPersistentData.zeroPebbles ?? false,
         smPearlTagged:          mwd?.smPearlTagged ?? false,
+        hasMark:                state.deathPersistentData.hasTheMark ?? false,
+        lttmReadPearl:          (mwd?.slaiState?.significantPearls?.length ?? 0) > 0,
+        lttmDiscussedObject:    (mwd?.slaiState?.miscItemsDescribed?.length ?? 0) > 0,
     };
 }
 
@@ -178,10 +186,10 @@ export function extractCollectibles(result: ParseFileResult): SaveCollectibles {
     for (const record of result.model.records ?? []) {
         if (record.type === 'MiscProgRecord') {
             const d = (record as MiscProgRecord).data;
-            (d.lorePearls ?? []).forEach(id => addPearlSource(pearlSources, id, 'base'));
-            (d.lorePearlsArtificer ?? []).forEach(id => addPearlSource(pearlSources, id, 'artificer'));
-            (d.lorePearlsSpearmaster ?? []).forEach(id => addPearlSource(pearlSources, id, 'spearmaster'));
-            (d.lorePearlsSaint ?? []).forEach(id => addPearlSource(pearlSources, id, 'saint'));
+            (d.lorePearls ?? []).forEach(id => addPearlSource(pearlSources, id, 'Base'));
+            (d.lorePearlsArtificer ?? []).forEach(id => addPearlSource(pearlSources, id, 'Artificer'));
+            (d.lorePearlsSpearmaster ?? []).forEach(id => addPearlSource(pearlSources, id, 'Spearmaster'));
+            (d.lorePearlsSaint ?? []).forEach(id => addPearlSource(pearlSources, id, 'Saint'));
             (d.broadcasts ?? []).forEach(id => broadcastInternalIds.add(id));
 
             const cc = d.challengesCompleted;
@@ -229,20 +237,20 @@ export function extractCollectibles(result: ParseFileResult): SaveCollectibles {
     }
 
     // BroadcastMisc: pre-compute reachability flags exposed as DSL globals.
-    let broadcastMiscLttM = false;
-    let broadcastMiscFP = false;
+    let broadcastMiscLttm = false;
+    let broadcastMiscFp = false;
     for (const [slug, entry] of Object.entries(BROADCAST_MISC_SLUGCATS)) {
         const rooms = slugcatVisitedRooms.get(slug);
         if (rooms && entry.rooms.some(r => rooms.has(r)) && rooms.has(entry.oracle)) {
-            if (entry.context === 'LttM-post-collapse') broadcastMiscLttM = true;
-            if (entry.context === 'FP-artificer') broadcastMiscFP = true;
+            if (entry.context === 'LttM-post-collapse') broadcastMiscLttm = true;
+            if (entry.context === 'FP-artificer') broadcastMiscFp = true;
         }
     }
 
     return {
         pearlSources, broadcastInternalIds, echoGhostIds, slugcatEchoIds, itemTypesDescribed,
         allChallengesCompleted, oracleStates, slugcatVisitedRooms,
-        broadcastMiscLttM, broadcastMiscFP,
+        broadcastMiscLttm, broadcastMiscFp,
         watcherState, watcherGlobal,
     };
 }
@@ -252,7 +260,7 @@ function hasPerTranscriberUnlocks(pearl: PearlData): boolean {
 }
 
 function matchesToSave(pearl: PearlData, collectibles: SaveCollectibles, evaluator: SaveUnlockEval): boolean {
-    // Per-transcriber save-unlock: any transcriber whose condition passes unlocks the entry.
+    // Per-transcriber saveUnlock: any transcriber whose condition passes unlocks the entry.
     if (hasPerTranscriberUnlocks(pearl)) {
         return pearl.transcribers.some(t => {
             const expr = t.metadata.saveUnlock;
@@ -260,7 +268,7 @@ function matchesToSave(pearl: PearlData, collectibles: SaveCollectibles, evaluat
         });
     }
 
-    // Entry-level save-unlock expressions (multiple lines = OR).
+    // Entry-level saveUnlock expressions (multiple lines = OR).
     const exprs = pearl.metadata.saveUnlock;
     if (exprs && exprs.length > 0) {
         return exprs.some(expr => evaluator.evaluate(expr, { collectibles }));

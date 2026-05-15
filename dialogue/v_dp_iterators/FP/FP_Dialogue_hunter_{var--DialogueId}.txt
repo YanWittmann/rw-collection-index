@@ -1,6 +1,5 @@
 type: item
 subType: hunter
-saveUnlock: Red { fp }
 
 === transcription: FP
 md-subType: item/Neuron_Fly_Hunter_icon
@@ -22,6 +21,7 @@ Send my regards.
 
 === transcription: FP
 md-type: pearl
+md-saveUnlock: Red { fp }
 md-var-DialogueId: Lingering
 md-name: Lingering
 Thank you little creature. I must resume my work.
