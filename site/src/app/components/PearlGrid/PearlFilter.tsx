@@ -1,10 +1,11 @@
 import React from "react";
 import { RwIconButton } from "../other/RwIconButton";
-import { RwIcon } from "./RwIcon";
+import { RwAsset } from "../other/RwAsset";
 import { Popover, PopoverContent, PopoverTrigger } from "@shadcn/components/ui/popover";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
 import { cn } from "@shadcn/lib/utils";
 import { ensureMinLightness } from "../../utils/colorUtils";
+import type { GameAsset } from "../../utils/assetUtils";
 
 const POPOVER_WIDTH = "w-[32rem]";
 
@@ -20,9 +21,8 @@ export interface FilterState {
 export interface FilterOption {
     id: string;
     label: string;
-    icon?: string;
-    iconColor?: string;
-    image?: string;
+    asset?: GameAsset;
+    accentColor?: string;
 }
 
 export interface FilterSection {
@@ -37,9 +37,8 @@ interface FilterChipProps {
 }
 
 function FilterChip({ option, selected, onClick }: FilterChipProps) {
-    const hasIcon = !!option.icon || !!option.image;
     const [iconFailed, setIconFailed] = React.useState(false);
-    const showIcon = hasIcon && !iconFailed;
+    const showIcon = !!option.asset && !iconFailed;
 
     return (
         <Tooltip>
@@ -54,25 +53,15 @@ function FilterChip({ option, selected, onClick }: FilterChipProps) {
                 >
                     <div className="flex items-center w-full gap-2 overflow-hidden">
                         {showIcon && (
-                            <div className="w-5 h-5 shrink-0 flex items-center justify-center">
-                                {option.image
-                                    ? <img
-                                        src={`img/${option.image}`}
-                                        alt=""
-                                        className="w-full h-full object-cover rounded-sm"
-                                        style={{ imageRendering: "pixelated" }}
-                                        onError={() => setIconFailed(true)}
-                                    />
-                                    : <>
-                                        <RwIcon type={option.icon} color={option.iconColor} />
-                                        <img src={`img/${option.icon}.png`} alt="" className="hidden" onError={() => setIconFailed(true)} />
-                                    </>
-                                }
-                            </div>
+                            <RwAsset
+                                {...option.asset!}
+                                className="w-5 h-5 shrink-0 rounded-sm"
+                                onError={() => setIconFailed(true)}
+                            />
                         )}
                         <span
                             className="truncate text-xs leading-normal -translate-y-[1px] text-white text-left min-w-0 flex-1"
-                            style={{ color: option.iconColor ? ensureMinLightness(option.iconColor) : undefined }}
+                            style={{ color: option.accentColor ? ensureMinLightness(option.accentColor) : undefined }}
                         >
                             {option.label}
                         </span>
@@ -142,7 +131,7 @@ export function PearlFilter({ filters, setFilters, filterSections }: PearlFilter
                     <TooltipTrigger asChild>
                         <PopoverTrigger asChild>
                             <RwIconButton className="shrink-0" aria-label="Filter Options">
-                                <RwIcon type="filter"/>
+                                <RwAsset src="filter" />
                                 {activeFilterCount > 0 && (
                                     <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-5 h-5 text-xs flex items-center justify-center">
                                         {activeFilterCount}

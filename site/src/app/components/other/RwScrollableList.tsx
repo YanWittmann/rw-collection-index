@@ -3,12 +3,14 @@
 import type React from "react"
 import { cn } from "@shadcn/lib/utils"
 import { ensureMinLightness } from "../../utils/colorUtils"
+import type { GameAsset } from "../../utils/assetUtils"
+import { RwAsset } from "./RwAsset"
 
 export interface RwScrollableListItem {
     id: string
     title?: string
     subtitle?: string
-    image?: string
+    asset?: GameAsset
     color?: string
     onClick?: () => void
     customElement?: React.ReactNode
@@ -65,12 +67,10 @@ export function RwScrollableList({ items, className, itemClassName, breakSubtitl
                             className={cn("w-full text-left px-4 py-1 relative group text-white/90 hover:underline flex items-center gap-3", itemClassName, !item.onClick && "cursor-not-allowed")}
                             onClick={item.onClick}
                         >
-                            {item.image && (
-                                <img
-                                    src={`img/${item.image}`}
-                                    alt=""
-                                    className="w-10 h-10 object-cover rounded-sm flex-shrink-0"
-                                    style={{ imageRendering: "pixelated" }}
+                            {item.asset && (
+                                <RwAsset
+                                    {...item.asset}
+                                    className="w-10 h-10 rounded-sm flex-shrink-0"
                                 />
                             )}
                             <div className="min-w-0">

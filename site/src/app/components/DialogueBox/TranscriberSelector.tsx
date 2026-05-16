@@ -1,4 +1,5 @@
-import { RwIcon } from "../PearlGrid/RwIcon";
+import { RwAsset } from "../other/RwAsset";
+import { Tint } from "../../utils/assetUtils";
 import { RwIconButton } from "../other/RwIconButton";
 import { Dialogue, PearlData } from "../../types/types";
 import UnlockManager from "../../utils/unlockManager";
@@ -22,7 +23,7 @@ export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelector
     );
 
     const renderTranscriber = (transcriber: Dialogue, index: number) => {
-        const { iconType, color, overwriteColor, displayTranscriberName } =
+        const { asset, color, displayTranscriberName } =
             getTranscriberIcon(transcriber, pearl, multipleSameTranscribers ? index : undefined);
 
         const effectiveName = getEffectiveTranscriberName(pearl.transcribers, transcriber.transcriber, index);
@@ -38,7 +39,7 @@ export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelector
                     variant={isFoundInSave ? 'gold' : 'default'}
                     aria-label={"Locked transcriber"}
                 >
-                    <RwIcon type={"questionmark"} color={darken(color, 20)}/>
+                    <RwAsset src="questionmark" tint={Tint.mask(darken(color, 20))} />
                 </RwIconButton>
             );
         } else {
@@ -53,10 +54,7 @@ export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelector
                             onMouseLeave={() => onHover(null)}
                             aria-label={displayTranscriberName}
                         >
-                            {overwriteColor ?
-                                <RwIcon type={iconType} color={overwriteColor}/> :
-                                <RwIcon type={iconType}/>
-                            }
+                            <RwAsset {...asset} />
                         </RwIconButton>
                     </TooltipTrigger>
                     <TooltipContent>

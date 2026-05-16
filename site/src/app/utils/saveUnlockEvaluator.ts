@@ -177,6 +177,7 @@ function evalConditionWatcher(ctx: ConditionContext, c: SaveCollectibles, log?: 
         case 'princeCount': actual = ws?.numberOfPrinceEncounters ?? 0; result = applyOp(actual, op, expected); break;
         case 'weaver':      actual = ws?.numberOfVoidWeaverEncounters ?? 0; result = applyOp(actual, op, expected); break;
         case 'weaverProg':  actual = ws?.princeWeaverDialogProgression ?? 0; result = applyOp(actual, op, expected); break;
+        case 'rotCount':    actual = ws?.rotInfectedRegionCount ?? 0; result = applyOp(actual, op, expected); break;
         default:
             console.warn(`[saveUnlock] unknown numeric field '${field}' in watcher scope`);
             result = false; actual = 0;

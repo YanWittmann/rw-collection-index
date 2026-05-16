@@ -1,4 +1,5 @@
-import { RwIcon } from "../PearlGrid/RwIcon"
+import { RwAsset } from "../other/RwAsset"
+import { Tint } from "../../utils/assetUtils"
 import type { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types"
 import { findSourceDialogue, getRegion, getSpeakerDef } from "../../utils/speakers"
 import { renderDialogueLine } from "../../utils/renderDialogueLine"
@@ -87,7 +88,7 @@ export function DialogueActionTabs({
             id: `${location.region}_${location.room}_${index}`,
             title: `${regionDef.name} (${location.region})`,
             subtitle: `Room: ${location.room}`,
-            image: regionDef.image,
+            asset: regionDef.image ? { src: regionDef.image, fit: "cover" as const } : undefined,
             color: regionDef.color,
             onClick: location.impl !== "none" ? (() => {
                 const link = generateMapLinkFromMapInfo(location);
@@ -105,7 +106,7 @@ export function DialogueActionTabs({
                     onClick={() => onSelectPearl(null)}
                     aria-label="Close Dialogue Box"
                 >
-                  <RwIcon type="close"/>
+                  <RwAsset src="close" />
                 </RwTabButton>
             </span></TooltipTrigger>
             <TooltipContent side="bottom">Return to the main view</TooltipContent>
@@ -120,11 +121,7 @@ export function DialogueActionTabs({
     {
         const leftIconType = pearl.metadata.type === 'item' ? (pearl.metadata.subType || 'pearl') : pearl.metadata.type;
         const multipleSameTranscribers = new Set(pearl.transcribers.map((transcriber: Dialogue) => transcriber.transcriber)).size !== pearl.transcribers.length;
-        const {
-            iconType: rightIconType,
-            color: rightIconColor,
-            overwriteColor: overwriteRightColor,
-        } = getTranscriberIcon(transcriberData, pearl, multipleSameTranscribers ? selectedTranscriberIndex : undefined);
+        const { asset: rightAsset } = getTranscriberIcon(transcriberData, pearl, multipleSameTranscribers ? selectedTranscriberIndex : undefined);
 
         tabs.push(
             <Popover key="source-dialogue-selector" open={isSharePopoverOpen} onOpenChange={setIsSharePopoverOpen}>
@@ -135,7 +132,7 @@ export function DialogueActionTabs({
                             onClick={() => null}
                             aria-label="Share Content"
                         >
-                          <RwIcon type="share"/>
+                          <RwAsset src="share" />
                         </RwTabButton>
                 </span></TooltipTrigger>
                         <TooltipContent side="bottom" className={"text-center"}>Share entry via...</TooltipContent>
@@ -166,10 +163,9 @@ export function DialogueActionTabs({
                                         onExport={() => console.log("export")}
                                         onOpen={() => {
                                         }}
-                                        leftIcon={<RwIcon color={pearl.metadata.color} type={leftIconType}/>}
+                                        leftIcon={<RwAsset src={leftIconType} tint={Tint.mask(pearl.metadata.color)} />}
                                         leftText={(transcriberData.metadata.internalId ? transcriberData.metadata.internalId + " - " : "") + (transcriberData.metadata.name || pearl.metadata.name)}
-                                        rightIcon={<RwIcon color={overwriteRightColor ? rightIconColor : undefined}
-                                                           type={rightIconType}/>}
+                                        rightIcon={<RwAsset {...rightAsset} />}
                                         exportName={`${transcriberData.metadata.name || pearl.metadata.name}_${transcriberData.transcriber}`}
                                     >
                                         <div
@@ -196,7 +192,7 @@ export function DialogueActionTabs({
                 aria-label="Source Dialogue"
                 onClick={() => setSourceFileDisplay(null)}
             >
-              <RwIcon type="source"/>
+              <RwAsset src="source" />
             </RwTabButton>
           </span>
                 </TooltipTrigger>
@@ -218,7 +214,7 @@ export function DialogueActionTabs({
                                       aria-label="Source Dialogue Files"
                                       badge={transcriberData.metadata.sourceDialogue.length}
                                   >
-                                    <RwIcon type="source"/>
+                                    <RwAsset src="source" />
                                   </RwTabButton>
                             </span></TooltipTrigger>
                             <TooltipContent className="text-center" side="bottom">
@@ -249,7 +245,7 @@ export function DialogueActionTabs({
                     aria-label="Source Dialogue"
                     onClick={() => setSourceFileDisplay(sourceDialogueFilename)}
                 >
-                  <RwIcon type="source"/>
+                  <RwAsset src="source" />
                 </RwTabButton>
               </span>
                     </TooltipTrigger>
@@ -278,7 +274,7 @@ export function DialogueActionTabs({
                   aria-label="Open Rain World Map"
                   badge={mapLocations.length > 1 ? mapLocations.length : undefined}
               >
-                <RwIcon type="pin"/>
+                <RwAsset src="pin" />
               </RwTabButton>
             </span>
                         </TooltipTrigger>
@@ -312,7 +308,7 @@ export function DialogueActionTabs({
                         onClick={onToggleDetails}
                         selected={detailsMode}
                     >
-                        <div className="w-5 h-5"><RwIcon type="info"/></div>
+                        <div className="w-5 h-5"><RwAsset src="info" /></div>
                     </RwTabButton>
                 </span></TooltipTrigger>
                 <TooltipContent side="bottom">Notes &amp; location context</TooltipContent>
@@ -326,7 +322,7 @@ export function DialogueActionTabs({
                 <TooltipTrigger asChild>
           <span>
             <RwTabButton aria-label="Downpour-Exclusive Content">
-              <RwIcon type="dlc-dp"/>
+              <RwAsset src="dlc-dp" />
             </RwTabButton>
           </span>
                 </TooltipTrigger>
@@ -341,7 +337,7 @@ export function DialogueActionTabs({
                 <TooltipTrigger asChild>
           <span>
             <RwTabButton aria-label="The Watcher-Exclusive Content">
-              <RwIcon type="dlc-watcher"/>
+              <RwAsset src="dlc-watcher" />
             </RwTabButton>
           </span>
                 </TooltipTrigger>

@@ -1,3 +1,5 @@
+import { resolveAssetUrl } from './assetUtils'
+
 export const hexToRgba = (hex: string) => {
     const r = parseInt(hex.slice(1, 3), 16);
     const g = parseInt(hex.slice(3, 5), 16);
@@ -27,7 +29,7 @@ export const generateTintedCanvas = async (
     // Load the icon image
     const img = await new Promise<HTMLImageElement>((resolve, reject) => {
         const image = new Image();
-        image.src = `img/${type}.png`;
+        image.src = resolveAssetUrl(type);
         image.crossOrigin = "anonymous";
         image.onload = () => resolve(image);
         image.onerror = () => reject(new Error("Failed to load icon image: " + type));

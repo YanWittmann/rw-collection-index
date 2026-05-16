@@ -6,6 +6,7 @@ import { cn } from "@shadcn/lib/utils";
 import { RwIconButton } from "../other/RwIconButton";
 import { FilterOption, FilterSection, PearlFilter } from "./PearlFilter";
 import { getSpeakerInfo, getRegion, regions, speakers } from "../../utils/speakers";
+import { Tint } from "../../utils/assetUtils";
 import { randomColor } from "../../utils/colorUtils";
 import { OrderedChapter } from "../../utils/pearlOrder";
 import { UnlockMode, useAppContext } from "../../context/AppContext";
@@ -14,7 +15,7 @@ import { useChapterExpansion } from "../../hooks/useChapterExpansion";
 import { useKeyboardNavigation } from "../../hooks/useKeyboardNavigation";
 import { Popover, PopoverContent, PopoverTrigger } from "@shadcn/components/ui/popover";
 import { RwScrollableList, RwScrollableListItem } from "../other/RwScrollableList";
-import { RwIcon } from "./RwIcon";
+import { RwAsset } from "../other/RwAsset";
 
 interface FlatChapterItem {
     id: string;
@@ -103,10 +104,10 @@ const SearchBar = () => {
         });
 
         const tagOptions: FilterOption[] = [
-            { id: "vanilla", label: "Vanilla (No DLC)", icon: "vanilla-rw" },
-            { id: "downpour", label: "Downpour", icon: "dlc-dp" },
-            { id: "watcher", label: "Watcher", icon: "dlc-watcher" },
-            { id: "saveFound", label: "Found in Save", icon: "pearl", iconColor: '#FFD700' },
+            { id: "vanilla", label: "Vanilla (No DLC)", asset: { src: "vanilla-rw" } },
+            { id: "downpour", label: "Downpour", asset: { src: "dlc-dp" } },
+            { id: "watcher", label: "Watcher", asset: { src: "dlc-watcher" } },
+            { id: "saveFound", label: "Found in Save", asset: { src: "pearl", tint: Tint.mask('#FFD700') }, accentColor: '#FFD700' },
         ];
 
         const sections: FilterSection[] = [
@@ -117,17 +118,22 @@ const SearchBar = () => {
             {
                 title: "Types",
                 options: [
-                    { id: "pearl", label: "Pearl", icon: "pearl", iconColor: typeFilterColors.pearl },
-                    { id: "broadcast", label: "Broadcast", icon: "broadcast", iconColor: typeFilterColors.broadcast },
-                    { id: "echo", label: "Echo", icon: "echo" },
-                    { id: "item", label: "Other", icon: "item/Bubble_Weed_icon" }
+                    { id: "pearl", label: "Pearl", asset: { src: "pearl", tint: Tint.mask(typeFilterColors.pearl) }, accentColor: typeFilterColors.pearl },
+                    { id: "broadcast", label: "Broadcast", asset: { src: "broadcast", tint: Tint.mask(typeFilterColors.broadcast) }, accentColor: typeFilterColors.broadcast },
+                    { id: "echo", label: "Echo", asset: { src: "echo" } },
+                    { id: "item", label: "Other", asset: { src: "item/Bubble_Weed_icon" } }
                 ]
             },
             {
                 title: "Regions",
                 options: sortedRegions.map(r => {
                     const region = getRegion(r);
-                    return { id: r, label: region.name, image: region.image, iconColor: region.color };
+                    return {
+                        id: r,
+                        label: region.name,
+                        asset: region.image ? { src: region.image, fit: "cover" as const } : undefined,
+                        accentColor: region.color,
+                    };
                 }),
             },
             {
@@ -142,12 +148,13 @@ const SearchBar = () => {
                     }
 
                     const info = getSpeakerInfo(s, actualSpeaker, namespace);
+                    const accentColor = info.asset?.tint?.mode === "mask" ? info.asset.tint.color : undefined;
 
                     return {
                         id: s,
                         label: info.displayName === '(Unknown)' ? s : info.displayName.split(' / ')[0],
-                        icon: info.icon,
-                        iconColor: info.iconColor
+                        asset: info.asset,
+                        accentColor,
                     };
                 }),
             }
@@ -184,7 +191,7 @@ const SearchBar = () => {
                     <PopoverTrigger asChild>
                         <div onClick={(e) => e.stopPropagation()} className="shrink-0">
                             <RwIconButton square={true} aria-label="Menu" padding="p-2">
-                                <RwIcon type="The_Scholar_Square"/>
+                                <RwAsset src="The_Scholar_Square" />
                             </RwIconButton>
                         </div>
                     </PopoverTrigger>

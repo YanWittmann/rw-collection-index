@@ -162,7 +162,7 @@ function buildWatcherState(record: SaveStateRecord): WatcherState {
         numberOfVoidWeaverEncounters:      mwdIW[4] ?? 0,
         princeWeaverGrowthAcknowledgement: mwdIW[14] ?? 0,
         princeWeaverDialogProgression:     mwdIW[13] ?? 0,
-        rotInfectedRegionCount:            state.miscWorldData?.rotInfectedRegions?.length ?? 0,
+        rotInfectedRegionCount:            state.miscWorldData?.rotSpreadRegions?.length ?? 0,
         physicalPearlTypes:                collectPhysicalPearlTypes(record),
         visitedRooms:                      buildVisitedRooms(state),
     };

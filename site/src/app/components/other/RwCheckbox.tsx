@@ -2,7 +2,7 @@
 
 import type * as React from "react"
 import { RwIconButton } from "./RwIconButton"
-import { RwIcon } from "../PearlGrid/RwIcon"
+import { RwAsset } from "./RwAsset"
 import { cn } from "@shadcn/lib/utils"
 
 interface RwCheckboxProps {
@@ -51,7 +51,7 @@ export function RwCheckbox({
                     className={cn(disabled ? "pointer-events-none" : "")}
                     aria-label={typeof children === 'string' ? children : "Toggle"}
                 >
-                    {checked && <RwIcon type="check" />}
+                    {checked && <RwAsset src="check" />}
                 </RwIconButton>
             </div>
 

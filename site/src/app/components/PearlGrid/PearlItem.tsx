@@ -1,5 +1,6 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
-import { RwIcon } from "./RwIcon";
+import { RwAsset } from "../other/RwAsset"
+import { Tint } from "../../utils/assetUtils";
 import { RwIconButton } from "../other/RwIconButton";
 import UnlockManager from "../../utils/unlockManager";
 import { getLockedColor } from "../../utils/transcriberUtils";
@@ -52,7 +53,7 @@ const PearlItem: React.FC<PearlItemProps> = ({
         const lockedColor = getLockedColor(pearl);
         return (
             <RwIconButton onClick={handleClick} selected={isSelected} variant={isFoundInSave ? 'gold' : 'default'} aria-label="Locked pearl">
-                <RwIcon color={lockedColor} type="questionmark"/>
+                <RwAsset src="questionmark" tint={Tint.mask(lockedColor)} />
             </RwIconButton>
         );
     }
@@ -69,7 +70,7 @@ const PearlItem: React.FC<PearlItemProps> = ({
                         variant={isFoundInSave ? 'gold' : 'default'}
                         aria-label={`${pearl.metadata.name || 'Unknown pearl'} - ${pearl.transcribers.length} transcription${pearl.transcribers.length !== 1 ? 's' : ''}`}
                     >
-                            <RwIcon color={pearl.metadata.color} type={iconType}/>
+                            <RwAsset src={iconType} tint={Tint.mask(pearl.metadata.color)} />
                             {showTranscriberCount && (
                                 <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-6 h-4 text-xs flex items-center justify-center">
                                     {pearl.transcribers.length}

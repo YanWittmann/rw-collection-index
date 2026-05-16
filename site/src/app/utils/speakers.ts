@@ -1,3 +1,8 @@
+import type { GameAsset } from './assetUtils'
+import { Tint } from './assetUtils'
+
+export type { GameAsset }
+
 export interface SourceDecrypted {
     n: string;
     p: string;
@@ -7,23 +12,21 @@ export interface SourceDecrypted {
 export interface SpeakerDef {
     name?: string;
     aliases?: string[];
-    color?: string;            // dialogue text color (speakersColors)
-    transcriberColor?: string; // transcriber header color (transcribersColors), only when explicitly set
-    icon?: string;             // icon image key (transcriberIcons)
-    iconColor?: string | null; // null = render natural image colors (speakerIconColorOverrides)
-    image?: string;            // modded transcriber image path (transcribersImages)
+    color?: string;            // dialogue text color
+    transcriberColor?: string; // transcriber header color, only when explicitly set
+    asset?: GameAsset;         // icon/image with optional tint; absent = no visual icon
 }
 
 export interface RegionDef {
     name: string;
-    color: string;
-    image?: string; // path relative to img/, e.g. "region/HI.png" or "wa-region/wvwb.png"
+    color: string;             // accent color for UI labels/text
+    image?: string;            // path relative to img/, no extension (PNG assumed), e.g. "region/HI"
 }
 
 // SECTION: speakers
 
 export const speakers: Record<string, SpeakerDef> = {
-    "unknown": { name: "Unknown", color: "#a855f7", icon: "iterator-any" },
+    "unknown": { name: "Unknown", color: "#a855f7", asset: { src: "iterator-any", tint: Tint.mask("#a855f7") } },
     "FP": {
         name: "Five Pebbles",
         aliases: ["Five Pebbles", "FP-artificer"],
@@ -31,7 +34,7 @@ export const speakers: Record<string, SpeakerDef> = {
         transcriberColor: "#66d9bf"
     },
     "EP": { name: "Erratic Pulse / Five Pebbles", color: "#66d9bf" },
-    "BSM": { name: "Big Sis Moon / Looks to the Moon", color: "#e5d999", icon: "LttM-post-collapse" },
+    "BSM": { name: "Big Sis Moon / Looks to the Moon", color: "#e5d999", asset: { src: "LttM-post-collapse", tint: Tint.mask("#e5d999") } },
     "LttM": { name: "Looks to the Moon", color: "#e5d999" },
     "LttM-pre-collapse": { name: "Looks to the Moon (Pre-Collapse)", transcriberColor: "#FFEB04" },
     "LttM-rivulet": { name: "Looks to the Moon (Rivulet)", transcriberColor: "#ffffff" },
@@ -39,19 +42,19 @@ export const speakers: Record<string, SpeakerDef> = {
     "LttM-saint": { name: "Looks to the Moon (Future)", transcriberColor: "#4B7486" },
     "LttM-FP-saint": { name: "Looks to the Moon / Five Pebbles (Future)", transcriberColor: "#4B7486" },
     "LttM-gourmand": { name: "Looks to the Moon (Gourmand)", transcriberColor: "#ffffff" },
-    "NSH": { name: "No Significant Harassment", color: "#bfffbf", icon: "modded/nsh" },
-    "SRS": { name: "Seven Red Suns", color: "#ffbfbf", icon: "iterator-any" },
-    "CW": { name: "Chasing Wind", color: "#bfbfe5", icon: "modded/chasing-wind" },
+    "NSH": { name: "No Significant Harassment", color: "#bfffbf", asset: { src: "modded/nsh", tint: Tint.mask("#bfffbf") } },
+    "SRS": { name: "Seven Red Suns", color: "#ffbfbf", asset: { src: "iterator-any", tint: Tint.mask("#ffbfbf") } },
+    "CW": { name: "Chasing Wind", color: "#bfbfe5", asset: { src: "modded/chasing-wind", tint: Tint.mask("#bfbfe5") } },
     "GW": { name: "Grey Wind / Chasing Wind", color: "#bfbfe5" },
-    "NGI": { name: "(Unknown)", color: "#b28ccc", icon: "iterator-any" },
-    "GS": { name: "Gazing Stars", color: "#e59966", icon: "iterator-any" },
-    "HR": { name: "(Unknown)", color: "#8cb28c", icon: "iterator-any" },
-    "SI": { name: "Secluded Instinct", color: "#bfbfbf", icon: "iterator-any" },
-    "UU": { name: "(Unknown)", color: "#8ce58c", icon: "iterator-any" },
-    "HF": { name: "(Unknown)", color: "#8c8ce5", icon: "iterator-any" },
-    "PI": { name: "Pleading Intellect", color: "#ffbfff", icon: "iterator-any" },
-    "WO": { name: "Wandering Omen", color: "#bfbfff", icon: "iterator-any" },
-    "EOC": { name: "Epoch of Clouds", color: "#ffffe5", icon: "iterator-any" },
+    "NGI": { name: "(Unknown)", color: "#b28ccc", asset: { src: "iterator-any", tint: Tint.mask("#b28ccc") } },
+    "GS": { name: "Gazing Stars", color: "#e59966", asset: { src: "iterator-any", tint: Tint.mask("#e59966") } },
+    "HR": { name: "(Unknown)", color: "#8cb28c", asset: { src: "iterator-any", tint: Tint.mask("#8cb28c") } },
+    "SI": { name: "Secluded Instinct", color: "#bfbfbf", asset: { src: "iterator-any", tint: Tint.mask("#bfbfbf") } },
+    "UU": { name: "(Unknown)", color: "#8ce58c", asset: { src: "iterator-any", tint: Tint.mask("#8ce58c") } },
+    "HF": { name: "(Unknown)", color: "#8c8ce5", asset: { src: "iterator-any", tint: Tint.mask("#8c8ce5") } },
+    "PI": { name: "Pleading Intellect", color: "#ffbfff", asset: { src: "iterator-any", tint: Tint.mask("#ffbfff") } },
+    "WO": { name: "Wandering Omen", color: "#bfbfff", asset: { src: "iterator-any", tint: Tint.mask("#bfbfff") } },
+    "EOC": { name: "Epoch of Clouds", color: "#ffffe5", asset: { src: "iterator-any", tint: Tint.mask("#ffffe5") } },
     // watcher
     "ST": { name: "Spinning Top", aliases: ["Spinning Top", "spinning-top"] },
     "rot-prince": { name: "Rot Prince" },
@@ -59,50 +62,50 @@ export const speakers: Record<string, SpeakerDef> = {
     "rot-prince-weaver": { name: "Rot Prince" },
     "void-weaver": { name: "Void Weaver" },
     "PearlReader": { name: "Pearl Reader" },
-    "Host": { name: "Host", color: "#ffffff", icon: "Host" },
-    "Gesture": { name: "Bell of Gesture", color: "#ffffff", icon: "bells-of-gesture", iconColor: null },
+    "Host": { name: "Host", color: "#ffffff", asset: { src: "Host", tint: Tint.mask("#ffffff") } },
+    "Gesture": { name: "Bell of Gesture", color: "#ffffff", asset: { src: "bells-of-gesture" } },
     // dev / community
-    "Andrew": { name: "Andrew Marrero", color: "#ffffff", icon: "Andrew" },
-    "Will": { name: "Willburd", color: "#ff4c59", icon: "Will" },
-    "Norgad": { name: "Tom \"Norgad\" Starbuck", color: "#ab8fd6", icon: "Norgad" },
-    "Screams": { name: "the one who screams i guess", color: "#4cff87", icon: "Screams" },
-    "Dakras": { name: "Andy \"Dakras\" Dunn", color: "#b854ed", icon: "Dakras" },
-    "Slugitar": { name: "Slugitar", color: "#ffffff", icon: "Slugitar" },
-    "Cappin": { name: "Evan \"Cappin\" Muncy", color: "#0061d6", icon: "Cappin" },
+    "Andrew": { name: "Andrew Marrero", color: "#ffffff", asset: { src: "Andrew", tint: Tint.mask("#ffffff") } },
+    "Will": { name: "Willburd", color: "#ff4c59", asset: { src: "Will", tint: Tint.mask("#ff4c59") } },
+    "Norgad": { name: "Tom \"Norgad\" Starbuck", color: "#ab8fd6", asset: { src: "Norgad", tint: Tint.mask("#ab8fd6") } },
+    "Screams": { name: "the one who screams i guess", color: "#4cff87", asset: { src: "Screams", tint: Tint.mask("#4cff87") } },
+    "Dakras": { name: "Andy \"Dakras\" Dunn", color: "#b854ed", asset: { src: "Dakras", tint: Tint.mask("#b854ed") } },
+    "Slugitar": { name: "Slugitar", color: "#ffffff", asset: { src: "Slugitar", tint: Tint.mask("#ffffff") } },
+    "Cappin": { name: "Evan \"Cappin\" Muncy", color: "#0061d6", asset: { src: "Cappin", tint: Tint.mask("#0061d6") } },
     // namespace specific
-    "NSCP-PS": { name: "Pilgrimaged Summit", color: "#a3d9c2", icon: "NSCP-PS" },
-    "NSCP-FPB": { name: "Fourteen Polar Bones", color: "#d4d1b8", icon: "NSCP-FPB" },
-    "NSCP-UD": { name: "Unstable Daydream", color: "#69b378", icon: "NSCP-UD" },
-    "NSCP-TSA": { name: "Twelve Stars Above", color: "#fadb99", icon: "NSCP-TSA" },
-    "NSTM-GM": { name: "GM", color: "#d9d9b3", icon: "NSTM-GM" },
-    "NSTM-DSS": { name: "DSS", color: "#408c66", icon: "NSTM-DSS" },
-    "NSTM-WC": { name: "Winding Current", color: "#b38cff", icon: "NSTM-WC" },
-    "NSTM-AA": { name: "AA", color: "#ffccb8", icon: "NSTM-AA" },
-    "NSTM-QR": { name: "QR", color: "#80ccb8", icon: "NSTM-QR" },
+    "NSCP-PS": { name: "Pilgrimaged Summit", color: "#a3d9c2", asset: { src: "NSCP-PS", tint: Tint.mask("#a3d9c2") } },
+    "NSCP-FPB": { name: "Fourteen Polar Bones", color: "#d4d1b8", asset: { src: "NSCP-FPB", tint: Tint.mask("#d4d1b8") } },
+    "NSCP-UD": { name: "Unstable Daydream", color: "#69b378", asset: { src: "NSCP-UD", tint: Tint.mask("#69b378") } },
+    "NSCP-TSA": { name: "Twelve Stars Above", color: "#fadb99", asset: { src: "NSCP-TSA", tint: Tint.mask("#fadb99") } },
+    "NSTM-GM": { name: "GM", color: "#d9d9b3", asset: { src: "NSTM-GM", tint: Tint.mask("#d9d9b3") } },
+    "NSTM-DSS": { name: "DSS", color: "#408c66", asset: { src: "NSTM-DSS", tint: Tint.mask("#408c66") } },
+    "NSTM-WC": { name: "Winding Current", color: "#b38cff", asset: { src: "NSTM-WC", tint: Tint.mask("#b38cff") } },
+    "NSTM-AA": { name: "AA", color: "#ffccb8", asset: { src: "NSTM-AA", tint: Tint.mask("#ffccb8") } },
+    "NSTM-QR": { name: "QR", color: "#80ccb8", asset: { src: "NSTM-QR", tint: Tint.mask("#80ccb8") } },
     // transcribers
     "broadcast": { name: "Broadcast" },
     "broadcast-pre-FP": { name: "Pre-Five Pebbles", transcriberColor: "#ffffff" },
     "broadcast-post-FP": { name: "Post-Five Pebbles", transcriberColor: "#7f7f7f" },
-    "base-slugcats": { name: "Base Slugcats", transcriberColor: "#ffffff", icon: "survivor" },
-    "saint": { name: "Saint", transcriberColor: "#aaf156", icon: "saint" },
-    "artificer": { name: "Artificer", transcriberColor: "#70233c", icon: "artificer" },
+    "base-slugcats": { name: "Base Slugcats", transcriberColor: "#ffffff", asset: { src: "survivor" } },
+    "saint": { name: "Saint", transcriberColor: "#aaf156", asset: { src: "saint" } },
+    "artificer": { name: "Artificer", transcriberColor: "#70233c", asset: { src: "artificer" } },
     "spearmaster": { name: "Spearmaster", transcriberColor: "#4f2e69" },
-    "FA": { icon: "FA" },
-    "NSS": { icon: "iterator-any" },
-    "UI": { icon: "modded/unparalleled-innocence" },
+    "FA": { asset: { src: "FA" } },
+    "NSS": { asset: { src: "iterator-any" } },
+    "UI": { asset: { src: "modded/unparalleled-innocence" } },
     // modded
-    "chasing-wind": { name: "Chasing Wind", transcriberColor: "#66d9bf", image: "modded/chasing-wind" },
+    "chasing-wind": { name: "Chasing Wind", transcriberColor: "#66d9bf", asset: { src: "modded/chasing-wind" } },
     "chasing-wind-spearmaster": {
         name: "Chasing Wind (Spearmaster)",
         transcriberColor: "#66d9bf",
-        image: "modded/chasing-wind-spearmaster"
+        asset: { src: "modded/chasing-wind-spearmaster" }
     },
     "chasing-wind-gourmand": {
         name: "Chasing Wind (Gourmand)",
         transcriberColor: "#66d9bf",
-        image: "modded/chasing-wind-gourmand"
+        asset: { src: "modded/chasing-wind-gourmand" }
     },
-    "seer": { name: "Seer", transcriberColor: "#b8cfa6", image: "modded/seer" },
+    "seer": { name: "Seer", transcriberColor: "#b8cfa6", asset: { src: "modded/seer" } },
 };
 
 // computed once at module load, O(1) lookups for all primary keys and aliases
@@ -117,60 +120,60 @@ for (const [id, def] of Object.entries(speakers)) {
 
 export const regions: Record<string, RegionDef> = {
     // vanilla
-    "SU": { name: "Outskirts", color: "#38c79e", image: "region/SU.png" },
-    "HI": { name: "Industrial Complex", color: "#667ad1", image: "region/HI.png" },
-    "DS": { name: "Drainage System", color: "#247d45", image: "region/DS.png" },
-    "GW": { name: "Garbage Wastes", color: "#cce370", image: "region/GW.png" },
-    "SL": { name: "Shoreline", color: "#ede5cc", image: "region/SL.png" },
-    "SH": { name: "Shaded Citadel", color: "#593699", image: "region/SH.png" },
-    "UW": { name: "Exterior", color: "#886b57", image: "region/UW.png" },
-    "SS": { name: "Five Pebbles", color: "#939393", image: "region/SS.png" },
-    "CC": { name: "Chimney Canopy", color: "#d48573", image: "region/CC.png" },
-    "SI": { name: "Sky Islands", color: "#e8597f", image: "region/SI.png" },
-    "LF": { name: "Farm Arrays", color: "#608c9e", image: "region/LF.png" },
-    "SB": { name: "Subterranean", color: "#9c5933", image: "region/SB.png" },
-    "VS": { name: "Pipeyard", color: "#75405c", image: "region/VS.png" },
-    "OE": { name: "Outer Expanse", color: "#d8ae8a", image: "region/OE.png" },
-    "LM": { name: "Waterfront Facility", color: "#38d3ca", image: "region/LM.png" },
-    "LC": { name: "Metropolis", color: "#7f3339", image: "region/LC.png" },
-    "MS": { name: "Submerged Superstructure", color: "#097370", image: "region/MS.png" },
-    "RM": { name: "The Rot", color: "#9c00ff", image: "region/RM.png" },
-    "DM": { name: "Looks to the Moon", color: "#194fe7", image: "region/DM.png" },
-    "CL": { name: "Silent Construct", color: "#47655f", image: "region/CL.png" },
-    "UG": { name: "Undergrowth", color: "#8fb572", image: "region/UG.png" },
-    "HR": { name: "Rubicon", color: "#590e00", image: "region/HR.png" },
+    "SU": { name: "Outskirts", color: "#38c79e", image: "region/SU" },
+    "HI": { name: "Industrial Complex", color: "#667ad1", image: "region/HI" },
+    "DS": { name: "Drainage System", color: "#247d45", image: "region/DS" },
+    "GW": { name: "Garbage Wastes", color: "#cce370", image: "region/GW" },
+    "SL": { name: "Shoreline", color: "#ede5cc", image: "region/SL" },
+    "SH": { name: "Shaded Citadel", color: "#593699", image: "region/SH" },
+    "UW": { name: "Exterior", color: "#886b57", image: "region/UW" },
+    "SS": { name: "Five Pebbles", color: "#939393", image: "region/SS" },
+    "CC": { name: "Chimney Canopy", color: "#d48573", image: "region/CC" },
+    "SI": { name: "Sky Islands", color: "#e8597f", image: "region/SI" },
+    "LF": { name: "Farm Arrays", color: "#608c9e", image: "region/LF" },
+    "SB": { name: "Subterranean", color: "#9c5933", image: "region/SB" },
+    "VS": { name: "Pipeyard", color: "#75405c", image: "region/VS" },
+    "OE": { name: "Outer Expanse", color: "#d8ae8a", image: "region/OE" },
+    "LM": { name: "Waterfront Facility", color: "#38d3ca", image: "region/LM" },
+    "LC": { name: "Metropolis", color: "#7f3339", image: "region/LC" },
+    "MS": { name: "Submerged Superstructure", color: "#097370", image: "region/MS" },
+    "RM": { name: "The Rot", color: "#9c00ff", image: "region/RM" },
+    "DM": { name: "Looks to the Moon", color: "#194fe7", image: "region/DM" },
+    "CL": { name: "Silent Construct", color: "#47655f", image: "region/CL" },
+    "UG": { name: "Undergrowth", color: "#8fb572", image: "region/UG" },
+    "HR": { name: "Rubicon", color: "#590e00", image: "region/HR" },
     // watcher
-    "unknown": { name: "Unknown", color: "#453321", image: "wa-region/unknown.png" },
-    "WARC": { name: "Fetid Glen", color: "#2F2B03", image: "wa-region/warc.png" },
-    "WARF": { name: "Aether Ridge", color: "#C4DBEA", image: "wa-region/warf.png" },
-    "WBLA": { name: "Badlands", color: "#EDCD7B", image: "wa-region/wbla.png" },
-    "WHIR": { name: "Corrupted Factories", color: "#362850", image: "wa-region/whir.png" },
-    "WRFA": { name: "Coral Caves", color: "#319AD6", image: "wa-region/wrfa.png" },
-    "WRSA": { name: "Deamon", color: "#2A3649", image: "wa-region/wrsa.png" },
-    "WSKC": { name: "Stormy Coast", color: "#5F6266", image: "wa-region/wskc.png" },
-    "WSUR": { name: "Crumbling Fringes", color: "#201F40", image: "wa-region/wsur.png" },
-    "WVWA": { name: "Verdant Waterways", color: "#78AA35", image: "wa-region/wvwa.png" },
-    "WVWB": { name: "Fractured Gateways", color: "#8d967d", image: "wa-region/wvwb.png" },
-    "WARA": { name: "Shattered Terrace", color: "#A6A298", image: "wa-region/wara.png" },
-    "WARD": { name: "Cold Storage", color: "#4C3587", image: "wa-region/ward.png" },
-    "WARG": { name: "The Surface", color: "#576779", image: "wa-region/warg.png" },
-    "WDSR": { name: "Decaying Tunnels", color: "#27131E", image: "wa-region/wdsr.png" },
-    "WORA": { name: "Outer Rim", color: "#2F176B", image: "wa-region/wora.png" },
-    "WRFB": { name: "Turbulent Pump", color: "#213E52", image: "wa-region/wrfb.png" },
-    "WSKA": { name: "Torrential Railways", color: "#979AA1", image: "wa-region/wska.png" },
-    "WSKD": { name: "Shrouded Stacks", color: "#5B4249", image: "wa-region/wskd.png" },
-    "WTDA": { name: "Torrid Desert", color: "#E89F6E", image: "wa-region/wtda.png" },
-    "WARB": { name: "Salination", color: "#0A1F32", image: "wa-region/warb.png" },
-    "WARE": { name: "Heat Ducts", color: "#B70C09", image: "wa-region/ware.png" },
-    "WAUA": { name: "Ancient Urban", color: "#A5A393", image: "wa-region/waua.png" },
-    "WGWR": { name: "Infested Wastes", color: "#2B2536", image: "wa-region/wgwr.png" },
-    "WPTA": { name: "Signal Spires", color: "#FE84B2", image: "wa-region/wpta.png" },
-    "WPGA": { name: "Pillar Grove", color: "#6fb772", image: "wa-region/wpga.png" },
-    "WRRA": { name: "Rusted Wrecks", color: "#8D9B8A", image: "wa-region/wrra.png" },
-    "WSKB": { name: "Sunbaked Alley", color: "#D56E7C", image: "wa-region/wskb.png" },
-    "WSSR": { name: "Unfortunate Evolution", color: "#4A4A4A", image: "wa-region/wssr.png" },
-    "WTDB": { name: "Desolate Tract", color: "#69775E", image: "wa-region/wtdb.png" },
-    "WMPA": { name: "Migration Path", color: "#2F176B", image: "wa-region/wmpa.png" },
+    "unknown": { name: "Unknown", color: "#453321", image: "wa-region/unknown" },
+    "WARC": { name: "Fetid Glen", color: "#2F2B03", image: "wa-region/warc" },
+    "WARF": { name: "Aether Ridge", color: "#C4DBEA", image: "wa-region/warf" },
+    "WBLA": { name: "Badlands", color: "#EDCD7B", image: "wa-region/wbla" },
+    "WHIR": { name: "Corrupted Factories", color: "#362850", image: "wa-region/whir" },
+    "WRFA": { name: "Coral Caves", color: "#319AD6", image: "wa-region/wrfa" },
+    "WRSA": { name: "Deamon", color: "#2A3649", image: "wa-region/wrsa" },
+    "WSKC": { name: "Stormy Coast", color: "#5F6266", image: "wa-region/wskc" },
+    "WSUR": { name: "Crumbling Fringes", color: "#201F40", image: "wa-region/wsur" },
+    "WVWA": { name: "Verdant Waterways", color: "#78AA35", image: "wa-region/wvwa" },
+    "WVWB": { name: "Fractured Gateways", color: "#8d967d", image: "wa-region/wvwb" },
+    "WARA": { name: "Shattered Terrace", color: "#A6A298", image: "wa-region/wara" },
+    "WARD": { name: "Cold Storage", color: "#4C3587", image: "wa-region/ward" },
+    "WARG": { name: "The Surface", color: "#576779", image: "wa-region/warg" },
+    "WDSR": { name: "Decaying Tunnels", color: "#27131E", image: "wa-region/wdsr" },
+    "WORA": { name: "Outer Rim", color: "#2F176B", image: "wa-region/wora" },
+    "WRFB": { name: "Turbulent Pump", color: "#213E52", image: "wa-region/wrfb" },
+    "WSKA": { name: "Torrential Railways", color: "#979AA1", image: "wa-region/wska" },
+    "WSKD": { name: "Shrouded Stacks", color: "#5B4249", image: "wa-region/wskd" },
+    "WTDA": { name: "Torrid Desert", color: "#E89F6E", image: "wa-region/wtda" },
+    "WARB": { name: "Salination", color: "#0A1F32", image: "wa-region/warb" },
+    "WARE": { name: "Heat Ducts", color: "#B70C09", image: "wa-region/ware" },
+    "WAUA": { name: "Ancient Urban", color: "#A5A393", image: "wa-region/waua" },
+    "WGWR": { name: "Infested Wastes", color: "#2B2536", image: "wa-region/wgwr" },
+    "WPTA": { name: "Signal Spires", color: "#FE84B2", image: "wa-region/wpta" },
+    "WPGA": { name: "Pillar Grove", color: "#6fb772", image: "wa-region/wpga" },
+    "WRRA": { name: "Rusted Wrecks", color: "#8D9B8A", image: "wa-region/wrra" },
+    "WSKB": { name: "Sunbaked Alley", color: "#D56E7C", image: "wa-region/wskb" },
+    "WSSR": { name: "Unfortunate Evolution", color: "#4A4A4A", image: "wa-region/wssr" },
+    "WTDB": { name: "Desolate Tract", color: "#69775E", image: "wa-region/wtdb" },
+    "WMPA": { name: "Migration Path", color: "#2F176B", image: "wa-region/wmpa" },
     // modded
     "GH": { name: "Hanging Gardens", color: "#68a842" },
     "PQ": { name: "Corroded Passage", color: "#34573a" },
@@ -312,12 +315,9 @@ export function getSpeakerInfo(rawSpeaker: string, actualSpeaker: string, namesp
 
     const displayName = def.name ?? actualSpeaker;
     const color = def.color;
-    const icon = def.icon ?? rawSpeaker;
-    const iconColor = 'iconColor' in def
-        ? (def.iconColor === null ? undefined : def.iconColor)
-        : color;
+    const asset = def.asset;
 
-    return { displayName, color, icon, iconColor };
+    return { displayName, color, asset };
 }
 
 // dominant color per item image, keyed by "{subType}.png" (no img/ prefix), for locked "?" tinting.

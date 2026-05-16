@@ -3,7 +3,8 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { RwIconButton } from '../other/RwIconButton';
-import { RwIcon } from '../PearlGrid/RwIcon';
+import { RwAsset } from '../other/RwAsset';
+import { Tint } from '../../utils/assetUtils';
 import { randomColor } from '../../utils/colorUtils';
 import { RwCheckbox } from '../other/RwCheckbox';
 import { useAppContext } from '../../context/AppContext';
@@ -193,7 +194,7 @@ export function SaveFileInfoDialog({ phase, uploadState, errorMessage, matchSumm
                                 <div key={label} className="flex flex-col items-center gap-2">
                                     <div className="pointer-events-none">
                                         <RwIconButton variant={variant} aria-label={label} selected={false}>
-                                            <RwIcon color={color} type={iconType} />
+                                            <RwAsset src={iconType} tint={Tint.mask(color)} />
                                         </RwIconButton>
                                     </div>
                                     <span className="text-xs text-white/50">{label}</span>
@@ -209,7 +210,7 @@ export function SaveFileInfoDialog({ phase, uploadState, errorMessage, matchSumm
                                 {summaryRows.map(({ count, label, iconType, color }) => (
                                     <div key={label} className="flex items-center gap-2">
                                         <div className="shrink-0 w-5 h-5 pointer-events-none">
-                                            <RwIcon color={color} type={iconType} />
+                                            <RwAsset src={iconType} tint={Tint.mask(color)} />
                                         </div>
                                         <span className="text-sm">
                                             <span className="font-medium">{count}</span> {label}

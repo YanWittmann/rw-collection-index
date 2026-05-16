@@ -5,7 +5,8 @@ import { getRegion, getSpeakerDef } from "../../utils/speakers";
 import { generateMapLinkFromMapInfo } from "./DialogueBox";
 import { findPearlCategory, PEARL_ORDER_CONFIGS } from "../../utils/pearlOrder";
 import { useAppContext } from "../../context/AppContext";
-import { RwIcon } from "../PearlGrid/RwIcon";
+import { RwAsset } from "../other/RwAsset";
+import { Tint } from "../../utils/assetUtils";
 
 interface HintSystemContentProps {
     pearl: PearlData;
@@ -126,7 +127,7 @@ export default function HintSystemContent({ pearl, unlockTranscription, transcri
             return (
                 <div className="flex flex-col items-center gap-2">
                     <div className="w-10 h-10">
-                        <RwIcon color={pearl.metadata.color} type={iconType}/>
+                        <RwAsset src={iconType} tint={Tint.mask(pearl.metadata.color)} />
                     </div>
                     <div className="text-base">
                         {superName && <span className="text-white/40">{superName} · </span>}
@@ -162,7 +163,7 @@ export default function HintSystemContent({ pearl, unlockTranscription, transcri
             {/* Unlock button: lock icon + label as one unit */}
             <RwIconButton square={false} onClick={unlockTranscription} aria-label="Unlock transcription">
                 <div className="flex items-center gap-2.5 px-1">
-                    <img src="img/lock.png" alt="" className="w-5 h-5" style={{ imageRendering: "pixelated" }}/>
+                    <RwAsset src="lock" className="w-5 h-5" />
                     <span className="text-lg">Transcription locked</span>
                 </div>
             </RwIconButton>

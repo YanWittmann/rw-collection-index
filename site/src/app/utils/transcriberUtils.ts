@@ -1,5 +1,7 @@
 import { Dialogue, PearlData } from '../types/types';
 import { itemIconColors, getSpeakerDef } from './speakers';
+import type { GameAsset } from './assetUtils';
+import { Tint } from './assetUtils';
 
 export function getLockedColor(pearl: PearlData, transcriber?: Dialogue): string {
     const type = transcriber?.metadata.type ?? pearl.metadata.type;
@@ -39,24 +41,22 @@ export function getTranscriberIcon(transcriber: Dialogue, pearl: PearlData, inde
         : transcriber.transcriber;
 
     const def = getSpeakerDef(transcriber.transcriber);
-    let iconType: string;
+    let asset: GameAsset;
     let color: string;
 
     if (effectiveTranscriberName.includes("broadcast")) {
         color = def.transcriberColor ?? transcriber.metadata.color ?? '#ffffff';
-        iconType = "broadcast";
+        asset = { src: "broadcast", tint: Tint.mask(color) };
     } else if (transcriber.metadata.type === 'item' && transcriber.metadata.subType) {
         color = def.transcriberColor ?? getLockedColor(pearl, transcriber);
-        iconType = transcriber.metadata.subType;
-    } else if (def.image !== undefined) {
+        asset = { src: transcriber.metadata.subType };
+    } else if (def.asset !== undefined) {
         color = def.transcriberColor ?? getLockedColor(pearl, transcriber);
-        iconType = def.image;
+        asset = { src: def.asset.src };
     } else {
         color = def.transcriberColor ?? getLockedColor(pearl, transcriber);
-        iconType = def.icon ?? transcriber.transcriber;
+        asset = { src: transcriber.transcriber };
     }
-
-    const overwriteColor = effectiveTranscriberName.includes("broadcast") ? color : undefined;
 
     let displayTranscriberName: string;
     if (transcriber.metadata.transcriberName) {
@@ -65,5 +65,5 @@ export function getTranscriberIcon(transcriber: Dialogue, pearl: PearlData, inde
         displayTranscriberName = def.name ?? transcriber.transcriber;
     }
 
-    return { iconType, color, effectiveTranscriberName, overwriteColor, displayTranscriberName };
+    return { asset, color, effectiveTranscriberName, displayTranscriberName };
 }
