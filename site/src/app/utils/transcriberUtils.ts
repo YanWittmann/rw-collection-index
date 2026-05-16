@@ -1,5 +1,5 @@
 import { Dialogue, PearlData } from '../types/types';
-import { itemIconColors, speakerNames, transcriberIcons, transcribersColors, transcribersImages } from './speakers';
+import { itemIconColors, getSpeakerDef } from './speakers';
 
 export function getLockedColor(pearl: PearlData, transcriber?: Dialogue): string {
     const type = transcriber?.metadata.type ?? pearl.metadata.type;
@@ -38,23 +38,22 @@ export function getTranscriberIcon(transcriber: Dialogue, pearl: PearlData, inde
         ? transcriber.transcriber + '-' + index
         : transcriber.transcriber;
 
+    const def = getSpeakerDef(transcriber.transcriber);
     let iconType: string;
     let color: string;
 
     if (effectiveTranscriberName.includes("broadcast")) {
-        color = transcribersColors[transcriber.transcriber]
-            ?? transcriber.metadata.color
-            ?? '#ffffff';
+        color = def.transcriberColor ?? transcriber.metadata.color ?? '#ffffff';
         iconType = "broadcast";
     } else if (transcriber.metadata.type === 'item' && transcriber.metadata.subType) {
-        color = transcribersColors[transcriber.transcriber] ?? getLockedColor(pearl, transcriber);
+        color = def.transcriberColor ?? getLockedColor(pearl, transcriber);
         iconType = transcriber.metadata.subType;
-    } else if (transcribersImages[transcriber.transcriber] !== undefined) {
-        color = transcribersColors[transcriber.transcriber] ?? getLockedColor(pearl, transcriber);
-        iconType = transcribersImages[transcriber.transcriber] ?? transcriber.transcriber;
+    } else if (def.image !== undefined) {
+        color = def.transcriberColor ?? getLockedColor(pearl, transcriber);
+        iconType = def.image;
     } else {
-        color = transcribersColors[transcriber.transcriber] ?? getLockedColor(pearl, transcriber);
-        iconType = transcriberIcons[transcriber.transcriber] ?? transcriber.transcriber;
+        color = def.transcriberColor ?? getLockedColor(pearl, transcriber);
+        iconType = def.icon ?? transcriber.transcriber;
     }
 
     const overwriteColor = effectiveTranscriberName.includes("broadcast") ? color : undefined;
@@ -63,7 +62,7 @@ export function getTranscriberIcon(transcriber: Dialogue, pearl: PearlData, inde
     if (transcriber.metadata.transcriberName) {
         displayTranscriberName = "plain=" + transcriber.metadata.transcriberName;
     } else {
-        displayTranscriberName = speakerNames[transcriber.transcriber] ?? transcriber.transcriber;
+        displayTranscriberName = def.name ?? transcriber.transcriber;
     }
 
     return { iconType, color, effectiveTranscriberName, overwriteColor, displayTranscriberName };

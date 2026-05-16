@@ -1,7 +1,7 @@
 import { TranscriberSelector } from "./TranscriberSelector";
 import { DialogueContent } from "./DialogueContent";
 import { Dialogue, DialogueLine, MapInfo } from "../../types/types";
-import { findSourceDialogue, resolveVariables, speakerNames } from "../../utils/speakers";
+import { findSourceDialogue, resolveVariables, getSpeakerDef } from "../../utils/speakers";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion"
 import { WelcomeDialogueContent } from "./WelcomeDialogueContent";
@@ -190,7 +190,7 @@ export function DialogueBox() {
             } else {
                 const transcriberIndex = findTranscriberIndex(pearl, hoveredTranscriber);
                 if (transcriberIndex !== -1) {
-                    let transcriberName = speakerNames[pearl.transcribers[transcriberIndex].transcriber] ?? "Unknown";
+                    let transcriberName = getSpeakerDef(pearl.transcribers[transcriberIndex].transcriber).name ?? "Unknown";
 
                     const parenthesisMatch = transcriberName.match(/(.*) \((.*)\)/);
                     let parenthesis = "";

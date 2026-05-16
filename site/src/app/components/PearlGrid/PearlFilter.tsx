@@ -22,7 +22,7 @@ export interface FilterOption {
     label: string;
     icon?: string;
     iconColor?: string;
-    regionId?: string;
+    image?: string;
 }
 
 export interface FilterSection {
@@ -37,7 +37,7 @@ interface FilterChipProps {
 }
 
 function FilterChip({ option, selected, onClick }: FilterChipProps) {
-    const hasIcon = !!option.icon || !!option.regionId;
+    const hasIcon = !!option.icon || !!option.image;
     const [iconFailed, setIconFailed] = React.useState(false);
     const showIcon = hasIcon && !iconFailed;
 
@@ -55,9 +55,9 @@ function FilterChip({ option, selected, onClick }: FilterChipProps) {
                     <div className="flex items-center w-full gap-2 overflow-hidden">
                         {showIcon && (
                             <div className="w-5 h-5 shrink-0 flex items-center justify-center">
-                                {option.regionId
+                                {option.image
                                     ? <img
-                                        src={`img/region/${option.regionId}.png`}
+                                        src={`img/${option.image}`}
                                         alt=""
                                         className="w-full h-full object-cover rounded-sm"
                                         style={{ imageRendering: "pixelated" }}

@@ -70,7 +70,7 @@ At the top level of the `SaveStateRecord` state object, `swallowedItems`, `playe
 
 When a save match is found, the system determines which transcribers to unlock by evaluating per-transcriber `md-saveUnlock` DSL conditions on each transcriber. Only transcribers whose condition evaluates to true are unlocked. If a transcriber has no `md-saveUnlock`, all transcribers of that entry are unlocked (fallback).
 
-A file is in **per-transcriber mode** when at least one transcriber carries `md-saveUnlock`. In this mode the entry-level `saveUnlock:` header field is ignored entirely by the evaluator. Files where every transcriber has `md-saveUnlock` must therefore not carry a top-level `saveUnlock:` line — it would be dead code that silently misleads. The 13 iterator dialogue files that are fully in per-transcriber mode carry no entry-level `saveUnlock:`: `LttM_Dialogue_survivor`, `LttM_Dialogue_survivor_monk`, `LttM_Dialogue_gourmand`, `LttM_Dialogue_hunter`, `LttM_Dialogue_rivulet`, `LttM_Dialogue_spearmaster`, `LttM_Dialogue_saint`, `LttM_short_Dialogue`, `FP_Dialogue_hunter`, `FP_Dialogue_artificer`, `FP_Dialogue_rivulet`, `FP_Dialogue_saint`, `FP_Dialogue_survivor`. The remaining files (`FP_Dialogue_monk`, `FP_Dialogue_gourmand`, `FP_Dialogue_spearmaster`, `FP_Dialogue_inv`, `FP_Dialogue_other`, `LttM_Dialogue_monk`) are not in per-transcriber mode and retain their entry-level `saveUnlock:`.
+A file is in **per-transcriber mode** when at least one transcriber carries `md-saveUnlock`. In this mode the entry-level `saveUnlock:` header field is ignored entirely by the evaluator. Files where every transcriber has `md-saveUnlock` must therefore not carry a top-level `saveUnlock:` line, it would be dead code that silently misleads. The 13 iterator dialogue files that are fully in per-transcriber mode carry no entry-level `saveUnlock:`: `LttM_Dialogue_survivor`, `LttM_Dialogue_survivor_monk`, `LttM_Dialogue_gourmand`, `LttM_Dialogue_hunter`, `LttM_Dialogue_rivulet`, `LttM_Dialogue_spearmaster`, `LttM_Dialogue_saint`, `LttM_short_Dialogue`, `FP_Dialogue_hunter`, `FP_Dialogue_artificer`, `FP_Dialogue_rivulet`, `FP_Dialogue_saint`, `FP_Dialogue_survivor`. The remaining files (`FP_Dialogue_monk`, `FP_Dialogue_gourmand`, `FP_Dialogue_spearmaster`, `FP_Dialogue_inv`, `FP_Dialogue_other`, `LttM_Dialogue_monk`) are not in per-transcriber mode and retain their entry-level `saveUnlock:`.
 
 Named pearl transcriber conditions use source-specific DSL global accessors:
 
@@ -337,16 +337,16 @@ The DSL field `lttmNeuronsLeft` is available in named-scope conditions (e.g. `Wh
 This unlocks the transcriber matching the player's current save state rather than the historically exact first-encounter state, which is unrecoverable.
 Confidence for neuron-count transcribers: approximate (current state, not historical).
 
-`LttM_Dialogue_saint_First_encounter`: first post-mark Moon visit for Saint. Detection: `Saint { lttmMark >= 1 } or Saint { visited.SL_AI } or Saint { echo.SL }`. The two additional OR branches serve as broader proxies — having visited SL_AI or completed the SL echo conversation are plausible proxies for having met Moon. Confidence: approximate due to the extra branches.
-`LttM_Dialogue_saint_Second_Encounter`: Detection: `Saint { lttmMark >= 1 }`. Note: this threshold is intentionally one step lower than the second-visit threshold (which would be `>= 2`) — it unlocks as soon as the first visit is confirmed, treating a second encounter as probable once any visit has occurred. Confidence: approximate.
+`LttM_Dialogue_saint_First_encounter`: first post-mark Moon visit for Saint. Detection: `Saint { lttmMark >= 1 } or Saint { visited.SL_AI } or Saint { echo.SL }`. The two additional OR branches serve as broader proxies, having visited SL_AI or completed the SL echo conversation are plausible proxies for having met Moon. Confidence: approximate due to the extra branches.
+`LttM_Dialogue_saint_Second_Encounter`: Detection: `Saint { lttmMark >= 1 }`. Note: this threshold is intentionally one step lower than the second-visit threshold (which would be `>= 2`), it unlocks as soon as the first visit is confirmed, treating a second encounter as probable once any visit has occurred. Confidence: approximate.
 `LttM_Dialogue_saint_Third_Encounter`: Detection: `Saint { lttmMark >= 2 }`. Same rationale: threshold is one step below the strict third-visit gate (`>= 3`). Confidence: approximate.
 `LttM_Dialogue_saint_Blizzard_approaching`: runtime weather event; no save field. Detection: `Saint { lttmMark >= 1 }` (best available proxy). Confidence: approximate.
 
 `LttM_short_Dialogue_*`: all blocks are runtime events; conditions are approximate.
-`Receiving_an_object` (both transcribers — speaking terms / not speaking terms): `any { lttmMark >= 1 and lttmDiscussedObject }`.
+`Receiving_an_object` (both transcribers, speaking terms / not speaking terms): `any { lttmMark >= 1 and lttmDiscussedObject }`.
 `Commenting_already_discussed_object (Other object)`: `any { lttmMark >= 1 and lttmDiscussedObject }`.
 `Commenting_already_discussed_object (Pearl)`: `any { lttmMark >= 1 and lttmReadPearl }`.
-`Take_back_while_commenting`: `any { lttmMark >= 1 and lttmDiscussedObject } or any { lttmMark >= 1 and lttmReadPearl }` — covers both non-pearl and pearl take-backs.
+`Take_back_while_commenting`: `any { lttmMark >= 1 and lttmDiscussedObject } or any { lttmMark >= 1 and lttmReadPearl }`, covers both non-pearl and pearl take-backs.
 `Receiving_a_pearl` (Five Pebbles' pearls and Misc/colored): `any { lttmMark >= 1 and lttmReadPearl }`.
 All nine remaining blocks (Seeing_Slugcat_bringing_a_Neuron_Fly, Interruptions ×3, Resuming_conversation_interruption, Annoyed_Jumping, Rain_Coming, Slugcat_Death): `any { lttmMark >= 1 }`.
 The two `Receiving_Neuron_Fly` transcribers retain their precise `lttmNeuronsGiven >= 1` conditions.
@@ -473,6 +473,8 @@ The Spinning Top is a ghost-like entity encountered across the game world. Each 
 
 `spinningTopEncounters` (integer array, save key `SPINNINGTOPENCOUNTERS`): spawn identifier integers for each Spinning Top object interacted with. This list includes every encounter type, including bath encounters at WAUA, Rot-region encounters, and post-ending encounters, none of which advance the ripple levels. A save with many entries but low `minRippleLevel` indicates most encounters were of the non-RL type.
 
+Every SpinningTopSpot object placed in the world has a `spawnIdentifier` integer baked into the level data at map-edit time. When a Spinning Top encounter completes, `MarkSpinningTopEncountered(spawnIdentifier)` appends that integer to `spinningTopEncounters`. The DSL evaluator exposes this as `stSpawn.N`, which returns true when N is present in the list. This is the only exact signal for special-room encounters: ripple level cannot distinguish which specific object was visited, only how many RL-advancing ones have occurred. Known spawnIdentifier assignments: 0 = WTDB Desolate Tract, 1 = WARA_P09 (ripple-warp), 39 = WAUA_TOYS.
+
 The conversation selected by the game's `StartConversation` is based on the prospective levels that will result from the encounter, computed before `RaiseRippleLevel` runs. This means finding `maxRippleLevel >= X` in the save confirms the encounter that would raise max to X has already occurred.
 
 Only encounters in RL-raising regions advance the levels: bath encounters (WAUA BATH), Rot-region encounters, and post-ending encounters all add to `spinningTopEncounters` without raising the levels.
@@ -508,7 +510,7 @@ Special encounter entries:
 
 `Watcher_ST_Echo_Ghost_ST_N4` (Desolate Tract, WTDB): fires at spawn ID 0 in the Desolate Tract. The encounter defers whatever standard ripple-level conversation would have fired; that deferred conversation plays at the next encounter instead. Detection: spawn ID 0 is present in `spinningTopEncounters`. Confidence: approximate (the identity of spawn ID 0 as the WTDB encounter cannot be verified from the save alone without cross-referencing game data).
 
-`Watcher_ST_Other_toys` (Ghost_ST_AU2): fires in room WAUA TOYS (Ancient Urban, toys room). No dedicated save flag exists. Detection: `maxRippleLevel >= 4.5` as a precondition only, since WAUA requires high ripple level to reach. Confidence: approximate.
+`Watcher_ST_Other_toys` (Ghost_ST_AU2): fires in room WAUA_TOYS (Ancient Urban, toys room) via a room-name check (`abstractRoom.name == "waua_toys"`). No ripple level gate exists in this branch. After the conversation completes, `MarkSpinningTopEncountered()` adds spawnIdentifier 39 to `spinningTopEncounters`. Detection: spawnIdentifier 39 is present in `spinningTopEncounters`. DSL: `watcher { stSpawn.39 }`. Confidence: exact.
 
 Runtime-only Spinning Top events with no save detection: `DieAtSpinningTop1`, `DieAtSpinningTop2`, `DieAtSpinningTop3`, `LeaveSpinningTop1`, `LeaveSpinningTop2`, `Watcher_ST_Echo_ellipsis` (the fallback dialogue that fires when no other condition matches).
 
@@ -598,11 +600,11 @@ Physical item scan: DataPearl items persist across cycle boundaries if the playe
 
 Confidence: approximate.
 
-**Fixed-location projections** (WAUA, WORA, DRONE, ABSTRACT): world-placed pearls at fixed positions. Despite being "fixed", detection still uses `watcher { projector and physicalPearl.X }` — the physical scan covers world-placed objects in `regionStates[*].objects`, so a pearl left in its original location is detected as long as it has been saved as a world object. Note: ABSTRACT uses type string `Abstract` (lowercase `a`). Confidence: approximate.
+**Fixed-location projections** (WAUA, WORA, DRONE, ABSTRACT): world-placed pearls at fixed positions. Despite being "fixed", detection still uses `watcher { projector and physicalPearl.X }`, the physical scan covers world-placed objects in `regionStates[*].objects`, so a pearl left in its original location is detected as long as it has been saved as a world object. Note: ABSTRACT uses type string `Abstract` (lowercase `a`). Confidence: approximate.
 
 **Audio pearl files** (`watcher_pearls/audio/`): each carries `save-unlock: watcher { projector and physicalPearl.ID }` where ID is the pearl's internalId (e.g. `physicalPearl.AUDIO_JAM1`). Confidence: approximate.
 
-**Misc image projections** (`Watcher_Pearl_Misc_Projection_*`): in-place image sequences with no carry mechanic. The entry-level `save-unlock` is `watcher { projector }` only — no `physicalPearl` check, because these projections are viewed in-place at the projector room and are never physically carried. Confidence: approximate.
+**Misc image projections** (`Watcher_Pearl_Misc_Projection_*`): in-place image sequences with no carry mechanic. The entry-level `save-unlock` is `watcher { projector }` only, no `physicalPearl` check, because these projections are viewed in-place at the projector room and are never physically carried. Confidence: approximate.
 
 ---
 

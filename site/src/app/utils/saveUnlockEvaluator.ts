@@ -1,4 +1,4 @@
-// dynamic-import-only — never statically import this file; it carries the antlr4 runtime.
+// dynamic-import-only, never statically import this file; it carries the antlr4 runtime.
 import { CharStream, CommonTokenStream } from 'antlr4';
 import SaveUnlockLexer from './grammar/SaveUnlockLexer';
 import SaveUnlockParser, {

@@ -109,7 +109,7 @@ export const RwIconButton = React.forwardRef<HTMLButtonElement, RwIconButtonProp
                 }}
             />
 
-            {/* Pulsating inner border — pure CSS animation, no Framer Motion */}
+            {/* Pulsating inner border, pure CSS animation, no Framer Motion */}
             <div
                 className="absolute inset-[3px] rounded-lg border-2 border-white/60"
                 style={{

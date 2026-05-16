@@ -140,6 +140,7 @@ A tasty little god sausage! OAOAOAOAOAOA!
 
 === transcription: spinning-top
 md-type: pearl
+md-saveUnlock: watcher { minRipple >= 1.0 and maxRipple >= 2.0 }
 md-super-subType: watcher-ripple
 md-var-DialogueId: ellipsis
 md-name: Fallback (...)

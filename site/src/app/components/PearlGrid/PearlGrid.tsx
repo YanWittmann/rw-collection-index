@@ -5,7 +5,7 @@ import PearlItem from "./PearlItem";
 import { cn } from "@shadcn/lib/utils";
 import { RwIconButton } from "../other/RwIconButton";
 import { FilterOption, FilterSection, PearlFilter } from "./PearlFilter";
-import { getSpeakerInfo, regionColors, regionNames, speakerNames } from "../../utils/speakers";
+import { getSpeakerInfo, getRegion, regions, speakers } from "../../utils/speakers";
 import { randomColor } from "../../utils/colorUtils";
 import { OrderedChapter } from "../../utils/pearlOrder";
 import { UnlockMode, useAppContext } from "../../context/AppContext";
@@ -83,17 +83,19 @@ const SearchBar = () => {
         uniqueSpeakers.delete("Five Pebbles");
         uniqueSpeakers.delete("EP"); // merged into FP
 
+        const regionKeys = Object.keys(regions);
         const sortedRegions = Array.from(uniqueRegions).sort((a, b) => {
-            const indexA = Object.keys(regionNames).indexOf(a);
-            const indexB = Object.keys(regionNames).indexOf(b);
+            const indexA = regionKeys.indexOf(a);
+            const indexB = regionKeys.indexOf(b);
             if (indexA !== -1 && indexB !== -1) return indexA - indexB;
             if (indexA !== -1) return -1;
             if (indexB !== -1) return 1;
             return a.localeCompare(b);
         });
+        const speakerKeys = Object.keys(speakers);
         const sortedSpeakers = Array.from(uniqueSpeakers).sort((a, b) => {
-            const indexA = Object.keys(speakerNames).indexOf(a);
-            const indexB = Object.keys(speakerNames).indexOf(b);
+            const indexA = speakerKeys.indexOf(a);
+            const indexB = speakerKeys.indexOf(b);
             if (indexA !== -1 && indexB !== -1) return indexA - indexB;
             if (indexA !== -1) return -1;
             if (indexB !== -1) return 1;
@@ -123,12 +125,10 @@ const SearchBar = () => {
             },
             {
                 title: "Regions",
-                options: sortedRegions.map(r => ({
-                    id: r,
-                    label: regionNames[r] ?? r,
-                    regionId: r,
-                    iconColor: regionColors[r]
-                })),
+                options: sortedRegions.map(r => {
+                    const region = getRegion(r);
+                    return { id: r, label: region.name, image: region.image, iconColor: region.color };
+                }),
             },
             {
                 title: "Speakers",

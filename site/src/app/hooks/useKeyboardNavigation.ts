@@ -206,7 +206,7 @@ export function useKeyboardNavigation(pearlGrid: PearlData[][]) {
         const handleKeyDown = (e: KeyboardEvent) => handleKeyNavigation(e);
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, []); // stable — reads from refs
+    }, []); // stable, reads from refs
 
     return { currentGridPosition };
 }

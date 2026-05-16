@@ -1,6 +1,6 @@
 import { RwIcon } from "../PearlGrid/RwIcon"
 import type { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types"
-import { findSourceDialogue, regionNames, resolveVariables, speakersColors } from "../../utils/speakers"
+import { findSourceDialogue, getRegion, resolveVariables, getSpeakerDef } from "../../utils/speakers"
 import { renderDialogueLine } from "../../utils/renderDialogueLine"
 import { hasTag } from "../../utils/pearlOrder"
 import { RwScrollableList } from "../other/RwScrollableList"
@@ -51,7 +51,7 @@ export function DialogueActionTabs({
             return lines.map(d => {
                 let speakerPrefix = "";
                 let speakerSuffix = "";
-                const speakerColor = speakersColors[d.speaker ?? ""];
+                const speakerColor = getSpeakerDef(d.speaker).color;
                 if (d.speaker) {
                     if (speakerColor) {
                         speakerPrefix = `<span style="color: ${speakerColor};">${d.speaker}: `;
@@ -81,7 +81,7 @@ export function DialogueActionTabs({
 
     const mapLocationItems = useMemo(() => mapLocations.map((location: MapInfo, index: number) => ({
         id: `${location.region}_${location.room}_${index}`,
-        title: `${regionNames[location.region] || "Unknown"} (${location.region})`,
+        title: `${getRegion(location.region).name} (${location.region})`,
         subtitle: `Room: ${location.room}`,
         onClick: location.impl !== "none" ? (() => {
             const link = generateMapLinkFromMapInfo(location);
@@ -311,7 +311,7 @@ export function DialogueActionTabs({
               </span>
                     </TooltipTrigger>
                     <TooltipContent className="text-center" side="bottom">
-                        {regionNames[selectedMap.region] || "Unknown"} ({selectedMap.region}) / {selectedMap.room}
+                        {getRegion(selectedMap.region).name} ({selectedMap.region}) / {selectedMap.room}
                         {transcriberData.metadata.mapInfo && (
                             <span
                                 dangerouslySetInnerHTML={{

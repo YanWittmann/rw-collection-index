@@ -5,7 +5,7 @@ export interface SaveUnlockEval {
 }
 
 // Mirrors the pattern of wasmLoader.ts: one cached promise, loaded on demand.
-// The dynamic import creates a webpack split chunk — antlr4 runtime stays out of the main bundle.
+// The dynamic import creates a webpack split chunk, antlr4 runtime stays out of the main bundle.
 let loaderPromise: Promise<SaveUnlockEval> | null = null;
 
 export function loadSaveUnlockEvaluator(): Promise<SaveUnlockEval> {
