@@ -518,7 +518,7 @@ Runtime-only Spinning Top events with no save detection: `DieAtSpinningTop1`, `D
 
 The Rot Prince is an iterator encountered in Watcher's campaign. His dialogues are tracked via `miscWorldData.integersWatcher[12]`, named `highestPrinceConversationSeen`, which stores the file number of the most recently loaded Prince conversation file. This single field covers the full range of Prince interactions with exact detection.
 
-Pre-awakening karma sigil conversations occur in the WORA THRONE rooms before the Prince fully awakens. Files 214 through 217 form the first sigil set; files 218 through 221 form the second.
+Pre-awakening karma sigil conversations occur in the WORA THRONE rooms before the Prince fully awakens. Files 214 through 217 form the first sigil set (KS_1); files 218 through 221 form the second (KS_2). Each sigil is triggered by the player crossing a spatial threshold and sets `highestPrinceConversationSeen` to its exact file number. The per-transcriber unlock conditions therefore use individual thresholds: KS_1_1 >= 214, KS_1_2 >= 215, KS_1_3 >= 216, KS_1_4 >= 217, KS_2_1 >= 218, KS_2_2 >= 219, KS_2_3 >= 220, KS_2_4 >= 221. The entry-level detection threshold is the lowest sigil in each set (214 for KS_1, 218 for KS_2).
 
 Awakened chamber conversations fire on visits to the Prince's chamber (WORA AI room). The dialogue selected branches on `rotInfectedRegions.length` at the time of the visit: 5 or more infected regions triggers file 224, 7 or more triggers 225, 9 or more triggers 226, 11 or more triggers 227, and 13 or more triggers 228. Files 222 and 223 are the first encounter (first and second paragraphs, grouped under `Prince_1_2`).
 
@@ -539,10 +539,10 @@ Runtime-only Prince events use `numberOfPrinceEncounters >= 1` (from `integersWa
 
 | Entry                                               | Detection                     | Confidence  |
 |-----------------------------------------------------|-------------------------------|-------------|
-| `Watcher_Prince_Events_AcknowledgePlayerGift`       | numberOfPrinceEncounters >= 1 | Approximate |
-| `Watcher_Prince_Events_TalkToDeadPlayer`            | numberOfPrinceEncounters >= 1 | Approximate |
-| `Watcher_Prince_Events_Pain`                        | numberOfPrinceEncounters >= 1 | Approximate |
-| `Watcher_Prince_Events_AcknowledgePlayerCamouflage` | numberOfPrinceEncounters >= 1 | Approximate |
+| `Watcher_Prince_Events_AcknowledgePlayerGift`       | highestPrinceConversationSeen >= 222 | Exact |
+| `Watcher_Prince_Events_TalkToDeadPlayer`            | highestPrinceConversationSeen >= 222 | Exact |
+| `Watcher_Prince_Events_Pain`                        | highestPrinceConversationSeen >= 222 | Exact |
+| `Watcher_Prince_Events_AcknowledgePlayerCamouflage` | highestPrinceConversationSeen >= 222 | Exact |
 
 ### Void Weaver Dialogues
 

@@ -2,11 +2,14 @@
 
 import type React from "react"
 import { cn } from "@shadcn/lib/utils"
+import { ensureMinLightness } from "../../utils/colorUtils"
 
 export interface RwScrollableListItem {
     id: string
     title?: string
     subtitle?: string
+    image?: string
+    color?: string
     onClick?: () => void
     customElement?: React.ReactNode
 }
@@ -20,9 +23,11 @@ interface RwScrollableListProps {
 
 const TAIL_LENGTH = 16;
 
-const ItemSubtitle = ({ text, breakText }: { text: string; breakText: boolean }) => {
+const ItemSubtitle = ({ text, breakText, color }: { text: string; breakText: boolean; color?: string }) => {
+    const style = color ? { color: `color-mix(in srgb, ${color} 30%, rgb(184, 184, 184) 70%)` } : undefined;
+
     if (breakText) {
-        return <div className="text-sm opacity-80 break-words">{text}</div>;
+        return <div className="text-sm opacity-80 break-words" style={style}>{text}</div>;
     }
 
     text = text.replace("https://", "")
@@ -32,7 +37,7 @@ const ItemSubtitle = ({ text, breakText }: { text: string; breakText: boolean })
     const secondPart = shouldTruncateMiddle ? text.slice(-TAIL_LENGTH) : "";
 
     return (
-        <div className="flex text-sm opacity-80 min-w-0" title={text}>
+        <div className="flex text-sm opacity-80 min-w-0" title={text} style={style}>
             <span className="truncate">{firstPart}</span>
             {secondPart && (
                 <span className="flex-shrink-0 whitespace-nowrap">{secondPart}</span>
@@ -57,13 +62,23 @@ export function RwScrollableList({ items, className, itemClassName, breakSubtitl
                     ) : (
                         <button
                             key={item.id}
-                            className={cn("w-full text-left px-4 py-1 relative group text-white/90 hover:underline", itemClassName, !item.onClick && "cursor-not-allowed")}
+                            className={cn("w-full text-left px-4 py-1 relative group text-white/90 hover:underline flex items-center gap-3", itemClassName, !item.onClick && "cursor-not-allowed")}
                             onClick={item.onClick}
                         >
-                            <div className="font-medium">{item.title}</div>
-                            {item.subtitle && (
-                                <ItemSubtitle text={item.subtitle} breakText={breakSubtitle} />
+                            {item.image && (
+                                <img
+                                    src={`img/${item.image}`}
+                                    alt=""
+                                    className="w-10 h-10 object-cover rounded-sm flex-shrink-0"
+                                    style={{ imageRendering: "pixelated" }}
+                                />
                             )}
+                            <div className="min-w-0">
+                                <div className="font-medium" style={{ color: item.color ? ensureMinLightness(item.color) : undefined }}>{item.title}</div>
+                                {item.subtitle && (
+                                    <ItemSubtitle text={item.subtitle} breakText={breakSubtitle} color={item.color ? ensureMinLightness(item.color) : undefined} />
+                                )}
+                            </div>
                         </button>
                     )
                 ))}

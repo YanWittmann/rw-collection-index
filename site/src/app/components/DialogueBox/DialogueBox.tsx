@@ -8,7 +8,6 @@ import { WelcomeDialogueContent } from "./WelcomeDialogueContent";
 import UnlockManager from "../../utils/unlockManager";
 import HintSystemContent from "./HintSystemContent";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
-import { RwIcon } from "../PearlGrid/RwIcon";
 import { renderDialogueLine } from "../../utils/renderDialogueLine";
 import { cn } from "@shadcn/lib/utils";
 import { DialogueActionTabs } from "./DialogueActionTabs";
@@ -95,6 +94,36 @@ export function getMapLocations(dialogue: Dialogue): MapInfo[] {
     return [];
 }
 
+function EntryDetailsContent({ info, mapInfo }: {
+    info?: string;
+    mapInfo?: string;
+}) {
+    const hasInfo = !!info;
+    const hasMapInfo = !!mapInfo;
+    const bothPresent = hasInfo && hasMapInfo;
+
+    return (
+        <div className={`flex mt-20 px-4 gap-8 ${bothPresent ? "" : "flex-col"}`}>
+            {hasInfo && (
+                <div className="flex flex-col gap-3 flex-1">
+                    <div className="text-white text-lg">About this entry</div>
+                    <p className="text-sm text-white/80 leading-relaxed"
+                       dangerouslySetInnerHTML={{ __html: renderDialogueLine(resolveVariables(info!)) }}
+                    />
+                </div>
+            )}
+            {hasMapInfo && (
+                <div className="flex flex-col gap-3 flex-1">
+                    <div className="text-white text-lg">Location</div>
+                    <p className="text-sm text-white/80 leading-relaxed"
+                       dangerouslySetInnerHTML={{ __html: renderDialogueLine(resolveVariables(mapInfo!)) }}
+                    />
+                </div>
+            )}
+        </div>
+    );
+}
+
 export function DialogueBox() {
     const {
         selectedPearlData: pearl,
@@ -111,6 +140,7 @@ export function DialogueBox() {
     const [hoveredTranscriber, setHoveredTranscriber] = useState<string | null>(null);
     const [lastTranscriberName, setLastTranscriberName] = useState<string | null>(null);
     const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null);
+    const [detailsMode, setDetailsMode] = useState(false);
     const selfRef = useRef<HTMLDivElement>(null);
     const [containerWidth, setContainerWidth] = useState(0);
 
@@ -121,6 +151,10 @@ export function DialogueBox() {
         window.addEventListener('unlock-state-changed', handler);
         return () => window.removeEventListener('unlock-state-changed', handler);
     }, []);
+
+    useEffect(() => {
+        setDetailsMode(false);
+    }, [pearl?.id]);
 
     useEffect(() => {
         const el = selfRef.current;
@@ -319,16 +353,16 @@ export function DialogueBox() {
             let moveDown: boolean;
             if (containerWidth > 0) {
                 let remainingSpaceHalf = (containerWidth / 2)
-                    - ((name.length + (dialogue.metadata.info ? 4 : 0)) * 9.5) / 2
+                    - (name.length * 9.5) / 2
                     - pearl.transcribers.length * 54;
                 let remainingSpaceFull = containerWidth
-                    - ((name.length + (dialogue.metadata.info ? 4 : 0)) * 9.5)
+                    - (name.length * 9.5)
                     - pearl.transcribers.length * 54;
 
                 moveDown = remainingSpaceFull < 110;
                 moveTitleLeft = !moveDown && remainingSpaceHalf < 30;
             } else {
-                const textFactor: number = window.innerWidth - (name.length + (dialogue.metadata.info ? 4 : 0)) * 5;
+                const textFactor: number = window.innerWidth - name.length * 5;
                 moveDown = textFactor < 850;
             }
             if (moveDown) {
@@ -338,46 +372,18 @@ export function DialogueBox() {
             }
         }
 
-        let titleElement = null;
-        if (dialogue.metadata.info) {
-            titleElement = (
-                <div className={cn(
-                    "text-white text-lg mb-8 pb-0 flex justify-center flex-col",
-                    moveTitleLeft ? "items-start pl-10" : "items-center",
-                    bottomElement ? "mt-5" : "mt-7"
-                )}>
-                    <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
-                        <Tooltip key={"pearl-info"}>
-                            <TooltipTrigger>
-                                <span className={"flex items-center"}>
-                                    <div className="text-selectable text-center">{name}</div>
-                                    &nbsp;
-                                    (<span className={"w-3 h-3"}><RwIcon type="info"/></span>)
-                                </span>
-                            </TooltipTrigger>
-                            <TooltipContent className="text-center">
-                                <span
-                                    dangerouslySetInnerHTML={{ __html: renderDialogueLine(resolveVariables(dialogue.metadata.info)) }}/>
-                            </TooltipContent>
-                        </Tooltip>
-                        <br/>
-                        {bottomElement}
-                    </TooltipProvider>
-                </div>
-            )
-        } else {
-            titleElement =
-                <div className={cn(
-                    "text-white text-lg mb-8 pb-0 flex justify-center flex-col",
-                    moveTitleLeft ? "items-start pl-10" : "items-center",
-                    bottomElement ? "mt-5" : "mt-7"
-                )}>
-                    <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
-                        <div className="text-selectable text-center">{name}</div>
-                        {bottomElement}
-                    </TooltipProvider>
-                </div>
-        }
+        const titleElement = (
+            <div className={cn(
+                "text-white text-lg mb-8 pb-0 flex justify-center flex-col",
+                moveTitleLeft ? "items-start pl-10" : "items-center",
+                bottomElement ? "mt-5" : "mt-7"
+            )}>
+                <TooltipProvider delayDuration={120} key={"tooltip-provider"}>
+                    <div className="text-selectable text-center">{name}</div>
+                    {bottomElement}
+                </TooltipProvider>
+            </div>
+        );
 
         console.log(pearl.id, '-', pearl.metadata.type, '-', pearl.metadata.subType ?? pearl.metadata.color);
 
@@ -388,13 +394,20 @@ export function DialogueBox() {
                 isUnlocked={isUnlocked}
                 onSelectPearl={() => handleSelectPearl(null)}
                 selectedTranscriberIndex={effectiveIndex}
+                detailsMode={detailsMode}
+                onToggleDetails={() => setDetailsMode(prev => !prev)}
             />
             <TranscriberSelector
                 pearl={pearl}
                 onHover={setHoveredTranscriber}
             />
             <div className={cn("overflow-y-auto no-scrollbar", textContainerClass)}>
-                {isUnlocked ? <>
+                {detailsMode ? (
+                    <EntryDetailsContent
+                        info={dialogue.metadata.info}
+                        mapInfo={dialogue.metadata.mapInfo}
+                    />
+                ) : isUnlocked ? <>
                     {titleElement}
                     <DialogueContent
                         lines={displayLines}
@@ -408,7 +421,7 @@ export function DialogueBox() {
                 />}
             </div>
         </>;
-    }, [pearl, selectedTranscriberName, unlockMode, unlockTranscription, sourceFileDisplay, filters.text, isMobile, handleSelectPearl, setSourceFileDisplay, sourceData, unlockUpdateTrigger, containerWidth]);
+    }, [pearl, selectedTranscriberName, unlockMode, unlockTranscription, sourceFileDisplay, filters.text, isMobile, handleSelectPearl, setSourceFileDisplay, sourceData, unlockUpdateTrigger, containerWidth, detailsMode]);
 
     return (
         <div className="flex-1 relative">

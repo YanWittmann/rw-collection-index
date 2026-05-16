@@ -2,10 +2,10 @@ type: item
 subType: rot-prince
 tag: watcher
 map: region=WORA, room=AI, mapSlugcat=watcher
-mapInfo: The Prince can only be encountered once the four portals in the Throne have been created.
+mapInfo: The Prince can only be encountered once three portals in the Throne have been created.
 
 === transcription: rot-prince
-md-saveUnlock: watcher { princeCount >= 1 }
+md-saveUnlock: watcher { prince >= 222 }
 md-type: pearl
 md-var-DialogueId: AcknowledgePlayerGift
 md-name: Acknowledge Player Gift
@@ -17,7 +17,7 @@ My processes will dissolve them to their base components and those components wi
 Nothing to waste, every bit counts!
 
 === transcription: rot-prince
-md-saveUnlock: watcher { princeCount >= 1 }
+md-saveUnlock: watcher { prince >= 222 }
 md-type: pearl
 md-var-DialogueId: AcknowledgePlayerCamouflage
 md-name: Acknowledge Player Camouflage
@@ -35,7 +35,7 @@ MONO
 |    Oh, show me again!
 
 === transcription: rot-prince
-md-saveUnlock: watcher { princeCount >= 1 }
+md-saveUnlock: watcher { prince >= 222 }
 md-type: pearl
 md-var-DialogueId: TalkToDeadPlayer
 md-name: Talk To Dead Player
@@ -53,7 +53,7 @@ MONO
 |    Never again will you be alone.
 
 === transcription: rot-prince
-md-saveUnlock: watcher { princeCount >= 1 }
+md-saveUnlock: watcher { prince >= 222 }
 md-type: pearl
 md-var-DialogueId: Pain
 md-name: Pain

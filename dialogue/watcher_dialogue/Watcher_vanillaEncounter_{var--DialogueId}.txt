@@ -5,7 +5,7 @@ map: region=CC, room=C12, mapSlugcat=watcher
 map: region=LF, room=B01W, mapSlugcat=watcher
 map: region=SH, room=A08, mapSlugcat=watcher
 mapInfo: Spinning Top can be encountered in any order in the three regions.\nThe region you encounter them last determines the region you are sent to by the warp.
-info: The player Ripple Level is increased by 0.25 on the first two encounters, and by 0.5 on the third.\nThis allows the player to access the remaining encounters.
+info: The player Ripple Level is increased by 0.25 on the first two encounters, and by 0.5 on the third. This allows the player to access the remaining encounters.
 
 === transcription: spinning-top
 md-saveUnlock: watcher { maxRipple >= 0.25 }

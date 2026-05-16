@@ -1,6 +1,6 @@
 import { RwIcon } from "../PearlGrid/RwIcon"
 import type { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types"
-import { findSourceDialogue, getRegion, resolveVariables, getSpeakerDef } from "../../utils/speakers"
+import { findSourceDialogue, getRegion, getSpeakerDef } from "../../utils/speakers"
 import { renderDialogueLine } from "../../utils/renderDialogueLine"
 import { hasTag } from "../../utils/pearlOrder"
 import { RwScrollableList } from "../other/RwScrollableList"
@@ -16,14 +16,15 @@ import { renderMonoText } from "./DialogueContent";
 import ReactDOMServer from 'react-dom/server';
 import { getTranscriberIcon } from "../../utils/transcriberUtils";
 import { useAppContext } from "../../context/AppContext";
-import { cn } from "@shadcn/lib/utils";
 
 interface DialogueActionTabsProps {
     pearl: PearlData,
     transcriberData: Dialogue,
     isUnlocked: boolean,
     onSelectPearl: (pearl: PearlData | null) => void,
-    selectedTranscriberIndex: number
+    selectedTranscriberIndex: number,
+    detailsMode: boolean,
+    onToggleDetails: () => void,
 }
 
 export function DialogueActionTabs({
@@ -31,11 +32,12 @@ export function DialogueActionTabs({
                                        transcriberData,
                                        isUnlocked,
                                        onSelectPearl,
-                                       selectedTranscriberIndex
+                                       selectedTranscriberIndex,
+                                       detailsMode,
+                                       onToggleDetails,
                                    }: DialogueActionTabsProps) {
     const { sourceFileDisplay, setSourceFileDisplay, sourceData } = useAppContext();
     const mapLocations = useMemo(() => getMapLocations(transcriberData), [transcriberData]);
-    const hasMultipleLocations = mapLocations.length > 1
 
     const shareDefaultText = useMemo(() => {
         if (transcriberData.lines.length === 0) return "";
@@ -79,15 +81,20 @@ export function DialogueActionTabs({
         });
     }, [transcriberData, sourceData, setSourceFileDisplay]);
 
-    const mapLocationItems = useMemo(() => mapLocations.map((location: MapInfo, index: number) => ({
-        id: `${location.region}_${location.room}_${index}`,
-        title: `${getRegion(location.region).name} (${location.region})`,
-        subtitle: `Room: ${location.room}`,
-        onClick: location.impl !== "none" ? (() => {
-            const link = generateMapLinkFromMapInfo(location);
-            if (link) window.open(link, "_blank")
-        }) : undefined,
-    })), [mapLocations]);
+    const mapLocationItems = useMemo(() => mapLocations.map((location: MapInfo, index: number) => {
+        const regionDef = getRegion(location.region);
+        return {
+            id: `${location.region}_${location.room}_${index}`,
+            title: `${regionDef.name} (${location.region})`,
+            subtitle: `Room: ${location.room}`,
+            image: regionDef.image,
+            color: regionDef.color,
+            onClick: location.impl !== "none" ? (() => {
+                const link = generateMapLinkFromMapInfo(location);
+                if (link) window.open(link, "_blank")
+            }) : undefined,
+        };
+    }), [mapLocations]);
 
     const tabs = []
 
@@ -257,72 +264,60 @@ export function DialogueActionTabs({
     }
 
     if (isUnlocked && hasMapLocations(transcriberData)) {
-        if (hasMultipleLocations) {
-            tabs.push(
-                <Popover key="map-location-selector">
-                    <Tooltip key="open-rain-world-map">
-                        <PopoverTrigger>
-                            <TooltipTrigger asChild>
-                <span>
-                  <RwTabButton
-                      aria-label="Open Rain World Map"
-                      badge={mapLocations.length}
-                  >
-                    <RwIcon type="pin"/>
-                  </RwTabButton>
-                </span>
-                            </TooltipTrigger>
-                            <TooltipContent className="text-center" side="bottom">
-                                {transcriberData.metadata.mapInfo && (
-                                    <span
-                                        dangerouslySetInnerHTML={{
-                                            __html: renderDialogueLine(resolveVariables(transcriberData.metadata.mapInfo)),
-                                        }}
-                                    />
-                                )}
-                            </TooltipContent>
-                        </PopoverTrigger>
-                        <PopoverContent
-                            className="w-64 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg"
-                            align="start"
-                            sideOffset={5}
-                        >
-                            <RwScrollableList
-                                items={mapLocationItems}
-                            />
-                        </PopoverContent>
-                    </Tooltip>
-                </Popover>,
-            )
-        } else if (transcriberData.metadata.map && transcriberData.metadata.map.length > 0) {
-            const selectedMap = transcriberData.metadata.map[0]
-            const mapLink = generateMapLinkFromMapInfo(selectedMap)
-            tabs.push(
+        tabs.push(
+            <Popover key="map-location-selector">
                 <Tooltip key="open-rain-world-map">
-                    <TooltipTrigger asChild>
-              <span>
-                <RwTabButton
-                    onClick={mapLink ? () => window.open(mapLink, "_blank") : undefined}
-                    aria-label="Open Rain World Map"
-                    className={cn(!mapLink && "cursor-not-allowed")}
-                >
-                  <RwIcon type="pin"/>
-                </RwTabButton>
-              </span>
-                    </TooltipTrigger>
-                    <TooltipContent className="text-center" side="bottom">
-                        {getRegion(selectedMap.region).name} ({selectedMap.region}) / {selectedMap.room}
-                        {transcriberData.metadata.mapInfo && (
-                            <span
-                                dangerouslySetInnerHTML={{
-                                    __html: renderDialogueLine(resolveVariables("\n" + transcriberData.metadata.mapInfo)),
-                                }}
-                            />
-                        )}
-                    </TooltipContent>
-                </Tooltip>,
-            )
-        }
+                    <PopoverTrigger>
+                        <TooltipTrigger asChild>
+            <span onContextMenu={mapLocations.length === 1 ? (e) => {
+                e.preventDefault();
+                const link = generateMapLinkFromMapInfo(mapLocations[0]);
+                if (link) window.open(link, "_blank");
+            } : undefined}>
+              <RwTabButton
+                  aria-label="Open Rain World Map"
+                  badge={mapLocations.length > 1 ? mapLocations.length : undefined}
+              >
+                <RwIcon type="pin"/>
+              </RwTabButton>
+            </span>
+                        </TooltipTrigger>
+                        <TooltipContent className="text-center" side="bottom">
+                            {mapLocations.length === 1
+                                ? <>{getRegion(mapLocations[0].region).name} ({mapLocations[0].region}) / {mapLocations[0].room}<br/><span className="text-xs opacity-60">Right-click to open directly</span></>
+                                : <>View map locations</>
+                            }
+                        </TooltipContent>
+                    </PopoverTrigger>
+                    <PopoverContent
+                        className="w-72 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg"
+                        align="start"
+                        sideOffset={5}
+                    >
+                        <RwScrollableList
+                            items={mapLocationItems}
+                        />
+                    </PopoverContent>
+                </Tooltip>
+            </Popover>,
+        )
+    }
+
+    if (isUnlocked && (transcriberData.metadata.info || transcriberData.metadata.mapInfo)) {
+        tabs.push(
+            <Tooltip key="entry-details">
+                <TooltipTrigger asChild><span>
+                    <RwTabButton
+                        aria-label="Entry Details"
+                        onClick={onToggleDetails}
+                        selected={detailsMode}
+                    >
+                        <div className="w-5 h-5"><RwIcon type="info"/></div>
+                    </RwTabButton>
+                </span></TooltipTrigger>
+                <TooltipContent side="bottom">Notes &amp; location context</TooltipContent>
+            </Tooltip>,
+        );
     }
 
     if (hasTag(transcriberData.metadata.tags, "downpour")) {
