@@ -4,7 +4,7 @@ tag: watcher
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_RIP1
-md-saveUnlock: watcher { maxRipple >= 1.0 and stCount >= 4 }
+md-saveUnlock: watcher { stSpawn.1 }
 md-super-subType: wa-region/wara
 md-var-DialogueId: WARA
 md-name: Shattered Terrace (Ripple Warp)

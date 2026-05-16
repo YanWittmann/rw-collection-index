@@ -504,7 +504,7 @@ Special encounter entries:
 
 `Watcher_ST_Other_WAUA` (Ghost_ST_AU1): fires in room WAUA BATH, the Void Bath. Overrides all standard ripple logic. Detection: `visitBath == true`. Confidence: exact.
 
-`Watcher_ST_Other_WARA` (Ghost_ST_RIP1): fires in room WARA P09 (Shattered Terrace) where the Spinning Top has the Ripple Warp property. No dedicated save flag exists for this specific room. The WARA encounter is only accessible after the three vanilla encounters. Detection: `maxRippleLevel >= 1.0` AND `spinningTopEncounters.length >= 4`. Confidence: approximate.
+`Watcher_ST_Other_WARA` (Ghost_ST_RIP1): fires in room WARA P09 (Shattered Terrace) where the Spinning Top object has `rippleWarp = true` (spawnIdentifier 1). This property is set in the level editor and is unrelated to the player's accumulated ripple level or encounter count. After the conversation completes, `MarkSpinningTopEncountered()` adds spawnIdentifier 1 to `spinningTopEncounters`. Detection: spawnIdentifier 1 is present in `spinningTopEncounters`. DSL: `watcher { stSpawn.1 }`. Confidence: exact.
 
 `Watcher_ST_Echo_Ghost_ST_N4` (Desolate Tract, WTDB): fires at spawn ID 0 in the Desolate Tract. The encounter defers whatever standard ripple-level conversation would have fired; that deferred conversation plays at the next encounter instead. Detection: spawn ID 0 is present in `spinningTopEncounters`. Confidence: approximate (the identity of spawn ID 0 as the WTDB encounter cannot be verified from the save alone without cross-referencing game data).
 
@@ -667,7 +667,7 @@ Note on dev commentary: the `allChallengesCompleted` proxy (all 70 `challengesCo
 | `zeroPebbles`           | `ZEROPEBBLES`           | Saint Rubicon (FP ascended)                                  |
 | `maxRippleLevel.value`  | `MAXRIPPLELEVEL`        | Watcher Spinning Top vanilla and N-series (max)              |
 | `minRippleLevel.value`  | `MINRIPPLELEVEL`        | Watcher Spinning Top N-series (min)                          |
-| `spinningTopEncounters` | `SPINNINGTOPENCOUNTERS` | Watcher encounter list; N7 path A; WARA and WTDB proxies     |
+| `spinningTopEncounters` | `SPINNINGTOPENCOUNTERS` | Watcher encounter list; N7 path A; WARA (spawnId 1, exact); WTDB (spawnId 0, approximate) |
 | `spinningTopRot`        | `SPINNINGTOPROT`        | Watcher ROT1 encounter                                       |
 | `visitBath`             | `VISITBATH`             | Watcher WAUA Bath encounter                                  |
 
