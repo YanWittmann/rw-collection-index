@@ -1,15 +1,16 @@
 import { RwAsset } from "../other/RwAsset"
 import { Tint } from "../../utils/assetUtils"
-import type { Dialogue, DialogueLine, MapInfo, PearlData } from "../../types/types"
+import type { Dialogue, DialogueLine, PearlData } from "../../types/types"
 import { findSourceDialogue, getRegion, getSpeakerDef } from "../../utils/speakers"
 import { renderDialogueLine } from "../../utils/renderDialogueLine"
 import { hasTag } from "../../utils/pearlOrder"
 import { RwScrollableList } from "../other/RwScrollableList"
-import { generateMapLinkFromMapInfo, getMapLocations, hasMapLocations } from "./DialogueBox"
+import { generateMapLinkFromMapInfo, getMapLocations, hasMapLocations } from "../../utils/mapUtils"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
 import { Popover, PopoverContent, PopoverTrigger } from "@shadcn/components/ui/popover"
 import { RwTabButton } from "../other/RwTabButton"
 import { useState, useMemo } from "react";
+import { MapLocationPopover } from "../map/MapLocationPopover";
 import copy from 'copy-to-clipboard';
 import RwShareTextEditor, { preProcessContent } from "../share/RwShareTextEditor";
 import { RwIconButton } from "../other/RwIconButton";
@@ -82,20 +83,6 @@ export function DialogueActionTabs({
         });
     }, [transcriberData, sourceData, setSourceFileDisplay]);
 
-    const mapLocationItems = useMemo(() => mapLocations.map((location: MapInfo, index: number) => {
-        const regionDef = getRegion(location.region);
-        return {
-            id: `${location.region}_${location.room}_${index}`,
-            title: `${regionDef.name} (${location.region})`,
-            subtitle: `Room: ${location.room}`,
-            asset: regionDef.image ? { src: regionDef.image, fit: "cover" as const } : undefined,
-            color: regionDef.color,
-            onClick: location.impl !== "none" ? (() => {
-                const link = generateMapLinkFromMapInfo(location);
-                if (link) window.open(link, "_blank")
-            }) : undefined,
-        };
-    }), [mapLocations]);
 
     const tabs = []
 
@@ -261,41 +248,30 @@ export function DialogueActionTabs({
 
     if (isUnlocked && hasMapLocations(transcriberData)) {
         tabs.push(
-            <Popover key="map-location-selector">
-                <Tooltip key="open-rain-world-map">
-                    <PopoverTrigger>
-                        <TooltipTrigger asChild>
-            <span onContextMenu={mapLocations.length === 1 ? (e) => {
-                e.preventDefault();
-                const link = generateMapLinkFromMapInfo(mapLocations[0]);
-                if (link) window.open(link, "_blank");
-            } : undefined}>
-              <RwTabButton
-                  aria-label="Open Rain World Map"
-                  badge={mapLocations.length > 1 ? mapLocations.length : undefined}
-              >
-                <RwAsset src="pin" />
-              </RwTabButton>
-            </span>
-                        </TooltipTrigger>
-                        <TooltipContent className="text-center" side="bottom">
-                            {mapLocations.length === 1
-                                ? <>{getRegion(mapLocations[0].region).name} ({mapLocations[0].region}) / {mapLocations[0].room}<br/><span className="text-xs opacity-60">Right-click to open directly</span></>
-                                : <>View map locations</>
-                            }
-                        </TooltipContent>
-                    </PopoverTrigger>
-                    <PopoverContent
-                        className="w-72 p-0 z-50 bg-black rounded-xl border-2 border-white/50 shadow-lg"
-                        align="start"
-                        sideOffset={5}
-                    >
-                        <RwScrollableList
-                            items={mapLocationItems}
-                        />
-                    </PopoverContent>
-                </Tooltip>
-            </Popover>,
+            <Tooltip key="open-rain-world-map">
+                <MapLocationPopover locations={mapLocations}>
+                    <TooltipTrigger asChild>
+                        <span onContextMenu={mapLocations.length === 1 ? (e) => {
+                            e.preventDefault();
+                            const link = generateMapLinkFromMapInfo(mapLocations[0]);
+                            if (link) window.open(link, "_blank");
+                        } : undefined}>
+                            <RwTabButton
+                                aria-label="Open Rain World Map"
+                                badge={mapLocations.length > 1 ? mapLocations.length : undefined}
+                            >
+                                <RwAsset src="pin" />
+                            </RwTabButton>
+                        </span>
+                    </TooltipTrigger>
+                </MapLocationPopover>
+                <TooltipContent className="text-center" side="bottom">
+                    {mapLocations.length === 1
+                        ? <>{getRegion(mapLocations[0].region).name} ({mapLocations[0].region}) / {mapLocations[0].room}<br/><span className="text-xs opacity-60">Right-click to open directly</span></>
+                        : <>View map locations</>
+                    }
+                </TooltipContent>
+            </Tooltip>,
         )
     }
 

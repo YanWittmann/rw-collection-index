@@ -4,7 +4,7 @@ let readyPromise: Promise<void> | null = null;
 
 export function loadWasm(): Promise<void> {
     if (readyPromise) return readyPromise;
-    readyPromise = new Promise((resolve, reject) => {
+    const p: Promise<void> = new Promise<void>((resolve, reject) => {
         const timeout = setTimeout(() => reject(new Error('WASM load timeout')), 30000);
         document.addEventListener('rwReady', () => {
             clearTimeout(timeout);
@@ -18,7 +18,9 @@ export function loadWasm(): Promise<void> {
         };
         document.head.appendChild(script);
     });
-    return readyPromise;
+    p.catch(() => { readyPromise = null; });
+    readyPromise = p;
+    return p;
 }
 
 export async function parseSaveFile(xml: string): Promise<ParseFileResult> {

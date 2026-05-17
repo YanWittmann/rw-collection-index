@@ -15,6 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+if (empty($config['storage_dir'])) {
+    http_response_code(503);
+    exit;
+}
+
 $storageDir = rtrim($config['storage_dir'], '/\\') . '/';
 if (!is_dir($storageDir)) {
     mkdir($storageDir, 0755, true);
@@ -85,7 +90,7 @@ if (file_exists($savePath)) {
 if (move_uploaded_file($tempPath, $savePath)) {
     $metaPath = $storageDir . $fileHash . '_meta.txt';
     $metaContent = "date: " . date('c') . "\n";
-    $metaContent .= "original_name: " . $_FILES['savefile']['name'] . "\n";
+    $metaContent .= "original_name: " . str_replace(["\n", "\r"], '', $_FILES['savefile']['name']) . "\n";
     $metaContent .= "size: " . $_FILES['savefile']['size'] . " bytes\n";
     $metaContent .= "user_agent: " . ($_SERVER['HTTP_USER_AGENT'] ?? 'unknown') . "\n";
 

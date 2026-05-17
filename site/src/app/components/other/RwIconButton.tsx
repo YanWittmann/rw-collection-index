@@ -12,7 +12,7 @@ interface RwIconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
     onMouseLeave?: () => void
     children?: React.ReactNode
     square?: boolean
-    size?: 'default' | 'small'
+    size?: 'default' | 'small' | 'xsmall'
     padding?: string
     expandedScaleFactor?: number
     variant?: RwIconButtonVariant
@@ -47,7 +47,7 @@ export const RwIconButton = React.forwardRef<HTMLButtonElement, RwIconButtonProp
     'aria-label': ariaLabel,
     ...rest
 }: RwIconButtonProps, ref) {
-    const resolvedPadding = padding ?? (size === 'small' ? 'p-2' : 'p-3')
+    const resolvedPadding = padding ?? (size === 'xsmall' ? 'p-1' : size === 'small' ? 'p-2' : 'p-3')
     const [isHovering, setIsHovering] = useState(false)
 
     const animState  = selected ? 'selected' : isHovering ? 'hover' : 'default'
@@ -76,9 +76,10 @@ export const RwIconButton = React.forwardRef<HTMLButtonElement, RwIconButtonProp
                 "relative p-0 flex items-center justify-center",
                 className,
                 square
-                    ? size === 'small' ? "aspect-square h-8 w-8" : "aspect-square h-12 w-12"
-                    : size === 'small' ? "h-8 min-w-[2rem]" : "h-12 min-w-[3rem]",
+                    ? size === 'xsmall' ? "aspect-square h-6 w-6" : size === 'small' ? "aspect-square h-8 w-8" : "aspect-square h-12 w-12"
+                    : size === 'xsmall' ? "h-6 min-w-[1.5rem]" : size === 'small' ? "h-8 min-w-[2rem]" : "h-12 min-w-[3rem]",
             )}
+            onClickCapture={() => setIsHovering(false)}
             onClick={onClick}
             onMouseEnter={() => { setIsHovering(true); onMouseEnter?.() }}
             onMouseLeave={() => { setIsHovering(false); onMouseLeave?.() }}
@@ -125,7 +126,7 @@ export const RwIconButton = React.forwardRef<HTMLButtonElement, RwIconButtonProp
             <div
                 className={cn(
                     "relative z-10 flex items-center justify-center",
-                    square ? "w-full h-full " + resolvedPadding : cn(size === 'small' ? "px-3 py-0 h-8" : "px-4 py-0 h-12", "w-full"),
+                    square ? "w-full h-full " + resolvedPadding : cn(size === 'xsmall' ? "px-2 py-0 h-6" : size === 'small' ? "px-3 py-0 h-8" : "px-4 py-0 h-12", "w-full"),
                 )}
             >
                 {children}

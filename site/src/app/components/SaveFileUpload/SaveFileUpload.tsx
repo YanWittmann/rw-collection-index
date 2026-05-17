@@ -64,10 +64,12 @@ export function SaveFileUpload() {
             setPendingFile(file);
             setMatchSummary(summary);
             setState('done');
-            (window as any).__rwDebug = {
-                collectibles,
-                evaluate: (expr: string, verbose?: boolean) => evaluator.evaluate(expr, { collectibles, verbose }),
-            };
+            if (process.env.NODE_ENV !== 'production') {
+                (window as any).__rwDebug = {
+                    collectibles,
+                    evaluate: (expr: string, verbose?: boolean) => evaluator.evaluate(expr, { collectibles, verbose }),
+                };
+            }
             count('upload-save');
             setDialogPhase('confirm');
         } catch {
@@ -102,10 +104,12 @@ export function SaveFileUpload() {
         if (!pendingCollectibles || !pendingEvaluator) return;
         const { foundData } = applyCollectibles(pearls, pendingCollectibles, 'unlock', pendingEvaluator);
         setSaveFound(foundData);
-        (window as any).__rwDebug = {
-            collectibles: pendingCollectibles,
-            evaluate: (expr: string, verbose?: boolean) => pendingEvaluator.evaluate(expr, { collectibles: pendingCollectibles, verbose }),
-        };
+        if (process.env.NODE_ENV !== 'production') {
+            (window as any).__rwDebug = {
+                collectibles: pendingCollectibles,
+                evaluate: (expr: string, verbose?: boolean) => pendingEvaluator.evaluate(expr, { collectibles: pendingCollectibles, verbose }),
+            };
+        }
         if (donate && pendingFile) {
             const formData = new FormData();
             formData.append('savefile', pendingFile);
@@ -149,7 +153,7 @@ export function SaveFileUpload() {
         setSaveFound(new Map());
         setFilters(prev => ({ ...prev, saveFound: false }));
         setState('idle');
-        (window as any).__rwDebug = null;
+        if (process.env.NODE_ENV !== 'production') (window as any).__rwDebug = null;
     }, [setSaveFound, setFilters]);
 
     return (

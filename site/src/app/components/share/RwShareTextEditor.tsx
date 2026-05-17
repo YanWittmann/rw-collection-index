@@ -1,6 +1,7 @@
 "use client"
 
 import React, { ReactNode, useEffect, useState } from "react";
+import { useEscapeKey } from "../../hooks/useEscapeKey";
 import { count } from "../../utils/track";
 import { createPortal } from "react-dom";
 import RwShareTextSnippet from "./RwShareTextSnippet";
@@ -138,6 +139,8 @@ export default function RwShareTextEditor({
             };
         }
     }, [showModal]);
+
+    useEscapeKey(() => setShowModal(false), showModal);
 
     const handleExport = async () => {
         const snippetElement = document.querySelector(".rw-share-text-snippet") as HTMLElement;

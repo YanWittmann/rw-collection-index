@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useEscapeKey } from '../../hooks/useEscapeKey';
 import { createPortal } from 'react-dom';
 import { RwIconButton } from '../other/RwIconButton';
 import { RwAsset } from '../other/RwAsset';
@@ -54,6 +55,8 @@ export function SaveFileInfoDialog({ phase, uploadState, errorMessage, matchSumm
         setBodyHeight(el.offsetHeight);
         return () => ro.disconnect();
     }, [portalRoot]);
+
+    useEscapeKey(onClose);
     const isLoading = uploadState === 'loading-wasm' || uploadState === 'reading' || uploadState === 'parsing';
 
     const loadingLabel =

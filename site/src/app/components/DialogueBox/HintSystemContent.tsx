@@ -1,8 +1,9 @@
 import { useMemo, useState } from "react";
-import { Dialogue, Hint, PearlData } from "../../types/types";
+import { Dialogue, Hint, MapInfo, PearlData } from "../../types/types";
 import { RwIconButton } from "../other/RwIconButton";
 import { getRegion, getSpeakerDef } from "../../utils/speakers";
-import { generateMapLinkFromMapInfo } from "./DialogueBox";
+import { generateMapLinkFromMapInfo } from "../../utils/mapUtils";
+import { MapLocationPopover } from "../map/MapLocationPopover";
 import { findPearlCategory, PEARL_ORDER_CONFIGS } from "../../utils/pearlOrder";
 import { useAppContext } from "../../context/AppContext";
 import { RwAsset } from "../other/RwAsset";
@@ -22,6 +23,15 @@ export default function HintSystemContent({ pearl, unlockTranscription, transcri
 
     const effectiveHints = useMemo<Hint[]>(() => {
         const hints: Hint[] = [];
+
+        const map = transcriberData.metadata.map;
+        if (map && map.length > 0) {
+            const plural = map.length > 1;
+            hints.push({
+                name: plural ? "Regions" : "Region",
+                lines: ["Found in " + map.map(m => getRegion(m.region).name + " (" + m.region + ")").join(" · ")]
+            });
+        }
 
         if (pearl.metadata.type === "broadcast" && pearl.metadata.name) {
             const pearlCategory = findPearlCategory(pearl, activeOrderConfig);
@@ -58,38 +68,18 @@ export default function HintSystemContent({ pearl, unlockTranscription, transcri
             }
         }
 
-        const map = transcriberData.metadata.map;
-        if (map && map.length > 0) {
-            const plural = map.length > 1;
-            hints.push({
-                name: plural ? "Regions" : "Region",
-                lines: ["Found in " + map.map(m => getRegion(m.region).name + " (" + m.region + ")").join(" · ")]
-            });
-        }
         hints.push(...pearl.hints);
-        if (map && map.length > 0) {
-            const plural = map.length > 1;
-            let hasAnyLink = false;
-            const locationLines: string[] = [];
-            map.forEach((m, i) => {
-                if (i > 0) locationLines.push(' ');
-                const link = generateMapLinkFromMapInfo(m);
-                if (link) {
-                    hasAnyLink = true;
-                    locationLines.push(link);
-                } else {
-                    locationLines.push(getRegion(m.region).name + " (" + m.region + ") - room " + (m.room ?? 'Unknown'));
-                }
-            });
-            hints.push({
-                name: hasAnyLink
-                    ? (plural ? "Map Links" : "Map link")
-                    : (plural ? "Regions and Rooms" : "Region and Room"),
-                lines: locationLines
-            });
-        }
         return hints;
     }, [pearl, transcriberData, activeOrderConfig]);
+
+    const mapHint = useMemo((): { label: string; locations: MapInfo[] } | null => {
+        const map = transcriberData.metadata.map;
+        if (!map || map.length === 0) return null;
+        const hasAnyLink = map.some(m => generateMapLinkFromMapInfo(m) !== null);
+        if (!hasAnyLink) return null;
+        return { label: map.length > 1 ? "Map Locations" : "Map Location", locations: map };
+    }, [transcriberData]);
+
 
     // Button labels: append (1), (2)... when hint names collide
     const hintLabels = useMemo(() => {
@@ -194,6 +184,17 @@ export default function HintSystemContent({ pearl, unlockTranscription, transcri
                             {hintLabels[i]}
                         </RwIconButton>
                     ))}
+                    {mapHint && (
+                        <MapLocationPopover locations={mapHint.locations}>
+                            <RwIconButton
+                                square={false}
+                                size="small"
+                                aria-label="View map location"
+                            >
+                                {mapHint.label}
+                            </RwIconButton>
+                        </MapLocationPopover>
+                    )}
                 </div>
 
                 {/* Content area: always in the same place, only inner text changes */}

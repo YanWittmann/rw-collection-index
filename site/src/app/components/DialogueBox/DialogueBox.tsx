@@ -1,6 +1,6 @@
 import { TranscriberSelector } from "./TranscriberSelector";
 import { DialogueContent } from "./DialogueContent";
-import { Dialogue, DialogueLine, MapInfo } from "../../types/types";
+import { Dialogue, DialogueLine } from "../../types/types";
 import { findSourceDialogue, resolveVariables, getSpeakerDef } from "../../utils/speakers";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion"
@@ -36,63 +36,6 @@ const CopyIdButton = ({ internalId }: { internalId: string }) => {
     );
 };
 
-const MAP_URL_PATTERNS: { [key: string]: string } = {
-    "default": "https://rain-world-downpour-map.github.io/map.html",
-    "alduris-mod-map": "https://alduris.github.io/mod-map/map.html",
-    "watcher": "https://alduris.github.io/watcher-map/map.html",
-};
-
-const regionMaps: { [key: string]: string[] } = {
-    "alduris-mod-map": [
-        "SD", "GH", "FR", "MF", "CW", "TM", "XM", "PV"
-    ],
-}
-
-// https://rain-world-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
-// https://rain-world-downpour-map.github.io/map.html?slugcat=white&region=SU&room=SU_B05
-// https://rw-watchermap.github.io/map.html?slugcat=white&region=SU&room=SU_B05
-// https://alduris.github.io/watcher-map/map.html?slugcat=white&region=SU&room=SU_B05
-// https://alduris.github.io/mod-map/map.html?slugcat=white&region=SD
-export function generateMapLinkFromMapInfo(mapInfo: MapInfo | undefined) {
-    if (!mapInfo) {
-        return null;
-    }
-    const { region, room, mapSlugcat, impl } = mapInfo;
-    if (!region || !room || !mapSlugcat) {
-        return null;
-    }
-    if (impl === "none") {
-        return null;
-    }
-
-    let baseUrl = MAP_URL_PATTERNS["default"];
-
-    if (impl && MAP_URL_PATTERNS[impl]) {
-        baseUrl = MAP_URL_PATTERNS[impl];
-    } else if (mapSlugcat === 'watcher') {
-        baseUrl = MAP_URL_PATTERNS["watcher"];
-    } else {
-        for (let mapKey in regionMaps) {
-            if (regionMaps[mapKey].includes(region)) {
-                baseUrl = MAP_URL_PATTERNS[mapKey];
-            }
-        }
-    }
-
-    return `${baseUrl}?slugcat=${mapSlugcat}&region=${region}&room=${region}_${room}`;
-}
-
-export function hasMapLocations(dialogue: Dialogue): boolean {
-    return !!(dialogue.metadata.map && dialogue.metadata.map.length > 0);
-}
-
-export function getMapLocations(dialogue: Dialogue): MapInfo[] {
-    if (dialogue.metadata.map && dialogue.metadata.map.length > 0) {
-        return dialogue.metadata.map;
-    }
-
-    return [];
-}
 
 function EntryDetailsContent({ info, mapInfo }: {
     info?: string;
@@ -103,7 +46,7 @@ function EntryDetailsContent({ info, mapInfo }: {
     const bothPresent = hasInfo && hasMapInfo;
 
     return (
-        <div className={`flex mt-20 px-4 gap-8 ${bothPresent ? "" : "flex-col"}`}>
+        <div className="flex flex-col mt-20 px-4 gap-8">
             {hasInfo && (
                 <div className="flex flex-col gap-3 flex-1">
                     <div className="text-white text-lg">About this entry</div>
@@ -114,7 +57,7 @@ function EntryDetailsContent({ info, mapInfo }: {
             )}
             {hasMapInfo && (
                 <div className="flex flex-col gap-3 flex-1">
-                    <div className="text-white text-lg">Location</div>
+                    <div className="text-white text-lg">About the Map Location</div>
                     <p className="text-sm text-white/80 leading-relaxed"
                        dangerouslySetInnerHTML={{ __html: renderDialogueLine(resolveVariables(mapInfo!)) }}
                     />
