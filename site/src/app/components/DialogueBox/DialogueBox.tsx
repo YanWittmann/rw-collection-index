@@ -1,6 +1,6 @@
 import { TranscriberSelector } from "./TranscriberSelector";
 import { DialogueContent } from "./DialogueContent";
-import { Dialogue, DialogueLine } from "../../types/types";
+import { DialogueLine } from "../../types/types";
 import { findSourceDialogue, resolveVariables, getSpeakerDef } from "../../utils/speakers";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion"
@@ -43,7 +43,6 @@ function EntryDetailsContent({ info, mapInfo }: {
 }) {
     const hasInfo = !!info;
     const hasMapInfo = !!mapInfo;
-    const bothPresent = hasInfo && hasMapInfo;
 
     return (
         <div className="flex flex-col mt-20 px-4 gap-8">
