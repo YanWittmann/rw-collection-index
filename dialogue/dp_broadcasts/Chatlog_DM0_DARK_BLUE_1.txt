@@ -1,6 +1,7 @@
 internalId: Chatlog_DM0
 color: #194fe7
 type: broadcast
+saveUnlock: global { broadcast.Chatlog_DM0 }
 name: Dark Blue 1
 map: region=DM, room=WALL06, mapSlugcat=spear
 tag: downpour

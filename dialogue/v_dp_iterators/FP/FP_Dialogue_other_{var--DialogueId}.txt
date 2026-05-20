@@ -1,4 +1,5 @@
 type: item
+saveUnlock: any { fp }
 
 === transcription: FP
 md-super-subType: item/Singularity_Bomb_icon

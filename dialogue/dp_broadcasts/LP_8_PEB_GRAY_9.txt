@@ -1,6 +1,7 @@
 internalId: LP_8_PEB
 color: #7f7f7f
 type: broadcast
+saveUnlock: global { broadcast.LP_8_PEB }
 name: Future Messenger (Gray 9)
 map: MAP-GRAY-BROADCASTS
 mapInfo: ${MAP-LP-POST-PEB}

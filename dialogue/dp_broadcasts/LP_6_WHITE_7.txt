@@ -1,6 +1,7 @@
 internalId: LP_6
 color: #ffffff
 type: broadcast
+saveUnlock: global { broadcast.LP_6 }
 name: World Warmth (White 7)
 map: MAP-WHITE-BROADCASTS
 mapInfo: ${MAP-LP-PRE-PEB}

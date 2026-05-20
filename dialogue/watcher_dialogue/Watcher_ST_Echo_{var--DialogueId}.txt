@@ -3,24 +3,28 @@ subType: spinning-top
 tag: watcher
 map: region=WARB, room=J01, mapSlugcat=watcher
 map: region=WARC, room=F01, mapSlugcat=watcher
-map: region=WARD, room=R02, mapSlugcat=watcher
-map: region=WARE, room=H05, mapSlugcat=watcher
+map: region=WARE, room=I14, mapSlugcat=watcher
 map: region=WARF, room=B33, mapSlugcat=watcher
 map: region=WBLA, room=D03, mapSlugcat=watcher
-map: region=WDSR, room=A25, mapSlugcat=watcher
-map: region=WGWR, room=Disposal, mapSlugcat=watcher
-map: region=WHIR, room=A21, mapSlugcat=watcher
 map: region=WPTA, room=F03, mapSlugcat=watcher
 map: region=WRFB, room=A22, mapSlugcat=watcher
 map: region=WSKC, room=A23, mapSlugcat=watcher
-map: region=WSKD, room=B40, mapSlugcat=watcher
 map: region=WTDA, room=Z14, mapSlugcat=watcher
 map: region=WVWA, room=F03, mapSlugcat=watcher
+map: region=WVWB, room=A04, mapSlugcat=watcher
+map: region=WDSR, room=A25, mapSlugcat=watcher
+map: region=WGWR, room=Disposal, mapSlugcat=watcher
+map: region=WGWR, room=C09, mapSlugcat=watcher
+map: region=WHIR, room=B13, mapSlugcat=watcher
+map: region=WHIR, room=B02, mapSlugcat=watcher
+map: region=WHIR, room=A06, mapSlugcat=watcher
+map: region=WSUR, room=B09, mapSlugcat=watcher
 mapInfo: Spinning Top can be encountered in any order in these regions.\nSeven Encounters are necessary to unlock the Shattered Terrace to Ancient Urban portal.
-info: To determine what dialogue to display for each encounter,\nthe game (mainly) uses the min and max Ripple Level of the player.\nAfter the Vanilla intro, the min/max Ripple Levels are both 1.\nThe max Ripple Level increases by 0.5 for each encounter, with the min Level trailing behind by 2.\nThe Level cap of 5.0 corresponds to the ten Karma levels the player can reach.
+info: To determine what dialogue to display for each encounter, the game (mainly) uses the min and max Ripple Level of the player. After the Vanilla intro, the min/max Ripple Levels are both 1. The max Ripple Level increases by 0.5 for each encounter, with the min Level trailing behind by 2. The Level cap of 5.0 corresponds to the ten Karma levels the player can reach.
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N1
+md-saveUnlock: watcher { maxRipple >= 1.5 }
 md-super-subType: watcher-ripple
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N1
@@ -40,6 +44,7 @@ Never forget that, my little shadow.
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N5
+md-saveUnlock: watcher { maxRipple >= 3.0 }
 md-super-subType: watcher-ripple
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N5
@@ -55,6 +60,7 @@ Yes, well I am lost!
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N2
+md-saveUnlock: watcher { maxRipple >= 4.5 }
 md-super-subType: watcher-ripple
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N2
@@ -77,6 +83,7 @@ I am VERY likable though! OAOAOAOAOAOA!!
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N3
+md-saveUnlock: watcher { minRipple >= 3.0 }
 md-super-subType: watcher-ripple
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N3
@@ -92,6 +99,7 @@ But following your thread brings me closer, perhaps, to how I was.
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N6
+md-saveUnlock: watcher { minRipple >= 4.0 }
 md-super-subType: watcher-ripple
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N6
@@ -111,6 +119,7 @@ My nest mothers would sing it to me.
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N7
+md-saveUnlock: watcher { minRipple >= 4.5 and !stSpawn.0 } or watcher { minRipple >= 5.0 }
 md-super-subType: watcher-ripple
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N7
@@ -131,6 +140,7 @@ A tasty little god sausage! OAOAOAOAOAOA!
 
 === transcription: spinning-top
 md-type: pearl
+md-saveUnlock: watcher { minRipple >= 1.0 and maxRipple >= 2.0 }
 md-super-subType: watcher-ripple
 md-var-DialogueId: ellipsis
 md-name: Fallback (...)
@@ -141,6 +151,7 @@ md-sourceDialogue: SpinningTop/PauseConversation.cs
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_N4
+md-saveUnlock: watcher { stSpawn.0 }
 md-super-subType: wa-region/wtdb
 md-type: pearl
 md-var-DialogueId: Ghost_ST_N4
@@ -166,6 +177,7 @@ I was so fast! No-one could catch me!
 OAOAOAOAOAOA!!!!
 
 === transcription: spinning-top
+md-saveUnlock: watcher { rot }
 md-internalId: Ghost_ST_ROT1
 md-super-subType: wa-region/wdsr
 md-var-DialogueId: Ghost_ST_ROT1

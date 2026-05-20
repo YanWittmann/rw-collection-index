@@ -141,13 +141,30 @@ The dataset spans the entire known history of the Ancients and Iterators.
       <p>Toggle "Source View" to see the original game file identifiers, internal IDs, raw text strings and source code on selected entries alongside the formatted transcription.</p>
     </td>
     <td valign="top" style="padding: 10px;">
-      <strong><img src="site/public/img/PearlReader.png" width="20" valign="middle"/> All Transcriptions</strong>
-      <p>Switch between different Iterator readings and interpretations for the same pearl (e.g. Moon Pre-Collapse vs. Post-Collapse).</p>
+      <strong><img src="site/public/img/item/Overseer_Eye_icon.png" width="20" valign="middle"/> Save File Detection</strong>
+      <p>Upload your <code>sav</code> file to automatically highlight which pearls, broadcasts, echoes and dialogues you have already found. Pairs with Spoiler Protection to reveal the entries from your own playthrough.</p>
     </td>
   </tr>
 </table>
 
 ![UI Example of a selected Pearl](./doc/ui-demo-01.png)
+
+## Save File Detection
+
+See [`doc/save-file-parser-entry-detection.md`](doc/save-file-parser-entry-detection.md) for a full breakdown of supported detections and known limitations.
+
+Named pearls and broadcasts are matched from the game's own data structure.
+Iterator and other character dialogue is resolved individually across all Five Pebbles, Looks to the Moon and Watcher speakers using per-slugcat progression flags, encounter counters and chatlog Ids, including Watcher-specific fields like ripple level thresholds and Prince conversation indices.
+
+Everything is parsed locally in the browser, nothing leaves your machine without opt-in.
+A small set of entries depend on runtime events that leave no trace in the save file and cannot be detected.
+
+<table>
+  <tr>
+    <td width="57%"><img src="./doc/save-file-upload.webp" width="100%"/></td>
+    <td width="43%"><img src="./doc/save-file-grid-pearls.webp" width="100%"/></td>
+  </tr>
+</table>
 
 ## Installation and Setup
 

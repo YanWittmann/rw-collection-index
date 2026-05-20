@@ -42,7 +42,7 @@ console.log(`Output File: ${outputFile}`);
 console.log(`Source Decrypted Output File: ${sourceDecryptedOutputFile}`);
 
 const MAX_SPEAKER_LENGTH = 12;
-const PATTERN_REGEX = /\{([^}]+)\}/g;
+const PATTERN_REGEX = /\{([^{}]+)\}/g;
 
 // ignore speakers
 const excludeSpeakers = [
@@ -398,7 +398,7 @@ function resolveMetadata(metadata, variables) {
     return Object.fromEntries(
         Object.entries(metadata).map(([k, v]) => [
             k,
-            resolvePatterns(v, variables)
+            Array.isArray(v) ? v.map(item => resolvePatterns(item, variables)) : resolvePatterns(v, variables)
         ])
     );
 }
@@ -642,6 +642,9 @@ function parseDialogueContent(content, inheritanceDB = null, metadataOnly = fals
                 // Split comma-separated tags and trim whitespace
                 const tags = value.split(',').map(t => t.trim());
                 metadata.tags.push(...tags);
+            } else if (key === 'saveUnlock') {
+                if (!Array.isArray(metadata.saveUnlock)) metadata.saveUnlock = [];
+                metadata.saveUnlock.push(value);
             } else {
                 metadata[key] = value;
             }
@@ -699,7 +702,9 @@ function parseDialogueContent(content, inheritanceDB = null, metadataOnly = fals
                     const sectionData = handler(currentSectionLines, currentHeader.value);
                     if (currentHeader.namespace === 'transcription') {
                         // Merge global metadata into transcription metadata
+                        // 'saveUnlock' is entry-level only; transcribers use md-saveUnlock instead
                         for (const key in metadata) {
+                            if (key === 'saveUnlock') continue;
                             if (metadata.hasOwnProperty(key) && !sectionData.metadata.hasOwnProperty(key)) {
                                 sectionData.metadata[key] = metadata[key];
                             }
@@ -756,7 +761,9 @@ function parseDialogueContent(content, inheritanceDB = null, metadataOnly = fals
             const sectionData = handler(currentSectionLines, currentHeader.value);
             if (currentHeader.namespace === 'transcription') {
                 // Merge global metadata into transcription metadata
+                // 'saveUnlock' is entry-level only; transcribers use md-saveUnlock instead
                 for (const key in metadata) {
+                    if (key === 'saveUnlock') continue;
                     if (metadata.hasOwnProperty(key) && !sectionData.metadata.hasOwnProperty(key)) {
                         sectionData.metadata[key] = metadata[key];
                     }

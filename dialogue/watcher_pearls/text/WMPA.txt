@@ -3,9 +3,12 @@ color: #66bf66
 type: pearl
 name: Notion of Self
 tag: watcher
+saveUnlock: watcher { projector and physicalPearl.TEXT_NOTIONOFSELF }
 map: region=WMPA, room=C06, mapSlugcat=watcher
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 ![PearlReader/TEXT_NOTIONOFSELF.png][STYLE=rounded]
 
 === transcription: PearlReader
@@ -16,3 +19,9 @@ In the era of K'Arelus of Mart, long before the era of numeration and object ido
 These were represented in lines as the three waves of the river, and then of the star with five spokes, and then the three of columns vertical.
 This notion of a triplicate self long predates our modern spiral augury but nonetheless presents a primitive understanding\nof the path of cosmic retransfiguration: first a notion of the multiple self, then a cosmic intercedence and expansion,<LINE>and then when deflated the self is transformed, here into the supporting columns of the final three figure.
 In this essay I will...
+
+=== hint: Pearl Reader
+The Watcher has no character to read their pearls to.
+
+=== hint: Pearl Reader
+It's not a character, it's a device. Specifically, it's found in Ancient Urban.

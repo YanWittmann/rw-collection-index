@@ -4,6 +4,7 @@ subType: spearmaster
 === transcription: LttM-pre-collapse
 md-type: pearl
 md-transcriberName: If Spearmaster has already delivered their message
+md-saveUnlock: Spear { lttm >= 1 and smPearlTagged }
 md-var-DialogueId: First_encounter
 md-name: First encounter
 md-sourceDialogue: 139.txt
@@ -22,6 +23,7 @@ There is not much I can do. At least you can make yourself at home.
 === transcription: LttM-pre-collapse
 md-type: pearl
 md-transcriberName: If Spearmaster has not delivered their message
+md-saveUnlock: Spear { lttm >= 1 and !smPearlTagged }
 md-var-DialogueId: First_encounter
 md-name: First encounter
 Brave messenger… What are you?
@@ -36,6 +38,7 @@ Hurry little messenger!
 
 === transcription: LttM-pre-collapse
 md-type: pearl
+md-saveUnlock: Spear { lttm >= 1 }
 md-var-DialogueId: Second_encounter
 md-name: Second encounter
 md-sourceDialogue: none
@@ -43,6 +46,7 @@ I have nothing for you, poor thing. Please, I don't have long.
 
 === transcription: LttM-pre-collapse
 md-type: pearl
+md-saveUnlock: Spear { lttm >= 1 }
 md-var-DialogueId: Following_encounters
 md-name: Following encounters
 MONO
@@ -59,6 +63,7 @@ MONO
 
 === transcription: LttM-pre-collapse
 md-type: pearl
+md-saveUnlock: Spear { smPearlTagged }
 md-var-DialogueId: Spearmaster_Pearl
 md-name: Commenting on the Spearmaster Pearl
 What is this pearl you've brought along with you?
@@ -79,6 +84,7 @@ Be careful, messenger.
 
 === transcription: broadcast
 md-type: pearl
+md-saveUnlock: global { broadcast.Chatlog_SI9 }
 md-var-DialogueId: Ending_Broadcast
 md-name: Ending Broadcast
 [LIVE BROADCAST] - [ANNOUNCEMENT] Big Sis Looks to the Moon to Local Group

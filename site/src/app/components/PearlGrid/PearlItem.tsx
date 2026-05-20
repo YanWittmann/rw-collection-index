@@ -1,26 +1,33 @@
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip";
-import { RwIcon } from "./RwIcon";
+import { RwAsset } from "../other/RwAsset"
+import { Tint } from "../../utils/assetUtils";
 import { RwIconButton } from "../other/RwIconButton";
 import UnlockManager from "../../utils/unlockManager";
+import { getLockedColor } from "../../utils/transcriberUtils";
 import { PearlData } from "../../types/types";
 import React, { useCallback, useMemo } from "react";
-import { useAppContext } from "../../context/AppContext";
+import { UnlockMode } from "../../context/AppContext";
 
 interface PearlItemProps {
     pearl: PearlData
     pearlIndex: number
     showTranscriberCount: boolean
+    collectionVersion: number
+    isSelected: boolean
+    handleSelectPearl: (pearl: PearlData) => void
+    isFoundInSave: boolean
+    unlockMode: UnlockMode
 }
 
-const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, showTranscriberCount }) => {
-    const { selectedPearlId, handleSelectPearl, unlockMode, unlockVersion } = useAppContext();
-    const isSelected = pearl.id === selectedPearlId;
 
+const PearlItem: React.FC<PearlItemProps> = ({
+    pearl, pearlIndex, showTranscriberCount, collectionVersion,
+    isSelected, handleSelectPearl, isFoundInSave, unlockMode
+}) => {
     const isUnlocked = useMemo(() => {
-        // Depend on unlockVersion to force re-evaluation when unlocks change globally
         return unlockMode === 'all' || UnlockManager.isPearlUnlocked(pearl);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pearl, unlockMode, unlockVersion]);
+    }, [pearl, unlockMode, collectionVersion]);
 
     const handleClick = useCallback(() => {
         handleSelectPearl(pearl);
@@ -43,9 +50,10 @@ const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, showTranscribe
     }, [pearl]);
 
     if (!isUnlocked) {
+        const lockedColor = getLockedColor(pearl);
         return (
-            <RwIconButton onClick={handleClick} selected={isSelected} aria-label="Locked pearl">
-                <RwIcon color={pearl.metadata.color} type="questionmark"/>
+            <RwIconButton onClick={handleClick} selected={isSelected} variant={isFoundInSave ? 'gold' : 'default'} aria-label="Locked pearl">
+                <RwAsset src="questionmark" tint={Tint.mask(lockedColor)} />
             </RwIconButton>
         );
     }
@@ -55,18 +63,19 @@ const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, showTranscribe
     return (
         <TooltipProvider delayDuration={120}>
             <Tooltip>
-                <TooltipTrigger>
+                <TooltipTrigger asChild>
                     <RwIconButton
                         onClick={handleClick}
                         selected={isSelected}
+                        variant={isFoundInSave ? 'gold' : 'default'}
                         aria-label={`${pearl.metadata.name || 'Unknown pearl'} - ${pearl.transcribers.length} transcription${pearl.transcribers.length !== 1 ? 's' : ''}`}
                     >
-                        <RwIcon color={pearl.metadata.color} type={iconType}/>
-                        {showTranscriberCount && (
-                            <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-6 h-4 text-xs flex items-center justify-center">
-                                {pearl.transcribers.length}
-                            </span>
-                        )}
+                            <RwAsset src={iconType} tint={Tint.mask(pearl.metadata.color)} />
+                            {showTranscriberCount && (
+                                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-6 h-4 text-xs flex items-center justify-center">
+                                    {pearl.transcribers.length}
+                                </span>
+                            )}
                     </RwIconButton>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -83,15 +92,16 @@ const PearlItem: React.FC<PearlItemProps> = ({ pearl, pearlIndex, showTranscribe
 };
 
 const arePropsEqual = (prevProps: PearlItemProps, nextProps: PearlItemProps) => {
-    // This custom comparison is now much simpler because global state changes
-    // are handled by the context and `unlockVersion`. We only need to compare
-    // the pearl data itself and presentation props.
     return (
         prevProps.pearl.id === nextProps.pearl.id &&
         prevProps.showTranscriberCount === nextProps.showTranscriberCount &&
         prevProps.pearl.metadata.color === nextProps.pearl.metadata.color &&
         prevProps.pearl.metadata.type === nextProps.pearl.metadata.type &&
-        prevProps.pearl.transcribers.length === nextProps.pearl.transcribers.length
+        prevProps.pearl.transcribers.length === nextProps.pearl.transcribers.length &&
+        prevProps.collectionVersion === nextProps.collectionVersion &&
+        prevProps.isSelected === nextProps.isSelected &&
+        prevProps.isFoundInSave === nextProps.isFoundInSave &&
+        prevProps.unlockMode === nextProps.unlockMode
     );
 };
 

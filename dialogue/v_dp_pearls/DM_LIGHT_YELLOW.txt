@@ -4,6 +4,7 @@ type: pearl
 name: Light Yellow
 
 === transcription: LttM-pre-collapse
+md-saveUnlock: global { pearlSaint.DM }
 md-map: region=DM, room=LAB3, mapSlugcat=spear
 md-sourceDialogue: 102-spear.txt
 Oh! This is one of my pearls. Did you extract this from my Memory Conflux?
@@ -12,6 +13,7 @@ As for the contents of this pearl... it's a large batch of my personal notes and
 Could you please just put this pearl back where you found it?
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { pearlBase.DM }
 md-map: region=MS, room=LAB3, mapSlugcat=white
 md-tag: downpour
 md-sourceDialogue: 102.txt

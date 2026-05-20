@@ -7,6 +7,8 @@ md-type: pearl
 md-var-DialogueId: First_encounter
 md-name: If one Neuron remains
 md-transcriberName: If one Neuron remains
+md-saveUnlock: Gourmand { lttmMark >= 1 and lttmNeuronsLeft == 1 }
+md-super-name: If X neurons remain
 md-sourceDialogue: strings.txt
 md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Gourmand_First_Conversation.cs
 ...
@@ -16,6 +18,7 @@ md-type: pearl
 md-var-DialogueId: First_encounter
 md-name: If two Neurons remain
 md-transcriberName: If two Neurons remain
+md-saveUnlock: Gourmand { lttmMark >= 1 and lttmNeuronsLeft == 2 }
 md-sourceDialogue: strings.txt
 md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Gourmand_First_Conversation.cs
 Get... get away... round.... thing.
@@ -26,6 +29,7 @@ md-type: pearl
 md-var-DialogueId: First_encounter
 md-name: If three Neurons remain
 md-transcriberName: If three Neurons remain
+md-saveUnlock: Gourmand { lttmMark >= 1 and lttmNeuronsLeft == 3 }
 md-sourceDialogue: strings.txt
 md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Gourmand_First_Conversation.cs
 You!
@@ -37,6 +41,7 @@ md-type: pearl
 md-var-DialogueId: First_encounter
 md-name: If four Neurons remain
 md-transcriberName: If four Neurons remain
+md-saveUnlock: Gourmand { lttmMark >= 1 and lttmNeuronsLeft == 4 }
 md-sourceDialogue: 163.txt
 md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Gourmand_First_Conversation.cs
 There is nothing more here for you to take.
@@ -50,6 +55,7 @@ md-type: pearl
 md-var-DialogueId: First_encounter
 md-name: First encounter after receiving the Mark of Communication
 md-transcriberName: First encounter after receiving the Mark of Communication
+md-saveUnlock: Gourmand { lttmMark >= 1 and lttmNeuronsLeft >= 5 }
 md-sourceDialogue: 162.txt
 md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Gourmand_First_Conversation.cs
 Hello little creature, are you lost?

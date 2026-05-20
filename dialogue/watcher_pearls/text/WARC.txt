@@ -3,9 +3,12 @@ color: #bd7a8a
 type: pearl
 name: Contempt
 tag: watcher
+saveUnlock: watcher { projector and physicalPearl.TEXT_CONTEMPT }
 map: region=WARC, room=C10, mapSlugcat=watcher
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-name: Projection
 ![PearlReader/TEXT_CONTEMPT.png][STYLE=rounded]
 
@@ -18,3 +21,9 @@ TRANSCRIBED
 When you came, you said to me as follows: "I will give Nine-Leaf, when he comes, fine quality bonemeal brick."
 You left then, but you did not do what you promised me. You put brick which were of LOW QUALITY before my messenger Nine-Leaf and said "If you want to take them, take them; if you do not want to take them, go away!"
 What do you take me for, that you treat someone like me with such contempt? I have sent as messengers respected individuals like ourselves to collect the bag with my coin, deposited with you, but you have treated me with contempt by sending th...
+
+=== hint: Pearl Reader
+The Watcher has no character to read their pearls to.
+
+=== hint: Pearl Reader
+It's not a character, it's a device. Specifically, it's found in Ancient Urban.

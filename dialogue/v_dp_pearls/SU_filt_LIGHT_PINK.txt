@@ -6,12 +6,14 @@ map: region=SU, room=VR1, mapSlugcat=white
 tag: downpour
 
 === transcription: FP-artificer
+md-saveUnlock: global { pearlArtificer.SU_filt }
 md-sourceDialogue: 101-artificer.txt
 It's an asset management log. Used in recording the structural health for a large collection of surface facilities.
 Most of this information is already on my record, but the log on this pearl is slightly more up to date.
 Thank you, I suppose.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { pearlBase.SU_filt }
 md-sourceDialogue: 101.txt
 It's an asset management log containing the historic structural health of various pieces of framework over the span of many hundreds of cycles. I suppose neither of us would benefit from me reading all of these numbers aloud.
 What is notable is that none of the structures over the course of this logged history are marked as needing explicit repairs. That comes as no surprise, it was very much the intention!

@@ -1,5 +1,23 @@
 import { Dialogue, PearlData } from '../types/types';
-import { speakerNames, transcriberIcons, transcribersColors, transcribersImages } from './speakers';
+import { itemIconColors, getSpeakerDef } from './speakers';
+import type { GameAsset } from './assetUtils';
+import { Tint } from './assetUtils';
+
+export function getLockedColor(pearl: PearlData, transcriber?: Dialogue): string {
+    const type = transcriber?.metadata.type ?? pearl.metadata.type;
+    const subType = transcriber?.metadata.subType ?? pearl.metadata.subType;
+    const baseColor = transcriber?.metadata.color ?? pearl.metadata.color;
+
+    switch (type) {
+        case 'echo':
+            return '#f3c159';
+        case 'item':
+            if (subType) return itemIconColors[`${subType}.png`] ?? itemIconColors[`${subType}.png`] ?? baseColor;
+            return baseColor;
+        default:
+            return baseColor;
+    }
+}
 
 export function getEffectiveTranscriberName(transcribers: Dialogue[], transcriberName: string, index: number): string {
     const duplicateCount = transcribers.filter(t => t.transcriber === transcriberName).length;
@@ -17,38 +35,35 @@ export function findTranscriberIndex(pearl: PearlData, transcriberName: string):
     }
 }
 
-export function getTranscriberIcon(transcriber: Dialogue, index?: number) {
+export function getTranscriberIcon(transcriber: Dialogue, pearl: PearlData, index?: number) {
     const effectiveTranscriberName = index !== undefined
         ? transcriber.transcriber + '-' + index
         : transcriber.transcriber;
 
-    let iconType: string;
+    const def = getSpeakerDef(transcriber.transcriber);
+    let asset: GameAsset;
     let color: string;
 
     if (effectiveTranscriberName.includes("broadcast")) {
-        color = transcribersColors[transcriber.transcriber] ??
-            transcriber.metadata.color ??
-            '#ffffff';
-        iconType = "broadcast";
+        color = def.transcriberColor ?? transcriber.metadata.color ?? '#ffffff';
+        asset = { src: "broadcast", tint: Tint.mask(color) };
     } else if (transcriber.metadata.type === 'item' && transcriber.metadata.subType) {
-        color = transcribersColors[transcriber.transcriber];
-        iconType = transcriber.metadata.subType;
-    } else if (transcribersImages[transcriber.transcriber] !== undefined) {
-        color = transcribersColors[transcriber.transcriber];
-        iconType = transcribersImages[transcriber.transcriber] ?? transcriber.transcriber;
+        color = def.transcriberColor ?? getLockedColor(pearl, transcriber);
+        asset = { src: transcriber.metadata.subType };
+    } else if (def.asset !== undefined) {
+        color = def.transcriberColor ?? getLockedColor(pearl, transcriber);
+        asset = { src: def.asset.src };
     } else {
-        color = transcribersColors[transcriber.transcriber];
-        iconType = transcriberIcons[transcriber.transcriber] ?? transcriber.transcriber;
+        color = def.transcriberColor ?? getLockedColor(pearl, transcriber);
+        asset = { src: transcriber.transcriber };
     }
-
-    const overwriteColor = effectiveTranscriberName.includes("broadcast") ? color : undefined;
 
     let displayTranscriberName: string;
     if (transcriber.metadata.transcriberName) {
         displayTranscriberName = "plain=" + transcriber.metadata.transcriberName;
     } else {
-        displayTranscriberName = speakerNames[transcriber.transcriber] ?? transcriber.transcriber;
+        displayTranscriberName = def.name ?? transcriber.transcriber;
     }
 
-    return { iconType, color, effectiveTranscriberName, overwriteColor, displayTranscriberName };
+    return { asset, color, effectiveTranscriberName, displayTranscriberName };
 }

@@ -5,12 +5,14 @@ name: Teal
 map: region=SB, room=J03, mapSlugcat=white
 
 === transcription: FP-artificer
+md-saveUnlock: global { pearlArtificer.SB_filtration }
 md-sourceDialogue: 15-artificer.txt
 It's a blueprint for the Void Fluid filtration system beneath my facility.
 My neighbor to the east of here was connected to an older pipe network that predates my construction.
 Due to mechanical failures she was rerouted into sharing my installation. However, unlike our shared groundwater, nothing of note has come from this.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { pearlBase.SB_filtration }
 md-sourceDialogue: 15.txt
 It's the blueprint for a Void Fluid filtration system. Do you know what Void Fluid is? I think you don't.
 If you leave a stone on the ground, and come back some time later, it's covered in dust. This happens everywhere, and over several lifetimes of creatures such as you, the ground slowly builds upwards.

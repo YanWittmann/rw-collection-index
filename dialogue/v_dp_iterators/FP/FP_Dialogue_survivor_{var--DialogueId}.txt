@@ -3,6 +3,7 @@ subType: survivor
 
 === transcription: FP
 md-type: pearl
+md-saveUnlock: White { fp }
 md-var-DialogueId: First_encounter
 md-name: First encounter
 MONO
@@ -26,6 +27,7 @@ MONO
 md-super-name: Common Dialogue
 md-type: pearl
 md-transcriberName: Creature Dialogue
+md-saveUnlock: White { fp } or Yellow { fp }
 md-var-DialogueId: Common_Dialogue
 md-name: Creature Dialogue
 md-tag: downpour
@@ -44,6 +46,7 @@ MONO
 === transcription: FP
 md-type: pearl
 md-transcriberName: Picking up a pearl
+md-saveUnlock: White { fp } or Yellow { fp }
 md-var-DialogueId: Common_Dialogue
 md-name: Picking up a pearl
 Yes, help yourself. They are not edible.
@@ -51,6 +54,7 @@ Yes, help yourself. They are not edible.
 === transcription: FP
 md-type: pearl
 md-transcriberName: Lingering
+md-saveUnlock: White { fp } or Yellow { fp }
 md-var-DialogueId: Common_Dialogue
 md-name: Lingering
 Thank you little creature. I must resume my work.
@@ -60,6 +64,7 @@ As I mentioned you do not have unlimited time.
 === transcription: FP
 md-type: pearl
 md-transcriberName: Returning to the Chamber
+md-saveUnlock: White { fp >= 2 } or Yellow { fp >= 2 }
 md-var-DialogueId: Common_Dialogue
 md-name: Returning to the Chamber
 You again? I have nothing for you.

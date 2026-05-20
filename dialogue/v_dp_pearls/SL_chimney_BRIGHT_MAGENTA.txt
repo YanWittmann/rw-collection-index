@@ -5,6 +5,7 @@ name: Bright Magenta
 map: region=SL, room=B04, mapSlugcat=white
 
 === transcription: FP-artificer
+md-saveUnlock: global { pearlArtificer.SL_chimney }
 md-sourceDialogue: 54-artificer.txt
 This is a genome for a purposed organism. Just a menial cleaning slug.
 While I do not have this exact sequence on record, the simple structures present, and lack of mechanical interchange glands, mean this blueprint is quite old.
@@ -12,6 +13,7 @@ This creature would be much closer to a domesticated animal, compared to the new
 In the same way, my own body is all around you. Composed of specialized organisms, and machinery. What you see in front of you is only the tiny extremity of a colossal presence. One that your simple mind could not hope to comprehend.
 
 === transcription: LttM-pre-collapse
+md-saveUnlock: global { pearlSaint.SL_chimney }
 md-sourceDialogue: 54-spear.txt
 It is the genome for a purposed organism. A small slug to clean the insides of pipes.
 Do you know what a purposed organism is? Actually you are talking to one right now!
@@ -21,6 +23,7 @@ When I came into this world there was very little primal fauna left. You are cer
 So then, what purpose do you serve, little creature? For many, that's a question that can take a lifetime to find an answer to.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { pearlBase.SL_chimney }
 md-sourceDialogue: 54.txt
 It is the genome for a purposed organism. A small slug to clean the insides of pipes.
 Do you know what a purposed organism is? Actually you are talking to one right now!

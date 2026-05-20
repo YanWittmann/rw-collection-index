@@ -1,6 +1,7 @@
 internalId: LP_4_PEB
 color: #7f7f7f
 type: broadcast
+saveUnlock: global { broadcast.LP_4_PEB }
 name: Watch in Horror (Gray 5)
 map: MAP-GRAY-BROADCASTS
 mapInfo: ${MAP-LP-POST-PEB}

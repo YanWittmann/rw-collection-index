@@ -6,6 +6,7 @@ map: region=SI, room=B12, mapSlugcat=white
 info: ${SI-CHAT}
 
 === transcription: FP-artificer
+md-saveUnlock: global { pearlArtificer.SI_west }
 md-sourceDialogue: 21-artificer.txt
 This is a log of a Sliverist conversation group. Some of the replies are mine, but none of that is important now.
 I don't imagine a beast like you would have any understanding of who Sliver of Straw is, or what she means to me and many others. She is the only one of us to send the signal that the answer to our creator's problem has been found. A universal solution for global ascension.
@@ -14,6 +15,7 @@ It was clear to me, and few others what this meant. Sliver of Straw had opened t
 There was nothing that could be done to convince them, they were too deep in theory and tradition. The only path forwards is to lead by example. To prove Sliver of Straw's death was not just coincidence.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { pearlBase.SI_west }
 md-sourceDialogue: 21.txt
 Oh, this one is all plain text. It's an excerpt from an Iterator conversation group.
 "1650.787 - CLOSED GROUP [SLIVEROFOCEAN]\nSliverOfOcean group, all participants anonymous

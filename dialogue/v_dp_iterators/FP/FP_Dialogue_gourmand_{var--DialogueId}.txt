@@ -1,6 +1,7 @@
 type: item
 subType: gourmand
 tag: downpour
+saveUnlock: Gourmand { fp }
 
 === transcription: FP
 md-type: pearl

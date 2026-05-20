@@ -1,6 +1,7 @@
 internalId: Chatlog_SB0
 color: #9c5933
 type: broadcast
+saveUnlock: global { broadcast.Chatlog_SB0 }
 name: Dark Brown
 map: region=SB, room=F03, mapSlugcat=spear
 tag: downpour

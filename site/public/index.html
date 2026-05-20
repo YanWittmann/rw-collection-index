@@ -160,7 +160,13 @@
 <div id="root"></div>
 </body>
 <script>
-    if (window.location.hostname !== 'localhost' && !window.location.hostname.startsWith('127.0.0')) {
+    window.__RW_COUNT__ = function(key) {
+        if (window.location.hostname !== 'localhost' && !window.location.hostname.startsWith('127.0.0')) {
+            setTimeout(() => fetch('https://yanwittmann.de/projects/countapi/increment.php?namespace=rwci&key=' + key), 0);
+        }
+    };
+
+    (function() {
         const isModded = window.__RW_DATA_KEY__ === "modded";
         const lastAccessKey = isModded ? 'lastAccessTime-modded' : 'lastAccessTime';
 
@@ -174,10 +180,7 @@
 
         localStorage.setItem(lastAccessKey, currentTime);
 
-        setTimeout(() => {
-            fetch(`https://yanwittmann.de/projects/countapi/increment.php?namespace=rwci&key=${keyParts.join('-')}`, { method: 'GET' })
-                .catch(error => console.error('Error tracking page view:', error));
-        }, 1000);
-    }
+        window.__RW_COUNT__(keyParts.join('-'));
+    })();
 </script>
 </html>

@@ -1,6 +1,8 @@
 "use client"
 
 import React, { ReactNode, useEffect, useState } from "react";
+import { useEscapeKey } from "../../hooks/useEscapeKey";
+import { count } from "../../utils/track";
 import { createPortal } from "react-dom";
 import RwShareTextSnippet from "./RwShareTextSnippet";
 import { Button } from "@shadcn/components/ui/button";
@@ -11,7 +13,6 @@ interface RwShareTextEditorProps {
     defaultText?: string;
     preProcessContent?: (rawText: string) => string;
     onExport?: (content: string) => void;
-    closeIcon?: ReactNode;
     title?: string;
     exportButtonText?: string;
     onOpen?: () => void;
@@ -110,7 +111,6 @@ export default function RwShareTextEditor({
                                               defaultText = "",
                                               preProcessContent,
                                               onExport,
-                                              closeIcon,
                                               title = "Share Transcription",
                                               exportButtonText = "Export",
                                               onOpen,
@@ -140,6 +140,8 @@ export default function RwShareTextEditor({
         }
     }, [showModal]);
 
+    useEscapeKey(() => setShowModal(false), showModal);
+
     const handleExport = async () => {
         const snippetElement = document.querySelector(".rw-share-text-snippet") as HTMLElement;
 
@@ -167,10 +169,7 @@ export default function RwShareTextEditor({
                 setShowModal(false);
                 onExport?.(content);
 
-                try {
-                    setTimeout(() => fetch("https://yanwittmann.de/projects/countapi/increment.php?namespace=rwci&key=use-export"), 0);
-                } catch (error) {
-                }
+                count('use-export');
             }).catch((error: Error) => {
                 console.error("Error capturing snippet:", error);
             });
@@ -189,16 +188,19 @@ export default function RwShareTextEditor({
 
             {/* Modal */}
             {showModal && modalRoot && createPortal(
-                <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+                <div
+                    className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+                    onClick={(e) => { if (e.target === e.currentTarget) setShowModal(false); }}
+                >
                     <div className="bg-black border-2 border-white/80 rounded-xl shadow-[0_0_10px_rgba(255,255,255,0.1)] w-full max-w-[90vw] relative">
                         {/* Header */}
                         <div className="flex justify-between items-center py-2 px-4 border-b border-white/20">
                             <h2 className="text-white font-medium">{title}</h2>
                             <div
-                                className="cursor-pointer text-white hover:bg-white/10 p-1 rounded"
+                                className="cursor-pointer w-8 h-8 flex items-center justify-center text-white/60 hover:text-white transition-colors"
                                 onClick={() => setShowModal(false)}
                             >
-                                {closeIcon || "✕"}
+                                ✕
                             </div>
                         </div>
 

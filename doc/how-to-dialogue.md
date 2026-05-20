@@ -269,6 +269,8 @@ Example from [`Watcher_Pearl_Misc_Projection_{var--DialogueId}.txt`](../dialogue
 
 ```text
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-name: Misc: Image 1
 SEQUENCE[SPEED=1000]
 ![PearlReader/misc/img1/1.png][STYLE=rounded]

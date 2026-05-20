@@ -1,6 +1,7 @@
 internalId: Chatlog_LM1
 color: #30bab2
 type: broadcast
+saveUnlock: global { broadcast.Chatlog_LM1 }
 name: Cyan 1
 map: region=LM, room=TOWER02, mapSlugcat=spear
 tag: downpour

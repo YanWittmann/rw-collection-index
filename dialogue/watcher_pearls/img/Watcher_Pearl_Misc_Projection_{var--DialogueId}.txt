@@ -1,8 +1,11 @@
 type: pearl
 tag: watcher
 info: Pearls without explicitly defined projections show a random miscellaneous projection.
+saveUnlock: watcher { projector }
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: img1
 md-var-DialogueId: img1
 md-sourceDialogue: img1.txt
@@ -17,6 +20,8 @@ SEQUENCE[SPEED=1000]
 ![PearlReader/misc/img1/5.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: img2
 md-var-DialogueId: img2
 md-name: Misc: Image 2
@@ -35,6 +40,8 @@ SEQUENCE[SPEED=1000]
 ![PearlReader/misc/img2/9.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: img3
 md-var-DialogueId: img3
 md-name: Misc: Image 3
@@ -54,6 +61,8 @@ SEQUENCE[SPEED=600]
 ![PearlReader/misc/img3/9.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: img4
 md-var-DialogueId: img4
 md-name: Misc: Image 4
@@ -73,6 +82,8 @@ SEQUENCE[SPEED=1000]
 ![PearlReader/misc/img4/10.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: img5
 md-var-DialogueId: img5
 md-name: Misc: Image 5
@@ -84,6 +95,8 @@ SEQUENCE[SPEED=1800]
 ![PearlReader/misc/img5/2.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: img6
 md-var-DialogueId: img6
 md-name: Misc: Image 6
@@ -95,6 +108,8 @@ SEQUENCE[SPEED=1800]
 ![PearlReader/misc/img6/2.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: img7
 md-var-DialogueId: img7
 md-name: Misc: Image 7
@@ -106,6 +121,8 @@ SEQUENCE[SPEED=1800]
 ![PearlReader/misc/img7/2.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: img8
 md-var-DialogueId: img8
 md-name: Misc: Image 8
@@ -119,6 +136,8 @@ SEQUENCE[SPEED=1400]
 ![PearlReader/misc/img8/4.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: img9
 md-var-DialogueId: img9
 md-name: Misc: Image 9
@@ -134,6 +153,8 @@ SEQUENCE[SPEED=1000]
 ![PearlReader/misc/img9/6.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: misc1
 md-var-DialogueId: misc1
 md-name: Misc: Misc 1
@@ -150,6 +171,8 @@ SEQUENCE[SPEED=1000]
 ![PearlReader/misc/misc1/7.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: misc2
 md-var-DialogueId: misc2
 md-name: Misc: Misc 2
@@ -163,6 +186,8 @@ SEQUENCE[SPEED=1000]
 ![PearlReader/misc/misc2/4.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: misc3
 md-var-DialogueId: misc3
 md-name: Misc: Misc 3
@@ -179,6 +204,8 @@ SEQUENCE[SPEED=700]
 ![PearlReader/misc/misc3/7.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: misc4
 md-var-DialogueId: misc4
 md-name: Misc: Misc 4
@@ -201,6 +228,8 @@ SEQUENCE[SPEED=600]
 ![PearlReader/misc/misc4/13.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: misc5
 md-var-DialogueId: misc5
 md-name: Misc: Misc 5
@@ -215,6 +244,8 @@ SEQUENCE[SPEED=1000]
 ![PearlReader/misc/misc5/5.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: text1
 md-var-DialogueId: text1
 md-name: Misc: Text 1
@@ -236,6 +267,8 @@ SEQUENCE[SPEED=800]
 ![PearlReader/misc/text1/12.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: text2
 md-var-DialogueId: text2
 md-name: Misc: Text 2
@@ -258,6 +291,8 @@ SEQUENCE[SPEED=1000]
 ![PearlReader/misc/text2/13.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: text3
 md-var-DialogueId: text3
 md-name: Misc: Text 3
@@ -274,6 +309,8 @@ SEQUENCE[SPEED=1000]
 ![PearlReader/misc/text3/7.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: text4
 md-var-DialogueId: text4
 md-name: Misc: Text 4
@@ -295,6 +332,8 @@ SEQUENCE[SPEED=1000]
 ![PearlReader/misc/text4/12.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: text5
 md-var-DialogueId: text5
 md-name: Misc: Text 5
@@ -311,6 +350,8 @@ SEQUENCE[SPEED=1000]
 ![PearlReader/misc/text5/7.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: text6
 md-var-DialogueId: text6
 md-name: Misc: Text 6
@@ -325,6 +366,8 @@ SEQUENCE[SPEED=1000]
 ![PearlReader/misc/text6/5.png][STYLE=rounded]
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 md-internalId: text7
 md-var-DialogueId: text7
 md-name: Misc: Text 7
@@ -335,3 +378,12 @@ SEQUENCE[SPEED=1000]
 ![PearlReader/misc/text7/1.png][STYLE=rounded]
 ![PearlReader/misc/text7/2.png][STYLE=rounded]
 ![PearlReader/misc/text7/3.png][STYLE=rounded]
+
+=== hint: Pearl Reader
+The Watcher has no character to read their pearls to.
+
+=== hint: Pearl Reader
+It's not a character, it's a device. Specifically, it's found in Ancient Urban.
+
+=== hint: Misc Pearls
+This projection is obtained randomly by inserting a pearl with no specific projection into the pearl reader.

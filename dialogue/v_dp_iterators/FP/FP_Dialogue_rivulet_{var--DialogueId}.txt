@@ -5,6 +5,7 @@ tag: downpour
 === transcription: FP
 md-type: pearl
 md-transcriberName: If Rivulet has delivered the Rarefaction Cell to Looks to the Moon without having spoken to Five Pebbles first
+md-saveUnlock: Rivulet { fp and altEnding }
 md-var-DialogueId: First_encounter
 md-name: Meeting for the first time
 md-sourceDialogue: 152.txt
@@ -22,6 +23,7 @@ All I can advise is for you to leave quickly, while you still can.
 === transcription: FP
 md-type: pearl
 md-transcriberName: If Rivulet takes the Rarefaction Cell, meets Five Pebbles without the cell, then returns with the cell
+md-saveUnlock: Rivulet { fp and !altEnding and energyRailOff }
 md-var-DialogueId: First_encounter
 md-name: Meeting for the first time
 md-sourceDialogue: 149.txt
@@ -37,6 +39,7 @@ Please, bring it far to the east, to her... if she is somehow still alive. Then 
 === transcription: FP
 md-type: pearl
 md-transcriberName: If Rivulet has taken the Rarefaction Cell, but does not bring it to Five Pebbles upon their first meeting
+md-saveUnlock: Rivulet { fp and !altEnding and energyRailOff }
 md-var-DialogueId: First_encounter
 md-name: Meeting for the first time
 md-sourceDialogue: 144.txt
@@ -56,6 +59,7 @@ but if you value your life, leave and never return.
 === transcription: FP
 md-type: pearl
 md-transcriberName: If Rivulet brings the Rarefaction Cell without having spoken to Five Pebbles first
+md-saveUnlock: Rivulet { fp and !altEnding and energyRailOff }
 md-var-DialogueId: First_encounter
 md-name: Meeting for the first time
 md-sourceDialogue: 144.txt
@@ -78,6 +82,7 @@ Please, bring it far to the east, to her... if she is somehow still alive. Then 
 === transcription: FP
 md-type: pearl
 md-transcriberName: If Rivulet does not have the Rarefaction Cell
+md-saveUnlock: Rivulet { fp and !altEnding and !energyRailOff }
 md-var-DialogueId: First_encounter
 md-name: Meeting for the first time
 md-sourceDialogue: 144.txt
@@ -102,6 +107,7 @@ I've made my choice.
 
 === transcription: FP
 md-type: pearl
+md-saveUnlock: Rivulet { altEnding and fp >= 1 }
 md-transcriberName: Returning after restoring power to Looks to the Moon's facility
 md-var-DialogueId: Returning
 md-name: Returning to Five Pebbles
@@ -115,6 +121,7 @@ These ordeals have made me understand what they all tried to tell me.
 ...I don't have to go through this alone.
 
 === transcription: FP
+md-saveUnlock: Rivulet { altEnding and fp >= 2 }
 md-var-DialogueId: Subsequent_meetings
 md-name: Subsequent meetings
 md-tag: downpour
@@ -133,6 +140,7 @@ MONO
 === transcription: FP
 md-subType: item/Neuron_Fly_icon
 md-transcriberName: If the Slugcat eats a Neuron Fly
+md-saveUnlock: Rivulet { fp }
 md-var-DialogueId: Neuron
 md-name: Neuron
 md-tag: downpour
@@ -142,6 +150,7 @@ I would appreciate if you would not eat those. My umbilical will keep me conscio
 md-super-color: #b02ffb
 md-super-type: pearl
 md-transcriberName: If the Rivulet leaves with or swallows the Music pearl
+md-saveUnlock: Rivulet { fp }
 md-var-DialogueId: Music
 md-name: Music
 md-tag: downpour
@@ -151,6 +160,7 @@ Wait, you cannot leave with that!
 md-super-color: #b02ffb
 md-super-type: pearl
 md-transcriberName: If the Music pearl is grabbed
+md-saveUnlock: global { pearlArtificer.RM }
 md-var-DialogueId: Music
 md-name: Music
 md-tag: downpour
@@ -162,6 +172,7 @@ It's not much, but I don't have a lot to occupy my time with anymore...
 md-super-subType: item/Rot_icon
 md-subType: item/Rot_icon
 md-transcriberName: If Rivulet dies to the Proto Long Legs in the chamber
+md-saveUnlock: Rivulet { fp }
 md-var-DialogueId: Proto_Long_Legs_Death
 md-name: Dies to Proto Long Legs
 md-tag: downpour

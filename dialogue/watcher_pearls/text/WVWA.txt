@@ -3,9 +3,12 @@ color: #f2a605
 type: pearl
 name: Kitesday
 tag: watcher
+saveUnlock: watcher { projector and physicalPearl.TEXT_KITESDAY }
 map: region=WVWA, room=F02, mapSlugcat=watcher
 
 === transcription: PearlReader
+md-type: item
+md-subType: PearlReader
 ![PearlReader/TEXT_KITESDAY.png][STYLE=rounded]
 
 === transcription: PearlReader
@@ -15,3 +18,9 @@ md-sourceDialogue: 241.txt
 ALL-KITES DAY SPECIALS! TODAY ONLY!
 FLAVORED VATS ~ 2 FOR Q36.4\nMATTED SLABS ~ 4 FOR Q55.4\nYAN FRUIT ~ 12 FOR Q20.4\nWHEEL INSENSE ~ 24 FOR Q12.4\nPROVANCE NECTAR ~ Q12.4 EACH OR Q53.4 FOR 6, MIX-AND-MATCH SPECIAL!
 BELLS, BOWLS, AND RINGS HEAVILY DISCOUNTED\nFRESH ESSENCE OF ASH IMPORTED DAILY FREE 5-WICK VOTIVE CIERGE WITH EVERY PURCHASE!\nCOME SEE OUR FAMOUS CRYSTAL PILLAR!
+
+=== hint: Pearl Reader
+The Watcher has no character to read their pearls to.
+
+=== hint: Pearl Reader
+It's not a character, it's a device. Specifically, it's found in Ancient Urban.

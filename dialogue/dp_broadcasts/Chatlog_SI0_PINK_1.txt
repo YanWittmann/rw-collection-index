@@ -1,6 +1,7 @@
 internalId: Chatlog_SI0
 color: #e8597f
 type: broadcast
+saveUnlock: global { broadcast.Chatlog_SI0 }
 name: Pink 1
 map: region=SI, room=A07, mapSlugcat=spear
 tag: downpour

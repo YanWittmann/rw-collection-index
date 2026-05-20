@@ -1,5 +1,6 @@
 type: item
 subType: monk
+saveUnlock: Yellow { lttmMark >= 1 }
 
 === transcription: LttM-post-collapse
 md-type: pearl

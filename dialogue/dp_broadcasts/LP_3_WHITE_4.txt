@@ -1,6 +1,7 @@
 internalId: LP_3
 color: #ffffff
 type: broadcast
+saveUnlock: global { broadcast.LP_3 }
 name: Care Package (White 4)
 map: MAP-WHITE-BROADCASTS
 mapInfo: ${MAP-LP-PRE-PEB}

@@ -1,6 +1,7 @@
 type: item
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.Rock }
 md-type: pearl
 md-subType: item/Rock_icon
 md-var-DialogueId: Rock
@@ -9,6 +10,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a rock. Thank you, I suppose, little creature.
 
 === transcription: LttM-saint
+md-saveUnlock: global { item.Spear }
 md-type: pearl
 md-subType: item/Spear_icon
 md-var-DialogueId: Spear
@@ -18,6 +20,7 @@ It's piece of sharpened rebar... What is it you want to know?
 I don't wish to offend, but you seem too frail to use this effectively.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.Spear }
 md-type: pearl
 md-subType: item/Spear_icon
 md-var-DialogueId: Spear
@@ -26,6 +29,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a piece of sharpened rebar... What is it you want to know? You seem proficient enough at using it.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.ExplosiveSpear }
 md-type: pearl
 md-subType: item/Explosive_Spear_icon
 md-var-DialogueId: Explosive_Spear
@@ -34,6 +38,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a weapon made with fire powder. Did the scavengers give this to you? Be very careful if you have to use it!
 
 === transcription: LttM-saint
+md-saveUnlock: global { item.HellSpear }
 md-type: pearl
 md-subType: item/Fire_Spear_icon
 md-var-DialogueId: Fire_Spear
@@ -43,6 +48,7 @@ It's piece of sharpened rebar... What is it you want to know?
 I don't wish to offend, but you seem too frail to use this effectively.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.HellSpear }
 md-type: pearl
 md-subType: item/Fire_Spear_icon
 md-var-DialogueId: Fire_Spear
@@ -52,6 +58,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a piece of sharpened rebar... What is it you want to know? You seem proficient enough at using it.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.ElectricSpear }
 md-type: pearl
 md-subType: item/Electric_Spear_icon
 md-var-DialogueId: Electric_Spear
@@ -63,6 +70,7 @@ Oh. I would be very careful with this my friend. The tip of this rebar has had f
 I can't imagine these bits of coil will last long though. It looks like they've been battered with rocks or metal. These coils are from inside of me or Five Pebbles. The rest is the scavengers' natural ingenuity.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.WaterNut }
 md-type: pearl
 md-subType: item/Bubble_Fruit_icon
 md-var-DialogueId: Bubble_Fruit
@@ -71,6 +79,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a delicious plant. You should have it!
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.KarmaFlower }
 md-type: pearl
 md-subType: item/Karma_Flower_icon
 md-var-DialogueId: Karma_Flower
@@ -81,6 +90,7 @@ This is a hallucinogenic plant. They used to call it a 'Wheel Flower'. It became
 Very long ago, they would eat these and stare into the fire.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.DangleFruit }
 md-type: pearl
 md-subType: item/Blue_Fruit_icon
 md-var-DialogueId: Blue_Fruit
@@ -90,6 +100,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's the pupa of a bug! If you don't mind, I'm a bit squeamish things like that, so would you eat it up already?
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.FlareBomb }
 md-type: pearl
 md-subType: item/Flashbang_icon
 md-var-DialogueId: Flashbang
@@ -99,6 +110,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a part of some kind of plant. The glowing is strange... I wouldn't look directly into it.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.SporePlant }
 md-type: pearl
 md-subType: item/Spore_Puff_icon
 md-var-DialogueId: Spore_Puff
@@ -108,6 +120,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 The flowering body of some fungus. It has high pressure built up inside - when it explodes the spores will spread everywhere.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.JellyFish }
 md-type: pearl
 md-subType: item/Jellyfish_icon
 md-var-DialogueId: Jellyfish
@@ -117,6 +130,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 This is a jellyfish, look out for its stingers!
 
 === transcription: LttM-saint
+md-saveUnlock: global { item.Lantern }
 md-type: pearl
 md-subType: item/Lantern_icon
 md-var-DialogueId: Lantern
@@ -125,6 +139,7 @@ md-sourceDialogue: 31-saint.txt
 It appears to be... a pupa shell, smeared on the inside with a glowing substance? It's been mixed with fire powder for warmth. It's not much, but anything to escape the cold is welcome. The scavengers never cease to adapt, even in this weather!
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.Lantern }
 md-type: pearl
 md-subType: item/Lantern_icon
 md-var-DialogueId: Lantern
@@ -134,6 +149,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It appears to be... a pupa shell, smeared on the inside with a glowing substance? Perhaps a paste of some glowing insect? I honestly don't know.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.Mushroom }
 md-type: pearl
 md-subType: item/Mushroom_icon
 md-var-DialogueId: Mushroom
@@ -143,6 +159,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 Oh... Just don't eat too many of these.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.ScavengerBomb }
 md-type: pearl
 md-subType: item/Cherrybomb_icon
 md-var-DialogueId: Cherrybomb
@@ -152,6 +169,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a branch of a fire bush - each of these nuts can explode. It's unpleasant rather than dangerous, except to your ears perhaps.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.SlimeMold }
 md-type: pearl
 md-subType: item/Slime_Mold_icon
 md-var-DialogueId: Slime_Mold
@@ -161,6 +179,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 This is a slime mold plasmodium. Thank you, but I can't eat this.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.ScavengerBomb }
 md-type: pearl
 md-subType: item/Grenade_icon
 md-var-DialogueId: Grenade
@@ -170,6 +189,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's a lot of flammable powder stuffed into some kind of shell. I would be very careful around this!
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.BubbleGrass }
 md-type: pearl
 md-subType: item/Bubble_Weed_icon
 md-var-DialogueId: Bubble_Weed
@@ -180,6 +200,7 @@ It's a plant that keeps pressurised air in these globules.
 I'm not very familiar with contemporary flora, so I can't tell you much more.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.OverseerCarcass }
 md-type: pearl
 md-subType: item/Overseer_Eye_icon
 md-var-DialogueId: Overseer_Eye
@@ -194,6 +215,7 @@ The scavengers tend to hunt them, it's one of their very few ways of expressing 
 It's of course not completely impossible that there are a few left. Say hello if you see one.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.SpearmasterSpear }
 md-type: pearl
 md-subType: spearmaster
 md-var-DialogueId: Spearmaster_Needle
@@ -205,6 +227,7 @@ It's a sharp calcified object, with a hollow and narrow interior that runs the l
 I don't recognize this formation so it's an interesting specimen, I suppose.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.VultureMask }
 md-type: pearl
 md-subType: item/Chieftain_Scavenger_icon
 md-var-DialogueId: Chieftain_Scavenger_Mask
@@ -215,6 +238,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 This appears to be some kind of mask, heavily decorated and carved from a bone-like material. I bet the scavengers would love this!
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.VultureMask }
 md-type: pearl
 md-subType: item/Elite_Scavenger_icon
 md-var-DialogueId: Elite_Scavenger_Mask
@@ -226,6 +250,7 @@ I honestly can't tell what this is. It's light but strong... appears to be some 
 Perhaps an archaeological relic of some civilization's work? I wish I knew more, because this is likely a valuable find!
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.VultureMask }
 md-type: pearl
 md-subType: item/Vulture_Mask_icon
 md-var-DialogueId: Vulture_Mask
@@ -235,6 +260,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 I honestly can't tell what this is. It's light but strong... appears to be some composite material interwoven with bone. It could be part of an animal or purposed organism, but in my current state I'm unable to recognize it.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.Seed }
 md-type: pearl
 md-subType: item/Seed_icon
 md-var-DialogueId: Seed
@@ -245,6 +271,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 This is a seed-bearing structure detached from its host. However, its internals are ravaged by ice crystals, so it is unlikely to germinate.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.SingularityBomb }
 md-transcriberName: Throwing a Singularity Bomb
 md-subType: item/Singularity_Bomb_icon
 md-var-DialogueId: Singularity_Bomb
@@ -260,6 +287,7 @@ MONO
 |  WHY!? Why would you do something so dangerous!?
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.SingularityBomb }
 md-type: pearl
 md-subType: item/Singularity_Bomb_icon
 md-var-DialogueId: Singularity_Bomb
@@ -273,6 +301,7 @@ The energy trapped inside this is incredible, and while my facility is capable o
 I do not doubt you found this with the scavengers, somehow. While they may not understand the things they find, they have a natural inclination for combat. Using these as a weapon however, would be horribly foolish.
 
 === transcription: LttM-gourmand
+md-saveUnlock: global { item.FireEgg }
 md-type: pearl
 md-subType: item/Fire_Egg_icon
 md-var-DialogueId: Fire_Egg
@@ -285,6 +314,7 @@ It's a bit unbelieveable. A... creature like you procuring something like this w
 Ah, well, if it tells a good story then I won't question it too much~
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.FireEgg }
 md-type: pearl
 md-subType: item/Fire_Egg_icon
 md-var-DialogueId: Fire_Egg
@@ -298,6 +328,7 @@ While I would like to hold onto this for further research, I don't think it woul
 I would recommend you be very careful handling this, old friend!
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.OverseerCarcass }
 md-type: pearl
 md-subType: item/Inspector_Eye_icon
 md-var-DialogueId: Inspector_Eye
@@ -311,6 +342,7 @@ They also facilitate long distance communication within our living systems. And 
 I would hope this is not one of mine!
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.GooieDuck }
 md-type: pearl
 md-subType: item/Gooieduck_icon
 md-var-DialogueId: Gooieduck
@@ -321,6 +353,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 It's an ancient species of dangling mold. The spores they squirt out were said to have an overwhelming odor... I'd have to agree.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.LillyPuck }
 md-type: pearl
 md-subType: item/Lilypuck_icon
 md-var-DialogueId: Lilypuck
@@ -332,6 +365,7 @@ Oh... did you find this nearby? These flowers are a form of organic lighting for
 The roots are like a flexible glass cable. Be careful, they are quite sharp once broken!
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.GlowWeed }
 md-type: pearl
 md-subType: item/Glow_Weed_icon
 md-var-DialogueId: Glow_Weed
@@ -343,6 +377,7 @@ It's an edible plant. However, there is not much to eat as most of it is just pr
 The light it gives off is very pretty. The scavengers might like these.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.DandelionPeach }
 md-type: pearl
 md-subType: item/Dandelion_Peach_icon
 md-var-DialogueId: Dandelion_Peach
@@ -354,6 +389,7 @@ It's the fruit of a feathery plant. The body of it is filled with a sweet sticky
 It doesn't seem poisonous or hard to open, so it seems the plant's only defense is to float away when disturbed. However, I can only make guesses, as I have never seen these before.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.MoonCloak }
 md-type: pearl
 md-subType: item/Cloak_icon
 md-var-DialogueId: Cloak
@@ -371,6 +407,7 @@ There! how does that look? I think it actually fits quite well.
 Thank you, little creature.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.NeedleEgg }
 md-type: pearl
 md-subType: item/Noodlefly_Egg_icon
 md-var-DialogueId: Noodlefly_Egg
@@ -381,6 +418,7 @@ md-sourceDialogue: SLOracleBehaviorHasMark/AddEvents/Moon_Misc_Item.cs
 This appears to be some kind of egg. Nothing I am familiar with. I wonder what far away land you've brought this from! I can only imagine the trip.
 
 === transcription: LttM-post-collapse
+md-saveUnlock: global { item.SlugNPC } or global { item.Slugpup }
 md-type: pearl
 md-subType: item/Slugpup_icon
 md-var-DialogueId: Slugpup
@@ -397,6 +435,7 @@ MONO
 |  Do you have a little one with you?
 
 === transcription: LttM-rivulet
+md-saveUnlock: global { item.EnergyCell }
 md-type: pearl
 md-subType: item/Rarefaction_Cell_icon
 md-var-DialogueId: Rarefaction_Cell
@@ -414,6 +453,7 @@ You might be able to find an access shaft into my lower structure nearby, but I 
 Please be careful.
 
 === transcription: LttM-rivulet
+md-saveUnlock: any { lttm and hasMark }
 md-type: pearl
 md-subType: item/King_Vulture_icon
 md-var-DialogueId: Joke_Creatures

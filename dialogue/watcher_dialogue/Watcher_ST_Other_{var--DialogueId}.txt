@@ -4,6 +4,7 @@ tag: watcher
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_RIP1
+md-saveUnlock: watcher { stSpawn.1 }
 md-super-subType: wa-region/wara
 md-var-DialogueId: WARA
 md-name: Shattered Terrace (Ripple Warp)
@@ -18,6 +19,7 @@ Good! One less stinging idiot! OA! They prick at me so!
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_AU2
+md-saveUnlock: watcher { stSpawn.39 }
 md-super-subType: wa-region/waua
 md-var-DialogueId: toys
 md-name: Ancient Urban (Toys)
@@ -35,6 +37,7 @@ But I fear what is next.
 
 === transcription: spinning-top
 md-internalId: Ghost_ST_AU1
+md-saveUnlock: watcher { bath }
 md-super-subType: wa-region/waua
 md-var-DialogueId: WAUA
 md-name: Ancient Urban (Void Bath)

@@ -2,7 +2,7 @@
 
 import type * as React from "react"
 import { RwIconButton } from "./RwIconButton"
-import { RwIcon } from "../PearlGrid/RwIcon"
+import { RwAsset } from "./RwAsset"
 import { cn } from "@shadcn/lib/utils"
 
 interface RwCheckboxProps {
@@ -11,6 +11,7 @@ interface RwCheckboxProps {
     children: React.ReactNode
     className?: string
     disabled?: boolean
+    size?: 'default' | 'small' | 'xsmall'
 }
 
 export function RwCheckbox({
@@ -18,7 +19,8 @@ export function RwCheckbox({
                                onCheckedChange,
                                children,
                                className,
-                               disabled = false
+                               disabled = false,
+                               size = 'default',
                            }: RwCheckboxProps) {
 
     const handleToggle = () => {
@@ -30,15 +32,17 @@ export function RwCheckbox({
     return (
         <div
             className={cn(
-                "flex gap-4 items-center group select-none",
+                "flex items-center group select-none",
+                size === 'xsmall' ? "gap-2" : size === 'small' ? "gap-3" : "gap-4",
                 disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer",
                 className
             )}
             onClick={handleToggle}
         >
-            <div className={cn("transition-transform", !disabled && "group-hover:scale-105")}>
+            <div className={cn("transition-transform", !disabled && "group-hover:scale-105")} onClick={e => e.stopPropagation()}>
                 <RwIconButton
                     square={true}
+                    size={size}
                     selected={false}
                     onClick={() => {
                         handleToggle()
@@ -47,7 +51,7 @@ export function RwCheckbox({
                     className={cn(disabled ? "pointer-events-none" : "")}
                     aria-label={typeof children === 'string' ? children : "Toggle"}
                 >
-                    {checked && <RwIcon type="check" />}
+                    {checked && <RwAsset src="check" className={size === 'xsmall' ? 'w-3 h-3' : undefined} />}
                 </RwIconButton>
             </div>
 

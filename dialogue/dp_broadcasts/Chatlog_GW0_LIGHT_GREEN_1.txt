@@ -1,6 +1,7 @@
 internalId: Chatlog_GW0
 color: #cce370
 type: broadcast
+saveUnlock: global { broadcast.Chatlog_GW0 }
 name: Light Green 1
 map: region=GW, room=D01_PAST, mapSlugcat=spear
 tag: downpour

@@ -18,6 +18,10 @@ module.exports = {
     },
     extend: {
       colors: {
+        'rw-gold': {
+          DEFAULT: '#ecba00',
+          bright: '#ffd700',
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -67,14 +71,20 @@ module.exports = {
           to: { height: "0" },
         },
         'modded-pulse': {
-          '0, 100%': { opacity: 1 },
-          '50%': { opacity: .5 },
+          '0%, 100%': {
+            filter: 'drop-shadow(0 0 3px rgba(255,200,0,0.0))',
+            scale: '1',
+          },
+          '50%': {
+            filter: 'drop-shadow(0 0 7px rgba(255,200,0,0.5))',
+            scale: '1.05',
+          },
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        'modded-pulse': 'modded-pulse 2s ease-in-out infinite'
+        'modded-pulse': 'modded-pulse 2.5s ease-in-out infinite'
       },
     },
   },

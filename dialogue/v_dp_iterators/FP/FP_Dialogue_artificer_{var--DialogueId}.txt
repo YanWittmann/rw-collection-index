@@ -3,6 +3,7 @@ subType: artificer
 
 === transcription: FP-artificer
 md-type: pearl
+md-saveUnlock: Artificer { fp }
 md-var-DialogueId: First_encounter
 md-name: First encounter
 . . .
@@ -25,6 +26,7 @@ But unless you have something interesting to show or to bring to me, it is time 
 
 === transcription: FP-artificer
 md-type: pearl
+md-saveUnlock: Artificer { fp }
 md-var-DialogueId: Lingering_Too_Long
 md-name: Lingering Too Long
 Please leave.
@@ -37,6 +39,7 @@ I'm returning to my work. Unless you have anything productive for me, I have not
 
 === transcription: FP-artificer
 md-type: pearl
+md-saveUnlock: Artificer { fp >= 3 }
 md-var-DialogueId: Visiting_Multiple_Times
 md-name: Visiting Multiple Times
 md-sourceDialogue: none
@@ -46,6 +49,7 @@ MONO
 
 === transcription: FP-artificer
 md-type: pearl
+md-saveUnlock: Artificer { fp }
 md-var-DialogueId: Hitting_with_a_rock_or_spear
 md-name: Hitting with a rock or spear
 MONO
@@ -56,6 +60,7 @@ MONO
 
 === transcription: FP-artificer
 md-type: pearl
+md-saveUnlock: global { pearlSource.Artificer }
 md-var-DialogueId: Pebbles_Pearl
 md-name: Leaving as Pebbles reads
 MONO
@@ -67,6 +72,7 @@ MONO
 
 === transcription: FP-artificer
 md-type: pearl
+md-saveUnlock: global { pearlSource.Artificer }
 md-var-DialogueId: Pebbles_Pearl
 md-name: Giving a Pearl
 MONO
@@ -92,6 +98,7 @@ MONO
 
 === transcription: FP-artificer
 md-type: pearl
+md-saveUnlock: Artificer { altEnding }
 md-var-DialogueId: Killing_Chieftain_Scavenger
 md-name: Returning after killing the Chieftain Scavenger
  Ah, you've returned. You know that I care very little for the creatures that wander through my facility.

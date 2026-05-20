@@ -2,7 +2,7 @@ import { getSpeakerInfo } from "../../utils/speakers"
 import type { DialogueLine } from "../../types/types"
 import { renderDialogueLine, sanitizeHtmlSafe } from "../../utils/renderDialogueLine"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 
 interface DialogueContentProps {
     lines: DialogueLine[]
@@ -16,32 +16,29 @@ const highlightText = (text: string, searchText?: string) => {
     return text.replace(regex, '<mark class="bg-yellow-500/50 text-yellow-200">$1</mark>')
 }
 
+const CSHARP_KEYWORDS = [
+    "abstract", "as", "base", "bool", "break", "byte", "case", "catch",
+    "char", "checked", "class", "const", "continue", "decimal", "default",
+    "delegate", "do", "double", "else", "enum", "event", "explicit", "extern",
+    "false", "finally", "fixed", "float", "for", "foreach", "goto", "if",
+    "implicit", "in", "int", "interface", "internal", "is", "lock", "long",
+    "namespace", "new", "null", "object", "operator", "out", "override", "params",
+    "private", "protected", "public", "readonly", "ref", "return", "sbyte", "sealed",
+    "short", "sizeof", "stackalloc", "static", "string", "struct", "switch",
+    "throw", "true", "try", "typeof", "uint", "ulong", "unchecked", "unsafe", "ushort",
+    "using", "virtual", "void", "volatile", "while"
+];
+const CSHARP_SPECIAL_KEYWORDS = ["new", "var", "typeof", "nameof", "this"];
+const CSHARP_SYNTAX_REGEX = new RegExp(
+    `(\\/\\/.*|\\/\\*[\\s\\S]*?\\*\\/)|(".*?(?<!\\\\)")|(\\b\\d+\\.?\\d*\\b)|` +
+    `\\b([A-Z]\\w*)(?=\\s*\\()|\\b(${CSHARP_SPECIAL_KEYWORDS.join('|')})\\b|(\\b(?:${CSHARP_KEYWORDS.join('|')})\\b)`,
+    'g'
+);
+
 const highlightCSharp = (code: string) => {
     const sanitized = sanitizeHtmlSafe(code);
-    const keywords = [
-        "abstract", "as", "base", "bool", "break", "byte", "case", "catch",
-        "char", "checked", "class", "const", "continue", "decimal", "default",
-        "delegate", "do", "double", "else", "enum", "event", "explicit", "extern",
-        "false", "finally", "fixed", "float", "for", "foreach", "goto", "if",
-        "implicit", "in", "int", "interface", "internal", "is", "lock", "long",
-        "namespace", "new", "null", "object", "operator", "out", "override", "params",
-        "private", "protected", "public", "readonly", "ref", "return", "sbyte", "sealed",
-        "short", "sizeof", "stackalloc", "static", "string", "struct", "switch",
-        "throw", "true", "try", "typeof", "uint", "ulong", "unchecked", "unsafe", "ushort",
-        "using", "virtual", "void", "volatile", "while"
-    ];
 
-    const specialKeywords = ["new", "var", "typeof", "nameof", "this"];
-    const keywordPattern = keywords.join('|');
-    const specialPattern = specialKeywords.join('|');
-
-    const syntaxRegex = new RegExp(
-        `(\\/\\/.*|\\/\\*[\\s\\S]*?\\*\\/)|(".*?(?<!\\\\)")|(\\b\\d+\\.?\\d*\\b)|` +
-        `\\b([A-Z]\\w*)(?=\\s*\\()|\\b(${specialPattern})\\b|(\\b(?:${keywordPattern})\\b)`,
-        'g'
-    );
-
-    return sanitized.replace(syntaxRegex, (...matches) => {
+    return sanitized.replace(CSHARP_SYNTAX_REGEX, (...matches) => {
         const [, comment, string, number, method, specialKeyword, keyword] = matches;
         if (comment) return `<span class="text-gray-400">${comment}</span>`;
         if (string) return `<span class="text-green-400">${string}</span>`;
@@ -146,29 +143,17 @@ const parseMediaDetails = (text?: string) => {
 const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attributes?: { [key: string]: string } }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isHovering, setIsHovering] = useState(false);
-    const [dimensions, setDimensions] = useState<{ width: number, height: number } | null>(null);
+    const rafRef = useRef<number | null>(null);
 
     if (currentIndex !== 0 && currentIndex >= frames.length) {
         setCurrentIndex(0);
     }
 
-    const currentFrameDetails = parseMediaDetails(frames[currentIndex]?.text);
+    const currentFrameDetails = useMemo(
+        () => parseMediaDetails(frames[currentIndex]?.text),
+        [frames, currentIndex]
+    );
 
-    useEffect(() => {
-        if (!currentFrameDetails || currentFrameDetails.type !== 'image' || currentFrameDetails.style !== 'rounded') {
-            return;
-        }
-
-        const img = new Image();
-        img.src = `img/${currentFrameDetails.path}`;
-        img.onload = () => {
-            setDimensions({ width: img.naturalWidth, height: img.naturalHeight });
-        };
-        img.onerror = () => {
-            console.error("Failed to load image for dimension calculation:", `img/${currentFrameDetails.path}`);
-            setDimensions(null);
-        };
-    }, [currentFrameDetails]);
 
     useEffect(() => {
         if (frames.length <= 1 || isHovering) return;
@@ -186,12 +171,16 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
 
     const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
         if (frames.length <= 1) return;
+        if (rafRef.current !== null) return;
+        const clientX = e.clientX;
         const rect = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const width = rect.width;
-        const percent = Math.max(0, Math.min(1, x / width));
-        const frameIndex = Math.min(frames.length - 1, Math.floor(percent * frames.length));
-        setCurrentIndex(frameIndex);
+        rafRef.current = requestAnimationFrame(() => {
+            rafRef.current = null;
+            const x = clientX - rect.left;
+            const percent = Math.max(0, Math.min(1, x / rect.width));
+            const frameIndex = Math.min(frames.length - 1, Math.floor(percent * frames.length));
+            setCurrentIndex(frameIndex);
+        });
     };
 
     if (!currentFrameDetails || currentFrameDetails.type !== 'image') return null;
@@ -202,7 +191,8 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
 
     if (frames.length > 1 && isHovering) {
         const frameNumber = currentIndex + 1;
-        captionText = alt ? `${alt} (${frameNumber})` : `${frameNumber}`;
+        const frameLabel = `${frameNumber} / ${frames.length}`;
+        captionText = alt ? `${alt} (${frameLabel})` : frameLabel;
     } else {
         captionText = alt;
     }
@@ -213,18 +203,15 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
 
     if (style === 'rounded') {
         const featherGradient = 'radial-gradient(ellipse, black 50%, transparent 70%)';
-        const divStyles: React.CSSProperties = {
+        const imgStyles: React.CSSProperties = {
             ...imageStyles,
             width: '100%',
             height: 'auto',
-            aspectRatio: dimensions ? `${dimensions.width} / ${dimensions.height}` : '1 / 1',
-            backgroundImage: `url(img/${path})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
             maskImage: featherGradient,
             WebkitMaskImage: featherGradient,
+            willChange: 'mask-image',
         };
-        imageElement = <div style={divStyles} role="img" aria-label={alt}></div>;
+        imageElement = <img src={`img/${path}`} alt={alt} style={imgStyles}/>;
     } else {
         imageElement = <img src={`img/${path}`} alt={alt} style={imageStyles} className="w-full h-auto rounded-md"/>;
     }
@@ -265,56 +252,64 @@ const AudioRenderer = ({ path, alt }: { path: string, alt: string }) => {
 
 
 export function DialogueContent({ lines, searchText }: DialogueContentProps) {
-    if (lines.length === 0) return null;
+    const { processedContent, preloadImagePaths, displayType } = useMemo(() => {
+        if (lines.length === 0) {
+            return { processedContent: [], preloadImagePaths: new Set<string>(), displayType: "centered" as const };
+        }
 
-    const clonedLines = JSON.parse(JSON.stringify(lines)) as DialogueLine[];
-    const firstLine = clonedLines[0];
-    const isMonoMode = firstLine.text === "MONO";
-    const isSourceCode = clonedLines.some(line =>
-        line.text.includes("public void") || line.text.includes("if (") ||
-        line.text.includes("namespace ")
-    );
+        const clonedLines = JSON.parse(JSON.stringify(lines)) as DialogueLine[];
+        const firstLine = clonedLines[0];
+        const isMonoMode = firstLine.text === "MONO";
+        const isSourceCode = clonedLines.some(line =>
+            line.text.includes("public void") || line.text.includes("if (") ||
+            line.text.includes("namespace ")
+        );
 
-    const displayType = isMonoMode ? "mono" : isSourceCode ? "source-code" : "centered";
-    if (isMonoMode) clonedLines.shift();
+        const displayType = isMonoMode ? "mono" : isSourceCode ? "source-code" : "centered";
+        if (isMonoMode) clonedLines.shift();
 
-    const processedContent: (DialogueLine | {
-        type: 'sequence';
-        frames: DialogueLine[];
-        attributes: { [key: string]: string }
-    })[] = [];
-    const preloadImagePaths = new Set<string>();
+        const processedContent: (DialogueLine | {
+            type: 'sequence';
+            frames: DialogueLine[];
+            attributes: { [key: string]: string }
+        })[] = [];
+        const preloadImagePaths = new Set<string>();
 
-    let i = 0;
-    while (i < clonedLines.length) {
-        const line = clonedLines[i];
-        if (line.text.trim().startsWith('SEQUENCE')) {
-            const attributes = parseAttributes(line.text);
-            const sequenceFrames: DialogueLine[] = [];
-            let j = i + 1;
-            while (j < clonedLines.length) {
-                const mediaDetails = parseMediaDetails(clonedLines[j].text);
-                if (mediaDetails?.type !== 'image') break; // Sequences only support images
+        let i = 0;
+        while (i < clonedLines.length) {
+            const line = clonedLines[i];
+            if (line.text.trim().startsWith('SEQUENCE')) {
+                const attributes = parseAttributes(line.text);
+                const sequenceFrames: DialogueLine[] = [];
+                let j = i + 1;
+                while (j < clonedLines.length) {
+                    const mediaDetails = parseMediaDetails(clonedLines[j].text);
+                    if (mediaDetails?.type !== 'image') break; // Sequences only support images
 
-                preloadImagePaths.add(mediaDetails.path);
-                sequenceFrames.push(clonedLines[j]);
-                j++;
-            }
-            if (sequenceFrames.length > 0) {
-                processedContent.push({ type: 'sequence', frames: sequenceFrames, attributes });
-                i = j;
+                    preloadImagePaths.add(mediaDetails.path);
+                    sequenceFrames.push(clonedLines[j]);
+                    j++;
+                }
+                if (sequenceFrames.length > 0) {
+                    processedContent.push({ type: 'sequence', frames: sequenceFrames, attributes });
+                    i = j;
+                } else {
+                    i++;
+                }
             } else {
+                const mediaDetails = parseMediaDetails(line.text);
+                if (mediaDetails?.type === 'image') {
+                    preloadImagePaths.add(mediaDetails.path);
+                }
+                processedContent.push(line);
                 i++;
             }
-        } else {
-            const mediaDetails = parseMediaDetails(line.text);
-            if (mediaDetails?.type === 'image') {
-                preloadImagePaths.add(mediaDetails.path);
-            }
-            processedContent.push(line);
-            i++;
         }
-    }
+
+        return { processedContent, preloadImagePaths, displayType };
+    }, [lines, searchText]);
+
+    if (lines.length === 0) return null;
 
     return (
         <main className="space-y-3 pb-6">

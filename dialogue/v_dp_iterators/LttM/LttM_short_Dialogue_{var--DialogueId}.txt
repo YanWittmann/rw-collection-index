@@ -4,6 +4,7 @@ subType: survivor
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: If Looks to the Moon is not on speaking terms with Slugcat
+md-saveUnlock: any { lttmMark >= 1 and lttmDiscussedObject }
 md-var-DialogueId: Receiving_an_object
 md-name: If Looks to the Moon is not on speaking terms with Slugcat
 MONO
@@ -32,8 +33,10 @@ MONO
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: If Looks to the Moon is on speaking terms with Slugcat
+md-saveUnlock: any { lttmMark >= 1 and lttmDiscussedObject }
 md-var-DialogueId: Receiving_an_object
 md-name: Receiving an object
+md-super-name: Receiving an object
 MONO
 / First time
 |  What is that ?
@@ -79,6 +82,7 @@ MONO
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: Other object
+md-saveUnlock: any { lttmMark >= 1 and lttmDiscussedObject }
 md-var-DialogueId: Commenting_already_discussed_object
 md-name: Commenting on an already discussed object
 md-tag: downpour
@@ -91,6 +95,7 @@ MONO
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: Pearl
+md-saveUnlock: any { lttmMark >= 1 and lttmReadPearl }
 md-var-DialogueId: Commenting_already_discussed_object
 md-name: Commenting on an already discussed object
 md-sourceDialogue: none
@@ -102,6 +107,7 @@ MONO
 
 === transcription: LttM-post-collapse
 md-type: pearl
+md-saveUnlock: any { lttmMark >= 1 and lttmDiscussedObject } or any { lttmMark >= 1 and lttmReadPearl }
 md-var-DialogueId: Take_back_while_commenting
 md-name: When Slugcat takes back an object while Moon is commenting on it
 md-sourceDialogue: none
@@ -127,6 +133,7 @@ md-super-type: pearl
 md-super-color: #ff7a02
 md-type: pearl
 md-transcriberName: Five Pebbles' pearls
+md-saveUnlock: any { lttmMark >= 1 and lttmReadPearl }
 md-var-DialogueId: Receiving_a_pearl
 md-name: Receiving a pearl
 md-info: See Pearl Dialogue for the contents of the pearls.
@@ -146,6 +153,7 @@ MONO
 md-super-type: pearl
 md-type: pearl
 md-transcriberName: Miscellaneous & colored pearls
+md-saveUnlock: any { lttmMark >= 1 and lttmReadPearl }
 md-var-DialogueId: Receiving_a_pearl
 md-name: Receiving a pearl
 md-info: See Pearl Dialogue for the contents of the pearls.
@@ -172,6 +180,7 @@ MONO
 === transcription: LttM-post-collapse
 md-super-subType: item/Neuron_Fly_icon
 md-type: pearl
+md-saveUnlock: any { lttmMark >= 1 and lttmNeuronsGiven >= 1 }
 md-var-DialogueId: Seeing_Slugcat_bringing_a_Neuron_Fly
 md-name: Seeing Slugcat bringing a Neuron Fly
 md-sourceDialogue: none
@@ -199,6 +208,7 @@ MONO
 === transcription: LttM-rivulet
 md-super-subType: item/Neuron_Fly_icon
 md-type: pearl
+md-saveUnlock: Rivulet { lttmNeuronsGiven >= 1 }
 md-var-DialogueId: Receiving_Neuron_Fly
 md-name: Receiving a Neuron Fly
 md-sourceDialogue: none
@@ -220,6 +230,7 @@ MONO
 === transcription: LttM-post-collapse
 md-super-subType: item/Neuron_Fly_icon
 md-type: pearl
+md-saveUnlock: any { lttmNeuronsGiven >= 1 }
 md-var-DialogueId: Receiving_Neuron_Fly
 md-name: Receiving a Neuron Fly
 md-sourceDialogue: 45.txt
@@ -278,6 +289,7 @@ MONO
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: Interrupted by Slugcat grabbing a neuron
+md-saveUnlock: any { lttmMark >= 1 }
 md-var-DialogueId: Interruptions
 md-name: Interruptions
 md-sourceDialogue: none
@@ -315,6 +327,7 @@ MONO
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: Interrupted by Slugcat jumping/moving around
+md-saveUnlock: any { lttmMark >= 1 }
 md-var-DialogueId: Interruptions
 md-name: Interruptions
 md-sourceDialogue: none
@@ -351,6 +364,7 @@ MONO
 === transcription: LttM-post-collapse
 md-type: pearl
 md-transcriberName: Interrupted by Slugcat leaving
+md-saveUnlock: any { lttmMark >= 1 }
 md-var-DialogueId: Interruptions
 md-name: Interruptions
 md-sourceDialogue: none
@@ -409,6 +423,7 @@ MONO
 
 === transcription: LttM-post-collapse
 md-type: pearl
+md-saveUnlock: any { lttmMark >= 1 }
 md-var-DialogueId: Resuming_conversation_interruption
 md-name: Resuming conversation after an interruption
 md-sourceDialogue: none
@@ -472,6 +487,7 @@ MONO
 
 === transcription: LttM-post-collapse
 md-type: pearl
+md-saveUnlock: any { lttmMark >= 1 }
 md-var-DialogueId: Annoyed_Jumping
 md-name: Annoyed by Slugcat jumping/moving around
 md-sourceDialogue: none
@@ -508,6 +524,7 @@ MONO
 
 === transcription: LttM-post-collapse
 md-type: pearl
+md-saveUnlock: any { lttmMark >= 1 }
 md-var-DialogueId: Rain_Coming
 md-name: When rain comes
 md-sourceDialogue: none
@@ -539,6 +556,7 @@ MONO
 === transcription: LttM-post-collapse
 md-super-subType: item/Karma_Flower_icon
 md-type: pearl
+md-saveUnlock: any { lttmMark >= 1 }
 md-var-DialogueId: Slugcat_Death
 md-name: If Slugcat dies
 md-tag: downpour
