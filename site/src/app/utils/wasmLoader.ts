@@ -11,7 +11,7 @@ export function loadWasm(): Promise<void> {
             resolve();
         }, { once: true });
         const script = document.createElement('script');
-        script.src = '/wasm/rw-save-file-editor.js';
+        script.src = process.env.PUBLIC_URL + '/wasm/rw-save-file-editor.js';
         script.onerror = () => {
             clearTimeout(timeout);
             reject(new Error('Failed to load WASM script'));

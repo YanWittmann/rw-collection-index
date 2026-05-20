@@ -103,56 +103,56 @@
     </style>
 
     <script>
-        function updateCanonicalTag() {
-            // remove existing canonical tag if present
-            const existingCanonical = document.querySelector('link[rel="canonical"]');
-            if (existingCanonical) {
-                existingCanonical.remove();
-            }
-
-            const params = new URLSearchParams(window.location.search);
-            let canonicalUrl = window.location.origin + window.location.pathname;
-
-            // only include meaningful parameters in canonical URL
-            const meaningfulParams = ['item'];
-            const canonicalParams = {};
-            for (const param of meaningfulParams) {
-                if (params.has(param)) {
-                    canonicalParams[param] = params.get(param);
+        (function() {
+            function updateCanonicalTag() {
+                const existingCanonical = document.querySelector('link[rel="canonical"]');
+                if (existingCanonical) {
+                    existingCanonical.remove();
                 }
+
+                const params = new URLSearchParams(window.location.search);
+                let canonicalUrl = window.location.origin + window.location.pathname;
+
+                const meaningfulParams = ['item'];
+                const canonicalParams = {};
+                for (const param of meaningfulParams) {
+                    if (params.has(param)) {
+                        canonicalParams[param] = params.get(param);
+                    }
+                }
+
+                const canonicalSearchParams = new URLSearchParams();
+                for (const [key, value] of Object.entries(canonicalParams)) {
+                    canonicalSearchParams.set(key, value);
+                }
+
+                if (canonicalSearchParams.toString()) {
+                    canonicalUrl += '?' + canonicalSearchParams.toString();
+                }
+
+                const canonicalLink = document.createElement('link');
+                canonicalLink.rel = 'canonical';
+                canonicalLink.href = canonicalUrl;
+                document.head.appendChild(canonicalLink);
             }
 
-            const canonicalSearchParams = new URLSearchParams();
-            for (const [key, value] of Object.entries(canonicalParams)) {
-                canonicalSearchParams.set(key, value);
-            }
-
-            if (canonicalSearchParams.toString()) {
-                canonicalUrl += '?' + canonicalSearchParams.toString();
-            }
-
-            const canonicalLink = document.createElement('link');
-            canonicalLink.rel = 'canonical';
-            canonicalLink.href = canonicalUrl;
-            document.head.appendChild(canonicalLink);
-        }
-
-        updateCanonicalTag();
-
-        const originalPushState = history.pushState;
-        const originalReplaceState = history.replaceState;
-
-        history.pushState = function () {
-            originalPushState.apply(history, arguments);
             updateCanonicalTag();
-        };
 
-        history.replaceState = function () {
-            originalReplaceState.apply(history, arguments);
-            updateCanonicalTag();
-        };
+            const originalPushState = history.pushState;
+            const originalReplaceState = history.replaceState;
 
-        window.addEventListener('popstate', updateCanonicalTag);
+            history.pushState = function () {
+                originalPushState.apply(history, arguments);
+                updateCanonicalTag();
+            };
+
+            history.replaceState = function () {
+                originalReplaceState.apply(history, arguments);
+                updateCanonicalTag();
+            };
+
+            window.addEventListener('popstate', updateCanonicalTag);
+        })();
     </script>
 </head>
 <body class="overflow-y-hidden">
