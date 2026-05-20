@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
 import { Dialogue, Hint, MapInfo, PearlData } from "../../types/types";
 import { RwIconButton } from "../other/RwIconButton";
-import { getRegion, getSpeakerDef } from "../../utils/speakers";
+import { getRegion, getSpeakerDef, resolveVariables } from "../../utils/speakers";
+import { renderDialogueLine } from "../../utils/renderDialogueLine";
 import { generateMapLinkFromMapInfo } from "../../utils/mapUtils";
 import { MapLocationPopover } from "../map/MapLocationPopover";
 import { findPearlCategory, PEARL_ORDER_CONFIGS } from "../../utils/pearlOrder";
@@ -69,6 +70,17 @@ export default function HintSystemContent({ pearl, unlockTranscription, transcri
         }
 
         hints.push(...pearl.hints);
+
+        const info = transcriberData.metadata.info;
+        if (info) {
+            hints.push({ name: "Entry Info", lines: resolveVariables(info).split("\\n") });
+        }
+
+        const mapInfo = transcriberData.metadata.mapInfo;
+        if (mapInfo) {
+            hints.push({ name: "Map Info", lines: resolveVariables(mapInfo).split("\\n") });
+        }
+
         return hints;
     }, [pearl, transcriberData, activeOrderConfig]);
 
@@ -102,7 +114,7 @@ export default function HintSystemContent({ pearl, unlockTranscription, transcri
         if (line.startsWith("http")) {
             return <a href={line} target="_blank" rel="noreferrer" className="text-blue-400 underline">{line}</a>;
         }
-        return line;
+        return <span dangerouslySetInnerHTML={{ __html: renderDialogueLine(line) }} />;
     };
 
     const iconType = pearl.metadata.type === 'item' ? (pearl.metadata.subType || 'pearl') : pearl.metadata.type;

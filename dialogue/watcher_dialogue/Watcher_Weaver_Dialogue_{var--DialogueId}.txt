@@ -1,6 +1,47 @@
 type: item
 subType: void-weaver
 tag: watcher
+map: region=WARA, room=E08, mapSlugcat=watcher
+map: region=WARB, room=B41, mapSlugcat=watcher
+map: region=WARB, room=H13, mapSlugcat=watcher
+map: region=WARC, room=A06, mapSlugcat=watcher
+map: region=WARD, room=E11, mapSlugcat=watcher
+map: region=WARD, room=R11, mapSlugcat=watcher
+map: region=WARE, room=H06, mapSlugcat=watcher
+map: region=WARE, room=H11, mapSlugcat=watcher
+map: region=WARF, room=A04, mapSlugcat=watcher
+map: region=WARF, room=B06, mapSlugcat=watcher
+map: region=WARF, room=D08, mapSlugcat=watcher
+map: region=WARG, room=A05_FUTURE, mapSlugcat=watcher
+map: region=WARG, room=G21, mapSlugcat=watcher
+map: region=WARG, room=W04, mapSlugcat=watcher
+map: region=WBLA, room=C03, mapSlugcat=watcher
+map: region=WMPA, room=B01, mapSlugcat=watcher
+map: region=WPGA, room=C01, mapSlugcat=watcher
+map: region=WPTA, room=A02, mapSlugcat=watcher
+map: region=WRFA, room=C04, mapSlugcat=watcher
+map: region=WRFA, room=F02, mapSlugcat=watcher
+map: region=WRFA, room=F05, mapSlugcat=watcher
+map: region=WRFB, room=D09, mapSlugcat=watcher
+map: region=WRFB, room=D10, mapSlugcat=watcher
+map: region=WRRA, room=C01, mapSlugcat=watcher
+map: region=WRRA, room=D03, mapSlugcat=watcher
+map: region=WSKA, room=D19, mapSlugcat=watcher
+map: region=WSKA, room=N01, mapSlugcat=watcher
+map: region=WSKB, room=C05, mapSlugcat=watcher
+map: region=WSKB, room=N03, mapSlugcat=watcher
+map: region=WSKC, room=A06, mapSlugcat=watcher
+map: region=WSKC, room=A19, mapSlugcat=watcher
+map: region=WSKD, room=B10, mapSlugcat=watcher
+map: region=WSKD, room=B36, mapSlugcat=watcher
+map: region=WTDA, room=B04, mapSlugcat=watcher
+map: region=WTDA, room=Z09, mapSlugcat=watcher
+map: region=WTDB, room=A11, mapSlugcat=watcher
+map: region=WTDB, room=A20, mapSlugcat=watcher
+map: region=WVWA, room=F01, mapSlugcat=watcher
+map: region=WVWB, room=F01, mapSlugcat=watcher
+mapInfo: There are many rooms that the weaver can appear in. Each region may have several candidate rooms, but only one of them is chosen as the active target each cycle, the game picks whichever is easiest to reach from your current location.
+info: A Void Weaver encounter can only happen in a region where you have already discovered at least one two-way, time-limited warp point that has not yet hosted an encounter, and whose destination warp has not hosted one either.\nThis is to say: open a portal yourself using a karma flower, and wait for the void weaver to close it.\nWhen this condition is met, go to one of the closed portals and enter ripple space, where you can find a trail that draws you toward the weaver.\nOnly one encounter can happen per cycle, regardless of how many eligible regions you are in.\nThe encounter advances a counter from 0 to 4: each step unlocks the next dialogue (encounters 1 through 4 in order).\nOnce you have seen all 4 encounters the Void Weaver ability is unlocked, no further encounters occur, and the game instead begins guiding you toward the ending room.
 
 === transcription: void-weaver
 md-saveUnlock: watcher { weaver >= 1 }
