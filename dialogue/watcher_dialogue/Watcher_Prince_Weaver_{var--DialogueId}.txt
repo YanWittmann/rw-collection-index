@@ -3,7 +3,7 @@ subType: rot-prince-weaver
 tag: watcher
 
 === transcription: rot-prince-weaver
-md-saveUnlock: watcher { weaverAck }
+md-saveUnlock: watcher { weaverProg >= 1 }
 md-type: pearl
 md-internalId: Prince_Weaver_1
 md-var-DialogueId: Prince_Weaver_1
@@ -19,7 +19,7 @@ How wonderous you are, to me.
 Alpha and Omega.
 
 === transcription: rot-prince-weaver
-md-saveUnlock: watcher { weaverProg >= 1 }
+md-saveUnlock: watcher { weaverProg >= 2 }
 md-type: pearl
 md-internalId: Prince_Weaver_2
 md-var-DialogueId: Prince_Weaver_2

@@ -15,7 +15,6 @@ export interface WatcherState {
     highestPrinceConversationSeen: number;
     numberOfPrinceEncounters: number;
     numberOfVoidWeaverEncounters: number;
-    princeWeaverGrowthAcknowledgement: number;
     princeWeaverDialogProgression: number;
     rotInfectedRegionCount: number;
     physicalPearlTypes: Set<string>;
@@ -160,7 +159,6 @@ function buildWatcherState(record: SaveStateRecord): WatcherState {
         highestPrinceConversationSeen:     mwdIW[12] ?? 0,
         numberOfPrinceEncounters:          mwdIW[6] ?? 0,
         numberOfVoidWeaverEncounters:      mwdIW[4] ?? 0,
-        princeWeaverGrowthAcknowledgement: mwdIW[14] ?? 0,
         princeWeaverDialogProgression:     mwdIW[13] ?? 0,
         rotInfectedRegionCount:            state.miscWorldData?.rotSpreadRegions?.length ?? 0,
         physicalPearlTypes:                collectPhysicalPearlTypes(record),

@@ -38,10 +38,6 @@ function applyOp(actual: number, op: string, expected: number): boolean {
     }
 }
 
-function scopeLabel(scope: ScopeInfo): string {
-    return scope.kind === 'named' ? `named:${scope.slugcat}` : scope.kind;
-}
-
 // ---- condition evaluators per scope ----
 
 function evalConditionNamed(ctx: ConditionContext, slugcat: string, c: SaveCollectibles, log?: Log): boolean {
@@ -133,7 +129,6 @@ function evalConditionWatcher(ctx: ConditionContext, c: SaveCollectibles, log?: 
         switch (field) {
             case 'rot':         result = ws?.spinningTopRot ?? false; break;
             case 'bath':        result = ws?.visitBath ?? false; break;
-            case 'weaverAck':   result = (ws?.princeWeaverGrowthAcknowledgement ?? 0) === 1; break;
             case 'beaten':      result = c.watcherGlobal.beaten; break;
             case 'beatenST':    result = c.watcherGlobal.beatenSpinningTop; break;
             case 'beatenRot':   result = c.watcherGlobal.beatenSentientRot; break;
