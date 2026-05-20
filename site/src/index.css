@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes karma-aura {
+  0%, 100% {
+    transform: scale(0.88);
+    filter: sepia(0.7) hue-rotate(-20deg) brightness(0.65) drop-shadow(0 0 2px rgba(255,180,60,0));
+  }
+  50% {
+    transform: scale(1.03);
+    filter: sepia(0) hue-rotate(0deg) brightness(1.15) drop-shadow(0 0 14px rgba(255,240,200,0.95));
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

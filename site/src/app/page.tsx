@@ -4,7 +4,7 @@ import React, { Suspense, useEffect, useMemo, useState } from 'react';
 import { PearlData } from "./types/types";
 import { useIsMobile } from './hooks/useIsMobile';
 import { orderPearls, PEARL_ORDER_CONFIGS } from './utils/pearlOrder';
-import { LoadingSpinner } from './components/LoadingSpinner';
+import { KarmaSpinner } from './components/KarmaSpinner';
 import { AppProvider, useAppContext } from './context/AppContext';
 import { useUrlSync } from './hooks/useUrlSync';
 import { cn } from '@shadcn/lib/utils';
@@ -157,27 +157,19 @@ const Content: React.FC<{ orderer: (pearls: PearlData[]) => any }> = ({ orderer 
 
     }, [selectedPearlData]);
 
-    const pearlGridComponent = (
-        <Suspense fallback={<LoadingSpinner/>}>
-            <PearlGrid order={orderer}/>
-        </Suspense>
-    );
-
-    const dialogueBoxComponent = (
-        <Suspense fallback={<LoadingSpinner/>}>
-            <DialogueBox/>
-        </Suspense>
-    );
-
     if (isMobile) {
         return (
             <>
                 <div className="w-full h-full" style={selectedPearlId ? { display: "none" } : {}}>
-                    {pearlGridComponent}
+                    <Suspense fallback={<KarmaSpinner/>}>
+                        <PearlGrid order={orderer}/>
+                    </Suspense>
                 </div>
                 {selectedPearlId && (
                     <div className="w-full h-full">
-                        {dialogueBoxComponent}
+                        <Suspense fallback={<KarmaSpinner/>}>
+                            <DialogueBox/>
+                        </Suspense>
                     </div>
                 )}
             </>
@@ -185,10 +177,12 @@ const Content: React.FC<{ orderer: (pearls: PearlData[]) => any }> = ({ orderer 
     }
 
     return (
-        <div className="flex flex-row gap-5 h-full w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
-            {pearlGridComponent}
-            {dialogueBoxComponent}
-        </div>
+        <Suspense fallback={<KarmaSpinner/>}>
+            <div className="flex flex-row gap-5 h-full w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
+                <PearlGrid order={orderer}/>
+                <DialogueBox/>
+            </div>
+        </Suspense>
     );
 };
 
@@ -264,7 +258,7 @@ export default function DialogueInterface() {
                     </div>
                 ) : isLoading ? (
                     <div className="flex items-center justify-center h-full min-h-[50vh]">
-                        <LoadingSpinner/>
+                        <KarmaSpinner/>
                     </div>
                 ) : (
                     <AppProvider pearls={pearls} sourceData={sourceData} datasetKey={datasetKey} isMobile={isMobile}>

@@ -9,7 +9,7 @@ import { getRegion } from "../../utils/speakers";
 import { useAppContext } from "../../context/AppContext";
 import { RwScrollableList, RwScrollableListEntry, RwScrollableListItem } from "../other/RwScrollableList";
 import { RwCheckbox } from "../other/RwCheckbox";
-import { LoadingSpinner } from "../LoadingSpinner";
+import { KarmaSpinner } from "../KarmaSpinner";
 import { cn } from "@shadcn/lib/utils";
 import { ensureMinLightness } from "../../utils/colorUtils";
 
@@ -114,7 +114,7 @@ export function MapModal({ locations, onClose, onDisablePreview }: MapModalProps
                 />
                 {!iframeLoaded && (
                     <div className="absolute inset-0 flex items-center justify-center bg-black">
-                        <LoadingSpinner />
+                        <KarmaSpinner />
                     </div>
                 )}
             </div>
