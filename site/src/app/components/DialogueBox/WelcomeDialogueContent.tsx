@@ -5,6 +5,7 @@ import { RwIconButton } from "../other/RwIconButton"
 import UnlockManager from "../../utils/unlockManager"
 import { useAppContext } from "../../context/AppContext";
 import { SaveFileUpload } from "../SaveFileUpload/SaveFileUpload";
+import { TitleSection } from "./TitleSection";
 
 async function buildIssueUrl(data: Map<string, Set<string>>): Promise<string> {
     const groupPrefixes = [
@@ -94,6 +95,7 @@ async function buildIssueUrl(data: Map<string, Set<string>>): Promise<string> {
     return `https://github.com/YanWittmann/rw-collection-index/issues/new?${params.toString()}`;
 }
 
+
 export function WelcomeDialogueContent() {
     const { unlockMode, setUnlockMode, datasetKey, saveFound } = useAppContext();
     const [issueUrl, setIssueUrl] = useState<string | null>(null);
@@ -134,15 +136,7 @@ export function WelcomeDialogueContent() {
                     />
                 </div>
                 <div className="col-start-1 row-start-1 z-10 flex flex-col items-center">
-                    <h1 className="text-5xl rw-title-font">Rain World</h1>
-                    <div className="relative inline-block mt-4 mb-8">
-                        <h1 className="text-[2rem] rw-title-font">Collection Index</h1>
-                        {datasetKey === 'modded' && (
-                            <div className="rw-title-font absolute -bottom-6 -right-12 transform -rotate-[0.25rad] text-rw-gold font-bold text-2xl uppercase tracking-widest animate-[modded-pulse_2.2s_cubic-bezier(0.45,0,0.55,1)_infinite]">
-                                Modded!
-                            </div>
-                        )}
-                    </div>
+                    <TitleSection showModded={datasetKey === 'modded'} />
                     <div className="text-xl">Select any pearl or broadcast to view its content.</div>
                 </div>
             </div>
