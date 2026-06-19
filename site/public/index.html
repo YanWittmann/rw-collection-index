@@ -4,20 +4,49 @@
     <meta charset="utf-8"/>
 
     <script>
+        // Decide which dataset to load from the URL PATH (e.g. /modded/...), with a
+        // legacy ?d= fallback. This runs before the bundle so data fetches start ASAP.
+        // RW_DATASETS is the build-injected mirror of src/app/routing/datasets.js;
+        // the literal below is the dev fallback and is overwritten at build time.
         (function() {
-            let params = new URLSearchParams(window.location.search);
-            let isModded = params.get('d') === 'modded';
-            let suffix = isModded ? '-modded' : '';
-            let baseUrl = '%PUBLIC_URL%';
-            if (baseUrl.endsWith('/')) baseUrl = baseUrl.slice(0, -1);
+            var base = '%PUBLIC_URL%';
+            if (base.endsWith('/')) base = base.slice(0, -1);
 
-            window.__RW_DATA_KEY__ = isModded ? 'modded' : 'vanilla';
+            // In the built site this comes from window.__RW_DATASETS__, injected by generate-routes.ts from src/app/routing/datasets.js.
+            // The literal below is the dev (craco start) fallback.
+            var RW_DATASETS = window.__RW_DATASETS__ || [{ "prefix": "", "key": "vanilla", "suffix": "" }, { "prefix": "modded", "key": "modded", "suffix": "-modded" }];
+
+            var rel = window.location.pathname;
+            if (base && rel.indexOf(base) === 0) rel = rel.slice(base.length);
+            var segments = rel.split('/').filter(Boolean).map(decodeURIComponent);
+            var params = new URLSearchParams(window.location.search);
+
+            var dataset = null;
+            if (segments.length) {
+                for (var i = 0; i < RW_DATASETS.length; i++) {
+                    if (RW_DATASETS[i].prefix && segments[0] === RW_DATASETS[i].prefix) {
+                        dataset = RW_DATASETS[i];
+                        break;
+                    }
+                }
+            }
+            if (!dataset && params.get('d')) {
+                for (var j = 0; j < RW_DATASETS.length; j++) {
+                    if (RW_DATASETS[j].key === params.get('d')) {
+                        dataset = RW_DATASETS[j];
+                        break;
+                    }
+                }
+            }
+            if (!dataset) dataset = RW_DATASETS[0];
+
+            window.__RW_DATA_KEY__ = dataset.key;
             window.__RW_DATA__ = {
-                pearls: fetch(baseUrl + '/data/parsed-dialogues' + suffix + '.json').then(function(r) {
+                pearls: fetch(base + '/data/parsed-dialogues' + dataset.suffix + '.json').then(function(r) {
                     if (!r.ok) throw new Error(r.statusText);
                     return r.json();
                 }),
-                source: fetch(baseUrl + '/data/source-decrypted' + suffix + '.json').then(function(r) {
+                source: fetch(base + '/data/source-decrypted' + dataset.suffix + '.json').then(function(r) {
                     if (!r.ok) throw new Error(r.statusText);
                     return r.json();
                 })
@@ -102,58 +131,6 @@
         }
     </style>
 
-    <script>
-        (function() {
-            function updateCanonicalTag() {
-                const existingCanonical = document.querySelector('link[rel="canonical"]');
-                if (existingCanonical) {
-                    existingCanonical.remove();
-                }
-
-                const params = new URLSearchParams(window.location.search);
-                let canonicalUrl = window.location.origin + window.location.pathname;
-
-                const meaningfulParams = ['item'];
-                const canonicalParams = {};
-                for (const param of meaningfulParams) {
-                    if (params.has(param)) {
-                        canonicalParams[param] = params.get(param);
-                    }
-                }
-
-                const canonicalSearchParams = new URLSearchParams();
-                for (const [key, value] of Object.entries(canonicalParams)) {
-                    canonicalSearchParams.set(key, value);
-                }
-
-                if (canonicalSearchParams.toString()) {
-                    canonicalUrl += '?' + canonicalSearchParams.toString();
-                }
-
-                const canonicalLink = document.createElement('link');
-                canonicalLink.rel = 'canonical';
-                canonicalLink.href = canonicalUrl;
-                document.head.appendChild(canonicalLink);
-            }
-
-            updateCanonicalTag();
-
-            const originalPushState = history.pushState;
-            const originalReplaceState = history.replaceState;
-
-            history.pushState = function () {
-                originalPushState.apply(history, arguments);
-                updateCanonicalTag();
-            };
-
-            history.replaceState = function () {
-                originalReplaceState.apply(history, arguments);
-                updateCanonicalTag();
-            };
-
-            window.addEventListener('popstate', updateCanonicalTag);
-        })();
-    </script>
 </head>
 <body class="overflow-y-hidden">
 <noscript>You need to enable JavaScript to view the pearls collection.</noscript>

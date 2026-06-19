@@ -1,7 +1,7 @@
 {
   "name": "rain-world-collection-index",
   "version": "0.1.0",
-  "homepage": ".",
+  "homepage": "/rw-collection-index/",
   "private": true,
   "dependencies": {
     "@craco/craco": "^7.1.0",
@@ -39,8 +39,9 @@
     "create-dialogue-files-lite": "node create-dialogue-files.js --profile vanilla && node create-dialogue-files.js --profile modded",
     "create-dialogue-files": "node create-dialogue-files.js --profile modded && node create-dialogue-files.js --profile vanilla --sourceFiles",
     "start": "craco start",
-    "build": "npm run create-dialogue-files && craco build && node generate-sitemap.js",
-    "generate-sitemap": "node generate-sitemap.js",
+    "build": "npm run create-dialogue-files && craco build && tsx generate-routes.ts",
+    "generate-routes": "tsx generate-routes.ts",
+    "preview": "node preview-server.js",
     "test": "craco test",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
@@ -80,6 +81,7 @@
     "compression-webpack-plugin": "^11.1.0",
     "eslint": "^8.56.0",
     "fast-levenshtein": "^3.0.0",
+    "tsx": "^4.22.4",
     "webpack-bundle-analyzer": "^4.10.2"
   }
 }

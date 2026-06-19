@@ -16,6 +16,8 @@ import { useKeyboardNavigation } from "../../hooks/useKeyboardNavigation";
 import { Popover, PopoverContent, PopoverTrigger } from "@shadcn/components/ui/popover";
 import { RwScrollableList, RwScrollableListItem } from "../other/RwScrollableList";
 import { RwAsset } from "../other/RwAsset";
+import { datasetRootHref } from "../../routing/browserRouting";
+import { assetUrl } from "../../utils/assetUtils";
 
 interface FlatChapterItem {
     id: string;
@@ -57,13 +59,7 @@ const SearchBar = () => {
             title: isModded ? "Show Vanilla Content" : "Show Modded Content",
             subtitle: isModded ? "Load official content" : "Load community mods",
             onClick: () => {
-                const url = new URL(window.location.href);
-                if (isModded) {
-                    url.searchParams.delete('d');
-                } else {
-                    url.searchParams.set('d', 'modded');
-                }
-                window.location.href = url.toString();
+                window.location.href = datasetRootHref(isModded ? 'vanilla' : 'modded');
             }
         }
     ], [unlockMode, isModded, setUnlockMode]);
@@ -219,7 +215,7 @@ const BannerChapterHeader = React.memo(function BannerChapterHeader({ flatChapte
         if (!iconUrl) return null;
 
         const ImageContent = (
-            <img src={iconUrl} alt={"Icon for " + flatChapter.name} className="rounded-md"/>
+            <img src={assetUrl(iconUrl)} alt={"Icon for " + flatChapter.name} className="rounded-md"/>
         );
 
         if (typeof linkData === 'string') {

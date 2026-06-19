@@ -2,20 +2,20 @@ const fs = require('fs');
 const path = require('path');
 const chokidar = require('chokidar');
 const levenshtein = require('fast-levenshtein');
+const {DATASETS} = require('./src/app/routing/datasets');
 
-const PROFILES = {
-    vanilla: {
-        dialogueDir: path.join(__dirname, '../dialogue'),
-        outputFile: path.join(__dirname, 'public/data/parsed-dialogues.json'),
-        sourceDecryptedOutputFile: path.join(__dirname, 'public/data/source-decrypted.json'),
-    },
-    modded: {
-        dialogueDir: path.join(__dirname, '../dialogue-modded'),
-        outputFile: path.join(__dirname, 'public/data/parsed-dialogues-modded.json'),
-        sourceDecryptedOutputFile: path.join(__dirname, 'public/data/source-decrypted-modded.json'),
-        inheritanceSources: ['vanilla'],
-    },
-};
+// build profiles from the single dataset registry app/routing/sitemap
+const PROFILES = {};
+for (const dataset of DATASETS) {
+    PROFILES[dataset.key] = {
+        dialogueDir: path.join(__dirname, dataset.dialogueDir),
+        outputFile: path.join(__dirname, `public/data/parsed-dialogues${dataset.jsonSuffix}.json`),
+        sourceDecryptedOutputFile: path.join(__dirname, `public/data/source-decrypted${dataset.jsonSuffix}.json`),
+        inheritanceSources: dataset.inheritanceSources && dataset.inheritanceSources.length
+            ? dataset.inheritanceSources
+            : undefined,
+    };
+}
 
 function getProfileName() {
     const argIndex = process.argv.indexOf('--profile');
@@ -34,7 +34,7 @@ if (!activeProfile) {
     process.exit(1);
 }
 
-const { dialogueDir, outputFile, sourceDecryptedOutputFile } = activeProfile;
+const {dialogueDir, outputFile, sourceDecryptedOutputFile} = activeProfile;
 
 console.log(`Using profile: "${profileName}"`);
 console.log(`Input Directory: ${dialogueDir}`);
@@ -62,17 +62,17 @@ const excludeSpeakers = [
 ]
 
 const generalWhiteGrayBroadcasts = [
-    { region: "SU", room: "A17", mapSlugcat: "spear" },
-    { region: "HI", room: "B02", mapSlugcat: "spear" },
-    { region: "DS", room: "A11", mapSlugcat: "spear" },
-    { region: "SH", room: "B03", mapSlugcat: "spear" },
-    { region: "VS", room: "A05", mapSlugcat: "spear" },
-    { region: "VS", room: "B10", mapSlugcat: "spear" },
-    { region: "UW", room: "J01", mapSlugcat: "spear" },
-    { region: "SS", room: "D08", mapSlugcat: "spear" },
-    { region: "LF", room: "D01", mapSlugcat: "spear" },
-    { region: "SB", room: "C07", mapSlugcat: "spear" },
-    { region: "LM", room: "EDGE02", mapSlugcat: "spear" },
+    {region: "SU", room: "A17", mapSlugcat: "spear"},
+    {region: "HI", room: "B02", mapSlugcat: "spear"},
+    {region: "DS", room: "A11", mapSlugcat: "spear"},
+    {region: "SH", room: "B03", mapSlugcat: "spear"},
+    {region: "VS", room: "A05", mapSlugcat: "spear"},
+    {region: "VS", room: "B10", mapSlugcat: "spear"},
+    {region: "UW", room: "J01", mapSlugcat: "spear"},
+    {region: "SS", room: "D08", mapSlugcat: "spear"},
+    {region: "LF", room: "D01", mapSlugcat: "spear"},
+    {region: "SB", room: "C07", mapSlugcat: "spear"},
+    {region: "LM", room: "EDGE02", mapSlugcat: "spear"},
 ]
 
 const mapMetadataTemplates = {
@@ -146,8 +146,8 @@ fs.copyFileSync(sourceDecryptedJsonFile, sourceDecryptedOutputFile);
 const sourceImgDir = path.join(dialogueDir, 'source/img');
 const publicImgDir = path.join(__dirname, 'public/img/src');
 
-fs.rmSync(publicImgDir, { recursive: true, force: true });
-fs.cpSync(sourceImgDir, publicImgDir, { recursive: true });
+fs.rmSync(publicImgDir, {recursive: true, force: true});
+fs.cpSync(sourceImgDir, publicImgDir, {recursive: true});
 
 console.log(`Successfully copied image directory ${sourceImgDir} to ${publicImgDir}`);
 
@@ -189,7 +189,7 @@ function checkLinesMatch(lines, entryLines) {
     });
 
     const matchPercentage = (matchCount / lines.length) * 100;
-    return { matchPercentage, totalScore };
+    return {matchPercentage, totalScore};
 }
 
 function findBestMatch(lines) {
@@ -220,7 +220,7 @@ function findBestMatch(lines) {
         if (candidateScores.size > 0) {
             const scoredCandidates = [];
             for (const [entry, score] of candidateScores.entries()) {
-                scoredCandidates.push({ entry, score });
+                scoredCandidates.push({entry, score});
             }
             scoredCandidates.sort((a, b) => b.score - a.score);
             candidates = scoredCandidates.slice(0, 25).map(c => c.entry);
@@ -231,7 +231,7 @@ function findBestMatch(lines) {
     let bestScore = -1;
 
     candidates.forEach(entry => {
-        let { matchPercentage, totalScore } = checkLinesMatch(lines, entry.linesA);
+        let {matchPercentage, totalScore} = checkLinesMatch(lines, entry.linesA);
         if (matchPercentage < 80) {
             const resultB = checkLinesMatch(lines, entry.linesB);
             if (resultB.matchPercentage >= 80) {
@@ -313,7 +313,7 @@ function createBaseEntry(baseId, parsedData) {
             delete t.metadata._clearGlobalMap;
         }
     });
-    return { id: baseId, ...parsedData };
+    return {id: baseId, ...parsedData};
 }
 
 function processVariableEntries(baseId, parsedData) {
@@ -479,7 +479,7 @@ function parseMapEntries(value) {
 function parseLine(line) {
     const colonIndex = line.indexOf(':');
     if (colonIndex === -1 || colonIndex > MAX_SPEAKER_LENGTH) {
-        return { text: line };
+        return {text: line};
     }
 
     const speakerPart = line.slice(0, colonIndex).trim();
@@ -513,7 +513,7 @@ function parseLine(line) {
         }
     }
 
-    return { text: line };
+    return {text: line};
 }
 
 
@@ -521,7 +521,7 @@ function parseSectionHeader(headerLine) {
     if (headerLine.startsWith('=== ')) {
         const legacyMatch = headerLine.match(/^=== (\w+)$/);
         if (legacyMatch) {
-            return { namespace: 'transcription', value: legacyMatch[1] };
+            return {namespace: 'transcription', value: legacyMatch[1]};
         }
 
         const namespacedMatch = headerLine.match(/^=== (\w+): (.+)$/);
@@ -680,7 +680,7 @@ function parseDialogueContent(content, inheritanceDB = null, metadataOnly = fals
     if (metadata.tags.length === 0) delete metadata.tags;
 
     if (metadataOnly) {
-        return { metadata };
+        return {metadata};
     }
 
     // Parse sections
@@ -836,7 +836,7 @@ const getAllFiles = (dir, fileList = []) => {
 };
 
 function writeOutput(result) {
-    fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+    fs.mkdirSync(path.dirname(outputFile), {recursive: true});
     fs.writeFileSync(outputFile, JSON.stringify(result));
     console.log(`Successfully parsed ${result.length} files to ${outputFile}`);
 }
@@ -859,7 +859,7 @@ function processDialogueFiles() {
                         if (file.replaceAll("\\\\", "/").replaceAll("\\", "/").includes('source/')) return;
                         const content = fs.readFileSync(file, 'utf-8');
                         const baseId = path.basename(file, '.txt');
-                        const { metadata } = parseDialogueContent(content, null, true);
+                        const {metadata} = parseDialogueContent(content, null, true);
                         inheritanceDB.set(baseId, metadata);
                     });
                 }
