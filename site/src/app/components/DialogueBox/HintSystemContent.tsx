@@ -30,7 +30,7 @@ export default function HintSystemContent({ pearl, unlockTranscription, transcri
             const plural = map.length > 1;
             hints.push({
                 name: plural ? "Regions" : "Region",
-                lines: ["Found in " + map.map(m => getRegion(m.region).name + " (" + m.region + ")").join(" · ")]
+                lines: ["Found in " + map.map(m => getRegion(m.region).name + " (" + m.region + ")").join(" - ")]
             });
         }
 
@@ -132,12 +132,12 @@ export default function HintSystemContent({ pearl, unlockTranscription, transcri
                         <RwAsset src={iconType} tint={Tint.mask(pearl.metadata.color)} />
                     </div>
                     <div className="text-base">
-                        {superName && <span className="text-white/40">{superName} · </span>}
+                        {superName && <span className="text-white/40">{superName} - </span>}
                         {entryName}
                     </div>
                     {(secondaryName || internalId) && (
                         <div className="text-sm text-white/40">
-                            {[secondaryName, internalId].filter(Boolean).join(' · ')}
+                            {[secondaryName, internalId].filter(Boolean).join(' - ')}
                         </div>
                     )}
                 </div>

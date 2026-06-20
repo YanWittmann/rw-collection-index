@@ -54,7 +54,7 @@ Anyways, I can't imagine the place is doing too well now.\nMy overseers saw a lo
 Moon's crash sunk the site into the floodplains around it.\nPretty impressive this managed to survive.
 Well, thanks for recovering this. It's a nice look back on the past.
 
-=== transcription: LTTM-pre-collapse
+=== transcription: LttM-pre-collapse
 md-sourceDialogue: ArchaicFacility/KF_Pearl_1-Spearmaster.txt
 ...Really.
 It's pretty funny, actually.

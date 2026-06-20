@@ -7,5 +7,6 @@ declare global {
             source: Promise<any>;
         };
         __RW_DATA_KEY__?: string;
+        __RW_FROM_404__?: boolean;
     }
 }

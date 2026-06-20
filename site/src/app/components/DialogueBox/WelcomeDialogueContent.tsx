@@ -6,6 +6,8 @@ import UnlockManager from "../../utils/unlockManager"
 import { useAppContext } from "../../context/AppContext";
 import { SaveFileUpload } from "../SaveFileUpload/SaveFileUpload";
 import { TitleSection } from "./TitleSection";
+import { datasetRootHref } from "../../routing/browserRouting";
+import { assetUrl } from "../../utils/assetUtils";
 
 async function buildIssueUrl(data: Map<string, Set<string>>): Promise<string> {
     const groupPrefixes = [
@@ -115,12 +117,7 @@ export function WelcomeDialogueContent() {
     const isModded = datasetKey === 'modded';
 
     const handleDatasetChange = (newDataset: 'vanilla' | 'modded') => {
-        const currentPath = window.location.pathname;
-        if (newDataset === 'vanilla') {
-            window.location.href = currentPath;
-        } else {
-            window.location.href = `${currentPath}?d=${newDataset}`;
-        }
+        window.location.href = datasetRootHref(newDataset);
     };
 
     return (
@@ -129,7 +126,7 @@ export function WelcomeDialogueContent() {
             <div className="grid grid-cols-1 grid-rows-1 place-items-center text-center mt-10 pb-6">
                 <div className="col-start-1 row-start-1 flex items-center justify-center w-full select-none pointer-events-none">
                     <img
-                        src="img/The_Scholar.png"
+                        src={assetUrl("img/The_Scholar.png")}
                         alt="The Scholar"
                         className="w-1/2 max-w-[20rem] h-auto opacity-20 -mb-4"
                         style={{ imageRendering: "pixelated" }}
@@ -230,7 +227,7 @@ export function WelcomeDialogueContent() {
                 <code className="bg-white/10 px-1.5 py-0.5 rounded font-mono">WASD</code>
                 {' / '}
                 <code className="bg-white/10 px-1.5 py-0.5 rounded font-mono">← ↑ → ↓</code>
-                {' navigate grid · '}
+                {' navigate grid - '}
                 <code className="bg-white/10 px-1.5 py-0.5 rounded font-mono">Q/E</code>
                 {' switch transcribers'}
             </p>

@@ -1,0 +1,70 @@
+BUILD PIPELINE
+==============
+
+One entry point: build.ts (run via tsx). Phases run in order; each needs the previous one.
+
+  data -> bundle -> routes -> og -> images
+
+  tsx build-scripts/build.ts data    [--profile vanilla|modded|all] [--sourceFiles] [--watch]
+  tsx build-scripts/build.ts bundle | routes
+  tsx build-scripts/build.ts og      [--entries "<id>[:<transcriber>], ..."] [--dataset vanilla] [--out DIR] [--no-cache]
+  tsx build-scripts/build.ts images  [--mode lossy|lossless]
+  tsx build-scripts/build.ts all     [--mode lossy|lossless] [--no-images] [--no-og]   (= npm run build)
+
+
+PHASES (in -> out)
+------------------
+
+data    (phases/data/)   per dataset, declared in src/app/routing/datasets.js
+  in:   dialogue*/**/*.txt, <dialogueDir>/source/{decrypted.json,img}
+  out:  public/data/parsed-dialogues<suffix>.json   (main output: app + routes read it)
+        public/data/source-decrypted<suffix>.json, public/img/src
+  modules: parse (txt -> entry, pure) | variables ({var}/{randomPick} expansion)
+           inheritance (parent metadata) | source-match (--sourceFiles, Levenshtein)
+           assets (copy to public/) | tags | index (runner + --watch)
+
+bundle  (phases/bundle.ts)   shells out to "craco build"
+  in:   src/, public/ (incl. data + img from the data phase)
+  out:  build/ (index.html shell, JS/CSS, a copy of public/)
+
+routes  (phases/routes.ts)   imports the app's src/app/routing/routes.ts, so URLs cannot drift
+  in:   build/index.html, public/data/parsed-dialogues*.json
+  out:  build/<route>/index.html (per entry + transcriber), landing pages, 404.html,
+        sitemap.xml, robots.txt, routes.json
+  note: asserts every route round-trips; injects crawlable text into a hidden #root <article>.
+        each page's og:image points at its own og.png (see the og phase), named via routes.ts.
+
+og      (phases/og/)   one social card per route, drawn with the Skia canvas
+  in:   public/data/parsed-dialogues*.json, public/img/** (icons recoloured here, frames, originals)
+  out:  build/<route>/og.png   (the URL the routes phase already references)
+  modules: designs/ (the card design, registered in designs/index.ts) | toolkit (sprites, geometry, text) | index (runner + cache)
+  note: content classified by the shared extractContent (image grid / audio glyph / text).
+        the build ships DEFAULT_DESIGN_NAME (reader); bump its version to invalidate the cached cards.
+        local content-hash cache in site/.og-cache (skipped on CI).
+        preview specific entries without a full build: og --entries "..." --out DIR, which writes the cards
+        plus a contact-sheet index.html.
+
+images  (phases/images.ts)   operates only on the compressed image dirs, never the source images
+  in:   build/img/<COMPRESSED_IMG_DIRS>/**/*.{png,jpg,jpeg}
+  out:  the same files as .webp (originals deleted), lossy q90 default, or --mode lossless
+  note: COMPRESSED_IMG_DIRS (src/app/utils/assetUtils.ts) lists which dirs are compressed; others ship unchanged.
+
+
+IMAGE FORMAT
+------------
+One switch: REACT_APP_IMG_FORMAT. build.ts sets it to "webp" for the full build (unless --no-images).
+Read by: assetUtils.ts (runtime URLs) and the routes phase (static <img>). Both rewrite .png->.webp only for
+paths under COMPRESSED_IMG_DIRS (the dirs the images phase compresses); every other image keeps its original path.
+
+
+GOTCHAS
+-------
+- public/img/src is shared by all datasets; build.ts runs non-default datasets first and the root
+  (vanilla) last so vanilla's source images win.
+- Source matching (--sourceFiles) runs for the root dataset only in the full build.
+- {randomPick} entries are intentionally random and differ between runs; everything else is deterministic.
+
+
+lib/: config (paths, datasets, base path) | io (fs helpers) | log (the in/out/timing banner)
+      | imageCompress (sharp-backed compressor with named presets; used by both images and og).
+scripts/ (repo root): manual Python decryption tools, not part of this build. See top-level README.

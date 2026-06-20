@@ -1,7 +1,7 @@
 {
   "name": "rain-world-collection-index",
   "version": "0.1.0",
-  "homepage": ".",
+  "homepage": "/rw-collection-index/",
   "private": true,
   "dependencies": {
     "@craco/craco": "^7.1.0",
@@ -35,12 +35,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "watch-dialogue-files": "node create-dialogue-files.js --watch",
-    "create-dialogue-files-lite": "node create-dialogue-files.js --profile vanilla && node create-dialogue-files.js --profile modded",
-    "create-dialogue-files": "node create-dialogue-files.js --profile modded && node create-dialogue-files.js --profile vanilla --sourceFiles",
+    "watch-dialogue-files": "tsx build-scripts/build.ts data --watch",
+    "create-dialogue-files-lite": "tsx build-scripts/build.ts data",
+    "create-dialogue-files": "tsx build-scripts/build.ts data --profile modded && tsx build-scripts/build.ts data --profile vanilla --sourceFiles",
     "start": "craco start",
-    "build": "npm run create-dialogue-files && craco build && node generate-sitemap.js",
-    "generate-sitemap": "node generate-sitemap.js",
+    "build": "tsx build-scripts/build.ts all",
+    "generate-routes": "tsx build-scripts/build.ts routes",
+    "og": "tsx build-scripts/build.ts og",
+    "images": "tsx build-scripts/build.ts images",
     "test": "craco test",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
@@ -75,11 +77,14 @@
     ]
   },
   "devDependencies": {
+    "@napi-rs/canvas": "^1.0.0",
     "@types/sanitize-html": "^2.13.0",
     "chokidar": "^4.0.3",
     "compression-webpack-plugin": "^11.1.0",
     "eslint": "^8.56.0",
     "fast-levenshtein": "^3.0.0",
+    "sharp": "^0.35.2",
+    "tsx": "^4.22.4",
     "webpack-bundle-analyzer": "^4.10.2"
   }
 }

@@ -10,18 +10,20 @@ import { useUrlSync } from './hooks/useUrlSync';
 import { cn } from '@shadcn/lib/utils';
 import { SourceDecrypted } from './utils/speakers';
 import { generateTintedImage } from './utils/iconUtils';
+import { assetUrl } from './utils/assetUtils';
+import { buildRouteMetaFor } from './routing/routes';
 
 // Lazy load UI components
 const PearlGrid = React.lazy(() => import('./components/PearlGrid/PearlGrid'));
 const DialogueBox = React.lazy(() => import('./components/DialogueBox/DialogueBox').then(module => ({ default: module.DialogueBox })));
 
-const DEFAULT_FAVICON = 'favicon.svg';
+const DEFAULT_FAVICON = assetUrl('favicon.svg');
 
 const faviconCache = new Map<string, string>();
 
 const Content: React.FC<{ orderer: (pearls: PearlData[]) => any }> = ({ orderer }) => {
     const isMobile = useIsMobile();
-    const { selectedPearlId, selectedPearlData } = useAppContext();
+    const { selectedPearlId, selectedPearlData, selectedTranscriberName } = useAppContext();
     useUrlSync();
 
     useEffect(() => {
@@ -30,7 +32,8 @@ const Content: React.FC<{ orderer: (pearls: PearlData[]) => any }> = ({ orderer 
             existingLinks.forEach(link => link.remove());
 
             const link = document.createElement('link');
-            link.type = 'image/png';
+            const isSvg = url.endsWith('.svg') || url.startsWith('data:image/svg');
+            link.type = isSvg ? 'image/svg+xml' : 'image/png';
             link.rel = 'icon';
             link.href = url;
             document.head.appendChild(link);
@@ -46,45 +49,11 @@ const Content: React.FC<{ orderer: (pearls: PearlData[]) => any }> = ({ orderer 
         if (existingOgTitle) existingOgTitle.remove();
         if (existingOgDescription) existingOgDescription.remove();
 
-        // 1. Update Title and Meta Tags
+        // 1. Update Title and Meta Tags (shared with the build via buildRouteMetaFor,
+        // so the live page and pre-generated HTML/embeds never disagree).
         if (selectedPearlData) {
-            const firstTranscriber = selectedPearlData.transcribers[0];
-            let dialogueSummary = '';
-            if (firstTranscriber && firstTranscriber.lines) {
-                const normalizedLines = [];
-
-                for (const line of firstTranscriber.lines) {
-                    let text = line.text;
-
-                    if (text === "MONO") continue;
-                    if (text.startsWith('SEQUENCE') || text.startsWith('![')) continue;
-
-                    text = text.replace(/!\[.*?].*/g, '');
-                    text = text.replace(/\[.*?]/g, '');
-                    text = text.trim();
-
-                    if (text) {
-                        if (text.startsWith('/')) {
-                            text = text.substring(1).trim();
-                        } else if (text.startsWith('|')) {
-                            text = text.substring(1).trim();
-                        } else if (text.startsWith('~')) {
-                            text = text.substring(1).trim();
-                        }
-
-                        if (text) {
-                            normalizedLines.push(line.speaker ? `${line.speaker}: ${text}` : text);
-                        }
-                    }
-                }
-
-                dialogueSummary = normalizedLines
-                    .slice(0, 6)
-                    .join(' ')
-                    .substring(0, 200);
-            }
-            const effectiveDialogueSummary = dialogueSummary || `Dialogue content for ${selectedPearlData.metadata.name || 'Lore'} from the Rain World Collection Index.`;
-            const effectiveTitle = (selectedPearlData.metadata.name ? selectedPearlData.metadata.name + " | " : "") + "Rain World Collection Index";
+            const { title: effectiveTitle, description: effectiveDialogueSummary } =
+                buildRouteMetaFor(selectedPearlData, selectedTranscriberName);
 
             const descriptionMeta = document.createElement('meta');
             descriptionMeta.name = 'description';
@@ -155,7 +124,7 @@ const Content: React.FC<{ orderer: (pearls: PearlData[]) => any }> = ({ orderer 
 
         return () => clearTimeout(debounceTimer);
 
-    }, [selectedPearlData]);
+    }, [selectedPearlData, selectedTranscriberName]);
 
     if (isMobile) {
         return (
@@ -239,7 +208,7 @@ export default function DialogueInterface() {
                 isMobile ? "p-0" : "p-4 md:p-8"
             )}
             style={{
-                backgroundImage: `url(img/Pc-main-menu.webp)`,
+                backgroundImage: `url(${assetUrl('img/Pc-main-menu.webp')})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 backgroundAttachment: "fixed",

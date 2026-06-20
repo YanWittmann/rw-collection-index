@@ -3,7 +3,7 @@ import { RwAsset } from "../other/RwAsset"
 import { Tint } from "../../utils/assetUtils";
 import { RwIconButton } from "../other/RwIconButton";
 import UnlockManager from "../../utils/unlockManager";
-import { getLockedColor } from "../../utils/transcriberUtils";
+import { getLockedColor, getEntryIcon } from "../../utils/transcriberUtils";
 import { PearlData } from "../../types/types";
 import React, { useCallback, useMemo } from "react";
 import { UnlockMode } from "../../context/AppContext";
@@ -58,7 +58,7 @@ const PearlItem: React.FC<PearlItemProps> = ({
         );
     }
 
-    const iconType = pearl.metadata.type === 'item' ? (pearl.metadata.subType || 'pearl') : pearl.metadata.type;
+    const entryIcon = getEntryIcon(pearl);
 
     return (
         <TooltipProvider delayDuration={120}>
@@ -70,7 +70,7 @@ const PearlItem: React.FC<PearlItemProps> = ({
                         variant={isFoundInSave ? 'gold' : 'default'}
                         aria-label={`${pearl.metadata.name || 'Unknown pearl'} - ${pearl.transcribers.length} transcription${pearl.transcribers.length !== 1 ? 's' : ''}`}
                     >
-                            <RwAsset src={iconType} tint={Tint.mask(pearl.metadata.color)} />
+                            <RwAsset src={entryIcon.asset.src} tint={entryIcon.asset.tint} />
                             {showTranscriberCount && (
                                 <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full w-6 h-4 text-xs flex items-center justify-center">
                                     {pearl.transcribers.length}

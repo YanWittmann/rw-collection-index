@@ -15,6 +15,13 @@ export interface SpeakerDef {
     color?: string;            // dialogue text color
     transcriberColor?: string; // transcriber header color, only when explicitly set
     asset?: GameAsset;         // icon/image with optional tint; absent = no visual icon
+    /**
+     * Optional pretty URL segment for this transcriber. When set, routes use this
+     * instead of the raw transcriber name (e.g. urlSlug "moon" -> /CC/moon/).
+     * Leave unset to keep using the raw transcriber name. Old URLs keep resolving
+     * either way (see routing/routes.ts). No slugs are filled yet on purpose.
+     */
+    urlSlug?: string;
 }
 
 export interface RegionDef {
@@ -27,19 +34,14 @@ export interface RegionDef {
 
 export const speakers: Record<string, SpeakerDef> = {
     "unknown": { name: "Unknown", color: "#a855f7", asset: { src: "iterator-any", tint: Tint.mask("#a855f7") } },
-    "FP": {
-        name: "Five Pebbles",
-        aliases: ["Five Pebbles", "FP-artificer"],
-        color: "#66d9bf",
-        transcriberColor: "#66d9bf"
-    },
+    "FP": { name: "Five Pebbles", aliases: ["Five Pebbles", "FP-artificer"], color: "#66d9bf", transcriberColor: "#66d9bf", urlSlug: "FP" },
     "EP": { name: "Erratic Pulse / Five Pebbles", color: "#66d9bf" },
     "BSM": { name: "Big Sis Moon / Looks to the Moon", color: "#e5d999", asset: { src: "LttM-post-collapse", tint: Tint.mask("#e5d999") } },
-    "LttM": { name: "Looks to the Moon", color: "#e5d999" },
-    "LttM-pre-collapse": { name: "Looks to the Moon (Pre-Collapse)", transcriberColor: "#FFEB04" },
-    "LttM-rivulet": { name: "Looks to the Moon (Rivulet)", transcriberColor: "#ffffff" },
-    "LttM-post-collapse": { name: "Looks to the Moon", transcriberColor: "#ffffff" },
-    "LttM-saint": { name: "Looks to the Moon (Future)", transcriberColor: "#4B7486" },
+    "LttM": { name: "Looks to the Moon", color: "#e5d999", urlSlug: "LttM" },
+    "LttM-pre-collapse": { name: "Looks to the Moon (Pre-Collapse)", transcriberColor: "#FFEB04", urlSlug: "LttM-pre" },
+    "LttM-rivulet": { name: "Looks to the Moon (Rivulet)", transcriberColor: "#ffffff", urlSlug: "LttM-riv" },
+    "LttM-post-collapse": { name: "Looks to the Moon", transcriberColor: "#ffffff", urlSlug: "LttM" },
+    "LttM-saint": { name: "Looks to the Moon (Future)", transcriberColor: "#4B7486", urlSlug: "LttM-future" },
     "LttM-FP-saint": { name: "Looks to the Moon / Five Pebbles (Future)", transcriberColor: "#4B7486" },
     "LttM-gourmand": { name: "Looks to the Moon (Gourmand)", transcriberColor: "#ffffff" },
     "NSH": { name: "No Significant Harassment", color: "#bfffbf", asset: { src: "modded/nsh", tint: Tint.mask("#bfffbf") } },
@@ -321,7 +323,7 @@ export function getSpeakerInfo(rawSpeaker: string, actualSpeaker: string, namesp
 }
 
 // dominant color per item image, keyed by "{subType}.png" (no img/ prefix), for locked "?" tinting.
-// run: python site/build-scripts/dominant-color-extractor.py site/public/img/ --exclude PearlReader/*
+// run: python scripts/dominant-color-extractor.py site/public/img/ --exclude PearlReader/*
 export const itemIconColors: Record<string, string> = {
     "artificer.png": "#70233c", "bells-of-gesture.png": "#226f93", "broadcast.png": "#ffffff", "check.png": "#9d9ca7",
     "close.png": "#fcc546", "dlc-dp.png": "#99d9da", "dlc-watcher.png": "#99d9da", "echo.png": "#f3c159",

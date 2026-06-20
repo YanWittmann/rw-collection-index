@@ -3,7 +3,8 @@ import { PearlData } from '../types/types';
 import { FilterState } from '../components/PearlGrid/PearlFilter';
 import { useUnlockState } from '../hooks/useUnlockState';
 import { getEffectiveTranscriberName } from "../utils/transcriberUtils";
-import { urlAccess } from '../utils/urlAccess';
+import { resolveRoute } from '../routing/routes';
+import { currentRouteParams, currentLegacyParams } from '../routing/browserRouting';
 import { SourceDecrypted } from '../utils/speakers';
 
 export type UnlockMode = "unlock" | "all";
@@ -96,35 +97,26 @@ export const AppProvider: React.FC<{
     useEffect(() => {
         if (unlockMode !== 'all' || !pearls.length) return;
 
-        const findPearlByUrlId = (id: string) => {
-            for (const pearl of pearls) {
-                if (pearl.id === id || pearl.metadata.internalId === id) {
-                    return pearl;
-                }
-                for (const transcriber of pearl.transcribers) {
-                    if (transcriber.metadata.internalId === id) {
-                        return pearl;
-                    }
-                }
+        // Read the selection from the URL. Legacy ?d/item/transcriber/source links
+        // are upgraded transparently: we resolve them here, and useUrlSync then
+        // rewrites the address bar to the new path scheme.
+        const applyFromUrl = () => {
+            const params = currentLegacyParams() ?? currentRouteParams();
+            const resolved = resolveRoute(params, pearls);
+            if (resolved) {
+                setSelectedPearlId(resolved.pearl.id);
+                setSelectedTranscriberName(resolved.transcriberName);
+                setSourceFileDisplay(resolved.source);
+            } else {
+                setSelectedPearlId(null);
+                setSelectedTranscriberName(null);
+                setSourceFileDisplay(null);
             }
-            return null;
         };
 
-        const itemUrlId = urlAccess.getParam('item');
-        if (itemUrlId) {
-            const pearlToSelect = findPearlByUrlId(itemUrlId);
-            if (pearlToSelect) {
-                setSelectedPearlId(pearlToSelect.id);
-
-                const transcriberToSelect = urlAccess.getActiveTranscriber(pearlToSelect.transcribers);
-                setSelectedTranscriberName(transcriberToSelect);
-
-                const sourceUrl = urlAccess.getParam('source');
-                if (sourceUrl) {
-                    setSourceFileDisplay(sourceUrl);
-                }
-            }
-        }
+        applyFromUrl();
+        window.addEventListener('popstate', applyFromUrl);
+        return () => window.removeEventListener('popstate', applyFromUrl);
     }, [unlockMode, pearls]);
 
     const value = useMemo<AppContextState>(() => ({

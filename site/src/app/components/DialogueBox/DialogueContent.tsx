@@ -1,6 +1,8 @@
 import { getSpeakerInfo } from "../../utils/speakers"
+import { assetUrl } from "../../utils/assetUtils"
 import type { DialogueLine } from "../../types/types"
 import { renderDialogueLine, sanitizeHtmlSafe } from "../../utils/renderDialogueLine"
+import { parseAttributes, parseMediaDetails, stripMonoMarker } from "../../utils/dialogueParsing"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadcn/components/ui/tooltip"
 import { useEffect, useMemo, useRef, useState } from "react"
 
@@ -56,7 +58,7 @@ export const renderMonoText = (text: string, searchText?: string) => {
         text.startsWith("~") ? "text-center" : ""
     ].join(" ");
 
-    const processedText = text.replace(/^[|/~] /, "");
+    const processedText = stripMonoMarker(text);
     const indentMatch = processedText.match(/^( +)/);
 
     if (!indentMatch) {
@@ -94,51 +96,6 @@ export const renderSourceCode = (text: string, searchText?: string) => {
         />
     );
 };
-
-const parseAttributes = (text: string) => {
-    const attributesRegex = /\[(.*?)=(.*?)]/g;
-    const attributes: { [key: string]: string } = {};
-    let attrMatch;
-    while ((attrMatch = attributesRegex.exec(text)) !== null) {
-        const [, key, value] = attrMatch;
-        if (key && value) {
-            attributes[key.trim().toUpperCase()] = value.trim();
-        }
-    }
-    return attributes;
-}
-
-const parseMediaDetails = (text?: string) => {
-    if (!text) {
-        return undefined;
-    }
-    const mediaPathRegex = /!\[(.*?)]/;
-    const mediaMatch = text.match(mediaPathRegex);
-    if (!mediaMatch) return null;
-
-    const path = mediaMatch[1];
-    const restOfString = text.substring(mediaMatch[0].length);
-    const attributes = parseAttributes(restOfString);
-
-    const alt = attributes.ALT?.toLowerCase() || '';
-    const style = attributes.STYLE?.toLowerCase();
-
-    const imageExtensions = ['png', 'jpg', 'jpeg', 'gif', 'webp'];
-    const audioExtensions = ['mp3', 'wav', 'ogg'];
-    const extension = path.split('.').pop()?.toLowerCase();
-
-    let type: 'image' | 'audio' | null = null;
-    if (extension && imageExtensions.includes(extension)) {
-        type = 'image';
-    } else if (extension && audioExtensions.includes(extension)) {
-        type = 'audio';
-    }
-
-    if (!type) return null;
-
-    return { path, alt, style, type };
-};
-
 
 const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attributes?: { [key: string]: string } }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -211,16 +168,16 @@ const ImageRenderer = ({ frames, attributes }: { frames: DialogueLine[], attribu
             WebkitMaskImage: featherGradient,
             willChange: 'mask-image',
         };
-        imageElement = <img src={`img/${path}`} alt={alt} style={imgStyles}/>;
+        imageElement = <img src={assetUrl(`img/${path}`)} alt={alt} style={imgStyles}/>;
     } else {
-        imageElement = <img src={`img/${path}`} alt={alt} style={imageStyles} className="w-full h-auto rounded-md"/>;
+        imageElement = <img src={assetUrl(`img/${path}`)} alt={alt} style={imageStyles} className="w-full h-auto rounded-md"/>;
     }
 
     return (
         <div className="flex justify-center">
             <figure className="w-full max-w-xl">
                 <a
-                    href={`img/${path}`}
+                    href={assetUrl(`img/${path}`)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="cursor-zoom-in"
@@ -314,7 +271,7 @@ export function DialogueContent({ lines, searchText }: DialogueContentProps) {
     return (
         <main className="space-y-3 pb-6">
             {Array.from(preloadImagePaths).map(path => (
-                <img key={path} src={`img/${path}`} alt="preload"
+                <img key={path} src={assetUrl(`img/${path}`)} alt="preload"
                      style={{ position: 'absolute', left: '10px', top: '1200px', opacity: "0%" }}/>
             ))}
 
