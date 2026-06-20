@@ -557,7 +557,7 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
     // Precompute highlight styles once per keyboard-navigation change (O(chapters)) rather than per pearl (O(N×chapters))
     const highlightMap = useMemo<Map<string, React.CSSProperties>>(() => {
         const map = new Map<string, React.CSSProperties>();
-        if (!currentGridPosition) return map;
+        if (!currentGridPosition || !selectedPearlId) return map;
 
         const [targetRow, targetCol] = currentGridPosition;
         let currentRow = 0;
@@ -578,7 +578,7 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
             }
         }
         return map;
-    }, [currentGridPosition, displayList]);
+    }, [currentGridPosition, displayList, selectedPearlId]);
 
     // Scroll selected item into view
     useEffect(() => {

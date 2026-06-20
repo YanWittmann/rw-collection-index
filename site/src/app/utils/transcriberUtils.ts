@@ -19,6 +19,15 @@ export function getLockedColor(pearl: PearlData, transcriber?: Dialogue): string
     }
 }
 
+/**
+ * The icon shown for an unlocked entry: the type's asset (item entries use their subType),
+ * mask-tinted with the entry color. Shared by the pearl grid and the OG image generator.
+ */
+export function getEntryIcon(pearl: PearlData): { asset: GameAsset; color: string } {
+    const iconType = pearl.metadata.type === 'item' ? (pearl.metadata.subType || 'pearl') : pearl.metadata.type;
+    return { asset: { src: iconType, tint: Tint.mask(pearl.metadata.color) }, color: pearl.metadata.color };
+}
+
 export function getEffectiveTranscriberName(transcribers: Dialogue[], transcriberName: string, index: number): string {
     const duplicateCount = transcribers.filter(t => t.transcriber === transcriberName).length;
     return duplicateCount > 1 ? `${transcriberName}-${index}` : transcriberName;

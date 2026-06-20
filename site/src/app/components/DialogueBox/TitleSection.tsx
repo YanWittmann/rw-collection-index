@@ -11,8 +11,16 @@ interface SplashText {
     right: string;
 }
 
-const SPLASH_MODDED: SplashText  = { label: "Modded!",      size: "text-2xl", bottom: "-bottom-6", right: "-right-12" };
-const SPLASH_PRIDE: SplashText   = { label: "Pride month!", size: "text-xl",  bottom: "-bottom-6", right: "-right-20" };
+const SPLASH_MODDED: SplashText  = { label: "Modded!",        size: "text-2xl", bottom: "-bottom-6", right: "-right-12" };
+const SPLASH_PRIDE: SplashText   = { label: "Pride month!",   size: "text-xl",  bottom: "-bottom-6", right: "-right-20" };
+const SPLASH_404: SplashText     = { label: "404: Not Found", size: "text-xl",  bottom: "-bottom-6", right: "-right-24" };
+
+// The splash shown on first render, by precedence: a missed route wins over the modded badge.
+function initialSplash(showModded: boolean): SplashText | null {
+    // @ts-ignore
+    if (typeof window !== 'undefined' && window.__RW_FROM_404__) return SPLASH_404;
+    return showModded ? SPLASH_MODDED : null;
+}
 
 const CHARS1 = "Rain World".split('');
 const CHARS2 = "Collection Index".split('');
@@ -21,7 +29,7 @@ let prideAutoPlayed = false;
 
 export function TitleSection({ showModded }: { showModded: boolean }) {
     const [flag] = useState<PrideFlag | null>(() => isPrideMonth() ? pickRandomPrideFlag() : null);
-    const [splash, setSplash] = useState<SplashText | null>(showModded ? SPLASH_MODDED : null);
+    const [splash, setSplash] = useState<SplashText | null>(() => initialSplash(showModded));
 
     const refs1 = useRef<(HTMLSpanElement | null)[]>([]);
     const refs2 = useRef<(HTMLSpanElement | null)[]>([]);

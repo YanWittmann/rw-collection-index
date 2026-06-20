@@ -243,7 +243,7 @@ Look at these epic people that supported this project:
 If you feel like replicating the dataset yourself, well, here you go.
 To populate the application with the latest text, you need to extract the strings from the game files.
 
-The scripts are found in [`site/build-scripts`](site/build-scripts).
+The scripts are found in [`scripts`](scripts).
 
 #### Method 1: Mod Extraction
 
@@ -253,7 +253,7 @@ The scripts are found in [`site/build-scripts`](site/build-scripts).
 3. Certain hard-coded strings have been extracted from `Rain World/RainWorld_Data/Managed/Assembly-CSharp.dll` using [dnSpy](https://github.com/dnSpy/dnSpy).
    Selected files are already included in this repository at [`dialogue/source/dll`](dialogue/source/dll).
    Copy desired `dll`-File extractions into your `decrypt` folder alongside the `text_...` folders.
-4. Run the main decryption script inside your `.../StreamingAssets/decrypt` folder: `python path/to/repo/site/build-scripts/decrypt-rw-text.py`.  
+4. Run the main decryption script inside your `.../StreamingAssets/decrypt` folder: `python path/to/repo/scripts/decrypt-rw-text.py`.  
    This will process all text files and the `dll` sources into a single JSON file.
 5. Move the resulting `decrypted.json` file to the [dialogue/source](dialogue/source) directory in this repository.
 
@@ -263,7 +263,7 @@ The scripts are found in [`site/build-scripts`](site/build-scripts).
 > :warning: This method does not work on broadcasts and is therefore deprecated.
 
 We need to extract the strings from Rain World to use them in the application.
-Copy the following python program [decrypt-rw-text.py](site/build-scripts/decrypt-rw-text.py) into your
+Copy the following python program [decrypt-rw-text.py](scripts/decrypt-rw-text.py) into your
 `SteamLibrary\steamapps\common\Rain World` folder and run it.
 This will create a folder `decrypted` with all the source files in them and a `decrypted.json` file with all the
 english variants of the strings.
@@ -272,7 +272,7 @@ Copy the `decrypted.json` file into the [source](dialogue/source) folder.
 
 </details>
 
-There is also a custom script available for decoding entire directories of files, with special case handling in case the file was renamed and the salt for the hash differs from the expected one: [decrypt-entry.py](site/build-scripts/decrypt-entry.py).
+There is also a custom script available for decoding entire directories of files, with special case handling in case the file was renamed and the salt for the hash differs from the expected one: [decrypt-entry.py](scripts/decrypt-entry.py).
 It sometimes fails, however; its success rate is roughly 98%, so for the rest we have to fallback on the decryption mod.
 
 ---

@@ -227,7 +227,7 @@ export function WelcomeDialogueContent() {
                 <code className="bg-white/10 px-1.5 py-0.5 rounded font-mono">WASD</code>
                 {' / '}
                 <code className="bg-white/10 px-1.5 py-0.5 rounded font-mono">← ↑ → ↓</code>
-                {' navigate grid · '}
+                {' navigate grid - '}
                 <code className="bg-white/10 px-1.5 py-0.5 rounded font-mono">Q/E</code>
                 {' switch transcribers'}
             </p>

@@ -32,7 +32,8 @@ const Content: React.FC<{ orderer: (pearls: PearlData[]) => any }> = ({ orderer 
             existingLinks.forEach(link => link.remove());
 
             const link = document.createElement('link');
-            link.type = 'image/png';
+            const isSvg = url.endsWith('.svg') || url.startsWith('data:image/svg');
+            link.type = isSvg ? 'image/svg+xml' : 'image/png';
             link.rel = 'icon';
             link.href = url;
             document.head.appendChild(link);

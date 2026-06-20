@@ -323,7 +323,7 @@ export function getSpeakerInfo(rawSpeaker: string, actualSpeaker: string, namesp
 }
 
 // dominant color per item image, keyed by "{subType}.png" (no img/ prefix), for locked "?" tinting.
-// run: python site/build-scripts/dominant-color-extractor.py site/public/img/ --exclude PearlReader/*
+// run: python scripts/dominant-color-extractor.py site/public/img/ --exclude PearlReader/*
 export const itemIconColors: Record<string, string> = {
     "artificer.png": "#70233c", "bells-of-gesture.png": "#226f93", "broadcast.png": "#ffffff", "check.png": "#9d9ca7",
     "close.png": "#fcc546", "dlc-dp.png": "#99d9da", "dlc-watcher.png": "#99d9da", "echo.png": "#f3c159",

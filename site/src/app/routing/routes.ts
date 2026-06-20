@@ -19,11 +19,12 @@
  *   - `source` is a query param, never a path segment.
  */
 
-import { PearlData, Dialogue, DialogueLine } from '../types/types';
+import { PearlData, Dialogue } from '../types/types';
 import { getEffectiveTranscriberName, findTranscriberIndex } from '../utils/transcriberUtils';
 import { speakerByAlias } from '../utils/speakers';
-import { MediaDetails, parseMediaDetails, stripMonoMarker } from '../utils/dialogueParsing';
+import { cleanText, extractContent } from '../utils/dialogueParsing';
 import { renderDialogueLine } from '../utils/renderDialogueLine';
+import { isCompressedImgPath } from '../utils/assetUtils';
 import {
     DEFAULT_DATASET_KEY,
     DATASET_PREFIXES,
@@ -324,14 +325,6 @@ export interface RouteMeta {
     ogImage: string | null;
 }
 
-function cleanText(value: string | undefined): string {
-    return (value || '')
-        .replace(/\\n/g, ' ')
-        .replace(/<[^>]+>/g, '')
-        .replace(/\s+/g, ' ')
-        .trim();
-}
-
 function truncate(value: string, max = 200): string {
     if (value.length <= max) return value;
     return value.slice(0, max).trim();
@@ -341,35 +334,17 @@ function truncate(value: string, max = 200): string {
 // Media and mono-marker parsing is shared with the runtime DialogueContent via
 // utils/dialogueParsing, so the build and the live app interpret markup identically.
 
-/** A media line's caption: its ALT text, else the file name. */
-function mediaLabel(media: MediaDetails): string {
-    return media.alt || (media.path.split('/').pop() || media.path);
-}
-
-/** A single dialogue line reduced to clean, readable plain text, or '' to skip it. */
-function lineToPlainText(line: DialogueLine, mono: boolean): string {
-    const text = line.text;
-    if (text === 'MONO') return '';
-    if (text.trim().startsWith('SEQUENCE')) return '';
-    const media = parseMediaDetails(text);
-    if (media) return `${media.type === 'audio' ? 'Audio' : 'Image'}: ${mediaLabel(media)}`;
-    const clean = cleanText(mono ? stripMonoMarker(text) : text);
-    if (!clean) return '';
-    return line.speaker ? `${line.speaker}: ${clean}` : clean;
-}
-
 /**
- * Build a short, human description from a transcriber's dialogue lines, mirroring
+ * Build a short, human description from a transcriber's content blocks, mirroring
  * the summary the app shows. Describes media (image/audio) when there are no spoken
  * lines, so media-only entries get a real description instead of the generic fallback.
  */
 function summarizeTranscriber(transcriber: Dialogue | null): string {
-    if (!transcriber || !transcriber.lines || !transcriber.lines.length) return '';
-    const mono = transcriber.lines[0]?.text === 'MONO';
     const normalized: string[] = [];
-    for (const line of transcriber.lines) {
-        const text = lineToPlainText(line, mono);
-        if (text) normalized.push(text);
+    for (const block of extractContent(transcriber)) {
+        if (block.kind === 'image') normalized.push(`Image: ${block.label}`);
+        else if (block.kind === 'audio') normalized.push(`Audio: ${block.label}`);
+        else normalized.push(block.speaker ? `${block.speaker}: ${cleanText(block.text)}` : cleanText(block.text));
     }
     return normalized.slice(0, 6).join(' ');
 }
@@ -391,8 +366,20 @@ export function buildRouteMeta(pearl: PearlData, transcriber: Dialogue | null): 
     return { title, description: truncate(summary), ogImage: null };
 }
 
+/**
+ * The OG image file generated for every route, written next to its index.html.
+ * Lives here (not in the build) so the build that writes the file and the meta tag
+ * that references it use one name, and the live app can derive the same URL.
+ */
+export const OG_IMAGE_BASENAME = 'og.png';
+
+/** Base-relative OG image path for a route path (e.g. "/CC/moon/" -> "/CC/moon/og.png"). */
+export function ogImageForRoutePath(routePath: string): string {
+    return routePath.replace(/\/+$/, '') + '/' + OG_IMAGE_BASENAME;
+}
+
 /** The transcriber a route shows: the explicitly selected one, else the default (last). */
-function transcriberForRoute(pearl: PearlData, transcriberName: string | null): Dialogue | null {
+export function transcriberForRoute(pearl: PearlData, transcriberName: string | null): Dialogue | null {
     if (!pearl.transcribers.length) return null;
     if (transcriberName) {
         const index = findTranscriberIndex(pearl, transcriberName);
@@ -419,13 +406,26 @@ function escapeHtml(value: string): string {
         .replace(/"/g, '&quot;');
 }
 
+/** Deployed image format: "webp" means the build rewrote raster images to WebP. */
+export type ImageFormat = 'webp' | 'original';
+
+export function deployedImagePath(path: string, format: ImageFormat): string {
+    if (format !== 'webp' || !isCompressedImgPath(path)) return path;
+    return path.replace(/\.(png|jpe?g)$/i, '.webp');
+}
+
 /**
  * Render a transcriber's dialogue to static, crawlable HTML.
  * Mirrors the runtime DialogueContent markup rules (MONO, SEQUENCE, ![media], speakers),
  * reduced to clean semantic HTML. `assetBase` is the public base (e.g. "/rw-collection-index"),
  * injected by the build so this module stays free of process.env.
  */
-export function renderEntryContentHtml(pearl: PearlData, transcriber: Dialogue | null, assetBase: string): string {
+export function renderEntryContentHtml(
+    pearl: PearlData,
+    transcriber: Dialogue | null,
+    assetBase: string,
+    imageFormat: ImageFormat = 'original',
+): string {
     const base = assetBase.replace(/\/+$/, '');
     const parts: string[] = [];
 
@@ -434,47 +434,39 @@ export function renderEntryContentHtml(pearl: PearlData, transcriber: Dialogue |
     const info = cleanText(pearl.metadata.info) || cleanText(transcriber?.metadata?.info);
     if (info) parts.push(`<p>${escapeHtml(info)}</p>`);
 
-    const lines = transcriber?.lines || [];
-    const mono = lines[0]?.text === 'MONO';
-    for (const line of lines) {
-        const text = line.text;
-        if (text === 'MONO') continue;
-        // The SEQUENCE marker itself carries no text; its image frames follow as ordinary ![..] lines.
-        if (text.trim().startsWith('SEQUENCE')) continue;
-
-        const media = parseMediaDetails(text);
-        if (media) {
-            const label = mediaLabel(media);
-            if (media.type === 'image') {
-                parts.push(
-                    `<figure><img src="${escapeHtml(`${base}/img/${media.path}`)}" alt="${escapeHtml(label)}"/>` +
-                    `<figcaption>${escapeHtml(label)}</figcaption></figure>`
-                );
-            } else {
-                parts.push(`<p><a href="${escapeHtml(`${base}/audio/${media.path}`)}">${escapeHtml(label)}</a></p>`);
-            }
-            continue;
+    for (const block of extractContent(transcriber)) {
+        if (block.kind === 'image') {
+            const imgPath = deployedImagePath(block.path, imageFormat);
+            parts.push(
+                `<figure><img src="${escapeHtml(`${base}/img/${imgPath}`)}" alt="${escapeHtml(block.label)}"/>` +
+                `<figcaption>${escapeHtml(block.label)}</figcaption></figure>`
+            );
+        } else if (block.kind === 'audio') {
+            parts.push(`<p><a href="${escapeHtml(`${base}/audio/${block.path}`)}">${escapeHtml(block.label)}</a></p>`);
+        } else {
+            // Reuse the runtime line sanitizer so inline markup (links, emphasis) is rendered identically.
+            const inline = renderDialogueLine(block.text);
+            parts.push(
+                block.speaker
+                    ? `<p><strong>${escapeHtml(block.speaker)}</strong>: ${inline}</p>`
+                    : `<p>${inline}</p>`
+            );
         }
-
-        const raw = mono ? stripMonoMarker(text) : text;
-        if (!cleanText(raw)) continue;
-        // Reuse the runtime line sanitizer so inline markup (links, emphasis) is rendered identically.
-        const inline = renderDialogueLine(raw);
-        parts.push(
-            line.speaker
-                ? `<p><strong>${escapeHtml(line.speaker)}</strong>: ${inline}</p>`
-                : `<p>${inline}</p>`
-        );
     }
 
     return parts.join('');
 }
 
 /** Find a route's pearl and shown transcriber, and render its static content HTML. */
-export function renderRouteContent(route: RouteDescriptor, pearls: PearlData[], assetBase: string): string {
+export function renderRouteContent(
+    route: RouteDescriptor,
+    pearls: PearlData[],
+    assetBase: string,
+    imageFormat: ImageFormat = 'original',
+): string {
     const pearl = pearls.find(p => p.id === route.pearlId);
     if (!pearl) return '';
-    return renderEntryContentHtml(pearl, transcriberForRoute(pearl, route.transcriberName), assetBase);
+    return renderEntryContentHtml(pearl, transcriberForRoute(pearl, route.transcriberName), assetBase, imageFormat);
 }
 
 /**
@@ -511,7 +503,7 @@ export function enumerateRoutes(datasetKey: string, pearls: PearlData[]): RouteD
             transcriberName: null,
             title: entryMeta.title,
             description: entryMeta.description,
-            ogImage: entryMeta.ogImage,
+            ogImage: ogImageForRoutePath(canonicalPath),
             isCanonical: true,
             canonicalPath,
         });
@@ -526,15 +518,16 @@ export function enumerateRoutes(datasetKey: string, pearls: PearlData[]): RouteD
                 source: null,
             };
             const meta = buildRouteMeta(pearl, transcriber);
+            const routePath = buildRoutePath(params);
             routes.push({
-                path: buildRoutePath(params),
+                path: routePath,
                 datasetKey,
                 entryId,
                 pearlId: pearl.id,
                 transcriberName: effectiveName,
                 title: meta.title,
                 description: meta.description,
-                ogImage: meta.ogImage,
+                ogImage: ogImageForRoutePath(routePath),
                 isCanonical: false,
                 canonicalPath,
             });
