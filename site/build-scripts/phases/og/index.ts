@@ -24,6 +24,7 @@ import { COMPRESS_PRESETS, type CompressOptions, compressToBuffer, extensionFor 
 import {
     enumerateRoutes,
     OG_IMAGE_BASENAME,
+    ogImageForRoutePath,
     resolveRoute,
     transcriberForRoute,
 } from '../../../src/app/routing/routes';
@@ -214,6 +215,8 @@ async function runFullBuild(useCache: boolean): Promise<void> {
         for (const route of enumerateRoutes(dataset.key, pearls)) {
             const pearl = byId.get(route.pearlId);
             if (!pearl) continue;
+            // Skip routes whose og:image points at another route's card, so no duplicate file is written next to it.
+            if (route.ogImage && route.ogImage !== ogImageForRoutePath(route.path)) continue;
             tasks.push({
                 pearl,
                 transcriberName: route.transcriberName,

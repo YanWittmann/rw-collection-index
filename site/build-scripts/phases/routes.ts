@@ -8,15 +8,17 @@
  * out  build/**\/index.html, build/404.html, build/{sitemap.xml,robots.txt,routes.json}
  */
 
+import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { BASE, BUILD_DIR, DATASETS, deployImageFormat, parsedDialoguesFile } from '../lib/config';
+import { BASE, BUILD_DIR, DATASETS, deployImageFormat, dialogueDirOf, parsedDialoguesFile, ROOT_DIR } from '../lib/config';
 import { readText, writeJson, writeText } from '../lib/io';
 import { phase } from '../lib/log';
 import type { RouteDescriptor } from '../../src/app/routing/routes';
 import {
     enumerateRoutes,
+    entryIdForPearl,
     parseRoutePath,
     renderRouteContent,
     resolveRoute,
@@ -143,12 +145,43 @@ function assertRoundTrip(route: RouteDescriptor, pearls: PearlData[]): void {
     }
 }
 
-function writeSitemap(routePaths: string[]): void {
-    const urls = routePaths.map(routePath => {
+/** HEAD commit time (ISO 8601), the sitemap fallback for routes with no tracked source file (landing pages, uncommitted .txt). */
+function deployLastmod(): string {
+    try {
+        return execSync('git log -1 --format=%cI', { encoding: 'utf8', cwd: ROOT_DIR }).trim();
+    } catch {
+        return new Date().toISOString().replace(/\.\d+Z$/, 'Z');
+    }
+}
+
+/**
+ * Map each tracked file under the given dirs to its last-commit time (ISO 8601), in one git pass (newest commit wins).
+ * This gives each entry the real edit time of its source .txt instead of the repo-wide deploy time.
+ * mtime cannot be used: a CI checkout resets every file's mtime to "now".
+ */
+function fileLastmodMap(dirsRelToRoot: string[]): Map<string, string> {
+    const map = new Map<string, string>();
+    if (dirsRelToRoot.length === 0) return map;
+    try {
+        const args = dirsRelToRoot.map(d => `"${d}"`).join(' ');
+        const out = execSync(`git -c core.quotePath=false log --format=%cI --name-only -- ${args}`, {
+            encoding: 'utf8', cwd: ROOT_DIR, maxBuffer: 64 * 1024 * 1024,
+        });
+        let date = '';
+        for (const line of out.split('\n')) {
+            if (/^\d{4}-\d{2}-\d{2}T/.test(line)) date = line;
+            else if (line && !map.has(line)) map.set(line, date);
+        }
+    } catch {
+        // no git / not a repo: callers fall back to the deploy date
+    }
+    return map;
+}
+
+function writeSitemap(entries: Array<{ path: string; lastmod: string }>): void {
+    const urls = entries.map(({ path: routePath, lastmod }) => {
         const loc = xmlEscape(absoluteUrl(routePath));
-        const priority = routePath === '/' ? '1.0' : '0.8';
-        const changefreq = routePath === '/' ? 'daily' : 'weekly';
-        return `  <url>\n    <loc>${loc}</loc>\n    <priority>${priority}</priority>\n    <changefreq>${changefreq}</changefreq>\n  </url>`;
+        return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`;
     }).join('\n');
     writeText(
         path.join(BUILD_DIR, 'sitemap.xml'),
@@ -191,7 +224,11 @@ export function runRoutes(): void {
         transcriberName: string | null;
         canonical: boolean
     }> = [];
-    const sitemapPaths: string[] = [];
+    const sitemapEntries: Array<{ path: string; lastmod: string }> = [];
+
+    const headDate = deployLastmod();
+    const gitDates = fileLastmodMap(DATASETS.map(d => path.relative(ROOT_DIR, dialogueDirOf(d)).replace(/\\/g, '/')));
+    const lastmodFor = (sourceFile?: string) => (sourceFile && gitDates.get(sourceFile)) || headDate;
 
     for (const { dataset } of datasetPearls) {
         const routePath = '/' + (dataset.routePrefix ? dataset.routePrefix + '/' : '');
@@ -203,10 +240,12 @@ export function runRoutes(): void {
             ogImage: DEFAULT_OG_IMAGE,
         };
         writtenFiles.add(writePage(routePath, applyMeta(shell, meta)));
-        sitemapPaths.push(routePath);
+        sitemapEntries.push({ path: routePath, lastmod: headDate });
     }
 
     for (const { dataset, pearls } of datasetPearls) {
+        // Key by the same url id the routes use (internalId-preferring), not pearl.id, or lookups silently miss.
+        const sourceByEntryId = new Map(pearls.map(p => [entryIdForPearl(p, pearls), p.sourceFile]));
         for (const route of enumerateRoutes(dataset.key, pearls)) {
             assertRoundTrip(route, pearls);
 
@@ -230,7 +269,7 @@ export function runRoutes(): void {
                 transcriberName: route.transcriberName,
                 canonical: route.isCanonical,
             });
-            sitemapPaths.push(route.path);
+            sitemapEntries.push({ path: route.path, lastmod: lastmodFor(sourceByEntryId.get(route.entryId)) });
         }
     }
 
@@ -246,7 +285,7 @@ export function runRoutes(): void {
         ogImage: DEFAULT_OG_IMAGE,
     }));
 
-    writeSitemap(sitemapPaths);
+    writeSitemap(sitemapEntries);
     writeRobots();
     writeJson(path.join(BUILD_DIR, 'routes.json'), manifest);
 

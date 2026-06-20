@@ -9,7 +9,7 @@
 import * as path from 'path';
 import { watch } from 'chokidar';
 
-import { Dataset, dialogueDirOf, parsedDialoguesFile } from '../../lib/config';
+import { Dataset, dialogueDirOf, parsedDialoguesFile, ROOT_DIR } from '../../lib/config';
 import { filesByExtension, readText, writeJson } from '../../lib/io';
 import { phase } from '../../lib/log';
 import { parseDialogueContent, SourceMatcher } from './parse';
@@ -31,7 +31,8 @@ function generate(dataset: Dataset, inheritanceDB: Map<string, any>, matcher: So
     const files = filesByExtension(dialogueDirOf(dataset), ['.txt']).filter(file => !isSourceFile(file));
     const entries = files.flatMap(file => {
         const parsed = parseDialogueContent(readText(file), { inheritanceDB, matchSource: matcher });
-        return expandEntries(path.basename(file, '.txt'), parsed);
+        const sourceFile = path.relative(ROOT_DIR, file).replace(/\\/g, '/');
+        return expandEntries(path.basename(file, '.txt'), parsed).map(entry => ({ ...entry, sourceFile }));
     });
     entries.forEach(postProcessTags);
     writeJson(parsedDialoguesFile(dataset), entries);

@@ -54,4 +54,6 @@ export interface PearlData {
     };
     transcribers: Dialogue[];
     hints: Hint[];
+    /** Repo-relative path of the .txt this entry was generated from, stamped by the data phase (used for per-page sitemap lastmod). */
+    sourceFile?: string;
 }

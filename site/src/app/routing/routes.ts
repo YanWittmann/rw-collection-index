@@ -495,6 +495,12 @@ export function enumerateRoutes(datasetKey: string, pearls: PearlData[]): RouteD
         };
         const canonicalPath = buildRoutePath(entryParams);
         const entryMeta = buildRouteMeta(pearl, defaultTranscriber);
+        // The entry-level card is identical to its default (last) transcriber's, so it reuses that file rather than generating a duplicate.
+        // With no transcribers there is nothing to reuse, so it keeps its own.
+        const defaultTranscriberName = names.length ? names[names.length - 1] : null;
+        const entryOgImage = defaultTranscriberName
+            ? ogImageForRoutePath(buildRoutePath({ datasetKey, entryId, transcriberName: defaultTranscriberName, source: null }))
+            : ogImageForRoutePath(canonicalPath);
         routes.push({
             path: canonicalPath,
             datasetKey,
@@ -503,7 +509,7 @@ export function enumerateRoutes(datasetKey: string, pearls: PearlData[]): RouteD
             transcriberName: null,
             title: entryMeta.title,
             description: entryMeta.description,
-            ogImage: ogImageForRoutePath(canonicalPath),
+            ogImage: entryOgImage,
             isCanonical: true,
             canonicalPath,
         });

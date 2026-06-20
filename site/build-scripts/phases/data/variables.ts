@@ -10,6 +10,8 @@ export interface Entry {
     metadata: Metadata;
     transcribers: Transcriber[];
     hints: Hint[];
+    /** Repo-relative path of the source .txt, stamped after expansion in the data phase. */
+    sourceFile?: string;
 }
 
 const PATTERN_REGEX = /\{([^{}]+)\}/g;
