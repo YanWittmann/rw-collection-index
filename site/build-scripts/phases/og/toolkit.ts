@@ -378,6 +378,8 @@ export interface ParagraphOptions extends TextOptions {
     gap?: number;
     /** Centre the whole block within the box height instead of starting at the top. */
     valign?: 'top' | 'center';
+    /** Per-paragraph colour, indexed to match the input paragraphs; a missing entry falls back to o.color. */
+    colors?: (string | undefined)[];
 }
 
 /**
@@ -427,13 +429,14 @@ export function drawParagraphs(ctx: Ctx, paragraphs: string[], box: Rect, o: Par
     const gap = o.gap ?? lh * 0.55;
     const { shown, total } = layoutParagraphs(ctx, paragraphs, box.w, lh, gap, box.h);
 
-    ctx.fillStyle = o.color;
     ctx.textBaseline = 'top';
     const align = o.align ?? 'left';
     const justify = !!o.justify && align === 'left';
     let y = o.valign === 'center' ? box.y + Math.max(0, (box.h - total) / 2) : box.y;
     for (let i = 0; i < shown.length; i++) {
         const lines = shown[i];
+        // each paragraph carries its speaker's colour, falling back to the body colour
+        ctx.fillStyle = o.colors?.[i] ?? o.color;
         for (let j = 0; j < lines.length; j++) {
             if (justify) {
                 drawJustifiedLine(ctx, lines[j], box.x, y, box.w, j === lines.length - 1);

@@ -7,6 +7,7 @@
 import type { Badge, CardInput } from './index';
 import { cleanText, type ContentBlock } from '../../../../src/app/utils/dialogueParsing';
 import { ensureMinLightness } from '../../../../src/app/utils/colorUtils';
+import { getSpeakerInfo } from '../../../../src/app/utils/speakers';
 import {
     containRect,
     coverRect,
@@ -57,12 +58,28 @@ export function transcriptText(texts: Split['texts']): string {
         .replace(/\s*\n+\s*/g, ' ');
 }
 
+/** The speaker's colour for a block, resolved as the app does (namespace-qualified key), or undefined when unspoken. */
+function speakerColor(b: Split['texts'][number]): string | undefined {
+    if (!b.speaker) return undefined;
+    const key = b.namespace ? `${b.namespace}-${b.speaker}` : b.speaker;
+    return getSpeakerInfo(key, b.speaker, b.namespace).color;
+}
+
+export interface ColoredParagraph {
+    text: string;
+    color?: string;
+}
+
+/** The transcript as separate paragraphs (one per block), each carrying its speaker's colour. */
+export function transcriptParagraphsColored(texts: Split['texts']): ColoredParagraph[] {
+    return texts
+        .map(b => ({ text: blockText(b).replace(/\s*\n+\s*/g, ' ').trim(), color: speakerColor(b) }))
+        .filter(p => p.text);
+}
+
 /** The transcript as separate paragraphs (one per block), each packed to a single line of spacing. */
 export function transcriptParagraphs(texts: Split['texts']): string[] {
-    return texts
-        .map(blockText)
-        .map(s => s.replace(/\s*\n+\s*/g, ' ').trim())
-        .filter(Boolean);
+    return transcriptParagraphsColored(texts).map(p => p.text);
 }
 
 /** Fill the card with the topographic map art (cover-cropped) over near-black, then a dimming veil for legibility. */
@@ -120,7 +137,15 @@ export interface GridStyle {
 /** A tidy grid of dialogue frames, each contained in its cell and kept pixel-sharp, optionally rounded and bordered. */
 export async function drawImageGrid(ctx: Ctx, frames: Split['images'], area: Rect, style: GridStyle = {}): Promise<void> {
     const shown = frames.slice(0, MAX_GRID_FRAMES);
-    const cells = grid(area, shown.length, { gap: style.gap ?? 16, cols: style.cols });
+    if (!shown.length) return;
+    const gap = style.gap ?? 16;
+    const cols = style.cols ?? Math.min(shown.length, 4);
+    const rows = Math.ceil(shown.length / cols);
+    // square cells sized to fit both axes so the x and y gaps match, then centre the block in the area
+    const cell = Math.min((area.w - gap * (cols - 1)) / cols, (area.h - gap * (rows - 1)) / rows);
+    const blockW = cols * cell + gap * (cols - 1);
+    const block: Rect = { x: area.x + (area.w - blockW) / 2, y: area.y, w: blockW, h: rows * cell + gap * (rows - 1) };
+    const cells = grid(block, shown.length, { gap, cols });
     const radius = style.radius ?? 0;
     for (let i = 0; i < shown.length; i++) {
         const img = await texture(shown[i].path);
@@ -212,6 +237,10 @@ export interface ContentStyle {
     paragraphGap?: number;
     /** Centre the text/audio within the area's height (avoids empty space at the bottom of a fixed box). */
     valign?: 'top' | 'center';
+    /** Tint each paragraph with its speaker's colour, as the app's reader does. */
+    speakerColors?: boolean;
+    /** Floor applied to a speaker colour so dark accents stay legible over the card (default 55). */
+    minSpeakerLightness?: number;
     audioColor: string;
     audioLabelColor?: string;
     grid?: GridStyle;
@@ -229,7 +258,11 @@ export async function drawContent(ctx: Ctx, blocks: ContentBlock[], area: Rect, 
         const lineHeight = style.lineHeight ?? 1.32;
         const font = style.font ?? FONT_BODY;
         if (style.paragraphs) {
-            drawParagraphs(ctx, transcriptParagraphs(texts), area,
+            const colored = transcriptParagraphsColored(texts);
+            const colors = style.speakerColors
+                ? colored.map(p => p.color && ensureMinLightness(p.color, style.minSpeakerLightness))
+                : undefined;
+            drawParagraphs(ctx, colored.map(p => p.text), area,
                 {
                     size,
                     color: style.textColor,
@@ -238,7 +271,8 @@ export async function drawContent(ctx: Ctx, blocks: ContentBlock[], area: Rect, 
                     align: style.align,
                     justify: style.justify,
                     valign: style.valign,
-                    gap: style.paragraphGap
+                    gap: style.paragraphGap,
+                    colors
                 });
         } else {
             drawText(ctx, transcriptText(texts), area,

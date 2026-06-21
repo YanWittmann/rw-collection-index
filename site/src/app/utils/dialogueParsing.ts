@@ -80,7 +80,7 @@ export const mediaLabel = (media: MediaDetails): string =>
  * inline markup (the HTML renderer) or flatten it to plain text (descriptions, OG cards).
  */
 export type ContentBlock =
-    | { kind: 'text'; speaker?: string; text: string }
+    | { kind: 'text'; speaker?: string; namespace?: string; text: string }
     | { kind: 'image'; path: string; label: string }
     | { kind: 'audio'; path: string; label: string };
 
@@ -108,7 +108,7 @@ export const extractContent = (transcriber: Dialogue | null | undefined): Conten
 
         const raw = mono ? stripMonoMarker(text) : text;
         if (!cleanText(raw)) continue;
-        blocks.push(line.speaker ? { kind: 'text', speaker: line.speaker, text: raw } : { kind: 'text', text: raw });
+        blocks.push(line.speaker ? { kind: 'text', speaker: line.speaker, namespace: line.namespace, text: raw } : { kind: 'text', text: raw });
     }
     return blocks;
 };

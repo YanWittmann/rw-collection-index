@@ -57,6 +57,8 @@ const BADGE_STYLE: BadgeStyle = {
 };
 // how far the clusters sit in from the card corners, clearing the rounded edge
 const BADGE_CORNER_PAD = 44;
+// floor for speaker text lightness so dark accents stay legible over the dark card
+const SPEAKER_MIN_LIGHTNESS = 60;
 
 async function render(ctx: Ctx, input: CardInput): Promise<void> {
     const accent = input.pearl.metadata.color || '#e6e6e6';
@@ -143,8 +145,10 @@ async function render(ctx: Ctx, input: CardInput): Promise<void> {
         lineHeight: BODY_LINE,
         paragraphs: true,
         paragraphGap: PARA_GAP,
-        justify: true,
+        align: 'center',
         valign: 'top',
+        speakerColors: true,
+        minSpeakerLightness: SPEAKER_MIN_LIGHTNESS,
         audioColor: accent,
         audioLabelColor: DIM,
         grid: {
@@ -164,4 +168,4 @@ async function render(ctx: Ctx, input: CardInput): Promise<void> {
     await drawBadgeCluster(ctx, input.badges.right, { align: 'right', edgeX: card.x + card.w - BADGE_CORNER_PAD, centerY: borderY, style: BADGE_STYLE });
 }
 
-export const reader: Design = { name: 'reader', version: 10, width: PAGE.w, height: PAGE.h, render };
+export const reader: Design = { name: 'reader', version: 13, width: PAGE.w, height: PAGE.h, render };

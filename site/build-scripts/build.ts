@@ -5,7 +5,7 @@
  *   tsx build-scripts/build.ts data    [--profile vanilla|modded|all] [--sourceFiles] [--watch]
  *   tsx build-scripts/build.ts bundle
  *   tsx build-scripts/build.ts routes
- *   tsx build-scripts/build.ts og      [--entries "<id>[:<transcriber>], ..."] [--dataset vanilla] [--out DIR] [--no-cache]
+ *   tsx build-scripts/build.ts og      [--entries "[<dataset>/]<id>[:<transcriber>], ..."] [--dataset vanilla] [--out DIR] [--no-cache]
  *   tsx build-scripts/build.ts images  [--mode lossy|lossless]
  *   tsx build-scripts/build.ts all     [--mode lossy|lossless] [--no-images] [--no-og]
  *
@@ -41,15 +41,22 @@ function imageMode(): ImageMode {
     return mode;
 }
 
-/** Parse --entries "Pearl_X:LttM, Broadcast_Y" into specs for the OG test harness. */
+/**
+ * Parse --entries "Pearl_X:LttM, modded/KF_Pearl_1" into specs for the OG test harness.
+ * Each token is [dataset/]entryId[:transcriber]. The optional dataset prefix overrides --dataset
+ * for that one entry, so vanilla and modded entries can be mixed in a single run.
+ */
 function parseOgEntries(): OgEntrySpec[] {
-    const datasetKey = value('dataset', DEFAULT_DATASET_KEY);
+    const defaultKey = value('dataset', DEFAULT_DATASET_KEY);
     return value('entries', '')
         .split(',')
         .map(s => s.trim())
         .filter(Boolean)
         .map(token => {
-            const [entryId, transcriberName] = token.split(':').map(p => p.trim());
+            const slash = token.indexOf('/');
+            const datasetKey = slash >= 0 ? token.slice(0, slash).trim() : defaultKey;
+            const rest = slash >= 0 ? token.slice(slash + 1).trim() : token;
+            const [entryId, transcriberName] = rest.split(':').map(p => p.trim());
             return { datasetKey, entryId, transcriberName: transcriberName || null };
         });
 }
