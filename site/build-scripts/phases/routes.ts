@@ -269,7 +269,10 @@ export function runRoutes(): void {
                 transcriberName: route.transcriberName,
                 canonical: route.isCanonical,
             });
-            sitemapEntries.push({ path: route.path, lastmod: lastmodFor(sourceByEntryId.get(route.entryId)) });
+            // Only canonical pages belong in the sitemap; the bare entry alias points its rel=canonical at the default transcriber.
+            if (route.isCanonical) {
+                sitemapEntries.push({ path: route.path, lastmod: lastmodFor(sourceByEntryId.get(route.entryId)) });
+            }
         }
     }
 

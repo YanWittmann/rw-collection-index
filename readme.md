@@ -9,7 +9,7 @@ It provides a centralized place to browse all Pearls, Broadcasts, Dialogue and P
 
 ## Collection Index Content
 
-The dataset spans the entire known history of the Ancients and Iterators.
+Learn everything there is to know about Ancients and Iterators from these contents.
 
 <table>
   <thead>
@@ -166,20 +166,24 @@ A small set of entries depend on runtime events that leave no trace in the save 
   </tr>
 </table>
 
-## Installation and Setup
+## Link Previews
 
-```bash
-# clone the repository / install dependencies
-git clone https://github.com/YanWittmann/rw-collection-index
-cd rw-collection-index/site
-npm install
+Every entry has its own shareable link. Paste one into Discord, a chat or social media, and it shows a card with the entry's icon, speaker, region and tags alongside a preview of the content.
 
-# dev server
-npm run start
-
-# build application bundles
-npm run build
-```
+<table>
+  <thead>
+    <tr>
+      <th width="50%"><a href="https://yanwittmann.github.io/rw-collection-index/SL_moon/LttM">SL_moon (Looks to the Moon)</a></th>
+      <th width="50%"><a href="https://yanwittmann.github.io/rw-collection-index/CC/PearlReader">CC (Pearl Reader)</a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="50%"><img src="https://yanwittmann.github.io/rw-collection-index/SL_moon/LttM/og.png" width="100%"/></td>
+      <td width="50%"><img src="https://yanwittmann.github.io/rw-collection-index/CC/PearlReader/og.png" width="100%"/></td>
+    </tr>
+  </tbody>
+</table>
 
 ## Contributing
 
@@ -237,6 +241,21 @@ Look at these epic people that supported this project:
 | artustan              | <img src="site/public/img/item/Neuron_Fly_icon.png" width="16"/> #6 remove `BroadcastMisc` entry from `Spearmasterpearl`.                                                                                                                                                                                                                     |
 | Desperate_Metal_8656  | <img src="site/public/img/item/Grenade_icon.png" width="16"/> Switched SI_top/SI_west map locations.                                                                                                                                                                                                                                          |
 |                       | <img src="site/public/img/item/Neuron_Fly_icon.png" width="16"/> Idea&nbsp;&nbsp;○&nbsp;&nbsp;<img src="site/public/img/item/Grenade_icon.png" width="16"/> Issue&nbsp;&nbsp;○&nbsp;&nbsp;<img src="site/public/img/item/King_Vulture_icon.png" width="16"/> Contribution<br/><sub>_Feel like you should be on this list? Let me know!_</sub> |
+
+## Installation and Setup
+
+```bash
+# clone the repository / install dependencies
+git clone https://github.com/YanWittmann/rw-collection-index
+cd rw-collection-index/site
+npm install
+
+# dev server
+npm run start
+
+# build application bundles
+npm run build
+```
 
 ## Game Text extraction
 

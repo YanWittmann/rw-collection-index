@@ -10,6 +10,7 @@ import { Tint } from "../../utils/assetUtils";
 import { randomColor } from "../../utils/colorUtils";
 import { OrderedChapter } from "../../utils/pearlOrder";
 import { UnlockMode, useAppContext } from "../../context/AppContext";
+import UnlockManager from "../../utils/unlockManager";
 import { useFilteredPearls } from "../../hooks/useFilteredPearls";
 import { useChapterExpansion } from "../../hooks/useChapterExpansion";
 import { useKeyboardNavigation } from "../../hooks/useKeyboardNavigation";
@@ -28,6 +29,12 @@ interface FlatChapterItem {
     isExpanded: boolean;
     originalChapter: OrderedChapter;
 }
+
+const chapterHasDiscoveredEntry = (chapter: OrderedChapter): boolean => {
+    // a chapter counts as discovered if any of its entries, at any depth, is unlocked
+    if (chapter.items?.some(item => item && UnlockManager.isPearlUnlocked(item))) return true;
+    return chapter.subChapters?.some(chapterHasDiscoveredEntry) ?? false;
+};
 
 interface PearlGridProps {
     order: (pearls: PearlData[]) => OrderedChapter[];
@@ -202,10 +209,11 @@ const SearchBar = () => {
     );
 };
 
-// Receives a stable toggleChapter ref so React.memo can bail out when chapter content hasn't changed
-const BannerChapterHeader = React.memo(function BannerChapterHeader({ flatChapter, toggleChapter }: {
+// receives a stable toggleChapter ref so React.memo can bail out when chapter content hasn't changed
+const BannerChapterHeader = React.memo(function BannerChapterHeader({ flatChapter, toggleChapter, isObfuscated }: {
     flatChapter: FlatChapterItem,
-    toggleChapter: (name: string) => void
+    toggleChapter: (name: string) => void,
+    isObfuscated: boolean
 }) {
     const { originalChapter, depth } = flatChapter;
     const { icon: iconUrl, link: linkData } = originalChapter;
@@ -304,7 +312,7 @@ const BannerChapterHeader = React.memo(function BannerChapterHeader({ flatChapte
                 <div className="flex w-full items-center justify-start gap-4">
                     <span
                         className={cn("font-medium tracking-wide", flatChapter.isExpanded ? "text-white" : "text-gray-500", flatChapter.name.length > 20 ? "text-sm" : "text-md")}>
-                        {flatChapter.name}
+                        {isObfuscated ? '???' : flatChapter.name}
                     </span>
                 </div>
             </RwIconButton>
@@ -344,6 +352,13 @@ const LazyChapterGrid = React.memo(function LazyChapterGrid({
 }) {
     const observerRef = useRef<HTMLDivElement>(null);
 
+    // In spoiler mode, hide a header until at least one of its entries has been discovered.
+    const isHeaderObfuscated = useMemo(
+        () => unlockMode !== 'all' && !chapterHasDiscoveredEntry(flatChapter.originalChapter),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [flatChapter.originalChapter, unlockMode, collectionVersion]
+    );
+
     useEffect(() => {
         const currentRef = observerRef.current;
         const observer = new IntersectionObserver(([entry]) => {
@@ -366,12 +381,12 @@ const LazyChapterGrid = React.memo(function LazyChapterGrid({
         <div ref={observerRef} className="last:mb-4">
             {flatChapter.name && (
                 flatChapter.originalChapter.headerType === "banner" ? (
-                    <BannerChapterHeader flatChapter={flatChapter} toggleChapter={toggleChapter}/>
+                    <BannerChapterHeader flatChapter={flatChapter} toggleChapter={toggleChapter} isObfuscated={isHeaderObfuscated}/>
                 ) : (
                     <button onClick={() => toggleChapter(flatChapter.name)}
                             className={cn("flex items-center gap-2 w-full text-left group focus:outline-none", flatChapter.isExpanded && flatChapter.items.length > 0 && "mb-2")}
                             style={{ paddingLeft: `${flatChapter.depth * 16}px` }}>
-                        <h3 className="text-white text-sm font-medium group-hover:text-white/90">{flatChapter.name}</h3>
+                        <h3 className="text-white text-sm font-medium group-hover:text-white/90">{isHeaderObfuscated ? '???' : flatChapter.name}</h3>
                         <div
                             className={cn("text-white/60 group-hover:text-white transition-transform duration-200", flatChapter.isExpanded ? "rotate-90" : "rotate-0")}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"

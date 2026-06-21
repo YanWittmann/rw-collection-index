@@ -56,18 +56,17 @@ export function replaceRoute(params: RouteParams): void {
 }
 
 /**
- * Point the <link rel="canonical"> at the entry-level URL (no transcriber, no
- * source), so transcriber/source variants don't fragment indexing. Mirrors the
- * static canonical the build writes into each pre-generated page.
+ * Point the <link rel="canonical"> at the current transcriber's own URL, dropping only the source query so source variants don't fragment indexing.
+ * Each transcriber page is its own canonical; the bare entry alias resolves to the default transcriber, matching the static canonical the build writes.
  */
 export function updateCanonicalTag(params: RouteParams): void {
-    const entryParams: RouteParams = {
+    const canonicalParams: RouteParams = {
         datasetKey: params.datasetKey,
         entryId: params.entryId,
-        transcriberName: null,
+        transcriberName: params.transcriberName,
         source: null,
     };
-    const href = window.location.origin + BASE_PATH + buildRoutePath(entryParams);
+    const href = window.location.origin + BASE_PATH + buildRoutePath(canonicalParams);
 
     let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (!link) {

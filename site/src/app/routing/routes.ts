@@ -63,9 +63,9 @@ export interface RouteDescriptor {
     description: string;
     /** Absolute or base-relative og:image; null = use the site default (filled in later). */
     ogImage: string | null;
-    /** Whether this route is the canonical one for its content (entry-level routes are). */
+    /** Whether this route is the canonical page for its content: each transcriber page is, the bare entry alias is not (unless the entry has no transcribers). */
     isCanonical: boolean;
-    /** The canonical path for this route (the entry-level path). */
+    /** The canonical path for this route: its own path for canonical routes, the default transcriber's for the bare entry alias. */
     canonicalPath: string;
 }
 
@@ -486,45 +486,34 @@ export function enumerateRoutes(datasetKey: string, pearls: PearlData[]): RouteD
         // The transcriber lives in its own segment, not in the entry id.
         const entryId = entryIdForPearl(pearl, pearls);
 
-        // Canonical entry-level route: the default transcriber, no transcriber segment.
-        const entryParams: RouteParams = {
-            datasetKey,
-            entryId,
-            transcriberName: null,
-            source: null,
-        };
-        const canonicalPath = buildRoutePath(entryParams);
+        const entryPath = buildRoutePath({ datasetKey, entryId, transcriberName: null, source: null });
         const entryMeta = buildRouteMeta(pearl, defaultTranscriber);
-        // The entry-level card is identical to its default (last) transcriber's, so it reuses that file rather than generating a duplicate.
-        // With no transcribers there is nothing to reuse, so it keeps its own.
+
+        // Each transcriber page owns distinct content and is its own canonical (below).
+        // The bare entry renders the default (last) transcriber, so it is an alias that canonicalizes there rather than competing with it.
+        // An entry with no transcribers has nothing to defer to, so it stays its own canonical.
         const defaultTranscriberName = names.length ? names[names.length - 1] : null;
-        const entryOgImage = defaultTranscriberName
-            ? ogImageForRoutePath(buildRoutePath({ datasetKey, entryId, transcriberName: defaultTranscriberName, source: null }))
-            : ogImageForRoutePath(canonicalPath);
+        const defaultTranscriberPath = defaultTranscriberName
+            ? buildRoutePath({ datasetKey, entryId, transcriberName: defaultTranscriberName, source: null })
+            : entryPath;
         routes.push({
-            path: canonicalPath,
+            path: entryPath,
             datasetKey,
             entryId,
             pearlId: pearl.id,
             transcriberName: null,
             title: entryMeta.title,
             description: entryMeta.description,
-            ogImage: entryOgImage,
-            isCanonical: true,
-            canonicalPath,
+            ogImage: ogImageForRoutePath(defaultTranscriberPath),
+            isCanonical: defaultTranscriberName === null,
+            canonicalPath: defaultTranscriberPath,
         });
 
         // One explicit route per transcriber, so every transcriber URL has real meta.
         pearl.transcribers.forEach((transcriber, index) => {
             const effectiveName = names[index];
-            const params: RouteParams = {
-                datasetKey,
-                entryId,
-                transcriberName: effectiveName,
-                source: null,
-            };
+            const routePath = buildRoutePath({ datasetKey, entryId, transcriberName: effectiveName, source: null });
             const meta = buildRouteMeta(pearl, transcriber);
-            const routePath = buildRoutePath(params);
             routes.push({
                 path: routePath,
                 datasetKey,
@@ -534,8 +523,8 @@ export function enumerateRoutes(datasetKey: string, pearls: PearlData[]): RouteD
                 title: meta.title,
                 description: meta.description,
                 ogImage: ogImageForRoutePath(routePath),
-                isCanonical: false,
-                canonicalPath,
+                isCanonical: true,
+                canonicalPath: routePath,
             });
         });
     }
