@@ -3,6 +3,7 @@ color: #710e29
 type: pearl
 name: Photo
 map: impl=none, region=IP, room=CHIMNEY03, mapSlugcat=white
+mod: AuxiliaryIntake
 
 === transcription: LttM-post-collapse
 md-sourceDialogue: AshenBow/IPUpper.txt

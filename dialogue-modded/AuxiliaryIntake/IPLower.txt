@@ -3,6 +3,7 @@ color: #1eae97
 type: pearl
 name: Intake
 map: impl=none, region=IP, room=CHIMNEY03, mapSlugcat=white
+mod: AuxiliaryIntake
 
 === transcription: LttM-post-collapse
 md-sourceDialogue: AshenBow/IPLower.txt

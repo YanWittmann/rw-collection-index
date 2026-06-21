@@ -2,6 +2,7 @@ color: {randomPick--#b3b3b3--#dbdbdb--#878787--#8e8e8e}
 type: pearl
 name: White Pearl {var--WhitePearlIdx} (Misc)
 info: ${WhitePearl-MISC-INFO}
+mod: ChasingWind
 
 
 === transcription: chasing-wind

@@ -1,4 +1,5 @@
 inherit: Rivulet_stomach_CELADON
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Rivulet_stomach.txt

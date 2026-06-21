@@ -125,8 +125,10 @@ export async function sprite(asset: GameAsset, size: number): Promise<Canvas | n
     if (!img) return null;
     const c = createCanvas(size, size);
     const ctx = c.getContext('2d');
-    ctx.imageSmoothingEnabled = false;
-    const scale = Math.min(size / img.width, size / img.height);
+    // cover crops full-bleed art (region crests) and scales it smoothly, everything else stays pixel-sharp and contained
+    const cover = asset.fit === 'cover';
+    ctx.imageSmoothingEnabled = cover;
+    const scale = (cover ? Math.max : Math.min)(size / img.width, size / img.height);
     const w = img.width * scale;
     const h = img.height * scale;
     ctx.drawImage(img, (size - w) / 2, (size - h) / 2, w, h);
@@ -188,18 +190,23 @@ export function coverRect(srcW: number, srcH: number, box: Rect): Rect {
 
 const NAMED_ENTITIES: Record<string, string> = { lt: '<', gt: '>', amp: '&', quot: '"', apos: "'", nbsp: ' ' };
 
+const GLYPH_FALLBACKS: Record<string, string> = { '◎': 'O' };
+const GLYPH_FALLBACK_RE = new RegExp(`[${Object.keys(GLYPH_FALLBACKS).join('')}]`, 'g');
+
 /**
  * Decode HTML entities to their characters for canvas text, which has no HTML parser to do it.
  * Run this after any markup stripping so a decoded "<x>" is not then mistaken for a tag and removed.
+ * Also swaps glyphs the card fonts cannot render for close lookalikes.
  */
 export function decodeEntities(text: string): string {
-    return text.replace(/&(#x?[0-9a-fA-F]+|[a-zA-Z]+);/g, (m, code: string) => {
+    const decoded = text.replace(/&(#x?[0-9a-fA-F]+|[a-zA-Z]+);/g, (m, code: string) => {
         if (code[0] === '#') {
             const cp = code[1] === 'x' || code[1] === 'X' ? parseInt(code.slice(2), 16) : parseInt(code.slice(1), 10);
             return Number.isFinite(cp) ? String.fromCodePoint(cp) : m;
         }
         return NAMED_ENTITIES[code] ?? m;
     });
+    return decoded.replace(GLYPH_FALLBACK_RE, ch => GLYPH_FALLBACKS[ch]);
 }
 
 export interface TextOptions {

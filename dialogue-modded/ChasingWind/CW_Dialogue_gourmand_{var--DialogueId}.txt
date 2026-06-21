@@ -2,6 +2,7 @@ type: item
 subType: gourmand
 tag: downpour
 map: region=CW, room=AI, mapSlugcat=gourmand
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-type: pearl

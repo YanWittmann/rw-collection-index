@@ -1,4 +1,5 @@
 inherit: Red_stomach_AQUAMARINE
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_Moon_Pearl_Red_stomach.txt

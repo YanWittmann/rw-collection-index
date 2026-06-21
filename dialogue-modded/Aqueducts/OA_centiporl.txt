@@ -3,6 +3,7 @@ color: #bf0d00
 secondaryColor: #b36660
 type: pearl
 name: Centipede
+mod: Aqueducts
 map: impl=none, region=OA, room=A15, mapSlugcat=white
 
 === transcription: LttM-post-collapse

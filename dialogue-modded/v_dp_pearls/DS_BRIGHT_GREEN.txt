@@ -1,4 +1,5 @@
 inherit: DS_BRIGHT_GREEN
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_Moon_Pearl_DS.txt

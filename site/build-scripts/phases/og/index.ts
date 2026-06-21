@@ -32,7 +32,8 @@ import type { Dialogue, PearlData } from '../../../src/app/types/types';
 import { getEntryIcon, getTranscriberIcon } from '../../../src/app/utils/transcriberUtils';
 import { type ContentBlock, extractContent } from '../../../src/app/utils/dialogueParsing';
 import { decodeEntities, iconFilePath, registerFonts } from './toolkit';
-import { type CardInput, DEFAULT_DESIGN_NAME, type Design, getDesign } from './designs';
+import { type CardBadges, type CardInput, DEFAULT_DESIGN_NAME, type Design, getDesign } from './designs';
+import { buildBadges } from './badges';
 
 const PRESET_FLAT: CompressOptions = COMPRESS_PRESETS['og-card'];
 const PRESET_PHOTO: CompressOptions = COMPRESS_PRESETS['og-card-photo'];
@@ -95,10 +96,13 @@ function statSignature(file: string): string {
 }
 
 /** Every image file a card draws, so the cache key changes when any of them is edited. */
-function cardAssetFiles(pearl: PearlData, transcriber: Dialogue | null, blocks: ContentBlock[]): string[] {
+function cardAssetFiles(pearl: PearlData, transcriber: Dialogue | null, blocks: ContentBlock[], badges: CardBadges): string[] {
     const srcs = [getEntryIcon(pearl).asset.src];
     if (transcriber) srcs.push(getTranscriberIcon(transcriber, pearl).asset.src);
     for (const block of blocks) if (block.kind === 'image') srcs.push(block.path);
+    for (const cluster of [badges.left, badges.center, badges.right]) {
+        for (const badge of cluster) if (badge.icon) srcs.push(badge.icon.src);
+    }
     return srcs.map(iconFilePath);
 }
 
@@ -109,12 +113,14 @@ function cacheKey(design: Design, input: CardInput): string {
         preset: presetForBlocks(input.blocks),
         id: input.pearl.id,
         entryId: input.entryId,
+        internalId: input.pearl.metadata.internalId ?? null,
         title: input.title,
         color: input.pearl.metadata.color,
         transcriber: input.transcriber?.transcriber ?? null,
         transcriberName: input.transcriberName,
         blocks: input.blocks,
-        assets: cardAssetFiles(input.pearl, input.transcriber, input.blocks).map(f => `${path.basename(f)}#${statSignature(f)}`),
+        badges: input.badges,
+        assets: cardAssetFiles(input.pearl, input.transcriber, input.blocks, input.badges).map(f => `${path.basename(f)}#${statSignature(f)}`),
     });
     return crypto.createHash('sha1').update(payload).digest('hex');
 }
@@ -171,6 +177,7 @@ function cardInput(pearl: PearlData, transcriberName: string | null, entryId: st
         transcriberName: resolveTranscriberLabel(pearl, transcriber),
         showTranscriberIcon: !!transcriber && transcriberIconSrc !== entryIconSrc,
         blocks: extractContent(transcriber),
+        badges: buildBadges(pearl, transcriber),
     };
 }
 

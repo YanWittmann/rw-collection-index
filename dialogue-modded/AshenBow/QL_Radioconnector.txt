@@ -4,6 +4,7 @@ secondaryColor: #ac8c8c
 type: pearl
 name: Radio Spire Top
 map: impl=none, region=QL, room=receiverfields2, mapSlugcat=white
+mod: AshenBow
 
 === transcription: LttM-post-collapse
 md-sourceDialogue: AshenBow/QL_Radioconnector.txt

@@ -4,6 +4,7 @@ secondaryColor: #abdaff
 type: pearl
 name: Moss
 map: region=MF, room=H01, mapSlugcat=white
+mod: MossFields
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_MF_Pearl_1.txt

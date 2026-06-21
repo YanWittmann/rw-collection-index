@@ -1,4 +1,5 @@
 inherit: SI_top_DARK_GREEN
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_Moon_Pearl_SI_top.txt

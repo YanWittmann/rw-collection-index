@@ -1,5 +1,6 @@
 name: Soot covered Bones, Twice Reflected
 type: echo
+mod: CorrodedPassage
 
 === transcription: saint
 md-map: region=PQ, room=PQ_F01SAINT, mapSlugcat=saint, impl=none

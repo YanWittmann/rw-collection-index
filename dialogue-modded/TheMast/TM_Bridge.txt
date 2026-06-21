@@ -4,6 +4,7 @@ secondaryColor: #e7ffa6
 type: pearl
 name: Spire
 map: region=TM, room=SD01, mapSlugcat=white
+mod: TheMast
 
 === transcription: FP-artificer
 md-sourceDialogue: TheMast/TM_Bridge-Artificer.txt

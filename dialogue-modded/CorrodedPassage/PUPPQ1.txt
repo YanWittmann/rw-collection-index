@@ -7,6 +7,7 @@ map: impl=none, region=PQ, room=C14, mapSlugcat=spear
 map: impl=none, region=PQ, room=D03, mapSlugcat=spear
 map: impl=none, region=PQ, room=F01, mapSlugcat=spear
 map: impl=none, region=PQ, room=F04, mapSlugcat=spear
+mod: CorrodedPassage
 
 
 === transcription: broadcast

@@ -2,6 +2,7 @@ type: item
 subType: hunter
 tag: downpour
 map: region=CW, room=AI, mapSlugcat=red
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-type: pearl

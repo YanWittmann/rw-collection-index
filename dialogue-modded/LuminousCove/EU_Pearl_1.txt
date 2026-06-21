@@ -4,6 +4,7 @@ secondaryColor: #c9b983
 type: pearl
 name: Inauguration
 map: region=EU, room=B12, mapSlugcat=white, impl=none
+mod: LuminousCove
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_EU_Pearl_1.txt

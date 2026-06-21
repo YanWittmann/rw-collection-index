@@ -2,6 +2,7 @@ internalId: BigGoldenPearl
 color: #f2cc19
 type: pearl
 name: Big Golden Pearl
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_Moon_BigGoldenPearl.txt

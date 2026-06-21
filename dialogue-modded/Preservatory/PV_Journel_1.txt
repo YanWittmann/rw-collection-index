@@ -2,6 +2,7 @@ internalId: PV1
 color: #91fb95
 type: broadcast
 name: Journal 1
+mod: Preservatory
 
 === transcription: broadcast
 md-sourceDialogue: Preservatory/PV_Journel_1.txt

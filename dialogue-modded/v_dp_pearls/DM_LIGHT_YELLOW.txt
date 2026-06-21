@@ -1,4 +1,5 @@
 inherit: DM_LIGHT_YELLOW
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_Moon_Pearl_DM.txt

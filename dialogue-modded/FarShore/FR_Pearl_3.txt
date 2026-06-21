@@ -4,6 +4,7 @@ secondaryColor: #e3fff5
 type: pearl
 name: Woven
 map: region=FR, room=D06, mapSlugcat=white
+mod: FarShore
 
 === transcription: chasing-wind
 md-sourceDialogue: FarShore/CW_FR_Pearl_3.txt

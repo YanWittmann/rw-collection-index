@@ -4,6 +4,7 @@ secondaryColor: #f6fff2
 type: pearl
 name: Mural
 map: region=PV, room=B07, mapSlugcat=white
+mod: Preservatory
 
 === transcription: FP-artificer
 md-sourceDialogue: Preservatory/PV_Mural-artificer.txt

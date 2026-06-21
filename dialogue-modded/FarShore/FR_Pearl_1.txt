@@ -5,6 +5,7 @@ type: pearl
 name: Lava
 map: region=FR, room=TP32, mapSlugcat=white
 mapInfo: I was unable to locate this room.
+mod: FarShore
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_FR_Pearl_1.txt

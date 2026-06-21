@@ -1,6 +1,7 @@
 name: Echo
 type: echo
 map: region=EU, room=A04, mapSlugcat=saint, impl=none
+mod: LuminousCove
 
 === transcription: base-slugcats
 md-sourceDialogue: LuminousCove/eu_echoConv.txt

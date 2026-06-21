@@ -4,6 +4,7 @@ secondaryColor: #99bf99
 type: pearl
 name: High
 map: impl=none, region=OA, room=A45, mapSlugcat=white
+mod: Aqueducts
 
 === transcription: LttM-post-collapse
 md-sourceDialogue: ScorchedDistrict/high.txt

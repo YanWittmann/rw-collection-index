@@ -30,6 +30,19 @@ export interface RegionDef {
     image?: string;            // path relative to img/, no extension (PNG assumed), e.g. "region/HI"
 }
 
+export interface ModLink {
+    title: string;
+    url: string;
+    subtitle?: string;
+}
+
+export interface ModDef {
+    name: string;              // display name, e.g. "Corroded Passage"
+    image?: string;            // path relative to img/, e.g. "modded/CorrodedPassage/thumb.webp"
+    links?: ModLink[];         // external references (wiki, workshop, ...)
+    regions?: string[];        // short codes of the regions this mod adds, e.g. ["TM", "XM"]
+}
+
 // SECTION: speakers
 
 export const speakers: Record<string, SpeakerDef> = {
@@ -204,7 +217,179 @@ for (const [id, def] of Object.entries(speakers)) {
     if (def.transcriberColor) keys.forEach(k => { transcribersColors[k] = def.transcriberColor!; });
 }
 
+// SECTION: mods
+
+// Keyed by the mod identifier authored in each modded dialogue file's header and used as the img/modded subfolder.
+export const mods: Record<string, ModDef> = {
+    "CorrodedPassage": {
+        name: "Corroded Passage",
+        regions: ["PQ"],
+        image: "modded/CorrodedPassage/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Corroded_Passage" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3222863079" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3222863079" },
+        ],
+    },
+    "TheMast": {
+        name: "The Mast",
+        regions: ["TM", "XM"],
+        image: "modded/TheMast/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/The_Mast" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3034151966" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3034151966" },
+            { title: "GitHub", url: "https://github.com/snoodledev/themast" },
+        ],
+    },
+    "FarShore": {
+        name: "Far Shore",
+        regions: ["FR"],
+        image: "modded/FarShore/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Far_Shore" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3026723782" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3026723782" },
+        ],
+    },
+    "GrayUrban": {
+        name: "Gray Urban",
+        regions: ["GU"],
+        image: "modded/GrayUrban/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Gray_Urban" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3393900034" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3393900034" },
+        ],
+    },
+    "ChasingWind": {
+        name: "Chasing Wind",
+        regions: ["CW"],
+        image: "modded/ChasingWind/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Chasing_Wind_(region)" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3232063592" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3232063592" },
+        ],
+    },
+    "ScorchedDistrict": {
+        name: "Scorched District",
+        regions: ["SD"],
+        image: "modded/ScorchedDistrict/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Scorched_District" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=2987764922" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#2987764922" },
+        ],
+    },
+    "Aqueducts": {
+        name: "Aqueducts",
+        regions: ["OA"],
+        image: "modded/Aqueducts/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Aqueducts" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3122525868" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3122525868" },
+        ],
+    },
+    "LuminousCove": {
+        name: "Luminous Cove",
+        regions: ["EU"],
+        image: "modded/LuminousCove/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Luminous_Cove" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3232063592" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3232063592" },
+        ],
+    },
+    "HangingGardens": {
+        name: "Hanging Gardens",
+        regions: ["GH"],
+        image: "modded/HangingGardens/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Hanging_Gardens" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3022284148" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3022284148" },
+        ],
+    },
+    "Necropolis": {
+        name: "Necropolis",
+        regions: ["NP"],
+        image: "modded/Necropolis/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Necropolis" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3393902748" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3393902748" },
+        ],
+    },
+    "MossFields": {
+        name: "Moss Fields",
+        regions: ["MF"],
+        image: "modded/MossFields/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Moss_Fields" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3147907848" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3147907848" },
+        ],
+    },
+    "ArchaicFacility": {
+        name: "Archaic Facility",
+        regions: ["KF"],
+        image: "modded/ArchaicFacility/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Archaic_Facility" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3272297488" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3272297488" },
+        ],
+    },
+    "AshenBow": {
+        name: "Ashen Bow",
+        regions: ["QL"],
+        image: "modded/AshenBow/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Ashen_Bow" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3474041462" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3474041462" },
+        ],
+    },
+    "Preservatory": {
+        name: "Preservatory",
+        regions: ["PV"],
+        image: "modded/Preservatory/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Preservatory" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3357751340" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3357751340" },
+        ],
+    },
+    "AuxiliaryIntake": {
+        name: "Auxiliary Intake",
+        regions: ["IP"],
+        image: "modded/AuxiliaryIntake/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Auxiliary_Intake" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=3457887314" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#3457887314" },
+        ],
+    },
+    "DrainageSystemPlus": {
+        name: "Drainage System Plus",
+        regions: ["DS"],
+        image: "modded/DrainageSystemPlus/thumb.webp",
+        links: [
+            { title: "Mod Wiki", url: "https://rainworldmods.miraheze.org/wiki/Drainage_System_Plus" },
+            { title: "Steam Workshop", url: "https://steamcommunity.com/sharedfiles/filedetails/?id=2993225799" },
+            { title: "RainDB", url: "https://andrewfm.github.io/RainDB/#2993225799" },
+        ],
+    },
+};
+
 // SECTION: utility
+
+/** A mod's registry entry, or undefined for an unknown/absent key (so callers can simply skip it). */
+export function getMod(id: string | undefined | null): ModDef | undefined {
+    return id ? mods[id] : undefined;
+}
 
 export function getRegion(id: string | undefined | null): RegionDef {
     if (!id) return regions["unknown"];

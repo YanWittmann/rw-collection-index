@@ -1,6 +1,7 @@
 name: One Twig upon a Silver Spindle
 type: echo
 map: region=CW, room=C15, mapSlugcat=white
+mod: ChasingWind
 
 === transcription: saint
 md-sourceDialogue: ChasingWind/eu/echoConv.txt

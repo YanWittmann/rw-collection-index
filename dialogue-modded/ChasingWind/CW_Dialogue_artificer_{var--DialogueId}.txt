@@ -2,6 +2,7 @@ type: item
 subType: artificer
 tag: downpour
 map: region=CW, room=AI, mapSlugcat=artificer
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-type: pearl

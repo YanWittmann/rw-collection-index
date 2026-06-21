@@ -4,6 +4,7 @@ secondaryColor: #6ced5f
 type: pearl
 name: Radio Spire Top
 map: impl=none, region=QL, room=spire, mapSlugcat=white
+mod: AshenBow
 
 === transcription: LttM-post-collapse
 md-sourceDialogue: AshenBow/QL_Radiospiretop.txt

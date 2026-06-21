@@ -1,4 +1,5 @@
 inherit: SU_filt_LIGHT_PINK
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_Moon_Pearl_SU_filt.txt

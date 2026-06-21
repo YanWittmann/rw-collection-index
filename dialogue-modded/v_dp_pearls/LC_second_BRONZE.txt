@@ -1,4 +1,5 @@
 inherit: LC_second_BRONZE
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_Moon_Pearl_LC_second.txt

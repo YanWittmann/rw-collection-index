@@ -1,4 +1,5 @@
 inherit: UW_PALE_GREEN
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_Moon_Pearl_UW.txt

@@ -4,8 +4,9 @@
  * only the placement and styling differ, so the drawing lives here and designs pass an area plus a style.
  */
 
-import type { CardInput } from './index';
+import type { Badge, CardInput } from './index';
 import { cleanText, type ContentBlock } from '../../../../src/app/utils/dialogueParsing';
+import { ensureMinLightness } from '../../../../src/app/utils/colorUtils';
 import {
     containRect,
     coverRect,
@@ -20,6 +21,7 @@ import {
     layoutParagraphs,
     loadAsset,
     type Rect,
+    sprite,
     texture,
     transcriberSprite,
 } from '../toolkit';
@@ -316,4 +318,79 @@ export async function drawTranscriberTile(ctx: Ctx, input: CardInput, x: number,
     fillPanel(ctx, { x, y, w: size, h: size }, style.bg, style.radius, style.border, style.borderWidth ?? 2);
     const pad = Math.round(size * 0.2);
     drawSprite(ctx, await transcriberSprite(input.pearl, input.transcriber, size - 2 * pad), x + pad, y + pad);
+}
+
+// --- edge badges ------------------------------------------------------------
+
+/** Look of a badge chip; every measure here is tunable so the row can be iterated without touching layout code. */
+export interface BadgeStyle {
+    height: number;
+    padX: number;
+    padY: number;
+    /** Gap between chips. */
+    gap: number;
+    /** Gap between a chip's icon and its label. */
+    iconGap: number;
+    radius: number;
+    fontSize: number;
+    bg: string;
+    border: string;
+    borderWidth: number;
+    /** Fallback label colour (e.g. the "+N" chip); a badge's own labelColor wins, lifted for readability. */
+    labelColor: string;
+    /** Floor applied to a badge's own colour so dark region accents stay legible (default 55). */
+    minLabelLightness?: number;
+}
+
+export interface BadgeClusterOptions {
+    align: 'left' | 'center' | 'right';
+    /** Anchor x: the left edge for 'left', the right edge for 'right', the centre for 'center'. */
+    edgeX: number;
+    /** The line the chips are vertically centred on (e.g. the card's border). */
+    centerY: number;
+    style: BadgeStyle;
+}
+
+/**
+ * Draw one cluster of chips along a border line, vertically centred on centerY so they ride the edge.
+ * Chips are measured first, then laid out so the cluster grows away from its anchor (right grows leftward).
+ * Drawn after the card, this overlays the border and never reflows the content.
+ */
+export async function drawBadgeCluster(ctx: Ctx, badges: Badge[], opts: BadgeClusterOptions): Promise<void> {
+    if (!badges.length) return;
+    const { style } = opts;
+    const iconSize = style.height - 2 * style.padY;
+    ctx.font = `${style.fontSize}px ${FONT_BODY}`;
+    const items = badges.map(badge => {
+        const labelW = badge.label ? ctx.measureText(badge.label).width : 0;
+        const parts = (badge.icon ? 1 : 0) + (badge.label ? 1 : 0);
+        const inner = parts > 1 ? style.iconGap : 0;
+        const w = 2 * style.padX + (badge.icon ? iconSize : 0) + labelW + inner;
+        return { badge, w };
+    });
+
+    const total = items.reduce((s, i) => s + i.w, 0) + style.gap * (items.length - 1);
+    let x = opts.align === 'left' ? opts.edgeX : opts.align === 'right' ? opts.edgeX - total : opts.edgeX - total / 2;
+    const top = opts.centerY - style.height / 2;
+
+    for (const item of items) {
+        fillPanel(ctx, { x, y: top, w: item.w, h: style.height }, style.bg, style.radius, style.border, style.borderWidth);
+        let cx = x + style.padX;
+        if (item.badge.icon) {
+            drawSprite(ctx, await sprite(item.badge.icon, iconSize), cx, top + style.padY);
+            cx += iconSize + style.iconGap;
+        }
+        if (item.badge.label) {
+            ctx.font = `${style.fontSize}px ${FONT_BODY}`;
+            ctx.fillStyle = item.badge.labelColor
+                ? ensureMinLightness(item.badge.labelColor, style.minLabelLightness)
+                : style.labelColor;
+            ctx.textAlign = 'left';
+            // set the baseline before measuring, the box metrics are reported relative to it
+            ctx.textBaseline = 'alphabetic';
+            const m = ctx.measureText(item.badge.label);
+            ctx.fillText(item.badge.label, cx, opts.centerY + (m.actualBoundingBoxAscent - m.actualBoundingBoxDescent) / 2);
+        }
+        x += item.w + style.gap;
+    }
 }

@@ -2,6 +2,7 @@ type: item
 subType: spearmaster
 tag: downpour
 map: region=CW, room=AI, mapSlugcat=spear
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-type: pearl

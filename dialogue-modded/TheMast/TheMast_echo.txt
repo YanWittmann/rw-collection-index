@@ -1,5 +1,6 @@
 name: Eight Shells, Swaying Fronds
 type: echo
+mod: TheMast
 
 === transcription: saint
 md-map: region=XM, room=X01, mapSlugcat=saint

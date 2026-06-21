@@ -4,6 +4,7 @@ secondaryColor: #0c7075
 type: pearl
 name: Weaver
 map: impl=none, region=KF, room=mossycoast03, mapSlugcat=white
+mod: ArchaicFacility
 
 === transcription: chasing-wind-gourmand
 md-sourceDialogue: ArchaicFacility/CW/KF_Pearl_2-Gourmand.txt

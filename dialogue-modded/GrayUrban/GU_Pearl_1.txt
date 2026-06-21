@@ -4,6 +4,7 @@ secondaryColor: #daf7a6
 type: pearl
 name: Joust
 map: impl=none, region=GU, room=IB09, mapSlugcat=white
+mod: GrayUrban
 
 === transcription: chasing-wind
 md-sourceDialogue: GrayUrban/CW_GU_Pearl_1.txt

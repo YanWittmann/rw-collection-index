@@ -3,6 +3,7 @@ color: #7E7B52
 type: broadcast
 name: Seb 1
 map: impl=none, region=PQ, room=C11, mapSlugcat=spear
+mod: CorrodedPassage
 
 === transcription: broadcast
 md-sourceDialogue: CorrodedPassage/SEBPQ.txt

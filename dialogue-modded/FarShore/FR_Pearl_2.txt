@@ -4,6 +4,7 @@ secondaryColor: #ffc300
 type: pearl
 name: Scavenger
 map: region=FR, room=A27, mapSlugcat=white
+mod: FarShore
 
 === transcription: chasing-wind
 md-sourceDialogue: FarShore/CW_FR_Pearl_2.txt

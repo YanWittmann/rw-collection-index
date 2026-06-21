@@ -4,6 +4,7 @@ secondaryColor: #ff7e57
 type: pearl
 name: Stars
 map: region=SD, room=A21, mapSlugcat=white
+mod: ScorchedDistrict
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_SD_Pearl_1.txt

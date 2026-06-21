@@ -1,4 +1,5 @@
 inherit: CC_GOLD
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_Moon_Pearl_CC.txt

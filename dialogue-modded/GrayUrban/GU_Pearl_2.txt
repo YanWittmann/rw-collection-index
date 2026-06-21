@@ -4,6 +4,7 @@ secondaryColor: #e02d2d
 type: pearl
 name: Poem
 map: impl=none, region=GU, room=IC01, mapSlugcat=white
+mod: GrayUrban
 
 === transcription: chasing-wind
 md-sourceDialogue: GrayUrban/CW_FR_Pearl_2.txt

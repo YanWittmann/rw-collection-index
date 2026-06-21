@@ -3,6 +3,7 @@ color: #5CD4A1
 type: pearl
 name: Jungle Green
 map: region=DS, room=C08, mapSlugcat=white, impl=none
+mod: DrainageSystemPlus
 
 === transcription: LttM-post-collapse
 md-sourceDialogue: DS_C08p.txt

@@ -1,4 +1,5 @@
 inherit: RM_MUSIC
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_Moon_Pearl_RM.txt

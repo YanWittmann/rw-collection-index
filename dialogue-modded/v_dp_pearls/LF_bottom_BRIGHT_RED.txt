@@ -1,4 +1,5 @@
 inherit: LF_bottom_BRIGHT_RED
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-sourceDialogue: ChasingWind/CW_Moon_Pearl_LF_bottom.txt

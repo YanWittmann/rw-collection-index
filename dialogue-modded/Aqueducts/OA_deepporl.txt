@@ -4,6 +4,7 @@ secondaryColor: #5648c2
 type: pearl
 name: Deep
 map: impl=none, region=OA, room=A74, mapSlugcat=white
+mod: Aqueducts
 
 === transcription: LttM-post-collapse
 md-sourceDialogue: ScorchedDistrict/deep.txt

@@ -1,4 +1,5 @@
 inherit: Spearmasterpearl_DARK_RED
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-name: Dark Red (Spearmaster) - Before sending Broadcast

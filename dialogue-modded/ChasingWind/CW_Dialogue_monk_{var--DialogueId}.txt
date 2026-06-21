@@ -2,6 +2,7 @@ type: item
 subType: monk
 tag: downpour
 map: region=CW, room=AI, mapSlugcat=yellow
+mod: ChasingWind
 
 === transcription: chasing-wind
 md-type: pearl

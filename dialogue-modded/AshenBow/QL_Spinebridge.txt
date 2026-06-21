@@ -4,6 +4,7 @@ secondaryColor: #f8bfff
 type: pearl
 name: Radio Spire Top
 map: impl=none, region=QL, room=grove, mapSlugcat=white
+mod: AshenBow
 
 === transcription: LttM-post-collapse
 md-sourceDialogue: AshenBow/QL_Spinebridge.txt

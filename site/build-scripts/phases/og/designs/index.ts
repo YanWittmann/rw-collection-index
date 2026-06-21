@@ -8,7 +8,25 @@
 import type { Ctx } from '../toolkit';
 import type { Dialogue, PearlData } from '../../../../src/app/types/types';
 import type { ContentBlock } from '../../../../src/app/utils/dialogueParsing';
+import type { GameAsset } from '../../../../src/app/utils/assetUtils';
 import { reader } from './reader';
+
+/**
+ * One small chip drawn on the card border: an icon, a label, or both.
+ * labelColor is the raw source colour; the design resolves it to a readable shade when drawing.
+ */
+export interface Badge {
+    icon?: GameAsset;
+    label?: string;
+    labelColor?: string;
+}
+
+/** Badges grouped by where they sit along a card edge, so designs can place each cluster independently. */
+export interface CardBadges {
+    left: Badge[];
+    center: Badge[];
+    right: Badge[];
+}
 
 export interface CardInput {
     pearl: PearlData;
@@ -21,6 +39,8 @@ export interface CardInput {
     /** False when there is no transcriber or its icon equals the entry icon (e.g. broadcasts), so designs can skip it. */
     showTranscriberIcon: boolean;
     blocks: ContentBlock[];
+    /** Edge chips (regions, tags) drawn on the card border without disturbing the content layout. */
+    badges: CardBadges;
 }
 
 export interface Design {

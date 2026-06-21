@@ -1,5 +1,6 @@
 name: Echo
 type: echo
+mod: AshenBow
 
 === transcription: saint
 md-map: impl=none, region=QL, room=spire, mapSlugcat=saint

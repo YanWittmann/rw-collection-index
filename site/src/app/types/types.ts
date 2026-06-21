@@ -51,6 +51,7 @@ export interface PearlData {
         map?: MapInfo[];
         sourceDialogue?: string[];
         saveUnlock?: string[];
+        mod?: string;
     };
     transcribers: Dialogue[];
     hints: Hint[];

@@ -2,6 +2,7 @@ internalId: TM_Broadcast1
 color: #b0a166
 type: broadcast
 name: Broadcast 1
+mod: TheMast
 
 === transcription: broadcast
 md-sourceDialogue: TheMast/TM_Broadcast1.txt

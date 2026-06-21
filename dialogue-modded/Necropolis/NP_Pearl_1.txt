@@ -4,6 +4,7 @@ secondaryColor: #cfbadf
 type: pearl
 name: Gilded
 map: impl=none, region=NP, room=seed, mapSlugcat=white
+mod: Necropolis
 
 === transcription: chasing-wind
 md-sourceDialogue: Necropolis/CW_NP_Pearl_1.txt

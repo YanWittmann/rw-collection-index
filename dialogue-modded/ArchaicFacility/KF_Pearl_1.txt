@@ -4,6 +4,7 @@ secondaryColor: #cfb5b5
 type: pearl
 name: Gutter
 map: impl=none, region=KF, room=struts08, mapSlugcat=white
+mod: ArchaicFacility
 
 === transcription: chasing-wind-spearmaster
 md-sourceDialogue: ArchaicFacility/CW/KF_Pearl_1-Spearmaster.txt
