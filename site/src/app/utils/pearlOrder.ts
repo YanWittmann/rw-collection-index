@@ -326,6 +326,13 @@ const moddedPearlOrder: PearlChapter[] = [
     }),
 ];
 
+// pearls from the colored group whose community color name is suppressed in titles (broadcasts excluded)
+export const COLORED_PEARL_IDS: ReadonlySet<string> = new Set(
+    (vanillaPearlOrder[0].ids ?? []).filter(
+        (id): id is string => typeof id === 'string' && !id.startsWith('LP_') && !id.startsWith('Chatlog_')
+    )
+);
+
 export const PEARL_ORDER_CONFIGS: Record<string, PearlChapter[]> = {
     vanilla: vanillaPearlOrder,
     modded: moddedPearlOrder
