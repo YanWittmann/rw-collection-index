@@ -1,11 +1,11 @@
 /**
  * Phase: static route generation.
  * Runs after the app bundle exists.
- * Produces a real index.html for every entry and transcriber (with per-page meta, canonical and crawlable content), the dataset landing pages, 404.html, sitemap.xml, robots.txt and routes.json.
+ * Produces a real index.html for every entry and transcriber (with per-page meta, canonical and crawlable content), the dataset landing pages, 404.html, sitemap.xml, sitemap.txt, robots.txt and routes.json.
  * It shares routes.ts with the app, so build and runtime URLs cannot diverge, and asserts every route round-trips so a missed entry fails loudly.
  *
  * in   build/index.html (shell), public/data/parsed-dialogues*.json
- * out  build/**\/index.html, build/404.html, build/{sitemap.xml,robots.txt,routes.json}
+ * out  build/**\/index.html, build/404.html, build/{sitemap.xml,sitemap.txt,robots.txt,routes.json}
  */
 
 import { execSync } from 'child_process';
@@ -178,7 +178,14 @@ function fileLastmodMap(dirsRelToRoot: string[]): Map<string, string> {
     return map;
 }
 
-function writeSitemap(entries: Array<{ path: string; lastmod: string }>): void {
+function writeSitemapTxt(entries: Array<{ path: string }>): void {
+    writeText(
+        path.join(BUILD_DIR, 'sitemap.txt'),
+        entries.map(({ path: routePath }) => absoluteUrl(routePath)).join('\n') + '\n',
+    );
+}
+
+function writeSitemapXml(entries: Array<{ path: string; lastmod: string }>): void {
     const urls = entries.map(({ path: routePath, lastmod }) => {
         const loc = xmlEscape(absoluteUrl(routePath));
         return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`;
@@ -192,7 +199,7 @@ function writeSitemap(entries: Array<{ path: string; lastmod: string }>): void {
 function writeRobots(): void {
     writeText(
         path.join(BUILD_DIR, 'robots.txt'),
-        `# https://www.robotstxt.org/robotstxt.html\nUser-agent: *\nDisallow:\n\nSitemap: ${SITE_ORIGIN}${BASE}/sitemap.xml\n`,
+        `# https://www.robotstxt.org/robotstxt.html\nUser-agent: *\nDisallow:\n\nSitemap: ${SITE_ORIGIN}${BASE}/sitemap.xml\nSitemap: ${SITE_ORIGIN}${BASE}/sitemap.txt\n`,
     );
 }
 
@@ -288,7 +295,8 @@ export function runRoutes(): void {
         ogImage: DEFAULT_OG_IMAGE,
     }));
 
-    writeSitemap(sitemapEntries);
+    writeSitemapXml(sitemapEntries);
+    writeSitemapTxt(sitemapEntries);
     writeRobots();
     writeJson(path.join(BUILD_DIR, 'routes.json'), manifest);
 
@@ -297,6 +305,6 @@ export function runRoutes(): void {
         throw new Error(`Route count mismatch: wrote ${writtenFiles.size} pages but expected ${expected}.`);
     }
 
-    log.writes(`${writtenFiles.size} HTML pages, 404.html, sitemap.xml, robots.txt, routes.json`);
+    log.writes(`${writtenFiles.size} HTML pages, 404.html, sitemap.xml, sitemap.txt, robots.txt, routes.json`);
     log.done(`${manifest.length} routes across ${DATASETS.length} datasets, images=${imageFormat}`);
 }

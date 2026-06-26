@@ -22,7 +22,7 @@
 import { Dialogue, PearlData } from '../types/types';
 import { findTranscriberIndex, getEffectiveTranscriberName } from '../utils/transcriberUtils';
 import { getSpeakerDef, regions, slugcats, speakerByAlias } from '../utils/speakers';
-import { COLORED_PEARL_IDS } from '../utils/pearlOrder';
+import { COLORED_PEARL_IDS, findPearlCategory, PEARL_ORDER_CONFIGS } from '../utils/pearlOrder';
 import { cleanText, extractContent } from '../utils/dialogueParsing';
 import { renderDialogueLine } from '../utils/renderDialogueLine';
 import { isCompressedImgPath } from '../utils/assetUtils';
@@ -330,19 +330,21 @@ function truncate(value: string, max = 200): string {
 // Media and mono-marker parsing is shared with the runtime DialogueContent via
 // utils/dialogueParsing, so the build and the live app interpret markup identically.
 
-/**
- * Build a short, human description from a transcriber's content blocks, mirroring
- * the summary the app shows. Describes media (image/audio) when there are no spoken
- * lines, so media-only entries get a real description instead of the generic fallback.
- */
-function summarizeTranscriber(transcriber: Dialogue | null): string {
-    const normalized: string[] = [];
+// broadcast protocol header lines: start with [ or a run of dashes, contain no actual dialogue
+const BROADCAST_HEADER_RE = /^\s*(\[|--)/;
+
+/** Extract meaningful text lines from a transcriber, skipping broadcast protocol headers when isBroadcast is true. */
+function extractTextExcerpt(transcriber: Dialogue | null, isBroadcast = false): string {
+    const lines: string[] = [];
     for (const block of extractContent(transcriber)) {
-        if (block.kind === 'image') normalized.push(`Image: ${block.label}`);
-        else if (block.kind === 'audio') normalized.push(`Audio: ${block.label}`);
-        else normalized.push(block.speaker ? `${block.speaker}: ${cleanText(block.text)}` : cleanText(block.text));
+        if (block.kind !== 'text') continue;
+        const raw = cleanText(block.text);
+        if (!raw) continue;
+        if (isBroadcast && BROADCAST_HEADER_RE.test(raw)) continue;
+        lines.push(raw);
+        if (lines.join(' ').length >= 200) break;
     }
-    return normalized.slice(0, 6).join(' ');
+    return lines.join(' ');
 }
 
 function collectRegions(pearl: PearlData, transcriber: Dialogue | null): string[] {
@@ -490,7 +492,7 @@ export function buildRouteMeta(pearl: PearlData, transcriber: Dialogue | null): 
         ];
 
     } else { // item
-        const name = entryName.replace(/\[◎\]/g, 'Ripple');
+        const name = entryName.replace(/\[◎]/g, 'Ripple');
         const speakerPart = speaker && !containsWord(name, speaker) ? speaker : null;
         // guard: skip "as Rivulet" if the speaker short-name already contains the slugcat name
         const slugcatPart = slugcat && !containsWord(speakerPart ?? '', slugcat) ? `as ${slugcat}` : null;
@@ -498,11 +500,38 @@ export function buildRouteMeta(pearl: PearlData, transcriber: Dialogue | null): 
     }
 
     const title = assembleTitle(titleParts);
-    const summary = summarizeTranscriber(transcriber)
-        || cleanText(transcriber?.metadata?.info)
-        || cleanText(pearl.metadata.info)
-        || `Dialogue content for ${entryName} from the ${SITE_NAME}.`;
-    return { title, description: truncate(summary), ogImage: null };
+
+    const blocks = extractContent(transcriber);
+    const imageBlocks = blocks.filter(b => b.kind === 'image');
+    const audioBlocks = blocks.filter(b => b.kind === 'audio');
+    const isImageOnly = imageBlocks.length > 0 && blocks.every(b => b.kind === 'image');
+    const isAudioOnly = audioBlocks.length > 0 && blocks.every(b => b.kind === 'audio');
+    const isTrueItem = type === 'item' && findPearlCategory(pearl, PEARL_ORDER_CONFIGS['vanilla']) === 'Items';
+
+    let description: string;
+
+    if (isImageOnly) {
+        const count = imageBlocks.length;
+        const info = cleanText(transcriber?.metadata?.info) || cleanText(pearl.metadata.info);
+        description = `Visual projection with ${count} frame${count !== 1 ? 's' : ''}.${info ? ' ' + info : ''}`;
+    } else if (isAudioOnly) {
+        const info = cleanText(transcriber?.metadata?.info) || cleanText(pearl.metadata.info);
+        description = `Audio recording.${info ? ' ' + info : ''}`;
+    } else if (isTrueItem) {
+        const speakerLabel = speakerShortName(transcriberKey);
+        const prefix = speakerLabel ? `${speakerLabel} on ${entryName}: ` : `${entryName}: `;
+        const excerpt = extractTextExcerpt(transcriber)
+            || cleanText(transcriber?.metadata?.info)
+            || cleanText(pearl.metadata.info);
+        description = prefix + excerpt;
+    } else {
+        description = extractTextExcerpt(transcriber, type === 'broadcast')
+            || cleanText(transcriber?.metadata?.info)
+            || cleanText(pearl.metadata.info)
+            || `${entryName} from Rain World.`;
+    }
+
+    return { title, description: truncate(description), ogImage: null };
 }
 
 /**

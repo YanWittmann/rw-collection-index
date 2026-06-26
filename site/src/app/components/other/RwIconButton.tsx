@@ -16,6 +16,7 @@ interface RwIconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
     padding?: string
     expandedScaleFactor?: number
     variant?: RwIconButtonVariant
+    href?: string
     'aria-label': string
 }
 
@@ -44,6 +45,7 @@ export const RwIconButton = React.forwardRef<HTMLButtonElement, RwIconButtonProp
     children,
     expandedScaleFactor = 1,
     variant = 'default',
+    href,
     'aria-label': ariaLabel,
     ...rest
 }: RwIconButtonProps, ref) {
@@ -68,24 +70,16 @@ export const RwIconButton = React.forwardRef<HTMLButtonElement, RwIconButtonProp
     const pulseAnimation = animState === 'hover' ? 'rw-pulse 0.35s ease-in-out infinite' : 'none'
     const pulseTransition = animState !== 'hover' ? 'opacity 80ms ease, transform 80ms ease' : 'transform 80ms ease'
 
-    return (
-        <button
-            ref={ref}
-            {...rest}
-            className={cn(
-                "relative p-0 flex items-center justify-center",
-                className,
-                square
-                    ? size === 'xsmall' ? "aspect-square h-6 w-6" : size === 'small' ? "aspect-square h-8 w-8" : "aspect-square h-12 w-12"
-                    : size === 'xsmall' ? "h-6 min-w-[1.5rem]" : size === 'small' ? "h-8 min-w-[2rem]" : "h-12 min-w-[3rem]",
-            )}
-            onClickCapture={() => setIsHovering(false)}
-            onClick={onClick}
-            onMouseEnter={() => { setIsHovering(true); onMouseEnter?.() }}
-            onMouseLeave={() => { setIsHovering(false); onMouseLeave?.() }}
-            aria-label={ariaLabel}
-        >
-            {/* Background layer */}
+    const sharedClassName = cn(
+        "relative p-0 flex items-center justify-center",
+        className,
+        square
+            ? size === 'xsmall' ? "aspect-square h-6 w-6" : size === 'small' ? "aspect-square h-8 w-8" : "aspect-square h-12 w-12"
+            : size === 'xsmall' ? "h-6 min-w-[1.5rem]" : size === 'small' ? "h-8 min-w-[2rem]" : "h-12 min-w-[3rem]",
+    )
+
+    const layers = (
+        <>
             <div
                 className="absolute inset-0 rounded-xl"
                 style={{
@@ -95,8 +89,6 @@ export const RwIconButton = React.forwardRef<HTMLButtonElement, RwIconButtonProp
                     transition: 'transform 200ms ease, background-color 200ms ease',
                 }}
             />
-
-            {/* Outer border layer */}
             <div
                 className={cn(
                     "absolute inset-0 rounded-xl border-2",
@@ -109,8 +101,6 @@ export const RwIconButton = React.forwardRef<HTMLButtonElement, RwIconButtonProp
                     transition: 'transform 80ms cubic-bezier(0.5,0,0.1,1.5), border-color 80ms ease',
                 }}
             />
-
-            {/* Pulsating inner border, pure CSS animation, no Framer Motion */}
             <div
                 className="absolute inset-[3px] rounded-lg border-2 border-white/60"
                 style={{
@@ -121,8 +111,6 @@ export const RwIconButton = React.forwardRef<HTMLButtonElement, RwIconButtonProp
                     transition: pulseTransition,
                 }}
             />
-
-            {/* Content */}
             <div
                 className={cn(
                     "relative z-10 flex items-center justify-center",
@@ -131,6 +119,39 @@ export const RwIconButton = React.forwardRef<HTMLButtonElement, RwIconButtonProp
             >
                 {children}
             </div>
+        </>
+    )
+
+    if (href) {
+        return (
+            <a
+                ref={ref as unknown as React.Ref<HTMLAnchorElement>}
+                href={href}
+                {...(rest as unknown as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+                className={sharedClassName}
+                onClickCapture={(e) => { e.preventDefault(); setIsHovering(false); }}
+                onClick={onClick}
+                onMouseEnter={() => { setIsHovering(true); onMouseEnter?.(); }}
+                onMouseLeave={() => { setIsHovering(false); onMouseLeave?.(); }}
+                aria-label={ariaLabel}
+            >
+                {layers}
+            </a>
+        )
+    }
+
+    return (
+        <button
+            ref={ref}
+            {...rest}
+            className={sharedClassName}
+            onClickCapture={() => setIsHovering(false)}
+            onClick={onClick}
+            onMouseEnter={() => { setIsHovering(true); onMouseEnter?.() }}
+            onMouseLeave={() => { setIsHovering(false); onMouseLeave?.() }}
+            aria-label={ariaLabel}
+        >
+            {layers}
         </button>
     )
 })

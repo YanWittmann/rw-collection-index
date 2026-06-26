@@ -17,8 +17,11 @@ import { useKeyboardNavigation } from "../../hooks/useKeyboardNavigation";
 import { Popover, PopoverContent, PopoverTrigger } from "@shadcn/components/ui/popover";
 import { RwScrollableList, RwScrollableListItem } from "../other/RwScrollableList";
 import { RwAsset } from "../other/RwAsset";
-import { datasetRootHref } from "../../routing/browserRouting";
+import { datasetRootHref, routeHref } from "../../routing/browserRouting";
+import { entryIdForPearl } from "../../routing/routes";
 import { assetUrl } from "../../utils/assetUtils";
+
+const HIGHLIGHT_STYLE: React.CSSProperties = { outline: '2px solid rgba(255, 255, 255, 0.5)', borderRadius: '0.75rem' };
 
 interface FlatChapterItem {
     id: string;
@@ -327,7 +330,7 @@ const LazyChapterGrid = React.memo(function LazyChapterGrid({
     isVisible,
     setVisibleChapters,
     selectedPearlRef,
-    highlightMap,
+    highlightedItemIndex,
     isAlternateDisplayModeActive,
     collectionVersion,
     selectedPearlId,
@@ -335,13 +338,15 @@ const LazyChapterGrid = React.memo(function LazyChapterGrid({
     saveFound,
     unlockMode,
     toggleChapter,
+    pearls,
+    datasetKey,
 }: {
     flatChapter: FlatChapterItem
     chapterIndex: number
     isVisible: boolean
     setVisibleChapters: (callback: (prev: Set<number>) => Set<number>) => void
     selectedPearlRef: React.RefObject<HTMLDivElement | null>
-    highlightMap: Map<string, React.CSSProperties>
+    highlightedItemIndex: number | null
     isAlternateDisplayModeActive: boolean
     collectionVersion: number
     selectedPearlId: string | null
@@ -349,6 +354,8 @@ const LazyChapterGrid = React.memo(function LazyChapterGrid({
     saveFound: Map<string, Set<string>>
     unlockMode: UnlockMode
     toggleChapter: (name: string) => void
+    pearls: PearlData[]
+    datasetKey: string
 }) {
     const observerRef = useRef<HTMLDivElement>(null);
 
@@ -399,37 +406,33 @@ const LazyChapterGrid = React.memo(function LazyChapterGrid({
                 )
             )}
             {flatChapter.isExpanded && flatChapter.items.length > 0 && (
-                <>
-                    {isVisible ? (
-                        <div className="grid grid-cols-5 gap-2 w-fit">
-                            {flatChapter.items.map((pearl, pearlIndex) => pearl && pearl.id && (
-                                <div key={`pearl-${pearl.id}`}
-                                     ref={highlightMap.has(`${flatChapter.id}-${pearlIndex}`) ? selectedPearlRef : undefined}
-                                     style={highlightMap.get(`${flatChapter.id}-${pearlIndex}`) ?? {}}>
-                                    <PearlItem
-                                        pearl={pearl}
-                                        pearlIndex={pearlIndex}
-                                        showTranscriberCount={isAlternateDisplayModeActive}
-                                        collectionVersion={collectionVersion}
-                                        isSelected={pearl.id === selectedPearlId}
-                                        handleSelectPearl={handleSelectPearl}
-                                        isFoundInSave={saveFound.has(pearl.id)}
-                                        unlockMode={unlockMode}
-                                    />
-                                </div>
-                            ))}
+                <div className="grid grid-cols-5 gap-2 w-fit">
+                    {flatChapter.items.map((pearl, pearlIndex) => pearl && pearl.id && (
+                        <div key={`pearl-${pearl.id}`}
+                             ref={highlightedItemIndex === pearlIndex ? selectedPearlRef : undefined}
+                             style={highlightedItemIndex === pearlIndex ? HIGHLIGHT_STYLE : {}}>
+                            <PearlItem
+                                pearl={pearl}
+                                pearlIndex={pearlIndex}
+                                showTranscriberCount={isAlternateDisplayModeActive}
+                                collectionVersion={collectionVersion}
+                                isSelected={pearl.id === selectedPearlId}
+                                handleSelectPearl={handleSelectPearl}
+                                isFoundInSave={saveFound.has(pearl.id)}
+                                unlockMode={unlockMode}
+                                renderReal={isVisible}
+                                entryUrl={routeHref({ datasetKey, entryId: entryIdForPearl(pearl, pearls), transcriberName: null, source: null })}
+                            />
                         </div>
-                    ) : (
-                        <div className="h-[50px] ml-2 bg-black/20 rounded-xl"/>
-                    )}
-                </>
+                    ))}
+                </div>
             )}
         </div>
     );
 });
 
 export function PearlGrid({ order, isAlternateDisplayModeActive = false }: PearlGridProps) {
-    const { pearls, handleSelectPearl, selectedPearlId, isMobile, saveFoundVersion, unlockVersion, saveFound, unlockMode } = useAppContext();
+    const { pearls, handleSelectPearl, selectedPearlId, isMobile, saveFoundVersion, unlockVersion, saveFound, unlockMode, datasetKey } = useAppContext();
     const collectionVersion = saveFoundVersion + unlockVersion;
     const { baseTree, filteredTree, totalItems, firstItem } = useFilteredPearls(pearls, order);
     const { expandedChapters, toggleChapter, expandAll, collapseAll } = useChapterExpansion(filteredTree, baseTree);
@@ -569,30 +572,23 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
 
     const { currentGridPosition } = useKeyboardNavigation(pearlGrid);
 
-    // Precompute highlight styles once per keyboard-navigation change (O(chapters)) rather than per pearl (O(N×chapters))
-    const highlightMap = useMemo<Map<string, React.CSSProperties>>(() => {
-        const map = new Map<string, React.CSSProperties>();
-        if (!currentGridPosition || !selectedPearlId) return map;
-
+    const highlightedEntry = useMemo<{ chapterId: string; itemIndex: number } | null>(() => {
+        if (!currentGridPosition || !selectedPearlId) return null;
         const [targetRow, targetCol] = currentGridPosition;
         let currentRow = 0;
-
         for (const chapter of displayList) {
             if (chapter.isExpanded && chapter.items.length > 0) {
                 const relativeRow = targetRow - currentRow;
                 if (relativeRow >= 0 && relativeRow < Math.ceil(chapter.items.length / 5)) {
                     const itemIndex = relativeRow * 5 + targetCol;
                     if (itemIndex < chapter.items.length) {
-                        map.set(`${chapter.id}-${itemIndex}`, {
-                            outline: '2px solid rgba(255, 255, 255, 0.5)',
-                            borderRadius: '0.75rem'
-                        });
+                        return { chapterId: chapter.id, itemIndex };
                     }
                 }
                 currentRow += Math.ceil(chapter.items.length / 5);
             }
         }
-        return map;
+        return null;
     }, [currentGridPosition, displayList, selectedPearlId]);
 
     // Scroll selected item into view
@@ -659,14 +655,16 @@ export function PearlGrid({ order, isAlternateDisplayModeActive = false }: Pearl
                                 isVisible={visibleChapters.has(index)}
                                 setVisibleChapters={setVisibleChapters}
                                 selectedPearlRef={selectedPearlRef}
-                                highlightMap={highlightMap}
+                                highlightedItemIndex={highlightedEntry?.chapterId === flatChapter.id ? highlightedEntry.itemIndex : null}
                                 isAlternateDisplayModeActive={isAlternateDisplayModeActive}
                                 collectionVersion={collectionVersion}
-                                selectedPearlId={selectedPearlId}
+                                selectedPearlId={flatChapter.items.some(p => p.id === selectedPearlId) ? selectedPearlId : null}
                                 handleSelectPearl={handleSelectPearl}
                                 saveFound={saveFound}
                                 unlockMode={unlockMode}
                                 toggleChapter={handleToggleChapter}
+                                pearls={pearls}
+                                datasetKey={datasetKey}
                             />
                         ))}
                     </div>
