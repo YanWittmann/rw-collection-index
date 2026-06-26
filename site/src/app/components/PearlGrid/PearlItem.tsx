@@ -17,12 +17,14 @@ interface PearlItemProps {
     handleSelectPearl: (pearl: PearlData) => void
     isFoundInSave: boolean
     unlockMode: UnlockMode
+    renderReal: boolean
+    entryUrl: string
 }
 
 
 const PearlItem: React.FC<PearlItemProps> = ({
     pearl, pearlIndex, showTranscriberCount, collectionVersion,
-    isSelected, handleSelectPearl, isFoundInSave, unlockMode
+    isSelected, handleSelectPearl, isFoundInSave, unlockMode, renderReal, entryUrl
 }) => {
     const isUnlocked = useMemo(() => {
         return unlockMode === 'all' || UnlockManager.isPearlUnlocked(pearl);
@@ -49,10 +51,16 @@ const PearlItem: React.FC<PearlItemProps> = ({
         return { mainText, internalId };
     }, [pearl]);
 
+    if (!renderReal) {
+        return (
+            <RwIconButton href={entryUrl} onClick={handleClick} selected={isSelected} variant={isFoundInSave ? 'gold' : 'default'} aria-label={pearl.metadata.name || 'Unknown pearl'}/>
+        );
+    }
+
     if (!isUnlocked) {
         const lockedColor = getLockedColor(pearl);
         return (
-            <RwIconButton onClick={handleClick} selected={isSelected} variant={isFoundInSave ? 'gold' : 'default'} aria-label="Locked pearl">
+            <RwIconButton href={entryUrl} onClick={handleClick} selected={isSelected} variant={isFoundInSave ? 'gold' : 'default'} aria-label="Locked pearl">
                 <RwAsset src="questionmark" tint={Tint.mask(lockedColor)} />
             </RwIconButton>
         );
@@ -65,6 +73,7 @@ const PearlItem: React.FC<PearlItemProps> = ({
             <Tooltip>
                 <TooltipTrigger asChild>
                     <RwIconButton
+                        href={entryUrl}
                         onClick={handleClick}
                         selected={isSelected}
                         variant={isFoundInSave ? 'gold' : 'default'}
@@ -101,7 +110,9 @@ const arePropsEqual = (prevProps: PearlItemProps, nextProps: PearlItemProps) => 
         prevProps.collectionVersion === nextProps.collectionVersion &&
         prevProps.isSelected === nextProps.isSelected &&
         prevProps.isFoundInSave === nextProps.isFoundInSave &&
-        prevProps.unlockMode === nextProps.unlockMode
+        prevProps.unlockMode === nextProps.unlockMode &&
+        prevProps.renderReal === nextProps.renderReal &&
+        prevProps.entryUrl === nextProps.entryUrl
     );
 };
 

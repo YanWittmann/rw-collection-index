@@ -11,17 +11,12 @@ export interface SourceDecrypted {
 
 export interface SpeakerDef {
     name?: string;
+    shortName?: string;        // abbreviated name for page titles (e.g. "LttM" instead of "Looks to the Moon")
     aliases?: string[];
     color?: string;            // dialogue text color
     transcriberColor?: string; // transcriber header color, only when explicitly set
     asset?: GameAsset;         // icon/image with optional tint; absent = no visual icon
-    /**
-     * Optional pretty URL segment for this transcriber. When set, routes use this
-     * instead of the raw transcriber name (e.g. urlSlug "moon" -> /CC/moon/).
-     * Leave unset to keep using the raw transcriber name. Old URLs keep resolving
-     * either way (see routing/routes.ts). No slugs are filled yet on purpose.
-     */
-    urlSlug?: string;
+    urlSlug?: string;          // pretty URL segment, see routing/routes.ts
 }
 
 export interface RegionDef {
@@ -47,20 +42,71 @@ export interface ModDef {
 
 export const speakers: Record<string, SpeakerDef> = {
     "unknown": { name: "Unknown", color: "#a855f7", asset: { src: "iterator-any", tint: Tint.mask("#a855f7") } },
-    "FP": { name: "Five Pebbles", aliases: ["Five Pebbles", "FP-artificer"], color: "#66d9bf", transcriberColor: "#66d9bf", urlSlug: "FP" },
-    "EP": { name: "Erratic Pulse / Five Pebbles", color: "#66d9bf" },
-    "BSM": { name: "Big Sis Moon / Looks to the Moon", color: "#e5d999", asset: { src: "LttM-post-collapse", tint: Tint.mask("#e5d999") } },
-    "LttM": { name: "Looks to the Moon", color: "#e5d999", urlSlug: "LttM" },
-    "LttM-pre-collapse": { name: "Looks to the Moon (Pre-Collapse)", transcriberColor: "#FFEB04", urlSlug: "LttM-pre" },
-    "LttM-rivulet": { name: "Looks to the Moon (Rivulet)", transcriberColor: "#ffffff", urlSlug: "LttM-riv" },
-    "LttM-post-collapse": { name: "Looks to the Moon", transcriberColor: "#ffffff", urlSlug: "LttM" },
-    "LttM-saint": { name: "Looks to the Moon (Future)", transcriberColor: "#4B7486", urlSlug: "LttM-future" },
-    "LttM-FP-saint": { name: "Looks to the Moon / Five Pebbles (Future)", transcriberColor: "#4B7486" },
-    "LttM-gourmand": { name: "Looks to the Moon (Gourmand)", transcriberColor: "#ffffff" },
-    "NSH": { name: "No Significant Harassment", color: "#bfffbf", asset: { src: "modded/nsh", tint: Tint.mask("#bfffbf") } },
-    "SRS": { name: "Seven Red Suns", color: "#ffbfbf", asset: { src: "iterator-any", tint: Tint.mask("#ffbfbf") } },
-    "CW": { name: "Chasing Wind", color: "#bfbfe5", asset: { src: "modded/chasing-wind", tint: Tint.mask("#bfbfe5") } },
-    "GW": { name: "Grey Wind / Chasing Wind", color: "#bfbfe5" },
+    "FP": {
+        name: "Five Pebbles",
+        shortName: "FP",
+        aliases: ["Five Pebbles", "FP-artificer"],
+        color: "#66d9bf",
+        transcriberColor: "#66d9bf",
+        urlSlug: "FP"
+    },
+    "EP": { name: "Erratic Pulse / Five Pebbles", shortName: "EP", color: "#66d9bf" },
+    "BSM": {
+        name: "Big Sis Moon / Looks to the Moon",
+        shortName: "LttM",
+        color: "#e5d999",
+        asset: { src: "LttM-post-collapse", tint: Tint.mask("#e5d999") }
+    },
+    "LttM": { name: "Looks to the Moon", shortName: "LttM", color: "#e5d999", urlSlug: "LttM" },
+    "LttM-pre-collapse": {
+        name: "Looks to the Moon (Pre-Collapse)",
+        shortName: "LttM",
+        transcriberColor: "#FFEB04",
+        urlSlug: "LttM-pre"
+    },
+    "LttM-rivulet": {
+        name: "Looks to the Moon (Rivulet)",
+        shortName: "LttM (Rivulet)",
+        transcriberColor: "#ffffff",
+        urlSlug: "LttM-riv"
+    },
+    "LttM-post-collapse": {
+        name: "Looks to the Moon",
+        shortName: "LttM",
+        transcriberColor: "#ffffff",
+        urlSlug: "LttM"
+    },
+    "LttM-saint": {
+        name: "Looks to the Moon (Future)",
+        shortName: "LttM (Saint)",
+        transcriberColor: "#4B7486",
+        urlSlug: "LttM-future"
+    },
+    "LttM-FP-saint": {
+        name: "Looks to the Moon / Five Pebbles (Future)",
+        shortName: "LttM/FP",
+        transcriberColor: "#4B7486"
+    },
+    "LttM-gourmand": { name: "Looks to the Moon (Gourmand)", shortName: "LttM", transcriberColor: "#ffffff" },
+    "NSH": {
+        name: "No Significant Harassment",
+        shortName: "NSH",
+        color: "#bfffbf",
+        asset: { src: "modded/nsh", tint: Tint.mask("#bfffbf") }
+    },
+    "SRS": {
+        name: "Seven Red Suns",
+        shortName: "SRS",
+        color: "#ffbfbf",
+        asset: { src: "iterator-any", tint: Tint.mask("#ffbfbf") }
+    },
+    "CW": {
+        name: "Chasing Wind",
+        shortName: "CW",
+        color: "#bfbfe5",
+        asset: { src: "modded/chasing-wind", tint: Tint.mask("#bfbfe5") }
+    },
+    "GW": { name: "Grey Wind / Chasing Wind", shortName: "CW", color: "#bfbfe5" },
     "NGI": { name: "(Unknown)", color: "#b28ccc", asset: { src: "iterator-any", tint: Tint.mask("#b28ccc") } },
     "GS": { name: "Gazing Stars", color: "#e59966", asset: { src: "iterator-any", tint: Tint.mask("#e59966") } },
     "HR": { name: "(Unknown)", color: "#8cb28c", asset: { src: "iterator-any", tint: Tint.mask("#8cb28c") } },
@@ -82,16 +128,32 @@ export const speakers: Record<string, SpeakerDef> = {
     // dev / community
     "Andrew": { name: "Andrew Marrero", color: "#ffffff", asset: { src: "Andrew", tint: Tint.mask("#ffffff") } },
     "Will": { name: "Willburd", color: "#ff4c59", asset: { src: "Will", tint: Tint.mask("#ff4c59") } },
-    "Norgad": { name: "Tom \"Norgad\" Starbuck", color: "#ab8fd6", asset: { src: "Norgad", tint: Tint.mask("#ab8fd6") } },
-    "Screams": { name: "the one who screams i guess", color: "#4cff87", asset: { src: "Screams", tint: Tint.mask("#4cff87") } },
+    "Norgad": {
+        name: "Tom \"Norgad\" Starbuck",
+        color: "#ab8fd6",
+        asset: { src: "Norgad", tint: Tint.mask("#ab8fd6") }
+    },
+    "Screams": {
+        name: "the one who screams i guess",
+        color: "#4cff87",
+        asset: { src: "Screams", tint: Tint.mask("#4cff87") }
+    },
     "Dakras": { name: "Andy \"Dakras\" Dunn", color: "#b854ed", asset: { src: "Dakras", tint: Tint.mask("#b854ed") } },
     "Slugitar": { name: "Slugitar", color: "#ffffff", asset: { src: "Slugitar", tint: Tint.mask("#ffffff") } },
     "Cappin": { name: "Evan \"Cappin\" Muncy", color: "#0061d6", asset: { src: "Cappin", tint: Tint.mask("#0061d6") } },
     // namespace specific
     "NSCP-PS": { name: "Pilgrimaged Summit", color: "#a3d9c2", asset: { src: "NSCP-PS", tint: Tint.mask("#a3d9c2") } },
-    "NSCP-FPB": { name: "Fourteen Polar Bones", color: "#d4d1b8", asset: { src: "NSCP-FPB", tint: Tint.mask("#d4d1b8") } },
+    "NSCP-FPB": {
+        name: "Fourteen Polar Bones",
+        color: "#d4d1b8",
+        asset: { src: "NSCP-FPB", tint: Tint.mask("#d4d1b8") }
+    },
     "NSCP-UD": { name: "Unstable Daydream", color: "#69b378", asset: { src: "NSCP-UD", tint: Tint.mask("#69b378") } },
-    "NSCP-TSA": { name: "Twelve Stars Above", color: "#fadb99", asset: { src: "NSCP-TSA", tint: Tint.mask("#fadb99") } },
+    "NSCP-TSA": {
+        name: "Twelve Stars Above",
+        color: "#fadb99",
+        asset: { src: "NSCP-TSA", tint: Tint.mask("#fadb99") }
+    },
     "NSTM-GM": { name: "GM", color: "#d9d9b3", asset: { src: "NSTM-GM", tint: Tint.mask("#d9d9b3") } },
     "NSTM-DSS": { name: "DSS", color: "#408c66", asset: { src: "NSTM-DSS", tint: Tint.mask("#408c66") } },
     "NSTM-WC": { name: "Winding Current", color: "#b38cff", asset: { src: "NSTM-WC", tint: Tint.mask("#b38cff") } },
@@ -99,8 +161,8 @@ export const speakers: Record<string, SpeakerDef> = {
     "NSTM-QR": { name: "QR", color: "#80ccb8", asset: { src: "NSTM-QR", tint: Tint.mask("#80ccb8") } },
     // transcribers
     "broadcast": { name: "Broadcast" },
-    "broadcast-pre-FP": { name: "Pre-Five Pebbles", transcriberColor: "#ffffff" },
-    "broadcast-post-FP": { name: "Post-Five Pebbles", transcriberColor: "#7f7f7f" },
+    "broadcast-pre-FP": { name: "Pre-Five Pebbles", shortName: "Pre-FP", transcriberColor: "#ffffff" },
+    "broadcast-post-FP": { name: "Post-Five Pebbles", shortName: "Post-FP", transcriberColor: "#7f7f7f" },
     "base-slugcats": { name: "Base Slugcats", transcriberColor: "#ffffff", asset: { src: "survivor" } },
     "saint": { name: "Saint", transcriberColor: "#aaf156", asset: { src: "saint" } },
     "artificer": { name: "Artificer", transcriberColor: "#70233c", asset: { src: "artificer" } },
@@ -109,14 +171,19 @@ export const speakers: Record<string, SpeakerDef> = {
     "NSS": { asset: { src: "iterator-any" } },
     "UI": { asset: { src: "modded/unparalleled-innocence" } },
     // modded
-    "chasing-wind": { name: "Chasing Wind", transcriberColor: "#66d9bf", asset: { src: "modded/chasing-wind" } },
+    "chasing-wind": {
+        name: "Chasing Wind",
+        shortName: "CW",
+        transcriberColor: "#66d9bf",
+        asset: { src: "modded/chasing-wind" }
+    },
     "chasing-wind-spearmaster": {
-        name: "Chasing Wind (Spearmaster)",
+        name: "Chasing Wind (Spearmaster)", shortName: "CW",
         transcriberColor: "#66d9bf",
         asset: { src: "modded/chasing-wind-spearmaster" }
     },
     "chasing-wind-gourmand": {
-        name: "Chasing Wind (Gourmand)",
+        name: "Chasing Wind (Gourmand)", shortName: "CW",
         transcriberColor: "#66d9bf",
         asset: { src: "modded/chasing-wind-gourmand" }
     },
@@ -129,6 +196,27 @@ for (const [id, def] of Object.entries(speakers)) {
     speakerByAlias.set(id, def);
     for (const alias of def.aliases ?? []) speakerByAlias.set(alias, def);
 }
+
+// SECTION: slugcats
+
+export interface SlugcatDef {
+    name: string;
+    color?: string;
+    asset?: GameAsset;
+}
+
+export const slugcats: Record<string, SlugcatDef> = {
+    "monk": { name: "Monk", color: "#ffff73", asset: { src: "monk" } },
+    "survivor": { name: "Survivor", color: "#ffffff", asset: { src: "survivor" } },
+    "hunter": { name: "Hunter", color: "#ff7373", asset: { src: "hunter" } },
+    "artificer": { name: "Artificer", color: "#70233c", asset: { src: "artificer" } },
+    "gourmand": { name: "Gourmand", color: "#f0c197", asset: { src: "gourmand" } },
+    "rivulet": { name: "Rivulet", color: "#91ccf0", asset: { src: "rivulet" } },
+    "saint": { name: "Saint", color: "#aaf156", asset: { src: "saint" } },
+    "spearmaster": { name: "Spearmaster", color: "#4f2e69", asset: { src: "spearmaster" } },
+    "inv": { name: "Inv", color: "#16224c", asset: { src: "inv" } },
+    "survivor_monk": { name: "Survivor/Monk", color: "#ffff73", asset: { src: "survivor_monk" } },
+};
 
 // SECTION: regions
 // order here determines sort order in the filter view.
@@ -213,8 +301,12 @@ const speakersColors: Record<string, string> = {};
 const transcribersColors: Record<string, string> = {};
 for (const [id, def] of Object.entries(speakers)) {
     const keys = [id, ...(def.aliases ?? [])];
-    if (def.color)            keys.forEach(k => { speakersColors[k] = def.color!; });
-    if (def.transcriberColor) keys.forEach(k => { transcribersColors[k] = def.transcriberColor!; });
+    if (def.color) keys.forEach(k => {
+        speakersColors[k] = def.color!;
+    });
+    if (def.transcriberColor) keys.forEach(k => {
+        transcribersColors[k] = def.transcriberColor!;
+    });
 }
 
 // SECTION: mods
@@ -510,72 +602,200 @@ export function getSpeakerInfo(rawSpeaker: string, actualSpeaker: string, namesp
 // dominant color per item image, keyed by "{subType}.png" (no img/ prefix), for locked "?" tinting.
 // run: python scripts/dominant-color-extractor.py site/public/img/ --exclude PearlReader/*
 export const itemIconColors: Record<string, string> = {
-    "artificer.png": "#70233c", "bells-of-gesture.png": "#226f93", "broadcast.png": "#ffffff", "check.png": "#9d9ca7",
-    "close.png": "#fcc546", "dlc-dp.png": "#99d9da", "dlc-watcher.png": "#99d9da", "echo.png": "#f3c159",
-    "filter.png": "#ff9251", "FP-artificer.png": "#72e6c4", "FP.png": "#ffffff", "gourmand.png": "#f0c197",
-    "Host.png": "#ffffff", "hunter.png": "#ff7373", "info.png": "#ffffff", "inv.png": "#16224c",
-    "item/Blue_Fruit_icon.png": "#0000ff", "item/Bubble_Fruit_icon.png": "#0d4db3",
-    "item/Bubble_Weed_icon.png": "#0eb23c", "item/Cherrybomb_icon.png": "#ae281e",
-    "item/Chieftain_Scavenger_icon.png": "#a9a4b2", "item/Cloak_icon.png": "#f2fff5",
-    "item/Dandelion_Peach_icon.png": "#96c7f5", "item/Electric_Spear_icon.png": "#0000ff",
-    "item/Elite_Scavenger_icon.png": "#a9a4b2", "item/Explosive_Spear_icon.png": "#e60e0e",
-    "item/Fire_Egg_icon.png": "#ff7878", "item/Fire_Spear_icon.png": "#ff7878", "item/Flashbang_icon.png": "#bbaeff",
-    "item/Glow_Weed_icon.png": "#f1ff44", "item/Gooieduck_icon.png": "#72e6c4", "item/Grenade_icon.png": "#e60e0e",
-    "item/Inspector_Eye_icon.png": "#a9a4b2", "item/Jellyfish_icon.png": "#a9a4b2",
-    "item/Karma_Flower_icon.png": "#e7df90", "item/King_Vulture_icon.png": "#d4ca6f", "item/Lantern_icon.png": "#724124",
-    "item/Lilypuck_icon.png": "#2bf5ff", "item/Mushroom_icon.png": "#ffffff",
-    "item/Neuron_Fly_Hunter_icon.png": "#00ff4c", "item/Neuron_Fly_icon.png": "#ffffff",
-    "item/Noodlefly_Egg_icon.png": "#932940", "item/Overseer_Eye_icon.png": "#a9a4b2",
-    "item/Rarefaction_Cell_icon.png": "#05a4d9", "item/Rock_icon.png": "#a9a4b2", "item/Rot_icon.png": "#d4d2d9",
-    "item/Seed_icon.png": "#a9a4b2", "item/Singularity_Bomb_icon.png": "#05a4d9", "item/Slime_Mold_icon.png": "#ff9900",
-    "item/Slugpup_icon.png": "#a9a4b2", "item/Spear_icon.png": "#a9a4b2", "item/Spore_Puff_icon.png": "#a9a4b2",
-    "item/Vulture_Mask_icon.png": "#a9a4b2", "iterator-any.png": "#ffffff", "lock.png": "#ff9251",
-    "LttM-FP-saint.png": "#ffffff", "LttM-gourmand.png": "#f0c197", "LttM-post-collapse.png": "#ffffff",
-    "LttM-pre-collapse.png": "#ffeb04", "LttM-rivulet.png": "#ffffff", "LttM-saint.png": "#4b7486",
-    "modded/Aqueducts/thumb.webp": "#98a4a9", "modded/ArchaicFacility/thumb.webp": "#3756bb",
-    "modded/AshenBow/thumb.webp": "#283433", "modded/AuxiliaryIntake/thumb.webp": "#2a2a2b",
-    "modded/chasing-wind-gourmand.png": "#f2b393", "modded/chasing-wind-spearmaster.png": "#ffeb04",
-    "modded/chasing-wind.png": "#ffffff", "modded/ChasingWind/thumb.webp": "#162944",
-    "modded/CorrodedPassage/thumb.webp": "#10141b", "modded/cryobloom-mist.png": "#ffffff",
-    "modded/DrainageSystemPlus/thumb.webp": "#242317", "modded/FarShore/thumb.webp": "#442916",
-    "modded/GrayUrban/thumb.webp": "#66676f", "modded/HangingGardens/thumb.webp": "#eef4f0",
-    "modded/LuminousCove/thumb.webp": "#2d4d5d", "modded/MossFields/thumb.webp": "#44161d",
-    "modded/Necropolis/thumb.webp": "#330f05", "modded/nsh.png": "#ffffff", "modded/Preservatory/thumb.webp": "#28864f",
-    "modded/ScorchedDistrict/thumb.webp": "#35190f", "modded/seer.png": "#ffcf3f", "modded/TheMast/thumb.webp": "#20161b",
-    "modded/unparalleled-innocence.png": "#ffffff", "modded/vanilla-thumb.webp": "#5e131e", "monk.png": "#ffff73",
-    "Pc-main-menu.png": "#18161f", "Pc-main-menu.webp": "#17161e", "pearl.png": "#ffffff", "PearlReader.png": "#3a2905",
-    "PearlReaderAudio.png": "#123609", "PearlReaderText.png": "#1c0936", "pin.png": "#ff6060",
-    "questionmark.png": "#ffffff", "region/CC.png": "#341e3d", "region/CL.png": "#261f29", "region/DM.png": "#180e31",
-    "region/DS.png": "#313830", "region/GW.png": "#242113", "region/HI.png": "#10141c", "region/HR.png": "#2f0a01",
-    "region/LC.png": "#2f5377", "region/LF.png": "#41372b", "region/LM.png": "#3c261f", "region/MS.png": "#3bd067",
-    "region/OE.png": "#582921", "region/RM.png": "#17121d", "region/SB.png": "#1c1613", "region/SH.png": "#1e151d",
-    "region/SI.png": "#fbcf90", "region/SL.png": "#d7dad5", "region/SS.png": "#160718", "region/SU.png": "#292631",
-    "region/UG.png": "#251207", "region/UW.png": "#1c1417", "region/VS.png": "#a47465", "region/WARA.png": "#aba79e",
-    "region/WARB.png": "#07121d", "region/WARC.png": "#1b1505", "region/WARD.png": "#1e1b3e",
-    "region/WARE.png": "#260607", "region/WARF.png": "#4e5d70", "region/WARG.png": "#646c77",
-    "region/WAUA.png": "#9f9d90", "region/WBLA.png": "#edcc7a", "region/WDSR.png": "#26111d",
-    "region/WGWR.png": "#2a2435", "region/WHIR.png": "#362850", "region/WMPA.png": "#263232",
-    "region/WORA.png": "#46484d", "region/WPTA.png": "#fea7c4", "region/WRFA.png": "#286e99",
-    "region/WRFB.png": "#263c4e", "region/WRRA.png": "#96a794", "region/WRSA.png": "#1c212b",
-    "region/WSKA.png": "#8e9198", "region/WSKB.png": "#876164", "region/WSKC.png": "#413e46",
-    "region/WSKD.png": "#535154", "region/WSSR.png": "#1b1a1a", "region/WSUR.png": "#232144",
-    "region/WTDA.png": "#34271c", "region/WTDB.png": "#313130", "region/WVWA.png": "#71883b", "rivulet.png": "#91ccf0",
-    "rot-prince-pre.png": "#5500c5", "rot-prince-weaver.png": "#220f30", "rot-prince.png": "#210d2f",
-    "saint.png": "#aaf156", "share.png": "#fafaef", "source.png": "#474747", "spearmaster.png": "#4f2e69",
-    "spinning-top.png": "#816271", "survivor.png": "#ffffff", "survivor_monk.png": "#ffff73",
-    "The_Scholar.png": "#ffffff", "The_Scholar_Square.png": "#ffffff", "vanilla-rw.png": "#808080",
-    "void-weaver.png": "#ad6c2f", "wa-region/cc.png": "#3d3b43", "wa-region/lf.png": "#5a635f",
-    "wa-region/sh.png": "#1a1b1c", "wa-region/unknown.png": "#453321", "wa-region/wara.png": "#aba79e",
-    "wa-region/warb.png": "#07121d", "wa-region/warc.png": "#1b1505", "wa-region/ward.png": "#1e1b3e",
-    "wa-region/ware.png": "#260607", "wa-region/warf.png": "#4e5d70", "wa-region/warg.png": "#646c77",
-    "wa-region/waua.png": "#9f9d90", "wa-region/wbla.png": "#edcc7a", "wa-region/wdsr.png": "#26111d",
-    "wa-region/wgwr.png": "#2a2435", "wa-region/whir.png": "#362850", "wa-region/wmpa.png": "#263232",
-    "wa-region/wora.png": "#46484d", "wa-region/wpga.png": "#939a96", "wa-region/wpta.png": "#fea7c4",
-    "wa-region/wrfa.png": "#286e99", "wa-region/wrfb.png": "#263c4e", "wa-region/wrra.png": "#96a794",
-    "wa-region/wrsa.png": "#1c212b", "wa-region/wska.png": "#8e9198", "wa-region/wskb.png": "#876164",
-    "wa-region/wskc.png": "#413e46", "wa-region/wskd.png": "#535154", "wa-region/wssr.png": "#1b1a1a",
-    "wa-region/wsur.png": "#232144", "wa-region/wtda.png": "#34271c", "wa-region/wtdb.png": "#313130",
-    "wa-region/wvwa.png": "#71883b", "wa-region/wvwb.png": "#8a937b", "watcher-ripple.png": "#181f5d",
+    "artificer.png": "#70233c",
+    "bells-of-gesture.png": "#226f93",
+    "broadcast.png": "#ffffff",
+    "check.png": "#9d9ca7",
+    "close.png": "#fcc546",
+    "dlc-dp.png": "#99d9da",
+    "dlc-watcher.png": "#99d9da",
+    "echo.png": "#f3c159",
+    "filter.png": "#ff9251",
+    "FP-artificer.png": "#72e6c4",
+    "FP.png": "#ffffff",
+    "gourmand.png": "#f0c197",
+    "Host.png": "#ffffff",
+    "hunter.png": "#ff7373",
+    "info.png": "#ffffff",
+    "inv.png": "#16224c",
+    "item/Blue_Fruit_icon.png": "#0000ff",
+    "item/Bubble_Fruit_icon.png": "#0d4db3",
+    "item/Bubble_Weed_icon.png": "#0eb23c",
+    "item/Cherrybomb_icon.png": "#ae281e",
+    "item/Chieftain_Scavenger_icon.png": "#a9a4b2",
+    "item/Cloak_icon.png": "#f2fff5",
+    "item/Dandelion_Peach_icon.png": "#96c7f5",
+    "item/Electric_Spear_icon.png": "#0000ff",
+    "item/Elite_Scavenger_icon.png": "#a9a4b2",
+    "item/Explosive_Spear_icon.png": "#e60e0e",
+    "item/Fire_Egg_icon.png": "#ff7878",
+    "item/Fire_Spear_icon.png": "#ff7878",
+    "item/Flashbang_icon.png": "#bbaeff",
+    "item/Glow_Weed_icon.png": "#f1ff44",
+    "item/Gooieduck_icon.png": "#72e6c4",
+    "item/Grenade_icon.png": "#e60e0e",
+    "item/Inspector_Eye_icon.png": "#a9a4b2",
+    "item/Jellyfish_icon.png": "#a9a4b2",
+    "item/Karma_Flower_icon.png": "#e7df90",
+    "item/King_Vulture_icon.png": "#d4ca6f",
+    "item/Lantern_icon.png": "#724124",
+    "item/Lilypuck_icon.png": "#2bf5ff",
+    "item/Mushroom_icon.png": "#ffffff",
+    "item/Neuron_Fly_Hunter_icon.png": "#00ff4c",
+    "item/Neuron_Fly_icon.png": "#ffffff",
+    "item/Noodlefly_Egg_icon.png": "#932940",
+    "item/Overseer_Eye_icon.png": "#a9a4b2",
+    "item/Rarefaction_Cell_icon.png": "#05a4d9",
+    "item/Rock_icon.png": "#a9a4b2",
+    "item/Rot_icon.png": "#d4d2d9",
+    "item/Seed_icon.png": "#a9a4b2",
+    "item/Singularity_Bomb_icon.png": "#05a4d9",
+    "item/Slime_Mold_icon.png": "#ff9900",
+    "item/Slugpup_icon.png": "#a9a4b2",
+    "item/Spear_icon.png": "#a9a4b2",
+    "item/Spore_Puff_icon.png": "#a9a4b2",
+    "item/Vulture_Mask_icon.png": "#a9a4b2",
+    "iterator-any.png": "#ffffff",
+    "lock.png": "#ff9251",
+    "LttM-FP-saint.png": "#ffffff",
+    "LttM-gourmand.png": "#f0c197",
+    "LttM-post-collapse.png": "#ffffff",
+    "LttM-pre-collapse.png": "#ffeb04",
+    "LttM-rivulet.png": "#ffffff",
+    "LttM-saint.png": "#4b7486",
+    "modded/Aqueducts/thumb.webp": "#98a4a9",
+    "modded/ArchaicFacility/thumb.webp": "#3756bb",
+    "modded/AshenBow/thumb.webp": "#283433",
+    "modded/AuxiliaryIntake/thumb.webp": "#2a2a2b",
+    "modded/chasing-wind-gourmand.png": "#f2b393",
+    "modded/chasing-wind-spearmaster.png": "#ffeb04",
+    "modded/chasing-wind.png": "#ffffff",
+    "modded/ChasingWind/thumb.webp": "#162944",
+    "modded/CorrodedPassage/thumb.webp": "#10141b",
+    "modded/cryobloom-mist.png": "#ffffff",
+    "modded/DrainageSystemPlus/thumb.webp": "#242317",
+    "modded/FarShore/thumb.webp": "#442916",
+    "modded/GrayUrban/thumb.webp": "#66676f",
+    "modded/HangingGardens/thumb.webp": "#eef4f0",
+    "modded/LuminousCove/thumb.webp": "#2d4d5d",
+    "modded/MossFields/thumb.webp": "#44161d",
+    "modded/Necropolis/thumb.webp": "#330f05",
+    "modded/nsh.png": "#ffffff",
+    "modded/Preservatory/thumb.webp": "#28864f",
+    "modded/ScorchedDistrict/thumb.webp": "#35190f",
+    "modded/seer.png": "#ffcf3f",
+    "modded/TheMast/thumb.webp": "#20161b",
+    "modded/unparalleled-innocence.png": "#ffffff",
+    "modded/vanilla-thumb.webp": "#5e131e",
+    "monk.png": "#ffff73",
+    "Pc-main-menu.png": "#18161f",
+    "Pc-main-menu.webp": "#17161e",
+    "pearl.png": "#ffffff",
+    "PearlReader.png": "#3a2905",
+    "PearlReaderAudio.png": "#123609",
+    "PearlReaderText.png": "#1c0936",
+    "pin.png": "#ff6060",
+    "questionmark.png": "#ffffff",
+    "region/CC.png": "#341e3d",
+    "region/CL.png": "#261f29",
+    "region/DM.png": "#180e31",
+    "region/DS.png": "#313830",
+    "region/GW.png": "#242113",
+    "region/HI.png": "#10141c",
+    "region/HR.png": "#2f0a01",
+    "region/LC.png": "#2f5377",
+    "region/LF.png": "#41372b",
+    "region/LM.png": "#3c261f",
+    "region/MS.png": "#3bd067",
+    "region/OE.png": "#582921",
+    "region/RM.png": "#17121d",
+    "region/SB.png": "#1c1613",
+    "region/SH.png": "#1e151d",
+    "region/SI.png": "#fbcf90",
+    "region/SL.png": "#d7dad5",
+    "region/SS.png": "#160718",
+    "region/SU.png": "#292631",
+    "region/UG.png": "#251207",
+    "region/UW.png": "#1c1417",
+    "region/VS.png": "#a47465",
+    "region/WARA.png": "#aba79e",
+    "region/WARB.png": "#07121d",
+    "region/WARC.png": "#1b1505",
+    "region/WARD.png": "#1e1b3e",
+    "region/WARE.png": "#260607",
+    "region/WARF.png": "#4e5d70",
+    "region/WARG.png": "#646c77",
+    "region/WAUA.png": "#9f9d90",
+    "region/WBLA.png": "#edcc7a",
+    "region/WDSR.png": "#26111d",
+    "region/WGWR.png": "#2a2435",
+    "region/WHIR.png": "#362850",
+    "region/WMPA.png": "#263232",
+    "region/WORA.png": "#46484d",
+    "region/WPTA.png": "#fea7c4",
+    "region/WRFA.png": "#286e99",
+    "region/WRFB.png": "#263c4e",
+    "region/WRRA.png": "#96a794",
+    "region/WRSA.png": "#1c212b",
+    "region/WSKA.png": "#8e9198",
+    "region/WSKB.png": "#876164",
+    "region/WSKC.png": "#413e46",
+    "region/WSKD.png": "#535154",
+    "region/WSSR.png": "#1b1a1a",
+    "region/WSUR.png": "#232144",
+    "region/WTDA.png": "#34271c",
+    "region/WTDB.png": "#313130",
+    "region/WVWA.png": "#71883b",
+    "rivulet.png": "#91ccf0",
+    "rot-prince-pre.png": "#5500c5",
+    "rot-prince-weaver.png": "#220f30",
+    "rot-prince.png": "#210d2f",
+    "saint.png": "#aaf156",
+    "share.png": "#fafaef",
+    "source.png": "#474747",
+    "spearmaster.png": "#4f2e69",
+    "spinning-top.png": "#816271",
+    "survivor.png": "#ffffff",
+    "survivor_monk.png": "#ffff73",
+    "The_Scholar.png": "#ffffff",
+    "The_Scholar_Square.png": "#ffffff",
+    "vanilla-rw.png": "#808080",
+    "void-weaver.png": "#ad6c2f",
+    "wa-region/cc.png": "#3d3b43",
+    "wa-region/lf.png": "#5a635f",
+    "wa-region/sh.png": "#1a1b1c",
+    "wa-region/unknown.png": "#453321",
+    "wa-region/wara.png": "#aba79e",
+    "wa-region/warb.png": "#07121d",
+    "wa-region/warc.png": "#1b1505",
+    "wa-region/ward.png": "#1e1b3e",
+    "wa-region/ware.png": "#260607",
+    "wa-region/warf.png": "#4e5d70",
+    "wa-region/warg.png": "#646c77",
+    "wa-region/waua.png": "#9f9d90",
+    "wa-region/wbla.png": "#edcc7a",
+    "wa-region/wdsr.png": "#26111d",
+    "wa-region/wgwr.png": "#2a2435",
+    "wa-region/whir.png": "#362850",
+    "wa-region/wmpa.png": "#263232",
+    "wa-region/wora.png": "#46484d",
+    "wa-region/wpga.png": "#939a96",
+    "wa-region/wpta.png": "#fea7c4",
+    "wa-region/wrfa.png": "#286e99",
+    "wa-region/wrfb.png": "#263c4e",
+    "wa-region/wrra.png": "#96a794",
+    "wa-region/wrsa.png": "#1c212b",
+    "wa-region/wska.png": "#8e9198",
+    "wa-region/wskb.png": "#876164",
+    "wa-region/wskc.png": "#413e46",
+    "wa-region/wskd.png": "#535154",
+    "wa-region/wssr.png": "#1b1a1a",
+    "wa-region/wsur.png": "#232144",
+    "wa-region/wtda.png": "#34271c",
+    "wa-region/wtdb.png": "#313130",
+    "wa-region/wvwa.png": "#71883b",
+    "wa-region/wvwb.png": "#8a937b",
+    "watcher-ripple.png": "#181f5d",
     "watcher.png": "#17234f"
 };
 

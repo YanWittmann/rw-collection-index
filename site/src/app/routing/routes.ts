@@ -19,18 +19,14 @@
  *   - `source` is a query param, never a path segment.
  */
 
-import { PearlData, Dialogue } from '../types/types';
-import { getEffectiveTranscriberName, findTranscriberIndex } from '../utils/transcriberUtils';
-import { speakerByAlias } from '../utils/speakers';
+import { Dialogue, PearlData } from '../types/types';
+import { findTranscriberIndex, getEffectiveTranscriberName } from '../utils/transcriberUtils';
+import { getSpeakerDef, regions, slugcats, speakerByAlias } from '../utils/speakers';
+import { COLORED_PEARL_IDS, findPearlCategory, PEARL_ORDER_CONFIGS } from '../utils/pearlOrder';
 import { cleanText, extractContent } from '../utils/dialogueParsing';
 import { renderDialogueLine } from '../utils/renderDialogueLine';
 import { isCompressedImgPath } from '../utils/assetUtils';
-import {
-    DEFAULT_DATASET_KEY,
-    DATASET_PREFIXES,
-    getDataset,
-    getDatasetByPrefix,
-} from './datasets';
+import { DATASET_PREFIXES, DEFAULT_DATASET_KEY, getDataset, getDatasetByPrefix, } from './datasets';
 
 /**
  * The canonical, app-internal description of "what is being viewed".
@@ -334,36 +330,208 @@ function truncate(value: string, max = 200): string {
 // Media and mono-marker parsing is shared with the runtime DialogueContent via
 // utils/dialogueParsing, so the build and the live app interpret markup identically.
 
-/**
- * Build a short, human description from a transcriber's content blocks, mirroring
- * the summary the app shows. Describes media (image/audio) when there are no spoken
- * lines, so media-only entries get a real description instead of the generic fallback.
- */
-function summarizeTranscriber(transcriber: Dialogue | null): string {
-    const normalized: string[] = [];
+// broadcast protocol header lines: start with [ or a run of dashes, contain no actual dialogue
+const BROADCAST_HEADER_RE = /^\s*(\[|--)/;
+
+/** Extract meaningful text lines from a transcriber, skipping broadcast protocol headers when isBroadcast is true. */
+function extractTextExcerpt(transcriber: Dialogue | null, isBroadcast = false): string {
+    const lines: string[] = [];
     for (const block of extractContent(transcriber)) {
-        if (block.kind === 'image') normalized.push(`Image: ${block.label}`);
-        else if (block.kind === 'audio') normalized.push(`Audio: ${block.label}`);
-        else normalized.push(block.speaker ? `${block.speaker}: ${cleanText(block.text)}` : cleanText(block.text));
+        if (block.kind !== 'text') continue;
+        const raw = cleanText(block.text);
+        if (!raw) continue;
+        if (isBroadcast && BROADCAST_HEADER_RE.test(raw)) continue;
+        lines.push(raw);
+        if (lines.join(' ').length >= 200) break;
     }
-    return normalized.slice(0, 6).join(' ');
+    return lines.join(' ');
 }
 
-/**
- * The canonical page meta (title/description/og image) for viewing a pearl with a
- * given transcriber. Used by BOTH the runtime app (live <title>/meta updates) and
- * the build (pre-generated HTML), so embeds and the live page never disagree.
- * Pass the transcriber actually being shown (the default/last for entry routes).
- */
+function collectRegions(pearl: PearlData, transcriber: Dialogue | null): string[] {
+    const seen = new Set<string>();
+    for (const m of pearl.metadata.map ?? []) if (m.region) seen.add(m.region);
+    for (const m of transcriber?.metadata?.map ?? []) if (m.region) seen.add(m.region);
+    return Array.from(seen);
+}
+
+function speakerShortName(transcriberKey: string): string | null {
+    const def = getSpeakerDef(transcriberKey);
+    return def?.shortName ?? def?.name ?? null;
+}
+
+function regionName(code: string): string {
+    return regions[code]?.name ?? code;
+}
+
+const TITLE_SUFFIX = ' | Rain World';
+const MAX_TITLE_CONTENT = 60;
+const INTERNAL_ID_FREQ_THRESHOLD = 5;
+
+let internalIdCounts: Map<string, number> | null = null;
+
+// call once per dataset load (build and runtime) to enable internalId frequency filtering
+export function initTitleContext(entries: PearlData[]): void {
+    const counts = new Map<string, number>();
+    for (const e of entries) {
+        const id = e.metadata.internalId;
+        if (id) counts.set(id, (counts.get(id) ?? 0) + 1);
+    }
+    if (!internalIdCounts) {
+        internalIdCounts = counts;
+    } else {
+        counts.forEach((v, k) => internalIdCounts!.set(k, (internalIdCounts!.get(k) ?? 0) + v));
+    }
+}
+
+function isCommonInternalId(id: string | undefined): boolean {
+    if (!id || !internalIdCounts) return false;
+    return (internalIdCounts.get(id) ?? 0) > INTERNAL_ID_FREQ_THRESHOLD;
+}
+
+function containsWord(haystack: string, word: string): boolean {
+    return new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i').test(haystack);
+}
+
+// append a type label only if the word doesn't already appear in the content
+function withTypeLabel(content: string, label: string): string {
+    return containsWord(content, label) ? content : content + ' ' + label;
+}
+
+function assembleTitle(parts: (string | null | undefined | false)[]): string {
+    const filtered = parts.filter((p): p is string => typeof p === 'string' && p.length > 0);
+    if (!filtered.length) return 'Rain World Collection Index';
+    let result = filtered[0];
+    for (let i = 1; i < filtered.length; i++) {
+        const sep = filtered[i].startsWith('(') ? ' ' : ', ';
+        const candidate = result + sep + filtered[i];
+        if (candidate.length > MAX_TITLE_CONTENT) break;
+        result = candidate;
+    }
+    return result + TITLE_SUFFIX;
+}
+
+// used by both the runtime app and the build, so embeds and the live page never disagree
 export function buildRouteMeta(pearl: PearlData, transcriber: Dialogue | null): RouteMeta {
-    const name = pearl.metadata.name || pearl.id;
-    const title = (pearl.metadata.name ? `${pearl.metadata.name} | ` : '') + SITE_NAME;
-    const summary =
-        summarizeTranscriber(transcriber) ||
-        cleanText(transcriber?.metadata?.info) ||
-        cleanText(pearl.metadata.info) ||
-        `Dialogue content for ${name} from the ${SITE_NAME}.`;
-    return { title, description: truncate(summary), ogImage: null };
+    const entryName = pearl.metadata.name || pearl.id;
+    const type = pearl.metadata.type;
+    const internalId = pearl.metadata.internalId;
+    const subType = pearl.metadata.subType ?? '';
+    const transcriberKey = transcriber?.transcriber ?? '';
+    const entryRegions = collectRegions(pearl, transcriber);
+    const singleRegion = entryRegions.length === 1 ? entryRegions[0] : null;
+
+    // 'broadcast' and 'PearlReader' are not named speakers worth surfacing in titles
+    const speaker = (transcriberKey === 'broadcast' || transcriberKey === 'PearlReader')
+        ? null : speakerShortName(transcriberKey);
+    const slugcat = slugcats[subType]?.name ?? null;
+    const isDevComm = pearl.id.startsWith('DevComm_');
+    const showId = !!internalId && !isCommonInternalId(internalId) && !containsWord(entryName, internalId);
+
+    let titleParts: (string | null | undefined | false)[];
+
+    if (type === 'pearl') {
+        if (COLORED_PEARL_IDS.has(pearl.id)) {
+            let pearlNameLabel: string;
+            if (pearl.id === 'RM_MUSIC') {
+                pearlNameLabel = 'Five Pebbles Music Pearl';
+            } else if (singleRegion) {
+                pearlNameLabel = `${regionName(singleRegion)} Pearl`;
+            } else {
+                // slugcat pearls: extract label from parens in the name, e.g. "Aquamarine (Hunter)" -> "Hunter Pearl"
+                const m = entryName.match(/\(([^)]+)\)/);
+                pearlNameLabel = m ? `${m[1]} Pearl` : withTypeLabel(entryName, 'Pearl');
+            }
+            titleParts = [pearlNameLabel, `(${internalId})`, speaker];
+        } else {
+            titleParts = [
+                withTypeLabel(entryName, 'Pearl'),
+                singleRegion ? regionName(singleRegion) : null,
+                showId ? `(${internalId})` : null,
+                speaker,
+            ];
+        }
+
+    } else if (type === 'broadcast') {
+        if (isDevComm) {
+            titleParts = [entryName, 'Dev Commentary'];
+
+        } else if (pearl.id.startsWith('LP_')) {
+            // LP names look like "Furious (Gray 1)", drop the color+slot bracket, keep name and slot number
+            const m = entryName.match(/^(.+?)\s*\((Gray|White)\s+(\d+)\)$/);
+            titleParts = m
+                ? [`${m[1]}, Broadcast ${m[3]}`, speaker]
+                : [withTypeLabel(entryName, 'Broadcast'), speaker];
+
+        } else if (internalId?.startsWith('Chatlog_') && singleRegion) {
+            // Chatlog broadcasts use region + number instead of the community color name.
+            // The internalId encodes a 0-based slot (e.g. Chatlog_SI3 → Broadcast 4).
+            // Only append the slot number when the community name already contains a digit (i.e. there are multiple Chatlog entries for this region).
+            const slot = parseInt(internalId.match(/\d+$/)?.[0] ?? '-1', 10);
+            const numbered = /\d/.test(entryName);
+            titleParts = [`${regionName(singleRegion)} Broadcast${numbered ? ` ${slot + 1}` : ''} (${internalId})`];
+
+        } else {
+            const label = withTypeLabel(entryName, 'Broadcast');
+            titleParts = [
+                label,
+                singleRegion ? regionName(singleRegion) : null,
+                showId ? `(${internalId})` : null,
+                // deduplicate: skip speaker if the label already contains the name
+                speaker && !containsWord(label, speaker) ? speaker : null,
+            ];
+        }
+
+    } else if (type === 'echo') {
+        // 'base-slugcats' means the echo applies to all slugcats, no slugcat label
+        const slugcatLabel = slugcats[transcriberKey] && transcriberKey !== 'base-slugcats'
+            ? `as ${slugcats[transcriberKey]!.name}` : null;
+        titleParts = [
+            containsWord(entryName, 'echo') ? entryName : `Echo: ${entryName}`,
+            singleRegion ? regionName(singleRegion) : null,
+            slugcatLabel,
+        ];
+
+    } else { // item
+        const name = entryName.replace(/\[◎]/g, 'Ripple');
+        const speakerPart = speaker && !containsWord(name, speaker) ? speaker : null;
+        // guard: skip "as Rivulet" if the speaker short-name already contains the slugcat name
+        const slugcatPart = slugcat && !containsWord(speakerPart ?? '', slugcat) ? `as ${slugcat}` : null;
+        titleParts = [name, speakerPart, slugcatPart];
+    }
+
+    const title = assembleTitle(titleParts);
+
+    const blocks = extractContent(transcriber);
+    const imageBlocks = blocks.filter(b => b.kind === 'image');
+    const audioBlocks = blocks.filter(b => b.kind === 'audio');
+    const isImageOnly = imageBlocks.length > 0 && blocks.every(b => b.kind === 'image');
+    const isAudioOnly = audioBlocks.length > 0 && blocks.every(b => b.kind === 'audio');
+    const isTrueItem = type === 'item' && findPearlCategory(pearl, PEARL_ORDER_CONFIGS['vanilla']) === 'Items';
+
+    let description: string;
+
+    if (isImageOnly) {
+        const count = imageBlocks.length;
+        const info = cleanText(transcriber?.metadata?.info) || cleanText(pearl.metadata.info);
+        description = `Visual projection with ${count} frame${count !== 1 ? 's' : ''}.${info ? ' ' + info : ''}`;
+    } else if (isAudioOnly) {
+        const info = cleanText(transcriber?.metadata?.info) || cleanText(pearl.metadata.info);
+        description = `Audio recording.${info ? ' ' + info : ''}`;
+    } else if (isTrueItem) {
+        const speakerLabel = speakerShortName(transcriberKey);
+        const prefix = speakerLabel ? `${speakerLabel} on ${entryName}: ` : `${entryName}: `;
+        const excerpt = extractTextExcerpt(transcriber)
+            || cleanText(transcriber?.metadata?.info)
+            || cleanText(pearl.metadata.info);
+        description = prefix + excerpt;
+    } else {
+        description = extractTextExcerpt(transcriber, type === 'broadcast')
+            || cleanText(transcriber?.metadata?.info)
+            || cleanText(pearl.metadata.info)
+            || `${entryName} from Rain World.`;
+    }
+
+    return { title, description: truncate(description), ogImage: null };
 }
 
 /**
@@ -476,6 +644,7 @@ export function renderRouteContent(
  * so "missing an entry" cannot diverge between them.
  */
 export function enumerateRoutes(datasetKey: string, pearls: PearlData[]): RouteDescriptor[] {
+    initTitleContext(pearls);
     const routes: RouteDescriptor[] = [];
 
     for (const pearl of pearls) {

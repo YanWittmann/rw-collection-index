@@ -11,7 +11,7 @@ import { cn } from '@shadcn/lib/utils';
 import { SourceDecrypted } from './utils/speakers';
 import { generateTintedImage } from './utils/iconUtils';
 import { assetUrl } from './utils/assetUtils';
-import { buildRouteMetaFor } from './routing/routes';
+import { buildRouteMetaFor, initTitleContext } from './routing/routes';
 
 // Lazy load UI components
 const PearlGrid = React.lazy(() => import('./components/PearlGrid/PearlGrid'));
@@ -173,6 +173,7 @@ export default function DialogueInterface() {
             // 1. Pearls (Critical)
             dataPromises.pearls
                 .then((data: PearlData[]) => {
+                    initTitleContext(data);
                     setPearls(data);
                 })
                 .catch((err: any) => {
@@ -200,6 +201,10 @@ export default function DialogueInterface() {
     }, [datasetKey]);
 
     const isLoading = !pearls;
+
+    useEffect(() => {
+        if (pearls !== null) document.getElementById('rw-static-index')?.remove();
+    }, [pearls]);
 
     return (
         <div

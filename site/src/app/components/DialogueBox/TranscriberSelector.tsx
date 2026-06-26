@@ -8,6 +8,8 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shadc
 import React, { useMemo } from "react";
 import { getEffectiveTranscriberName, getTranscriberIcon } from "../../utils/transcriberUtils";
 import { useAppContext } from "../../context/AppContext";
+import { routeHref } from "../../routing/browserRouting";
+import { entryIdForPearl } from "../../routing/routes";
 
 interface TranscriberSelectorProps {
     pearl: PearlData
@@ -16,7 +18,7 @@ interface TranscriberSelectorProps {
 }
 
 export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelectorProps) {
-    const { unlockMode, selectedTranscriberName, handleSelectTranscriber, saveFound } = useAppContext();
+    const { unlockMode, selectedTranscriberName, handleSelectTranscriber, saveFound, pearls, datasetKey } = useAppContext();
     const multipleSameTranscribers = useMemo(
         () => new Set(pearl.transcribers.map(t => t.transcriber)).size !== pearl.transcribers.length,
         [pearl.transcribers]
@@ -29,11 +31,13 @@ export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelector
         const effectiveName = getEffectiveTranscriberName(pearl.transcribers, transcriber.transcriber, index);
         const isUnlocked = unlockMode === 'all' || UnlockManager.isTranscriptionUnlocked(pearl, effectiveName);
         const isFoundInSave = saveFound.get(pearl.id)?.has(effectiveName) ?? false;
+        const transcriberUrl = routeHref({ datasetKey, entryId: entryIdForPearl(pearl, pearls), transcriberName: effectiveName, source: null });
 
         if (!isUnlocked) {
             return (
                 <RwIconButton
                     key={'select-' + pearl.id + '-' + index}
+                    href={transcriberUrl}
                     onClick={() => handleSelectTranscriber(effectiveName)}
                     selected={effectiveName === selectedTranscriberName}
                     variant={isFoundInSave ? 'gold' : 'default'}
@@ -47,6 +51,7 @@ export function TranscriberSelector({ pearl, onHover, ref }: TranscriberSelector
                 <Tooltip key={'select-' + pearl.id + '-' + index}>
                     <TooltipTrigger>
                         <RwIconButton
+                            href={transcriberUrl}
                             onClick={() => handleSelectTranscriber(effectiveName)}
                             selected={effectiveName === selectedTranscriberName}
                             variant={isFoundInSave ? 'gold' : 'default'}
