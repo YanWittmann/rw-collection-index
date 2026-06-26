@@ -202,6 +202,10 @@ export default function DialogueInterface() {
 
     const isLoading = !pearls;
 
+    useEffect(() => {
+        if (pearls !== null) document.getElementById('rw-static-index')?.remove();
+    }, [pearls]);
+
     return (
         <div
             className={cn(
