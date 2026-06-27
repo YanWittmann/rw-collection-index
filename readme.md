@@ -242,6 +242,9 @@ Look at these epic people that supported this project:
 | Desperate_Metal_8656  | <img src="site/public/img/item/Grenade_icon.png" width="16"/> Switched SI_top/SI_west map locations.                                                                                                                                                                                                                                          |
 |                       | <img src="site/public/img/item/Neuron_Fly_icon.png" width="16"/> Idea&nbsp;&nbsp;○&nbsp;&nbsp;<img src="site/public/img/item/Grenade_icon.png" width="16"/> Issue&nbsp;&nbsp;○&nbsp;&nbsp;<img src="site/public/img/item/King_Vulture_icon.png" width="16"/> Contribution<br/><sub>_Feel like you should be on this list? Let me know!_</sub> |
 
+If you modify any of the content `.txt` files, you will have to run `npm run generate-routes` from the [`site/`](site) directory to rebuild the [content-timestamps.json](site/build-scripts/content-timestamps.json) for the CI sitemap generation.
+Since GitHub Actions only performs a shallow clone, we would otherwise lose the history.
+
 ## Installation and Setup
 
 ```bash

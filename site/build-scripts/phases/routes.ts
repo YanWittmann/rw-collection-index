@@ -8,6 +8,7 @@
  * out  build/**\/index.html, build/404.html, build/{sitemap.xml,sitemap.txt,robots.txt,routes.json}
  */
 
+import * as crypto from 'crypto';
 import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -188,28 +189,40 @@ function deployLastmod(): string {
     }
 }
 
-/**
- * Map each tracked file under the given dirs to its last-commit time (ISO 8601), in one git pass (newest commit wins).
- * This gives each entry the real edit time of its source .txt instead of the repo-wide deploy time.
- * mtime cannot be used: a CI checkout resets every file's mtime to "now".
- */
-function fileLastmodMap(dirsRelToRoot: string[]): Map<string, string> {
-    const map = new Map<string, string>();
-    if (dirsRelToRoot.length === 0) return map;
+const CONTENT_TIMESTAMPS_FILE = path.join(__dirname, '..', 'content-timestamps.json');
+
+interface TimestampEntry { hash: string; lastmod: string; }
+
+function gitLastmodForFile(relToRoot: string): string | undefined {
     try {
-        const args = dirsRelToRoot.map(d => `"${d}"`).join(' ');
-        const out = execSync(`git -c core.quotePath=false log --format=%cI --name-only -- ${args}`, {
-            encoding: 'utf8', cwd: ROOT_DIR, maxBuffer: 64 * 1024 * 1024,
-        });
-        let date = '';
-        for (const line of out.split('\n')) {
-            if (/^\d{4}-\d{2}-\d{2}T/.test(line)) date = line;
-            else if (line && !map.has(line)) map.set(line, date);
-        }
+        const out = execSync(`git log -1 --format=%cI -- "${relToRoot}"`, { encoding: 'utf8', cwd: ROOT_DIR }).trim();
+        return out || undefined;
     } catch {
-        // no git / not a repo: callers fall back to the deploy date
+        return undefined;
     }
-    return map;
+}
+
+/** Read the stored manifest, hash each source file, keep stored lastmod on match, query git on change/new, write back. */
+function contentHashLastmodMap(sourceFilesRelToRoot: string[]): Map<string, string> {
+    let stored: Record<string, TimestampEntry> = {};
+    try { stored = JSON.parse(fs.readFileSync(CONTENT_TIMESTAMPS_FILE, 'utf8')); } catch { }
+
+    const result = new Map<string, string>();
+    const updated: Record<string, TimestampEntry> = {};
+
+    for (const rel of sourceFilesRelToRoot) {
+        const hash = crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT_DIR, rel))).digest('hex');
+        const lastmod = stored[rel]?.hash === hash ? stored[rel].lastmod : gitLastmodForFile(rel);
+        if (lastmod) {
+            updated[rel] = { hash, lastmod };
+            result.set(rel, lastmod);
+        }
+    }
+
+    const sorted = Object.fromEntries(Object.entries(updated).sort(([a], [b]) => a.localeCompare(b)));
+    fs.writeFileSync(CONTENT_TIMESTAMPS_FILE, JSON.stringify(sorted, null, 2) + '\n', 'utf8');
+
+    return result;
 }
 
 function writeSitemapTxt(entries: Array<{ path: string }>): void {
@@ -268,8 +281,9 @@ export function runRoutes(): void {
     const sitemapEntries: Array<{ path: string; lastmod: string }> = [];
 
     const headDate = deployLastmod();
-    const gitDates = fileLastmodMap(DATASETS.map(d => path.relative(ROOT_DIR, dialogueDirOf(d)).replace(/\\/g, '/')));
-    const lastmodFor = (sourceFile?: string) => (sourceFile && gitDates.get(sourceFile)) || headDate;
+    const allSourceFiles = [...new Set(datasetPearls.flatMap(({ pearls }) => pearls.map(p => p.sourceFile).filter((s): s is string => !!s)))];
+    const contentDates = contentHashLastmodMap(allSourceFiles);
+    const lastmodFor = (sourceFile?: string) => (sourceFile && contentDates.get(sourceFile)) || headDate;
 
     for (const { dataset, pearls } of datasetPearls) {
         const routePath = '/' + (dataset.routePrefix ? dataset.routePrefix + '/' : '');

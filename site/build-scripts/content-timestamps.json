@@ -1,0 +1,838 @@
+{
+  "dialogue-modded/Aqueducts/OA_centiporl.txt": {
+    "hash": "f5800cb0103aa07315e6c6e6e68fe53a8f647e2a3632faebbe5fd9b5c295e019",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/Aqueducts/OA_deepporl.txt": {
+    "hash": "810b4a657bf1d0ef7dc7e52f7fa2f13e2549f1826536b50b177285f7bdc96291",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/Aqueducts/OA_highporl.txt": {
+    "hash": "e239aadc5d9139a1e24cdd033296762aa2d71574250f964c6b2b09a93fca86f8",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ArchaicFacility/KF_Pearl_1.txt": {
+    "hash": "d6321d2dad2a37629e9c1dddee5e2b154bf56217c7eadf737aeddbb8f72ffb9e",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ArchaicFacility/KF_Pearl_2.txt": {
+    "hash": "efe11be4a4db62ca3309c9c183c5b6eca72ba785cce403404d301f5278692e5e",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/AshenBow/AshenBow_echo.txt": {
+    "hash": "842f334d030e18b8d59216074bcc04984dd26725d0cdfef04347d7bf205ee979",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/AshenBow/QL_Glacialcore.txt": {
+    "hash": "f9041a7aeeb66a0c12fb1bfe338367bca0408ed46b1eec6aa1d99425a6e36378",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/AshenBow/QL_Radioconnector.txt": {
+    "hash": "3cf941dd5e7bccc138e742ae7044c7c179b96c47244b56664832be6864b341f0",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/AshenBow/QL_Radiospiretop.txt": {
+    "hash": "47ab976cd8a630d473a28cff07a32f9139e2df32ac88715ded3b2e0e6bcc1045",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/AshenBow/QL_Spinebridge.txt": {
+    "hash": "36126ed739a96a5050e1bf0dfd0046f808085aa7ebca1fc6bbec362eb8dcd16f",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/AuxiliaryIntake/IPLower.txt": {
+    "hash": "c3c581dca6b685041171022236de2743fb32d74d6e661858fecaa60ef50721ec",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/AuxiliaryIntake/IPUpper.txt": {
+    "hash": "12204356b5fa9dcdddbd891a0d74142a0bb2e3720dee3d688bbbc7c18f576b0e",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ChasingWind/ChasingWind_echo.txt": {
+    "hash": "4c72f07d9609423644f9afef4f358abb0c5581f361ac5d2126e17e4541dfe144",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ChasingWind/CW_Dialogue_artificer_{var--DialogueId}.txt": {
+    "hash": "a6b434d69e6e3679a8cb2b5997eb3bd75f98ed5d70c8e7ae41359965713a4455",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ChasingWind/CW_Dialogue_generic_{var--DialogueId}.txt": {
+    "hash": "ef511264fd3c556f9049dfcefe11e011bc3182a29e9490953f79c394a881db40",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ChasingWind/CW_Dialogue_gourmand_{var--DialogueId}.txt": {
+    "hash": "22e2aea15f8a26a782d87e824166313fa09691928bc9d4778853d6d79db80d17",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ChasingWind/CW_Dialogue_hunter_{var--DialogueId}.txt": {
+    "hash": "13892b6d60d51b862a4af9253a15d5dfc83b50427d7b19ae30c5370229a54919",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ChasingWind/CW_Dialogue_monk_{var--DialogueId}.txt": {
+    "hash": "c869e22301c209065f601c6063e2589a9e3a2f8b7bb174f6c509e7e816640b5b",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ChasingWind/CW_Dialogue_rivulet_{var--DialogueId}.txt": {
+    "hash": "ffd64273966ae05723a71f9def622511b6b7406e2202d43d63f5e5598aff0d62",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ChasingWind/CW_Dialogue_spear_{var--DialogueId}.txt": {
+    "hash": "8061d860589643f020379e2a998ddb1040802073a214402f2246b9f287397b84",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ChasingWind/CW_Dialogue_survivor_{var--DialogueId}.txt": {
+    "hash": "575dbcd5d005fe4875a47ab4352f113495eb75e7635c4ca6aa36d5e2356555be",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ChasingWind/CW_Moon_BigGoldenPearl.txt": {
+    "hash": "2b91a30c43f24c290c9840d8ca67482aea1231141acf5b39702551383e8a9449",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ChasingWind/Misc_CW_WHITE_PEARLS_{var--WhitePearlIdx}.txt": {
+    "hash": "89fca5fd428752f79570af3870dd13ec603c168424abf899ce0211164599b31d",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/CorrodedPassage/CorrodedPassage_echo.txt": {
+    "hash": "eeff11027b6ea328758a53235bf5028e13be3ed38465db5e8037cf17965b0c29",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/CorrodedPassage/MARPQ.txt": {
+    "hash": "bd24eac170764b1925876e896e05d4fc51130b27a1d61f63b1d0b25137e4f39b",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/CorrodedPassage/PQ_P1.txt": {
+    "hash": "02642bfb7d87d4728b8889bfb3846b91ae9902085d7b86f20264bc7a8b8be0b1",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/CorrodedPassage/PQ_P2.txt": {
+    "hash": "11271ec6be0a76297620f081fad1a24aa00adf6963369ded2bca3e22d2530ef0",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/CorrodedPassage/PUPPQ.txt": {
+    "hash": "c676738863e2cffc91f4b5ad9fdef2aab594470339f81286bec4adc09f6def89",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/CorrodedPassage/PUPPQ1.txt": {
+    "hash": "7be24fa7c46d6440e4b4ea33bf64049ed19e262f602a790568f5233043ff1f86",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/CorrodedPassage/PUPPQ2.txt": {
+    "hash": "a2d17e91fc36b3861f297832b18b608a5c8a86b405157c83ebac6ac524b91f9d",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/CorrodedPassage/PUPPQ3.txt": {
+    "hash": "f9dc00dfd7cebd7467af3caf77ad16585a06a8f9554f14040929a0e8c59a907b",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/CorrodedPassage/SEBPQ.txt": {
+    "hash": "223ccde130f9f87764b647bb0b89877b0649ca7dac2183ee6cddc074927d12c6",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/CorrodedPassage/SMOLDPQ.txt": {
+    "hash": "972413048a19e9c26428f863d1c26c483a2d2231dd153d8df02aa6f0348952db",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/DrainageSystemPlus/DrainageSystemPlus.txt": {
+    "hash": "cb1388fc192d4055c36299d5d331cc9b22390f5122df6ccc45078c8c1e7a1628",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/FarShore/FarShore_echo.txt": {
+    "hash": "bf69d1747b827a9cd3c52d71a61513fac5fd8d567702f266ee4052aa92f017ee",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/FarShore/FR_Pearl_1.txt": {
+    "hash": "4bdc36c59a8e42ef89839787890cdf336417b6f8fac2654788a1de2016b0ece9",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/FarShore/FR_Pearl_2.txt": {
+    "hash": "29f6b440dc55f9f127bc484363d0b4466e9a0e460ad9d96f30d098e994ab80d6",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/FarShore/FR_Pearl_3.txt": {
+    "hash": "7d75c75e889186519c7caa876c7b1ab905fa568402df4a99daf96a8df9a39057",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/GrayUrban/GrayUrban_echo.txt": {
+    "hash": "3c909b7b692b90f774eebed9671c81f7b7a1dd6689414180b2c2783b642c22b5",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/GrayUrban/GU_Pearl_1.txt": {
+    "hash": "f0d78641a67467dc1be1565a86fbd88fb5362e15293492842303506a90762c1c",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/GrayUrban/GU_Pearl_2.txt": {
+    "hash": "c3d27cbfbb7c66031dba28697872c6e5f5adbc0acdda1a9687abc2305232d972",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/HangingGardens/GH_Pearl.txt": {
+    "hash": "f48dab6969d5f23e0020443d64a76660bca0f391c64ddc0f6a07e7a932244f3b",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/LuminousCove/EU_Pearl_1.txt": {
+    "hash": "be8b12450fc7760cf6b03a3bb8e448712e9cd694753fb146e3f7899ece7e3a99",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/LuminousCove/LuminousCove_echo.txt": {
+    "hash": "aa8b45a90b72fd489f819436f3af2888caa92da453202660d61b745efe099a36",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/MossFields/MF_Pearl_1.txt": {
+    "hash": "2f0867ec3a49da2513b0f1b8d9fbd0d357e2babbf1caba9a9e6aaae8a8281762",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/Necropolis/Necropolis_echo.txt": {
+    "hash": "e1afe1f71d1fd5d890cc7dbeb4e834c1e41cfa3d38d91b334def5486441e868e",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/Necropolis/NP_Pearl_1.txt": {
+    "hash": "bbc69d228731a1850e437a8d8242af8908becc7c3a6917026e56d2113e242154",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/Preservatory/PV_Journel_1.txt": {
+    "hash": "ebe3327bbf29657fe46f4230655ff60f8ef29667f23370ffbef05943881b879c",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/Preservatory/PV_Journel_2.txt": {
+    "hash": "a921cc699e9bc34dac0554785eb9ba2fca37b8407436f5a70c83aa0b52de9735",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/Preservatory/PV_Journel_3.txt": {
+    "hash": "82ef90678b62d00280ff8957b72f2d94c58a331357b1bdc5b65258f1f13c0d0f",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/Preservatory/PV_Mural.txt": {
+    "hash": "842cf4755742c8ff4c08134de78c7961ad7d4015d3bc151fa2befaae0f0e0cc2",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ScorchedDistrict/ScorchedDistrict_echo.txt": {
+    "hash": "3ffaf68e4b18e8277ab1fb48099cd69b0b64d37171dd48c169a28fbc7ca760a8",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/ScorchedDistrict/SD_Pearl_1.txt": {
+    "hash": "986c362424749a1d2c90922e7e3599763278591453fb262c07656ec57d968132",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/TheMast/TheMast_echo.txt": {
+    "hash": "98cac3681fd7c8430ae7043522c92f7cca7f2c7135905b35f97cd9bc09e63e52",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/TheMast/TM_Bridge.txt": {
+    "hash": "e276c1894cc73ae0268aca82eccead6f1289010d89b71b3f2c57e63ffd30d25b",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/TheMast/TM_Broadcast1.txt": {
+    "hash": "139be83a6bdf4fa273f4c1cee1355f7eb594889f0f2c04688a96b52d13deb794",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/TheMast/TM_Broadcast2.txt": {
+    "hash": "1c6b0016174dbab6fbef7bd85f601a33a1a2f110cf3bdcead98e98c633b6039d",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/TheMast/TM_Broadcast2B.txt": {
+    "hash": "480f9b8233aab3c6dc37596ff3e797eb2520af879897cec7a5191980027ec38c",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/TheMast/TM_Broadcast2C.txt": {
+    "hash": "c293b1c12558969d1e001d50ce6170bb749e449dfa4e1956a54f45e6dac9a391",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/TheMast/TM_Broadcast3.txt": {
+    "hash": "6439310d6e80bfbb3709da572818324a62c9837960c84b63593d5bef8c2f1165",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/TheMast/TM_Broadcast4.txt": {
+    "hash": "a7d1c7faf4a72d1606344fc5fd0e60569b37cc1a4231c743be8317d967201184",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/TheMast/TM_Spire.txt": {
+    "hash": "815c0a1b3b1e240720440576ac7ceca7099b36ab06416b660ca2cfc966110b05",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/CC_GOLD.txt": {
+    "hash": "85e0471eb71308cbd4c6764f8c2901c95f085bd847c53d0cc108300fa36290c8",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/DM_LIGHT_YELLOW.txt": {
+    "hash": "fbd2633f2683b634801b0877b8221f349c9ab42b792f4b1e1ffcf1d59900bb89",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/DS_BRIGHT_GREEN.txt": {
+    "hash": "f4076e83dfbdad2ac9fec32e3fd1748620605815bbd435bcd7a5e89e43152dbd",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/GW_VIRIDIAN.txt": {
+    "hash": "9a38441e5b55e66f620c26993d93d6137b8da2c4fbf160df2309f1d9ef18fb07",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/HI_BRIGHT_BLUE.txt": {
+    "hash": "35a7e01c137a4a4df74ee447fc175b336e18a13b77152782ae812cd7c2508e03",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/LC_DEEP_GREEN.txt": {
+    "hash": "e636bcb3f826fbd7cb8c1039479839c4a4fe03473f9301cf29914c2f62cf60f0",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/LC_second_BRONZE.txt": {
+    "hash": "bb13ac598c8189e94b55042d0ecb0855364c5df8f422b8f98a37a9419e14c6ac",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/LF_bottom_BRIGHT_RED.txt": {
+    "hash": "75ec0dd2cfcffdd6ac2d7e06b7a754bc5a18560d4ac9587bf4f6d377183113cb",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/LF_west_DEEP_PINK.txt": {
+    "hash": "3ebb1dc9f8648e36e685406ac1181ce9665487f10952ac8e4beeea2dfdff2a9b",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/OE_LIGHT_PURPLE.txt": {
+    "hash": "59857cf0f075e8e5014350a8c7713e491ccbd2af0082cfa03cc13a5997ad53eb",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/Red_stomach_AQUAMARINE.txt": {
+    "hash": "8fa982a2b9a459cd9e35aaf7b9d34015cda3f95953265e851138d7f9a0a084c9",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/Rivulet_stomach_CELADON.txt": {
+    "hash": "73596459a800257da0bf317eaeb9bc2ef8e31e46fc916d2d6201542ff5dc0be9",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/RM_MUSIC.txt": {
+    "hash": "30a13ca7b5ed857320bb54fb3f3ef385a2e547800bd4f43a842ccce8d153ee8f",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/SB_filtration_TEAL.txt": {
+    "hash": "4234bfd9fa7a1daac445b10af07356406fa484b459c5b5a3ff72b1e3ca42e2ef",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/SB_ravine_DARK_MAGENTA.txt": {
+    "hash": "ec7ae0eb81b2582a85fb12cbf6fba69268a0fbdc7c607e920a99c79031411a1e",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/SH_DEEP_MAGENTA.txt": {
+    "hash": "90254b2511e609331ff6d79480097869f92c2e04f88b7425415f4233a0af6e3c",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/SI_chat3_DARK_PURPLE.txt": {
+    "hash": "c70a920289614e993d23d9809cbf81c9697c6afeee20983523c305291ab9c9f8",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/SI_chat4_OLIVE_GREEN.txt": {
+    "hash": "7627d13034e34886aa5525b4ee6ef3228ee8549f1d8720f20fe5963e4c33d00f",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/SI_chat5_DARK_MAGENTA.txt": {
+    "hash": "2c9c546badcf6626843dd09f2800ac2f53bb65b730767972ebb5bcb665a4cc2f",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/SI_top_DARK_GREEN.txt": {
+    "hash": "70d717bb4aa20b27b07d4b01bd00c0eeb6427f2c9a0eeb58e74517233cac88dc",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/SI_west_DARK_BLUE.txt": {
+    "hash": "e1033fe48aa513eaa081ce237f3ae3fbcd2b5dc822ade604bef2bc7476341d66",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/SL_bridge_BRIGHT_PURPLE.txt": {
+    "hash": "d2ef3b015b5821837ab8516a8b6f7b3d8d1dc141c952d8be3369944e5a2e5408",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/SL_chimney_BRIGHT_MAGENTA.txt": {
+    "hash": "2a20516c7d4fe251ad265e705cd3661f264600f800d34ef3d7875ec1b3036e22",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/SL_moon_PALE_YELLOW.txt": {
+    "hash": "4e692e295ac741a9658fdf2f7fed9501baaee076bd6fc77c4a4821f817f275d2",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/Spearmasterpearl_DARK_RED.txt": {
+    "hash": "a158593602f6ccb262346f894997719cf9496f1cec0884a28525a9e571a31808",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/SU_filt_LIGHT_PINK.txt": {
+    "hash": "f995ed0ce2456d5856a0f7d2a1b5178f2242df97d8ea0556a210cdbe41e2f46f",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/SU_LIGHT_BLUE.txt": {
+    "hash": "a2ad4f82af71c949bd1e7d948be26f4c9376d968c85c28c0279a9173204cc518",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/UW_PALE_GREEN.txt": {
+    "hash": "3d9fe1972d24988a6dd794ec307c85177438860f4dd452afd7fcda43bef82fe7",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue-modded/v_dp_pearls/VS_DEEP_PURPLE.txt": {
+    "hash": "5f68c258051bb1c02ebb1d05dda0c500bbbdb39e95c322736853f8a0e9b1ae7b",
+    "lastmod": "2026-06-21T12:30:53+02:00"
+  },
+  "dialogue/dp_addon/LttM_SAINT_ANY_OTHER.txt": {
+    "hash": "cdeffb5527f3fd58f70af1fe63a44a7697db8e138d46836d0e9a16df3f8e5cd2",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_CC0_LIGHT_BROWN.txt": {
+    "hash": "1158f7a464e6dd6394f406fc3ece11d718de09c7945a4f10520b817e63075044",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_DM0_DARK_BLUE_1.txt": {
+    "hash": "bf15de63926c0e0bb757c05e05ef9e997033ed7204aeb71c118f1c6853f71936",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_DM1_DARK_BLUE_2.txt": {
+    "hash": "1cf81eb9c50712b43f0e34ccab76ac7202781a8e1369070d979186ded94239fd",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_DS0_DARK_GREEN.txt": {
+    "hash": "bd2072a7328b59022712e94c2203e8d82cd1d8fd2e466e3db4dae7d3e4ede741",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_GW0_LIGHT_GREEN_1.txt": {
+    "hash": "6b65efabb2dbd3c7ac6dae7c6d8bcd6c4b9d42e874df62e06d021b5cc7ca7e7a",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_GW1_LIGHT_GREEN_2.txt": {
+    "hash": "7718ec4900b4062178d3a81df9f6aaf9a992019c1870c098076b2849184c15b3",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_GW2_LIGHT_GREEN_3.txt": {
+    "hash": "ea6d6cfb6d8f1ba7a5adc21b1d97d56b77273671ba55e07010a97d01bbf858e6",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_HI0_LIGHT_BLUE.txt": {
+    "hash": "11fd04e37b10adcc915693e94d73550f4a39159ef7144e2019602ae15c32d39a",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_LM0_CYAN_1.txt": {
+    "hash": "dbb062dd244a366b3e303278585f7f010732acbe609435140d8e463e8544f6ae",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_LM1_CYAN_2.txt": {
+    "hash": "4827629b06258923e080d4833c26ad54320bbf8fc5e60523dc8a9259e69b61ae",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_SB0_DARK_BROWN.txt": {
+    "hash": "d61f7df5d9637fcc0cffd6f36abf8c36849b27af50a85994c1547f8a80b87bfd",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_SH0_PURPLE.txt": {
+    "hash": "9d66df5dd1f4e21975498a7de201d695b7b462c612aaaa206bd35fc6be1ee63c",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_SI0_PINK_1.txt": {
+    "hash": "55b0a04f523ca5b9572a716f74891ff89495b5330dc170b66bd61e07f4633d9f",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_SI1_PINK_2.txt": {
+    "hash": "1616b07a1a8e67daa93650b0b588415953b3db5d72097916e3ccd335f614784e",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_SI2_PINK_3.txt": {
+    "hash": "a78582598a018a2d66fd5faa910f5c872f948291896e47d10cc185fd0591d378",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_SI3_PINK_4.txt": {
+    "hash": "1b170726315a8220b133d912afd943c8068a8a1cf4124289e6f294f65afa2a0e",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_SI4_PINK_5.txt": {
+    "hash": "922342faf0d504250f8532024f8e7ed11bf6233c8dafe1255ae26896e6f7d543",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/Chatlog_SI5_PINK_6.txt": {
+    "hash": "807974bd3b79360ee7691986fd8f2bf163ba50cae5eaa20c83bed352b9d9ff59",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_0_PEB_GRAY_1.txt": {
+    "hash": "8731872e2fd6761e2c3e02bfa8d1d7ba905b793c8751fa48dd982d88a4a14774",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_0_WHITE_1.txt": {
+    "hash": "1696993d978a6e6d5c4bff3ebe633bb436ecbe7ed5f95d12219659ed7e3e2bc3",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_1_PEB_GRAY_2.txt": {
+    "hash": "2e2e698d4ee36c1ade82dcd60859a1068e0fedb7666d8f95a16abdaa81a45438",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_1_WHITE_2.txt": {
+    "hash": "2fbbb7a3e3c39fc11e5e2b1093d492ae672b88efd8c0f6d23bc3b8409eb152bf",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_2_PEB_GRAY_3.txt": {
+    "hash": "12928f900f48c2239bbe56c7f5ce34d3db24392f9f004c0ddf885725fef24e84",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_2_WHITE_3.txt": {
+    "hash": "8490d2f885071710ce283cc64b9b0b9b1c5d1ba003a2313a80491608f0748f3a",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_3_PEB_GRAY_4.txt": {
+    "hash": "f710bbca4bfd777fcb486c872feeacb683f591bf175557a82ad966c20a4f5fd9",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_3_WHITE_4.txt": {
+    "hash": "8243e12ee9d1a3bfa98bc88d4757a591bbad24f6291062f8b05c46288d21271c",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_4_PEB_GRAY_5.txt": {
+    "hash": "bbfe6609a35e8303fa336df159bdcf0851d8cc5848a7e5e2a2033176712a2dfb",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_4_WHITE_5.txt": {
+    "hash": "dd6fb1036e352bc395a81d6f2f887369d1ba81c7c84ebb5b07cd194e359a3656",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_5_PEB_GRAY_6.txt": {
+    "hash": "c8c3d8270ba0c01dab15fca61aaa03bd15a9969bf9802773a8d0cab71058986b",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_5_WHITE_6.txt": {
+    "hash": "40dceccd6f1d2a32032a8a8dda884c94f1f7f36bd8921aa79a08f5eb957d5cde",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_6_PEB_GRAY_7.txt": {
+    "hash": "5cfd5f404c2a186435a190c82917f875a8aacade9e5dba40677b8f0944f4d8d1",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_6_WHITE_7.txt": {
+    "hash": "06f4ca116b750397fdac8a2cafaaeb32890a2776995350db7c8fc6714ff44ea9",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_7_PEB_GRAY_8.txt": {
+    "hash": "b531f30d832ea53e41ec95151ed9f72b4c67de1e809773803dd8260f255163d5",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_8_PEB_GRAY_9.txt": {
+    "hash": "655e3a8a833a644c1d7a501ce5c0f230a7aa3982205e6dc1b9803dde5cffd5e4",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_broadcasts/LP_9_PEB_GRAY_10.txt": {
+    "hash": "dd905a578bf7f8af5d87f9888cc1df0079010e09f33b6bd630421b7cc0a735f8",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/dp_dev/DevComm_{var--DevCommId}.txt": {
+    "hash": "66c87c0bfc6ad0064fc15d022db242db504587b1c5aa8fd0a8c027dd3c555091",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_echoes/Echo_Monologue_{var--DialogueId}.txt": {
+    "hash": "85ff7a3c5bee5dce7cb8ad7b5e022ac4ea8faf8b713e01ab9df60a7722ef457b",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_iterator_pearls/BroadcastMisc_{var--BroadcastIdx}.txt": {
+    "hash": "f5da182a79426fd4ba260b52097ba054d5d124504d453bd29cb023ed9a8fdcd1",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterator_pearls/Misc_WHITE_PEARLS_{var--WhitePearlIdx}.txt": {
+    "hash": "de4eb8cea51feca42c52a49d1cf82cc415ac580d7f64b4032f926959880fc8c5",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterator_pearls/PebblesPearl_{var--PebPearlIdx}.txt": {
+    "hash": "1045941ffa111678eb9279c1c33a83d8d4e9e82dca689ed304ebaf99136656cb",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_iterators/FP/FP_Dialogue_artificer_{var--DialogueId}.txt": {
+    "hash": "231795494979649746e7fbda321804745bd6c9a1eb03a98b677dd3511d4909c1",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterators/FP/FP_Dialogue_gourmand_{var--DialogueId}.txt": {
+    "hash": "7334193b93a071761c04f2e28146d3d51e6e9f639c03e6522bd4fe4d3973b844",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_iterators/FP/FP_Dialogue_hunter_{var--DialogueId}.txt": {
+    "hash": "a9442032c39ff8b6c82287c87e6474771150bc7cbb0ba92df7d635e8b2b27520",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterators/FP/FP_Dialogue_inv_{var--DialogueId}.txt": {
+    "hash": "987616f76cdadcb31b24d865054032d6b2d4945c729ead3077fcb24bb889c3f7",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_iterators/FP/FP_Dialogue_monk_{var--DialogueId}.txt": {
+    "hash": "c9cc8a21416283549094752ae9abe4c304f9b59efd52d5419919a61b8b7fd997",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_iterators/FP/FP_Dialogue_other_{var--DialogueId}.txt": {
+    "hash": "9f43cb7b37255baacac50c8a3b6adab2e45ece633881cb9632421d12bcc2dd17",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_iterators/FP/FP_Dialogue_rivulet_{var--DialogueId}.txt": {
+    "hash": "54ce779125a8c9cf6faf11fb9cbfc684a8a68c33cffe13f5a1f5de2e3f094054",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterators/FP/FP_Dialogue_saint_{var--DialogueId}.txt": {
+    "hash": "1bf2e70923908dd347867f03f8aa9d82ceabc02e67c4d451391d3d3b038978b8",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterators/FP/FP_Dialogue_spearmaster_{var--DialogueId}.txt": {
+    "hash": "96693319e5029e493376c9f7b6a32841c29af12c00d9816c1c20942d90ce739c",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_iterators/FP/FP_Dialogue_survivor_{var--DialogueId}.txt": {
+    "hash": "04a8adeb37103da70e04f72e8bd7c8ae9a6196529467e368f21829bddba2bb50",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterators/Iterator_Dialogue_Items_{var--DialogueId}.txt": {
+    "hash": "cf9b53e65f0a29b401560a2b6dd68f885f88c8ea5ae66eeedae232fc8fe17719",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterators/LttM/LttM_Dialogue_gourmand_{var--DialogueId}.txt": {
+    "hash": "aec83046d36674adb2150bf7728aa4a2d25635a9595d8021ce7e93cc1c24a820",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterators/LttM/LttM_Dialogue_hunter_{var--DialogueId}.txt": {
+    "hash": "cf453621a3ac260647f7159daea9ba9f3ba400e2fa80e11ca5243d0516c9c64b",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterators/LttM/LttM_Dialogue_monk_{var--DialogueId}.txt": {
+    "hash": "9dfc1239a9902563c98644686a2f49a209e5a4230872d2f6f9258b8feb5cc281",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterators/LttM/LttM_Dialogue_rivulet_{var--DialogueId}.txt": {
+    "hash": "7175c5d2a0b4e401440d07f8f2f26aedc7dc650b93874160c008e81eb74b3577",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterators/LttM/LttM_Dialogue_saint_{var--DialogueId}.txt": {
+    "hash": "73f8e57cfe5a43898f7aafe4d952951da1959910b31a6fa7edffb97e90b794d0",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterators/LttM/LttM_Dialogue_spearmaster_{var--DialogueId}.txt": {
+    "hash": "14ac934bc7b6d09943286d13aa562bee6f32a3ee017a7ba74dc9531cbeaa4997",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterators/LttM/LttM_Dialogue_survivor_{var--DialogueId}.txt": {
+    "hash": "82214b6573c7c4472423b48fd4602d4d51f1176b9e40abddff6fb0a487778302",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterators/LttM/LttM_Dialogue_survivor_monk_{var--DialogueId}.txt": {
+    "hash": "ea54ecb1f65f275f5c3499b51eab53f3cb4296e066420c46d239541174019f3d",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_iterators/LttM/LttM_short_Dialogue_{var--DialogueId}.txt": {
+    "hash": "e60ee4f8cec8ab0e6caed94836940658c06cfcee8880aa1e4f77e9550670aafc",
+    "lastmod": "2026-05-15T22:33:51+02:00"
+  },
+  "dialogue/v_dp_pearls/CC_GOLD.txt": {
+    "hash": "6b3bfda41123dd20ccde8284943855263697ec6bd24bf8452a7ba1d983efa0f1",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/v_dp_pearls/DM_LIGHT_YELLOW.txt": {
+    "hash": "63e406e980908f2e02b18aca2e2caa1af1a13b0babaa36c55552498cc7a8cc63",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/DS_BRIGHT_GREEN.txt": {
+    "hash": "64fd8b5e8d8f47966ef8f32518ef1602c38ace0763268191413252245462a018",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/GW_DULL_YELLOW.txt": {
+    "hash": "3b345354a6bf0044c6f1cb86ef27521b1f1076f481e5201931da0a02789eac78",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/GW_VIRIDIAN.txt": {
+    "hash": "336b95c8e6991e5fd528e39a7829ab1ff029783ce106b466e3e77a04f1589e04",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/HI_BRIGHT_BLUE.txt": {
+    "hash": "a7aa01d34ff4fea6db733af483b9d507c29eb097a4303fc6f6d1fd2fac0505f4",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/v_dp_pearls/LC_DEEP_GREEN.txt": {
+    "hash": "0e9bc1d25ef14bacfced45dbb7b0e225fcad306ada8c5120d752894da06454f1",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/LC_second_BRONZE.txt": {
+    "hash": "e7f2001f843cf82b236dbbe2b632bd35fc48a9f0cec75b68eff9ea8fe2dbe943",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/LF_bottom_BRIGHT_RED.txt": {
+    "hash": "2dddc835e96fc9500043744d0a4e82e298af2cd71691efdd6eec46e644f872bc",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/LF_west_DEEP_PINK.txt": {
+    "hash": "6ea7396c9dcad852d056f84d819c1a634e1aced417f3498ad25b329182888eb8",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/OE_LIGHT_PURPLE.txt": {
+    "hash": "d7795b9312ea753203e9841d15040c819980d829a5d059e5a735cf9589fd578a",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/Red_stomach_AQUAMARINE.txt": {
+    "hash": "060dfbddee55d45824f38985bfeaa161ac737202f9be7b4536935c016385850d",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/Rivulet_stomach_CELADON.txt": {
+    "hash": "738f347f511e9771832f41484f1cbc8512806b4097a1714feab34242d3914a01",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/RM_MUSIC.txt": {
+    "hash": "4f142c0101cca26fb8a965f3f97e4666dada690aa1e4d7c365272e85710864b7",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/SB_filtration_TEAL.txt": {
+    "hash": "3e4faf250dbb2bbf87559870ba6dca3f43109c036cae15723872308ac4f28e9f",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/SB_ravine_DARK_MAGENTA.txt": {
+    "hash": "0563dbf28064a1230c446b188b8f68c4eeb212629489537ba73e8e69b15bbd66",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/SH_DEEP_MAGENTA.txt": {
+    "hash": "81a3b34372d19a1a5f96dacd69d610a6d8c638a9ebb4c4fa3f33ab54c657eb5c",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/SI_chat3_DARK_PURPLE.txt": {
+    "hash": "b8645e47aff2de83d9766167f60f4276e21f962a81abef8f62e2426ec057356c",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/SI_chat4_OLIVE_GREEN.txt": {
+    "hash": "b0c4e33d59ded97e1d8f69c50216d16cb0dacc145d1137ed446fd5a4ac542a07",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/SI_chat5_DARK_MAGENTA.txt": {
+    "hash": "cb3c2c41892970d582cc215f92c7eed017ba75f7f3d799e758fd65556863645f",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/SI_top_DARK_GREEN.txt": {
+    "hash": "34c00bcd92013445410b3466fccb781bcf79de9fb606495a5c64eea442139f3d",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/SI_west_DARK_BLUE.txt": {
+    "hash": "b9313e50b5134748ebf380d5d6f8fb44979fdab2a2615ff5e8d9ca333b11e952",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/SL_bridge_BRIGHT_PURPLE.txt": {
+    "hash": "375e119dd1c184ee81e781c914234c45b6e597552f83622b768706f6d07922ca",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/SL_chimney_BRIGHT_MAGENTA.txt": {
+    "hash": "bdd42d0d4c366bdef59ec7a9e2001ef063de3d2e0fb02de6283e8c76227eaab9",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/SL_moon_PALE_YELLOW.txt": {
+    "hash": "08ef782c4a2683433ecaff70ea030c96193c123519775a04735cb02f5e8c8cd6",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/Spearmasterpearl_DARK_RED.txt": {
+    "hash": "f60dd166a4a88afd2218d3b89ccfac1431b17d37498e2f8b0f8615425807e060",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/SU_filt_LIGHT_PINK.txt": {
+    "hash": "ea94fcacd9c60df0b3730e95d587c2a2b0fefd29c3df59a864011340bdb9a878",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/SU_LIGHT_BLUE.txt": {
+    "hash": "d779db72a245843254a24108b386e82fb945f249491f61bb2598e9473d35e2b7",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/v_dp_pearls/UW_PALE_GREEN.txt": {
+    "hash": "bc60f81be19b19516166dcf44d5d945903f28b43735c716596e3a102f716f038",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/v_dp_pearls/VS_DEEP_PURPLE.txt": {
+    "hash": "cec58e5a7f21c7235754fb02dad6c9e813b64ada02697b3bd58fc108d6947d87",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/watcher_dialogue/Watcher_Prince_Dialogue_{var--DialogueId}.txt": {
+    "hash": "05ad8b6d0ce1ace0a875d081f8c51734009939c5082b0a86047409d624ae2697",
+    "lastmod": "2026-05-16T20:22:58+02:00"
+  },
+  "dialogue/watcher_dialogue/Watcher_Prince_Events_{var--DialogueId}.txt": {
+    "hash": "5d40c5548a3e1993540b8a56ff393f0991c41f56917f9fee52d9a9bfbc09d458",
+    "lastmod": "2026-05-16T20:22:58+02:00"
+  },
+  "dialogue/watcher_dialogue/Watcher_Prince_KarmaSigils_{var--DialogueId}.txt": {
+    "hash": "55c260fa26757f5f6ec0ff1a7d3d57a85a2f8cc43567aa0870515913efa75d28",
+    "lastmod": "2026-05-16T20:22:58+02:00"
+  },
+  "dialogue/watcher_dialogue/Watcher_Prince_Weaver_{var--DialogueId}.txt": {
+    "hash": "e175d1a78d281d0b373f8069719f8870db133c7389b76234e8301ee50d39e5f8",
+    "lastmod": "2026-05-20T18:14:34+02:00"
+  },
+  "dialogue/watcher_dialogue/Watcher_ST_Decisiontree.txt": {
+    "hash": "f5a48ad64a8767ec08bab74d3d0c6702dbff4fa4e9728b758ffe1fdb2cf2b86e",
+    "lastmod": "2026-05-14T22:55:18+02:00"
+  },
+  "dialogue/watcher_dialogue/Watcher_ST_Echo_{var--DialogueId}.txt": {
+    "hash": "5e07c159c0b1707f06015c0997ad873b3356d5b04285a783833743510fe4ff65",
+    "lastmod": "2026-05-16T20:22:58+02:00"
+  },
+  "dialogue/watcher_dialogue/Watcher_ST_Other_{var--DialogueId}.txt": {
+    "hash": "777862e245ccd28f5fc92f7f70958e776ff0a2d41faa4f885a2f50eca89d2795",
+    "lastmod": "2026-05-16T19:06:46+02:00"
+  },
+  "dialogue/watcher_dialogue/Watcher_vanillaEncounter_{var--DialogueId}.txt": {
+    "hash": "6305a37bc72e129b56e27198582f686271f377f3bc8952c9360c300bd64a1b99",
+    "lastmod": "2026-05-16T20:22:58+02:00"
+  },
+  "dialogue/watcher_dialogue/Watcher_Weaver_Dialogue_{var--DialogueId}.txt": {
+    "hash": "06e33df73993dd8715155b40d7bec47fd2f1c0735354b67b09994e6f988717b7",
+    "lastmod": "2026-05-20T17:18:52+02:00"
+  },
+  "dialogue/watcher_pearls/audio/TEXT_AUDIO_TALKSHOW.txt": {
+    "hash": "6e6fd41344b25f228cc670251a4f0d9f22008de2013af369fd433cb3cff8a59a",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/audio/WARE_AUDIO_VOICEWIND2.txt": {
+    "hash": "28d623580ad30656d7a4211fff991a89ec5698e5e8e09b07279e923bd86d1a1e",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/audio/WARG_AUDIO_GROOVE.txt": {
+    "hash": "6edf39a99eaa3dd81a41a1364afaf4c644b32ebc35ec05a7473857658efc07e5",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/audio/WBLA_AUDIO_VOICEWIND1.txt": {
+    "hash": "9938290159f8638e1ed97608f08a3f9f41a3ae894bcc151778a3dba3c84dd9bf",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/audio/WRFB_AUDIO_JAM4.txt": {
+    "hash": "d36924270f4b1ca22c9cb793253e1ef0408ba6b65d4556724f0302e319aeaf23",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/audio/WSKD_AUDIO_JAM2.txt": {
+    "hash": "39f9fa47ebac6efa69c8a247e268acc6cf2bb1824a7a0d1ea5b6224072234089",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/audio/WTDA_AUDIO_JAM1.txt": {
+    "hash": "b5e8b41c1dd922257b4dc447ebedc2823fa957235ff50611ac66f35bd8421aa4",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/audio/WTDB_AUDIO_JAM3.txt": {
+    "hash": "d75bd91d76533debabf6c422167857b110eedc0763b4cef3333dc5ed2cd153b7",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/img/ABSTRACT.txt": {
+    "hash": "69c1b165c4881ccf7d6deb1a025be086307eefae0619e2a1b4ccf10ba5bdce12",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/img/DRONE.txt": {
+    "hash": "4d5e9aa8a66423a78440e72882387ab9d0b22e9cea69d015efb2a855359b7f20",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/img/Watcher_Pearl_Misc_Projection_{var--DialogueId}.txt": {
+    "hash": "1ae6844602cc434a535e27ea3608f66af4cab5e6fb0a5560bbf2823326a9af36",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/img/WAUA.txt": {
+    "hash": "cf4aed3146fc9afe3f0737225b2472664f673229fb7031446c853c281deb091e",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/img/WORA.txt": {
+    "hash": "7e0224b1051ee902b1673a46787c8191e067c19678b13cfbf940ba10788270f5",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/text/WARB.txt": {
+    "hash": "2934fb5826b8b1b51f1227ec934513d389acb14c6d8d38b1633f4b6e105cab12",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/text/WARC.txt": {
+    "hash": "d8d0529f71e7e3aeca312cf30c7f6d68cce3a76b2b2ed82da8aadd2dbacf346a",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/text/WARD.txt": {
+    "hash": "1c73ba7676c816db0e49e3b2a4d3e39dc9c3d02f310be59b4a6a95592705bfb9",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/text/WMPA.txt": {
+    "hash": "7e683af41afa5979b2d0f6b0d32b1805a254fa0cfc76b361692cb362b6805b5c",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  },
+  "dialogue/watcher_pearls/text/WVWA.txt": {
+    "hash": "0a089a373e16854db9b5d2011b5e43fd876b84cc03c9413e1d901ea87ac3e84a",
+    "lastmod": "2026-05-15T01:32:53+02:00"
+  }
+}
